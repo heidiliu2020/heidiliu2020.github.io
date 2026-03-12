@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/apple-icon.png" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="本篇為 [GIT101] Git 超新手入門 這門課程的學習筆記。  在上一節我們學到 Git 基本指令，接下來要學習什麼是 Branch（分支），以及如何送出的 Pull Request 進行共同開發，以及介紹提供視覺化介面操作 Git 的 GitHub。 1234學習目標： 知道怎麼使用 branch 並送出 Pull Request 熟悉 Git Workflow（也就是交作業的流程）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[week 1] 版本控制 - Git 進階指令 &amp; GitHub">
+<meta property="og:url" content="https://heidiliu2020.github.io/git-github/index.html">
+<meta property="og:site_name" content="前端新米">
+<meta property="og:description" content="本篇為 [GIT101] Git 超新手入門 這門課程的學習筆記。  在上一節我們學到 Git 基本指令，接下來要學習什麼是 Branch（分支），以及如何送出的 Pull Request 進行共同開發，以及介紹提供視覺化介面操作 Git 的 GitHub。 1234學習目標： 知道怎麼使用 branch 並送出 Pull Request 熟悉 Git Workflow（也就是交作業的流程）">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/MuDKdgK.png">
+<meta property="og:image" content="https://i.imgur.com/1S1hWYu.png">
+<meta property="og:image" content="https://i.imgur.com/eDZEU1a.png">
+<meta property="og:image" content="https://i.imgur.com/qbjckPW.png">
+<meta property="og:image" content="https://i.imgur.com/r51pPLL.png">
+<meta property="og:image" content="https://i.imgur.com/OHjboYW.png">
+<meta property="og:image" content="https://i.imgur.com/oxKtRfm.png">
+<meta property="og:image" content="https://i.imgur.com/Mj5ABC7.png">
+<meta property="og:image" content="https://i.imgur.com/YZsSWZT.png">
+<meta property="og:image" content="https://i.imgur.com/G9ijEnc.png">
+<meta property="og:image" content="https://i.imgur.com/dGMmn2L.png">
+<meta property="og:image" content="https://i.imgur.com/nCAxx1Q.png">
+<meta property="og:image" content="https://i.imgur.com/c3QKwyH.png">
+<meta property="og:image" content="https://i.imgur.com/pl31b7Q.png">
+<meta property="og:image" content="https://i.imgur.com/Yc8mymH.png">
+<meta property="og:image" content="https://i.imgur.com/0yJIEim.png">
+<meta property="og:image" content="https://i.imgur.com/uiF2oX7.png">
+<meta property="og:image" content="https://i.imgur.com/Ms7FVgQ.png">
+<meta property="og:image" content="https://i.imgur.com/QKdoaYU.png">
+<meta property="og:image" content="https://i.imgur.com/leobPuk.png">
+<meta property="og:image" content="https://i.imgur.com/ov638xA.png">
+<meta property="og:image" content="https://i.imgur.com/Dw3UoD7.png">
+<meta property="og:image" content="https://i.imgur.com/YIsFYMS.png">
+<meta property="og:image" content="https://i.imgur.com/XFW7jEo.png">
+<meta property="og:image" content="https://i.imgur.com/AD7xKzA.png">
+<meta property="og:image" content="https://i.imgur.com/Qc6ICVi.png">
+<meta property="og:image" content="https://i.imgur.com/6gSEitU.png">
+<meta property="og:image" content="https://i.imgur.com/WcRW8cK.png">
+<meta property="og:image" content="https://i.imgur.com/keijtFp.png">
+<meta property="og:image" content="https://i.imgur.com/p0VjqBQ.png">
+<meta property="og:image" content="https://i.imgur.com/avOoPLF.png">
+<meta property="article:published_time" content="2020-06-16T09:01:00.000Z">
+<meta property="article:modified_time" content="2026-03-12T07:57:38.566Z">
+<meta property="article:author" content="Heidi Liu">
+<meta property="article:tag" content="Git">
+<meta property="article:tag" content="GitHub">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/MuDKdgK.png">
+
+<link rel="canonical" href="https://heidiliu2020.github.io/git-github/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>[week 1] 版本控制 - Git 進階指令 & GitHub | 前端新米</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端新米</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Heidi's Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://heidiliu2020.github.io/git-github/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/65410665?s=460&u=887bd602944dcf78b90f3a880b03aec4e086728a&v=4">
+      <meta itemprop="name" content="Heidi Liu">
+      <meta itemprop="description" content="海底修羅場｜日々進化中">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端新米">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [week 1] 版本控制 - Git 進階指令 & GitHub
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-06-16 17:01:00" itemprop="dateCreated datePublished" datetime="2020-06-16T17:01:00+08:00">2020-06-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2026-03-12 15:57:38" itemprop="dateModified" datetime="2026-03-12T15:57:38+08:00">2026-03-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>4.6k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>4 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>本篇為 <span class="exturl" data-url="aHR0cHM6Ly9saWRlbXkuY29tL3AvZ2l0MTAx" title="https://lidemy.com/p/git101">[GIT101] Git 超新手入門<i class="fa fa-external-link"></i></span> 這門課程的學習筆記。</p>
+</blockquote>
+<p>在上一節我們學到 <span class="exturl" data-url="aHR0cHM6Ly9oYWNrbWQuaW8vQEhlaWRpLUxpdS9ub3RlLWdpdA==" title="https://hackmd.io/@Heidi-Liu/note-git">Git 基本指令<i class="fa fa-external-link"></i></span>，接下來要學習什麼是 Branch（分支），以及如何送出的 Pull Request 進行共同開發，以及介紹提供視覺化介面操作 Git 的 GitHub。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">學習目標：</span><br><span class="line"></span><br><span class="line"> 知道怎麼使用 branch 並送出 Pull Request</span><br><span class="line"> 熟悉 Git Workflow（也就是交作業的流程）</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+
+<hr>
+<h2 id="為什麼需要-Branch（分支）？"><a href="#為什麼需要-Branch（分支）？" class="headerlink" title="為什麼需要 Branch（分支）？"></a>為什麼需要 Branch（分支）？</h2><p> 簡言之，Branch 的作用就是讓開發過程各自獨立。</p>
+<h3 id="例如：今天公司產品在開發新功能，途中發現有個嚴重的-bug-必須修正"><a href="#例如：今天公司產品在開發新功能，途中發現有個嚴重的-bug-必須修正" class="headerlink" title="例如：今天公司產品在開發新功能，途中發現有個嚴重的 bug 必須修正"></a>例如：今天公司產品在開發新功能，途中發現有個嚴重的 bug 必須修正</h3><h4 id="若以一條線的開發模式（如同上一節學的-Git-基本指令）："><a href="#若以一條線的開發模式（如同上一節學的-Git-基本指令）：" class="headerlink" title="若以一條線的開發模式（如同上一節學的 Git 基本指令）："></a>若以一條線的開發模式（<span class="exturl" data-url="aHR0cHM6Ly9oYWNrbWQuaW8vQEhlaWRpLUxpdS9ub3RlLWdpdA==" title="https://hackmd.io/@Heidi-Liu/note-git">如同上一節學的 Git 基本指令<i class="fa fa-external-link"></i></span>）：</h4><ol>
+<li>在同一個 commit 上進行修改，容易產生衝突</li>
+<li><code>穩定版 + bug fix</code> 還參雜未完成的新功能，也可能產生更多問題</li>
+</ol>
+<p><img src="https://i.imgur.com/MuDKdgK.png" alt="一條線開發"></p>
+<h4 id="若能分成「穩定版本」和「新功能開發」，兩條分支就不會互相干擾："><a href="#若能分成「穩定版本」和「新功能開發」，兩條分支就不會互相干擾：" class="headerlink" title="若能分成「穩定版本」和「新功能開發」，兩條分支就不會互相干擾："></a>若能分成「穩定版本」和「新功能開發」，兩條分支就不會互相干擾：</h4><ol>
+<li><code>穩定版 + 修好 bug</code> → 得到新的穩定版</li>
+<li>待新功能開發完成，即可合併得到有新功能的版本，成為最新的穩定版</li>
+</ol>
+<p><img src="https://i.imgur.com/1S1hWYu.png" alt="兩條線開發"></p>
+<hr>
+<h2 id="操作-branch-基本指令"><a href="#操作-branch-基本指令" class="headerlink" title="操作 branch 基本指令"></a>操作 branch 基本指令</h2><p>使用 Git 進行版本控制時，系統最初會自動建立第一個 branch ，也就是 <code>master</code>。</p>
+<p><img src="https://i.imgur.com/eDZEU1a.png" alt="預設分支為 master"></p>
+<h3 id="git-branch-v：查看目前在哪個分支"><a href="#git-branch-v：查看目前在哪個分支" class="headerlink" title="git branch -v：查看目前在哪個分支"></a><code>git branch -v</code>：查看目前在哪個分支</h3><p>下列訊息分別表示：分支名稱、版本號、版本訊息。</p>
+<p><img src="https://i.imgur.com/qbjckPW.png" alt="git branch -v 指令"></p>
+<ul>
+<li><code>git branch</code> ：如果後面沒接任何參數，只會顯示目前有哪些分支。</li>
+</ul>
+<h3 id="git-branch-lt-branchName-gt-：新增分支"><a href="#git-branch-lt-branchName-gt-：新增分支" class="headerlink" title="git branch &lt;branchName&gt;：新增分支"></a><code>git branch &lt;branchName&gt;</code>：新增分支</h3><blockquote>
+<p>提醒：開發新功能之前，養成開新分支的好習慣！</p>
+</blockquote>
+<p><img src="https://i.imgur.com/r51pPLL.png" alt="git branch"></p>
+<h3 id="git-branch-d-lt-branchName-gt-：刪除分支"><a href="#git-branch-d-lt-branchName-gt-：刪除分支" class="headerlink" title="git branch -d &lt;branchName&gt;：刪除分支"></a><code>git branch -d &lt;branchName&gt;</code>：刪除分支</h3><p><img src="https://i.imgur.com/OHjboYW.png" alt="git branch -d 指令"></p>
+<h3 id="git-checkout-lt-branchName-gt-：切換分支"><a href="#git-checkout-lt-branchName-gt-：切換分支" class="headerlink" title="git checkout &lt;branchName&gt;：切換分支"></a><code>git checkout &lt;branchName&gt;</code>：切換分支</h3><p><span class="exturl" data-url="aHR0cHM6Ly9oYWNrbWQuaW8vT2hCQy14NVRSS1dGM001WlFESEJRUT9ib3RoI2dpdC1jaGVja291dA==" title="https://hackmd.io/OhBC-x5TRKWF3M5ZQDHBQQ?both#git-checkout">和上一節的切換版本指令<i class="fa fa-external-link"></i></span>原理相同，這裡是將 <code>&lt;版本號碼&gt;</code> 換成 <code>&lt;分支名稱&gt;</code></p>
+<ol>
+<li><code>git checkout &lt;版本名稱&gt;</code>：切換版本</li>
+<li><code>git checkout &lt;branchName&gt;</code>：切換分支</li>
+<li><code>git branch checkout -b &lt;branchName&gt;</code>：「新增」並「切換」到該分支</li>
+</ol>
+<p><img src="https://i.imgur.com/oxKtRfm.png" alt="git checkout 指令"></p>
+<h2 id="如何合併分支？"><a href="#如何合併分支？" class="headerlink" title="如何合併分支？"></a>如何合併分支？</h2><h3 id="git-merge-lt-branchName-gt-：把分支合併進來"><a href="#git-merge-lt-branchName-gt-：把分支合併進來" class="headerlink" title="git merge &lt;branchName&gt;：把分支合併進來"></a><code>git merge &lt;branchName&gt;</code>：把分支合併進來</h3><h4 id="範例：把分支-new-feature-合併到-master"><a href="#範例：把分支-new-feature-合併到-master" class="headerlink" title="範例：把分支 new-feature 合併到 master"></a>範例：把分支 <code>new-feature</code> 合併到 <code>master</code></h4><ol>
+<li>輸入 <code>git checkout master</code> 切換到 <code>master</code> 這個分支</li>
+<li>輸入 <code>git merge new-feature</code>，完成基本的分支合併<br>用 <code>git log</code> 查看版本紀錄，可知「合併」的過程會自動建立一個新版本</li>
+</ol>
+<p><img src="https://i.imgur.com/Mj5ABC7.png" alt="git merge 指令"></p>
+<ol start="3">
+<li>成功合併後，即可刪除分支 <code>new-feature</code></li>
+</ol>
+<p><img src="https://i.imgur.com/YZsSWZT.png" alt="合併後刪除分支"></p>
+<h2 id="那在合併時發生-conflict（衝突）怎麼辦？"><a href="#那在合併時發生-conflict（衝突）怎麼辦？" class="headerlink" title="那在合併時發生 conflict（衝突）怎麼辦？"></a>那在合併時發生 conflict（衝突）怎麼辦？</h2><blockquote>
+<p>所謂的衝突，就是「同一份檔案的兩個版本，裡面有一個或多個不同的內容」。</p>
+</blockquote>
+<p>但是 Git 無法幫你選擇哪一個當作最終版本，所以當發生衝突時，只能「自己手動調整」。</p>
+<h4 id="範例：在-master-和-new-feature-這兩條支線上，均改了同一個檔案-code-js"><a href="#範例：在-master-和-new-feature-這兩條支線上，均改了同一個檔案-code-js" class="headerlink" title="範例：在 master 和 new-feature 這兩條支線上，均改了同一個檔案 code.js"></a>範例：在 <code>master</code> 和 <code>new-feature</code> 這兩條支線上，均改了同一個檔案 <code>code.js</code></h4><ol>
+<li>此時若把分支 <code>new-feature</code> 合併到 <code>master</code> 上</li>
+<li>顯示發生衝突，輸入 <code>git status</code> 可見提示說明：該檔案的兩個版本均有修改</li>
+</ol>
+<p><img src="https://i.imgur.com/G9ijEnc.png" alt="conflict"></p>
+<ol start="3">
+<li>進入該檔案會顯示衝突位置如下，需手動調整檔案內容</li>
+</ol>
+<p><img src="https://i.imgur.com/dGMmn2L.png" alt="conflict 手動調整"></p>
+<p><img src="https://i.imgur.com/nCAxx1Q.png" alt="調整完成"></p>
+<ol start="4">
+<li>修改完後重新 commit，成功解決衝突</li>
+</ol>
+<p><img src="https://i.imgur.com/c3QKwyH.png" alt="conflict 解決"></p>
+<hr>
+<h2 id="如何共同開發專案？"><a href="#如何共同開發專案？" class="headerlink" title="如何共同開發專案？"></a>如何共同開發專案？</h2><p>熟悉 Git 的基本操作後，來談談最一開始提到的多人協作。這些被版本控制的專案，我們稱為「Repository（檔案庫）」，多人協作就是共享同一份 Repository 來完成共同開發。</p>
+<h2 id="Git-vs-GitHub"><a href="#Git-vs-GitHub" class="headerlink" title="Git vs GitHub"></a>Git vs GitHub</h2><p>Git 是用來版本控制的程式。</p>
+<p>GitHub 是目前全球最大的 Git Server，有許多開放原始碼的專案都是使用 Github 進行程式碼的管理。可以想成「提供存放使用 Git 專案倉庫（Repository) 的服務」。也可以不用 GitHub 選擇其他服務，或是自己架一個 Git Sever。</p>
+<h3 id="GitHub：視覺化的-repository"><a href="#GitHub：視覺化的-repository" class="headerlink" title="GitHub：視覺化的 repository"></a>GitHub：視覺化的 repository</h3><p>透過 GitHub 的 GUI 介面能夠視覺化 repository，如此就可以在 repository 頁面查看該專案的 Commit 紀錄、檔案修改的歷史紀錄、修改者是誰等資訊，也可在 GitHub 執行 pull request 來進行合併。</p>
+<h3 id="建立新專案"><a href="#建立新專案" class="headerlink" title="建立新專案"></a>建立新專案</h3><p><img src="https://i.imgur.com/pl31b7Q.png" alt="建立新專案"></p>
+<h2 id="將本地端資料推上遠端-GitHub（Local→Remote）"><a href="#將本地端資料推上遠端-GitHub（Local→Remote）" class="headerlink" title="將本地端資料推上遠端 GitHub（Local→Remote）"></a>將本地端資料推上遠端 GitHub（Local→Remote）</h2><p>建立好新專案後，可分兩種方式開始專案：</p>
+<ol>
+<li>開始全新專案，再同步到 GitHub</li>
+<li>已存在專案，將本地端的現存專案同步到 GitHub</li>
+</ol>
+<p><img src="https://i.imgur.com/Yc8mymH.png" alt="上傳本地專案到 GitHub"></p>
+<h4 id="git-remote：主要是跟遠端有關的操作"><a href="#git-remote：主要是跟遠端有關的操作" class="headerlink" title="git remote：主要是跟遠端有關的操作"></a><code>git remote</code>：主要是跟遠端有關的操作</h4><ul>
+<li><code>git remote add origin https://github.com/heidiliu2020/git101_test.git</code><br>代表加入遠端節點。也就是「為本地端檔案庫增加一個叫做 origin 的遠端檔案庫」。</li>
+<li>這裡的 <code>origin</code> 是遠端檔案庫的代名詞，代表後面那串 GitHub 伺服器位置。如果從 Server 上 clone 下來，origin 是預設的遠端節點名稱。</li>
+</ul>
+<h4 id="git-push：把本地資料同步到遠端"><a href="#git-push：把本地資料同步到遠端" class="headerlink" title="git push：把本地資料同步到遠端"></a><code>git push</code>：把本地資料同步到遠端</h4><ul>
+<li><code>git push -u origin &lt;branchName&gt; </code>：將本地端分支資料推到遠端分支</li>
+<li><code>git push -u origin master</code>：將本地端檔案庫推到遠端檔案庫的 master 分支</li>
+</ul>
+<h2 id="將遠端資料拉回本地端（Remote→Local）"><a href="#將遠端資料拉回本地端（Remote→Local）" class="headerlink" title="將遠端資料拉回本地端（Remote→Local）"></a>將遠端資料拉回本地端（Remote→Local）</h2><h4 id="git-pull：把遠端資料同步到本地端"><a href="#git-pull：把遠端資料同步到本地端" class="headerlink" title="git pull：把遠端資料同步到本地端"></a><code>git pull</code>：把遠端資料同步到本地端</h4><ul>
+<li><code>git pull origin &lt;branchName&gt;</code>：將遠端分支資料拉回並合併本地端分支</li>
+</ul>
+<h2 id="從-GitHub-Repository-複製專案"><a href="#從-GitHub-Repository-複製專案" class="headerlink" title="從 GitHub Repository 複製專案"></a>從 GitHub Repository 複製專案</h2><p>上面介紹的 Push 及 Pull 均使用於本地端現有的專案。</p>
+<h3 id="git-clone：從-GitHub-下載-Repository-到本地端"><a href="#git-clone：從-GitHub-下載-Repository-到本地端" class="headerlink" title="git clone：從 GitHub 下載 Repository 到本地端"></a><code>git clone</code>：從 GitHub 下載 Repository 到本地端</h3><ol>
+<li>在 GitHub 點選 <code>Clone or download</code>，可直接下載檔案</li>
+</ol>
+<p><img src="https://i.imgur.com/0yJIEim.png" alt="GitHub 點選 Clone"></p>
+<ol start="2">
+<li>或是複製網址，到 Terminal 輸入 <code>git clone &lt;網址&gt;</code>：可將內容下載到本地端</li>
+</ol>
+<p><img src="https://i.imgur.com/uiF2oX7.png" alt="git clone"></p>
+<blockquote>
+<p>但要注意使用 Clone 的 Repository 沒有權限修改，也就無法再 push 回遠端。</p>
+</blockquote>
+<h3 id="Fork：將別人的-Repository-複製一份成為自己的-Repository"><a href="#Fork：將別人的-Repository-複製一份成為自己的-Repository" class="headerlink" title="Fork：將別人的 Repository 複製一份成為自己的 Repository"></a><code>Fork</code>：將別人的 Repository 複製一份成為自己的 Repository</h3><ol>
+<li>到想要複製的 Repository 頁面，點選 <code>Fork</code></li>
+</ol>
+<p><img src="https://i.imgur.com/Ms7FVgQ.png" alt="點選 fork"></p>
+<ol start="2">
+<li>即可複製一份 Repository 到自己的帳號底下</li>
+</ol>
+<p><img src="https://i.imgur.com/QKdoaYU.png" alt="fork 專案"></p>
+<ol start="3">
+<li>把專案 clone 到本地端，開新的 branch 進行修改</li>
+<li>Push 回自己的專案</li>
+<li>若為多人協作，可在自己的頁面提出 PR（pull request）給原作</li>
+</ol>
+<p><img src="https://i.imgur.com/leobPuk.png"></p>
+<ol start="6">
+<li>若原作同意修改內容，就會在他的頁面按下「Merge pull request」合併 commit</li>
+</ol>
+<p><img src="https://i.imgur.com/ov638xA.png"></p>
+<hr>
+<h3 id="補充：如何在-GitHub上同步-Fork-過來的-Repository"><a href="#補充：如何在-GitHub上同步-Fork-過來的-Repository" class="headerlink" title="補充：如何在 GitHub上同步 Fork 過來的 Repository"></a>補充：如何在 GitHub上同步 Fork 過來的 Repository</h3><ol>
+<li><code>git remote -v</code>：查看目前的遠端節點。只有最一開始設的 origin 這個節點。</li>
+</ol>
+<p><img src="https://i.imgur.com/Dw3UoD7.png" alt="git remote -v 指令"></p>
+<ol start="2">
+<li><code>git remote add &lt;節點名稱&gt; &lt;網址&gt;</code>：新增一個遠端節點。</li>
+</ol>
+<ul>
+<li><code>git remote add upstream https://github.com/Lidemy/mentor-program-4th.git</code>：為本地端檔案庫增加一個叫做 <code>upstream</code> 的遠端檔案庫。</li>
+</ul>
+<p><img src="https://i.imgur.com/YIsFYMS.png" alt="git remote add"></p>
+<ol start="3">
+<li><code>git pull upstream master</code>：把遠端 Repo 同步回本地端電腦。若發生衝突，則手動修改解決。</li>
+</ol>
+<p><img src="https://i.imgur.com/XFW7jEo.png" alt="git pull"></p>
+<ol start="4">
+<li>修改完成後，使用 <code>git commit -am &quot;同步課綱 repo&quot;</code> 重新 commit。</li>
+<li><code>git push origin master</code>：同步回自己在 GitHub 的 遠端 Repo。</li>
+</ol>
+<blockquote>
+<p>若要刪除舊有的 remote，可參考 <span class="exturl" data-url="aHR0cHM6Ly9hbmR5NjgwNHR3LmdpdGh1Yi5pby8yMDE5LzAxLzA0L2dpdC1yZW1vdmUtcmVtb3RlLw==" title="https://andy6804tw.github.io/2019/01/04/git-remove-remote/">[Git筆記] 如何移除 remote origin<i class="fa fa-external-link"></i></span>。</p>
+</blockquote>
+<p>想請問同步課綱 Repo，是不是就和「同步之前 Fork 過來的 Repo」情況相同呢？</p>
+<ol>
+<li><code>git remote add</code> 新增課綱 Repo 這個遠端節點</li>
+<li><code>git pull</code> 把新課綱 Repo 同步到本地端，若發生衝突則手動解決再 <code>commit</code></li>
+<li><code>git push</code> 同步回自己在 GitHub 的遠端 Repo</li>
+</ol>
+<p>自己依照這些步驟有成功把課綱 Repo 同步到 GitHub，想確認看看這觀念正不正確@@</p>
+<hr>
+<h2 id="常見狀況劇："><a href="#常見狀況劇：" class="headerlink" title="常見狀況劇："></a>常見狀況劇：</h2><h3 id="commit-message-送出後，發現打錯字了想要修改"><a href="#commit-message-送出後，發現打錯字了想要修改" class="headerlink" title="commit message 送出後，發現打錯字了想要修改"></a>commit message 送出後，發現打錯字了想要修改</h3><ol>
+<li><code>git commit --amend</code>：進入 vim 編輯器，即可修改 commit message。但這個方法只能修改最後一次的 commit message</li>
+</ol>
+<p><img src="https://i.imgur.com/AD7xKzA.png" alt="git commit --amend"></p>
+<ul>
+<li>vim 編輯器介面如下，編輯完成後回到普通模式，輸入 <code>:wq</code> 存檔退出</li>
+</ul>
+<p><img src="https://i.imgur.com/Qc6ICVi.png" alt="Vim 編輯器"></p>
+<ol start="2">
+<li><code>git rebase</code>：可以修改更之前的 commit message，可參考<span class="exturl" data-url="aHR0cHM6Ly9naXRib29rLnR3L2NoYXB0ZXJzL3Jld3JpdGUtaGlzdG9yeS9jaGFuZ2UtY29tbWl0LW1lc3NhZ2UuaHRtbA==" title="https://gitbook.tw/chapters/rewrite-history/change-commit-message.html">詳細操作流程<i class="fa fa-external-link"></i></span></li>
+</ol>
+<blockquote>
+<p>補充：若是在已經 commit 而且又 push 的情形下，在本地端進行修改 commit message 可能會造成其他人的困擾。最好的方法還是 push 之前先檢查一下，避免錯的東西被放到遠端。</p>
+</blockquote>
+<h3 id="我-commit-了可是我又不想-commit-了"><a href="#我-commit-了可是我又不想-commit-了" class="headerlink" title="我 commit 了可是我又不想 commit 了"></a>我 commit 了可是我又不想 commit 了</h3><p><code>git reset HEAD^</code>：回到上一個 commit 的狀態，保留檔案變更，需要再 commit 來新增版本。預設是 –mixed，可參考 <span class="exturl" data-url="aHR0cHM6Ly9pdGhlbHAuaXRob21lLmNvbS50dy9hcnRpY2xlcy8xMDE4NzMwMw==" title="https://ithelp.ithome.com.tw/articles/10187303">Git reset 的三種模式( soft mixed hard )比較<i class="fa fa-external-link"></i></span>。</p>
+<ul>
+<li><code>HEAD</code> 代表最新的，<code>^</code> 代表前一個。</li>
+<li>因此 <code>HEAD^</code> 就是最新 commit 的前一個狀態，也就是上一個 commit 的狀態。</li>
+</ul>
+<h3 id="我還沒-commit，但我想把檔案回復到上次-commit-的狀態"><a href="#我還沒-commit，但我想把檔案回復到上次-commit-的狀態" class="headerlink" title="我還沒 commit，但我想把檔案回復到上次 commit 的狀態"></a>我還沒 commit，但我想把檔案回復到上次 commit 的狀態</h3><ol>
+<li><code>git checkout -- &lt;file&gt;</code>：把檔案回復到上一次 commit 的狀態</li>
+<li><code>git checkout -- .</code>：把專案內的所有檔案都回復</li>
+</ol>
+<p><img src="https://i.imgur.com/6gSEitU.png" alt="git checkout --"></p>
+<ul>
+<li>也可使用 <code>git restore &lt;file&gt;</code>，和 <code>git checkout -- &lt;file&gt;</code> 作用相同。</li>
+</ul>
+<p><img src="https://i.imgur.com/WcRW8cK.png" alt="git restore"></p>
+<h3 id="改-branch-的名稱"><a href="#改-branch-的名稱" class="headerlink" title="改 branch 的名稱"></a>改 branch 的名稱</h3><p><code>git branch -m feature</code>：將分支名稱改成 feature。</p>
+<p><img src="https://i.imgur.com/keijtFp.png" alt="git branch -m 指令"></p>
+<hr>
+<h2 id="GitHub-Flow"><a href="#GitHub-Flow" class="headerlink" title="GitHub Flow"></a>GitHub Flow</h2><p>GitHub 建議管理專案的流程：<span class="exturl" data-url="aHR0cHM6Ly9ndWlkZXMuZ2l0aHViLmNvbS9pbnRyb2R1Y3Rpb24vZmxvdy8=" title="https://guides.github.com/introduction/flow/">官網說明<i class="fa fa-external-link"></i></span></p>
+<p>當參與多人開發時：（圖片出自 <span class="exturl" data-url="aHR0cHM6Ly9hcmNjd2lraS51d3lvLmVkdS9pbmRleC5waHAvR2l0X1dvcmtmbG93" title="https://arccwiki.uwyo.edu/index.php/Git_Workflow">arccwiki<i class="fa fa-external-link"></i></span>）</p>
+<p><img src="https://i.imgur.com/p0VjqBQ.png" alt="GitHub Flow step "></p>
+<ol>
+<li>先 Fork 專案到自己的 repository，開新的 branch 進行開發</li>
+<li>修改內容後 commit 新增版本，再 push 回自己的 repository</li>
+<li>pull request 到原本專案的 repository 請求合併</li>
+<li>在上面進行討論，等待對方的 code review</li>
+<li>在合併前進行最終測試</li>
+<li>合併成功，刪掉 branch</li>
+</ol>
+<hr>
+<h2 id="實戰演練"><a href="#實戰演練" class="headerlink" title="實戰演練"></a>實戰演練</h2><blockquote>
+<p>假設今天已經建立好本地端和遠端的 resposity，那要如何進行往後的更新呢？</p>
+</blockquote>
+<ol>
+<li>新建一個 branch：<code>git branch joke_1</code></li>
+<li>切換到該 branch：<code>git checkout joke_1</code></li>
+<li>編輯檔案<code>笑話大全.txt</code></li>
+<li>完成後，若有新增檔案，可使用 <code>git add .</code> 把檔案加入版本控制</li>
+<li>進行 commit：<code>git commit -am “new joke”</code></li>
+<li>push 本地端分支回遠端 GitHub：<code>git push origin joke_1</code></li>
+<li>到 Github 查看 branch 頁面，提出 PR（pull request）</li>
+<li>完成合併到遠端 master，即可刪除分支 joke_1</li>
+<li>把 GitHub 更新的 master 同步到本地端：<code>git push origin master</code></li>
+<li>回到本地端，使用 <code>git branch -d joke_1</code> 刪除分支，結束！</li>
+</ol>
+<hr>
+<h2 id="客製化各個階段：Git-hook"><a href="#客製化各個階段：Git-hook" class="headerlink" title="客製化各個階段：Git hook"></a>客製化各個階段：Git hook</h2><p>用途是「當發生某事的時候通知我」。例如：當有人 commit、有人push 時通知我。</p>
+<p>通常使用在 commit 或是 push 之前，用來檢查程式碼是否符合規範、是否改到不能更改的檔案、是否有放一些不該放的檔案或帳號密碼。</p>
+<h2 id="補充：本地端與遠端-相關指令"><a href="#補充：本地端與遠端-相關指令" class="headerlink" title="補充：本地端與遠端 - 相關指令"></a>補充：本地端與遠端 - 相關指令</h2><ul>
+<li>以下示意圖出自<span class="exturl" data-url="aHR0cHM6Ly93d3cudXRzYy51dG9yb250by5jYS9+YXRhZmxpb3ZpY2gvY3NjYzAxL2xlY3R1cmVzLzAyLWNvbmZpZy1tYW5hZ2VtZW50LTIxLS5wZGY=" title="https://www.utsc.utoronto.ca/~atafliovich/cscc01/lectures/02-config-management-21-.pdf">此處<i class="fa fa-external-link"></i></span></li>
+</ul>
+<p><img src="https://i.imgur.com/avOoPLF.png" alt="git terminology"></p>
+<p>參考資料：</p>
+<ol>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLnRlY2hicmlkZ2UuY2MvMjAxOC8wMS8xNy9sZWFybmluZy1wcm9ncmFtbWluZy1hbmQtY29kaW5nLXdpdGgtcHl0aG9uLWdpdC1hbmQtZ2l0aHViLXR1dG9yaWFsLw==" title="https://blog.techbridge.cc/2018/01/17/learning-programming-and-coding-with-python-git-and-github-tutorial/">Git 與 Github 版本控制基本指令與操作入門教學<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL0BtaWFoc3V3b3JrLyVFNyVBQyVBQyVFNCVCQSU4QyVFOSU4MCVCMS1naXQtJUU5JTgwJUIyJUU5JTlBJThFJUU0JUJEJUJGJUU3JTk0JUE4LWJyYW5jaC1tZXJnZS1hNTcxY2MwYTk1ZGU=" title="https://medium.com/@miahsuwork/%E7%AC%AC%E4%BA%8C%E9%80%B1-git-%E9%80%B2%E9%9A%8E%E4%BD%BF%E7%94%A8-branch-merge-a571cc0a95de">[第二週]Git 進階使用 Branch、Merge<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRib29rLnR3L2NoYXB0ZXJzL2dpdGh1Yi9wdXNoLXRvLWdpdGh1Yi5odG1s" title="https://gitbook.tw/chapters/github/push-to-github.html">Git教學：如何 Push 上傳到 GitHub？<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ndWlkZXMuZ2l0aHViLmNvbS9pbnRyb2R1Y3Rpb24vZmxvdy8=" title="https://guides.github.com/introduction/flow/">GitHub Guides - Understanding the GitHub flow<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9hcmNjd2lraS51d3lvLmVkdS9pbmRleC5waHAvR2l0X1dvcmtmbG93" title="https://arccwiki.uwyo.edu/index.php/Git_Workflow">Git Workflow - arccwiki<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRib29rLnR3L2NoYXB0ZXJzL3Jld3JpdGUtaGlzdG9yeS9jaGFuZ2UtY29tbWl0LW1lc3NhZ2UuaHRtbA==" title="https://gitbook.tw/chapters/rewrite-history/change-commit-message.html">【狀況題】修改歷史訊息<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cudXRzYy51dG9yb250by5jYS9+YXRhZmxpb3ZpY2gvY3NjYzAxL2xlY3R1cmVzLzAyLWNvbmZpZy1tYW5hZ2VtZW50LTIxLS5wZGY=" title="https://www.utsc.utoronto.ca/~atafliovich/cscc01/lectures/02-config-management-21-.pdf">CSCC01: Configuration Management<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRib29rLnR3L2NoYXB0ZXJzL2dpdGh1Yi9zeW5jaW5nLWEtZm9yay5odG1s" title="https://gitbook.tw/chapters/github/syncing-a-fork.html">【狀況題】怎麼跟上當初 fork 專案的進度？<i class="fa fa-external-link"></i></span></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Git/" rel="tag"># Git</a>
+              <a href="/tags/GitHub/" rel="tag"># GitHub</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/git/" rel="prev" title="[week 1] 版本控制 - Git 概念 ＆ 基本指令">
+      <i class="fa fa-chevron-left"></i> [week 1] 版本控制 - Git 概念 ＆ 基本指令
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/command-line/" rel="next" title="[week 1] Command Line 入門 & 基本指令">
+      [week 1] Command Line 入門 & 基本指令 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9C%80%E8%A6%81-Branch%EF%BC%88%E5%88%86%E6%94%AF%EF%BC%89%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">為什麼需要 Branch（分支）？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%A6%82%EF%BC%9A%E4%BB%8A%E5%A4%A9%E5%85%AC%E5%8F%B8%E7%94%A2%E5%93%81%E5%9C%A8%E9%96%8B%E7%99%BC%E6%96%B0%E5%8A%9F%E8%83%BD%EF%BC%8C%E9%80%94%E4%B8%AD%E7%99%BC%E7%8F%BE%E6%9C%89%E5%80%8B%E5%9A%B4%E9%87%8D%E7%9A%84-bug-%E5%BF%85%E9%A0%88%E4%BF%AE%E6%AD%A3"><span class="nav-number">1.1.</span> <span class="nav-text">例如：今天公司產品在開發新功能，途中發現有個嚴重的 bug 必須修正</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8B%A5%E4%BB%A5%E4%B8%80%E6%A2%9D%E7%B7%9A%E7%9A%84%E9%96%8B%E7%99%BC%E6%A8%A1%E5%BC%8F%EF%BC%88%E5%A6%82%E5%90%8C%E4%B8%8A%E4%B8%80%E7%AF%80%E5%AD%B8%E7%9A%84-Git-%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4%EF%BC%89%EF%BC%9A"><span class="nav-number">1.1.1.</span> <span class="nav-text">若以一條線的開發模式（如同上一節學的 Git 基本指令）：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8B%A5%E8%83%BD%E5%88%86%E6%88%90%E3%80%8C%E7%A9%A9%E5%AE%9A%E7%89%88%E6%9C%AC%E3%80%8D%E5%92%8C%E3%80%8C%E6%96%B0%E5%8A%9F%E8%83%BD%E9%96%8B%E7%99%BC%E3%80%8D%EF%BC%8C%E5%85%A9%E6%A2%9D%E5%88%86%E6%94%AF%E5%B0%B1%E4%B8%8D%E6%9C%83%E4%BA%92%E7%9B%B8%E5%B9%B2%E6%93%BE%EF%BC%9A"><span class="nav-number">1.1.2.</span> <span class="nav-text">若能分成「穩定版本」和「新功能開發」，兩條分支就不會互相干擾：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C-branch-%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">操作 branch 基本指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-branch-v%EF%BC%9A%E6%9F%A5%E7%9C%8B%E7%9B%AE%E5%89%8D%E5%9C%A8%E5%93%AA%E5%80%8B%E5%88%86%E6%94%AF"><span class="nav-number">2.1.</span> <span class="nav-text">git branch -v：查看目前在哪個分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-branch-lt-branchName-gt-%EF%BC%9A%E6%96%B0%E5%A2%9E%E5%88%86%E6%94%AF"><span class="nav-number">2.2.</span> <span class="nav-text">git branch &lt;branchName&gt;：新增分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-branch-d-lt-branchName-gt-%EF%BC%9A%E5%88%AA%E9%99%A4%E5%88%86%E6%94%AF"><span class="nav-number">2.3.</span> <span class="nav-text">git branch -d &lt;branchName&gt;：刪除分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-checkout-lt-branchName-gt-%EF%BC%9A%E5%88%87%E6%8F%9B%E5%88%86%E6%94%AF"><span class="nav-number">2.4.</span> <span class="nav-text">git checkout &lt;branchName&gt;：切換分支</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%90%88%E4%BD%B5%E5%88%86%E6%94%AF%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">如何合併分支？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-merge-lt-branchName-gt-%EF%BC%9A%E6%8A%8A%E5%88%86%E6%94%AF%E5%90%88%E4%BD%B5%E9%80%B2%E4%BE%86"><span class="nav-number">3.1.</span> <span class="nav-text">git merge &lt;branchName&gt;：把分支合併進來</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B%EF%BC%9A%E6%8A%8A%E5%88%86%E6%94%AF-new-feature-%E5%90%88%E4%BD%B5%E5%88%B0-master"><span class="nav-number">3.1.1.</span> <span class="nav-text">範例：把分支 new-feature 合併到 master</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%82%A3%E5%9C%A8%E5%90%88%E4%BD%B5%E6%99%82%E7%99%BC%E7%94%9F-conflict%EF%BC%88%E8%A1%9D%E7%AA%81%EF%BC%89%E6%80%8E%E9%BA%BC%E8%BE%A6%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">那在合併時發生 conflict（衝突）怎麼辦？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B%EF%BC%9A%E5%9C%A8-master-%E5%92%8C-new-feature-%E9%80%99%E5%85%A9%E6%A2%9D%E6%94%AF%E7%B7%9A%E4%B8%8A%EF%BC%8C%E5%9D%87%E6%94%B9%E4%BA%86%E5%90%8C%E4%B8%80%E5%80%8B%E6%AA%94%E6%A1%88-code-js"><span class="nav-number">4.0.1.</span> <span class="nav-text">範例：在 master 和 new-feature 這兩條支線上，均改了同一個檔案 code.js</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%85%B1%E5%90%8C%E9%96%8B%E7%99%BC%E5%B0%88%E6%A1%88%EF%BC%9F"><span class="nav-number">5.</span> <span class="nav-text">如何共同開發專案？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-vs-GitHub"><span class="nav-number">6.</span> <span class="nav-text">Git vs GitHub</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GitHub%EF%BC%9A%E8%A6%96%E8%A6%BA%E5%8C%96%E7%9A%84-repository"><span class="nav-number">6.1.</span> <span class="nav-text">GitHub：視覺化的 repository</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E6%96%B0%E5%B0%88%E6%A1%88"><span class="nav-number">6.2.</span> <span class="nav-text">建立新專案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%87%E6%9C%AC%E5%9C%B0%E7%AB%AF%E8%B3%87%E6%96%99%E6%8E%A8%E4%B8%8A%E9%81%A0%E7%AB%AF-GitHub%EF%BC%88Local%E2%86%92Remote%EF%BC%89"><span class="nav-number">7.</span> <span class="nav-text">將本地端資料推上遠端 GitHub（Local→Remote）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#git-remote%EF%BC%9A%E4%B8%BB%E8%A6%81%E6%98%AF%E8%B7%9F%E9%81%A0%E7%AB%AF%E6%9C%89%E9%97%9C%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">7.0.1.</span> <span class="nav-text">git remote：主要是跟遠端有關的操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-push%EF%BC%9A%E6%8A%8A%E6%9C%AC%E5%9C%B0%E8%B3%87%E6%96%99%E5%90%8C%E6%AD%A5%E5%88%B0%E9%81%A0%E7%AB%AF"><span class="nav-number">7.0.2.</span> <span class="nav-text">git push：把本地資料同步到遠端</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%87%E9%81%A0%E7%AB%AF%E8%B3%87%E6%96%99%E6%8B%89%E5%9B%9E%E6%9C%AC%E5%9C%B0%E7%AB%AF%EF%BC%88Remote%E2%86%92Local%EF%BC%89"><span class="nav-number">8.</span> <span class="nav-text">將遠端資料拉回本地端（Remote→Local）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#git-pull%EF%BC%9A%E6%8A%8A%E9%81%A0%E7%AB%AF%E8%B3%87%E6%96%99%E5%90%8C%E6%AD%A5%E5%88%B0%E6%9C%AC%E5%9C%B0%E7%AB%AF"><span class="nav-number">8.0.1.</span> <span class="nav-text">git pull：把遠端資料同步到本地端</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%9E-GitHub-Repository-%E8%A4%87%E8%A3%BD%E5%B0%88%E6%A1%88"><span class="nav-number">9.</span> <span class="nav-text">從 GitHub Repository 複製專案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-clone%EF%BC%9A%E5%BE%9E-GitHub-%E4%B8%8B%E8%BC%89-Repository-%E5%88%B0%E6%9C%AC%E5%9C%B0%E7%AB%AF"><span class="nav-number">9.1.</span> <span class="nav-text">git clone：從 GitHub 下載 Repository 到本地端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fork%EF%BC%9A%E5%B0%87%E5%88%A5%E4%BA%BA%E7%9A%84-Repository-%E8%A4%87%E8%A3%BD%E4%B8%80%E4%BB%BD%E6%88%90%E7%82%BA%E8%87%AA%E5%B7%B1%E7%9A%84-Repository"><span class="nav-number">9.2.</span> <span class="nav-text">Fork：將別人的 Repository 複製一份成為自己的 Repository</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A3%9C%E5%85%85%EF%BC%9A%E5%A6%82%E4%BD%95%E5%9C%A8-GitHub%E4%B8%8A%E5%90%8C%E6%AD%A5-Fork-%E9%81%8E%E4%BE%86%E7%9A%84-Repository"><span class="nav-number">9.3.</span> <span class="nav-text">補充：如何在 GitHub上同步 Fork 過來的 Repository</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A6%8B%E7%8B%80%E6%B3%81%E5%8A%87%EF%BC%9A"><span class="nav-number">10.</span> <span class="nav-text">常見狀況劇：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#commit-message-%E9%80%81%E5%87%BA%E5%BE%8C%EF%BC%8C%E7%99%BC%E7%8F%BE%E6%89%93%E9%8C%AF%E5%AD%97%E4%BA%86%E6%83%B3%E8%A6%81%E4%BF%AE%E6%94%B9"><span class="nav-number">10.1.</span> <span class="nav-text">commit message 送出後，發現打錯字了想要修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91-commit-%E4%BA%86%E5%8F%AF%E6%98%AF%E6%88%91%E5%8F%88%E4%B8%8D%E6%83%B3-commit-%E4%BA%86"><span class="nav-number">10.2.</span> <span class="nav-text">我 commit 了可是我又不想 commit 了</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E9%82%84%E6%B2%92-commit%EF%BC%8C%E4%BD%86%E6%88%91%E6%83%B3%E6%8A%8A%E6%AA%94%E6%A1%88%E5%9B%9E%E5%BE%A9%E5%88%B0%E4%B8%8A%E6%AC%A1-commit-%E7%9A%84%E7%8B%80%E6%85%8B"><span class="nav-number">10.3.</span> <span class="nav-text">我還沒 commit，但我想把檔案回復到上次 commit 的狀態</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B9-branch-%E7%9A%84%E5%90%8D%E7%A8%B1"><span class="nav-number">10.4.</span> <span class="nav-text">改 branch 的名稱</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub-Flow"><span class="nav-number">11.</span> <span class="nav-text">GitHub Flow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%A6%E6%88%B0%E6%BC%94%E7%B7%B4"><span class="nav-number">12.</span> <span class="nav-text">實戰演練</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%A2%E8%A3%BD%E5%8C%96%E5%90%84%E5%80%8B%E9%9A%8E%E6%AE%B5%EF%BC%9AGit-hook"><span class="nav-number">13.</span> <span class="nav-text">客製化各個階段：Git hook</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A3%9C%E5%85%85%EF%BC%9A%E6%9C%AC%E5%9C%B0%E7%AB%AF%E8%88%87%E9%81%A0%E7%AB%AF-%E7%9B%B8%E9%97%9C%E6%8C%87%E4%BB%A4"><span class="nav-number">14.</span> <span class="nav-text">補充：本地端與遠端 - 相關指令</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Heidi Liu"
+      src="https://avatars3.githubusercontent.com/u/65410665?s=460&u=887bd602944dcf78b90f3a880b03aec4e086728a&v=4">
+  <p class="site-author-name" itemprop="name">Heidi Liu</p>
+  <div class="site-description" itemprop="description">海底修羅場｜日々進化中</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">125</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">103</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Heidi Liu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="總字數">715k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">10:50</span>
+</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/apple-icon.png" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="接續上篇【學習筆記】JavaScript 的陣列遍歷（ㄧ）：for&#x2F;for…of&#x2F;for…in&#x2F;forEach，這篇筆記整理幾種 JavaScript 遍歷陣列的方法，探討其使用時機與彼此的區別：  arr.forEach((value, index, array) &#x3D;&gt; &amp;#123; &#x2F;&#x2F; todo... &amp;#125;) arr.map(value &#x3D;&gt; &amp;#123; &#x2F;&#x2F; todo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【學習筆記】JavaScript 的陣列遍歷（二）：forEach&#x2F;map&#x2F;filter&#x2F;every&#x2F;some&#x2F;reduce">
+<meta property="og:url" content="https://heidiliu2020.github.io/javascript-native-array/index.html">
+<meta property="og:site_name" content="前端新米">
+<meta property="og:description" content="接續上篇【學習筆記】JavaScript 的陣列遍歷（ㄧ）：for&#x2F;for…of&#x2F;for…in&#x2F;forEach，這篇筆記整理幾種 JavaScript 遍歷陣列的方法，探討其使用時機與彼此的區別：  arr.forEach((value, index, array) &#x3D;&gt; &amp;#123; &#x2F;&#x2F; todo... &amp;#125;) arr.map(value &#x3D;&gt; &amp;#123; &#x2F;&#x2F; todo">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2021-09-28T16:48:00.000Z">
+<meta property="article:modified_time" content="2026-03-12T07:57:38.575Z">
+<meta property="article:author" content="Heidi Liu">
+<meta property="article:tag" content="Front-End">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://heidiliu2020.github.io/javascript-native-array/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>【學習筆記】JavaScript 的陣列遍歷（二）：forEach/map/filter/every/some/reduce | 前端新米</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端新米</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Heidi's Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://heidiliu2020.github.io/javascript-native-array/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/65410665?s=460&u=887bd602944dcf78b90f3a880b03aec4e086728a&v=4">
+      <meta itemprop="name" content="Heidi Liu">
+      <meta itemprop="description" content="海底修羅場｜日々進化中">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端新米">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【學習筆記】JavaScript 的陣列遍歷（二）：forEach/map/filter/every/some/reduce
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-09-29 00:48:00" itemprop="dateCreated datePublished" datetime="2021-09-29T00:48:00+08:00">2021-09-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2026-03-12 15:57:38" itemprop="dateModified" datetime="2026-03-12T15:57:38+08:00">2026-03-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>2.6k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>2 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>接續上篇<span class="exturl" data-url="aHR0cHM6Ly9oYWNrbWQuaW8vQEhlaWRpLUxpdS9qYXZhc2NyaXB0LWZvci1sb29w" title="https://hackmd.io/@Heidi-Liu/javascript-for-loop">【學習筆記】JavaScript 的陣列遍歷（ㄧ）：for/for…of/for…in/forEach<i class="fa fa-external-link"></i></span>，這篇筆記整理幾種 JavaScript 遍歷陣列的方法，探討其使用時機與彼此的區別：</p>
+<ul>
+<li><code>arr.forEach((value, index, array) =&gt; &#123; // todo... &#125;)</code></li>
+<li><code>arr.map(value =&gt; &#123; // todo... &#125;)</code></li>
+<li><code>arr.filter(value =&gt; &#123; // todo... &#125;)</code></li>
+<li><code>arr.every(value =&gt; &#123; // todo... &#125;)</code></li>
+<li><code>arr.some(value =&gt; &#123; // todo... &#125;)</code></li>
+<li><code>arr.reduce((acc, value)=&gt; acc + value)</code></li>
+</ul>
+<span id="more"></span>
+
+<h2 id="forEach：遍歷陣列，無返回值，會改變原來陣列"><a href="#forEach：遍歷陣列，無返回值，會改變原來陣列" class="headerlink" title="forEach：遍歷陣列，無返回值，會改變原來陣列"></a><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtVFcvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvR2xvYmFsX09iamVjdHMvQXJyYXkvZm9yRWFjaA==" title="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">forEach<i class="fa fa-external-link"></i></span>：遍歷陣列，無返回值，會改變原來陣列</h2><ul>
+<li>用法與 for loop 類似</li>
+<li>會改變原始陣列</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array.<span class="title function_">forEach</span>(<span class="keyword">function</span> <span class="title function_">callback</span>(<span class="params">currentValue, index?, array?</span>)&#123;</span><br><span class="line">    <span class="comment">// TODO</span></span><br><span class="line">&#125;, thisArg?)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用範例：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">11</span>, -<span class="number">2</span>, <span class="number">8</span>];</span><br><span class="line">arr.<span class="title function_">forEach</span>(<span class="function">(<span class="params">item, index, array</span>) =&gt;</span> &#123;</span><br><span class="line">    array[index] = item * <span class="number">2</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;arr: &#x27;</span>, arr);</span><br><span class="line"><span class="comment">// arr: [2, 6, 10, 22, -4, 16]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="map：遍歷陣列，返回處理後的新陣列"><a href="#map：遍歷陣列，返回處理後的新陣列" class="headerlink" title="map：遍歷陣列，返回處理後的新陣列"></a><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtVFcvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvR2xvYmFsX09iamVjdHMvQXJyYXkvbWFw" title="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/map">map<i class="fa fa-external-link"></i></span>：遍歷陣列，返回處理後的新陣列</h2><ul>
+<li>不會改變原始陣列</li>
+<li>會返回新陣列</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> newArray = arr.<span class="title function_">map</span>(<span class="keyword">function</span> <span class="title function_">callback</span>(<span class="params"> currentValue, index?, array?</span>) &#123;</span><br><span class="line">    <span class="comment">// return element for newArray</span></span><br><span class="line">&#125;, thisArg?)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用範例：<ul>
+<li>常用於修改陣列中的資料格式，得到返回值後再執行後續動作</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">11</span>, -<span class="number">2</span>, <span class="number">8</span>];</span><br><span class="line"><span class="keyword">let</span> newArr = arr.<span class="title function_">map</span>(<span class="function"><span class="params">item</span> =&gt;</span> item * <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;arr: &#x27;</span>, arr);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;newArr &#x27;</span>, newArr);</span><br><span class="line"><span class="comment">// arr: [1, 3, 5, 11, -2, 8]</span></span><br><span class="line"><span class="comment">// NewArr: [2, 6, 10, 22, -4, 16]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="filter：篩選陣列中滿足條件的元素，並返回一個新陣列"><a href="#filter：篩選陣列中滿足條件的元素，並返回一個新陣列" class="headerlink" title="filter：篩選陣列中滿足條件的元素，並返回一個新陣列"></a><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtVFcvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvR2xvYmFsX09iamVjdHMvQXJyYXkvZmlsdGVy" title="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/filter">filter<i class="fa fa-external-link"></i></span>：篩選陣列中滿足條件的元素，並返回一個新陣列</h2><ul>
+<li>不會改變原始陣列</li>
+<li>會返回新陣列</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> newArray = arr.<span class="title function_">filter</span>(<span class="title function_">callback</span>(element, index, array), thisArg?)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用範例：<ul>
+<li>常用於篩選陣列中符合搜尋條件的元素</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">11</span>, -<span class="number">2</span>, <span class="number">8</span>];</span><br><span class="line"><span class="keyword">let</span> newArr = arr.<span class="title function_">filter</span>(<span class="function"><span class="params">item</span> =&gt;</span> item &lt; <span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;arr: &#x27;</span>, arr);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;newArr: &#x27;</span>, newArr);</span><br><span class="line"><span class="comment">// arr: [1, 3, 5, 11, -2, 8]</span></span><br><span class="line"><span class="comment">// newArr: [1, 3, -2]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="every：判斷陣列中所有元素是否都滿足條件，返回一個布林值"><a href="#every：判斷陣列中所有元素是否都滿足條件，返回一個布林值" class="headerlink" title="every：判斷陣列中所有元素是否都滿足條件，返回一個布林值"></a><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtVFcvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvR2xvYmFsX09iamVjdHMvQXJyYXkvZXZlcnk=" title="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/every">every<i class="fa fa-external-link"></i></span>：判斷陣列中所有元素是否都滿足條件，返回一個布林值</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.<span class="title function_">every</span>(callback, thisArg?)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用範例：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">11</span>, -<span class="number">2</span>, <span class="number">8</span>];</span><br><span class="line"><span class="keyword">let</span> allSmallerThan10 = arr.<span class="title function_">every</span>(<span class="function"><span class="params">x</span> =&gt;</span> x &lt; <span class="number">10</span>);</span><br><span class="line"><span class="keyword">let</span> allSmallerThan15 = arr.<span class="title function_">every</span>(<span class="function"><span class="params">x</span> =&gt;</span> x &lt; <span class="number">15</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;allSmallerThan10: &#x27;</span>, allSmallerThan10);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;allSmallerThan15: &#x27;</span>, allSmallerThan15);</span><br><span class="line"><span class="comment">// allSmallerThan10: false</span></span><br><span class="line"><span class="comment">// allSmallerThan15: true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="some：判斷陣列中是否至少存在一個滿足條件的元素，返回一個布林值"><a href="#some：判斷陣列中是否至少存在一個滿足條件的元素，返回一個布林值" class="headerlink" title="some：判斷陣列中是否至少存在一個滿足條件的元素，返回一個布林值"></a><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtVFcvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvR2xvYmFsX09iamVjdHMvQXJyYXkvc29tZQ==" title="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/some">some<i class="fa fa-external-link"></i></span>：判斷陣列中是否至少存在一個滿足條件的元素，返回一個布林值</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.<span class="title function_">some</span>(callback, thisArg?)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用範例：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">11</span>, -<span class="number">2</span>, <span class="number">8</span>];</span><br><span class="line"><span class="keyword">let</span> isBiggerThan10 = arr.<span class="title function_">some</span>(<span class="function"><span class="params">x</span> =&gt;</span> x &gt; <span class="number">10</span>);</span><br><span class="line"><span class="keyword">let</span> isBiggerThan15 = arr.<span class="title function_">some</span>(<span class="function"><span class="params">x</span> =&gt;</span> x &gt; <span class="number">15</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;isBiggerThan10: &#x27;</span>, isBiggerThan10);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;isBiggerThan15: &#x27;</span>, isBiggerThan15);</span><br><span class="line"><span class="comment">// isBiggerThan10: true</span></span><br><span class="line"><span class="comment">// isBiggerThan15: false</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="reduce：將陣列中所有元素加總計算，返回一個總和"><a href="#reduce：將陣列中所有元素加總計算，返回一個總和" class="headerlink" title="reduce：將陣列中所有元素加總計算，返回一個總和"></a><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtVFcvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvR2xvYmFsX09iamVjdHMvQXJyYXkvUmVkdWNl" title="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce">reduce<i class="fa fa-external-link"></i></span>：將陣列中所有元素加總計算，返回一個總和</h2><ul>
+<li>callback 傳入參數：<ul>
+<li>accumulator：目前累加值</li>
+<li>currentValue：目前執行到的元素值</li>
+<li>currentIndex：目前執行到的元素索引值</li>
+<li>array：陣列本身</li>
+</ul>
+</li>
+<li>initialValue：初始累加值 =&gt; 若無指定則預設為 0</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">arr.<span class="title function_">reduce</span>(</span><br><span class="line">  callback[accumulator, currentValue, currentIndex?, array?],</span><br><span class="line">  initialValue?</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用範例：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> total = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].<span class="title function_">reduce</span>(</span><br><span class="line">  <span class="function">(<span class="params">accumulator, currentValue</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;accumulator: &#x27;</span>, accumulator);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;currentValue: &#x27;</span>, currentValue);</span><br><span class="line">    <span class="keyword">return</span> accumulator + currentValue;</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;total: &#x27;</span>, total);</span><br><span class="line"><span class="comment">// accumulator: 1</span></span><br><span class="line"><span class="comment">// currentValue: 2</span></span><br><span class="line"><span class="comment">// accumulator: 3</span></span><br><span class="line"><span class="comment">// currentValue: 3</span></span><br><span class="line"><span class="comment">// total: 6</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuaXRyZWFkMDEuY29tL2NvbnRlbnQvMTU0NjgyNjA2NC5odG1s" title="https://www.itread01.com/content/1546826064.html">陣列遍歷的幾種用法—forEach()、map()、filter()、every()、some()<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9pdGhlbHAuaXRob21lLmNvbS50dy9hcnRpY2xlcy8xMDE5NDQxMg==" title="https://ithelp.ithome.com.tw/articles/10194412">Day09_Array的迭代方法<i class="fa fa-external-link"></i></span></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Front-End/" rel="tag"># Front-End</a>
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/javascript-for-loop/" rel="prev" title="【學習筆記】JavaScript 的陣列遍歷（ㄧ）：for/for...of/for...in/forEach">
+      <i class="fa fa-chevron-left"></i> 【學習筆記】JavaScript 的陣列遍歷（ㄧ）：for/for...of/for...in/forEach
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/rxjs-note/" rel="next" title="【學習筆記】RxJS - 封裝程式的藝術">
+      【學習筆記】RxJS - 封裝程式的藝術 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#forEach%EF%BC%9A%E9%81%8D%E6%AD%B7%E9%99%A3%E5%88%97%EF%BC%8C%E7%84%A1%E8%BF%94%E5%9B%9E%E5%80%BC%EF%BC%8C%E6%9C%83%E6%94%B9%E8%AE%8A%E5%8E%9F%E4%BE%86%E9%99%A3%E5%88%97"><span class="nav-number">1.</span> <span class="nav-text">forEach：遍歷陣列，無返回值，會改變原來陣列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#map%EF%BC%9A%E9%81%8D%E6%AD%B7%E9%99%A3%E5%88%97%EF%BC%8C%E8%BF%94%E5%9B%9E%E8%99%95%E7%90%86%E5%BE%8C%E7%9A%84%E6%96%B0%E9%99%A3%E5%88%97"><span class="nav-number">2.</span> <span class="nav-text">map：遍歷陣列，返回處理後的新陣列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#filter%EF%BC%9A%E7%AF%A9%E9%81%B8%E9%99%A3%E5%88%97%E4%B8%AD%E6%BB%BF%E8%B6%B3%E6%A2%9D%E4%BB%B6%E7%9A%84%E5%85%83%E7%B4%A0%EF%BC%8C%E4%B8%A6%E8%BF%94%E5%9B%9E%E4%B8%80%E5%80%8B%E6%96%B0%E9%99%A3%E5%88%97"><span class="nav-number">3.</span> <span class="nav-text">filter：篩選陣列中滿足條件的元素，並返回一個新陣列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#every%EF%BC%9A%E5%88%A4%E6%96%B7%E9%99%A3%E5%88%97%E4%B8%AD%E6%89%80%E6%9C%89%E5%85%83%E7%B4%A0%E6%98%AF%E5%90%A6%E9%83%BD%E6%BB%BF%E8%B6%B3%E6%A2%9D%E4%BB%B6%EF%BC%8C%E8%BF%94%E5%9B%9E%E4%B8%80%E5%80%8B%E5%B8%83%E6%9E%97%E5%80%BC"><span class="nav-number">4.</span> <span class="nav-text">every：判斷陣列中所有元素是否都滿足條件，返回一個布林值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#some%EF%BC%9A%E5%88%A4%E6%96%B7%E9%99%A3%E5%88%97%E4%B8%AD%E6%98%AF%E5%90%A6%E8%87%B3%E5%B0%91%E5%AD%98%E5%9C%A8%E4%B8%80%E5%80%8B%E6%BB%BF%E8%B6%B3%E6%A2%9D%E4%BB%B6%E7%9A%84%E5%85%83%E7%B4%A0%EF%BC%8C%E8%BF%94%E5%9B%9E%E4%B8%80%E5%80%8B%E5%B8%83%E6%9E%97%E5%80%BC"><span class="nav-number">5.</span> <span class="nav-text">some：判斷陣列中是否至少存在一個滿足條件的元素，返回一個布林值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reduce%EF%BC%9A%E5%B0%87%E9%99%A3%E5%88%97%E4%B8%AD%E6%89%80%E6%9C%89%E5%85%83%E7%B4%A0%E5%8A%A0%E7%B8%BD%E8%A8%88%E7%AE%97%EF%BC%8C%E8%BF%94%E5%9B%9E%E4%B8%80%E5%80%8B%E7%B8%BD%E5%92%8C"><span class="nav-number">6.</span> <span class="nav-text">reduce：將陣列中所有元素加總計算，返回一個總和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">7.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Heidi Liu"
+      src="https://avatars3.githubusercontent.com/u/65410665?s=460&u=887bd602944dcf78b90f3a880b03aec4e086728a&v=4">
+  <p class="site-author-name" itemprop="name">Heidi Liu</p>
+  <div class="site-description" itemprop="description">海底修羅場｜日々進化中</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">125</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">103</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Heidi Liu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="總字數">715k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">10:50</span>
+</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

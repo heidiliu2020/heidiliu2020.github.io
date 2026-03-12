@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/apple-icon.png" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="本篇為 [CMD101] Command Line 超新手入門和 [CS101] 初心者的計概與 coding 火球術 這兩門課程的學習筆記。  12345678學習目標： 說得出程式如何執行 理解寫程式的本質只是一行行的指令 了解前端與後端的區別 能說出從發出一個 request 到接收 response 中間發生的事 了解不同載具的差異在哪（Desktop、Mobile、Web） 了瞭解基本">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[week 1] Command Line 入門 &amp; 基本指令">
+<meta property="og:url" content="https://heidiliu2020.github.io/command-line/index.html">
+<meta property="og:site_name" content="前端新米">
+<meta property="og:description" content="本篇為 [CMD101] Command Line 超新手入門和 [CS101] 初心者的計概與 coding 火球術 這兩門課程的學習筆記。  12345678學習目標： 說得出程式如何執行 理解寫程式的本質只是一行行的指令 了解前端與後端的區別 能說出從發出一個 request 到接收 response 中間發生的事 了解不同載具的差異在哪（Desktop、Mobile、Web） 了瞭解基本">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/emeMG2h.png">
+<meta property="article:published_time" content="2020-06-18T05:17:00.000Z">
+<meta property="article:modified_time" content="2026-03-12T07:57:38.565Z">
+<meta property="article:author" content="Heidi Liu">
+<meta property="article:tag" content="lidemy">
+<meta property="article:tag" content="terminal">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/emeMG2h.png">
+
+<link rel="canonical" href="https://heidiliu2020.github.io/command-line/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>[week 1] Command Line 入門 & 基本指令 | 前端新米</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端新米</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Heidi's Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://heidiliu2020.github.io/command-line/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/65410665?s=460&u=887bd602944dcf78b90f3a880b03aec4e086728a&v=4">
+      <meta itemprop="name" content="Heidi Liu">
+      <meta itemprop="description" content="海底修羅場｜日々進化中">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端新米">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [week 1] Command Line 入門 & 基本指令
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-06-18 13:17:00" itemprop="dateCreated datePublished" datetime="2020-06-18T13:17:00+08:00">2020-06-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2026-03-12 15:57:38" itemprop="dateModified" datetime="2026-03-12T15:57:38+08:00">2026-03-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/lidemy/" itemprop="url" rel="index"><span itemprop="name">lidemy</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>2.5k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>2 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>本篇為 <span class="exturl" data-url="aHR0cHM6Ly9saWRlbXkuY29tL3AvY21kMTAxLWNvbW1hbmQtbGluZQ==" title="https://lidemy.com/p/cmd101-command-line">[CMD101] Command Line 超新手入門<i class="fa fa-external-link"></i></span>和 <span class="exturl" data-url="aHR0cHM6Ly9saWRlbXkuY29tL3AvY3MxMDEtY29kaW5n" title="https://lidemy.com/p/cs101-coding">[CS101] 初心者的計概與 coding 火球術<i class="fa fa-external-link"></i></span> 這兩門課程的學習筆記。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">學習目標：</span><br><span class="line"></span><br><span class="line"> 說得出程式如何執行</span><br><span class="line"> 理解寫程式的本質只是一行行的指令</span><br><span class="line"> 了解前端與後端的區別</span><br><span class="line"> 能說出從發出一個 request 到接收 response 中間發生的事</span><br><span class="line"> 了解不同載具的差異在哪（Desktop、Mobile、Web）</span><br><span class="line"> 了瞭解基本的 command line 指令</span><br></pre></td></tr></table></figure>
+
+<h2 id=""><a href="#" class="headerlink" title=""></a><span id="more"></span></h2><h2 id="關於寫程式這件事"><a href="#關於寫程式這件事" class="headerlink" title="關於寫程式這件事"></a>關於寫程式這件事</h2><p>就是對電腦下指令（程式碼），讓電腦執行我們想要的動作（解決問題）。</p>
+<h2 id="條列式的重要性"><a href="#條列式的重要性" class="headerlink" title="條列式的重要性"></a>條列式的重要性</h2><p>試著用「程式化思考」將解法以標準化的格式呈現。</p>
+<blockquote>
+<p>範例：「給你一串文字，問你裡面有沒有 p」</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1. 假設 n 是 1，length 是字串長度，</span><br><span class="line">   A 設成 -1 代表找到的位置，p 是要找到的字   //字串不會有負數，若小於零代表找不到</span><br><span class="line"></span><br><span class="line">2. 看第 n 個字是不是 p，是的話 A=n　　//把 A 設成 n 的值，若 n=3，即在第 3 個數找到 p</span><br><span class="line"></span><br><span class="line">3. 把 n+1，如果 n+1 大於 length 的話，就跳到第 5 步　　//條件機制</span><br><span class="line"></span><br><span class="line">4. 跳回第 2 步　　//迴圈的概念</span><br><span class="line"></span><br><span class="line">5. 如果 A &lt; 0，代表沒出現過；否則 A 就是答案</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Command-Line-是什麼？"><a href="#Command-Line-是什麼？" class="headerlink" title="Command Line 是什麼？"></a>Command Line 是什麼？</h2><ul>
+<li>操控電腦的方法大致上分兩種類型：</li>
+</ul>
+<ol>
+<li><strong>GUI（Graphical User Interface，圖形化介面）</strong>：一般習慣使用的電腦操作介面，透過設計出的「圖形」來下指令。</li>
+<li><strong>CLI（Command Line Interface，命令列介面）</strong>：透過「純文字」來達成指定動作。</li>
+</ol>
+<ul>
+<li>兩種都可以用來和電腦溝通；但有些伺服器可能沒有 GUI （例如 database），這種情況就只能使用 CLI 來進行操作。</li>
+</ul>
+<h2 id="環境設置"><a href="#環境設置" class="headerlink" title="環境設置"></a>環境設置</h2><ul>
+<li>要執行 Command Line 指令，必須先根據作業系統安裝 Command Line Tool：</li>
+</ul>
+<ol>
+<li>Windows：<span class="exturl" data-url="aHR0cHM6Ly9naXRmb3J3aW5kb3dzLm9yZy8=" title="https://gitforwindows.org/">git-bash<i class="fa fa-external-link"></i></span>（推薦）、<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLm1pbmlhc3AuY29tL3Bvc3QvMjAxNS8wOS8yNy9Vc2VmdWwtdG9vbC1DbWRlcg==" title="https://blog.miniasp.com/post/2015/09/27/Useful-tool-Cmder">Cmder<i class="fa fa-external-link"></i></span></li>
+<li>Mac：<span class="exturl" data-url="aHR0cDovL2h1bGkubG9nZG93bi5jb20vcG9zdHMvNDAyMTQ3LWl0ZXJtMi16c2gtYmV0dGVyLWVudmlyb25tZW50" title="http://huli.logdown.com/posts/402147-iterm2-zsh-better-environment">iTerm2<i class="fa fa-external-link"></i></span></li>
+</ol>
+<ul>
+<li>或是使用 <span class="exturl" data-url="aHR0cHM6Ly9iZWxsYXJkLm9yZy9qc2xpbnV4Lw==" title="https://bellard.org/jslinux/">JSLinux<i class="fa fa-external-link"></i></span> （<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvSnNsaW51eA==" title="https://zh.wikipedia.org/wiki/Jslinux">以 JavaScript 寫成的 Linux 模擬器<i class="fa fa-external-link"></i></span>）來統一環境，即可在瀏覽器介面進行測試。</li>
+</ul>
+<h2 id="基本指令介紹"><a href="#基本指令介紹" class="headerlink" title="基本指令介紹"></a>基本指令介紹</h2><blockquote>
+<p>所謂的「指令」其實也是由程式寫成，我們藉由輸入指令來執行程式。</p>
+</blockquote>
+<h4 id="pwd（Print-Working-Directory）：印出目前所在位置"><a href="#pwd（Print-Working-Directory）：印出目前所在位置" class="headerlink" title="pwd（Print Working Directory）：印出目前所在位置"></a><code>pwd</code>（Print Working Directory）：印出目前所在位置</h4><h4 id="ls（List）：印出當前位置檔案清單"><a href="#ls（List）：印出當前位置檔案清單" class="headerlink" title="ls（List）：印出當前位置檔案清單"></a><code>ls</code>（List）：印出當前位置檔案清單</h4><ul>
+<li><code>ls-l</code>：長格式（long），顯示有關檔案的詳細資訊</li>
+<li><code>ls-a</code>：列出所有檔案（包括隱藏檔）</li>
+</ul>
+<h4 id="cd（Change-Directory）-切換目前資料夾"><a href="#cd（Change-Directory）-切換目前資料夾" class="headerlink" title="cd（Change Directory） 切換目前資料夾"></a><code>cd</code>（Change Directory） 切換目前資料夾</h4><ul>
+<li><code>cd ..</code>：回到上一層資料夾</li>
+<li><code>cd ~</code>：回到 home 目錄（我的文件）</li>
+<li><code>cd /</code>：回到根目錄<ul>
+<li>絕對路徑：「一定由根目錄 / 寫起」<br><code>cd /Users/share/data</code></li>
+<li>相對路徑：「不是由 / 寫起」<br><code>cd test</code></li>
+</ul>
+</li>
+<li>範例：「若要從 /downloads/test/data 到 /downloads/test/media 底下時」<br>可以寫 <code>cd ../media</code>：先回到上一層，再進入 media 資料夾<br>也可寫 <code>cd ~/downloads/test/media</code>：直接用絕對路徑進入</li>
+</ul>
+<p><img src="https://i.imgur.com/emeMG2h.png" alt="cd 語法練習"></p>
+<blockquote>
+<p>小技巧：直接把圖形介面的資料夾拖到 CLI 裡，就會自動輸入那個資料夾的絕對路徑。可節省打字時間。</p>
+</blockquote>
+<h4 id="clear：清空螢幕"><a href="#clear：清空螢幕" class="headerlink" title="clear：清空螢幕"></a><code>clear</code>：清空螢幕</h4><h4 id="touch：碰一下"><a href="#touch：碰一下" class="headerlink" title="touch：碰一下"></a><code>touch</code>：碰一下</h4><ul>
+<li>作用 1：touch 現有的檔案，會修改檔案時間成當前時間</li>
+<li>作用 2：若檔案不存在，則會新增檔案</li>
+</ul>
+<h4 id="mkdir：MaKe-DIRectory-新增資料夾"><a href="#mkdir：MaKe-DIRectory-新增資料夾" class="headerlink" title="mkdir：MaKe DIRectory 新增資料夾"></a><code>mkdir</code>：MaKe DIRectory 新增資料夾</h4><h4 id="rm：ReMove-刪除檔案（註：有關刪除指令需慎用）"><a href="#rm：ReMove-刪除檔案（註：有關刪除指令需慎用）" class="headerlink" title="rm：ReMove 刪除檔案（註：有關刪除指令需慎用）"></a><code>rm</code>：ReMove 刪除檔案（註：有關刪除指令需慎用）</h4><h4 id="rmdir：刪除資料夾"><a href="#rmdir：刪除資料夾" class="headerlink" title="rmdir：刪除資料夾"></a><code>rmdir</code>：刪除資料夾</h4><ul>
+<li>也可用 <code>rm -r</code> 指令來刪除檔案或資料夾</li>
+</ul>
+<h4 id="cp：CoPy-複製"><a href="#cp：CoPy-複製" class="headerlink" title="cp：CoPy 複製"></a><code>cp</code>：CoPy 複製</h4><ul>
+<li>範例 1. <code>cp data data_2</code>：複製出一個 data_2 檔案</li>
+<li>範例 2. <code>cp -r deep deep2</code>：複製出一個 deep2 資料夾</li>
+</ul>
+<h4 id="mv：MoVe-移動檔案-or-更改檔名"><a href="#mv：MoVe-移動檔案-or-更改檔名" class="headerlink" title="mv：MoVe 移動檔案 or 更改檔名"></a><code>mv</code>：MoVe 移動檔案 or 更改檔名</h4><ul>
+<li>作用 1：當找到該資料夾時，檔案會<strong>移到資料夾裡</strong><ul>
+<li>範例：<code>mv data folder</code>：將 data 檔案移到 folder 資料夾裡</li>
+</ul>
+</li>
+<li>作用 2：當找不到該資料夾，則會<strong>更改檔案名稱</strong><ul>
+<li>範例：<code>mv data test</code>：將 data 檔案名稱更改為 test</li>
+</ul>
+</li>
+</ul>
+<h4 id="vim：進入文字編輯器"><a href="#vim：進入文字編輯器" class="headerlink" title="vim：進入文字編輯器"></a><code>vim</code>：進入文字編輯器</h4><blockquote>
+<p>本來想說沒問題，結果還真的卡很久無法回到上層介面 Orz<br>需按下 [ESC] 按鍵回到一般指令模式，才能下 <code>:wq</code> 指令存檔（write）並離開 （quit)。</p>
+</blockquote>
+<h4 id="參考-vim-介紹："><a href="#參考-vim-介紹：" class="headerlink" title="參考 vim 介紹："></a>參考 vim 介紹：</h4><p>可分為普通模式跟編輯模式：</p>
+<ul>
+<li>按鍵 i：進入編輯模式</li>
+<li>按鍵 Esc：進入普通模式</li>
+<li><code>:q</code> 退出</li>
+<li><code>:wq</code> 存檔（write）後退出（quit)</li>
+<li><code>:q!</code> 不存檔直接退出</li>
+</ul>
+<p>參考資料：</p>
+<ol>
+<li><span class="exturl" data-url="aHR0cDovL3d3dy52aXh1YWwubmV0L2Jsb2cvYXJjaGl2ZXMvMjM0" title="http://www.vixual.net/blog/archives/234">vi 與 vim 的指令整理<i class="fa fa-external-link"></i></span>、</li>
+<li><span class="exturl" data-url="aHR0cDovL2xpbnV4LnZiaXJkLm9yZy9saW51eF9iYXNpYy8wMzEwdmkucGhw" title="http://linux.vbird.org/linux_basic/0310vi.php">鳥哥的 Linux 私房菜– 第九章、vim 程式編輯器<i class="fa fa-external-link"></i></span></li>
+</ol>
+<h2 id="更多常用指令"><a href="#更多常用指令" class="headerlink" title="更多常用指令"></a>更多常用指令</h2><h4 id="date：印出當前日期"><a href="#date：印出當前日期" class="headerlink" title="date：印出當前日期"></a><code>date</code>：印出當前日期</h4><h4 id="top（Table-Of-Processes）：印出所有-Process，可持續偵測程序運作的狀態（按-q-鍵離開）"><a href="#top（Table-Of-Processes）：印出所有-Process，可持續偵測程序運作的狀態（按-q-鍵離開）" class="headerlink" title="top（Table Of Processes）：印出所有 Process，可持續偵測程序運作的狀態（按 q 鍵離開）"></a><code>top</code>（Table Of Processes）：印出所有 Process，可持續偵測程序運作的狀態（按 q 鍵離開）</h4><h4 id="cat（CATenate）：查看檔案內容"><a href="#cat（CATenate）：查看檔案內容" class="headerlink" title="cat（CATenate）：查看檔案內容"></a><code>cat</code>（CATenate）：查看檔案內容</h4><h4 id="less：分頁式印出檔案"><a href="#less：分頁式印出檔案" class="headerlink" title="less：分頁式印出檔案"></a><code>less</code>：分頁式印出檔案</h4><h4 id="grep：抓取特定關鍵字"><a href="#grep：抓取特定關鍵字" class="headerlink" title="grep：抓取特定關鍵字"></a><code>grep</code>：抓取特定關鍵字</h4><h4 id="echo：印出字串"><a href="#echo：印出字串" class="headerlink" title="echo：印出字串"></a><code>echo</code>：印出字串</h4><h4 id="（pipe）：把前面的輸入「變成」後面的輸出"><a href="#（pipe）：把前面的輸入「變成」後面的輸出" class="headerlink" title="|（pipe）：把前面的輸入「變成」後面的輸出"></a><code>|</code>（pipe）：把前面的輸入「變成」後面的輸出</h4><ul>
+<li>範例：<code>cat file.txt | grep hi </code>：從印出的 file.txt 內容中，抓取字串 hi 並輸出</li>
+</ul>
+<h4 id="gt-（redirect）：將輸入或輸出重新導向"><a href="#gt-（redirect）：將輸入或輸出重新導向" class="headerlink" title="&gt;（redirect）：將輸入或輸出重新導向"></a><code>&gt;</code>（redirect）：將輸入或輸出重新導向</h4><ul>
+<li>範例 1：<code>date &gt; time.txt</code>：將 <code>date</code> 輸出到 <code>time.txt</code><br>　　再輸入 <code>cat time.txt</code>，會顯示出 <code>Sun May 31 20:29:57 UTC 2020</code></li>
+<li>範例 2：<code>echo &quot;123&quot; &gt; 123.txt</code>：印出 123 到 123.txt<br>　 1. 若輸入 <code>echo &quot;456&quot; &gt; 123.txt</code>：顯示 456，檔案會被全部覆蓋<br>　 2. 若輸入 <code>echo &quot;456&quot; &gt;&gt; 123.txt</code>：顯示 123456，兩個 <code>&gt;</code> 會新增內容在最後</li>
+</ul>
+<h4 id="wget：下載檔案"><a href="#wget：下載檔案" class="headerlink" title="wget：下載檔案"></a><code>wget</code>：下載檔案</h4><ul>
+<li>範例：輸入 <code>wget https://www.google.com.tw/</code>，即可下載 Google 首頁的網頁原始碼（index.html）</li>
+</ul>
+<h4 id="curl：送出-request，可用來測試-API"><a href="#curl：送出-request，可用來測試-API" class="headerlink" title="curl：送出 request，可用來測試 API"></a><code>curl</code>：送出 request，可用來測試 API</h4><hr>
+<h3 id="補充：檔案格式"><a href="#補充：檔案格式" class="headerlink" title="補充：檔案格式"></a>補充：檔案格式</h3><ul>
+<li>內容是一回事，如何解讀是另一回事</li>
+<li>在電腦裡的任何檔案，其實都是以純文字組成，可用不同格式進行解析</li>
+<li>可以透過設定副檔名（如：文件.pdf、圖片.jpg）幫助電腦辨別格式</li>
+</ul>
+<p>參考資料：</p>
+<ol>
+<li><span class="exturl" data-url="aHR0cHM6Ly95YWtpbWhzdS5jb20vcHJvamVjdC9wcm9qZWN0X3cxX0NvbW1hbmRMaW5lLmh0bWw=" title="https://yakimhsu.com/project/project_w1_CommandLine.html">[第一週] Command Line - Terminal、基本指令介紹<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLnRlY2hicmlkZ2UuY2MvMjAxNy8xMi8yMy9saW51eC1jb21tbmQtbGluZS10dXRvcmlhbC8=" title="https://blog.techbridge.cc/2017/12/23/linux-commnd-line-tutorial/">Linux Command 命令列指令與基本操作入門教學<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLm1pbmlhc3AuY29tL3Bvc3QvMjAxNS8wOS8yNy9Vc2VmdWwtdG9vbC1DbWRlcg==" title="https://blog.miniasp.com/post/2015/09/27/Useful-tool-Cmder">介紹好用工具：Cmder ( 具有 Linux 溫度的 Windows 命令提示字元工具 )<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cDovL2h1bGkubG9nZG93bi5jb20vcG9zdHMvNDAyMTQ3LWl0ZXJtMi16c2gtYmV0dGVyLWVudmlyb25tZW50" title="http://huli.logdown.com/posts/402147-iterm2-zsh-better-environment">[心得] iTerm2 + zsh，打造更好的工作環境<i class="fa fa-external-link"></i></span></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/lidemy/" rel="tag"># lidemy</a>
+              <a href="/tags/terminal/" rel="tag"># terminal</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/git-github/" rel="prev" title="[week 1] 版本控制 - Git 進階指令 & GitHub">
+      <i class="fa fa-chevron-left"></i> [week 1] 版本控制 - Git 進階指令 & GitHub
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/javascript/" rel="next" title="[week 2] JavaScript 基礎 - 基本語法、值的型別、變數、迴圈、函數">
+      [week 2] JavaScript 基礎 - 基本語法、值的型別、變數、迴圈、函數 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%9C%E6%96%BC%E5%AF%AB%E7%A8%8B%E5%BC%8F%E9%80%99%E4%BB%B6%E4%BA%8B"><span class="nav-number">2.</span> <span class="nav-text">關於寫程式這件事</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A2%9D%E5%88%97%E5%BC%8F%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7"><span class="nav-number">3.</span> <span class="nav-text">條列式的重要性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Command-Line-%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">Command Line 是什麼？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%92%B0%E5%A2%83%E8%A8%AD%E7%BD%AE"><span class="nav-number">5.</span> <span class="nav-text">環境設置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4%E4%BB%8B%E7%B4%B9"><span class="nav-number">6.</span> <span class="nav-text">基本指令介紹</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pwd%EF%BC%88Print-Working-Directory%EF%BC%89%EF%BC%9A%E5%8D%B0%E5%87%BA%E7%9B%AE%E5%89%8D%E6%89%80%E5%9C%A8%E4%BD%8D%E7%BD%AE"><span class="nav-number">6.0.1.</span> <span class="nav-text">pwd（Print Working Directory）：印出目前所在位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ls%EF%BC%88List%EF%BC%89%EF%BC%9A%E5%8D%B0%E5%87%BA%E7%95%B6%E5%89%8D%E4%BD%8D%E7%BD%AE%E6%AA%94%E6%A1%88%E6%B8%85%E5%96%AE"><span class="nav-number">6.0.2.</span> <span class="nav-text">ls（List）：印出當前位置檔案清單</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cd%EF%BC%88Change-Directory%EF%BC%89-%E5%88%87%E6%8F%9B%E7%9B%AE%E5%89%8D%E8%B3%87%E6%96%99%E5%A4%BE"><span class="nav-number">6.0.3.</span> <span class="nav-text">cd（Change Directory） 切換目前資料夾</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#clear%EF%BC%9A%E6%B8%85%E7%A9%BA%E8%9E%A2%E5%B9%95"><span class="nav-number">6.0.4.</span> <span class="nav-text">clear：清空螢幕</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#touch%EF%BC%9A%E7%A2%B0%E4%B8%80%E4%B8%8B"><span class="nav-number">6.0.5.</span> <span class="nav-text">touch：碰一下</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mkdir%EF%BC%9AMaKe-DIRectory-%E6%96%B0%E5%A2%9E%E8%B3%87%E6%96%99%E5%A4%BE"><span class="nav-number">6.0.6.</span> <span class="nav-text">mkdir：MaKe DIRectory 新增資料夾</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rm%EF%BC%9AReMove-%E5%88%AA%E9%99%A4%E6%AA%94%E6%A1%88%EF%BC%88%E8%A8%BB%EF%BC%9A%E6%9C%89%E9%97%9C%E5%88%AA%E9%99%A4%E6%8C%87%E4%BB%A4%E9%9C%80%E6%85%8E%E7%94%A8%EF%BC%89"><span class="nav-number">6.0.7.</span> <span class="nav-text">rm：ReMove 刪除檔案（註：有關刪除指令需慎用）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rmdir%EF%BC%9A%E5%88%AA%E9%99%A4%E8%B3%87%E6%96%99%E5%A4%BE"><span class="nav-number">6.0.8.</span> <span class="nav-text">rmdir：刪除資料夾</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cp%EF%BC%9ACoPy-%E8%A4%87%E8%A3%BD"><span class="nav-number">6.0.9.</span> <span class="nav-text">cp：CoPy 複製</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mv%EF%BC%9AMoVe-%E7%A7%BB%E5%8B%95%E6%AA%94%E6%A1%88-or-%E6%9B%B4%E6%94%B9%E6%AA%94%E5%90%8D"><span class="nav-number">6.0.10.</span> <span class="nav-text">mv：MoVe 移動檔案 or 更改檔名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vim%EF%BC%9A%E9%80%B2%E5%85%A5%E6%96%87%E5%AD%97%E7%B7%A8%E8%BC%AF%E5%99%A8"><span class="nav-number">6.0.11.</span> <span class="nav-text">vim：進入文字編輯器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%83%E8%80%83-vim-%E4%BB%8B%E7%B4%B9%EF%BC%9A"><span class="nav-number">6.0.12.</span> <span class="nav-text">參考 vim 介紹：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E5%A4%9A%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="nav-number">7.</span> <span class="nav-text">更多常用指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#date%EF%BC%9A%E5%8D%B0%E5%87%BA%E7%95%B6%E5%89%8D%E6%97%A5%E6%9C%9F"><span class="nav-number">7.0.1.</span> <span class="nav-text">date：印出當前日期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#top%EF%BC%88Table-Of-Processes%EF%BC%89%EF%BC%9A%E5%8D%B0%E5%87%BA%E6%89%80%E6%9C%89-Process%EF%BC%8C%E5%8F%AF%E6%8C%81%E7%BA%8C%E5%81%B5%E6%B8%AC%E7%A8%8B%E5%BA%8F%E9%81%8B%E4%BD%9C%E7%9A%84%E7%8B%80%E6%85%8B%EF%BC%88%E6%8C%89-q-%E9%8D%B5%E9%9B%A2%E9%96%8B%EF%BC%89"><span class="nav-number">7.0.2.</span> <span class="nav-text">top（Table Of Processes）：印出所有 Process，可持續偵測程序運作的狀態（按 q 鍵離開）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cat%EF%BC%88CATenate%EF%BC%89%EF%BC%9A%E6%9F%A5%E7%9C%8B%E6%AA%94%E6%A1%88%E5%85%A7%E5%AE%B9"><span class="nav-number">7.0.3.</span> <span class="nav-text">cat（CATenate）：查看檔案內容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#less%EF%BC%9A%E5%88%86%E9%A0%81%E5%BC%8F%E5%8D%B0%E5%87%BA%E6%AA%94%E6%A1%88"><span class="nav-number">7.0.4.</span> <span class="nav-text">less：分頁式印出檔案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#grep%EF%BC%9A%E6%8A%93%E5%8F%96%E7%89%B9%E5%AE%9A%E9%97%9C%E9%8D%B5%E5%AD%97"><span class="nav-number">7.0.5.</span> <span class="nav-text">grep：抓取特定關鍵字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#echo%EF%BC%9A%E5%8D%B0%E5%87%BA%E5%AD%97%E4%B8%B2"><span class="nav-number">7.0.6.</span> <span class="nav-text">echo：印出字串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%88pipe%EF%BC%89%EF%BC%9A%E6%8A%8A%E5%89%8D%E9%9D%A2%E7%9A%84%E8%BC%B8%E5%85%A5%E3%80%8C%E8%AE%8A%E6%88%90%E3%80%8D%E5%BE%8C%E9%9D%A2%E7%9A%84%E8%BC%B8%E5%87%BA"><span class="nav-number">7.0.7.</span> <span class="nav-text">|（pipe）：把前面的輸入「變成」後面的輸出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gt-%EF%BC%88redirect%EF%BC%89%EF%BC%9A%E5%B0%87%E8%BC%B8%E5%85%A5%E6%88%96%E8%BC%B8%E5%87%BA%E9%87%8D%E6%96%B0%E5%B0%8E%E5%90%91"><span class="nav-number">7.0.8.</span> <span class="nav-text">&gt;（redirect）：將輸入或輸出重新導向</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#wget%EF%BC%9A%E4%B8%8B%E8%BC%89%E6%AA%94%E6%A1%88"><span class="nav-number">7.0.9.</span> <span class="nav-text">wget：下載檔案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#curl%EF%BC%9A%E9%80%81%E5%87%BA-request%EF%BC%8C%E5%8F%AF%E7%94%A8%E4%BE%86%E6%B8%AC%E8%A9%A6-API"><span class="nav-number">7.0.10.</span> <span class="nav-text">curl：送出 request，可用來測試 API</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A3%9C%E5%85%85%EF%BC%9A%E6%AA%94%E6%A1%88%E6%A0%BC%E5%BC%8F"><span class="nav-number">7.1.</span> <span class="nav-text">補充：檔案格式</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Heidi Liu"
+      src="https://avatars3.githubusercontent.com/u/65410665?s=460&u=887bd602944dcf78b90f3a880b03aec4e086728a&v=4">
+  <p class="site-author-name" itemprop="name">Heidi Liu</p>
+  <div class="site-description" itemprop="description">海底修羅場｜日々進化中</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">125</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">103</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Heidi Liu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="總字數">715k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">10:50</span>
+</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

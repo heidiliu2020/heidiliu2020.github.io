@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/apple-icon.png" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="（Photo by Matt Duncan on Unsplash）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【中場心得】半年過去了，我仍在學習程式的路上（上篇）">
+<meta property="og:url" content="https://heidiliu2020.github.io/lidemy-learing-1/index.html">
+<meta property="og:site_name" content="前端新米">
+<meta property="og:description" content="（Photo by Matt Duncan on Unsplash）">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/YLhLtnT.png">
+<meta property="article:published_time" content="2020-11-05T16:15:00.000Z">
+<meta property="article:modified_time" content="2026-03-12T07:57:38.576Z">
+<meta property="article:author" content="Heidi Liu">
+<meta property="article:tag" content="lidemy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/YLhLtnT.png">
+
+<link rel="canonical" href="https://heidiliu2020.github.io/lidemy-learing-1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>【中場心得】半年過去了，我仍在學習程式的路上（上篇） | 前端新米</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端新米</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Heidi's Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://heidiliu2020.github.io/lidemy-learing-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/65410665?s=460&u=887bd602944dcf78b90f3a880b03aec4e086728a&v=4">
+      <meta itemprop="name" content="Heidi Liu">
+      <meta itemprop="description" content="海底修羅場｜日々進化中">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端新米">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【中場心得】半年過去了，我仍在學習程式的路上（上篇）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-11-06 00:15:00" itemprop="dateCreated datePublished" datetime="2020-11-06T00:15:00+08:00">2020-11-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2026-03-12 15:57:38" itemprop="dateModified" datetime="2026-03-12T15:57:38+08:00">2026-03-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/lidemy/" itemprop="url" rel="index"><span itemprop="name">lidemy</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>4.7k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>4 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="https://i.imgur.com/YLhLtnT.png"><br>（Photo by <span class="exturl" data-url="aHR0cHM6Ly91bnNwbGFzaC5jb20vQGZveHhtZA==" title="https://unsplash.com/@foxxmd">Matt Duncan<i class="fa fa-external-link"></i></span> on <span class="exturl" data-url="aHR0cHM6Ly91bnNwbGFzaC5jb20v" title="https://unsplash.com/">Unsplash<i class="fa fa-external-link"></i></span>）</p>
+<span id="more"></span>
+
+<blockquote>
+<p>“Never regret. If it’s good, it’s wonderful. If it’s bad, it’s experience. “ — Victoria Holt.</p>
+</blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly9qdGxpdS5tZWRpdW0uY29tLyVFNCVCOCVBRCVFNSVBMCVCNCVFNSVCRiU4MyVFNSVCRSU5Ny0lRTUlOEQlOEElRTUlQjklQjQlRTklODElOEUlRTUlOEUlQkIlRTQlQkElODYtJUU2JTg4JTkxJUU0JUJCJThEJUU1JTlDJUE4JUU1JUFEJUI4JUU3JUJGJTkyJUU3JUE4JThCJUU1JUJDJThGJUU3JTlBJTg0JUU4JUI3JUFGJUU0JUI4JThBLSVFNCVCOCU4QSVFNyVBRiU4Ny02ZWMzMzlkOTAzMjY=" title="https://jtliu.medium.com/%E4%B8%AD%E5%A0%B4%E5%BF%83%E5%BE%97-%E5%8D%8A%E5%B9%B4%E9%81%8E%E5%8E%BB%E4%BA%86-%E6%88%91%E4%BB%8D%E5%9C%A8%E5%AD%B8%E7%BF%92%E7%A8%8B%E5%BC%8F%E7%9A%84%E8%B7%AF%E4%B8%8A-%E4%B8%8A%E7%AF%87-6ec339d90326">Medium 連結<i class="fa fa-external-link"></i></span></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>從六月初開始，參加第四期程式導師計畫以來，這段日子過得飛快，轉眼間一個禮拜又過去，自己也迎來了課程中場。其實這篇心得早該在計畫第一百天、或是滿三個月那時候生出來，雖然每天都還是有持續寫進度報告，但覺得是時候來總結學習至今的想法。</p>
+<p>然而卻遲遲未動筆，卡在構思階段不知該從而說起，想著想著一天天就這麼過去，所謂的心得文當然也一直停留在腦中。即便如此，仍時常思考自己究竟想記錄些什麼，省思自己是否有所成長，觀察到學習態度上的轉變，或是想要留些什麼給未來的自己。</p>
+<p>直到完成第十四週的網站部署，準備邁入十五週的第三個複習週和十六週的前端中階課程。驚覺到，原來我已經走完成課程的一半了啊！相較於最初連 JavaScript 和 Java 都傻傻分不清楚的自己，現在已經能熟捻操作 CLI 介面，瞭解該如何串接 API 和呼叫 function，或是探究工具或指令背後的意義，想想也真是不可思議。</p>
+<p>畢竟在未來某天，一定還是會需要回顧這段路程，倒不如趁記憶還清晰的時候記錄下來，於是這篇中場心得就誕生了。</p>
+<p>文章大綱如下，會分為上下兩篇，而本篇為前半部分：</p>
+<ul>
+<li>萬事必有起因</li>
+<li>關於那些沒能選擇的過去</li>
+<li>如夢似幻的那一年</li>
+<li>值得不值得</li>
+<li>失而復得的熱情</li>
+<li>恐懼的背後什麼都沒有</li>
+<li>找到適合自己的方式</li>
+<li>慢慢變成理想中的樣子</li>
+</ul>
+<p>前半段會比較偏向過去的學習經歷，因為每個人都是獨立的個體，可能會不太具有參考價值，只是想要好好回顧一路走來，自己對於學習上心態的轉變。</p>
+<p>後半段才會慢慢切入主題，也就是開始程式導師計畫以後的種種心得，覺得要討論的方向不太相同，因此分上下兩篇記錄。</p>
+<p>那麼，以下就是一些關於過去學習的思路歷程。</p>
+<hr>
+<h2 id="萬事必有起因"><a href="#萬事必有起因" class="headerlink" title="萬事必有起因"></a>萬事必有起因</h2><blockquote>
+<p>「為什麼會想學寫程式？」</p>
+</blockquote>
+<p>這想必會成為日後求職面試的必考題吧？</p>
+<p>對我來說，「學程式」這件事或許不能完全說是一時興起，而是當初經歷的種種事情，似乎最後都導向「我要成為工程師」這個答案。</p>
+<p>但其實有更重要的原因，來自於求學過程中遭遇的種種挫敗，讓自己害怕學新知識這件事，也讓我成為一個很沒有自信的一個人。這樣的我，還有從頭來過的機會嗎？</p>
+<p>曾經連續兩次指考物理成績都不及格，也曾被當過微積分，這樣的我真的有辦法寫程式嗎？已經在大學時期失敗過的我，真的還有辦法轉換跑道嗎？老實說，這些問題直到現在都沒有答案。</p>
+<p>唯一能夠確信的，就是如果不嘗試「開始」，永遠都不會知曉自己適合不適合。</p>
+<h2 id="關於那些沒能選擇的過去"><a href="#關於那些沒能選擇的過去" class="headerlink" title="關於那些沒能選擇的過去"></a>關於那些沒能選擇的過去</h2><p>想回頭談談自己的成長過程，其實也不是多光彩的故事，因為求學過程曾帶給我深深的傷口。即便有令人稱羨的國立大學學歷，因學歷獲得種種機會的同時，卻也不斷被加上無形的壓力，被貼上的標籤彷彿一把雙面刃在折磨著我，直到現在都是。</p>
+<p>但那些選擇其實都是自己造成的，自己也必須去承擔選擇的後果，即使事後後悔再多，聽起來都像是滿滿的藉口吧。</p>
+<p>在求學過程，總是有意無意或天意，讓我避開最想要的選項，我很害怕自己沒辦法達到最好的結果，害怕自己要是做出選擇了，卻沒有拿出相對應的成績時，那我該怎麼辦才好？</p>
+<p>小學時的自己，可以很自豪地說出自己沒有補習，在段考前還可以賴在電腦前組對打鯨魚王，無憂無慮。國中後開始踏入補習班，還記得自己曾經翹掉補習直接逃回家過，即使只有短短幾天，仍忘不了那段重拾自由的快樂。雖然後來還是被導師給帶回去了，回到所謂的「正軌」，或許這也是日後種種事情的跡象吧。</p>
+<p>國中升高中那年的基測，我永遠記得 399 這個數字，考了兩次都是一樣的分數，又因為作文成績被刷掉，踏入了第二志願。直到升上高中大學，所謂的「優等生」光環褪去後，便深深對自己的平凡感到無能為力。</p>
+<p>高中時雖然加入了吉他社，到高二因為害怕組團而成為幽靈社員。之後卻也沒有比較用功讀書，大考後驚覺自己竟荒廢了學業，甚至還成為了重考生，只為了能夠進入夢想中的那所大學。</p>
+<p>明明比較喜歡動物和日文，卻因為分數有到就選校不選系，填了農業相關科系。大二選組別時，因為對自己的設計能力沒有足夠信心，放棄當初更想選的景觀設計組。直在大三實習寫專題後，才發現自己根本就不想走這行。</p>
+<p>我的人生好像充滿了藉口，明明不夠努力，卻又不服輸，徒有那無謂的自尊心。好像一旦考試考輸了，就只能全盤否定自己。</p>
+<p>好想要逃離這一切，想到一個新的地方重新開始。這時候我，想起了大三開始選修的日文課，或許那是我第一次自己選擇想要學習的東西，畢業前也靠著繼續自學考到了 N2 程度。</p>
+<p>「這一次，我要為自己的人生做主！」那時的我是如此天真的認為，只要能逃離現在身處的環境，自己對未來一定會有更不一樣的答案。</p>
+<p>然而殘酷的現實是，如果你不知道自己為什麼要出走，該往哪個方向找尋答案，那些問題最後還是會原封不動的回到你身邊</p>
+<h2 id="如夢似幻的那一年"><a href="#如夢似幻的那一年" class="headerlink" title="如夢似幻的那一年"></a>如夢似幻的那一年</h2><p>於是畢業後，我選擇前往日本打工度假一年。其實早在大二暑假那年，我就曾經獨自一年到日本愛知縣打工換宿，回想起當時的自己還根本不會說幾個日文單字，連網路卡都沒辦，就懵懵懂懂來到了鄉下小鎮。</p>
+<p>當時的自己，喜歡像這樣在異地生活的感覺，終於來到朝思暮想的國度，即使在日生活並不完全美好，還是會有不好的一面，對自己來說卻甘之如飴，每段回憶都值得收藏在心底。能夠一切從零開始，沒有負擔，只需專心投入在當下的事物，似乎也就足夠。又或許，只是單純想稍微逃離原本讓自己喘不過氣的環境吧？</p>
+<p>直到畢業後，我帶著大學打工一點一點存下的資金，再度來到了日本。</p>
+<p>前半年仍沉浸在一切歸零的新鮮感，卻不知曾幾何時，當初那份熱情也悄悄淡去。說來有點難為情，之所以在畢業前就下定決心要前往日本，一部份是想重新開始，另一個原因，其實是因為在重考那一年，入了某偶像團體的坑，想著一定要完成參加演唱會的願望。然而這個願望卻沒有實現，在我終於赴日以前，喜歡的成員就畢業了。</p>
+<p>也才明白「推しは推せるときに推せ（能支持喜歡的人的時候全力支持）」這句話的涵義，古人總說要及時行樂不是沒有道理。對於任何事情都是如此，想到的話就去做，寧可做出選擇再來後悔，也不要後悔當初自己沒有去做，藉由這段經驗讓我深切體會到。</p>
+<p>總之，喪失動力來源的自己，雖然還是很喜歡日本，卻也似乎快要忘記自己為何這麼想來日本。也是在這時候，我才意識到「將活著的動力建立在他人身上」其實是件很危險的事情。信仰可以催化自己的人生，卻不能成為生命的氧氣，還是要靠自己找到能夠往前邁進的動力。</p>
+<p>在這一年，還發生另一件大事，其實是在赴日半年左右，家裡大長輩住院了，並且情況不太樂觀。得知訊息後的自己，馬上訂了兩三禮拜之後的班機飛回臺灣。</p>
+<p>對、至今我仍記得非常清楚，為什麼自己不是趕在一星期內回來呢？就為了省那該死的幾千塊票錢——我沒有見到外婆最後一面，而是在下飛機一得知消息後就直奔殯儀館……。</p>
+<p>這件事情帶給了我很沉、很重的打擊。待在台灣的那一個禮拜，幾乎每個晚上我都是哭著入睡，想起記憶中外婆的身影、想到逐漸年邁的家人，思考自己究竟為了什麼要待在日本、思考充滿迷惘的未來。</p>
+<hr>
+<h2 id="值得不值得"><a href="#值得不值得" class="headerlink" title="值得不值得"></a>值得不值得</h2><p>結束打工度假後，我回到了臺灣。</p>
+<p>先是在學校做了幾個月的行政助理，一邊思考自己是否要報考公職。過著朝九晚五的規律生活的同時，我想起長輩總會把「考公職」這件事掛在嘴邊，以前或許是叛逆吧？一聽到這三個字就感到頭痛，為什麼要擅自決定我的將來？</p>
+<p>但長輩說的話其實也有他的道理在。老實說，這樣的日子確實很平穩，收入也穩定，一定有更適合這份工作的人在。並不是說這份工作不好，只是，覺得自己似乎還是不適合做行政庶務，難道人生就只能這樣了嗎？想要找到自己能夠投注一輩子心血的事物，就像當初在大學時期，看到周遭熱衷於討論學術觀念的同學們，那對充滿求知慾的眼神一樣。</p>
+<p>當初的自己，思考了許多未來可能的道路。例如航空業、餐飲服務業、準備調查員考試、繼續求學，那年甚至因為喜歡上看舞台劇，做著去專門學校的美夢，或著是想為了實現留學夢準備申請別科。</p>
+<p>但因為求學時期的種種挫折，當時只覺得自己或許不應該先繼續學習，而是直接踏入職場。總之先去日本賺錢吧？之後如果想繼續求學，也能夠有足夠的資金支付學費，不會造成家裡的負擔。因為這個想法，開始尋找能夠赴日工作的機會。</p>
+<p>後來經過面試，因緣際會，我進入一家做電子書相關的日商擔任專案助理，也就是負責當日文窗口，負責翻譯文件等等，一方面累積工作經驗，一方面等待著時機。其實就在段期間，公司老闆曾問過我想不想學習程式，「很想！」這個答案不假思索便脫口而出，但其實我內心是害怕的，一次次的失敗經驗讓我卻步。</p>
+<p>後來這件事也就不了了之，或許是因為，先前自己曾表明想趕快到日本工作吧？現在回想起來，要是當初能夠耐住性子，好好重新打磨自己，未來是否會更不一樣呢？然而沒有如果，錯過了就是錯過了，我們能做的就只是把握當下而已。</p>
+<p>再經過幾個月，在一次日本徵才會上，我找到一份能夠赴日的工作，是餐飲服務業相關，簡言之就是到日本當儲備幹部，後來經過重重面試後也幸運被選上。然而，等待簽證的時間其實十分漫長，這段期間，我仍舊非常迷惘，即使這是當初自己的選擇，卻總覺得還是有那麼點不甘心，我是否應該還能有更好的選擇？</p>
+<p>腦中總會不時想起，當初在日商工作時，老闆在我離職那天對我說的話：「你要好好想清楚，該如何提升自己的價值，你值得更好的選擇。」然而，當時的我並沒有把這句話放在心上。</p>
+<p>等到簽證終於下來，很快的經過一番準備作業，敲定好赴日時程的時候——那時正好是今年三月，也就是疫情整個炸開的時候。當時的自己其實沒有太多時間猶豫，到底去或不去？這份工作值得冒這麼大的風險嗎？或許詢問一百個親友會有九十九個說不吧？的確，得到的回答不外乎是：「自己的健康更重要，工作機會再找就有。」、「當作累積經驗很好，但現在不是出國的好時機。」其實這些道理自己心底也都明白，只是當下沒辦法立即做出選擇。</p>
+<p>不管如何，在出發的前一天，我辭退了這份工作。後悔嗎？好像也還好，反而一直懸在內心的那塊大石終於能夠放下。值得嗎？至少現在的我，很慶幸自己後來選擇了現在這條路，儘管我還沒有實際踏入這個領域，仍在為了獲得那張入場票而努力著。</p>
+<p>也就是從今年三月底左右，我開始嘗試自學寫程式這件事。</p>
+<p>最後稍微總結這篇，想談的其實就是下列幾點：</p>
+<ul>
+<li>如果不嘗試開始，永遠都不會知曉自己適不適合</li>
+<li>面對問題，有時候「逃離」也是一種方法，但你仍要不斷思考下次再遇到時該如何面對它</li>
+<li>將自己活著的價值建立在他人身上，其實是很危險的事情。</li>
+<li>想到什麼就去做，寧可做出選擇再來後悔，也不要後悔當初自己沒有去做</li>
+<li>人生沒有如果，能做的事就是把握當下</li>
+</ul>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>其實上篇寫得差不多以後，一直很猶豫要不要發出來，總覺得這些經歷對他人而言，應該是不太重要的事情，也一度想把整篇砍掉，乾脆直接敘述有關目前學習程式的感想就好，不需要把過去的經歷挖出來。但這段過程對自己來說似乎是必要的過程，把過去的種種黑暗面給攤出來，也是不想再讓自己陷入過去的迴圈。</p>
+<p>比起這些過去，更重要的是現在。但正因為經歷了這些過去，才會有今天的自己，這是誰也無法改變的事實。也因為有這些不光彩的過去，才能讓我終於醒悟，原來從以前到現在，自己都是有選擇的，而自己也必須去承擔那些選擇的後果。</p>
+<p>其實我覺得很幸運，生長在一個能夠讓我自由探索未來的家庭。儘管我的人生不斷在繞遠路，仍舊對生命徬徨，卻還是能感受到家人的支持，對此總有說不完的感激。想要回報他們，也更加堅定自己想在這條路走下去的想法。</p>
+<p>現在想想，過去經歷的這些其實好像也沒什麼了，至少現在的我找到了想繼續努力的目標，而我也正朝那個方向前進著。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/lidemy/" rel="tag"># lidemy</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/pd101-lidemy/" rel="prev" title="[week 19] 淺談產品開發與工作流程">
+      <i class="fa fa-chevron-left"></i> [week 19] 淺談產品開發與工作流程
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/hexo-github/" rel="next" title="【學習筆記】如何使用 Hexo + GitHub Pages 架設個人網誌">
+      【學習筆記】如何使用 Hexo + GitHub Pages 架設個人網誌 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%90%AC%E4%BA%8B%E5%BF%85%E6%9C%89%E8%B5%B7%E5%9B%A0"><span class="nav-number">2.</span> <span class="nav-text">萬事必有起因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%9C%E6%96%BC%E9%82%A3%E4%BA%9B%E6%B2%92%E8%83%BD%E9%81%B8%E6%93%87%E7%9A%84%E9%81%8E%E5%8E%BB"><span class="nav-number">3.</span> <span class="nav-text">關於那些沒能選擇的過去</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E5%A4%A2%E4%BC%BC%E5%B9%BB%E7%9A%84%E9%82%A3%E4%B8%80%E5%B9%B4"><span class="nav-number">4.</span> <span class="nav-text">如夢似幻的那一年</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%80%BC%E5%BE%97%E4%B8%8D%E5%80%BC%E5%BE%97"><span class="nav-number">5.</span> <span class="nav-text">值得不值得</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B5%90%E8%AA%9E"><span class="nav-number">6.</span> <span class="nav-text">結語</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Heidi Liu"
+      src="https://avatars3.githubusercontent.com/u/65410665?s=460&u=887bd602944dcf78b90f3a880b03aec4e086728a&v=4">
+  <p class="site-author-name" itemprop="name">Heidi Liu</p>
+  <div class="site-description" itemprop="description">海底修羅場｜日々進化中</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">125</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">103</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Heidi Liu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="總字數">715k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">10:50</span>
+</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

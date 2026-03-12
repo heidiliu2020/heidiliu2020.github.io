@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/apple-icon.png" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="原文連結：[あるある]「詰まったら、すぐに質問してください」の克服法 - Qiita  倒數三天！不知不覺也來到第二十七天，終於快看到終點了似乎有點感概XD 接下來這篇文章，是打從自己在轉職學習程式的階段，直到現在第二份工作，有時仍是備感困擾的問題。因為不善於提問，或是希望先自己做好功課，等到萬不得已才找人求救，殊不知中間已經浪費太多時間，放在工作上也很有可能因此耽誤進度。 但是呢，這些過程其實">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[2023 15th鐵人賽] Day27 - [常有的事] 克服「遇到問題卡住時，請立刻提問」的方法">
+<meta property="og:url" content="https://heidiliu2020.github.io/ironman-2023-day-27/index.html">
+<meta property="og:site_name" content="前端新米">
+<meta property="og:description" content="原文連結：[あるある]「詰まったら、すぐに質問してください」の克服法 - Qiita  倒數三天！不知不覺也來到第二十七天，終於快看到終點了似乎有點感概XD 接下來這篇文章，是打從自己在轉職學習程式的階段，直到現在第二份工作，有時仍是備感困擾的問題。因為不善於提問，或是希望先自己做好功課，等到萬不得已才找人求救，殊不知中間已經浪費太多時間，放在工作上也很有可能因此耽誤進度。 但是呢，這些過程其實">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2023-10-12T00:18:01.000Z">
+<meta property="article:modified_time" content="2026-03-12T07:57:38.571Z">
+<meta property="article:author" content="Heidi Liu">
+<meta property="article:tag" content="ironman2023">
+<meta property="article:tag" content="Qiita">
+<meta property="article:tag" content="提問方法">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://heidiliu2020.github.io/ironman-2023-day-27/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>[2023 15th鐵人賽] Day27 - [常有的事] 克服「遇到問題卡住時，請立刻提問」的方法 | 前端新米</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端新米</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Heidi's Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://heidiliu2020.github.io/ironman-2023-day-27/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/65410665?s=460&u=887bd602944dcf78b90f3a880b03aec4e086728a&v=4">
+      <meta itemprop="name" content="Heidi Liu">
+      <meta itemprop="description" content="海底修羅場｜日々進化中">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端新米">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [2023 15th鐵人賽] Day27 - [常有的事] 克服「遇到問題卡住時，請立刻提問」的方法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2023-10-12 08:18:01" itemprop="dateCreated datePublished" datetime="2023-10-12T08:18:01+08:00">2023-10-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2026-03-12 15:57:38" itemprop="dateModified" datetime="2026-03-12T15:57:38+08:00">2026-03-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/" itemprop="url" rel="index"><span itemprop="name">2023鐵人賽</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/%E5%85%A5%E9%96%80%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">入門篇</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>2.7k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>2 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>原文連結：<span class="exturl" data-url="aHR0cHM6Ly9xaWl0YS5jb20vZGV2LXRhdHN1eWEvaXRlbXMvYmNhMzg2YmM0NzMyMmYyMjA3MmE=" title="https://qiita.com/dev-tatsuya/items/bca386bc47322f22072a">[あるある]「詰まったら、すぐに質問してください」の克服法 - Qiita<i class="fa fa-external-link"></i></span></p>
+</blockquote>
+<p>倒數三天！不知不覺也來到第二十七天，終於快看到終點了似乎有點感概XD</p>
+<p>接下來這篇文章，是打從自己在<span class="exturl" data-url="aHR0cHM6Ly9oZWlkaS1jb2RpbmcubWVkaXVtLmNvbS8lRTglQkQlODklRTglODElQjclRTUlODklOEQlRTclQUIlQUYlRTUlQjclQTUlRTclQTglOEIlRTUlQjglQUItbGlkZW15LSVFNyVCNSU5MCVFNiVBNSVBRCVFNSVCRiU4MyVFNSVCRSU5NyVFOCU4OCU4NyVFNiVCMSU4MiVFOCU4MSVCNyVFNyVCOCVCRCVFNyVCNSU5MC05ODA2NDRlYjRmNzQ=" title="https://heidi-coding.medium.com/%E8%BD%89%E8%81%B7%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB-lidemy-%E7%B5%90%E6%A5%AD%E5%BF%83%E5%BE%97%E8%88%87%E6%B1%82%E8%81%B7%E7%B8%BD%E7%B5%90-980644eb4f74">轉職學習程式<i class="fa fa-external-link"></i></span>的階段，直到現在第二份工作，有時仍是備感困擾的問題。因為不善於提問，或是希望先自己做好功課，等到萬不得已才找人求救，殊不知中間已經浪費太多時間，放在工作上也很有可能因此耽誤進度。</p>
+<p>但是呢，這些過程其實是能夠訓練的，本文中提供面對問題時，應該如何善用「提問模板」訓練思考，並且著重於「輸出導向的輸入」，透過這些過程，將有助於改善語言表達能力，並有效提升學習的效果。</p>
+<span id="more"></span>
+
+<p>那麼，以下正文開始。</p>
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>「當遇到問題卡住時，請立刻提問！」</strong></p>
+<p>你是否曾經被上司、PM 或資深工程師這樣告誡過？</p>
+<p>通常這種建議可能會針對初學者，但你是否曾經有以下的經驗呢？</p>
+<ol>
+<li>遇到不懂的問題！</li>
+<li>因為被告誡要「立刻」提問，所以毫不猶豫馬上提問…</li>
+<li>( ﾟдﾟ) &lt; <strong>「難道你不會試著自己查一下嗎？」</strong> 遭到了拒絕！！！噹(´・ω・｀) <code>[註解1]</code></li>
+</ol>
+<p>（明明被要求馬上提問的⋯⋯(´；ω；｀)）</p>
+<p>還是應該自己查嗎？嗯嗯⋯⋯</p>
+<ol>
+<li>遇到不懂的問題！</li>
+<li>即使自己思考和查找已經到極限，還是不懂…</li>
+<li>（數小時後）小心翼翼地提問…</li>
+<li>( ﾟдﾟ) &lt; <strong>「一開始可能會遇到無法解決的問題，所以別猶豫，馬上提問吧！」</strong> 被重擊！！！噹(´・ω・｀)</li>
+</ol>
+<p><strong>「到底該怎麼辦啊啊啊啊啊啊啊啊啊啊啊啊啊啊！！！！！！！！」</strong></p>
+<hr>
+<p>在這篇文章中，我將分享一種克服這種困境的方法。</p>
+<p>相信正確的方法有非常多種，因此如果有其他克服方法，也歡迎分享出來！</p>
+<h2 id="克服方法"><a href="#克服方法" class="headerlink" title="克服方法"></a>克服方法</h2><p>我認為克服的方法有 3 個步驟（逆向思考）。</p>
+<ol>
+<li>建立問題模板，填寫後再提問</li>
+<li>強調語言表達</li>
+<li>注重以輸出為前提的輸入</li>
+</ol>
+<h3 id="建立問題模板，填寫後再提問"><a href="#建立問題模板，填寫後再提問" class="headerlink" title="建立問題模板，填寫後再提問"></a>建立問題模板，填寫後再提問</h3><p>首先，我會建立一種稱為「問題模板」的東西，並填寫後再提問。</p>
+<p>「問題模板」是在想要提問時，用來引導思考的範本。</p>
+<p>為什麼會想要創建這個模板呢？因為剛進公司工作的我，即使想要提問，但多數情況都是模糊不清，無法理清思緒，提出具體化問題。</p>
+<p>因此，我建立了一個模板，試著視覺化所提出的問題，和自己的思考進行連結。</p>
+<p>儘管稱之為「問題模板」，但實際上非常簡單。</p>
+<p>以下是問題模板的範例：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 日文版</span></span><br><span class="line"><span class="number">1.</span> 〜がわかりません。</span><br><span class="line"><span class="number">2.</span> 具体的には、〜です。</span><br><span class="line"><span class="number">3.</span> 私は〜と考えました。</span><br><span class="line"><span class="number">4.</span> なぜなら〜です。</span><br><span class="line"></span><br><span class="line"><span class="comment">// 中文版</span></span><br><span class="line"><span class="number">1.</span> 我不瞭解～。</span><br><span class="line"><span class="number">2.</span> 具體來說，這是～。</span><br><span class="line"><span class="number">3.</span> 我的想法是～。</span><br><span class="line"><span class="number">4.</span> 原因是～。</span><br></pre></td></tr></table></figure>
+
+<p><strong>簡單！</strong></p>
+<p>１.<br>首先是寫下結論。<br>我不懂這個！！！像這樣，讓提問者和回答者都一目瞭然！</p>
+<p>２.<br>接著，提供詳細說明，以及<strong>具體地</strong>描述遇到問題的經過。<br>即使某些程式碼或操作對自己來說是顯而易見的，但對別人來說可能是第一次見到，因此建議盡可能提供詳細的訊息。<br>就算寫得比自己想得還要詳細，讀者可能瞬間就能夠讀懂。</p>
+<p>３.<br>然後，陳述自己的觀點，即使是錯的也沒關係。<br>重要的是傳達給對方「我已經思考過了」這件事。<br>如果不知道答案，透過自己的方式嘗試並寫下來。</p>
+<p>４.</p>
+<p>最後，提供支持該觀點的客觀證據。<br>如果缺乏這一點，觀點就僅止於預測或猜想。<br>對於程式設計師來說，尤其不喜歡模糊不清的想法⋯⋯（猜測）</p>
+<hr>
+<p>如果能用語言表達以上四點，就可以提問！這是我給自己定下的規則。</p>
+<p>建立好提問的目標，即可迅速且毫不猶豫地提出問題，而不會陷入迷茫。</p>
+<p>如此一來，</p>
+<p>( ﾟдﾟ) &lt; 「<strong>難道你不會試著自己查一下嗎？</strong>」</p>
+<p>( ﾟдﾟ) &lt; <strong>「一開始可能會遇到無法解決的問題，所以別猶豫，馬上提問吧！」</strong></p>
+<p>就能擺脫被夾在這中間的過去了！ ！ ！</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>儘管如此，即使能夠在腦中思考自己的想法，要將文本內容實際用語言傳達給他人並不容易。（我也是這樣）</p>
+<h2 id="強調語言表達"><a href="#強調語言表達" class="headerlink" title="強調語言表達"></a>強調語言表達</h2><p>我對語言表達的定義是「將腦中的想法記錄下來」。</p>
+<p>（準確來說，除了文本內容，還包括口頭等詞語，但在這裡將限制其含義。）</p>
+<p>就我而言，起初甚至從未聽過「語言表達」這個詞彙。</p>
+<p>一直以來，比起發郵件我更喜歡打電話。</p>
+<p>我認為直接說出來即可，如果是在 Slack 等的通訊工具上出現意見不一致，可透過通話來解決。如此除了節省時間，也能透過互動減少認知差異的可能性。</p>
+<p>然而，日常中我們經常使用的是 Slack 等透過文本進行的交流。舉例來說，與合作夥伴或遠程工作的同事，彼此之間的互動、會議記錄、任務管理工具等。</p>
+<p>實際上，對語言表達的認知，是自從我開始向遠端資深工程師和合作夥伴，提出針對規格和技術方面的問題時開始的。</p>
+<p>某一天，我向一位遠端工程師提出一個技術問題。<br>當然，是按照問題模板來提問。<br>但得到的回答卻是「我不明白你的意思」。<br>噢，這裡我沒有傳達好。<br>因為對方理解不足的可能性為零，完全是因為我沒有解釋清楚。<br>這是我第一次遇到「記錄腦中的想法是如此困難」的情況。</p>
+<p>現在的我，比以前更善於語言表達。<br>我認為，雖然這可能比起直接溝通，需要花費更多時間，但卻具有更多的優勢！</p>
+<p>具體而言：</p>
+<ul>
+<li>可以獲得更深入的理解</li>
+<li>增加自信和確信</li>
+<li>可以得到反饋</li>
+<li>可以看到自己的變化</li>
+<li>作為記錄留下來</li>
+</ul>
+<p>那麼，該如何提高語言表達能力？<br>當然，思考方式也很重要，但更關鍵的是<strong>提高輸入的質量</strong>。</p>
+<h3 id="注重以輸出為前提的輸入"><a href="#注重以輸出為前提的輸入" class="headerlink" title="注重以輸出為前提的輸入"></a>注重以輸出為前提的輸入</h3><p>提高輸入的質量意味著什麼？<br>是否已經清楚瞭解定義是什麼？瞭解基本的基礎？這些就是關鍵。</p>
+<p>在語言表達時，我經常遇到在「術語」方面的問題。<br>例如對於某個詞語 A’，其抽象的單詞是 A 嗎？還是 B 呢？</p>
+<p>再來，該如何提高輸入的質量呢？<br>以下提供的範例將有助於理解：</p>
+<ul>
+<li>如果在工作中發現需要某項技術的知識，那麼閱讀相關的技術書籍或網站，將會提供非常高質量的輸入吧？</li>
+<li>如果計劃在某次會議上作為演講者登台，將會透過思考來提高輸入的質量吧？</li>
+<li>如果決定撰寫 qiita 文章或技術部落格時，因為不希望提供錯誤的知識，將會研究需要的所有資訊吧？</li>
+</ul>
+<p>為什麼呢？</p>
+<p>因為必須<strong>輸出</strong>。<br>想要提高輸入的質量，必須以輸出為前提進行輸入！</p>
+<p>透過這些例子也可以瞭解到，與獨自學習程式語言相比，在工作中累積實務經驗的學習方式將會更有效率。</p>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>當遇到問題卡住時，應該先填寫問題模板再提問！<br>透過提高輸入的質量，提高語言表達能力，將有助於更快提出問題！<br>為了實現這一點，必須始終以輸出為前提！</p>
+<h2 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h2><p>這是我第一次撰寫 How-to 文章，結果變成類似自我啟發的內容⋯⋯<br>因為這是一篇個人散文，請別在意這點。</p>
+<p><strong>後記（2019.10.03）</strong></p>
+<p>收到了許多反饋，並且深切感受到 Qiita 的卓越之處＼(^o^)／ 謝謝大家！</p>
+<p><code>[註解1]</code>: 敝公司從未說過 or 被告知過這樣的事。公司的政策之一是「初學者應該<strong>學習如何查找資料</strong>」。</p>
+<blockquote>
+<p>15th鐵人賽目錄傳送門：<span class="exturl" data-url="aHR0cHM6Ly9pdGhlbHAuaXRob21lLmNvbS50dy91c2Vycy8yMDEzNTU1OC9pcm9ubWFuLzYyOTA=" title="https://ithelp.ithome.com.tw/users/20135558/ironman/6290">https://ithelp.ithome.com.tw/users/20135558/ironman/6290<i class="fa fa-external-link"></i></span></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ironman2023/" rel="tag"># ironman2023</a>
+              <a href="/tags/Qiita/" rel="tag"># Qiita</a>
+              <a href="/tags/%E6%8F%90%E5%95%8F%E6%96%B9%E6%B3%95/" rel="tag"># 提問方法</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/ironman-2023-day-26/" rel="prev" title="[2023 15th鐵人賽] Day26 - 擁有 20 多年工程師經驗的我，在撰寫設計規格書時所注意的事情">
+      <i class="fa fa-chevron-left"></i> [2023 15th鐵人賽] Day26 - 擁有 20 多年工程師經驗的我，在撰寫設計規格書時所注意的事情
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/ironman-2023-day-28/" rel="next" title="[2023 15th鐵人賽] Day28 - 事到如今問不出口的 Log 基礎和設計指南">
+      [2023 15th鐵人賽] Day28 - 事到如今問不出口的 Log 基礎和設計指南 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%8B%E6%9C%8D%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">克服方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E5%95%8F%E9%A1%8C%E6%A8%A1%E6%9D%BF%EF%BC%8C%E5%A1%AB%E5%AF%AB%E5%BE%8C%E5%86%8D%E6%8F%90%E5%95%8F"><span class="nav-number">2.1.</span> <span class="nav-text">建立問題模板，填寫後再提問</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%B7%E8%AA%BF%E8%AA%9E%E8%A8%80%E8%A1%A8%E9%81%94"><span class="nav-number">3.</span> <span class="nav-text">強調語言表達</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E9%87%8D%E4%BB%A5%E8%BC%B8%E5%87%BA%E7%82%BA%E5%89%8D%E6%8F%90%E7%9A%84%E8%BC%B8%E5%85%A5"><span class="nav-number">3.1.</span> <span class="nav-text">注重以輸出為前提的輸入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B8%BD%E7%B5%90"><span class="nav-number">4.</span> <span class="nav-text">總結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%BE%8C"><span class="nav-number">5.</span> <span class="nav-text">最後</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Heidi Liu"
+      src="https://avatars3.githubusercontent.com/u/65410665?s=460&u=887bd602944dcf78b90f3a880b03aec4e086728a&v=4">
+  <p class="site-author-name" itemprop="name">Heidi Liu</p>
+  <div class="site-description" itemprop="description">海底修羅場｜日々進化中</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">125</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">103</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Heidi Liu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="總字數">715k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">10:50</span>
+</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

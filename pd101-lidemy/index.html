@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/apple-icon.png" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="本篇為 [PD101] 淺談產品開發與工作流程 這門課程的學習筆記。如有錯誤歡迎指正！  透過這堂課程，我們能夠在進入職場之前，先試著瞭解開發流程，雖然每間公司實際工作情形不一定相同，但也能先有個初步概念：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[week 19] 淺談產品開發與工作流程">
+<meta property="og:url" content="https://heidiliu2020.github.io/pd101-lidemy/index.html">
+<meta property="og:site_name" content="前端新米">
+<meta property="og:description" content="本篇為 [PD101] 淺談產品開發與工作流程 這門課程的學習筆記。如有錯誤歡迎指正！  透過這堂課程，我們能夠在進入職場之前，先試著瞭解開發流程，雖然每間公司實際工作情形不一定相同，但也能先有個初步概念：">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/PPlaGG2.png">
+<meta property="og:image" content="https://i.imgur.com/EHWat4x.png">
+<meta property="og:image" content="https://i.imgur.com/5Ho0Vcl.png">
+<meta property="og:image" content="https://i.imgur.com/Fewp6BB.png">
+<meta property="og:image" content="https://i.imgur.com/YH4yf2T.png">
+<meta property="og:image" content="https://i.imgur.com/xuiuBsv.png">
+<meta property="og:image" content="https://miro.medium.com/max/1000/1*EYsGjOTefEx3BfT4TpSKcg.png">
+<meta property="og:image" content="https://i.imgur.com/aZ4xEt5.png">
+<meta property="og:image" content="https://i.imgur.com/l4GdKJq.png">
+<meta property="og:image" content="https://i.imgur.com/XRtzTAx.png">
+<meta property="og:image" content="https://i.imgur.com/Rp9dRyX.png">
+<meta property="og:image" content="https://i.imgur.com/dvYXPf0.png">
+<meta property="og:image" content="https://i.imgur.com/5dSZWIc.png">
+<meta property="og:image" content="https://i.imgur.com/6oPUTVR.png">
+<meta property="og:image" content="https://i.imgur.com/a9XYtOX.png">
+<meta property="og:image" content="https://i.imgur.com/Xs7PQ5q.png">
+<meta property="og:image" content="https://i.imgur.com/qMvYoim.png">
+<meta property="article:published_time" content="2020-11-01T16:41:00.000Z">
+<meta property="article:modified_time" content="2026-03-12T07:57:38.577Z">
+<meta property="article:author" content="Heidi Liu">
+<meta property="article:tag" content="lidemy">
+<meta property="article:tag" content="產品開發">
+<meta property="article:tag" content="agile">
+<meta property="article:tag" content="Testing">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/PPlaGG2.png">
+
+<link rel="canonical" href="https://heidiliu2020.github.io/pd101-lidemy/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>[week 19] 淺談產品開發與工作流程 | 前端新米</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端新米</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Heidi's Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://heidiliu2020.github.io/pd101-lidemy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/65410665?s=460&u=887bd602944dcf78b90f3a880b03aec4e086728a&v=4">
+      <meta itemprop="name" content="Heidi Liu">
+      <meta itemprop="description" content="海底修羅場｜日々進化中">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端新米">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [week 19] 淺談產品開發與工作流程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-11-02 00:41:00" itemprop="dateCreated datePublished" datetime="2020-11-02T00:41:00+08:00">2020-11-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2026-03-12 15:57:38" itemprop="dateModified" datetime="2026-03-12T15:57:38+08:00">2026-03-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/lidemy/" itemprop="url" rel="index"><span itemprop="name">lidemy</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>3.4k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>3 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>本篇為 <span class="exturl" data-url="aHR0cHM6Ly9saWRlbXkuY29tL3AvcGQxMDE=" title="https://lidemy.com/p/pd101">[PD101] 淺談產品開發與工作流程<i class="fa fa-external-link"></i></span> 這門課程的學習筆記。如有錯誤歡迎指正！</p>
+</blockquote>
+<p>透過這堂課程，我們能夠在進入職場之前，先試著瞭解開發流程，雖然每間公司實際工作情形不一定相同，但也能先有個初步概念：</p>
+<span id="more"></span>
+
+<p><img src="https://i.imgur.com/PPlaGG2.png"></p>
+<p>課程內容也會以之前 Huli 和助教共同實作的 Lidemy 學習系統作為範例。</p>
+<hr>
+<h2 id="在實際開發之前"><a href="#在實際開發之前" class="headerlink" title="在實際開發之前"></a>在實際開發之前</h2><p>工程師會根據 PM 提出的產品需求來進行開發，而一個產品需求產生的流程如下：</p>
+<p><img src="https://i.imgur.com/EHWat4x.png"></p>
+<ul>
+<li>stakeholder 利益相關者，也就是客戶</li>
+<li>Product Requirement Document 產品需求文件</li>
+<li>Product Specifications 產品規格書</li>
+<li>wireframe 設計線稿</li>
+<li>mockup 模型</li>
+</ul>
+<p>接著工程師會透過 spec 瞭解產品需求，根據 mockup 寫出相對應的產品介面與功能。</p>
+<h3 id="Product-spec-裡面有哪些東西？"><a href="#Product-spec-裡面有哪些東西？" class="headerlink" title="Product spec 裡面有哪些東西？"></a>Product spec 裡面有哪些東西？</h3><p>實際開發中，寫得越詳細的產品規格書，能夠幫助開發內容與規格達成一致；假如 PM 沒有將需求寫在規格書中，開發產品也需同步進行，避免程式行為與規格不一致，導致後續維護問題。</p>
+<p>一般而言，產品規格書屬於公司機密不能對外公開，這裡舉一些網路上公開的範例。</p>
+<h4 id="範例一：PRD-到底该怎么写？更全面的文档范例来了"><a href="#範例一：PRD-到底该怎么写？更全面的文档范例来了" class="headerlink" title="範例一：PRD 到底该怎么写？更全面的文档范例来了"></a>範例一：<span class="exturl" data-url="aHR0cDovL3d3dy53b3NoaXBtLmNvbS9wbWQvMzMyNzc3MC5odG1s" title="http://www.woshipm.com/pmd/3327770.html">PRD 到底该怎么写？更全面的文档范例来了<i class="fa fa-external-link"></i></span></h4><ul>
+<li>修訂紀錄</li>
+<li>全局說明</li>
+<li>項目背景<ul>
+<li>透過現狀、方案、目標來描述</li>
+</ul>
+</li>
+<li>項目範圍<ul>
+<li>項目對應搭框架</li>
+<li>產品結構圖</li>
+</ul>
+</li>
+<li>開發流程</li>
+<li>功能需求<ul>
+<li>對功能逐一描述</li>
+<li>透過使用者 + 功能方式來描述</li>
+<li>配置條件、介面元素、產品邏輯、異常與分支流程</li>
+<li>數據字典</li>
+</ul>
+</li>
+<li>非功能需求<ul>
+<li>數據、監控、性能需求</li>
+</ul>
+</li>
+</ul>
+<h4 id="範例二：【SOP-不藏私】系列＃EP1「連猴子也會的-PRD-指南」"><a href="#範例二：【SOP-不藏私】系列＃EP1「連猴子也會的-PRD-指南」" class="headerlink" title="範例二：【SOP 不藏私】系列＃EP1「連猴子也會的 PRD 指南」"></a>範例二：<span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL2FzLWEtcHJvZHVjdC1kZXNpZ25lci9zb3AtZXAwMS1wcmQtM2M2ZDMzODgwYzM0" title="https://medium.com/as-a-product-designer/sop-ep01-prd-3c6d33880c34">【SOP 不藏私】系列＃EP1「連猴子也會的 PRD 指南」<i class="fa fa-external-link"></i></span></h4><p>這個例子會比較偏向於介紹產品如何開發以及開發時程，說明產品規格書的文件架構：</p>
+<ul>
+<li>文件概況<ul>
+<li>文件修訂紀錄</li>
+</ul>
+</li>
+<li>產品簡介與功能對照<ul>
+<li>產品簡介</li>
+<li>產品目標說明</li>
+<li>「工作排程、使用者故事、對應功能、進版時間」對照表</li>
+</ul>
+</li>
+<li>產品架構與流程<ul>
+<li>產品功能架構圖（Function Map）</li>
+<li>產品信息架構圖（Information Architecture）</li>
+<li>功能邏輯圖（Flow Chart）</li>
+</ul>
+</li>
+<li>產品設計原型<ul>
+<li>產品全局簡介</li>
+<li>局部功能 Prototype，有互動的部分</li>
+</ul>
+</li>
+<li>產品指標</li>
+<li>字串表<ul>
+<li>用來顯示多國語言</li>
+</ul>
+</li>
+</ul>
+<p>延伸閱讀：</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL3ktcG9pbnRlci9wcm9kdWN0LXByZC1jYTBlYTliNzViODU=" title="https://medium.com/y-pointer/product-prd-ca0ea9b75b85">【產品經理 PM ｜需求文檔 PRD】優惠券發放的產品設計，需求文檔怎麼寫？<i class="fa fa-external-link"></i></span></li>
+</ul>
+<h3 id="User-Story-使用者故事"><a href="#User-Story-使用者故事" class="headerlink" title="User Story 使用者故事"></a>User Story 使用者故事</h3><p>User Story（使用者故事）是一段簡單的功能敘述，藉由客戶或使用者的觀點寫下有價值的功能（functionality）。除了能更明確化產品需求，工程師也能夠知道客戶會做哪些驗收測試、期望跟假設。</p>
+<p>在 User Story 中，對於一個需求的寫法大致如下：</p>
+<ul>
+<li>As a user… 身為一個使用者..</li>
+<li>I want to… 我希望…</li>
+<li>so that I can… 我就可以…</li>
+</ul>
+<p>以開發 Lidemy 作業系統為例子，這是初步的產品需求：</p>
+<p><img src="https://i.imgur.com/5Ho0Vcl.png"></p>
+<p>若以 User Story 方式撰寫，就能夠使產品需求更加明確化，也能瞭解不同使用者身份的需求以及開發順序：</p>
+<p><img src="https://i.imgur.com/Fewp6BB.png"></p>
+<h3 id="繪製-Flowchart-amp-Wireframe"><a href="#繪製-Flowchart-amp-Wireframe" class="headerlink" title="繪製 Flowchart &amp; Wireframe"></a>繪製 Flowchart &amp; Wireframe</h3><p>此外還有像是 User Flow 使用流程和 Wireframe 設計線稿，也能幫助理解產品邏輯：</p>
+<ul>
+<li>User Flow</li>
+</ul>
+<p><img src="https://i.imgur.com/YH4yf2T.png"></p>
+<ul>
+<li>Wireframe</li>
+</ul>
+<p><img src="https://i.imgur.com/xuiuBsv.png"></p>
+<p>繪製 Flowchart 時，也找了一些參考資料，瞭解該如何繪製：</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL2FzLWEtcHJvZHVjdC1kZXNpZ25lci8lRTUlODUlODglRTUlODglQTUlRTYlODAlQTUlRTglOTElOTclRTclOTUlQUJ1aS0lRTQlQkQlQTAlRTglODElQkQlRTklODElOEVmbG93LWNoYXJ0JUU1JTk3JThFLWM2NzE1ZjA1NWNmYw==" title="https://medium.com/as-a-product-designer/%E5%85%88%E5%88%A5%E6%80%A5%E8%91%97%E7%95%ABui-%E4%BD%A0%E8%81%BD%E9%81%8Eflow-chart%E5%97%8E-c6715f055cfc">先別急著畫 UI，你聽過 Flow Chart 嗎<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGVseS5jb20vZGlhZ3JhbS1jb21tdW5pdHkvcG9wdWxhci90L2Zsb3djaGFydA==" title="https://creately.com/diagram-community/popular/t/flowchart">Flowchart Templates | Editable Online or Download for Free<i class="fa fa-external-link"></i></span></li>
+</ul>
+<p>像是流程圖其實能透過規範的符號來統一：<br><img src="https://miro.medium.com/max/1000/1*EYsGjOTefEx3BfT4TpSKcg.png"></p>
+<p>試做有關會員的 User Flow：</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93aGltc2ljYWwuY29tL3VzZXItZmxvdy0zdEVpM2hHM0dLUnNFaGtTMk5XeVVy" title="https://whimsical.com/user-flow-3tEi3hG3GKRsEhkS2NWyUr">DEMO 連結<i class="fa fa-external-link"></i></span></p>
+<p><img src="https://i.imgur.com/aZ4xEt5.png"></p>
+<hr>
+<h2 id="Card-Ticket-Task-Issue"><a href="#Card-Ticket-Task-Issue" class="headerlink" title="Card = Ticket = Task = Issue"></a>Card = Ticket = Task = Issue</h2><p>在實際開發過程，通常會把每個功能切割成一個任務，以下這些名詞均可代表工作的最小單位：</p>
+<ul>
+<li>Task：任務</li>
+<li>Issue：GitHub 上的一個問題或 Bug</li>
+<li>Card：卡片</li>
+<li>Ticket：票</li>
+</ul>
+<p>通常會利用現成的平台，像是 <span class="exturl" data-url="aHR0cHM6Ly93d3cuYXRsYXNzaWFuLmNvbS9zb2Z0d2FyZS9qaXJhPyZhY2VpZD0mYWRwb3NpdGlvbj0mYWRncm91cD05NTAwMzY0NTQ0OSZjYW1wYWlnbj05MTI0ODc4NzAyJmNyZWF0aXZlPTQxNTU0Mjc1MjM2NSZkZXZpY2U9YyZrZXl3b3JkPWppcmEmbWF0Y2h0eXBlPWUmbmV0d29yaz1nJnBsYWNlbWVudD0mZHNfa2lkcz1wNTEyNDIxODkzMTgmZHNfZT1HT09HTEUmZHNfZWlkPTcwMDAwMDAwMTU1ODUwMSZkc19lMT1HT09HTEUmZ2NsaWQ9Q2owS0NRaUFxZFA5QlJEVkFSSXNBR1NaOEFtemJmWHZheGx3c2wtOTBDSUlVQWtPc2dMQWNCSVFxdnVCSUJYNlIxcHVzejFKdFBGLVlOMGFBbUF6RUFMd193Y0ImZ2Nsc3JjPWF3LmRz" title="https://www.atlassian.com/software/jira?&aceid=&adposition=&adgroup=95003645449&campaign=9124878702&creative=415542752365&device=c&keyword=jira&matchtype=e&network=g&placement=&ds_kids=p51242189318&ds_e=GOOGLE&ds_eid=700000001558501&ds_e1=GOOGLE&gclid=Cj0KCQiAqdP9BRDVARIsAGSZ8AmzbfXvaxlwsl-90CIIUAkOsgLAcBIQqvuBIBX6R1pusz1JtPF-YN0aAmAzEALw_wcB&gclsrc=aw.ds">Jira<i class="fa fa-external-link"></i></span> 或 <span class="exturl" data-url="aHR0cHM6Ly93d3cuZ29vZ2xlYWRzZXJ2aWNlcy5jb20vcGFnZWFkL2FjbGs/c2E9TCZhaT1EQ2hjU0V3amNzOWV4MTR2dEFoVUoySllLSFVjQ0RwQVlBQkFBR2dKMGJBJm9ob3N0PXd3dy5nb29nbGUuY29tJmNpZD1DQUVTUWVEMldGdExWeDdtNHN4eUFFVHEwUWhGcHY0YW9HVlhYQzRCVmlyN3VaZzN3LTEzT1lZU09BZTFKcUVqQUpsVnAzRDhzSmItQ0MyX2NWaHNXeTRZdU9WWCZzaWc9QU9ENjRfMHU1MzM1TTdSTjlSLTgxeDh2RlVtXzBBZHIzQSZxJmFkdXJsJnZlZD0yYWhVS0V3amdqdEd4MTR2dEFoVUh3b3NCSGZBakNGMFEwUXg2QkFnTUVBRQ==" title="https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwjcs9ex14vtAhUJ2JYKHUcCDpAYABAAGgJ0bA&ohost=www.google.com&cid=CAESQeD2WFtLVx7m4sxyAETq0QhFpv4aoGVXXC4BVir7uZg3w-13OYYSOAe1JqEjAJlVp3D8sJb-CC2_cVhsWy4YuOVX&sig=AOD64_0u5335M7RN9R-81x8vFUm_0Adr3A&q&adurl&ved=2ahUKEwjgjtGx14vtAhUHwosBHfAjCF0Q0Qx6BAgMEAE">Trello<i class="fa fa-external-link"></i></span> 來管理任務，通常一個 User Story 就會切割成一張票：</p>
+<p><img src="https://i.imgur.com/l4GdKJq.png"></p>
+<p>透過這些平台，能夠用來切割工作區塊，也能讓整個團隊快速瀏覽整體工作進度。</p>
+<p>參考資料：</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9paG93ZXIudHcvYmxvZy9hcmNoaXZlcy8yMDkw" title="https://ihower.tw/blog/archives/2090">什麼是 User Story？<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1hcE92RjlOVmd1QQ==" title="https://www.youtube.com/watch?v=apOvF9NVguA">Agile 使用者故事 <i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1FRFQwSE10RHdZSQ==" title="https://www.youtube.com/watch?v=EDT0HMtDwYI">拆解使用者故事 <i class="fa fa-external-link"></i></span></li>
+</ul>
+<hr>
+<h2 id="軟體開發方法論-Methodology"><a href="#軟體開發方法論-Methodology" class="headerlink" title="軟體開發方法論 Methodology"></a>軟體開發方法論 Methodology</h2><p>在實際軟體開發過程，並不是拿了一張卡就開始工作那麼簡單，而是必須考慮透過哪種模式或框架來進行開發，大致可分成幾種方法：</p>
+<ul>
+<li>Waterfall 瀑布流</li>
+<li>Agile 敏捷</li>
+</ul>
+<h3 id="Waterfall-瀑布流"><a href="#Waterfall-瀑布流" class="headerlink" title="Waterfall 瀑布流"></a>Waterfall 瀑布流</h3><p><img src="https://i.imgur.com/XRtzTAx.png"></p>
+<ul>
+<li>從上往下，不能往回，一次性</li>
+<li>呈現完整性較高</li>
+<li>事前規劃需做完善，若過程中需要增加新功能獲改善，就需要再等下一輪流程</li>
+<li>較不適合大型專案</li>
+</ul>
+<p>參考資料：</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuc21hcnRzaGVldC5jb20vYWdpbGUtdnMtc2NydW0tdnMtd2F0ZXJmYWxsLXZzLWthbmJhbg==" title="https://www.smartsheet.com/agile-vs-scrum-vs-waterfall-vs-kanban">What’s the Difference? Agile vs Scrum vs Waterfall vs Kanban<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tLzNwbS1sYWIvcG0tcG9kY2FzdC1lcDAzLXdhdGVyZmFsbC12cy1hZ2lsZS04MmIyMTQ4NTMxMTI=" title="https://medium.com/3pm-lab/pm-podcast-ep03-waterfall-vs-agile-82b214853112">【Podcast EP03】敏捷或瀑布開發哪個好？流程用哪種重要嗎？<i class="fa fa-external-link"></i></span></li>
+</ul>
+<h3 id="Agile-敏捷"><a href="#Agile-敏捷" class="headerlink" title="Agile 敏捷"></a>Agile 敏捷</h3><p><img src="https://i.imgur.com/Rp9dRyX.png"></p>
+<ul>
+<li>及早並持續地交付，精簡化</li>
+<li>彈性較高，能夠改變需求</li>
+<li>類似於把 Waterfall 的任務切小細分</li>
+<li>按照 12 項原則就能夠稱為敏捷，又可細分為不同框架來進行</li>
+</ul>
+<p>參考資料：</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tLyVFNiU5NiU4NyVFNiU4MCU5RCVFNCVCOCU4RCVFOCU5NyU4RiVFNyVBNyU4MS8lRTYlOTYlODclRTYlODAlOUQlRTQlQjglOEQlRTglOTclOEYlRTclQTclODEtJUU2JTk1JThGJUU2JThEJUI3JUU1JUFFJUEzJUU4JUE4JTgwLTEyLSVFNSU4RSU5RiVFNSU4OSU4Ny02NGFkN2Q1OTIwODc=" title="https://medium.com/%E6%96%87%E6%80%9D%E4%B8%8D%E8%97%8F%E7%A7%81/%E6%96%87%E6%80%9D%E4%B8%8D%E8%97%8F%E7%A7%81-%E6%95%8F%E6%8D%B7%E5%AE%A3%E8%A8%80-12-%E5%8E%9F%E5%89%87-64ad7d592087">【文思不藏私】@敏捷宣言 12 原則<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1aOVFiWVpoMVlYWQ==" title="https://www.youtube.com/watch?v=Z9QbYZh1YXY">什麼是敏捷?<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1IRG1PN0V2N01sYw==" title="https://www.youtube.com/watch?v=HDmO7Ev7Mlc">【敏捷系列 - 1】什麼是敏捷？敏捷實例分享<i class="fa fa-external-link"></i></span></li>
+</ul>
+<h3 id="實作-Agile-概念：Kanban-看板"><a href="#實作-Agile-概念：Kanban-看板" class="headerlink" title="實作 Agile 概念：Kanban 看板"></a>實作 Agile 概念：Kanban 看板</h3><p>這裡以 Trello 和 Jira 平台為例：</p>
+<p><img src="https://i.imgur.com/dvYXPf0.png"></p>
+<ul>
+<li>Trello</li>
+</ul>
+<p><img src="https://i.imgur.com/5dSZWIc.png"></p>
+<ul>
+<li>Jira 平台的 Kanban Board</li>
+</ul>
+<p><img src="https://i.imgur.com/6oPUTVR.png"></p>
+<p><img src="https://i.imgur.com/a9XYtOX.png"></p>
+<h3 id="實作-Agile-概念：Scrum"><a href="#實作-Agile-概念：Scrum" class="headerlink" title="實作 Agile 概念：Scrum"></a>實作 Agile 概念：Scrum</h3><p><img src="https://i.imgur.com/Xs7PQ5q.png"></p>
+<p>透過 Scrum 的開發流程：</p>
+<ul>
+<li>Product Backlog：列出產品所有功能</li>
+<li>Sprint Planning：預估所需時間，分配任務</li>
+<li>Sprint Backlog：這個週期要開發的功能</li>
+<li>Sprint 開發週期：2-4 weeks 循環</li>
+<li>Daily Scrum：例行溝通進度</li>
+<li>Review、Retrospective：檢視進度與檢討</li>
+</ul>
+<p><img src="https://i.imgur.com/qMvYoim.png"></p>
+<p>在實際開發扮演的角色：</p>
+<ul>
+<li>Product Owner：決定產品走向</li>
+<li>Scrum Master：幫助團隊跑 Scrum 流程</li>
+<li>Team：實際開發的工程師</li>
+</ul>
+<p>參考資料：</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj05VHljTFIwVHFGQQ==" title="https://www.youtube.com/watch?v=9TycLR0TqFA">Introduction to Scrum - 7 Minutes<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1DUXAwbkdZNG5vbw==" title="https://www.youtube.com/watch?v=CQp0nGY4noo">【敏捷系列 - 3】Scrum 中的短衝 (Sprint)<i class="fa fa-external-link"></i></span></li>
+</ul>
+<hr>
+<h2 id="工程師的兩週生活-amp-Scrum"><a href="#工程師的兩週生活-amp-Scrum" class="headerlink" title="工程師的兩週生活 &amp; Scrum"></a>工程師的兩週生活 &amp; Scrum</h2><p>這裡以工程師的生活作為範例，通常以兩個禮拜為一個開發週期，流程大致如下：</p>
+<ul>
+<li>Sprint Planning<ul>
+<li>預估任務時間 Story Point</li>
+<li>分配任務</li>
+</ul>
+</li>
+<li>開發與 Daily Standup<ul>
+<li>Daily Standup：報告昨天進度、今天預計進度、提出遇到的困難，藉此同步團隊資訊</li>
+</ul>
+</li>
+<li>Deploy 部署<ul>
+<li>例如隔週會部署程式到測試環境</li>
+</ul>
+</li>
+<li>Sprint Demo<ul>
+<li>PM 藉由 Demo 讓客戶瞭解目前進度</li>
+</ul>
+</li>
+<li>Sprint retrospective 檢討會議<ul>
+<li>Went well 做得不錯的點</li>
+<li>To improve 要加強的點</li>
+<li>Action items 如何改善</li>
+</ul>
+</li>
+</ul>
+<p>參考資料：</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9yZWV0cm8uaW8v" title="https://reetro.io/">協助做 retro 的工具<i class="fa fa-external-link"></i></span></li>
+</ul>
+<h2 id="關於部署"><a href="#關於部署" class="headerlink" title="關於部署"></a>關於部署</h2><p>實際部署程式可分成幾種環境，藉由不同環境，能夠在過程中進行測試，確認功能都沒問題後再進行公開：</p>
+<ul>
+<li>Local 環境<ul>
+<li>本機端開發，通常會接 Dev 的資料</li>
+</ul>
+</li>
+<li>Development 環境（Dev）<ul>
+<li>和 Local 的差別：一個在自己電腦測試，另一個則是部署到 Server 環境</li>
+<li>例如：<span class="exturl" data-url="aHR0cHM6Ly93d3cubmV0bGlmeS5jb20v" title="https://www.netlify.com/">Netlify<i class="fa fa-external-link"></i></span></li>
+</ul>
+</li>
+<li>Staging 環境 / QA 環境<ul>
+<li>和 Production 類似，只是用來測試，不對外公開的環境</li>
+</ul>
+</li>
+<li>Production 環境<ul>
+<li>所有使用者都看得到的環境</li>
+</ul>
+</li>
+</ul>
+<h2 id="關於測試"><a href="#關於測試" class="headerlink" title="關於測試"></a>關於測試</h2><p>這邊提到的測試，和我們之前學到的 Unit Test 不同，是工程師針對程式碼進行的測試；但 QA 要測的只是呈現功能是否正常，簡單介紹下列兩種測試方式：</p>
+<ul>
+<li>SIT（System Integration Testing）：系統整合測試，確認功能是否正常，可能透過手動或寫自動化程式來測試</li>
+<li>UAT（User Acceptance Testing）：使用者可用性測試，通常是 PM 會進行測試，確認功能是否符合預期</li>
+</ul>
+<hr>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>最後整理產品開發流程的幾個重點：</p>
+<ol>
+<li>由 PM 提出產品需求給工程師<ul>
+<li>spec 產品規格書：需要哪些功能</li>
+<li>wireframe 設計草圖：用來確認網頁架構</li>
+<li>mockup：由設計師根據產品規格做出模型</li>
+<li>透過 User Flow、User Story，更明確寫出針對不同使用者、需要哪些功能、以及優先順序（例如：身為一個使用者/管理員，我希望可以 XXX）</li>
+</ul>
+</li>
+<li>實作 Agile 開發<ul>
+<li>在實際開發之前，可先在 Kanban（看板）列出產品所有功能，並以功能切割任務、預估所需時間</li>
+<li>例如：Trello、Jira 等平台</li>
+</ul>
+</li>
+<li>實際開發流程<ul>
+<li>以 Sprint 開發週期為例，通常以 2-4 weeks 為週期，根據分配的任務進行開發，最後檢視進度並檢討如何在下個週期改善</li>
+<li>可將各個產品功能加上編號，在 commit 時也加上相對編號，之後就能快速找到當初討論的 requirement</li>
+</ul>
+</li>
+</ol>
+<p>延伸閱讀：</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tLzNwbS1sYWIvbWFydHktY2FnYW4tcHJvZHVjdHRhbmstdGFpcGVpLXNwZWVjaC05MzNlN2RmYzEzYWY=" title="https://medium.com/3pm-lab/marty-cagan-producttank-taipei-speech-933e7dfc13af">做產品真是哭夭難！ — Marty Cagan 演講 70 分鐘中文逐字翻譯（附贈 YouTube 錄影）<i class="fa fa-external-link"></i></span></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/lidemy/" rel="tag"># lidemy</a>
+              <a href="/tags/%E7%94%A2%E5%93%81%E9%96%8B%E7%99%BC/" rel="tag"># 產品開發</a>
+              <a href="/tags/agile/" rel="tag"># agile</a>
+              <a href="/tags/Testing/" rel="tag"># Testing</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/sequelize-orm/" rel="prev" title="[week 17] 後端中階 - 淺談 Sequelize：使用 ORM 框架串接資料庫">
+      <i class="fa fa-chevron-left"></i> [week 17] 後端中階 - 淺談 Sequelize：使用 ORM 框架串接資料庫
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/lidemy-learing-1/" rel="next" title="【中場心得】半年過去了，我仍在學習程式的路上（上篇）">
+      【中場心得】半年過去了，我仍在學習程式的路上（上篇） <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E5%AF%A6%E9%9A%9B%E9%96%8B%E7%99%BC%E4%B9%8B%E5%89%8D"><span class="nav-number">1.</span> <span class="nav-text">在實際開發之前</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Product-spec-%E8%A3%A1%E9%9D%A2%E6%9C%89%E5%93%AA%E4%BA%9B%E6%9D%B1%E8%A5%BF%EF%BC%9F"><span class="nav-number">1.1.</span> <span class="nav-text">Product spec 裡面有哪些東西？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B%E4%B8%80%EF%BC%9APRD-%E5%88%B0%E5%BA%95%E8%AF%A5%E6%80%8E%E4%B9%88%E5%86%99%EF%BC%9F%E6%9B%B4%E5%85%A8%E9%9D%A2%E7%9A%84%E6%96%87%E6%A1%A3%E8%8C%83%E4%BE%8B%E6%9D%A5%E4%BA%86"><span class="nav-number">1.1.1.</span> <span class="nav-text">範例一：PRD 到底该怎么写？更全面的文档范例来了</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B%E4%BA%8C%EF%BC%9A%E3%80%90SOP-%E4%B8%8D%E8%97%8F%E7%A7%81%E3%80%91%E7%B3%BB%E5%88%97%EF%BC%83EP1%E3%80%8C%E9%80%A3%E7%8C%B4%E5%AD%90%E4%B9%9F%E6%9C%83%E7%9A%84-PRD-%E6%8C%87%E5%8D%97%E3%80%8D"><span class="nav-number">1.1.2.</span> <span class="nav-text">範例二：【SOP 不藏私】系列＃EP1「連猴子也會的 PRD 指南」</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#User-Story-%E4%BD%BF%E7%94%A8%E8%80%85%E6%95%85%E4%BA%8B"><span class="nav-number">1.2.</span> <span class="nav-text">User Story 使用者故事</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B9%AA%E8%A3%BD-Flowchart-amp-Wireframe"><span class="nav-number">1.3.</span> <span class="nav-text">繪製 Flowchart &amp; Wireframe</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Card-Ticket-Task-Issue"><span class="nav-number">2.</span> <span class="nav-text">Card &#x3D; Ticket &#x3D; Task &#x3D; Issue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC%E6%96%B9%E6%B3%95%E8%AB%96-Methodology"><span class="nav-number">3.</span> <span class="nav-text">軟體開發方法論 Methodology</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Waterfall-%E7%80%91%E5%B8%83%E6%B5%81"><span class="nav-number">3.1.</span> <span class="nav-text">Waterfall 瀑布流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Agile-%E6%95%8F%E6%8D%B7"><span class="nav-number">3.2.</span> <span class="nav-text">Agile 敏捷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%A6%E4%BD%9C-Agile-%E6%A6%82%E5%BF%B5%EF%BC%9AKanban-%E7%9C%8B%E6%9D%BF"><span class="nav-number">3.3.</span> <span class="nav-text">實作 Agile 概念：Kanban 看板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%A6%E4%BD%9C-Agile-%E6%A6%82%E5%BF%B5%EF%BC%9AScrum"><span class="nav-number">3.4.</span> <span class="nav-text">實作 Agile 概念：Scrum</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E7%A8%8B%E5%B8%AB%E7%9A%84%E5%85%A9%E9%80%B1%E7%94%9F%E6%B4%BB-amp-Scrum"><span class="nav-number">4.</span> <span class="nav-text">工程師的兩週生活 &amp; Scrum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%9C%E6%96%BC%E9%83%A8%E7%BD%B2"><span class="nav-number">5.</span> <span class="nav-text">關於部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%9C%E6%96%BC%E6%B8%AC%E8%A9%A6"><span class="nav-number">6.</span> <span class="nav-text">關於測試</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B5%90%E8%AA%9E"><span class="nav-number">7.</span> <span class="nav-text">結語</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Heidi Liu"
+      src="https://avatars3.githubusercontent.com/u/65410665?s=460&u=887bd602944dcf78b90f3a880b03aec4e086728a&v=4">
+  <p class="site-author-name" itemprop="name">Heidi Liu</p>
+  <div class="site-description" itemprop="description">海底修羅場｜日々進化中</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">125</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">103</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Heidi Liu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="總字數">715k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">10:50</span>
+</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

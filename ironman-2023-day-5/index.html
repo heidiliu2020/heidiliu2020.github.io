@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/apple-icon.png" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="原文連結：悪名高きスワイプ広告を解析する - Qiita  本文摘要在被使用者厭惡的廣告當中，有一種叫做「滑動廣告」。 容易誤觸是原因之一，但經過調查發現，這個廣告似乎是故意將使用者轉移到廣告頁面，而非單純的誤觸。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[2023 15th鐵人賽] Day5 - 解析惡名昭彰的滑動廣告">
+<meta property="og:url" content="https://heidiliu2020.github.io/ironman-2023-day-5/index.html">
+<meta property="og:site_name" content="前端新米">
+<meta property="og:description" content="原文連結：悪名高きスワイプ広告を解析する - Qiita  本文摘要在被使用者厭惡的廣告當中，有一種叫做「滑動廣告」。 容易誤觸是原因之一，但經過調查發現，這個廣告似乎是故意將使用者轉移到廣告頁面，而非單純的誤觸。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/wSOiSRO.png">
+<meta property="og:image" content="https://imgur.com/opkAgHk.gif">
+<meta property="article:published_time" content="2023-09-20T00:35:20.000Z">
+<meta property="article:modified_time" content="2026-03-12T07:57:38.572Z">
+<meta property="article:author" content="Heidi Liu">
+<meta property="article:tag" content="Advertising">
+<meta property="article:tag" content="ironman2023">
+<meta property="article:tag" content="Qiita">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/wSOiSRO.png">
+
+<link rel="canonical" href="https://heidiliu2020.github.io/ironman-2023-day-5/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>[2023 15th鐵人賽] Day5 - 解析惡名昭彰的滑動廣告 | 前端新米</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端新米</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Heidi's Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://heidiliu2020.github.io/ironman-2023-day-5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/65410665?s=460&u=887bd602944dcf78b90f3a880b03aec4e086728a&v=4">
+      <meta itemprop="name" content="Heidi Liu">
+      <meta itemprop="description" content="海底修羅場｜日々進化中">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端新米">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [2023 15th鐵人賽] Day5 - 解析惡名昭彰的滑動廣告
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2023-09-20 08:35:20" itemprop="dateCreated datePublished" datetime="2023-09-20T08:35:20+08:00">2023-09-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2026-03-12 15:57:38" itemprop="dateModified" datetime="2026-03-12T15:57:38+08:00">2026-03-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/" itemprop="url" rel="index"><span itemprop="name">2023鐵人賽</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/%E8%B1%86%E7%9F%A5%E8%AD%98%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">豆知識篇</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>3.7k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>3 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>原文連結：<span class="exturl" data-url="aHR0cHM6Ly9xaWl0YS5jb20vaHV6aXN1a2UvaXRlbXMvY2RjNjNiNGJmOWQyZGVkNWI1Y2E/dXRtX3NvdXJjZT1RaWl0YSVFMyU4MyU4QiVFMyU4MyVBNSVFMyU4MyVCQyVFMyU4MiVCOSZ1dG1fY2FtcGFpZ249NWYzNWVhNTYxNi1RaWl0YV9uZXdzbGV0dGVyXzU3OV8wOF8xNiZ1dG1fbWVkaXVtPWVtYWlsJnV0bV90ZXJtPTBfZTQ0ZmVhYTA4MS01ZjM1ZWE1NjE2LTYyODIwNDQ5" title="https://qiita.com/huzisuke/items/cdc63b4bf9d2ded5b5ca?utm_source=Qiita%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9&utm_campaign=5f35ea5616-Qiita_newsletter_579_08_16&utm_medium=email&utm_term=0_e44feaa081-5f35ea5616-62820449">悪名高きスワイプ広告を解析する - Qiita<i class="fa fa-external-link"></i></span></p>
+<hr>
+<h2 id="本文摘要"><a href="#本文摘要" class="headerlink" title="本文摘要"></a>本文摘要</h2><p>在被使用者厭惡的廣告當中，有一種叫做「滑動廣告」。</p>
+<p>容易誤觸是原因之一，但經過調查發現，這個廣告似乎是故意將使用者轉移到廣告頁面，而非單純的誤觸。</p>
+<span id="more"></span>
+
+<p><img src="https://i.imgur.com/wSOiSRO.png"></p>
+<p><em>滑動廣告是一種藉由左右滑動顯示圖片的廣告類型。</em></p>
+<h2 id="什麼是滑動廣告"><a href="#什麼是滑動廣告" class="headerlink" title="什麼是滑動廣告"></a>什麼是滑動廣告</h2><p>滑動廣告是在廣告聯盟網站上常見的廣告形式。</p>
+<p>使用者可以用手指在螢幕上左右滑動，藉此切換廣告圖片。</p>
+<p>特徵是利用滑動的互動性，使用多個訊息和媒體，提供引人入勝的廣告體驗。</p>
+<h2 id="為什麼會惡名昭彰"><a href="#為什麼會惡名昭彰" class="headerlink" title="為什麼會惡名昭彰"></a>為什麼會惡名昭彰</h2><p>然而，滑動廣告並不受使用者歡迎。原因是它容易引發誤觸，一不小心點擊廣告導致頁面跳轉的機會非常高。</p>
+<p>當然，從使用者的角度來看，可能會以為是自己誤觸了廣告，或是滑動的手指太早移開螢幕，才會導致跳轉到廣告頁面。</p>
+<p>然而，根據本次調查結果，滑動廣告似乎是一種設計，即便使用者並未實際誤觸到，也會模擬誤觸的行為。</p>
+<p>以下動畫展示當時的行為：</p>
+<p><img src="https://imgur.com/opkAgHk.gif"></p>
+<p><em>只有思慕昔（スムージー）的廣告，在上下滑動時會跳轉到廣告頁面。</em></p>
+<p>這明顯和<em>漫畫廣告的行為不同。</em></p>
+<p><em>此外，我們還注意到，左右滑動時也不會造成畫面跳轉。</em></p>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>通過追蹤程式碼，發現滑動廣告只要符合以下條件，就會被視為點擊廣告：</p>
+<ul>
+<li>點擊起始位置在廣告區域內</li>
+<li>點擊持續時間不超過 250ms</li>
+<li>點擊起始和結束位置的 X 坐標差不超過 50pix</li>
+</ul>
+<p>換句話說，</p>
+<p><strong>從廣告位置開始的垂直滑動，這動作將會被視為強制點擊廣告。</strong></p>
+<p>所以，至今為止您感受到的「啊、糟糕」，</p>
+<p>這絕對不是您的錯，而是廣告的運作方式。</p>
+<h2 id="相關程式碼"><a href="#相關程式碼" class="headerlink" title="相關程式碼"></a>相關程式碼</h2><p>以下是使用 Developer Tools 仔細分析過的內容，其中名為 <code>swipegallery_layout.js</code> 的導案負責管理點擊位置等內容。</p>
+<h3 id="點擊開始時-touchstart-event"><a href="#點擊開始時-touchstart-event" class="headerlink" title="點擊開始時 (touchstart event)"></a>點擊開始時 (touchstart event)</h3><p>第 1051 行～第 1061 行</p>
+<p>重點如下：</p>
+<ul>
+<li>b.time = Date.now(); … 記錄點擊開始時間</li>
+<li>b.p = 0 … 記錄點擊開始座標，初始值為 0</li>
+</ul>
+<p>由於 Source code 基本上經過了混淆處理，因此僅供參考。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Y.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">Ba</span> = <span class="keyword">function</span>(<span class="params">a</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">V</span> || a.<span class="title function_">preventDefault</span>();</span><br><span class="line">    <span class="keyword">if</span> (!<span class="variable language_">this</span>.<span class="property">W</span> &amp;&amp; <span class="number">0</span> != <span class="variable language_">this</span>.<span class="property">b</span>.<span class="property">length</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> b = <span class="variable language_">this</span>.<span class="property">T</span>;</span><br><span class="line">        b.<span class="property">U</span> = !<span class="number">0</span>;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">V</span> ? (b.<span class="property">pageX</span> = a.<span class="property">e</span>.<span class="property">touches</span>[<span class="number">0</span>].<span class="property">pageX</span>, b.<span class="property">G</span> = a.<span class="property">e</span>.<span class="property">touches</span>[<span class="number">0</span>].<span class="property">pageX</span>) : (b.<span class="property">pageX</span> = a.<span class="property">e</span>.<span class="property">pageX</span>, b.<span class="property">G</span> = a.<span class="property">e</span>.<span class="property">pageX</span>);</span><br><span class="line">        b.<span class="property">time</span> = <span class="title class_">Date</span>.<span class="title function_">now</span>();</span><br><span class="line">        b.<span class="property">A</span> = <span class="number">0</span>;</span><br><span class="line">        b.<span class="property">p</span> = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="當手指在點擊時移動-touchmove-event"><a href="#當手指在點擊時移動-touchmove-event" class="headerlink" title="當手指在點擊時移動 (touchmove event)"></a>當手指在點擊時移動 (touchmove event)</h3><p>第 1061 行～第 1089 行</p>
+<p>重點如下：</p>
+<ul>
+<li>a.preventDefault(); … 這段語句將禁用垂直滾動時的畫面移動</li>
+<li>b.p = a.e.touches[0].pageX - b.pageX; … 將初始點擊位置和目前點擊位置的 X 軸座標值相減並代入</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Y.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">Aa</span> = <span class="keyword">function</span>(<span class="params">a</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="variable language_">this</span>.<span class="property">W</span> &amp;&amp; <span class="number">0</span> != <span class="variable language_">this</span>.<span class="property">b</span>.<span class="property">length</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> b = <span class="variable language_">this</span>.<span class="property">T</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">V</span>) &#123;</span><br><span class="line">            a.<span class="title function_">preventDefault</span>();</span><br><span class="line">            <span class="keyword">if</span> (<span class="number">1</span> &lt; a.<span class="property">e</span>.<span class="property">touches</span>.<span class="property">length</span> || a.<span class="property">e</span>.<span class="property">scale</span> &amp;&amp; <span class="number">1</span> !== a.<span class="property">e</span>.<span class="property">scale</span>) <span class="keyword">return</span>;</span><br><span class="line">            b.<span class="property">p</span> = a.<span class="property">e</span>.<span class="property">touches</span>[<span class="number">0</span>].<span class="property">pageX</span> - b.<span class="property">pageX</span>;</span><br><span class="line">            b.<span class="property">A</span> = a.<span class="property">e</span>.<span class="property">touches</span>[<span class="number">0</span>].<span class="property">pageX</span> - b.<span class="property">G</span>;</span><br><span class="line">            b.<span class="property">G</span> = a.<span class="property">e</span>.<span class="property">touches</span>[<span class="number">0</span>].<span class="property">pageX</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (!b.<span class="property">U</span>) <span class="keyword">return</span>;</span><br><span class="line">            b.<span class="property">p</span> = a.<span class="property">e</span>.<span class="property">pageX</span> - b.<span class="property">pageX</span>;</span><br><span class="line">            b.<span class="property">A</span> = a.<span class="property">e</span>.<span class="property">pageX</span> - b.<span class="property">G</span>;</span><br><span class="line">            b.<span class="property">G</span> = a.<span class="property">e</span>.<span class="property">pageX</span></span><br><span class="line">        &#125;</span><br><span class="line">        b.<span class="property">ea</span> = !<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">var</span> c = <span class="variable language_">this</span>.<span class="property">b</span>[<span class="variable language_">this</span>.<span class="property">d</span>].<span class="title function_">h</span>();</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">Ma</span> = <span class="number">0</span> &gt; b.<span class="property">p</span> ? <span class="number">0</span> : <span class="number">1</span>;</span><br><span class="line">        a = <span class="title class_">Math</span>.<span class="title function_">abs</span>(b.<span class="property">p</span> / <span class="variable language_">this</span>.<span class="property">P</span>);</span><br><span class="line">        <span class="keyword">var</span> d = !<span class="number">1</span>;</span><br><span class="line">        <span class="number">0</span> == <span class="variable language_">this</span>.<span class="property">Ma</span> ? ($(c, <span class="variable language_">this</span>.<span class="property">H</span> * a, <span class="variable language_">this</span>.<span class="property">I</span> * a, <span class="variable language_">this</span>.<span class="property">J</span> * a, <span class="variable language_">this</span>.<span class="property">K</span> * a, <span class="number">0</span>), <span class="variable language_">this</span>.<span class="property">d</span> != <span class="variable language_">this</span>.<span class="property">b</span>.<span class="property">length</span> - <span class="number">1</span> ? (c = <span class="variable language_">this</span>.<span class="property">b</span>[<span class="variable language_">this</span>.<span class="property">d</span> + <span class="number">1</span>].<span class="title function_">h</span>(),</span><br><span class="line">            $(c, -<span class="variable language_">this</span>.<span class="property">H</span> * (<span class="number">1</span> - a), -<span class="variable language_">this</span>.<span class="property">I</span> * (<span class="number">1</span> - a), <span class="variable language_">this</span>.<span class="property">J</span> * (<span class="number">1</span> - a), <span class="variable language_">this</span>.<span class="property">K</span> * (<span class="number">1</span> - a), <span class="number">0</span>)) : d = !<span class="number">0</span>) : ($(c, <span class="variable language_">this</span>.<span class="property">H</span> * -a, <span class="variable language_">this</span>.<span class="property">I</span> * -a, <span class="variable language_">this</span>.<span class="property">J</span> * a, <span class="variable language_">this</span>.<span class="property">K</span> * a, <span class="number">0</span>), <span class="number">0</span> != <span class="variable language_">this</span>.<span class="property">d</span> ? (c = <span class="variable language_">this</span>.<span class="property">b</span>[<span class="variable language_">this</span>.<span class="property">d</span> - <span class="number">1</span>].<span class="title function_">h</span>(), $(c, <span class="variable language_">this</span>.<span class="property">H</span> * (<span class="number">1</span> - a), <span class="variable language_">this</span>.<span class="property">I</span> * (<span class="number">1</span> - a), <span class="variable language_">this</span>.<span class="property">J</span> * (<span class="number">1</span> - a), <span class="variable language_">this</span>.<span class="property">K</span> * (<span class="number">1</span> - a), <span class="number">0</span>)) : d = !<span class="number">0</span>);</span><br><span class="line">        d &amp;&amp; (b.<span class="property">A</span> /= <span class="title class_">Math</span>.<span class="title function_">abs</span>(b.<span class="property">A</span>) / <span class="variable language_">this</span>.<span class="property">P</span> + <span class="variable language_">this</span>.<span class="property">La</span>);</span><br><span class="line">        <span class="title function_">A</span>(<span class="variable language_">this</span>.<span class="property">f</span>.<span class="property">style</span>, <span class="title class_">Eb</span>(<span class="number">0</span>));</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">B</span> += b.<span class="property">A</span>;</span><br><span class="line">        <span class="title function_">A</span>(<span class="variable language_">this</span>.<span class="property">f</span>.<span class="property">style</span>, <span class="title class_">Fb</span>(<span class="variable language_">this</span>.<span class="property">B</span>, <span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="結束點擊時-touchend-event"><a href="#結束點擊時-touchend-event" class="headerlink" title="結束點擊時 (touchend event)"></a>結束點擊時 (touchend event)</h3><p>第 1090 行～第 1097 行</p>
+<p>重點如下：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">((<span class="number">50</span> &gt; <span class="title class_">Math</span>.<span class="title function_">abs</span>(b.<span class="property">p</span>))  <span class="comment">// 點擊初始位置和結束位置的 X 座標值差小於 50pix</span></span><br><span class="line">	&amp;&amp; <span class="number">250</span> &gt; a - b.<span class="property">time</span>) <span class="comment">// 且點擊持續時間小於 250ms</span></span><br><span class="line">		&amp;&amp; (<span class="variable language_">this</span>.<span class="title function_">dispatchEvent</span>(<span class="string">&quot;tap&quot;</span>), <span class="variable language_">this</span>.<span class="title function_">dispatchEvent</span>(<span class="string">&quot;tap-&quot;</span> + <span class="variable language_">this</span>.<span class="property">d</span>)), <span class="comment">// 發生點擊廣告的事件</span></span><br></pre></td></tr></table></figure>
+
+<p>請注意下方敘述，從第 4 行開始的 <code>b.U &amp;&amp; ...</code> 這段程式碼實現了上述功能。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Y.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">la</span> = <span class="keyword">function</span>(<span class="params">a</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="variable language_">this</span>.<span class="property">W</span> &amp;&amp; <span class="number">0</span> != <span class="variable language_">this</span>.<span class="property">b</span>.<span class="property">length</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> b = <span class="variable language_">this</span>.<span class="property">T</span>;</span><br><span class="line">        b.<span class="property">U</span> &amp;&amp; <span class="string">&quot;mouseout&quot;</span> != a.<span class="property">type</span> &amp;&amp; (a = <span class="title class_">Date</span>.<span class="title function_">now</span>(), <span class="number">500</span> &lt; a - <span class="variable language_">this</span>.<span class="property">ua</span> &amp;&amp; (<span class="number">50</span> &gt; <span class="title class_">Math</span>.<span class="title function_">abs</span>(b.<span class="property">p</span>) &amp;&amp; <span class="number">250</span> &gt; a - b.<span class="property">time</span>) &amp;&amp; (<span class="variable language_">this</span>.<span class="title function_">dispatchEvent</span>(<span class="string">&quot;tap&quot;</span>), <span class="variable language_">this</span>.<span class="title function_">dispatchEvent</span>(<span class="string">&quot;tap-&quot;</span> + <span class="variable language_">this</span>.<span class="property">d</span>)), <span class="variable language_">this</span>.<span class="property">ua</span> = a);</span><br><span class="line">        b.<span class="property">U</span> = !<span class="number">1</span>;</span><br><span class="line">        b.<span class="property">ea</span> &amp;&amp; (a = <span class="variable language_">this</span>.<span class="property">d</span>, <span class="title class_">Math</span>.<span class="title function_">abs</span>(b.<span class="property">p</span>) &gt; <span class="variable language_">this</span>.<span class="property">Na</span> &amp;&amp; (<span class="number">0</span> &gt; b.<span class="property">p</span> ? a = <span class="variable language_">this</span>.<span class="property">d</span> == <span class="variable language_">this</span>.<span class="property">b</span>.<span class="property">length</span> - <span class="number">1</span> ? <span class="variable language_">this</span>.<span class="property">d</span> : <span class="variable language_">this</span>.<span class="property">d</span> + <span class="number">1</span> : <span class="number">0</span> &lt; b.<span class="property">p</span> &amp;&amp; (a = <span class="number">0</span> == <span class="variable language_">this</span>.<span class="property">d</span> ? <span class="variable language_">this</span>.<span class="property">d</span> : <span class="variable language_">this</span>.<span class="property">d</span> - <span class="number">1</span>)), <span class="variable language_">this</span>.<span class="title function_">Q</span>(a), b.<span class="property">ea</span> = !<span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="換言之，這些操作代表什麼"><a href="#換言之，這些操作代表什麼" class="headerlink" title="換言之，這些操作代表什麼"></a>換言之，這些操作代表什麼</h3><p>當使用者誤以為「在滑動螢幕時，手指卻意外觸摸到廣告」，這種所謂的誤觸實際上是經過精心編寫的「設計」。</p>
+<p>當偵測到快速的垂直滑動時，會觸發跳轉到廣告頁面，此時畫面呈現靜止狀態，進而讓使用戶以為是自己「誤點擊」所導致。</p>
+<p>反之，如果滑動速度較慢，不論垂直或橫向滑動都不會跳轉廣告頁面。</p>
+<p>此外，由於圖像會跟著手指移動，即使被禁止滑動也不容易察覺。</p>
+<h2 id="誤觸廣告不僅損害使用者體驗，也降低廣告主的品牌價值"><a href="#誤觸廣告不僅損害使用者體驗，也降低廣告主的品牌價值" class="headerlink" title="誤觸廣告不僅損害使用者體驗，也降低廣告主的品牌價值"></a>誤觸廣告不僅損害使用者體驗，也降低廣告主的品牌價值</h2><p>每當看到滑動廣告時，最明顯的感受就是，誤觸廣告對使用者並沒有任何好處。不僅損害所在網站的使用者體驗，對於那些被意外點擊的廣告主也不會產生良好印象。</p>
+<p>雖然這只是我的猜測，可能存在一些公司利用這種誤觸廣告系統，藉此虛報展示給廣告主看的廣告曝光率。</p>
+<p>雖然這次廣告主的產品我也實際使用過，今後也想繼續使用這個品牌，但看到透過這種方式展示廣告真的感覺非常遺憾。</p>
+<p>希望廣告主能夠意識到，展示這類型的廣告只會降低品牌價值，並進一步採取相關措施，以確保未來不再出現這種形式的廣告。</p>
+<p>從根本上來說，滑動廣告的廣告頁面跳轉絕不是使用者誤觸或程式錯誤造成，而是經過明確設計過的跳頁效果。</p>
+<p>我不曉得這是公司的方針或單一工程師想出的壞主意，但比起使用者優先考慮個人利益的態度，同樣作為一名工程師實在令人感到遺憾。</p>
+<h2 id="Release-Note"><a href="#Release-Note" class="headerlink" title="Release Note"></a>Release Note</h2><h3 id="2023-08-7"><a href="#2023-08-7" class="headerlink" title="2023/08/7"></a>2023/08/7</h3><ul>
+<li>修正錯誤</li>
+<li>新增說明</li>
+</ul>
+<h3 id="2023-08-08"><a href="#2023-08-08" class="headerlink" title="2023/08/08"></a>2023/08/08</h3><ul>
+<li>新增 <em>syntax</em> highlighting 語法高亮效果<ul>
+<li>感謝 <span class="exturl" data-url="aHR0cHM6Ly9xaWl0YS5jb20vZ2V0dHkxMDQ=" title="https://qiita.com/getty104">@getty104<i class="fa fa-external-link"></i></span> 様</li>
+</ul>
+</li>
+</ul>
+<h3 id="2023-08-10"><a href="#2023-08-10" class="headerlink" title="2023/08/10"></a>2023/08/10</h3><ul>
+<li>新增 Release Note</li>
+<li>刪除廣告主的名稱<ul>
+<li>滑動廣告是由刊登網站設定所引起，無法確定廣告主是否得知這件事情。因此考慮品牌名聲，在此選擇不公開廣告主的名稱。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>15th鐵人賽目錄傳送門：<span class="exturl" data-url="aHR0cHM6Ly9pdGhlbHAuaXRob21lLmNvbS50dy91c2Vycy8yMDEzNTU1OC9pcm9ubWFuLzYyOTA=" title="https://ithelp.ithome.com.tw/users/20135558/ironman/6290">https://ithelp.ithome.com.tw/users/20135558/ironman/6290<i class="fa fa-external-link"></i></span></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Advertising/" rel="tag"># Advertising</a>
+              <a href="/tags/ironman2023/" rel="tag"># ironman2023</a>
+              <a href="/tags/Qiita/" rel="tag"># Qiita</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/ironman-2023-day-4/" rel="prev" title="[2023 15th鐵人賽] Day4 - 寫給菜鳥工程師有關變數/函數/方法的英文命名規則">
+      <i class="fa fa-chevron-left"></i> [2023 15th鐵人賽] Day4 - 寫給菜鳥工程師有關變數/函數/方法的英文命名規則
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/ironman-2023-day-6/" rel="next" title="[2023 15th鐵人賽] Day6 - 你知道使用免費 Wi-Fi 時可能洩露機密訊息的途徑有哪些嗎">
+      [2023 15th鐵人賽] Day6 - 你知道使用免費 Wi-Fi 時可能洩露機密訊息的途徑有哪些嗎 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E6%96%87%E6%91%98%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">本文摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF%E6%BB%91%E5%8B%95%E5%BB%A3%E5%91%8A"><span class="nav-number">2.</span> <span class="nav-text">什麼是滑動廣告</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E6%9C%83%E6%83%A1%E5%90%8D%E6%98%AD%E5%BD%B0"><span class="nav-number">3.</span> <span class="nav-text">為什麼會惡名昭彰</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B8%BD%E7%B5%90"><span class="nav-number">4.</span> <span class="nav-text">總結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E9%97%9C%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="nav-number">5.</span> <span class="nav-text">相關程式碼</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BB%9E%E6%93%8A%E9%96%8B%E5%A7%8B%E6%99%82-touchstart-event"><span class="nav-number">5.1.</span> <span class="nav-text">點擊開始時 (touchstart event)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%95%B6%E6%89%8B%E6%8C%87%E5%9C%A8%E9%BB%9E%E6%93%8A%E6%99%82%E7%A7%BB%E5%8B%95-touchmove-event"><span class="nav-number">5.2.</span> <span class="nav-text">當手指在點擊時移動 (touchmove event)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B5%90%E6%9D%9F%E9%BB%9E%E6%93%8A%E6%99%82-touchend-event"><span class="nav-number">5.3.</span> <span class="nav-text">結束點擊時 (touchend event)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%9B%E8%A8%80%E4%B9%8B%EF%BC%8C%E9%80%99%E4%BA%9B%E6%93%8D%E4%BD%9C%E4%BB%A3%E8%A1%A8%E4%BB%80%E9%BA%BC"><span class="nav-number">5.4.</span> <span class="nav-text">換言之，這些操作代表什麼</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AA%A4%E8%A7%B8%E5%BB%A3%E5%91%8A%E4%B8%8D%E5%83%85%E6%90%8D%E5%AE%B3%E4%BD%BF%E7%94%A8%E8%80%85%E9%AB%94%E9%A9%97%EF%BC%8C%E4%B9%9F%E9%99%8D%E4%BD%8E%E5%BB%A3%E5%91%8A%E4%B8%BB%E7%9A%84%E5%93%81%E7%89%8C%E5%83%B9%E5%80%BC"><span class="nav-number">6.</span> <span class="nav-text">誤觸廣告不僅損害使用者體驗，也降低廣告主的品牌價值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Release-Note"><span class="nav-number">7.</span> <span class="nav-text">Release Note</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2023-08-7"><span class="nav-number">7.1.</span> <span class="nav-text">2023&#x2F;08&#x2F;7</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2023-08-08"><span class="nav-number">7.2.</span> <span class="nav-text">2023&#x2F;08&#x2F;08</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2023-08-10"><span class="nav-number">7.3.</span> <span class="nav-text">2023&#x2F;08&#x2F;10</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Heidi Liu"
+      src="https://avatars3.githubusercontent.com/u/65410665?s=460&u=887bd602944dcf78b90f3a880b03aec4e086728a&v=4">
+  <p class="site-author-name" itemprop="name">Heidi Liu</p>
+  <div class="site-description" itemprop="description">海底修羅場｜日々進化中</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">125</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">103</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Heidi Liu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="總字數">715k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">10:50</span>
+</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

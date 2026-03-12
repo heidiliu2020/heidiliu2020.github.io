@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/apple-icon.png" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="前端優化關於前端優化方式，可從下列幾個方向進行：  資源本身的大小 資源載入的方式 資源執行的方式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[week 13] 前端進階 - 如何優化執行 CSS 效能">
+<meta property="og:url" content="https://heidiliu2020.github.io/css-optimization/index.html">
+<meta property="og:site_name" content="前端新米">
+<meta property="og:description" content="前端優化關於前端優化方式，可從下列幾個方向進行：  資源本身的大小 資源載入的方式 資源執行的方式">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/sywJHI7.png">
+<meta property="og:image" content="https://i.imgur.com/XV6V5ak.png">
+<meta property="og:image" content="https://i.imgur.com/8n3U6Qj.png">
+<meta property="article:published_time" content="2020-09-30T10:20:00.000Z">
+<meta property="article:modified_time" content="2026-03-12T07:57:38.565Z">
+<meta property="article:author" content="Heidi Liu">
+<meta property="article:tag" content="Front-End">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/sywJHI7.png">
+
+<link rel="canonical" href="https://heidiliu2020.github.io/css-optimization/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>[week 13] 前端進階 - 如何優化執行 CSS 效能 | 前端新米</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端新米</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Heidi's Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://heidiliu2020.github.io/css-optimization/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/65410665?s=460&u=887bd602944dcf78b90f3a880b03aec4e086728a&v=4">
+      <meta itemprop="name" content="Heidi Liu">
+      <meta itemprop="description" content="海底修羅場｜日々進化中">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端新米">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [week 13] 前端進階 - 如何優化執行 CSS 效能
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-09-30 18:20:00" itemprop="dateCreated datePublished" datetime="2020-09-30T18:20:00+08:00">2020-09-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2026-03-12 15:57:38" itemprop="dateModified" datetime="2026-03-12T15:57:38+08:00">2026-03-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index"><span itemprop="name">Front-End</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Front-End/HTML-CSS/" itemprop="url" rel="index"><span itemprop="name">HTML & CSS</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>1k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>1 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前端優化"><a href="#前端優化" class="headerlink" title="前端優化"></a>前端優化</h2><p>關於前端優化方式，可從下列幾個方向進行：</p>
+<ul>
+<li>資源本身的大小</li>
+<li>資源載入的方式</li>
+<li>資源執行的方式<span id="more"></span>
+<h2 id="CSS-優化"><a href="#CSS-優化" class="headerlink" title="CSS 優化"></a>CSS 優化</h2></li>
+</ul>
+<h3 id="節省資源大小"><a href="#節省資源大小" class="headerlink" title="節省資源大小"></a>節省資源大小</h3><ul>
+<li>Minify：省略空白字元，電腦可直接辨識<ul>
+<li>例如：<code>nps sass --style=compressed main.sass masin.css</code></li>
+</ul>
+</li>
+<li>gzip*：壓縮，會進行編碼，通常是在 server 端進行，電腦會經過解碼後再使用</li>
+</ul>
+<p>通常會先進行 Minify 再進行 gzip*，藉此壓縮資源大小。</p>
+<h3 id="載入方式"><a href="#載入方式" class="headerlink" title="載入方式"></a>載入方式</h3><ul>
+<li>Critical CSS：分批載入，先載入重要的部分<ul>
+<li>例如：把 navbar、banner 樣式放到 index.html，在讀取 css 之前即可先被載入</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/sywJHI7.png"></p>
+<ul>
+<li>CSS Sprites：將每個小檔案打包後，只需發出一個 Request  ，載入完成後再拆開引用<ul>
+<li>例如：將小圖片打包成大圖片，再取用需要的區塊</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/XV6V5ak.png"></p>
+<ul>
+<li>Cache*：將資料暫存在瀏覽器，只有第一次登入網站需下載，之後就能快速讀取暫存檔</li>
+</ul>
+<p><img src="https://i.imgur.com/8n3U6Qj.png"></p>
+<h3 id="執行方式"><a href="#執行方式" class="headerlink" title="執行方式"></a>執行方式</h3><ul>
+<li><p>選擇器：降低選擇器的複雜性</p>
+<ul>
+<li>例如：使用 Sass 巢狀語法時，需考慮到編譯後程式碼的複雜性</li>
+</ul>
+</li>
+<li><p>屬性渲染：需考慮到屬性載入的順序</p>
+<ul>
+<li>例如：特效網頁或有 SEO 考量的網站，需注意動畫或特效會在哪個階段匯入</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="CSS-Sprites-與-Data-URI-的優缺點"><a href="#CSS-Sprites-與-Data-URI-的優缺點" class="headerlink" title="CSS Sprites 與 Data URI 的優缺點"></a>CSS Sprites 與 Data URI 的優缺點</h2><h3 id="CSS-Sprites"><a href="#CSS-Sprites" class="headerlink" title="CSS Sprites"></a>CSS Sprites</h3><p>CSS Sprite 是將頁面中所使用到的小圖片整合到一張大圖上。也就是說，在加載一個包含多個圖片的頁面上時，只需使用一個HTTP請求而不需要 JavaScript 代碼。</p>
+<ul>
+<li>優點：減少 http 請求</li>
+<li>缺點：圖片合併定位費時費力</li>
+</ul>
+<h4 id="使用技巧"><a href="#使用技巧" class="headerlink" title="使用技巧"></a>使用技巧</h4><ul>
+<li>切圖前就需構思拼接好圖片</li>
+<li>排序有序，便於後期維護。有利於 background-position 定位</li>
+<li>定位時避免使用 right, bottom 等</li>
+<li>合理預留空白位置（空太多檔案變大，太小引起圖示重疊）</li>
+</ul>
+<h3 id="Data-URI"><a href="#Data-URI" class="headerlink" title="Data URI"></a>Data URI</h3><p>image data URI 是將圖片資源轉換為 base64 字串格式嵌到頁面或樣式中。不需要圖片的請求連結。</p>
+<ul>
+<li>優點：<ul>
+<li>減少 HTTP 請求</li>
+<li>避免某些檔案跨域</li>
+<li>無圖片快取等問題</li>
+</ul>
+</li>
+<li>缺點：<ul>
+<li>相容性（IE6,7 不相容，可使用 MHTML 來解決）</li>
+<li>瀏覽器不會快取該圖片</li>
+<li>增加 css 檔案大小</li>
+<li>編碼成本及維護</li>
+</ul>
+</li>
+</ul>
+<h4 id="使用技巧-1"><a href="#使用技巧-1" class="headerlink" title="使用技巧"></a>使用技巧</h4><ul>
+<li>data URI 可使用在：<ul>
+<li>圖片尺寸很小，使用一條 http 請求有點浪費，如：漸變背景框</li>
+<li>圖片在全站大規模使用，且很少被更新的，如：loading 圖</li>
+</ul>
+</li>
+<li>標籤語法<ul>
+<li>data：取得資料協議</li>
+<li>image/png：取得資料的協議名稱（注意這裡也圖片資源也可以使用字型等）</li>
+<li>base64：資料編碼方式</li>
+<li>iVBOR…：編碼後資料</li>
+</ul>
+</li>
+</ul>
+<p>參考資料：</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9jb2RlcnR3LmNvbS8lRTUlODklOEQlRTclQUIlQUYlRTklOTYlOEIlRTclOTklQkMvMTg0MDAzLyNvdXRsaW5lX18x" title="https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/184003/#outline__1">主流CSS image比較<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cub3NjaGluYS5uZXQvdHJhbnNsYXRlL2Nzcy1zcHJpdGVzLXZzLWRhdGEtdXJpcy13aGljaC1pcy1mYXN0ZXItb24tbW9iaWxlP3ByaW50" title="https://www.oschina.net/translate/css-sprites-vs-data-uris-which-is-faster-on-mobile?print">CSS Sprites vs. Data URIs:在移动端，谁更快？<i class="fa fa-external-link"></i></span></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Front-End/" rel="tag"># Front-End</a>
+              <a href="/tags/CSS/" rel="tag"># CSS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/mtr04-plugin/" rel="prev" title="[week 13] MTR04 - 實作留言版 plugin">
+      <i class="fa fa-chevron-left"></i> [week 13] MTR04 - 實作留言版 plugin
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/fetch-promise/" rel="next" title="[week 13] Fetch & Promise 補充">
+      [week 13] Fetch & Promise 補充 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E5%84%AA%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">前端優化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS-%E5%84%AA%E5%8C%96"><span class="nav-number">2.</span> <span class="nav-text">CSS 優化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AF%80%E7%9C%81%E8%B3%87%E6%BA%90%E5%A4%A7%E5%B0%8F"><span class="nav-number">2.1.</span> <span class="nav-text">節省資源大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BC%89%E5%85%A5%E6%96%B9%E5%BC%8F"><span class="nav-number">2.2.</span> <span class="nav-text">載入方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%B7%E8%A1%8C%E6%96%B9%E5%BC%8F"><span class="nav-number">2.3.</span> <span class="nav-text">執行方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS-Sprites-%E8%88%87-Data-URI-%E7%9A%84%E5%84%AA%E7%BC%BA%E9%BB%9E"><span class="nav-number">3.</span> <span class="nav-text">CSS Sprites 與 Data URI 的優缺點</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS-Sprites"><span class="nav-number">3.1.</span> <span class="nav-text">CSS Sprites</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7"><span class="nav-number">3.1.1.</span> <span class="nav-text">使用技巧</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-URI"><span class="nav-number">3.2.</span> <span class="nav-text">Data URI</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">使用技巧</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Heidi Liu"
+      src="https://avatars3.githubusercontent.com/u/65410665?s=460&u=887bd602944dcf78b90f3a880b03aec4e086728a&v=4">
+  <p class="site-author-name" itemprop="name">Heidi Liu</p>
+  <div class="site-description" itemprop="description">海底修羅場｜日々進化中</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">125</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">103</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Heidi Liu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="總字數">715k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">10:50</span>
+</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

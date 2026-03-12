@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/apple-icon.png" color="#222">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="本篇為 [BE101] 用 PHP 與 MySQL 學習後端基礎 這門課程的學習筆記。如有錯誤歡迎指正。   hw2：Todo List">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[week 12] 結合前端與後端功能實作 Todo List">
+<meta property="og:url" content="https://heidiliu2020.github.io/php-todolist/index.html">
+<meta property="og:site_name" content="前端新米">
+<meta property="og:description" content="本篇為 [BE101] 用 PHP 與 MySQL 學習後端基礎 這門課程的學習筆記。如有錯誤歡迎指正。   hw2：Todo List">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2020-09-26T06:20:00.000Z">
+<meta property="article:modified_time" content="2026-03-12T07:57:38.578Z">
+<meta property="article:author" content="Heidi Liu">
+<meta property="article:tag" content="Back-End">
+<meta property="article:tag" content="PHP">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://heidiliu2020.github.io/php-todolist/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>[week 12] 結合前端與後端功能實作 Todo List | 前端新米</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">前端新米</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Heidi's Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://heidiliu2020.github.io/php-todolist/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/65410665?s=460&u=887bd602944dcf78b90f3a880b03aec4e086728a&v=4">
+      <meta itemprop="name" content="Heidi Liu">
+      <meta itemprop="description" content="海底修羅場｜日々進化中">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端新米">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [week 12] 結合前端與後端功能實作 Todo List
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-09-26 14:20:00" itemprop="dateCreated datePublished" datetime="2020-09-26T14:20:00+08:00">2020-09-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2026-03-12 15:57:38" itemprop="dateModified" datetime="2026-03-12T15:57:38+08:00">2026-03-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Back-End/" itemprop="url" rel="index"><span itemprop="name">Back-End</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Back-End/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>7.9k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>7 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>本篇為 <span class="exturl" data-url="aHR0cHM6Ly9saWRlbXkuY29tL3AvYmUxMDEtcGhwLW15c3Fs" title="https://lidemy.com/p/be101-php-mysql">[BE101] 用 PHP 與 MySQL 學習後端基礎<i class="fa fa-external-link"></i></span> 這門課程的學習筆記。如有錯誤歡迎指正。</p>
+</blockquote>
+<blockquote>
+<p>hw2：<span class="exturl" data-url="aHR0cDovL21lbnRvci1wcm9ncmFtLmNvL210cjA0Z3JvdXAyL0hlaWRpL3dlZWsxMi9odzIvaW5kZXguaHRtbA==" title="http://mentor-program.co/mtr04group2/Heidi/week12/hw2/index.html">Todo List<i class="fa fa-external-link"></i></span></p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="前端實作"><a href="#前端實作" class="headerlink" title="前端實作"></a>前端實作</h2><h3 id="目標功能："><a href="#目標功能：" class="headerlink" title="目標功能："></a>目標功能：</h3><ul>
+<li>新增功能：add</li>
+<li>刪除功能：delete</li>
+<li>編輯功能：update</li>
+<li>更新狀態功能：checked / unchecked</li>
+<li>切換列表：All / Active / Completed </li>
+<li>清除所有 todo：Clear</li>
+</ul>
+<p>以上功能只要利用前端就能達成，程式碼如下：</p>
+<h3 id="前端介面"><a href="#前端介面" class="headerlink" title="前端介面"></a>前端介面</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;Week12 Todo List&lt;/title&gt;</span><br><span class="line">  &lt;script src=&quot;https://code.jquery.com/jquery-3.5.1.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css&quot;</span><br><span class="line">    integrity=&quot;sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z&quot; crossorigin=&quot;anonymous&quot;&gt;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">  &lt;div class=&quot;wrapper&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;todo__header&quot;&gt;</span><br><span class="line">      &lt;button type=&quot;button&quot; class=&quot;btn btn-save&quot; href=&quot;#&quot;&gt;Save&lt;/button&gt;</span><br><span class="line">      &lt;button type=&quot;button&quot; class=&quot;btn clear-all&quot; href=&quot;#&quot;&gt;Reset&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;h1&gt;Todo List&lt;/h1&gt;</span><br><span class="line">    &lt;div class=&quot;todo__input-block&quot;&gt;</span><br><span class="line">      &lt;input class=&quot;todo__input&quot; type=&quot;text&quot; placeholder=&quot;Add New Todo Here...&quot; minlength=&quot;1&quot; maxlength=&quot;128&quot;&gt;</span><br><span class="line">      &lt;button class=&quot;btn-new&quot;&gt;&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  </span><br><span class="line">    &lt;ul class=&quot;nav nav-middle justify-content-center todo__status&quot;&gt;</span><br><span class="line">      &lt;li class=&quot;nav-item&quot;&gt;</span><br><span class="line">        &lt;a class=&quot;nav-link active&quot; href=&quot;#&quot; data-filter=&quot;all&quot;&gt;All&lt;/a&gt;</span><br><span class="line">      &lt;/li&gt;</span><br><span class="line">      &lt;li class=&quot;nav-item&quot;&gt;</span><br><span class="line">        &lt;a class=&quot;nav-link&quot; href=&quot;#&quot; data-filter=&quot;in-progress&quot;&gt;In Progress&lt;/a&gt;</span><br><span class="line">      &lt;/li&gt;</span><br><span class="line">      &lt;li class=&quot;nav-item&quot;&gt;</span><br><span class="line">        &lt;a class=&quot;nav-link&quot; href=&quot;#&quot; data-filter=&quot;completed&quot;&gt;Completed&lt;/a&gt;</span><br><span class="line">      &lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">    &lt;ul class=&quot;todo__list&quot;&gt;</span><br><span class="line">      &lt;!-- 要新增 template 的區塊 --&gt;</span><br><span class="line">      &lt;li class=&quot;todo&quot;&gt;</span><br><span class="line">        &lt;input class=&quot;todo__check&quot; type=&quot;checkbox&quot; id=&quot;todo-0&quot;&gt;</span><br><span class="line">        &lt;label class=&quot;todo__title&quot; for=&quot;todo&quot;&gt;Coding&lt;/label&gt;</span><br><span class="line">        &lt;button class=&quot;btn-delete&quot;&gt;&lt;/button&gt;</span><br><span class="line">      &lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="前端-JavaScript"><a href="#前端-JavaScript" class="headerlink" title="前端 JavaScript"></a>前端 JavaScript</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">let</span> id = <span class="number">1</span>; </span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> template = <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;li class=&quot;todo&quot;&gt;</span></span><br><span class="line"><span class="string">      &lt;input class=&quot;todo__check&quot; type=&quot;checkbox&quot; id=&quot;todo-&#123;id&#125;&quot;&gt;</span></span><br><span class="line"><span class="string">      &lt;label class=&quot;todo__title&quot; for=&quot;todo-&#123;id&#125;&quot;&gt;&#123;content&#125;&lt;/label&gt;</span></span><br><span class="line"><span class="string">      &lt;button class=&quot;btn-delete&quot;&gt;&lt;/button&gt;</span></span><br><span class="line"><span class="string">    &lt;/li&gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">  <span class="comment">// 新增功能: 點擊</span></span><br><span class="line">  $(<span class="string">&#x27;.btn-new&#x27;</span>).<span class="title function_">click</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">addTodo</span>()</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="comment">// 新增功能: 按 Enter</span></span><br><span class="line">  $(<span class="string">&#x27;.todo__input&#x27;</span>).<span class="title function_">keydown</span>(<span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (e.<span class="property">key</span> === <span class="string">&#x27;Enter&#x27;</span>) &#123;</span><br><span class="line">      <span class="title function_">addTodo</span>()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 刪除功能: 利用事件代理</span></span><br><span class="line">  $(<span class="string">&#x27;.todo__list&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, <span class="string">&#x27;.btn-delete&#x27;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    $(e.<span class="property">target</span>).<span class="title function_">parent</span>().<span class="title function_">remove</span>();</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 標記狀態: 已完成 / 未完成</span></span><br><span class="line">  $(<span class="string">&#x27;.todo__list&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;change&#x27;</span>, <span class="string">&#x27;.todo__check&#x27;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> target = $(e.<span class="property">target</span>);</span><br><span class="line">    <span class="keyword">const</span> isChecked = target.<span class="title function_">is</span>(<span class="string">&quot;:checked&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (isChecked) &#123;</span><br><span class="line">      target.<span class="title function_">parents</span>(<span class="string">&#x27;.todo&#x27;</span>).<span class="title function_">addClass</span>(<span class="string">&#x27;checked&#x27;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      target.<span class="title function_">parents</span>(<span class="string">&#x27;.todo&#x27;</span>).<span class="title function_">removeClass</span>(<span class="string">&#x27;checked&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 篩選 todo 狀態</span></span><br><span class="line">  $(<span class="string">&#x27;.todo__status&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> target = $(e.<span class="property">target</span>);</span><br><span class="line">    <span class="keyword">const</span> filter = target.<span class="title function_">attr</span>(<span class="string">&#x27;data-filter&#x27;</span>);</span><br><span class="line">    $(<span class="string">&#x27;.todo__status a.active&#x27;</span>).<span class="title function_">removeClass</span>(<span class="string">&#x27;active&#x27;</span>);</span><br><span class="line">    target.<span class="title function_">addClass</span>(<span class="string">&#x27;active&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (filter === <span class="string">&#x27;all&#x27;</span>) &#123;</span><br><span class="line">      $(<span class="string">&#x27;.todo&#x27;</span>).<span class="title function_">show</span>();</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (filter === <span class="string">&#x27;in-progress&#x27;</span>) &#123;</span><br><span class="line">      $(<span class="string">&#x27;.todo&#x27;</span>).<span class="title function_">show</span>();</span><br><span class="line">      $(<span class="string">&#x27;.todo.checked&#x27;</span>).<span class="title function_">hide</span>();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;        <span class="comment">// completed</span></span><br><span class="line">      $(<span class="string">&#x27;.todo&#x27;</span>).<span class="title function_">hide</span>();</span><br><span class="line">      $(<span class="string">&#x27;.todo.checked&#x27;</span>).<span class="title function_">show</span>();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 清除所有 todo</span></span><br><span class="line">  $(<span class="string">&#x27;.clear-all&#x27;</span>).<span class="title function_">click</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    $(<span class="string">&#x27;.todo&#x27;</span>).<span class="title function_">remove</span>();</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 儲存 todo</span></span><br><span class="line">  $(<span class="string">&#x27;.btn-save&#x27;</span>).<span class="title function_">click</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> todos = [];</span><br><span class="line">    $(<span class="string">&#x27;.todo&#x27;</span>).<span class="title function_">each</span>(<span class="function">(<span class="params">i, element</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> input = $(element).<span class="title function_">find</span>(<span class="string">&#x27;.todo__check&#x27;</span>);</span><br><span class="line">      <span class="keyword">const</span> label = $(element).<span class="title function_">find</span>(<span class="string">&#x27;.todo__title&#x27;</span>);</span><br><span class="line">      todos.<span class="title function_">push</span>(&#123;</span><br><span class="line">        <span class="attr">id</span>: input.<span class="title function_">attr</span>(<span class="string">&#x27;id&#x27;</span>).<span class="title function_">replace</span>(<span class="string">&#x27;todo-&#x27;</span>, <span class="string">&#x27;&#x27;</span>),      <span class="comment">// 把 todo-id 的 todo- 換成空字串</span></span><br><span class="line">        <span class="attr">content</span>: label.<span class="title function_">text</span>(),</span><br><span class="line">        <span class="attr">isDone</span>: $(element).<span class="title function_">hasClass</span>(<span class="string">&#x27;checked&#x27;</span>)</span><br><span class="line">      &#125;);    </span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(todos);       <span class="comment">// 將 JS 物件轉換成 JSON 字串</span></span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">addTodo</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> value = $(<span class="string">&#x27;.todo__input&#x27;</span>).<span class="title function_">val</span>();</span><br><span class="line">    <span class="keyword">if</span> (!value) <span class="keyword">return</span>;</span><br><span class="line">    $(<span class="string">&#x27;.todo__list&#x27;</span>).<span class="title function_">prepend</span>(</span><br><span class="line">      template</span><br><span class="line">        .<span class="title function_">replace</span>(<span class="string">&#x27;&#123;content&#125;&#x27;</span>, <span class="built_in">escape</span>(value))</span><br><span class="line">        .<span class="title function_">replace</span>(<span class="regexp">/&#123;id&#125;/g</span>, id)</span><br><span class="line">    );</span><br><span class="line">    id += <span class="number">1</span>;</span><br><span class="line">    $(<span class="string">&#x27;.todo__input&#x27;</span>).<span class="title function_">val</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">escape</span>(<span class="params">toOutput</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> toOutput</span><br><span class="line">      .<span class="title function_">replace</span>(<span class="regexp">/&amp;/g</span>, <span class="string">&#x27;&amp;amp;&#x27;</span>)</span><br><span class="line">      .<span class="title function_">replace</span>(<span class="regexp">/&lt;/g</span>, <span class="string">&#x27;&amp;lt;&#x27;</span>)</span><br><span class="line">      .<span class="title function_">replace</span>(<span class="regexp">/&gt;/g</span>, <span class="string">&#x27;&amp;gt;&#x27;</span>)</span><br><span class="line">      .<span class="title function_">replace</span>(<span class="regexp">/&quot;/g</span>, <span class="string">&#x27;&amp;quot;&#x27;</span>)</span><br><span class="line">      .<span class="title function_">replace</span>(<span class="regexp">/&#x27;/g</span>, <span class="string">&#x27;&amp;#039;&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="前後端串接"><a href="#前後端串接" class="headerlink" title="前後端串接"></a>前後端串接</h2><h3 id="目標功能"><a href="#目標功能" class="headerlink" title="目標功能"></a>目標功能</h3><ul>
+<li>儲存功能：Save</li>
+</ul>
+<h3 id="PHP-API"><a href="#PHP-API" class="headerlink" title="PHP API"></a>PHP API</h3><p>將前端得到的資料 <code>JSON.stringify(todos)</code>，利用 Ajax 方式 POST 到資料庫：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 儲存 todo</span></span><br><span class="line">$(<span class="string">&#x27;.btn-save&#x27;</span>).<span class="title function_">click</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> todos = [];</span><br><span class="line">  $(<span class="string">&#x27;.todo&#x27;</span>).<span class="title function_">each</span>(<span class="function">(<span class="params">i, element</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> input = $(element).<span class="title function_">find</span>(<span class="string">&#x27;.todo__check&#x27;</span>);</span><br><span class="line">    <span class="keyword">const</span> label = $(element).<span class="title function_">find</span>(<span class="string">&#x27;.todo__title&#x27;</span>);</span><br><span class="line">    todos.<span class="title function_">push</span>(&#123;</span><br><span class="line">      <span class="attr">id</span>: input.<span class="title function_">attr</span>(<span class="string">&#x27;id&#x27;</span>).<span class="title function_">replace</span>(<span class="string">&#x27;todo-&#x27;</span>, <span class="string">&#x27;&#x27;</span>),      <span class="comment">// 把 todo-id 的 todo- 換成空字串</span></span><br><span class="line">      <span class="attr">content</span>: label.<span class="title function_">text</span>(),</span><br><span class="line">      <span class="attr">isDone</span>: $(element).<span class="title function_">hasClass</span>(<span class="string">&#x27;checked&#x27;</span>)</span><br><span class="line">    &#125;);    </span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">const</span> data = <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(todos);       <span class="comment">// 將 JS 物件轉換成 JSON 字串</span></span><br><span class="line">  $.<span class="title function_">ajax</span>(&#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&#x27;http://localhost/heidi/week12_local/hw2/api_add_todo.php&#x27;</span>,</span><br><span class="line">    <span class="attr">data</span>: &#123;</span><br><span class="line">      <span class="attr">todo</span>: data</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">success</span>: <span class="keyword">function</span>(<span class="params">resp</span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> respId = resp.<span class="property">id</span></span><br><span class="line">      <span class="variable language_">window</span>.<span class="property">location</span> = <span class="string">&#x27;index.html?id=&#x27;</span> + respId;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">error</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">      <span class="title function_">alert</span>(<span class="string">&#x27;Error!&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>如此即可利用前端 JavaScript 從後端拿取 JSON 格式的資料，並用 <code>JSON.parse()</code> 將 JSON 字串轉換成 JavaScript 物件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// URLSearchParams(): 解析網址參數</span></span><br><span class="line"><span class="keyword">const</span> serchParams = <span class="keyword">new</span> <span class="title class_">URLSearchParams</span>(<span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">search</span>);  <span class="comment">// ?id=...</span></span><br><span class="line"><span class="keyword">const</span> todoId = serchParams.<span class="title function_">get</span>(<span class="string">&#x27;id&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (todoId) &#123;</span><br><span class="line">  $.<span class="title function_">getJSON</span>(<span class="string">&#x27;http://localhost/heidi/week12_local/hw2/api_get_todo.php?id=&#x27;</span> + todoId, <span class="keyword">function</span> (<span class="params">data</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> todos = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(data.<span class="property">data</span>.<span class="property">todo</span>);</span><br><span class="line">    <span class="title function_">restoreTodos</span>(todos);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>將拿到的資料再以 JS 處理新增到頁面，把模版 template 加上 content、id、todoClass：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">restoreTodos</span>(<span class="params">todos</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (todos.<span class="property">length</span> === <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">  <span class="comment">// id 要從讀取的最後一個 todo id 繼續增加</span></span><br><span class="line">  id = todos[todos.<span class="property">length</span> - <span class="number">1</span>].<span class="property">id</span> + <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; todos.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">const</span> todo = todos[i];</span><br><span class="line">    $(<span class="string">&#x27;.todo__list&#x27;</span>).<span class="title function_">prepend</span>(</span><br><span class="line">      template</span><br><span class="line">        .<span class="title function_">replace</span>(<span class="string">&#x27;&#123;content&#125;&#x27;</span>, <span class="built_in">escape</span>(todo.<span class="property">content</span>))</span><br><span class="line">        .<span class="title function_">replace</span>(<span class="regexp">/&#123;id&#125;/g</span>, todo.<span class="property">id</span>)</span><br><span class="line">        .<span class="title function_">replace</span>(<span class="string">&#x27;&#123;todoClass&#125;&#x27;</span>, todo.<span class="property">isDone</span> ? <span class="string">&#x27;checked&#x27;</span> : <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Single-Page-Application"><a href="#Single-Page-Application" class="headerlink" title="Single Page Application"></a>Single Page Application</h2><p>Single Page Application（單頁面應用程式），簡稱 SPA。是前端利用 Ajax 以非同步方式串接後端 API，如此可將前後端分離，在交換資料時不需換頁，可透過動態方式更新部分頁面。</p>
+<p>而早期的網頁主要採用 Multiple Page Application（多頁式應用程式）設計，與 SPA 概念相對應，每次交換資料時都需換頁。</p>
+<h2 id="SPA-的優缺點"><a href="#SPA-的優缺點" class="headerlink" title="SPA 的優缺點"></a>SPA 的優缺點</h2><h3 id="優點"><a href="#優點" class="headerlink" title="優點"></a>優點</h3><ol>
+<li>增進使用者體驗<br>不需換頁即可載入新的資訊。例如 Gmail 或影音播放網站，可以在播放音樂的同時，繼續瀏覽網站其他資訊。</li>
+<li>前後端分離<br>後端只需負責制定 API 文件，提供前端資料。前端則利用 Ajax 從後端拿取資料，並以 JavaScript 在 html 動態產生內容。</li>
+</ol>
+<h3 id="缺點"><a href="#缺點" class="headerlink" title="缺點"></a>缺點</h3><ol>
+<li>SEO（搜尋引擎最佳化）較差<br>由於 SPA 是利用 JavaScript 動態產生內容，檢視原始碼會發現原始內容是空的，<br>解決方法：第一次頁面由 Server side render，之後的操作都改用 Client side render，就可以保證搜尋引擎也能爬到完整的 HTML。</li>
+<li>前端工作複雜化<br>原先是利用不同路由處理不同功能，改成由單一頁面統一管理，就像在網頁上實作 APP。</li>
+<li>初次載入頁面費時<br>初次瀏覽頁面時會需要下載 JavaScript 或是其他頁面的 template。</li>
+</ol>
+<h2 id="由後端負責提供只輸出資料的-API-vs-PHP-直接輸出內容"><a href="#由後端負責提供只輸出資料的-API-vs-PHP-直接輸出內容" class="headerlink" title="由後端負責提供只輸出資料的 API vs PHP 直接輸出內容"></a>由後端負責提供只輸出資料的 API vs PHP 直接輸出內容</h2><h3 id="後端負責提供只輸出資料的-API"><a href="#後端負責提供只輸出資料的-API" class="headerlink" title="後端負責提供只輸出資料的 API"></a>後端負責提供只輸出資料的 API</h3><ul>
+<li>Server 端接收到請求，會回傳 JSON 或其他特定格式的資料給前端，瀏覽器再將資料動態更新至頁面</li>
+<li>因為是動態產生資料，檢視原始碼會發現動態更新的內容是空的</li>
+</ul>
+<h3 id="PHP-直接輸出內容"><a href="#PHP-直接輸出內容" class="headerlink" title="PHP 直接輸出內容"></a>PHP 直接輸出內容</h3><ul>
+<li>Server 端接收到請求，會將所需資料與頁面經處理後回傳 html 檔給前端，瀏覽器透過重整頁面顯示</li>
+<li>因此回傳的頁面，檢視原始碼是有包含資料的</li>
+</ul>
+<p>參考資料：</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL0BodWxpdHcvaW50cm9kdWN0aW9uLW12Yy1zcGEtYW5kLXNzci01NDVjOTQxNjY5ZTk=" title="https://medium.com/@hulitw/introduction-mvc-spa-and-ssr-545c941669e9">跟著小明一起搞懂技術名詞：MVC、SPA 與 SSR<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLnRlY2hicmlkZ2UuY2MvMjAxNy8wOS8xNi9mcm9udGVuZC1iYWNrZW5kLW12Yy8=" title="https://blog.techbridge.cc/2017/09/16/frontend-backend-mvc/">前後端分離與 SPA<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9pdGhlbHAuaXRob21lLmNvbS50dy9hcnRpY2xlcy8xMDE2MDcwOQ==" title="https://ithelp.ithome.com.tw/articles/10160709">Day20– 前端小字典三十天【每日一字】– SPA<i class="fa fa-external-link"></i></span></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Back-End/" rel="tag"># Back-End</a>
+              <a href="/tags/PHP/" rel="tag"># PHP</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/php-blog/" rel="prev" title="[week 11] 利用 PHP 實作陽春部落格">
+      <i class="fa fa-chevron-left"></i> [week 11] 利用 PHP 實作陽春部落格
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/php-api/" rel="next" title="[week 12] 利用 PHP 實作留言板 - API 篇">
+      [week 12] 利用 PHP 實作留言板 - API 篇 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E5%AF%A6%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">前端實作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%AE%E6%A8%99%E5%8A%9F%E8%83%BD%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">目標功能：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E4%BB%8B%E9%9D%A2"><span class="nav-number">1.2.</span> <span class="nav-text">前端介面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF-JavaScript"><span class="nav-number">1.3.</span> <span class="nav-text">前端 JavaScript</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E5%BE%8C%E7%AB%AF%E4%B8%B2%E6%8E%A5"><span class="nav-number">2.</span> <span class="nav-text">前後端串接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%AE%E6%A8%99%E5%8A%9F%E8%83%BD"><span class="nav-number">2.1.</span> <span class="nav-text">目標功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP-API"><span class="nav-number">2.2.</span> <span class="nav-text">PHP API</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Single-Page-Application"><span class="nav-number">3.</span> <span class="nav-text">Single Page Application</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SPA-%E7%9A%84%E5%84%AA%E7%BC%BA%E9%BB%9E"><span class="nav-number">4.</span> <span class="nav-text">SPA 的優缺點</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%84%AA%E9%BB%9E"><span class="nav-number">4.1.</span> <span class="nav-text">優點</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%BA%E9%BB%9E"><span class="nav-number">4.2.</span> <span class="nav-text">缺點</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B1%E5%BE%8C%E7%AB%AF%E8%B2%A0%E8%B2%AC%E6%8F%90%E4%BE%9B%E5%8F%AA%E8%BC%B8%E5%87%BA%E8%B3%87%E6%96%99%E7%9A%84-API-vs-PHP-%E7%9B%B4%E6%8E%A5%E8%BC%B8%E5%87%BA%E5%85%A7%E5%AE%B9"><span class="nav-number">5.</span> <span class="nav-text">由後端負責提供只輸出資料的 API vs PHP 直接輸出內容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%8C%E7%AB%AF%E8%B2%A0%E8%B2%AC%E6%8F%90%E4%BE%9B%E5%8F%AA%E8%BC%B8%E5%87%BA%E8%B3%87%E6%96%99%E7%9A%84-API"><span class="nav-number">5.1.</span> <span class="nav-text">後端負責提供只輸出資料的 API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP-%E7%9B%B4%E6%8E%A5%E8%BC%B8%E5%87%BA%E5%85%A7%E5%AE%B9"><span class="nav-number">5.2.</span> <span class="nav-text">PHP 直接輸出內容</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Heidi Liu"
+      src="https://avatars3.githubusercontent.com/u/65410665?s=460&u=887bd602944dcf78b90f3a880b03aec4e086728a&v=4">
+  <p class="site-author-name" itemprop="name">Heidi Liu</p>
+  <div class="site-description" itemprop="description">海底修羅場｜日々進化中</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">125</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">103</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Heidi Liu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="總字數">715k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">10:50</span>
+</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
