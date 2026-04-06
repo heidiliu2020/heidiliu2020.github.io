@@ -20830,7 +20830,7 @@ GOを早く学ぶ：完全チュートリアル
     <title>【學習筆記】Claude Agent SDK：概觀與 Human-in-the-loop 機制</title>
     <url>/claude-agent-sdk/</url>
     <content><![CDATA[
-最近團隊在評估 AI Agent 技術，需要調查 Claude Agent SDK 是否能支援 Human-in-the-loop（人機協作） 以及 不同工作階段的 Agent workflow。
+最近在研究 AI Agent 技術，調查 Claude Agent SDK 是否能支援 Human-in-the-loop（人機協作） 以及 不同工作階段的 Agent workflow。
 這系列筆記整理了調查過程中的重點，主要參考 Anthropic 官方文件 和實際的 Demo 實作經驗，方便日後查詢。
 本篇會先介紹 Claude Agent SDK 的基本概念，以及 Human-in-the-loop 在 Agent 系統中的運作方式。
 
