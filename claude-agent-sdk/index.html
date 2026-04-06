@@ -24,16 +24,16 @@
     var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="最近在研究 AI Agent 技術，調查 Claude Agent SDK 是否能支援 Human-in-the-loop（人機協作） 以及 不同工作階段的 Agent workflow。 這系列筆記整理了調查過程中的重點，主要參考 Anthropic 官方文件 和實際的 Demo 實作經驗，方便日後查詢。 本篇會先介紹 Claude Agent SDK 的基本概念，以及 Human-in-th">
+  <meta name="description" content="最近在研究 AI Agent 技術，調查 Claude Agent SDK 是否能支援 Human-in-the-loop（人機協作） 以及 不同工作階段的 Agent workflow。 這系列筆記整理了調查過程中的重點，主要參考 Anthropic 官方文件 和實際的 Demo 實作經驗，方便日後查詢。本篇會先介紹 Claude Agent SDK 的基本概念，以及 Human-in-the">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【學習筆記】Claude Agent SDK：概觀與 Human-in-the-loop 機制">
 <meta property="og:url" content="https://heidiliu2020.github.io/claude-agent-sdk/index.html">
 <meta property="og:site_name" content="前端新米">
-<meta property="og:description" content="最近在研究 AI Agent 技術，調查 Claude Agent SDK 是否能支援 Human-in-the-loop（人機協作） 以及 不同工作階段的 Agent workflow。 這系列筆記整理了調查過程中的重點，主要參考 Anthropic 官方文件 和實際的 Demo 實作經驗，方便日後查詢。 本篇會先介紹 Claude Agent SDK 的基本概念，以及 Human-in-th">
+<meta property="og:description" content="最近在研究 AI Agent 技術，調查 Claude Agent SDK 是否能支援 Human-in-the-loop（人機協作） 以及 不同工作階段的 Agent workflow。 這系列筆記整理了調查過程中的重點，主要參考 Anthropic 官方文件 和實際的 Demo 實作經驗，方便日後查詢。本篇會先介紹 Claude Agent SDK 的基本概念，以及 Human-in-the">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://hackmd.io/_uploads/HJ6TA0x2bg.png">
 <meta property="article:published_time" content="2026-04-02T09:27:00.000Z">
-<meta property="article:modified_time" content="2026-04-06T07:24:41.785Z">
+<meta property="article:modified_time" content="2026-04-06T07:41:31.187Z">
 <meta property="article:author" content="Heidi Liu">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="Claude">
@@ -231,7 +231,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2026-04-06 15:24:41" itemprop="dateModified" datetime="2026-04-06T15:24:41+08:00">2026-04-06</time>
+                <time title="修改時間：2026-04-06 15:41:31" itemprop="dateModified" datetime="2026-04-06T15:41:31+08:00">2026-04-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -270,8 +270,7 @@
       
         <p><img src="https://hackmd.io/_uploads/HJ6TA0x2bg.png" alt="claude"></p>
 <p>最近在研究 AI Agent 技術，調查 Claude Agent SDK 是否能支援 <strong>Human-in-the-loop（人機協作）</strong> 以及 <strong>不同工作階段的 Agent workflow</strong>。</p>
-<p>這系列筆記整理了調查過程中的重點，主要參考 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmFudGhyb3BpYy5jb20vZW4vZG9jcy9hZ2VudHMtYW5kLXRvb2xzL2NsYXVkZS1hZ2VudC1zZGs=" title="https://docs.anthropic.com/en/docs/agents-and-tools/claude-agent-sdk">Anthropic 官方文件<i class="fa fa-external-link"></i></span> 和實際的 Demo 實作經驗，方便日後查詢。</p>
-<p>本篇會先介紹 Claude Agent SDK 的基本概念，以及 Human-in-the-loop 在 Agent 系統中的運作方式。</p>
+<p>這系列筆記整理了調查過程中的重點，主要參考 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmFudGhyb3BpYy5jb20vZW4vZG9jcy9hZ2VudHMtYW5kLXRvb2xzL2NsYXVkZS1hZ2VudC1zZGs=" title="https://docs.anthropic.com/en/docs/agents-and-tools/claude-agent-sdk">Anthropic 官方文件<i class="fa fa-external-link"></i></span> 和實際的 Demo 實作經驗，方便日後查詢。本篇會先介紹 Claude Agent SDK 的基本概念，以及 Human-in-the-loop 在 Agent 系統中的運作方式。</p>
 <span id="more"></span>
 <hr>
 <h2 id="Claude-Agent-SDK-是什麼？"><a href="#Claude-Agent-SDK-是什麼？" class="headerlink" title="Claude Agent SDK 是什麼？"></a>Claude Agent SDK 是什麼？</h2><p><strong><span class="exturl" data-url="aHR0cHM6Ly9wbGF0Zm9ybS5jbGF1ZGUuY29tL2RvY3MvZW4vYWdlbnQtc2RrL292ZXJ2aWV3" title="https://platform.claude.com/docs/en/agent-sdk/overview">Claude Agent SDK<i class="fa fa-external-link"></i></span></strong> （前身為 Claude Code SDK）是 <span class="exturl" data-url="aHR0cHM6Ly93d3cuYW50aHJvcGljLmNvbS8=" title="https://www.anthropic.com/">Anthropic<i class="fa fa-external-link"></i></span> 官方提供的 SDK，讓開發者在自己的應用程式中嵌入 Claude 的 Agent 能力。</p>
