@@ -20819,6 +20819,7 @@ GOを早く学ぶ：完全チュートリアル
 ]]></content>
       <categories>
         <category>Back-End</category>
+        <category>golang</category>
       </categories>
       <tags>
         <tag>Back-End</tag>
@@ -20834,7 +20835,7 @@ GOを早く学ぶ：完全チュートリアル
 本篇會先介紹 Claude Agent SDK 的基本概念，以及 Human-in-the-loop 在 Agent 系統中的運作方式。
 
 
-Claude Agent SDK 是什麼？**Claude Agent SDK**（前身為 Claude Code SDK）是 Anthropic 官方提供的 SDK，讓開發者在自己的應用程式中嵌入 Claude 的 Agent 能力。
+Claude Agent SDK 是什麼？Claude Agent SDK （前身為 Claude Code SDK）是 Anthropic 官方提供的 SDK，讓開發者在自己的應用程式中嵌入 Claude 的 Agent 能力。
 簡單來說，就是把 Claude Code 的能力包成一個函式庫，讓使用者可以在 Web App、API Server 等場景中使用。
 
 

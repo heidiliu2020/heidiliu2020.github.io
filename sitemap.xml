@@ -13,7 +13,7 @@
   <url>
     <loc>https://heidiliu2020.github.io/golang/</loc>
     
-    <lastmod>2026-04-01</lastmod>
+    <lastmod>2026-04-06</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -2147,6 +2147,13 @@
   
   <url>
     <loc>https://heidiliu2020.github.io/categories/AI/</loc>
+    <lastmod>2026-04-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://heidiliu2020.github.io/categories/Back-End/golang/</loc>
     <lastmod>2026-04-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
