@@ -29,7 +29,7 @@ lang: ja
 
 * Email：[liuheidi2020@gmail.com](mailto:liuheidi2020@gmail.com)
 * 技術ノート：[HackMD](https://hackmd.io/@Heidi-Liu)
-* アウトドア・ライフ：[YouTube](https://www.youtube.com/@liusan_outdoor)
+* アウトドア・ライフ：[YouTube - @liusan_outdoor](https://www.youtube.com/@liusan_outdoor)
 * [Resume](https://www.cakeresume.com/jungting-liu)
 
 ---

@@ -30,7 +30,7 @@ If you notice anything incorrect or would like to connect, feel free to leave a 
 
 * Email: [liuheidi2020@gmail.com](mailto:liuheidi2020@gmail.com)
 * Tech notes: [HackMD](https://hackmd.io/@Heidi-Liu)
-* Outdoor life: [YouTube](https://www.youtube.com/@liusan_outdoor)
+* Outdoor life: [YouTube - @liusan_outdoor](https://www.youtube.com/@liusan_outdoor)
 * [Resume](https://www.cakeresume.com/jungting-liu)
 
 ---

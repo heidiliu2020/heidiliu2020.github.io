@@ -21,7 +21,7 @@ date: 2026-04-23 15:45:26
 
 * Email：[liuheidi2020@gmail.com](mailto:liuheidi2020@gmail.com)
 * 技術筆記：[HackMD](https://hackmd.io/@Heidi-Liu)
-* 戶外生活：[YouTube](https://www.youtube.com/@liusan_outdoor)
+* 戶外生活：[YouTube - @liusan_outdoor](https://www.youtube.com/@liusan_outdoor)
 * [Resume](https://www.cakeresume.com/jungting-liu)
 
 ---
