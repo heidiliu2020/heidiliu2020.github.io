@@ -5,8 +5,8 @@ layout: page
 lang: en
 ---
 
-Hi, I'm Heidi 👋
-I share the same name as *Heidi, Girl of the Alps*, and I guess I’m also someone who loves being outdoors.
+Hi, I'm Liusan — Liu is my surname and *-san* is the Japanese honorific, a little nod to my life in Tokyo. You can also call me Heidi 👋
+I share the English name with the girl from *Heidi of the Alps*, and I guess I'm also someone who loves being outdoors.
 
 I'm currently a Front-End Engineer based in Tokyo.
 
