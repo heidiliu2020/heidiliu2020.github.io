@@ -1,10 +1,11 @@
 title: '[INT101] 求職入門：準備方向 & 面試常見問題'
 author: Heidi Liu
 tags:
-  - lidemy
+  - Lidemy
   - Interview
 categories:
-  - lidemy
+  - 技術學習
+  - Lidemy
 date: 2022-05-15 21:45:00
 ---
 > 課程連結：[[INT101] 求職入門](https://lidemy.com/p/int101)

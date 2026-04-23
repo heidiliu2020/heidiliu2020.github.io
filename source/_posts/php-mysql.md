@@ -6,6 +6,7 @@ tags:
   - MySQL
   - Database
 categories:
+  - 技術學習
   - Back-End
   - PHP
 date: 2020-08-21 14:09:00

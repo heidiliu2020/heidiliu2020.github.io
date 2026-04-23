@@ -6,6 +6,7 @@ tags:
   - Claude
   - Structured Outputs
 categories:
+  - 技術學習
   - AI
 date: 2026-04-16 17:14:00
 ---

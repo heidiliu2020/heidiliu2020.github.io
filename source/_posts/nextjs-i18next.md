@@ -6,6 +6,7 @@ tags:
   - Next.js
   - i18n
 categories:
+  - 技術學習
   - Front-End
   - React
 date: 2024-04-23 16:44:00

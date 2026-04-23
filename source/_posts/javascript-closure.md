@@ -4,6 +4,7 @@ tags:
   - JavaScript
   - Closure
 categories:
+  - 技術學習
   - JavaScript
 date: 2020-10-20 00:25:00
 ---

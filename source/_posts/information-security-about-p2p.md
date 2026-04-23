@@ -4,7 +4,8 @@ tags:
   - Security
   - P2P
 categories:
-  - Note
+  - 技術學習
+  - Security
 date: 2022-11-29 17:25:00
 ---
 ![](https://i.imgur.com/dOrGjQy.png)

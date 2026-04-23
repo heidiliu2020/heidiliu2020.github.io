@@ -5,6 +5,7 @@ tags:
   - fetch
   - promise
 categories:
+  - 技術學習
   - Front-End
 date: 2020-09-30 20:20:00
 ---

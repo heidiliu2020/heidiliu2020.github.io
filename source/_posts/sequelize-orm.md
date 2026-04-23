@@ -5,6 +5,7 @@ tags:
   - Sequelize
   - Database
 categories:
+  - 技術學習
   - Back-End
   - Sequelize
 date: 2020-10-31 00:39:00

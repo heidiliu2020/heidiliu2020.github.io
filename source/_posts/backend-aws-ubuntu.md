@@ -5,6 +5,7 @@ tags:
   - Server
   - Database
 categories:
+  - 技術學習
   - Back-End
 date: 2020-10-03 00:12:00
 ---

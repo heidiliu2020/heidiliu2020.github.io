@@ -1,9 +1,10 @@
 title: '[week 5] 複習週 - 前四週學習與解題心得'
 author: Heidi Liu
 tags:
-  - lidemy
+  - Lidemy
 categories:
-  - lidemy
+  - 技術學習
+  - Lidemy
 date: 2020-07-19 13:45:00
 ---
 - Command line 的使用

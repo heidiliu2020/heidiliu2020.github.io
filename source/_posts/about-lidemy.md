@@ -1,9 +1,11 @@
 title: 轉職前端工程師｜Lidemy 結業心得與求職總結
 author: Heidi Liu
 tags:
-  - lidemy
+  - Lidemy
 categories:
-  - lidemy
+  - 日常雜談
+  - Retro
+  - Lidemy
 date: 2021-04-05 12:23:00
 ---
 ![](https://i.imgur.com/qY9Crpq.jpg)

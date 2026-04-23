@@ -7,6 +7,7 @@ tags:
   - Agent SDK
   - Human-in-the-loop
 categories:
+  - 技術學習
   - AI
 date: 2026-04-02 17:27:00
 ---

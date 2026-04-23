@@ -4,6 +4,7 @@ tags:
   - JavaScript
   - Testing
 categories:
+  - 技術學習
   - JavaScript
 date: 2020-07-25 15:34:00
 ---

@@ -6,6 +6,7 @@ tags:
   - Front-End
   - Chrome
 categories:
+  - 技術學習
   - 2023鐵人賽
   - 工具篇
 date: 2023-10-03 09:23:01

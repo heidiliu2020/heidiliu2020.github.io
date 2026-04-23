@@ -5,6 +5,7 @@ tags:
   - Qiita
   - Learning
 categories:
+  - 技術學習
   - 2023鐵人賽
   - 職涯篇
 date: 2023-09-28 08:41:25
