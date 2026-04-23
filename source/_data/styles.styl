@@ -55,6 +55,40 @@ body {
   text-align: center;
 }
 
+// Copyright 與語系切換水平排列
+.footer .copyright {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+// 語系切換按鈕（中 / EN / JA）
+.footer .language-links {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.footer .language-link {
+  color: #888888;
+  border: none;
+  padding: 0 4px;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: #0969da;
+  }
+
+  &.is-active {
+    color: #1a1a1a;
+    font-weight: 600;
+  }
+}
+
 .footer .theme-link {
   color: #888888;
 }
