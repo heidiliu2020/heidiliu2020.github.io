@@ -3,6 +3,7 @@ tags:
   - GitHub
   - Hexo
 categories:
+  - 技術學習
   - Blog
   - Hexo
 author: Heidi Liu

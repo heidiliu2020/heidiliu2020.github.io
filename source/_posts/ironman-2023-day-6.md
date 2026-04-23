@@ -5,6 +5,7 @@ tags:
   - Qiita
   - Security
 categories:
+  - 技術學習
   - 2023鐵人賽
   - 豆知識篇
 date: 2023-09-21 08:33:20

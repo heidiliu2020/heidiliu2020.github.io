@@ -5,6 +5,7 @@ tags:
   - Google
   - Translation
 categories:
+  - 技術學習
   - Google
 date: 2023-10-21 11:39:01
 ---

@@ -3,6 +3,7 @@ author: Heidi Liu
 tags:
   - Lidemy
 categories:
+  - 日常雜談
   - Retro
   - Lidemy
 date: 2020-11-06 00:15:00

@@ -4,6 +4,7 @@ tags:
   - Lidemy
   - Interview
 categories:
+  - 技術學習
   - Lidemy
 date: 2022-05-15 21:45:00
 ---

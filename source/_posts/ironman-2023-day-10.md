@@ -6,6 +6,7 @@ tags:
   - SOLID
   - OOP
 categories:
+  - 技術學習
   - 2023鐵人賽
   - 入門篇
 date: 2023-09-25 08:31:25

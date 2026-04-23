@@ -5,6 +5,7 @@ tags:
   - Qiita
   - Advertising
 categories:
+  - 技術學習
   - 2023鐵人賽
   - 豆知識篇
 date: 2023-09-20 08:35:20

@@ -2,7 +2,7 @@
 One-off script: migrate all 128 posts' top-level category to new 3-category scheme.
 
 Mapping:
-  Retro                                           -> [雜談, Retro]
+  Retro                                           -> [日常雜談, Retro]
   (anything else, single-layer)  e.g. [Git]       -> [技術學習, Git]
   (anything else, multi-layer)   e.g. [Front-End, React]  -> [技術學習, Front-End, React]
 
@@ -20,7 +20,7 @@ import difflib
 POSTS_DIR = "source/_posts"
 
 TECH_TOP = "技術學習"
-LIFE_TOP = "雜談"
+LIFE_TOP = "日常雜談"
 
 # Top-level categories that belong to "雜談"
 CHITCHAT_TOPS = {"Retro"}

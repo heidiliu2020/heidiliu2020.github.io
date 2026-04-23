@@ -4,6 +4,7 @@ tags:
   - Hexo
   - hexo-admin
 categories:
+  - 技術學習
   - Blog
   - Hexo
 date: 2020-12-02 14:08:00

@@ -6,6 +6,7 @@ tags:
   - AWS
   - Roadmap
 categories:
+  - 技術學習
   - 2023鐵人賽
   - 雲端篇
 date: 2023-10-14 11:03:01

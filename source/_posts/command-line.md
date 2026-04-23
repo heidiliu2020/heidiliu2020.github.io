@@ -4,6 +4,7 @@ tags:
   - Lidemy
   - terminal
 categories:
+  - 技術學習
   - Lidemy
 date: 2020-06-18 13:17:00
 

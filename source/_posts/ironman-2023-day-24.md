@@ -8,6 +8,7 @@ tags:
   - Bing
   - GPT-4
 categories:
+  - 技術學習
   - 2023鐵人賽
   - 工具篇
 date: 2023-10-09 09:50:01

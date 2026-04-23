@@ -8,6 +8,7 @@ tags:
   - AdMob
   - Ad Manager
 categories:
+  - 技術學習
   - Google
 date: 2023-09-15 14:40:00
 ---

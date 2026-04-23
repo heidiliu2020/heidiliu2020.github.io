@@ -4,6 +4,7 @@ tags:
   - JavaScript
   - ES6
 categories:
+  - 技術學習
   - JavaScript
 date: 2020-07-25 13:32:00
 ---

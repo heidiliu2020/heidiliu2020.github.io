@@ -6,6 +6,7 @@ tags:
   - 產品開發
   - agile
 categories:
+  - 技術學習
   - Lidemy
 date: 2020-11-02 00:41:00
 
