@@ -22,7 +22,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="實作新功能一定要在分支進行不管是在個人專案，還是在多人協作時，都必須記得在實作新功能時，一定要在分支上進行：">
@@ -35,8 +35,8 @@
 <meta property="article:published_time" content="2020-12-31T10:24:00.000Z">
 <meta property="article:modified_time" content="2026-04-23T06:14:18.214Z">
 <meta property="article:author" content="Heidi Liu">
-<meta property="article:tag" content="GitHub">
 <meta property="article:tag" content="Git">
+<meta property="article:tag" content="GitHub">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://heidiliu2020.github.io/git-workflow/">
@@ -328,8 +328,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/GitHub/" rel="tag"># GitHub</a>
               <a href="/tags/Git/" rel="tag"># Git</a>
+              <a href="/tags/GitHub/" rel="tag"># GitHub</a>
           </div>
 
         
@@ -357,6 +357,27 @@
 
           </div>
           
+    
+  <section class="comments-section">
+    <h3 class="comments-title">評論</h3>
+    <div class="giscus"></div>
+    <script src="https://giscus.app/client.js"
+    data-repo="heidiliu2020/heidiliu2020.github.io"
+    data-repo-id="MDEwOlJlcG9zaXRvcnkzMDk3NTA1OTQ="
+    data-category="Announcements"
+    data-category-id="DIC_kwDOEnZrQs4C7fK2"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="0"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-TW"
+    crossorigin="anonymous"
+    async>
+    </script>
+  </section>
+
 
 <script>
   window.addEventListener('tabs:register', () => {
