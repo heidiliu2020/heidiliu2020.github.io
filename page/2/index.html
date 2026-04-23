@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-TW,en,ja,default">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -80,6 +80,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="前端新米" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -118,24 +119,24 @@
 
 <nav class="site-nav">
   <ul id="menu" class="menu">
-        <li class="menu-item menu-item-首頁">
+        <li class="menu-item menu-item-tech">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
-
-  </li>
-        <li class="menu-item menu-item-文章分類">
-
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>文章分類</a>
+    <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/" rel="section"><i class="fa fa-fw fa-code"></i>技術學習</a>
 
   </li>
-        <li class="menu-item menu-item-文章列表">
+        <li class="menu-item menu-item-japan">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>文章列表</a>
+    <a href="/categories/%E6%97%A5%E6%9C%AC%E7%94%9F%E6%B4%BB/" rel="section"><i class="fa fa-fw fa-map"></i>日本生活</a>
 
   </li>
-        <li class="menu-item menu-item-關於我">
+        <li class="menu-item menu-item-chitchat">
 
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>關於我</a>
+    <a href="/categories/%E6%97%A5%E5%B8%B8%E9%9B%9C%E8%AB%87/" rel="section"><i class="fa fa-fw fa-coffee"></i>日常雜談</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>關於</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -191,7 +192,112 @@
       
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW,en,ja,default">
+    <link itemprop="mainEntityOfPage" href="https://heidiliu2020.github.io/next-react-ssr/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/65410665?s=460&u=887bd602944dcf78b90f3a880b03aec4e086728a&v=4">
+      <meta itemprop="name" content="Heidi Liu">
+      <meta itemprop="description" content="海底修羅場｜日々進化中">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端新米">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/next-react-ssr/" class="post-title-link" itemprop="url">【學習筆記】談談 Next.js：基於 React 的 SSR 框架</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2024-01-16 11:50:01" itemprop="dateCreated datePublished" datetime="2024-01-16T11:50:01+08:00">2024-01-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2026-04-23 14:14:18" itemprop="dateModified" datetime="2026-04-23T14:14:18+08:00">2026-04-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/" itemprop="url" rel="index"><span itemprop="name">技術學習</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/Front-End/" itemprop="url" rel="index"><span itemprop="name">Front-End</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/Front-End/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>2.9k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>3 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="https://hackmd.io/_uploads/SkvRg5cd6.png" alt="image"></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在認識 Next.js 之前，建議先複習 React 的相關知識，可參考過去的<a href="https://heidiliu2020.github.io/react-jsx-props/">《[week 21] 初探 React：Component、JSX 語法、props 與 state 的不同》</a>系列筆記。</p>
+<p>距離上次碰 React 感覺已經是好久以前的事情了，趁著這次組內專案需求，預計導入 Next.js 框架技術，寫下這篇學習筆記做記錄。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/next-react-ssr/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW,en,ja,default">
     <link itemprop="mainEntityOfPage" href="https://heidiliu2020.github.io/google-adsense/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -223,7 +329,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2026-03-12 15:57:38" itemprop="dateModified" datetime="2026-03-12T15:57:38+08:00">2026-03-12</time>
+                <time title="修改時間：2026-04-23 14:14:18" itemprop="dateModified" datetime="2026-04-23T14:14:18+08:00">2026-04-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -231,7 +337,11 @@
               </span>
               <span class="post-meta-item-text">分類於</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Google/" itemprop="url" rel="index"><span itemprop="name">Google</span></a>
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/" itemprop="url" rel="index"><span itemprop="name">技術學習</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/Google/" itemprop="url" rel="index"><span itemprop="name">Google</span></a>
                 </span>
             </span>
 
@@ -289,7 +399,7 @@
       
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW,en,ja,default">
     <link itemprop="mainEntityOfPage" href="https://heidiliu2020.github.io/ironman-2023-day-31/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -321,7 +431,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2026-03-12 15:57:38" itemprop="dateModified" datetime="2026-03-12T15:57:38+08:00">2026-03-12</time>
+                <time title="修改時間：2026-04-23 14:14:18" itemprop="dateModified" datetime="2026-04-23T14:14:18+08:00">2026-04-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -329,11 +439,15 @@
               </span>
               <span class="post-meta-item-text">分類於</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/" itemprop="url" rel="index"><span itemprop="name">2023鐵人賽</span></a>
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/" itemprop="url" rel="index"><span itemprop="name">技術學習</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/%E5%85%A5%E9%96%80%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">入門篇</span></a>
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/" itemprop="url" rel="index"><span itemprop="name">2023鐵人賽</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/%E5%85%A5%E9%96%80%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">入門篇</span></a>
                 </span>
             </span>
 
@@ -396,7 +510,7 @@
       
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW,en,ja,default">
     <link itemprop="mainEntityOfPage" href="https://heidiliu2020.github.io/ironman-2023-day-30/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -428,7 +542,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2026-03-12 15:57:38" itemprop="dateModified" datetime="2026-03-12T15:57:38+08:00">2026-03-12</time>
+                <time title="修改時間：2026-04-23 14:14:18" itemprop="dateModified" datetime="2026-04-23T14:14:18+08:00">2026-04-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -436,11 +550,15 @@
               </span>
               <span class="post-meta-item-text">分類於</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/" itemprop="url" rel="index"><span itemprop="name">2023鐵人賽</span></a>
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/" itemprop="url" rel="index"><span itemprop="name">技術學習</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/%E8%81%B7%E6%B6%AF%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">職涯篇</span></a>
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/" itemprop="url" rel="index"><span itemprop="name">2023鐵人賽</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/%E8%81%B7%E6%B6%AF%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">職涯篇</span></a>
                 </span>
             </span>
 
@@ -500,7 +618,7 @@
       
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW,en,ja,default">
     <link itemprop="mainEntityOfPage" href="https://heidiliu2020.github.io/ironman-2023-day-29/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -532,7 +650,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2026-03-12 15:57:38" itemprop="dateModified" datetime="2026-03-12T15:57:38+08:00">2026-03-12</time>
+                <time title="修改時間：2026-04-23 14:14:18" itemprop="dateModified" datetime="2026-04-23T14:14:18+08:00">2026-04-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -540,11 +658,15 @@
               </span>
               <span class="post-meta-item-text">分類於</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/" itemprop="url" rel="index"><span itemprop="name">2023鐵人賽</span></a>
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/" itemprop="url" rel="index"><span itemprop="name">技術學習</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/%E9%9B%B2%E7%AB%AF%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">雲端篇</span></a>
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/" itemprop="url" rel="index"><span itemprop="name">2023鐵人賽</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/%E9%9B%B2%E7%AB%AF%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">雲端篇</span></a>
                 </span>
             </span>
 
@@ -619,7 +741,7 @@
       
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW,en,ja,default">
     <link itemprop="mainEntityOfPage" href="https://heidiliu2020.github.io/ironman-2023-day-28/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -651,7 +773,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2026-03-12 15:57:38" itemprop="dateModified" datetime="2026-03-12T15:57:38+08:00">2026-03-12</time>
+                <time title="修改時間：2026-04-23 14:14:18" itemprop="dateModified" datetime="2026-04-23T14:14:18+08:00">2026-04-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -659,11 +781,15 @@
               </span>
               <span class="post-meta-item-text">分類於</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/" itemprop="url" rel="index"><span itemprop="name">2023鐵人賽</span></a>
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/" itemprop="url" rel="index"><span itemprop="name">技術學習</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/Back-End/" itemprop="url" rel="index"><span itemprop="name">Back-End</span></a>
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/" itemprop="url" rel="index"><span itemprop="name">2023鐵人賽</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/Back-End/" itemprop="url" rel="index"><span itemprop="name">Back-End</span></a>
                 </span>
             </span>
 
@@ -722,7 +848,7 @@
       
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW,en,ja,default">
     <link itemprop="mainEntityOfPage" href="https://heidiliu2020.github.io/ironman-2023-day-27/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -754,7 +880,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2026-03-12 15:57:38" itemprop="dateModified" datetime="2026-03-12T15:57:38+08:00">2026-03-12</time>
+                <time title="修改時間：2026-04-23 14:14:18" itemprop="dateModified" datetime="2026-04-23T14:14:18+08:00">2026-04-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -762,11 +888,15 @@
               </span>
               <span class="post-meta-item-text">分類於</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/" itemprop="url" rel="index"><span itemprop="name">2023鐵人賽</span></a>
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/" itemprop="url" rel="index"><span itemprop="name">技術學習</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/%E5%85%A5%E9%96%80%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">入門篇</span></a>
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/" itemprop="url" rel="index"><span itemprop="name">2023鐵人賽</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/%E5%85%A5%E9%96%80%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">入門篇</span></a>
                 </span>
             </span>
 
@@ -826,7 +956,7 @@
       
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW,en,ja,default">
     <link itemprop="mainEntityOfPage" href="https://heidiliu2020.github.io/ironman-2023-day-26/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -858,7 +988,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2026-03-12 15:57:38" itemprop="dateModified" datetime="2026-03-12T15:57:38+08:00">2026-03-12</time>
+                <time title="修改時間：2026-04-23 14:14:18" itemprop="dateModified" datetime="2026-04-23T14:14:18+08:00">2026-04-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -866,11 +996,15 @@
               </span>
               <span class="post-meta-item-text">分類於</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/" itemprop="url" rel="index"><span itemprop="name">2023鐵人賽</span></a>
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/" itemprop="url" rel="index"><span itemprop="name">技術學習</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/%E5%85%A5%E9%96%80%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">入門篇</span></a>
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/" itemprop="url" rel="index"><span itemprop="name">2023鐵人賽</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/%E5%85%A5%E9%96%80%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">入門篇</span></a>
                 </span>
             </span>
 
@@ -929,7 +1063,7 @@
       
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW,en,ja,default">
     <link itemprop="mainEntityOfPage" href="https://heidiliu2020.github.io/ironman-2023-day-25/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -961,7 +1095,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2026-03-12 15:57:38" itemprop="dateModified" datetime="2026-03-12T15:57:38+08:00">2026-03-12</time>
+                <time title="修改時間：2026-04-23 14:14:18" itemprop="dateModified" datetime="2026-04-23T14:14:18+08:00">2026-04-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -969,11 +1103,15 @@
               </span>
               <span class="post-meta-item-text">分類於</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/" itemprop="url" rel="index"><span itemprop="name">2023鐵人賽</span></a>
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/" itemprop="url" rel="index"><span itemprop="name">技術學習</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/Back-End/" itemprop="url" rel="index"><span itemprop="name">Back-End</span></a>
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/" itemprop="url" rel="index"><span itemprop="name">2023鐵人賽</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/Back-End/" itemprop="url" rel="index"><span itemprop="name">Back-End</span></a>
                 </span>
             </span>
 
@@ -1050,7 +1188,7 @@
       
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW,en,ja,default">
     <link itemprop="mainEntityOfPage" href="https://heidiliu2020.github.io/ironman-2023-day-24/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1082,7 +1220,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2026-03-12 15:57:38" itemprop="dateModified" datetime="2026-03-12T15:57:38+08:00">2026-03-12</time>
+                <time title="修改時間：2026-04-23 14:14:18" itemprop="dateModified" datetime="2026-04-23T14:14:18+08:00">2026-04-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1090,11 +1228,15 @@
               </span>
               <span class="post-meta-item-text">分類於</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/" itemprop="url" rel="index"><span itemprop="name">2023鐵人賽</span></a>
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/" itemprop="url" rel="index"><span itemprop="name">技術學習</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/%E5%B7%A5%E5%85%B7%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">工具篇</span></a>
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/" itemprop="url" rel="index"><span itemprop="name">2023鐵人賽</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E8%A1%93%E5%AD%B8%E7%BF%92/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/%E5%B7%A5%E5%85%B7%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">工具篇</span></a>
                 </span>
             </span>
 
@@ -1136,134 +1278,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/ironman-2023-day-24/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://heidiliu2020.github.io/ironman-2023-day-23/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/65410665?s=460&u=887bd602944dcf78b90f3a880b03aec4e086728a&v=4">
-      <meta itemprop="name" content="Heidi Liu">
-      <meta itemprop="description" content="海底修羅場｜日々進化中">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端新米">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/ironman-2023-day-23/" class="post-title-link" itemprop="url">[2023 15th鐵人賽] Day23 - ChatGPT 使用方法總整理</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2023-10-08 09:31:01" itemprop="dateCreated datePublished" datetime="2023-10-08T09:31:01+08:00">2023-10-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2026-03-12 15:57:38" itemprop="dateModified" datetime="2026-03-12T15:57:38+08:00">2026-03-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/" itemprop="url" rel="index"><span itemprop="name">2023鐵人賽</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/2023%E9%90%B5%E4%BA%BA%E8%B3%BD/%E5%B7%A5%E5%85%B7%E7%AF%87/" itemprop="url" rel="index"><span itemprop="name">工具篇</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="文章字數">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">文章字數：</span>
-              <span>3.9k</span>
-            </span>
-            <span class="post-meta-item" title="所需閱讀時間">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              <span>4 分鐘</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>原文連結：<span class="exturl" data-url="aHR0cHM6Ly9xaWl0YS5jb20vc2FrYXNlZ2F3YS9pdGVtcy84MjA2OWM5N2ExZWUwMTFjMmQxZQ==" title="https://qiita.com/sakasegawa/items/82069c97a1ee011c2d1e">ChatGPT使い方総まとめ - Qiita<i class="fa fa-external-link"></i></span></p>
-</blockquote>
-<p>這篇文章主要介紹現在正流行的 ChatGPT，整理幾項不論是日常或在工作上，都很實用的提問方式。作者是 <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9neWFrdXNl" title="https://twitter.com/gyakuse">sakasegawa<i class="fa fa-external-link"></i></span>。</p>
-<p>使用方法分類如下：</p>
-<ul>
-<li>文章範例<ul>
-<li>提問-回答</li>
-<li>創作 Wikipedia 風格的文章</li>
-<li>建立任務列表</li>
-<li>建立時間表</li>
-<li>歸納</li>
-<li>將列點用文章呈現</li>
-<li>將文章列點呈現</li>
-</ul>
-</li>
-<li>程式碼<ul>
-<li>生成程式碼</li>
-<li>生成程式碼的文件</li>
-<li>重構</li>
-<li>單元測試</li>
-<li>DB 設計（資料庫設計）</li>
-</ul>
-</li>
-<li>故事範例<ul>
-<li>語氣變化</li>
-<li>模仿角色的語氣來回答</li>
-</ul>
-</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/ironman-2023-day-23/#more" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -1353,28 +1367,37 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">128</span>
+          <span class="site-state-item-count">129</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">109</span>
+        <span class="site-state-item-count">108</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hlaWRpbGl1MjAyMA==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;heidiliu2020"><i class="fa fa-fw fa-github"></i>GitHub</span>
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hlaWRpbGl1MjAyMA==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;heidiliu2020"><i class="fab fa-fw fa-github"></i>GitHub</span>
       </span>
       <span class="links-of-author-item">
-        <span class="exturl" data-url="aHR0cHM6Ly9oZWlkaS1jb2RpbmcubWVkaXVtLmNvbS8=" title="Medium → https:&#x2F;&#x2F;heidi-coding.medium.com&#x2F;"><i class="fa fa-fw fa-medium"></i>Medium</span>
+        <span class="exturl" data-url="aHR0cHM6Ly9oZWlkaS1jb2RpbmcubWVkaXVtLmNvbS8=" title="Medium → https:&#x2F;&#x2F;heidi-coding.medium.com&#x2F;"><i class="fab fa-fw fa-medium"></i>Medium</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9oYWNrbWQuaW8vQEhlaWRpLUxpdQ==" title="HackMD → https:&#x2F;&#x2F;hackmd.io&#x2F;@Heidi-Liu"><i class="fa fa-fw fa-sticky-note"></i>HackMD</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vQGxpdXNhbl9vdXRkb29y" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;@liusan_outdoor"><i class="fab fa-fw fa-youtube"></i>YouTube</span>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
       </span>
   </div>
 
@@ -1394,29 +1417,26 @@
       <div class="footer-inner">
         
 
-        
-
 <div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2026</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
+  <span class="copyright-text">
+    
+    Copyright &copy;
+    <span class="author" itemprop="copyrightHolder">Heidi Liu</span>
+    <span itemprop="copyrightYear">2026</span>
+      <span class="post-meta-divider">|</span>Powered by <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span>
   </span>
-  <span class="author" itemprop="copyrightHolder">Heidi Liu</span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
+    <span class="language-links">
+        <a href="/" class="language-link is-active"
+           lang="zh-TW" hreflang="zh-TW">中
+        </a>
+        <a href="/en/" class="language-link"
+           lang="en" hreflang="en">EN
+        </a>
+        <a href="/ja/" class="language-link"
+           lang="ja" hreflang="ja">JA
+        </a>
     </span>
-    <span title="總字數">726k</span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-coffee"></i>
-    </span>
-    <span title="所需總閱讀時間">11:01</span>
 </div>
-  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> 強力驅動
-  </div>
 
         
 

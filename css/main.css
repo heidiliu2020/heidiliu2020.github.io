@@ -1195,7 +1195,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ff21ff;
+  background: #ff8b62;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2678,24 +2678,84 @@ ul.breadcrumb li + li:last-child {
   }
 }
 body {
-  background: url("/images/bg.jpg") 50% 50% fixed no-repeat;
-  background-size: cover;
+  background: #f5f5f5;
+}
+.headband {
+  display: none;
 }
 .site-brand-container {
-  background: #232323;
+  background: #fff;
+  border-bottom: 1px solid #e5e6e9;
+}
+.site-meta .brand {
+  background: transparent;
+}
+.site-title,
+.site-subtitle,
+.custom-logo-image {
+  color: #1a1a1a !important;
+}
+.post-body a:not(.exturl):not(.btn),
+.post-body .exturl {
+  color: #0969da;
+  border-bottom-color: rgba(9,105,218,0.3);
+}
+.post-body a:not(.exturl):not(.btn):hover,
+.post-body .exturl:hover {
+  color: #0550ae;
+  border-bottom-color: #0550ae;
 }
 .footer {
-  color: #fff;
-  background: rgba(0,0,0,0.2);
-  font-weight: 500;
+  color: #999;
+  background: #f5f5f5;
+  border-top: none;
+  font-size: 13px;
+  font-weight: 400;
   padding: 0;
-  margin-top: 40px;
+  margin-top: 60px;
 }
-.theme-link {
-  color: #eee;
+.footer-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px 20px 40px;
+  border-top: 1px solid #dbdbdb;
+  text-align: center;
 }
-.theme-link:hover {
-  color: #fff;
+.footer .copyright {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.footer .language-links {
+  display: inline-flex;
+  gap: 8px;
+}
+.footer .language-link {
+  color: #888;
+  border: none;
+  padding: 0 4px;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.footer .language-link:hover {
+  color: #0969da;
+}
+.footer .language-link.is-active {
+  color: #1a1a1a;
+  font-weight: 600;
+}
+.footer .theme-link {
+  color: #888;
+}
+.footer .theme-link:hover {
+  color: #0969da;
+}
+.footer .author {
+  color: #555;
 }
 .post-toc .nav .nav-child {
   display: block;
@@ -2704,5 +2764,19 @@ body {
   font-size: 13px;
 }
 :root {
-  --content-bg-color: rgba(255,255,255,0.95);
+  --content-bg-color: #fff;
+}
+.links-of-author-item .fa,
+.links-of-author-item .fab {
+  font-size: 14px;
+  width: 1.28571429em;
+  text-align: center;
+  margin-right: 4px;
+}
+.links-of-author-item .fa,
+.links-of-author-item .fab {
+  font-size: 14px;
+  width: 1.28571429em;
+  text-align: center;
+  margin-right: 4px;
 }
