@@ -1,11 +1,12 @@
 title: TypeScript：type vs interface 使用差異與選擇策略
 author: Heidi Liu
 tags:
-  - typescript
+  - TypeScript
   - type
   - interface
 categories:
-  - typescript
+  - Front-End
+  - JavaScript
 date: 2026-03-12 17:06:00
 ---
 

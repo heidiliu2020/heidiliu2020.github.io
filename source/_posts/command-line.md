@@ -1,10 +1,10 @@
 title: '[week 1] Command Line 入門 & 基本指令'
 author: Heidi Liu
 tags:
-  - lidemy
+  - Lidemy
   - terminal
 categories:
-  - lidemy
+  - Lidemy
 date: 2020-06-18 13:17:00
 
 ---

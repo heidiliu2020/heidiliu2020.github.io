@@ -1,12 +1,12 @@
 title: '[week 19] 淺談產品開發與工作流程'
 author: Heidi Liu
 tags:
-  - lidemy
+  - Lidemy
   - Testing
   - 產品開發
   - agile
 categories:
-  - lidemy
+  - Lidemy
 date: 2020-11-02 00:41:00
 
 ---

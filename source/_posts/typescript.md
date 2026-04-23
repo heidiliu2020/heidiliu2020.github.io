@@ -2,9 +2,10 @@ title: 【學習筆記】TypeScript 基礎入門：從型別談起
 author: Heidi Liu
 tags:
   - JavaScript
-  - TypeScipt
+  - TypeScript
   - Front-End
 categories:
+  - Front-End
   - JavaScript
 date: 2021-10-11 13:16:00
 ---

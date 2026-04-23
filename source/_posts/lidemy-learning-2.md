@@ -1,9 +1,10 @@
 title: 【中場心得】半年過去了，我仍在學習程式的路上（下篇）
 author: Heidi Liu
 tags:
-  - lidemy
+  - Lidemy
 categories:
-  - lidemy
+  - Retro
+  - Lidemy
 date: 2020-11-21 00:17:00
 ---
 ![](https://i.imgur.com/oEOkZDK.jpg)
