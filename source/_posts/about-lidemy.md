@@ -4,6 +4,7 @@ tags:
   - Lidemy
 categories:
   - 日常雜談
+  - Retro
   - Lidemy
 date: 2021-04-05 12:23:00
 ---
