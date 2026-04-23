@@ -3,7 +3,7 @@ author: Heidi Liu
 tags:
   - Lidemy
 categories:
-  - 技術學習
+  - 日常雜談
   - Lidemy
 date: 2021-04-05 12:23:00
 ---
