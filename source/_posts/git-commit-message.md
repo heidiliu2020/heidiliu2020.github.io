@@ -1,4 +1,4 @@
-title: '[學習筆記] 如何撰好的 Git Commit Message'
+title: '【學習筆記】如何撰好的 Git Commit Message'
 author: Heidi Liu
 tags:
   - Git

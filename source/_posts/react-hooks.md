@@ -1,8 +1,7 @@
-title: '[學習筆記] React 內建的所有 Hooks 功能整理'
+title: '【學習筆記】React 內建的所有 Hooks 功能整理'
 author: Heidi Liu
 tags:
   - React
-  - Hooks
 categories:
   - 技術學習
   - Front-End
