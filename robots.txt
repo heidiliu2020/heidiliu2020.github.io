@@ -9,8 +9,6 @@ Allow: /about/
 Disallow: /vendors/
 Disallow: /fonts/
 Disallow: /fancybox/
-Disallow: /images/
-Disallow: /fonts/
 
 Sitemap: https://heidiliu2020.github.io/sitemap.xml
-Sitemap: https://heidiliu2020.github.io/baidu_sitemap.xml
+Sitemap: https://heidiliu2020.github.io/baidusitemap.xml
