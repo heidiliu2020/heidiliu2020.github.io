@@ -8,8 +8,10 @@ categories:
   - Back-End
   - Sequelize
 date: 2020-10-31 00:39:00
+updated: 2026-07-09 12:00:00
 ---
 > 本篇為 [[BE201] 後端中階：Express 與 Sequelize](https://lidemy.com/p/be201-express-sequelize) 這門課程的學習筆記。如有錯誤歡迎指正！
+> 2026.07 更新：修正範例程式碼錯誤、補充 N+1 problem 說明，並將官方文件連結更新至 Sequelize v6。本文範例基於當年的 v5，基本觀念與 v6 相通。
 
 瞭解如何使用 Express 這套 Web 應用框架之後，再來要介紹新的工具：Sequelize，這是一款基於 Node.js 的非同步 ORM 框架，讓我們能透過 ORM（物件關聯對映）來開發網頁，以物件導向的概念來操作資料庫。
 <!--more-->
@@ -20,7 +22,6 @@ date: 2020-10-31 00:39:00
  P1 了解什麼是 ORM
  P1 了解 ORM 的優缺點
  P1 了解什麼是 N+1 problem
- P1 我知道如何部署 Node.js 應用程式到 heroku
 ```
 
 ---
@@ -29,7 +30,7 @@ date: 2020-10-31 00:39:00
 
 前面我們提到 Sequelize 是一款 ORM 框架，那什麼是 ORM？
 
-ORM（Object Relational Mapping），中文為物件關聯對映。是一種將關聯式資料庫（MySQL）映射（mapping）至物件導向（OOP）的資料抽象化技術。
+ORM（Object Relational Mapping），中文為物件關聯對映。是一種將關聯式資料庫（如 MySQL）映射（mapping）至物件導向（OOP）的資料抽象化技術。
 
 簡單來說，在網站開發 MVC 結構中，ORM 扮演資料庫系統和 Model 資料容器的中間橋梁，讓我們能透過程式語言（JavaScript）去操作資料庫語言（SQL），是實作物件導向概念的一種工具模式。
 
@@ -39,7 +40,7 @@ JavaScript（物件） -> ORM -> SQL（資料）
 
 ## 初探 Sequelize
 
-初步瞭解什麼是 ORM 框架以後，接著我們要來實際操作 Sequelize 這套 Library，詳細可參考 [Sequelize 官方文件](https://sequelize.org/master/manual/getting-started.html)。
+初步瞭解什麼是 ORM 框架以後，接著我們要來實際操作 Sequelize 這套 Library，詳細可參考 [Sequelize 官方文件](https://sequelize.org/docs/v6/getting-started/)。
 
 透過 npm 來安裝套件，如果專案設在新開的目錄底下，則需先初始化 npm：
 
@@ -191,7 +192,7 @@ sequelize.sync().then(() => {
 
 ![](https://i.imgur.com/8raviKR.png)
 
-這種寫法就相當於 SQL 語法的 `SELECT * FROM users WHERE firstName = Apple`，更多有關條設定的語法可參考：[官方文件 -  querying](https://sequelize.org/v5/manual/querying.html)。
+這種寫法就相當於 SQL 語法的 `SELECT * FROM users WHERE firstName = Apple`，更多有關條件設定的語法可參考：[官方文件 - Model Querying](https://sequelize.org/docs/v6/core-concepts/model-querying-basics/)。
 
 ### .findOne()：選取單一資料
 
@@ -224,7 +225,8 @@ sequelize.sync().then(() => {
     }
   }).then(user => {
     // 在 () 裡面用 {} 大括號包住要更新的內容
-    user.update({
+    // 記得 return，下一個 .then() 才會等 update 完成
+    return user.update({
       lastName: 'Banana'
     });
   }).then(() => {
@@ -261,7 +263,7 @@ sequelize.sync().then(() => {
 
 再來我們要學習如何做資料庫關聯，也就是將兩個不同的 table 關聯，例如將 `users.id` 對應到 `comments.userId`。我們在之前課程使用的 SQL 指令，就是透過 `user.id` 或是 JOIN 等方式來進行資料庫關聯。
 
-而在 ORM 當中，要將兩個 tabel 進行關聯，則需要透過 `.hasMany()`、`.hasOne` 等指令，告訴 Sequelize 執行資料庫關聯，詳細內容可參考[官方文件](https://sequelize.org/v5/class/lib/associations/base.js~Association.html)。
+而在 ORM 當中，要將兩個 table 進行關聯，則需要透過 `.hasMany()`、`.hasOne` 等指令，告訴 Sequelize 執行資料庫關聯，詳細內容可參考[官方文件](https://sequelize.org/docs/v6/core-concepts/assocs/)。
 
 ### 如何關聯兩個 table
 
@@ -387,9 +389,15 @@ sequelize.sync().then(() => {
 
 ![](https://i.imgur.com/5U9BsA1.png)
 
+### 什麼是 N+1 Problem？
+
+上面的 `include` 其實正是 N+1 problem 的解法。所謂 N+1 problem，是指先用一次查詢撈出 N 筆資料（例如所有 user），再於迴圈中逐筆查詢每個 user 的 comments，總共就會發出 1 + N 次 SQL 查詢。當資料量變大，這會對資料庫造成大量不必要的負擔。
+
+而透過 `include`（也就是 eager loading，預先載入），Sequelize 會改用 JOIN 的方式一次撈出關聯資料，只需要一次查詢就能拿到 user 和其所有 comments，這也是使用 ORM 時特別需要留意的效能問題。
+
 ## Sequelize CLI
 
-在實際開發時，為了讓程式碼更有結構性以及方便管理，可安裝 Sequelize CLI 這套工具，詳細內容可參考[官方文件](https://sequelize.org/v5/manual/migrations.html)。
+在實際開發時，為了讓程式碼更有結構性以及方便管理，可安裝 Sequelize CLI 這套工具，詳細內容可參考[官方文件](https://sequelize.org/docs/v6/other-topics/migrations/)。
 
 ### 安裝並初始化
 
@@ -431,7 +439,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Comment.associate = function(models) {
     //  在這裡設定資料庫關聯
-    Comment.belongsTo(Models.User);
+    Comment.belongsTo(models.User);
   };
   return Comment;
 }
@@ -517,7 +525,7 @@ const db = require('./models');
 
 ```javascript=
 const User = db.User;
-const Comment =　db.Comment;
+const Comment = db.Comment;
 
 User.create({
   firstName: 'Hello',
@@ -535,7 +543,7 @@ User.create({
 
 ## 改造留言板系統
 
-在瞭解到什麼是 Sequelize 和 ORM 之後，接著我們要來改造之前時做的[留言版系統](https://hackmd.io/@Heidi-Liu/note-be201-express-practice)，也就是把 Model 部分改用 Sequelize 實作。
+在瞭解到什麼是 Sequelize 和 ORM 之後，接著我們要來改造之前實作的[留言板系統](https://hackmd.io/@Heidi-Liu/note-be201-express-practice)，也就是把 Model 部分改用 Sequelize 實作。
 
 ### 前置作業
 
@@ -610,7 +618,7 @@ $ npx sequelize-cli db:migrate
 $ npx sequelize-cli db:migrate:undo
 
 // 撤銷所有
-$ npx sequelize-cli db:migrate:all
+$ npx sequelize-cli db:migrate:undo:all
 ```
 
 ![](https://i.imgur.com/iGSJ2HF.png)
@@ -686,8 +694,8 @@ const User = db.User;
         return next();
       }
 
-      bcrypt.compare(password, user.password, function (err, isSccess) {
-        if (err || !isSccess) {
+      bcrypt.compare(password, user.password, function (err, isSuccess) {
+        if (err || !isSuccess) {
           req.flash('errorMessage', '輸入帳密有誤');
           return next();
         }
@@ -876,7 +884,7 @@ const User = db.User;
 
 這樣就成功透過 Express 搭配 Sequelize 修改之前的留言板結構，即使不使用 SQL 指令，也能以 ORM 提供的物件導向形式來操作資料庫。
 
-這種寫法和之前使用 PHP & MySQL 實作留言板的方式很不相同會比較偏向先完成切版，然後一步一步增加功能；但以 MVC 架構去撰寫程式碼，會先規劃不同功能對應的不同路由，接著再規劃 Model 資料結構，以及如何呈現在畫面上，這使得整體結構分工更明確，也有助於後續的維護。
+這種寫法和之前使用 PHP & MySQL 實作留言板的方式很不相同：以前會比較偏向先完成切版，然後一步一步增加功能；但以 MVC 架構去撰寫程式碼，會先規劃不同功能對應的不同路由，接著再規劃 Model 資料結構，以及如何呈現在畫面上，這使得整體結構分工更明確，也有助於後續的維護。
 
 參考資料：
 - [[ 筆記 ] Express 03 - ORM ＆ Sequelize](https://mtr04-note.coderbridge.io/2020/10/10/sequelize/)

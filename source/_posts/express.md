@@ -8,8 +8,10 @@ categories:
   - Back-End
   - Express
 date: 2020-10-26 00:36:00
+updated: 2026-07-09 12:00:00
 ---
 > 本篇為 [[BE201] 後端中階：Express 與 Sequelize](https://lidemy.com/p/be201-express-sequelize) 這門課程的學習筆記。如有錯誤歡迎指正！
+> 2026.07 更新：修正錯字與範例程式碼，並補充 Express 5 與 mysql2 的版本註記，核心觀念不變。
 
 ```
 學習目標：
@@ -22,7 +24,7 @@ date: 2020-10-26 00:36:00
 
 ## 要學框架，先從不用框架開始
 
-在講解什麼是 Express 框架以前，先來談談什麼是 Server，其實 Server 也是一種程式，而 [Node.js](https://nodejs.org/en/) 本身就有提供內建 Library，讓我們能透過引入 modeule 來使用 Server 的功能。 
+在講解什麼是 Express 框架以前，先來談談什麼是 Server，其實 Server 也是一種程式，而 [Node.js](https://nodejs.org/en/) 本身就有提供內建 Library，讓我們能透過引入 module 來使用 Server 的功能。 
 
 ### 範例：以 Node.js 實作一個 Server
 
@@ -49,7 +51,7 @@ server.listen(5001)
 
 ![](https://i.imgur.com/2Bv9WKj.png)
 
-3. 可以在瀏覽器輸入 `http://localhost:5001/`，連到本地端的 5001 port，就會看到回傳內容 `Hello World!`：
+可以在瀏覽器輸入 `http://localhost:5001/`，連到本地端的 5001 port，就會看到回傳內容 `Hello World!`：
 
 ![](https://i.imgur.com/ZY79LWh.png)
 
@@ -112,17 +114,19 @@ server.listen(5001)
 
 根據上述範例，我們能夠利用 Node.js 提供的模組，來實作出一個簡易的 http server。
 
-其實這不是本單元要討論的重點，只是藉由範例來瞭解，Node.js 的底層就是利用 `http.createServer()` 來執行，即使不透過 Library 也能夠時做出 server。
+其實這不是本單元要討論的重點，只是藉由範例來瞭解，Node.js 的底層就是利用 `http.createServer()` 來執行，即使不透過 Library 也能夠實作出 server。
 
 瞭解到背後運作的原理後，接下來要介紹另一套 Library，其實就是把上面實作的功能包裝在一起，讓我們能更方便取得資料。
 
 ## 初探 Express
 
-什麼是 Express？根據[官網]((https://expressjs.com/))介紹：
+什麼是 Express？根據[官網](https://expressjs.com/)介紹：
 
 > Express: Fast, unopinionated, minimalist web framework for Node.js
 
 簡言之，Express 是 Node.js 環境下提供的一個輕量後端框架，自由度極高，透過豐富的 HTTP 工具，能幫助快速開發後端應用程式。
+
+> 2026 年註：本文以當時的 Express 4 為例。Express 5 已於 2024 年成為正式版，本文介紹的路由等基本用法在 Express 5 中大致相同。
 
 跟其他有完整 MVC 架構的框架相比，Express 其實鬆散（或者說自由）很多，許多地方並沒有強制規範，都只是按照前人的方法或者是慣例來實踐，十個人可能會有十種不同的寫法。
 
@@ -230,7 +234,7 @@ MVC（Model–view–controller）：是一種應用程式架構，透過將程�
 - View 負責處理畫面的部分（template），也就是我們看到的網頁內容
 - Controller 在過程中扮演 Model 和 View 中間的協調者，當不同路由（route）接收到 request 時，會呼叫 Controller 執行相對應的 Method。例如跟 Model 拿取資料，結合 View 提供的模版之後，再回傳 response
 
-這和我們之前使用 PHP 寫的網頁相比，在分工上是明確許多的。接下來我們要利用 Nodes.js 來實作一個簡單的 MVC 架構。
+這和我們之前使用 PHP 寫的網頁相比，在分工上是明確許多的。接下來我們要利用 Node.js 來實作一個簡單的 MVC 架構。
 
 ## 在 Node.js 上實作 MVC 架構
 
@@ -418,7 +422,7 @@ module.exports = todoModel
 
 ```javascript=
 // 先從 model 引入 todos 資料
-const todoModel = require(../models/todo)
+const todoModel = require('../models/todo')
 
 // 建立一個 todoController 物件，透過方法來存取 model 的資料
 const todoController = {
@@ -454,17 +458,16 @@ const todoController = require('./controllers/todo')
 
 app.set('view engine', 'ejs')
 
-const todos = [
-  'first todo', 'second todo', 'third todo'
-]
-
 // 可直接使用 controller 的方法拿取資料和進行 render
 app.get('/todos', todoController.getAll)
+app.get('/todos/:id', todoController.get)
 
-app.get('/todos/:id',
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
 ```
 
-這樣就完成了有 MCV 架構的程式：
+這樣就完成了有 MVC 架構的程式：
 - express 目錄的 index.js：提供路由
 - views 目錄的 todo.ejs 和 todos.ejs：提供模版
 - models 目錄的 todo.js：提供資料
@@ -476,15 +479,17 @@ app.get('/todos/:id',
 
 在瞭解到基本的 Express 架構之後，再來我們要試著把  todo 資料存在資料庫。這是因為在實際專案中，後端會把資料存放在資料庫，因此我們要來學習如何透過 Node.js 和 MySQL 溝通。
 
-> 注意不是用 Express 和 MySQL 溝通！我們要操作的是 Nodes.js，Express 提供的是框架！
+> 注意不是用 Express 和 MySQL 溝通！我們要操作的是 Node.js，Express 提供的是框架！
 
 ### Step1. 安裝 MySQL
 
-在使用 Node.js 操作 MySQL 資料庫時，必須先安裝 MySQL 模組。搜尋 node.js mysql 會找到 GitHub 有個叫做 [mysqljs 的 Library](https://github.com/mysqljs/mysql)，執行安裝指令：
+在使用 Node.js 操作 MySQL 資料庫時，必須先安裝 MySQL 模組。當時課程使用的是 [mysqljs 的 Library](https://github.com/mysqljs/mysql)，不過這個套件已多年未維護，現在建議改用 API 幾乎相同的 [mysql2](https://github.com/sidorares/node-mysql2)，執行安裝指令：
 
 ```
-$ npm install mysql
+$ npm install mysql2
 ```
+
+> 2026 年註：本文範例使用 callback 寫法，現代專案多會改用 `mysql2/promise` 搭配 async/await，觀念相同、寫法更簡潔。
 
 ![](https://i.imgur.com/tR8kezb.png)
 
@@ -492,7 +497,7 @@ $ npm install mysql
 
 ### Step2. 新增 app 資料庫 &  todos 資料表
 
-之前在[第九週學到如何使用 MySQL 資料庫](https://hackmd.io/@Heidi-Liu/note-be101-php-and-mysql)，這一次我們同樣可以透過 phpmyadmin 這個 GUI 介面來進行資料庫 CURD，步驟如下：
+之前在[第九週學到如何使用 MySQL 資料庫](https://hackmd.io/@Heidi-Liu/note-be101-php-and-mysql)，這一次我們同樣可以透過 phpmyadmin 這個 GUI 介面來進行資料庫 CRUD，步驟如下：
 
 1. 開啟 XAMPP 連線 MySQL，其實這樣就已經啟動資料庫了，但如果要使用 phpmyadmin 介面操作，就必須同時運行 Apache Server 才能使用：
 
@@ -513,8 +518,8 @@ $ npm install mysql
 > 要等待回傳一定是使用 callback，好處就是從同步變成非同步。
 
 ```javascript=
-// 引入 mysql 模組
-var mysql = require('mysql');
+// 引入 mysql2 模組
+var mysql = require('mysql2');
 // 建立連線
 var connection = mysql.createConnection({
   host: 'localhost',
@@ -565,7 +570,7 @@ rd: YES)
 1. 將 db.js 簡化，獨立成串聯資料庫時需要的資料，方便其他部分要連線時引入：
 
 ```javascript=
-var mysql = require('mysql');
+var mysql = require('mysql2');
 var connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -712,7 +717,7 @@ module.exports = todoController
 
 ![](https://i.imgur.com/02Wnbnb.png)
 
-如果對資料庫操作 CURD，重整頁面也會動態更新：
+如果對資料庫操作 CRUD，重整頁面也會動態更新：
 
 ![](https://i.imgur.com/NZ0Hzj3.png)
 
