@@ -206,7 +206,7 @@ Structured outputs 提供兩個核心能力：
 - JSON outputs：控制最終回應格式
 - Strict tool use：控制工具呼叫參數
 
-讓 LLM 的輸出可以被穩定地當成資料使用，而不只是自然語言，這也是在實作 AI Agent 與工具整合時的關鍵基礎。。
+讓 LLM 的輸出可以被穩定地當成資料使用，而不只是自然語言，這也是在實作 AI Agent 與工具整合時的關鍵基礎。
 
 ## 參考資料
 + [Structured outputs - Claude API Docs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs)
