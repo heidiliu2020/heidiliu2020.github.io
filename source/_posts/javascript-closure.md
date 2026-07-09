@@ -2,7 +2,6 @@ title: '[week 16] JavaScript 進階 - 什麼是閉包？探討 Closure & Scope C
 author: Heidi Liu
 tags:
   - JavaScript
-  - Closure
 categories:
   - 技術學習
   - JavaScript

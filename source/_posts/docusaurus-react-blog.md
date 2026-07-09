@@ -2,7 +2,6 @@ title: 【學習筆記】如何使用 Docusaurus & React 快速架設靜態網�
 author: Heidi Liu
 tags:
   - React
-  - Docusaurus
   - Blog
 categories:
   - 技術學習

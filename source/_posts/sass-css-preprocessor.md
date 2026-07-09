@@ -2,7 +2,6 @@ title: Sass/SCSS 入門：變數、巢狀、混入、繼承
 author: Heidi Liu
 tags:
   - Front-End
-  - SCSS
   - CSS
 categories:
   - 技術學習

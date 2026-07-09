@@ -3,7 +3,6 @@ author: Heidi Liu
 tags:
   - Back-End
   - PHP
-  - MySQL
   - Database
 categories:
   - 技術學習

@@ -2,7 +2,6 @@ title: 'Git 版本控制：如何進行多人協作 & 同步分支 '
 author: Heidi Liu
 tags:
   - Git
-  - GitHub
 categories:
   - 技術學習
   - Git

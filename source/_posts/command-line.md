@@ -2,7 +2,7 @@ title: '[week 1] Command Line 入門 & 基本指令'
 author: Heidi Liu
 tags:
   - Lidemy
-  - terminal
+  - 開發工具
 categories:
   - 技術學習
   - Lidemy

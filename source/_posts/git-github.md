@@ -1,7 +1,6 @@
 title: '[week 1] 版本控制 - Git 進階指令 & GitHub'
 author: Heidi Liu
 tags:
-  - GitHub
   - Git
 categories:
   - 技術學習

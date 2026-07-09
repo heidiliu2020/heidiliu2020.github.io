@@ -2,7 +2,6 @@ title: '【學習筆記】 關於 iOS Safari 的那些坑：禁止選取 & 縮�
 author: Heidi Liu
 tags:
   - Front-End
-  - Safari
   - iOS
 categories:
   - 技術學習

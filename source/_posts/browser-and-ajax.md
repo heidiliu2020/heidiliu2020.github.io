@@ -3,7 +3,7 @@ author: Heidi Liu
 tags:
   - Front-End
   - JavaScript
-  - API
+  - Back-End
 categories:
   - 技術學習
   - Front-End

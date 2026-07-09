@@ -2,7 +2,6 @@ title: 【學習筆記】hexo-admin：Hexo 後台管理工具
 author: Heidi Liu
 tags:
   - Hexo
-  - hexo-admin
 categories:
   - 技術學習
   - Blog

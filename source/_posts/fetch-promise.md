@@ -2,8 +2,7 @@ title: '[week 13] Fetch & Promise 補充'
 author: Heidi Liu
 tags:
   - Front-End
-  - fetch
-  - promise
+  - JavaScript
 categories:
   - 技術學習
   - Front-End

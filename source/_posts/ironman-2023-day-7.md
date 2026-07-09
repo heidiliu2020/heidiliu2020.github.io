@@ -4,7 +4,6 @@ tags:
   - ironman2023
   - Qiita
   - 軟體開發
-  - 版本升級
 categories:
   - 技術學習
   - 2023鐵人賽

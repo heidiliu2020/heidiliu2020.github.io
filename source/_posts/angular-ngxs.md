@@ -3,7 +3,6 @@ author: Heidi Liu
 tags:
   - Angular
   - Front-End
-  - NGXS
 categories:
   - 技術學習
   - Front-End

@@ -3,7 +3,6 @@ author: Heidi Liu
 tags:
   - Front-End
   - Stripe
-  - Payment Flow
 categories:
   - 技術學習
   - Front-End

@@ -2,7 +2,6 @@ title: '[week 21] React Hooks API：useState & 再戰 Todo List'
 author: Heidi Liu
 tags:
   - React
-  - Hooks
 categories:
   - 技術學習
   - Front-End

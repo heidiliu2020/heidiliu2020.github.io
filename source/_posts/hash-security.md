@@ -2,8 +2,7 @@ title: '[week 11] 資訊安全 - 雜湊與加密 & 常見攻擊：SQL Injection�
 author: Heidi Liu
 tags:
   - Back-End
-  - hash
-  - security
+  - Security
 categories:
   - 技術學習
   - Back-End

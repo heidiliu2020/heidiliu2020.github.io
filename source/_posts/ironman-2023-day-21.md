@@ -3,7 +3,7 @@ author: Heidi Liu
 tags:
   - ironman2023
   - Qiita
-  - Design
+  - 軟體開發
   - Front-End
 categories:
   - 技術學習

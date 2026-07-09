@@ -2,8 +2,6 @@ title: '[week 22] React：用 SPA 架構實作一個部落格（二）- 身分�
 author: Heidi Liu
 tags:
   - React
-  - Hooks
-  - useContext
 categories:
   - 技術學習
   - Front-End

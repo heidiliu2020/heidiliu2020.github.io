@@ -2,8 +2,8 @@ title: '[week 13] MTR04 - 實作留言版 plugin'
 author: Heidi Liu
 tags:
   - Back-End
-  - jQuery
-  - webpack
+  - JavaScript
+  - 開發工具
 categories:
   - 技術學習
   - Back-End

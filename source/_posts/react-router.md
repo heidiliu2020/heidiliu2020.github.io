@@ -2,7 +2,6 @@ title: '[week 22] React：用 SPA 架構實作一個部落格（一）- Router'
 author: Heidi Liu
 tags:
   - React
-  - Hooks
 categories:
   - 技術學習
   - Front-End

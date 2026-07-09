@@ -2,8 +2,8 @@ title: '[week 12] 前端工具之一 - jQuery 與 Bootstrap'
 author: Heidi Liu
 tags:
   - Front-End
-  - jQuery
-  - Bootstrap
+  - JavaScript
+  - CSS
 categories:
   - 技術學習
   - Front-End

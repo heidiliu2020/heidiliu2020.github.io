@@ -2,7 +2,6 @@ title: '[week 22] 再探 React：Function component vs Class component'
 author: Heidi Liu
 tags:
   - React
-  - Hooks
 categories:
   - 技術學習
   - Front-End

@@ -2,7 +2,6 @@ title: '[week 17] 後端中階 - 淺談 Sequelize：使用 ORM 框架串接資�
 author: Heidi Liu
 tags:
   - Back-End
-  - Sequelize
   - Database
 categories:
   - 技術學習

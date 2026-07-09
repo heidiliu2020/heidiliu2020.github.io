@@ -2,9 +2,6 @@ title: '[week 22] React：用 SPA 架構實作一個部落格（四）- 優化�
 author: Heidi Liu
 tags:
   - React
-  - useEffect
-  - useState
-  - useContext
 categories:
   - 技術學習
   - Front-End

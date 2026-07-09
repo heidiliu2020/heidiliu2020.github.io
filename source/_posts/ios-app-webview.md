@@ -1,9 +1,7 @@
 title: 【學習筆記】如何在 iOS APP 透過 WKWebView 實現內嵌網頁功能
 author: Heidi Liu
 tags:
-  - Native
   - iOS
-  - Webview
 categories:
   - 技術學習
   - Front-End

@@ -3,8 +3,7 @@ author: Heidi Liu
 tags:
   - ironman2023
   - Qiita
-  - 產品開發
-  - agile
+  - 軟體開發
 categories:
   - 技術學習
   - 2023鐵人賽

@@ -2,8 +2,7 @@ title: 'Google 廣告｜如何使用 Google AdSense 設定廣告'
 author: Heidi Liu
 tags:
   - Advertising
-  - Google
-  - Translation
+  - Qiita
 categories:
   - 技術學習
   - Google

@@ -2,7 +2,7 @@ title: '[week 14] 後端基礎：資料庫 & 系統設計'
 author: Heidi Liu
 tags:
   - Back-End
-  - System Design
+  - 軟體開發
   - Database
 categories:
   - 技術學習

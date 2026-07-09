@@ -3,7 +3,7 @@ author: Heidi Liu
 tags:
   - ironman2023
   - Qiita
-  - 提問方法
+  - 職涯
 categories:
   - 技術學習
   - 2023鐵人賽

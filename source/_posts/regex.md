@@ -2,7 +2,6 @@ title: 【學習筆記】JavaScript：Regex 正則表達式
 author: Heidi Liu
 tags:
   - JavaScript
-  - Regex
 categories:
   - 技術學習
   - JavaScript

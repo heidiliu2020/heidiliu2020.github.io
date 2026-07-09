@@ -1,12 +1,7 @@
 title: Google 廣告｜比較 Google Ads、AdSense、AdMob 和 Ad Manager 的區別
 author: Heidi Liu
 tags:
-  - Google
   - Advertising
-  - Ads
-  - AdSense
-  - AdMob
-  - Ad Manager
 categories:
   - 技術學習
   - Google

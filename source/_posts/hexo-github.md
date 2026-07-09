@@ -1,6 +1,6 @@
 title: 【學習筆記】如何使用 Hexo + GitHub Pages 架設個人網誌
 tags:
-  - GitHub
+  - Git
   - Hexo
 categories:
   - 技術學習

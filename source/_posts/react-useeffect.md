@@ -2,7 +2,6 @@ title: '[week 21] React Hooks API：useEffect & 實作一個自己的鉤子'
 author: Heidi Liu
 tags:
   - React
-  - Hooks
 categories:
   - 技術學習
   - Front-End

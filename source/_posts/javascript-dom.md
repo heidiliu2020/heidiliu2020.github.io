@@ -2,7 +2,6 @@ title: '[week 7] DOM 事件傳遞機制：捕獲與冒泡、事件代理'
 author: Heidi Liu
 tags:
   - JavaScript
-  - DOM
 categories:
   - 技術學習
   - JavaScript

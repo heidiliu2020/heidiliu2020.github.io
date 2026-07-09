@@ -4,7 +4,7 @@ tags:
   - ironman2023
   - Qiita
   - Front-End
-  - Chrome
+  - 開發工具
 categories:
   - 技術學習
   - 2023鐵人賽

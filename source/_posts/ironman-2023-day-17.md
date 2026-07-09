@@ -3,7 +3,6 @@ author: Heidi Liu
 tags:
   - ironman2023
   - Qiita
-  - jQuery
   - JavaScript
 categories:
   - 技術學習

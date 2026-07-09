@@ -4,8 +4,6 @@ author: Heidi Liu
 tags:
   - AI
   - Claude
-  - Agent SDK
-  - Human-in-the-loop
 categories:
   - 技術學習
   - AI

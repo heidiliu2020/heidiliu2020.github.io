@@ -2,8 +2,7 @@ title: '[week 13] 前端工具之三 - gulp、webpack'
 author: Heidi Liu
 tags:
   - Front-End
-  - webpack
-  - gulp
+  - 開發工具
 categories:
   - 技術學習
   - Front-End

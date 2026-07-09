@@ -4,7 +4,7 @@ tags:
   - Lidemy
   - Front-End
   - JavaScript
-  - Naming Conventions
+  - 軟體開發
 categories:
   - 技術學習
   - Lidemy

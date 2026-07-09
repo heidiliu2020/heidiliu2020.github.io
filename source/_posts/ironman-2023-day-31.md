@@ -3,7 +3,6 @@ author: Heidi Liu
 tags:
   - ironman2023
   - Qiita
-  - Translation
 categories:
   - 技術學習
   - 2023鐵人賽

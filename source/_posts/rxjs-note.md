@@ -1,7 +1,7 @@
 title: 【學習筆記】RxJS - 封裝程式的藝術
 author: Heidi Liu
 tags:
-  - RxJS
+  - JavaScript
   - Angular
 categories:
   - 技術學習

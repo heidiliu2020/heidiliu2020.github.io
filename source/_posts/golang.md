@@ -2,7 +2,7 @@ title: '【學習筆記】Golang 入門：環境建置與開發工具'
 author: Heidi Liu
 tags:
   - Back-End
-  - golang
+  - Golang
 categories:
   - 技術學習
   - Back-End

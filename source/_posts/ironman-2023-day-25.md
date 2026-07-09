@@ -5,8 +5,7 @@ tags:
   - ironman2023
   - Qiita
   - Back-End
-  - System Design
-  - Demand
+  - 軟體開發
 categories:
   - 技術學習
   - 2023鐵人賽

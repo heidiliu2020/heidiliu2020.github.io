@@ -2,7 +2,7 @@ title: '[week 16] JavaScript 進階 - What is this？'
 author: Heidi Liu
 tags:
   - JavaScript
-  - OOP
+  - 軟體開發
 categories:
   - 技術學習
   - JavaScript

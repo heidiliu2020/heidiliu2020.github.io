@@ -2,7 +2,6 @@ title: '[week 16] JavaScript 進階 - 初探 Hoisting & Execution Context'
 author: Heidi Liu
 tags:
   - JavaScript
-  - Hoisting
 categories:
   - 技術學習
   - JavaScript

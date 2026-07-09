@@ -2,7 +2,7 @@ title: '[week 3] 設定 ESLint：用來檢查語法的工具'
 author: Heidi Liu
 tags:
   - JavaScript
-  - ESLint
+  - 開發工具
 categories:
   - 技術學習
   - JavaScript

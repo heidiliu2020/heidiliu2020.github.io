@@ -3,8 +3,7 @@ author: Heidi Liu
 tags:
   - ironman2023
   - Qiita
-  - alias
-  - terminal
+  - 開發工具
 categories:
   - 技術學習
   - 2023鐵人賽

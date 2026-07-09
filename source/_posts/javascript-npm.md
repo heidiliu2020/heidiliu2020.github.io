@@ -2,7 +2,6 @@ title: '[week 3] JavaScript：認識 Module & NPM 套件庫'
 author: Heidi Liu
 tags:
   - JavaScript
-  - ES6
 categories:
   - 技術學習
   - JavaScript

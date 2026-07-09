@@ -2,7 +2,6 @@ title: '[week 17] 後端中階 - 使用 Node.js + Express 框架建立一個靜�
 author: Heidi Liu
 tags:
   - Back-End
-  - Express
   - Node.js
 categories:
   - 技術學習

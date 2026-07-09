@@ -4,7 +4,7 @@ tags:
   - ironman2023
   - Qiita
   - 軟體開發
-  - 業界分析
+  - 職涯
 categories:
   - 技術學習
   - 2023鐵人賽

@@ -4,7 +4,6 @@ author: Heidi Liu
 tags:
   - AI
   - Claude
-  - Structured Outputs
 categories:
   - 技術學習
   - AI

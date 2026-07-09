@@ -1,7 +1,7 @@
 title: '[week 21] 前端框架 - 先別急著學 React'
 author: Heidi Liu
 tags:
-  - jQuery
+  - JavaScript
   - React
 categories:
   - 技術學習

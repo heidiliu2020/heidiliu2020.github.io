@@ -2,7 +2,6 @@ title: '[week 6] HTML - 認識基礎標籤'
 author: Heidi Liu
 tags:
   - Front-End
-  - HTML
 categories:
   - 技術學習
   - Front-End

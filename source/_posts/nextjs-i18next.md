@@ -4,7 +4,6 @@ tags:
   - Front-End
   - React
   - Next.js
-  - i18n
 categories:
   - 技術學習
   - Front-End

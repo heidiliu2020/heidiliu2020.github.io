@@ -2,7 +2,6 @@ title: '[week 7] DOM 介面、瀏覽器事件處理'
 author: Heidi Liu
 tags:
   - JavaScript
-  - DOM
 categories:
   - 技術學習
   - JavaScript

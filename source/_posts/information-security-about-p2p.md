@@ -2,7 +2,6 @@ title: 【學習筆記】女巫攻擊 vs. 日蝕攻擊 vs. DDoS 攻擊
 author: Heidi Liu
 tags:
   - Security
-  - P2P
 categories:
   - 技術學習
   - Security

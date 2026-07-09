@@ -3,7 +3,7 @@ author: Heidi Liu
 tags:
   - ironman2023
   - Qiita
-  - GitHub
+  - Git
 categories:
   - 技術學習
   - 2023鐵人賽

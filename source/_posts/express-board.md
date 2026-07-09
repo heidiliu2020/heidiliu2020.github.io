@@ -2,8 +2,7 @@ title: '[week 17] 後端中階 - Express 實戰：簡易會員註冊系統 & 留
 author: Heidi Liu
 tags:
   - Back-End
-  - Express
-  - Middleware
+  - Node.js
 categories:
   - 技術學習
   - Back-End
