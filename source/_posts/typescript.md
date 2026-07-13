@@ -9,7 +9,10 @@ categories:
   - Front-End
   - JavaScript
 date: 2021-10-11 13:16:00
+updated: 2026-07-13 12:00:00
 ---
+> 2026.07 更新：校對內容，補充 unknown 型別與 TypeScript 5.x 相關註記。本文介紹的型別基礎不受版本影響，可安心閱讀。
+
 本篇為以下資源之學習筆記：
 - [Github - microsoft/TypeScript](https://github.com/microsoft/TypeScript)
 - [TypeScript 新手指南](https://willh.gitbook.io/typescript-tutorial/)
@@ -51,7 +54,7 @@ date: 2021-10-11 13:16:00
 
 由於 JavaScript 是弱型別語言，TypeScript 的出現就是為了解決這個問題。
 
-而 TypeScript 就是原生 JavsScript 的延伸，包含 ES3、ES5 與 ES6+ 語法，以及本身的擴充內容，也就是說，TypeScript 具備以下特性：
+而 TypeScript 就是原生 JavaScript 的延伸，包含 ES3、ES5 與 ES6+ 語法，以及本身的擴充內容，也就是說，TypeScript 具備以下特性：
 
 - Strong typing 強型別
 - Object-oriented-features 物件導向特性
@@ -182,6 +185,19 @@ myFavoriteNumber = 7;
 
 > 注意：不要濫用 any 任意型別，否則將失去型別檢查保障！
 
+#### 補充：更安全的 unknown
+
+TypeScript 3.0 之後提供了 `unknown` 型別，同樣可以接收任意型別的值，但差別在於：`any` 可以直接對值做任何操作，`unknown` 則必須先「收窄型別」（例如透過 `typeof` 判斷）才能使用，等於保留了型別檢查的保護。現代 TypeScript 的慣例是：**接收未知的外部資料時，優先使用 unknown 而非 any**：
+
+```typescript=
+let value: unknown = getExternalData();
+
+// value.toUpperCase();          // 報錯：'value' is of type 'unknown'
+if (typeof value === 'string') {
+  console.log(value.toUpperCase());   // OK：已收窄為 string
+}
+```
+
 ### 陣列型別 Array
 
 表示陣列的方式，大致可分為以下幾種：
@@ -238,6 +254,8 @@ var Color;
 ;
 let c = Color.Green;
 ```
+
+> 2026 年註：現在社群中也常以字串字面值的聯合型別（如 `type Color = 'Red' | 'Green' | 'Blue'`）取代 enum，不會產生額外的編譯程式碼，兩種寫法可依團隊慣例選擇。
 
 接著以番茄鐘為例，假設 Timer 有三種狀態，分別是停止、暫停、計時，即可列舉下列複合型別：
 
@@ -446,7 +464,7 @@ console.log(other);
 
 * Class 類型
 * Interface 介面
-* 未來的 ES2016+ 特性，例如：Annotations 註解, Decorators 裝飾器, async/await 異步/等待
+* 比 JavaScript 標準更早支援的新特性，例如 Decorators 裝飾器（TypeScript 5.0 起支援 ECMAScript 標準版寫法）；而 async/await 等當年的「未來語法」如今早已是 JavaScript 正式標準（ES2017）
 
 ### 介面 Interface：定義抽象物件的型別
 

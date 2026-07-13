@@ -8,7 +8,10 @@ categories:
   - Front-End
   - HTML & CSS
 date: 2021-04-13 21:20:00
+updated: 2026-07-13 12:00:00
 ---
+> 2026.07 更新：補充 Dart Sass 與 `@import` 正式棄用的說明——現在請一律使用 `@use` 引入模組，編譯器則使用 npm 的 `sass` 套件（舊的 `node-sass` 已棄用）。本文的變數、巢狀、混入、繼承等語法均不受影響。
+
 其實過去在 Lidemy 課程中，也有提過 CSS 預處理器的觀念：[[week 13] 前端工具之二 - CSS 預處理器、Babel](https://hackmd.io/@Heidi-Liu/note-fe201-sass-and-babel)，因為工作上需要使用，發現自己對語法還是不太熟悉，於是整理了這篇筆記。瞭解這套工具的由來，基本語法的使用，以及如何幫助我們解決前端開發可能遇到的問題。
 
 <!--more-->
@@ -65,6 +68,8 @@ date: 2021-04-13 21:20:00
 ```
 
 需注意不管使用哪種 CSS 預處理器，程式碼都必須先編譯（compiled）成 CSS 的形式，才能讓瀏覽器解讀並呈現出畫面。
+
+> 關於編譯器：Sass 的官方實作是 **Dart Sass**，對應的 npm 套件名稱就叫 `sass`（`npm install sass`）。早年常見的 `node-sass`（LibSass）已於 2020 年宣告棄用，新專案請不要再使用。
 
 ## Sass/SCSS 基本語法
 
@@ -195,9 +200,9 @@ nav a:hover {
 }
 ```
 
-### 繼承 Extent/Inderitance
+### 繼承 Extend/Inheritance
 
-使用說明：當許多選擇器具有相同樣式時，可透過`%` 佔位符號宣告，將所有相同樣式內容合併，在以 `@extend` 來引入使用。
+使用說明：當許多選擇器具有相同樣式時，可透過`%` 佔位符號宣告，將所有相同樣式內容合併，再以 `@extend` 來引入使用。
 
 + 編譯前 SCSS：需注意有被 `@extend` 的 class 才會被編譯成 CSS 程式碼，並且整合到共用樣式
 
@@ -269,7 +274,9 @@ nav a:hover {
 
 ### 模組 Modules
 
-使用說明：透過 `@import` 或 `@use` 語法，可將 SCSS 以模組化的形式，從其他 SCSS 檔案引入需要的樣式，需注意已存在的模組尚未全面支援 `@use`。
+使用說明：透過 `@import` 或 `@use` 語法，可將 SCSS 以模組化的形式，從其他 SCSS 檔案引入需要的樣式。
+
+> 2026 年注意：撰文當時 `@use` 還未被所有工具支援，但現在情況已反過來——**`@import` 已於 2024 年（Dart Sass 1.80）正式棄用**，使用時會出現警告，並預計在 Dart Sass 3.0 移除。新專案請一律使用 `@use`（搭配 `@forward` 轉出模組），詳見[官方說明](https://sass-lang.com/documentation/breaking-changes/import/)。
 
 + 編譯前 SCSS：要作為模組載入的 SCSS 檔案，名稱必須帶有底線，例如 `_base.scss`。
 

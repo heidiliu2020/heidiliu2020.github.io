@@ -8,10 +8,13 @@ categories:
   - Hexo
 author: Heidi Liu
 date: 2020-11-07 20:10:00
+updated: 2026-07-13 12:00:00
 ---
 ![](https://i.imgur.com/dOOM0JO.png)
 
 ## 前言
+
+> 2026.07 更新：修正過時的版本資訊（Node.js、預設分支 main）、GitHub 認證方式，並補充 GitHub Actions 部署的選項。整體架站流程至今仍適用。
 
 本篇主要介紹如何使用 Hexo 並搭配 GitHub 來快速架設網誌。從介紹什麼是 Hexo 框架，該如何安裝、建立環境，接著介紹一些常用指令，以及如何部署到 GitHub 上。
 
@@ -35,7 +38,7 @@ date: 2020-11-07 20:10:00
 - 編譯速度非常快
 - 能夠支援 Markdown 語法解析文章，並透過主題渲染靜態檔案
 - 具有豐富的外掛套件
-- 支援一鍵部署到 GitHub Pages 或 Heroku 等支援靜態網頁的空間
+- 支援一鍵部署到 GitHub Pages、Netlify 等支援靜態網頁的空間
 
 ## 前置作業
 
@@ -43,9 +46,9 @@ date: 2020-11-07 20:10:00
 
 在開始安裝 Hexo 之前，必須先在電腦安裝下列工具：
 
-- #### [Node.js](https://nodejs.org/en/)：提供 npm 來安裝所需的套件。這裡可選擇安裝左側 14.15.0 LTS 版本
+- #### [Node.js](https://nodejs.org/en/)：提供 npm 來安裝所需的套件。選擇安裝 LTS（長期支援）版本即可
 
-> Hexo 官網建議使用 Node.js 10.0 及以上版本，若不確定下載哪個版本，可在終端機輸入 `npm versin` 查看版本號。
+> 撰文當時的 LTS 是 14.15.0，現在請直接安裝官網當前的 LTS 版本；Hexo 7 要求 Node.js 14 以上。若不確定電腦上的版本，可在終端機輸入 `node -v` 查看版本號。
 
 ![](https://i.imgur.com/JEdBf4y.png)
 
@@ -139,7 +142,7 @@ $ npm install
 #### themes 主題
 
 - 用來存放主題的資料夾
-- Hexo 會根據主題來解析 scouce 資料夾中的檔案並產生靜態頁面。預設主題為 [landscape](https://github.com/hexojs/hexo-theme-landscape)
+- Hexo 會根據主題來解析 source 資料夾中的檔案並產生靜態頁面。預設主題為 [landscape](https://github.com/hexojs/hexo-theme-landscape)
 
 #### source 資源
 
@@ -150,7 +153,7 @@ $ npm install
 
 #### source & public & .deploy_git 的差別
 
-- 執行 `$ hexo generate` 之後，會將 scorce 文件夾中的 Markdown 檔和 HTML 檔進行解析，再結合主題進行渲染，生成我們看到的靜態網站
+- 執行 `$ hexo generate` 之後，會將 source 文件夾中的 Markdown 檔和 HTML 檔進行解析，再結合主題進行渲染，生成我們看到的靜態網站
 - 執行 `$ hexo deploy` 之後，則會將 public 文件夾中的內容部署到 GitHub，並生成 .deploy_git 資料夾，因此內容與 public 幾乎相同
 - 這三者的關係可想成：
 
@@ -208,7 +211,7 @@ $ hexo server
 
 ### 建立 GitHub 專案
 
-在架設網誌之前，還必須準備一個存放網站的空間，例如架設主機，或是選擇現有的平台，例如 GitHub Pages 或 Heroku 等，本篇以 GitHub 作為範例。
+在架設網誌之前，還必須準備一個存放網站的空間，例如架設主機，或是選擇現有的平台，例如 GitHub Pages、Netlify、Vercel 等，本篇以 GitHub 作為範例。
 
 接著可依照下列步驟在 GitHub 新增專案：
 
@@ -244,22 +247,24 @@ $ npm install hexo-deployer-git --save
 deploy:
   type: git
   repo: https://github.com/username/username.github.io.git
-  branch: master
+  branch: main
 ```
 
 - type：選擇部屬模式，這裡填 git
 - repo：GitHub repository 的連結，記得將 username 修改成自己的帳號名稱
-- branch：選擇分支，預設為 master
+- branch：選擇分支。GitHub 新建 repo 的預設分支已從 `master` 改為 `main`，這裡要填 GitHub Pages 設定的來源分支（可在 repo 的 Settings → Pages 確認）
 
 ![](https://i.imgur.com/bVw4OIH.png)
 
 #### Step3. 輸入部署指令
 
-使用下列指令即可部署檔案到網站上，第一次輸入可能會要求登入 GitHub 帳號：
+使用下列指令即可部署檔案到網站上，第一次輸入會要求 GitHub 認證：
 
 ```
 $ hexo deploy
 ```
+
+> 注意：GitHub 已於 2021 年停用帳號密碼推送，認證需改用 [Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)（在密碼欄位貼上 token）或事先設定好 SSH 金鑰（repo 填 `git@github.com:username/username.github.io.git`）。
 
 通常在完成每次修改後，會依序輸入 clean -> generate -> deploy 三行指令，避免更新不完全：
 
@@ -270,6 +275,8 @@ $ hexo d     // 部署至 GitHub
 ```
 
 或是合併第二、三行指令：`hexo g -d` 即可在產生靜態頁面後立刻部署。
+
+> 補充：除了本篇介紹的 `hexo-deployer-git` 一鍵部署，Hexo 官方文件現在也提供透過 GitHub Actions 在 push 後自動建置部署的做法，適合不想在本機執行 deploy 指令的人，可參考[官方教學](https://hexo.io/docs/github-pages)。
 
 這樣就完成部署網誌到 GitHub 了！可在個人頁面 `https://username.github.io` 確認是否有發布成功，預設畫面如下：
 
