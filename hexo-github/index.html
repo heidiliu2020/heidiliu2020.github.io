@@ -23,12 +23,12 @@
     var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="前言本篇主要介紹如何使用 Hexo 並搭配 GitHub 來快速架設網誌。從介紹什麼是 Hexo 框架，該如何安裝、建立環境，接著介紹一些常用指令，以及如何部署到 GitHub 上。">
+  <meta name="description" content="前言 2026.07 更新：修正過時的版本資訊（Node.js、預設分支 main）、GitHub 認證方式，並補充 GitHub Actions 部署的選項。整體架站流程至今仍適用。  本篇主要介紹如何使用 Hexo 並搭配 GitHub 來快速架設網誌。從介紹什麼是 Hexo 框架，該如何安裝、建立環境，接著介紹一些常用指令，以及如何部署到 GitHub 上。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【學習筆記】如何使用 Hexo + GitHub Pages 架設個人網誌">
 <meta property="og:url" content="https://heidiliu2020.github.io/hexo-github/index.html">
 <meta property="og:site_name" content="Liusan&#39;s Blog">
-<meta property="og:description" content="前言本篇主要介紹如何使用 Hexo 並搭配 GitHub 來快速架設網誌。從介紹什麼是 Hexo 框架，該如何安裝、建立環境，接著介紹一些常用指令，以及如何部署到 GitHub 上。">
+<meta property="og:description" content="前言 2026.07 更新：修正過時的版本資訊（Node.js、預設分支 main）、GitHub 認證方式，並補充 GitHub Actions 部署的選項。整體架站流程至今仍適用。  本篇主要介紹如何使用 Hexo 並搭配 GitHub 來快速架設網誌。從介紹什麼是 Hexo 框架，該如何安裝、建立環境，接著介紹一些常用指令，以及如何部署到 GitHub 上。">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://i.imgur.com/dOOM0JO.png">
 <meta property="og:image" content="https://i.imgur.com/JEdBf4y.png">
@@ -44,7 +44,7 @@
 <meta property="og:image" content="https://i.imgur.com/bVw4OIH.png">
 <meta property="og:image" content="https://i.imgur.com/X0cAUy6.png">
 <meta property="article:published_time" content="2020-11-07T12:10:00.000Z">
-<meta property="article:modified_time" content="2026-07-09T06:06:05.658Z">
+<meta property="article:modified_time" content="2026-07-13T04:00:00.000Z">
 <meta property="article:author" content="Heidi Liu">
 <meta property="article:tag" content="Git">
 <meta property="article:tag" content="Hexo">
@@ -241,7 +241,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2026-07-09 14:06:05" itemprop="dateModified" datetime="2026-07-09T14:06:05+08:00">2026-07-09</time>
+                <time title="修改時間：2026-07-13 12:00:00" itemprop="dateModified" datetime="2026-07-13T12:00:00+08:00">2026-07-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -267,14 +267,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">文章字數：</span>
-              <span>3.6k</span>
+              <span>4k</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              <span>3 分鐘</span>
+              <span>4 分鐘</span>
             </span>
 
         </div>
@@ -287,7 +287,10 @@
 
       
         <p><img src="https://i.imgur.com/dOOM0JO.png"></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本篇主要介紹如何使用 Hexo 並搭配 GitHub 來快速架設網誌。從介紹什麼是 Hexo 框架，該如何安裝、建立環境，接著介紹一些常用指令，以及如何部署到 GitHub 上。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>2026.07 更新：修正過時的版本資訊（Node.js、預設分支 main）、GitHub 認證方式，並補充 GitHub Actions 部署的選項。整體架站流程至今仍適用。</p>
+</blockquote>
+<p>本篇主要介紹如何使用 Hexo 並搭配 GitHub 來快速架設網誌。從介紹什麼是 Hexo 框架，該如何安裝、建立環境，接著介紹一些常用指令，以及如何部署到 GitHub 上。</p>
 <span id="more"></span>
 <p>文章可分為下列幾個部分：</p>
 <ul>
@@ -312,14 +315,14 @@
 <li>編譯速度非常快</li>
 <li>能夠支援 Markdown 語法解析文章，並透過主題渲染靜態檔案</li>
 <li>具有豐富的外掛套件</li>
-<li>支援一鍵部署到 GitHub Pages 或 Heroku 等支援靜態網頁的空間</li>
+<li>支援一鍵部署到 GitHub Pages、Netlify 等支援靜態網頁的空間</li>
 </ul>
 <h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><h3 id="安裝需求"><a href="#安裝需求" class="headerlink" title="安裝需求"></a>安裝需求</h3><p>在開始安裝 Hexo 之前，必須先在電腦安裝下列工具：</p>
 <ul>
-<li><h4 id="Node-js：提供-npm-來安裝所需的套件。這裡可選擇安裝左側-14-15-0-LTS-版本"><a href="#Node-js：提供-npm-來安裝所需的套件。這裡可選擇安裝左側-14-15-0-LTS-版本" class="headerlink" title="Node.js：提供 npm 來安裝所需的套件。這裡可選擇安裝左側 14.15.0 LTS 版本"></a><span class="exturl" data-url="aHR0cHM6Ly9ub2RlanMub3JnL2VuLw==" title="https://nodejs.org/en/">Node.js<i class="fa fa-external-link"></i></span>：提供 npm 來安裝所需的套件。這裡可選擇安裝左側 14.15.0 LTS 版本</h4></li>
+<li><h4 id="Node-js：提供-npm-來安裝所需的套件。選擇安裝-LTS（長期支援）版本即可"><a href="#Node-js：提供-npm-來安裝所需的套件。選擇安裝-LTS（長期支援）版本即可" class="headerlink" title="Node.js：提供 npm 來安裝所需的套件。選擇安裝 LTS（長期支援）版本即可"></a><span class="exturl" data-url="aHR0cHM6Ly9ub2RlanMub3JnL2VuLw==" title="https://nodejs.org/en/">Node.js<i class="fa fa-external-link"></i></span>：提供 npm 來安裝所需的套件。選擇安裝 LTS（長期支援）版本即可</h4></li>
 </ul>
 <blockquote>
-<p>Hexo 官網建議使用 Node.js 10.0 及以上版本，若不確定下載哪個版本，可在終端機輸入 <code>npm versin</code> 查看版本號。</p>
+<p>撰文當時的 LTS 是 14.15.0，現在請直接安裝官網當前的 LTS 版本；Hexo 7 要求 Node.js 14 以上。若不確定電腦上的版本，可在終端機輸入 <code>node -v</code> 查看版本號。</p>
 </blockquote>
 <p><img src="https://i.imgur.com/JEdBf4y.png"></p>
 <ul>
@@ -375,7 +378,7 @@
 </ul>
 <h4 id="themes-主題"><a href="#themes-主題" class="headerlink" title="themes 主題"></a>themes 主題</h4><ul>
 <li>用來存放主題的資料夾</li>
-<li>Hexo 會根據主題來解析 scouce 資料夾中的檔案並產生靜態頁面。預設主題為 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hleG9qcy9oZXhvLXRoZW1lLWxhbmRzY2FwZQ==" title="https://github.com/hexojs/hexo-theme-landscape">landscape<i class="fa fa-external-link"></i></span></li>
+<li>Hexo 會根據主題來解析 source 資料夾中的檔案並產生靜態頁面。預設主題為 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hleG9qcy9oZXhvLXRoZW1lLWxhbmRzY2FwZQ==" title="https://github.com/hexojs/hexo-theme-landscape">landscape<i class="fa fa-external-link"></i></span></li>
 </ul>
 <h4 id="source-資源"><a href="#source-資源" class="headerlink" title="source 資源"></a>source 資源</h4><ul>
 <li>用來存放原始檔案的地方，例如 Markdown 檔、圖片、各種頁面（分頁、關於等）</li>
@@ -384,7 +387,7 @@
 <li>Markdown 檔和 HTML 檔會被解析，並放到 public 資料夾，而其他檔案則會被拷貝過去</li>
 </ul>
 <h4 id="source-amp-public-amp-deploy-git-的差別"><a href="#source-amp-public-amp-deploy-git-的差別" class="headerlink" title="source &amp; public &amp; .deploy_git 的差別"></a>source &amp; public &amp; .deploy_git 的差別</h4><ul>
-<li>執行 <code>$ hexo generate</code> 之後，會將 scorce 文件夾中的 Markdown 檔和 HTML 檔進行解析，再結合主題進行渲染，生成我們看到的靜態網站</li>
+<li>執行 <code>$ hexo generate</code> 之後，會將 source 文件夾中的 Markdown 檔和 HTML 檔進行解析，再結合主題進行渲染，生成我們看到的靜態網站</li>
 <li>執行 <code>$ hexo deploy</code> 之後，則會將 public 文件夾中的內容部署到 GitHub，並生成 .deploy_git 資料夾，因此內容與 public 幾乎相同</li>
 <li>這三者的關係可想成：</li>
 </ul>
@@ -418,7 +421,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://i.imgur.com/JUHZ8Lw.png"></p>
-<h2 id="部署到-GitHub"><a href="#部署到-GitHub" class="headerlink" title="部署到 GitHub"></a>部署到 GitHub</h2><h3 id="建立-GitHub-專案"><a href="#建立-GitHub-專案" class="headerlink" title="建立 GitHub 專案"></a>建立 GitHub 專案</h3><p>在架設網誌之前，還必須準備一個存放網站的空間，例如架設主機，或是選擇現有的平台，例如 GitHub Pages 或 Heroku 等，本篇以 GitHub 作為範例。</p>
+<h2 id="部署到-GitHub"><a href="#部署到-GitHub" class="headerlink" title="部署到 GitHub"></a>部署到 GitHub</h2><h3 id="建立-GitHub-專案"><a href="#建立-GitHub-專案" class="headerlink" title="建立 GitHub 專案"></a>建立 GitHub 專案</h3><p>在架設網誌之前，還必須準備一個存放網站的空間，例如架設主機，或是選擇現有的平台，例如 GitHub Pages、Netlify、Vercel 等，本篇以 GitHub 作為範例。</p>
 <p>接著可依照下列步驟在 GitHub 新增專案：</p>
 <h4 id="Step1-註冊-GitHub-帳號並登入"><a href="#Step1-註冊-GitHub-帳號並登入" class="headerlink" title="Step1. 註冊 GitHub 帳號並登入"></a>Step1. 註冊 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tLw==" title="https://github.com/">GitHub<i class="fa fa-external-link"></i></span> 帳號並登入</h4><h4 id="Step2-點選-New-新增一個-Repository（專案）"><a href="#Step2-點選-New-新增一個-Repository（專案）" class="headerlink" title="Step2. 點選 New 新增一個 Repository（專案）"></a>Step2. 點選 New 新增一個 Repository（專案）</h4><p><img src="https://i.imgur.com/nDvzP4k.png"></p>
 <h4 id="Step3-將專案名稱命名為-username-github-io，username-記得改成自己的帳號名稱"><a href="#Step3-將專案名稱命名為-username-github-io，username-記得改成自己的帳號名稱" class="headerlink" title="Step3. 將專案名稱命名為 username.github.io，username 記得改成自己的帳號名稱"></a>Step3. 將專案名稱命名為 <code>username.github.io</code>，username 記得改成自己的帳號名稱</h4><p><img src="https://i.imgur.com/0i5Fg2R.png"></p>
@@ -430,21 +433,27 @@
 <blockquote>
 <p>需注意這裡指的 _config.yml 檔案是根目錄的，而不是 themes 主題中的。</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/username/username.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/username/username.github.io.git</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>type：選擇部屬模式，這裡填 git</li>
 <li>repo：GitHub repository 的連結，記得將 username 修改成自己的帳號名稱</li>
-<li>branch：選擇分支，預設為 master</li>
+<li>branch：選擇分支。GitHub 新建 repo 的預設分支已從 <code>master</code> 改為 <code>main</code>，這裡要填 GitHub Pages 設定的來源分支（可在 repo 的 Settings → Pages 確認）</li>
 </ul>
 <p><img src="https://i.imgur.com/bVw4OIH.png"></p>
-<h4 id="Step3-輸入部署指令"><a href="#Step3-輸入部署指令" class="headerlink" title="Step3. 輸入部署指令"></a>Step3. 輸入部署指令</h4><p>使用下列指令即可部署檔案到網站上，第一次輸入可能會要求登入 GitHub 帳號：</p>
+<h4 id="Step3-輸入部署指令"><a href="#Step3-輸入部署指令" class="headerlink" title="Step3. 輸入部署指令"></a>Step3. 輸入部署指令</h4><p>使用下列指令即可部署檔案到網站上，第一次輸入會要求 GitHub 認證：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
+<blockquote>
+<p>注意：GitHub 已於 2021 年停用帳號密碼推送，認證需改用 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmdpdGh1Yi5jb20vZW4vYXV0aGVudGljYXRpb24va2VlcGluZy15b3VyLWFjY291bnQtYW5kLWRhdGEtc2VjdXJlL21hbmFnaW5nLXlvdXItcGVyc29uYWwtYWNjZXNzLXRva2Vucw==" title="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens">Personal Access Token<i class="fa fa-external-link"></i></span>（在密碼欄位貼上 token）或事先設定好 SSH 金鑰（repo 填 <code>git@github.com:username/username.github.io.git</code>）。</p>
+</blockquote>
 <p>通常在完成每次修改後，會依序輸入 clean -&gt; generate -&gt; deploy 三行指令，避免更新不完全：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo cl    // 清除之前建立的靜態檔案</span><br><span class="line">$ hexo g     // 建立靜態頁面</span><br><span class="line">$ hexo d     // 部署至 GitHub</span><br></pre></td></tr></table></figure>
 
 <p>或是合併第二、三行指令：<code>hexo g -d</code> 即可在產生靜態頁面後立刻部署。</p>
+<blockquote>
+<p>補充：除了本篇介紹的 <code>hexo-deployer-git</code> 一鍵部署，Hexo 官方文件現在也提供透過 GitHub Actions 在 push 後自動建置部署的做法，適合不想在本機執行 deploy 指令的人，可參考<span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3MvZ2l0aHViLXBhZ2Vz" title="https://hexo.io/docs/github-pages">官方教學<i class="fa fa-external-link"></i></span>。</p>
+</blockquote>
 <p>這樣就完成部署網誌到 GitHub 了！可在個人頁面 <code>https://username.github.io</code> 確認是否有發布成功，預設畫面如下：</p>
 <p><img src="https://i.imgur.com/X0cAUy6.png"></p>
 <hr>
@@ -601,7 +610,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-Hexo%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">什麼是 Hexo？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E4%BD%9C%E6%A5%AD"><span class="nav-number">3.</span> <span class="nav-text">前置作業</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D%E9%9C%80%E6%B1%82"><span class="nav-number">3.1.</span> <span class="nav-text">安裝需求</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Node-js%EF%BC%9A%E6%8F%90%E4%BE%9B-npm-%E4%BE%86%E5%AE%89%E8%A3%9D%E6%89%80%E9%9C%80%E7%9A%84%E5%A5%97%E4%BB%B6%E3%80%82%E9%80%99%E8%A3%A1%E5%8F%AF%E9%81%B8%E6%93%87%E5%AE%89%E8%A3%9D%E5%B7%A6%E5%81%B4-14-15-0-LTS-%E7%89%88%E6%9C%AC"><span class="nav-number">3.1.1.</span> <span class="nav-text">Node.js：提供 npm 來安裝所需的套件。這裡可選擇安裝左側 14.15.0 LTS 版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Git%EF%BC%9A%E7%94%A8%E4%BE%86%E5%B0%87%E6%AA%94%E6%A1%88%E7%99%BC%E5%B8%83%E5%88%B0-GitHub-Page"><span class="nav-number">3.1.2.</span> <span class="nav-text">Git：用來將檔案發布到 GitHub Page</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo-%E7%92%B0%E5%A2%83%E5%BB%BA%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">Hexo 環境建置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Step1-%E5%AE%89%E8%A3%9D-Hexo"><span class="nav-number">4.1.</span> <span class="nav-text">Step1. 安裝 Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step2-%E5%88%9D%E5%A7%8B%E5%8C%96-Hexo"><span class="nav-number">4.2.</span> <span class="nav-text">Step2. 初始化 Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step3-%E5%9C%A8%E8%B3%87%E6%96%99%E5%A4%BE%E5%AE%89%E8%A3%9D%E6%89%80%E9%9C%80%E6%AA%94%E6%A1%88"><span class="nav-number">4.3.</span> <span class="nav-text">Step3. 在資料夾安裝所需檔案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#config-yml"><span class="nav-number">4.3.1.</span> <span class="nav-text">_config.yml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#package-json"><span class="nav-number">4.3.2.</span> <span class="nav-text">package.json</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scaffolds-%E6%A8%A1%E6%9D%BF"><span class="nav-number">4.3.3.</span> <span class="nav-text">scaffolds 模板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#themes-%E4%B8%BB%E9%A1%8C"><span class="nav-number">4.3.4.</span> <span class="nav-text">themes 主題</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#source-%E8%B3%87%E6%BA%90"><span class="nav-number">4.3.5.</span> <span class="nav-text">source 資源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#source-amp-public-amp-deploy-git-%E7%9A%84%E5%B7%AE%E5%88%A5"><span class="nav-number">4.3.6.</span> <span class="nav-text">source &amp; public &amp; .deploy_git 的差別</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="nav-number">5.</span> <span class="nav-text">常用指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#new-%E6%96%B0%E5%A2%9E%E6%96%87%E7%AB%A0"><span class="nav-number">5.1.</span> <span class="nav-text">new 新增文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clean-%E6%B8%85%E9%99%A4%E9%9D%9C%E6%85%8B%E6%AA%94%E6%A1%88%E8%88%87%E5%BF%AB%E5%8F%96"><span class="nav-number">5.2.</span> <span class="nav-text">clean 清除靜態檔案與快取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#generate-%E7%94%A2%E7%94%9F%E9%9D%9C%E6%85%8B%E6%AA%94%E6%A1%88"><span class="nav-number">5.3.</span> <span class="nav-text">generate 產生靜態檔案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#server-%E5%95%9F%E5%8B%95%E4%BC%BA%E6%9C%8D%E5%99%A8"><span class="nav-number">5.4.</span> <span class="nav-text">server 啟動伺服器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0-GitHub"><span class="nav-number">6.</span> <span class="nav-text">部署到 GitHub</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B-GitHub-%E5%B0%88%E6%A1%88"><span class="nav-number">6.1.</span> <span class="nav-text">建立 GitHub 專案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Step1-%E8%A8%BB%E5%86%8A-GitHub-%E5%B8%B3%E8%99%9F%E4%B8%A6%E7%99%BB%E5%85%A5"><span class="nav-number">6.1.1.</span> <span class="nav-text">Step1. 註冊 GitHub 帳號並登入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step2-%E9%BB%9E%E9%81%B8-New-%E6%96%B0%E5%A2%9E%E4%B8%80%E5%80%8B-Repository%EF%BC%88%E5%B0%88%E6%A1%88%EF%BC%89"><span class="nav-number">6.1.2.</span> <span class="nav-text">Step2. 點選 New 新增一個 Repository（專案）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step3-%E5%B0%87%E5%B0%88%E6%A1%88%E5%90%8D%E7%A8%B1%E5%91%BD%E5%90%8D%E7%82%BA-username-github-io%EF%BC%8Cusername-%E8%A8%98%E5%BE%97%E6%94%B9%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84%E5%B8%B3%E8%99%9F%E5%90%8D%E7%A8%B1"><span class="nav-number">6.1.3.</span> <span class="nav-text">Step3. 將專案名稱命名為 username.github.io，username 記得改成自己的帳號名稱</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%87%E6%AA%94%E6%A1%88%E7%99%BC%E5%B8%83%E5%88%B0-GitHub"><span class="nav-number">6.2.</span> <span class="nav-text">將檔案發布到 GitHub</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Step1-%E5%AE%89%E8%A3%9D-Git-%E7%9B%B8%E9%97%9C%E5%A5%97%E4%BB%B6"><span class="nav-number">6.2.1.</span> <span class="nav-text">Step1. 安裝 Git 相關套件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step2-%E4%BF%AE%E6%94%B9-config-yml-%E6%AA%94%E6%A1%88%E7%9A%84-Deployment-%E8%A8%AD%E5%AE%9A"><span class="nav-number">6.2.2.</span> <span class="nav-text">Step2. 修改 _config.yml 檔案的 Deployment 設定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step3-%E8%BC%B8%E5%85%A5%E9%83%A8%E7%BD%B2%E6%8C%87%E4%BB%A4"><span class="nav-number">6.2.3.</span> <span class="nav-text">Step3. 輸入部署指令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B5%90%E8%AA%9E"><span class="nav-number">7.</span> <span class="nav-text">結語</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-Hexo%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">什麼是 Hexo？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E4%BD%9C%E6%A5%AD"><span class="nav-number">3.</span> <span class="nav-text">前置作業</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D%E9%9C%80%E6%B1%82"><span class="nav-number">3.1.</span> <span class="nav-text">安裝需求</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Node-js%EF%BC%9A%E6%8F%90%E4%BE%9B-npm-%E4%BE%86%E5%AE%89%E8%A3%9D%E6%89%80%E9%9C%80%E7%9A%84%E5%A5%97%E4%BB%B6%E3%80%82%E9%81%B8%E6%93%87%E5%AE%89%E8%A3%9D-LTS%EF%BC%88%E9%95%B7%E6%9C%9F%E6%94%AF%E6%8F%B4%EF%BC%89%E7%89%88%E6%9C%AC%E5%8D%B3%E5%8F%AF"><span class="nav-number">3.1.1.</span> <span class="nav-text">Node.js：提供 npm 來安裝所需的套件。選擇安裝 LTS（長期支援）版本即可</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Git%EF%BC%9A%E7%94%A8%E4%BE%86%E5%B0%87%E6%AA%94%E6%A1%88%E7%99%BC%E5%B8%83%E5%88%B0-GitHub-Page"><span class="nav-number">3.1.2.</span> <span class="nav-text">Git：用來將檔案發布到 GitHub Page</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo-%E7%92%B0%E5%A2%83%E5%BB%BA%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">Hexo 環境建置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Step1-%E5%AE%89%E8%A3%9D-Hexo"><span class="nav-number">4.1.</span> <span class="nav-text">Step1. 安裝 Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step2-%E5%88%9D%E5%A7%8B%E5%8C%96-Hexo"><span class="nav-number">4.2.</span> <span class="nav-text">Step2. 初始化 Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step3-%E5%9C%A8%E8%B3%87%E6%96%99%E5%A4%BE%E5%AE%89%E8%A3%9D%E6%89%80%E9%9C%80%E6%AA%94%E6%A1%88"><span class="nav-number">4.3.</span> <span class="nav-text">Step3. 在資料夾安裝所需檔案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#config-yml"><span class="nav-number">4.3.1.</span> <span class="nav-text">_config.yml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#package-json"><span class="nav-number">4.3.2.</span> <span class="nav-text">package.json</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scaffolds-%E6%A8%A1%E6%9D%BF"><span class="nav-number">4.3.3.</span> <span class="nav-text">scaffolds 模板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#themes-%E4%B8%BB%E9%A1%8C"><span class="nav-number">4.3.4.</span> <span class="nav-text">themes 主題</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#source-%E8%B3%87%E6%BA%90"><span class="nav-number">4.3.5.</span> <span class="nav-text">source 資源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#source-amp-public-amp-deploy-git-%E7%9A%84%E5%B7%AE%E5%88%A5"><span class="nav-number">4.3.6.</span> <span class="nav-text">source &amp; public &amp; .deploy_git 的差別</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="nav-number">5.</span> <span class="nav-text">常用指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#new-%E6%96%B0%E5%A2%9E%E6%96%87%E7%AB%A0"><span class="nav-number">5.1.</span> <span class="nav-text">new 新增文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clean-%E6%B8%85%E9%99%A4%E9%9D%9C%E6%85%8B%E6%AA%94%E6%A1%88%E8%88%87%E5%BF%AB%E5%8F%96"><span class="nav-number">5.2.</span> <span class="nav-text">clean 清除靜態檔案與快取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#generate-%E7%94%A2%E7%94%9F%E9%9D%9C%E6%85%8B%E6%AA%94%E6%A1%88"><span class="nav-number">5.3.</span> <span class="nav-text">generate 產生靜態檔案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#server-%E5%95%9F%E5%8B%95%E4%BC%BA%E6%9C%8D%E5%99%A8"><span class="nav-number">5.4.</span> <span class="nav-text">server 啟動伺服器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0-GitHub"><span class="nav-number">6.</span> <span class="nav-text">部署到 GitHub</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B-GitHub-%E5%B0%88%E6%A1%88"><span class="nav-number">6.1.</span> <span class="nav-text">建立 GitHub 專案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Step1-%E8%A8%BB%E5%86%8A-GitHub-%E5%B8%B3%E8%99%9F%E4%B8%A6%E7%99%BB%E5%85%A5"><span class="nav-number">6.1.1.</span> <span class="nav-text">Step1. 註冊 GitHub 帳號並登入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step2-%E9%BB%9E%E9%81%B8-New-%E6%96%B0%E5%A2%9E%E4%B8%80%E5%80%8B-Repository%EF%BC%88%E5%B0%88%E6%A1%88%EF%BC%89"><span class="nav-number">6.1.2.</span> <span class="nav-text">Step2. 點選 New 新增一個 Repository（專案）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step3-%E5%B0%87%E5%B0%88%E6%A1%88%E5%90%8D%E7%A8%B1%E5%91%BD%E5%90%8D%E7%82%BA-username-github-io%EF%BC%8Cusername-%E8%A8%98%E5%BE%97%E6%94%B9%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84%E5%B8%B3%E8%99%9F%E5%90%8D%E7%A8%B1"><span class="nav-number">6.1.3.</span> <span class="nav-text">Step3. 將專案名稱命名為 username.github.io，username 記得改成自己的帳號名稱</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%87%E6%AA%94%E6%A1%88%E7%99%BC%E5%B8%83%E5%88%B0-GitHub"><span class="nav-number">6.2.</span> <span class="nav-text">將檔案發布到 GitHub</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Step1-%E5%AE%89%E8%A3%9D-Git-%E7%9B%B8%E9%97%9C%E5%A5%97%E4%BB%B6"><span class="nav-number">6.2.1.</span> <span class="nav-text">Step1. 安裝 Git 相關套件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step2-%E4%BF%AE%E6%94%B9-config-yml-%E6%AA%94%E6%A1%88%E7%9A%84-Deployment-%E8%A8%AD%E5%AE%9A"><span class="nav-number">6.2.2.</span> <span class="nav-text">Step2. 修改 _config.yml 檔案的 Deployment 設定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step3-%E8%BC%B8%E5%85%A5%E9%83%A8%E7%BD%B2%E6%8C%87%E4%BB%A4"><span class="nav-number">6.2.3.</span> <span class="nav-text">Step3. 輸入部署指令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B5%90%E8%AA%9E"><span class="nav-number">7.</span> <span class="nav-text">結語</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
