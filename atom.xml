@@ -241,15 +241,9 @@
     <id>https://heidiliu2020.github.io/nextjs-app-router/</id>
     <link href="https://heidiliu2020.github.io/nextjs-app-router/"/>
     <published>2024-01-26T07:25:01.000Z</published>
-    <summary>
-      <![CDATA[<p><img src="https://hackmd.io/_uploads/SkK9xkWqp.png" alt="Parallel Routes"></p>
-<blockquote>
-<p>Ref: <a href="https://nextjs.org/docs/app/building-your-application/routing/parallel-routes#streaming">Next.js - Parallel Routes</a></p>
-</blockquote>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>接續上篇文章 <a href="https://heidiliu2020.github.io/next-react-ssr/">【學習筆記】談談 Next.js：基於 React 的 SSR 框架</a>，初步瞭解 Next.js 這套框架的特性以及網頁渲染方式，本篇將實際建立 Next.js 專案，以及介紹 Page Router 與 APP Router 兩種路由系統的差異。</p>]]>
-    </summary>
+    <summary>Next.js 路由系統筆記：從建立專案開始，比較 App Router 與 Page Router 兩種路由系統的差異，包含資料夾結構、檔案命名慣例與適用情境，幫助你在新專案中選擇合適的路由架構，或評估既有專案是否遷移。</summary>
     <title>【學習筆記】Next.js 路由系統：App Router vs Page Router</title>
-    <updated>2026-04-23T06:14:18.250Z</updated>
+    <updated>2026-07-20T16:13:48.314Z</updated>
   </entry>
   <entry>
     <author>
@@ -267,13 +261,9 @@
     <id>https://heidiliu2020.github.io/next-react-ssr/</id>
     <link href="https://heidiliu2020.github.io/next-react-ssr/"/>
     <published>2024-01-16T03:50:01.000Z</published>
-    <summary>
-      <![CDATA[<p><img src="https://hackmd.io/_uploads/SkvRg5cd6.png" alt="image"></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在認識 Next.js 之前，建議先複習 React 的相關知識，可參考過去的<a href="https://heidiliu2020.github.io/react-jsx-props/">《[week 21] 初探 React：Component、JSX 語法、props 與 state 的不同》</a>系列筆記。</p>
-<p>距離上次碰 React 感覺已經是好久以前的事情了，趁著這次組內專案需求，預計導入 Next.js 框架技術，寫下這篇學習筆記做記錄。</p>]]>
-    </summary>
+    <summary>Next.js 入門筆記：說明 React 函式庫與 Next.js 框架的差異，比較 CSR、SSR、SSG 等渲染方式與預渲染（Pre-rendering）的優缺點，理解為什麼需要伺服器端渲染來改善 SEO 與首屏載入速度，建立學習 Next.js 的基礎。</summary>
     <title>【學習筆記】談談 Next.js：基於 React 的 SSR 框架</title>
-    <updated>2026-04-23T06:14:18.249Z</updated>
+    <updated>2026-07-20T16:13:47.277Z</updated>
   </entry>
   <entry>
     <author>
