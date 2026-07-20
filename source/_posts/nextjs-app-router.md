@@ -8,6 +8,7 @@ categories:
   - 技術學習
   - Front-End
   - React
+description: Next.js 路由系統筆記：從建立專案開始，比較 App Router 與 Page Router 兩種路由系統的差異，包含資料夾結構、檔案命名慣例與適用情境，幫助你在新專案中選擇合適的路由架構，或評估既有專案是否遷移。
 date: 2024-01-26 15:25:01
 ---
 

@@ -11,7 +11,7 @@ description: 手把手教你用 Hexo + GitHub Pages 免費架設個人部落格�
 date: 2020-11-07 20:10:00
 updated: 2026-07-13 12:00:00
 ---
-![](https://i.imgur.com/dOOM0JO.png)
+![](/images/posts/hexo-github/dOOM0JO.png)
 
 ## 前言
 
@@ -51,13 +51,13 @@ updated: 2026-07-13 12:00:00
 
 > 撰文當時的 LTS 是 14.15.0，現在請直接安裝官網當前的 LTS 版本；Hexo 7 要求 Node.js 14 以上。若不確定電腦上的版本，可在終端機輸入 `node -v` 查看版本號。
 
-![](https://i.imgur.com/JEdBf4y.png)
+![](/images/posts/hexo-github/JEdBf4y.png)
 
 - #### [Git](https://git-scm.com/)：用來將檔案發布到 GitHub Page
 
 > Git 基礎用法可參考：[版本控制 - Git 概念 ＆ 基本指令](https://hackmd.io/@Heidi-Liu/note-git)
 
-![](https://i.imgur.com/drhF9RQ.png)
+![](/images/posts/hexo-github/drhF9RQ.png)
 
 > [補充] [Git 和 GitHub 的差別？](https://hackmd.io/@Heidi-Liu/note-git-and-github)
 > Git 是用來版本控制的程式；GitHub 則是提供存放 Git Repository 的服務，讓使用者能在視覺化界面進行管理。
@@ -70,7 +70,7 @@ updated: 2026-07-13 12:00:00
 
 ### Step1. 安裝 Hexo
 
-![](https://i.imgur.com/3162t1b.png)
+![](/images/posts/hexo-github/3162t1b.png)
 
 開啟 CLI 介面（例如 cmd、git-bash 等終端機），並輸入下列指令安裝 Hexo：
 
@@ -78,11 +78,11 @@ updated: 2026-07-13 12:00:00
 $ npm install hexo-cli -g
 ```
 
-![](https://i.imgur.com/20qI9yU.png)
+![](/images/posts/hexo-github/20qI9yU.png)
 
 安裝完後，可輸入 `hexo version` 或 `hexo -v` 查看 Hexo 版本，確認是否有安裝成功：
 
-![](https://i.imgur.com/PRFQNVz.png)
+![](/images/posts/hexo-github/PRFQNVz.png)
 
 ### Step2. 初始化 Hexo
 
@@ -93,7 +93,7 @@ $ npm install hexo-cli -g
 ```
 $ hexo init <資料夾名稱>
 ```
-![](https://i.imgur.com/tPOIIKP.png)
+![](/images/posts/hexo-github/tPOIIKP.png)
 
 2. 也可以先建立好資料夾，並在該資料夾輸入上述指令，同樣能進行初始化。可使用 cd 指令來切換路徑：
 
@@ -101,7 +101,7 @@ $ hexo init <資料夾名稱>
 $ cd <資料夾名稱 or 資料夾路徑>
 ```
 
-![](https://i.imgur.com/t1vVcEC.png)
+![](/images/posts/hexo-github/t1vVcEC.png)
 
 ### Step3. 在資料夾安裝所需檔案
 
@@ -206,7 +206,7 @@ $ hexo generate
 $ hexo server
 ```
 
-![](https://i.imgur.com/JUHZ8Lw.png)
+![](/images/posts/hexo-github/JUHZ8Lw.png)
 
 ## 部署到 GitHub
 
@@ -220,11 +220,11 @@ $ hexo server
 
 #### Step2. 點選 New 新增一個 Repository（專案）
 
-![](https://i.imgur.com/nDvzP4k.png)
+![](/images/posts/hexo-github/nDvzP4k.png)
 
 #### Step3. 將專案名稱命名為 `username.github.io`，username 記得改成自己的帳號名稱
 
-![](https://i.imgur.com/0i5Fg2R.png)
+![](/images/posts/hexo-github/0i5Fg2R.png)
 
 這樣就成功建立了一個網域：`username.github.io`
 
@@ -255,7 +255,7 @@ deploy:
 - repo：GitHub repository 的連結，記得將 username 修改成自己的帳號名稱
 - branch：選擇分支。GitHub 新建 repo 的預設分支已從 `master` 改為 `main`，這裡要填 GitHub Pages 設定的來源分支（可在 repo 的 Settings → Pages 確認）
 
-![](https://i.imgur.com/bVw4OIH.png)
+![](/images/posts/hexo-github/bVw4OIH.png)
 
 #### Step3. 輸入部署指令
 
@@ -281,7 +281,7 @@ $ hexo d     // 部署至 GitHub
 
 這樣就完成部署網誌到 GitHub 了！可在個人頁面 `https://username.github.io` 確認是否有發布成功，預設畫面如下：
 
-![](https://i.imgur.com/X0cAUy6.png)
+![](/images/posts/hexo-github/X0cAUy6.png)
 
 ---
 
@@ -296,3 +296,9 @@ $ hexo d     // 部署至 GitHub
 參考資料：
 - [架設 Hexo+GitHub](https://hsiangfeng.github.io/hexo/20190411/932826160/)
 - [基於Hexo的matery主題搭建博客並深度優化](https://segmentfault.com/a/1190000021923137)
+
+## 延伸閱讀
+
+- [【學習筆記】如何更換 Hexo 主題 & 自訂樣式](/hexo-theme/)
+- [【學習筆記】hexo-admin：Hexo 後台管理工具](/hexo-admin/)
+- [[week 1] 版本控制 - Git 進階指令 & GitHub](/git-github/)

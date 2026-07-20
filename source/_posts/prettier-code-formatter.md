@@ -71,30 +71,36 @@ Prettier 主打 opinionated（有主見的）風格，大多數情況用預設�
 
 安裝完成後，在 commit 之前，prettier 就會自動檢查程式碼並進行格式化：
 
-![](https://i.imgur.com/JlV2aOS.png)
+![](/images/posts/prettier-code-formatter/JlV2aOS.png)
 
 ### 在 VSCode 安裝 prettier
 
 除了安裝套件，在 VSCode 也有提供 [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) plugin 能夠使用。
 
-![](https://i.imgur.com/PBQKXwF.png)
+![](/images/posts/prettier-code-formatter/PBQKXwF.png)
 
 接下來，就可以設定在存檔時執行 prettier，在設定中把 Format on Save 選項打勾：
 
-![](https://i.imgur.com/OEF4TpC.png)
+![](/images/posts/prettier-code-formatter/OEF4TpC.png)
 
 接著隨意更改 JS 檔案並存檔，會看到右下角的小鈴鐺出現通知：
 
-![](https://i.imgur.com/vBbep8k.png)
+![](/images/posts/prettier-code-formatter/vBbep8k.png)
 
 點選設定後，可選取預設格式器：
 
-![](https://i.imgur.com/w33Lf4T.png)
+![](/images/posts/prettier-code-formatter/w33Lf4T.png)
 
 這時候再次存檔，就會發現右下方有顯示 Prettier 運行結果，檔案中若有沒加逗號的地方、或是多餘的空格會被格式化：
 
-![](https://i.imgur.com/1luVuIV.png)
+![](/images/posts/prettier-code-formatter/1luVuIV.png)
 
 透過 Prettier 這套工具，可以快速將程式碼格式化，但需注意 Prettier 只管理格式問題，語法上的錯誤仍需由 eslint 套件來檢查。
 
-> 可參考之前的學習筆記：[[week3] 設定 eslint：用來檢查語法的工具](https://hackmd.io/@Heidi-Liu/note-eslint)
+> 可參考之前的學習筆記：[[week 3] 設定 ESLint：用來檢查語法的工具](/eslint/)
+
+## 延伸閱讀
+
+- [[week 3] 設定 ESLint：用來檢查語法的工具](/eslint/)
+- [【學習筆記】TypeScript 基礎入門：從型別談起](/typescript/)
+- [【學習筆記】如何撰寫好的 Git Commit Message](/git-commit-message/)

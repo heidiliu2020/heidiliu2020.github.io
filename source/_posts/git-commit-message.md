@@ -162,3 +162,8 @@ BREAKING CHANGE: 請改用 /v2/users，舊版路徑將回傳 410
 - [撰寫有效的 Git Commit Message](http://blog.fourdesire.com/2018/07/03/%E6%92%B0%E5%AF%AB%E6%9C%89%E6%95%88%E7%9A%84-git-commit-message/)
 - [如何寫一個Git Commit Message | louie_lu's blog](https://blog.louie.lu/2017/03/21/%E5%A6%82%E4%BD%95%E5%AF%AB%E4%B8%80%E5%80%8B-git-commit-message/#rules03)
 - [AngularJS Git Commit Message Conventions](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#)
+
+## 延伸閱讀
+
+- [Git 版本控制：如何進行多人協作 & 同步分支](/git-workflow/)
+- [[week 1] 版本控制 - Git 進階指令 & GitHub](/git-github/)

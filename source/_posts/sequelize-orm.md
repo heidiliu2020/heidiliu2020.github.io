@@ -123,11 +123,11 @@ sequelize.sync().then(() => {
 
 在 CLI 介面執行後會發現 SQL log：
 
-![](https://i.imgur.com/sV6Dauj.png)
+![](/images/posts/sequelize-orm/sV6Dauj.png)
 
 Sequelize 就會根據 Model 定義，自動在資料庫建立 users table 和一筆資料，並且會自動生成 createdAt 和 updateAt 兩個欄位：
 
-![](https://i.imgur.com/apIryUS.png)
+![](/images/posts/sequelize-orm/apIryUS.png)
 
 ### `.findAll()`：選取所有資料
 
@@ -144,7 +144,7 @@ sequelize.sync().then(() => {
 
 就能拿到 All users 的資料：
 
-![](https://i.imgur.com/mY7pNA4.png)
+![](/images/posts/sequelize-orm/mY7pNA4.png)
 
 若試著印出 `user[0]` 的資料：
 
@@ -159,7 +159,7 @@ sequelize.sync().then(() => {
 
 會得到一個 User 物件，除了資料訊息，也會有一些底線開頭的屬性，像是 Sequelize 設定的資訊：
 
-![](https://i.imgur.com/mE0MsOM.png)
+![](/images/posts/sequelize-orm/mE0MsOM.png)
 
 如果要存取 user 的資料訊息，可直接用 `user[0].id` 來拿到 id：
 
@@ -171,7 +171,7 @@ sequelize.sync().then(() => {
 });
 ```
 
-![](https://i.imgur.com/fWaQzG1.png)
+![](/images/posts/sequelize-orm/fWaQzG1.png)
 
 ### .findAll(where{ })：設定資料條件
 
@@ -191,7 +191,7 @@ sequelize.sync().then(() => {
 
 印出符合條件的資料：
 
-![](https://i.imgur.com/8raviKR.png)
+![](/images/posts/sequelize-orm/8raviKR.png)
 
 這種寫法就相當於 SQL 語法的 `SELECT * FROM users WHERE firstName = Apple`，更多有關條件設定的語法可參考：[官方文件 - Model Querying](https://sequelize.org/docs/v6/core-concepts/model-querying-basics/)。
 
@@ -238,7 +238,7 @@ sequelize.sync().then(() => {
 
 這樣就成功更新 id 為 3 這筆資料的 lastName：
 
-![](https://i.imgur.com/wZ95sPf.png)
+![](/images/posts/sequelize-orm/wZ95sPf.png)
 
 ### .destroy()：刪除資料
 
@@ -293,7 +293,7 @@ User.hasMany(Comment);  // 將兩個 table 進行關聯
 
 執行後就會發現建立了 comments table，還多了 userId 這個欄位：
 
-![](https://i.imgur.com/KiaKCDW.png)
+![](/images/posts/sequelize-orm/KiaKCDW.png)
 
 ### 範例：新增留言
 
@@ -319,11 +319,11 @@ sequelize.sync().then(() => {
 
 執行成功會印出設定的 `done!`：
 
-![](https://i.imgur.com/7HvR4V7.png)
+![](/images/posts/sequelize-orm/7HvR4V7.png)
 
 這樣就成功在 comments table 建立了一則留言：
 
-![](https://i.imgur.com/Qi9bRny.png)
+![](/images/posts/sequelize-orm/Qi9bRny.png)
 
 ### 範例：撈取資料
 
@@ -345,7 +345,7 @@ sequelize.sync().then(() => {
 
 若把 user 資料印出來，會發現包含很多資訊：
 
-![](https://i.imgur.com/c6SBlsD.png)
+![](/images/posts/sequelize-orm/c6SBlsD.png)
 
 利用 `JSON.stringify()` 來格式化輸出，即可忽略不需要的資訊：
 
@@ -364,7 +364,7 @@ sequelize.sync().then(() => {
 
 就會拿到 userId 為 3 的使用者的所有留言：
 
-![](https://i.imgur.com/RYpcxxT.png)
+![](/images/posts/sequelize-orm/RYpcxxT.png)
 
 而 `User.hasMany(Comment);` 其實是單向關係，也就是將 User 對 Comment 進行關聯，但沒有說明 Comment 和 User 的關係是什麼。這時如果要從 comment 來查詢 user 的資料，就會出現錯誤訊息。
 
@@ -388,7 +388,7 @@ sequelize.sync().then(() => {
 
 就會拿到有關 comment 的 user 資訊：
 
-![](https://i.imgur.com/5U9BsA1.png)
+![](/images/posts/sequelize-orm/5U9BsA1.png)
 
 ### 什麼是 N+1 Problem？
 
@@ -409,13 +409,13 @@ $ npx sequelize-cli init
 
 完成初始化會建立 config.json 檔案，裡面會有連線資料庫的設定，包含 database 帳密等資訊，因此通常不會加到 commit：
 
-![](https://i.imgur.com/UOauFVL.png)
+![](/images/posts/sequelize-orm/UOauFVL.png)
 
 ### 設定連線資料庫
 
 接著可以在 config.json 更改成我們連線資料庫的設定，三種設定分別是在開發環境、測試環境、正式環境。因為我們現在是在 localhost 開發所以要修改 development 的部分：
 
-![](https://i.imgur.com/opeKSyL.png)
+![](/images/posts/sequelize-orm/opeKSyL.png)
 
 ### 建立 Model
 
@@ -428,7 +428,7 @@ $ npx sequelize-cli model:generate --name Comment --attributes content:string
 
 建立好 Model 之後，Sequelize 會自動在 models 和 migrations 資料夾底下建立檔案：
 
-![](https://i.imgur.com/xTNnc3A.png)
+![](/images/posts/sequelize-orm/xTNnc3A.png)
 
 我們可以透過 user.js 和 comment.js 這些檔案設定，來對 model 進行微調：
 
@@ -456,7 +456,7 @@ $ npx sequelize-cli db:migrate
 
 接著就會在資料庫建立 SequelizeMeta table 來記錄執行過的 migrations；並且依照 migrations 中的檔案去操作資料庫，也就是建立 users 和 comments table：
 
-![](https://i.imgur.com/RPTzLXv.png)
+![](/images/posts/sequelize-orm/RPTzLXv.png)
 
 有了 migrations，就不需再透過 `sync()` 指令來操作資料庫，並且能夠以更結構性的方式進行管理。
 
@@ -538,7 +538,7 @@ User.create({
 
 執行後成功在 User 新增一筆資料：
 
-![](https://i.imgur.com/OPsscPV.png)
+![](/images/posts/sequelize-orm/OPsscPV.png)
 
 ---
 
@@ -588,7 +588,7 @@ $ npx sequelize-cli model:generate --name Comment --attributes content:text
 
 執行後會在 models 建立檔案：
 
-![](https://i.imgur.com/XXR8r9j.png)
+![](/images/posts/sequelize-orm/XXR8r9j.png)
 
 ### 執行 Migrations
 
@@ -600,7 +600,7 @@ $ npx sequelize-cli db:migrate
 
 執行後會在資料庫建立 table：
 
-![](https://i.imgur.com/cJidV5z.png)
+![](/images/posts/sequelize-orm/cJidV5z.png)
 
 但我們還需要在 comment table 加上 UserId 欄位，這部分要自己手動修改 migrations 中的 create-comment 檔案：
 
@@ -622,15 +622,15 @@ $ npx sequelize-cli db:migrate:undo
 $ npx sequelize-cli db:migrate:undo:all
 ```
 
-![](https://i.imgur.com/iGSJ2HF.png)
+![](/images/posts/sequelize-orm/iGSJ2HF.png)
 
 到資料庫會發現 comments 不見了，但 users 不會受到影響：
 
-![](https://i.imgur.com/XKqaVdq.png)
+![](/images/posts/sequelize-orm/XKqaVdq.png)
 
 再跑一次 Migrations 建立 Comment table，會多一個 UserId 欄位：
 
-![](https://i.imgur.com/N6Hfsy7.png)
+![](/images/posts/sequelize-orm/N6Hfsy7.png)
 
 #### 補充：設定 username 為 UNIQUE
 
@@ -879,7 +879,7 @@ const User = db.User;
 
 修改結果：
 
-![](https://i.imgur.com/aSeD9vH.png)
+![](/images/posts/sequelize-orm/aSeD9vH.png)
 
 ## 結語
 
@@ -890,3 +890,9 @@ const User = db.User;
 參考資料：
 - [[ 筆記 ] Express 03 - ORM ＆ Sequelize](https://mtr04-note.coderbridge.io/2020/10/10/sequelize/)
 - [[Day20] 資料庫設計概念 - ORM](https://ithelp.ithome.com.tw/articles/10207752)
+
+## 延伸閱讀
+
+- [[week 17] 後端中階 - 使用 Node.js + Express 框架建立一個靜態網頁](/express/)
+- [[week 17] 後端中階 - Express 實戰：簡易會員註冊系統 & 留言板](/express-board/)
+- [[week 14] 後端基礎：資料庫 & 系統設計](/backend-system-design/)

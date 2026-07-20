@@ -6,9 +6,10 @@ tags:
 categories:
   - 技術學習
   - Front-End
+description: Stripe 第三方金流串接入門：介紹 Stripe 的特點與 Payment Links、Checkout、Elements 等收款方式的差異，並示範實際串接流程與測試卡號的使用，適合第一次接觸線上金流、想在網站接受信用卡付款的開發者。
 date: 2022-09-05 11:03:00
 ---
-![](https://i.imgur.com/W6kwKwA.png)
+![](/images/posts/stripe-payment/W6kwKwA.png)
 
 ## A. Introduction
 
@@ -41,7 +42,7 @@ Stripe 提供一系列的收款服務：
 
 下圖是官網列出不同服務的特點與差異：
 
-![](https://i.imgur.com/30MUaRt.png)
+![](/images/posts/stripe-payment/30MUaRt.png)
 
 ## C. Payment Flow
 
@@ -50,7 +51,7 @@ Stripe 提供一系列的收款服務：
 
 可參考官網的 **[Payment Intent](https://stripe.com/docs/payments/accept-a-payment?platform=web&ui=elements#web-create-intent)** 流程圖：
 
-![](https://i.imgur.com/69oU2NC.png)
+![](/images/posts/stripe-payment/69oU2NC.png)
 
 ## D. Sample Code
 
@@ -73,7 +74,7 @@ Stripe 提供一系列的收款服務：
 
 • 直接在線上建立商品付款頁面，可參考 DEMO For [1 month subscription](https://buy.stripe.com/test_6oE16b8qg0bKg9ydQQ)
 
-![](https://i.imgur.com/JaEDpQ5.png)
+![](/images/posts/stripe-payment/JaEDpQ5.png)
 
 **(2) Create a payment link with the [Payment Links API](https://stripe.com/docs/payments/payment-links/api)**
 
@@ -132,13 +133,13 @@ const paymentLink = await stripe.paymentLinks.create({
 
 - Test Cards 測試信用卡號可參考：[https://stripe.com/docs/testing](https://stripe.com/docs/testing)
 
-![](https://i.imgur.com/BTuBB9q.png)
+![](/images/posts/stripe-payment/BTuBB9q.png)
 
 ### D-2. ****Subscription 訂閱制****
 
 參考 https://github.com/stripe-samples/checkout-single-subscription 範例，可實作訂閱付款：
 
-![](https://i.imgur.com/1nfGsvu.png)
+![](/images/posts/stripe-payment/1nfGsvu.png)
 
 透過調整 `.env` 檔案中的 `PRICE_ID`，可決定要連結的商品：
 
@@ -151,7 +152,7 @@ PRO_PRICE_ID=price_1LdPVvK6EvHjzoA0UOnCsDXn
 
 點擊後會導頁至 Stripe 的輸入付款資訊頁：
 
-![](https://i.imgur.com/YVByX7b.png)
+![](/images/posts/stripe-payment/YVByX7b.png)
 
 ### D-3. 使用 [Stripe Elements](https://stripe.com/docs/payments/quickstart) 鑲嵌在網頁
 
@@ -192,7 +193,7 @@ paymentElement.mount('#payment-element');
 
 示意圖如下，客戶可選擇自行付款方式：
 
-![](https://i.imgur.com/IH5oZrx.png)
+![](/images/posts/stripe-payment/IH5oZrx.png)
 
 ## E. Conclusion
 

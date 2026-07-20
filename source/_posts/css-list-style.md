@@ -7,6 +7,7 @@ categories:
   - 技術學習
   - Front-End
   - HTML & CSS
+description: CSS 自訂列表標號與段落縮排教學：整理 list-style-type、list-style-image 等屬性用法，如何用背景圖或 icon 自訂項目符號、用 counter 計數器製作自動編號，以及 text-indent 縮排效果，解決預設標號樣式不符設計稿的常見需求。
 date: 2021-05-02 11:54:00
 ---
 + [CSS list-style 列表屬性

@@ -331,3 +331,9 @@ body {
 + [SASS教學 ＋SCSS：CSS 再進化，掌握語法攻略](https://frankknow.com/sass-tutorial/)
 + [SASS/SCSS 簡介](https://ithelp.ithome.com.tw/articles/10243235)
 + [Sass / SCSS 預處理器 - @entend 繼承樣式與 Placeholder 佔位符選擇器](https://awdr74100.github.io/2020-06-03-scss-extend/)
+
+## 延伸閱讀
+
+- [【學習筆記】CSS 自訂標號圖示、段落縮排效果](/css-list-style/)
+- [[week 13] 前端進階 - 如何優化執行 CSS 效能](/css-optimization/)
+- [[week 13] 前端工具之二 - CSS 預處理器、Babel](/sass-babel/)

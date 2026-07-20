@@ -8,6 +8,7 @@ categories:
   - 技術學習
   - Back-End
   - PHP
+description: PHP 與 MySQL 後端基礎筆記：從前端與後端的差別談起，介紹 PHP 基本語法、資料庫觀念與 SQL 語法（SELECT、INSERT、UPDATE、DELETE），實作基本 CRUD 應用，並說明 Session 與 Cookie 的運作原理及差異。
 date: 2020-08-21 14:09:00
 ---
 > 本篇為 [[BE101] 用 PHP 與 MySQL 學習後端基礎](https://lidemy.com/p/be101-php-mysql) 這門課程的學習筆記。如有錯誤歡迎指正。
@@ -45,15 +46,15 @@ date: 2020-08-21 14:09:00
 1. 到 [XAMPP 官網](https://www.apachefriends.org/zh_tw/index.html) 下載程式並安裝
 2. 開啟 XAMPP 並運行 Apache 和 MySQL
 
-![](https://i.imgur.com/UwHMX0L.png)
+![](/images/posts/php-mysql/UwHMX0L.png)
 
 3. 點選 Adimn 開啟網頁：`http://localhost/dashboard/`，出現以下畫面就代表安裝成功！
 
-![XAMPP](https://i.imgur.com/5V5s0ra.png)
+![XAMPP](/images/posts/php-mysql/5V5s0ra.png)
 
 4. 以 XAMPP 程式而言，PHP 檔案都會放在 htdocs 資料夾內，且`網址路徑 = 檔案路徑`
 
-![htdocs](https://i.imgur.com/0DMgMWL.png)
+![htdocs](/images/posts/php-mysql/0DMgMWL.png)
 
 5. 以下為範例在 hotdocs 另建一個資料夾 heidi，裡面新建 test.php，並在編輯器輸入下列程式碼：
 
@@ -65,7 +66,7 @@ date: 2020-08-21 14:09:00
 
 6. 以瀏覽器運行該網址：`http://localhost/heidi/test.php`
 
-![test.php](https://i.imgur.com/dt6vRqk.png)
+![test.php](/images/posts/php-mysql/dt6vRqk.png)
 
 ---
 
@@ -78,13 +79,13 @@ date: 2020-08-21 14:09:00
 - server 收到 request 後，找到相對應的檔案（`.css` 是靜態檔案）後，把檔案直接回傳 response
 - 檔案內容是什麼就回傳什麼
 
-![](https://i.imgur.com/p1FRoiG.png)
+![](/images/posts/php-mysql/p1FRoiG.png)
 
 ### 動態網頁
 - server 收到 request 後，會將 `.php` 檔案給 php 處理成 output，再傳給 server 後回傳 response
 - 可根據用戶的點擊、輸入等操作，迅速產生響應與動態變化，例如部落格、留言板等
 
-![](https://i.imgur.com/Y5BDM4e.png)
+![](/images/posts/php-mysql/Y5BDM4e.png)
 
 ## PHP 是什麼？
 
@@ -94,7 +95,7 @@ PHP 語言是伺服器端（Server）執行的網頁，因此 PHP 必須在伺�
 
 ### Apache、PHP 與資料庫運作原理
 
-![](https://i.imgur.com/XHHg6LO.png)
+![](/images/posts/php-mysql/XHHg6LO.png)
 
 ```
 request → apache → php → output → apache → response
@@ -158,7 +159,7 @@ request → apache → php → output → apache → response
 
 結果如下：
 
-![迴圈](https://i.imgur.com/RgZfI7h.png)
+![迴圈](/images/posts/php-mysql/RgZfI7h.png)
 
 ### 陣列 array
 
@@ -234,11 +235,11 @@ phpMyAdmin 是一套基於 PHP 寫的 GUI 資料庫管理軟體，其本質就�
 
 可從 `http://localhost:8080` 點選 phpmyadmin 進入：
 
-![](https://i.imgur.com/1guMNR9.png)
+![](/images/posts/php-mysql/1guMNR9.png)
 
 管理介面如下所示：
 
-![](https://i.imgur.com/hNpYDDJ.png)
+![](/images/posts/php-mysql/hNpYDDJ.png)
 
 ## Table schema 結構簡介
 
@@ -348,7 +349,7 @@ DELETE FROM users WHERE id = 2
 
 在瀏覽器開啟表單如下：
 
-![](https://i.imgur.com/Dl9UlBX.png)
+![](/images/posts/php-mysql/Dl9UlBX.png)
 
 2. 在接收資料的 test.php 檔案撰寫 php 語法
 
@@ -369,7 +370,7 @@ DELETE FROM users WHERE id = 2
 
 在前端以 GET 方法提交表單，資料會以 Query String 的形式將加在網址後方：
 
-![](https://i.imgur.com/nEr23zE.png)
+![](/images/posts/php-mysql/nEr23zE.png)
 
 ## 用 PHP 操作 MySQL
 

@@ -24,7 +24,7 @@ updated: 2026-07-13 12:00:00
 
 ## 什麼是 TypeScript？
 
-![](https://i.imgur.com/uowtOyV.png)
+![](/images/posts/typescript/uowtOyV.png)
 
 根據 [TypeScript 官網](https://www.typescriptlang.org/) 說明：
 
@@ -48,7 +48,7 @@ updated: 2026-07-13 12:00:00
 - 提供型別系統（Type System），能夠在開發時期宣告型別
 - 支援 ECMAScript，可將 TS 檔編譯成 JS 檔給瀏覽器解讀
 
-![](https://i.imgur.com/nTdyP5I.png)
+![](/images/posts/typescript/nTdyP5I.png)
 （圖片來源：[Angular TypeScript Vs ES6 Vs ES5](https://www.sneppets.com/angular/typescript-vs-es6-vs-es5/)）
 
 ## 型別系統 Type System
@@ -154,7 +154,7 @@ let noReturn = function sayHello(){
 }
 ```
 
-![](https://i.imgur.com/POJa4wH.png)
+![](/images/posts/typescript/POJa4wH.png)
 
 - Never 型別
   - 應該要回傳，但因為函式中斷執行或進入無窮迴圈，永遠不會有回傳值的函式
@@ -168,7 +168,7 @@ let neverEnd = function forever(){
 }
 ```
 
-![](https://i.imgur.com/RNQgOoe.png)
+![](/images/posts/typescript/RNQgOoe.png)
 
 參考資料：[【Day 15】TypeScript 資料型別 - 特殊型別(上)- Never](https://ithelp.ithome.com.tw/articles/10222916)
 
@@ -182,7 +182,7 @@ myFavoriteNumber = 'seven';
 myFavoriteNumber = 7;
 ```
 
-![](https://i.imgur.com/u8oOgg5.png)
+![](/images/posts/typescript/u8oOgg5.png)
 
 > 注意：不要濫用 any 任意型別，否則將失去型別檢查保障！
 
@@ -502,3 +502,9 @@ let heidi: Person = {
 這篇是在剛接觸 Angular 框架時，寫下的學習筆記。偶爾會被問說，覺得學新框架最大的困難處在哪？其實 Angular 和 React 要說不同，也不盡然完全相差甚遠，或許實作方法不一樣，卻還是能用共通的邏輯去思考問題。
 
 反而時常會卡關的地方，是在 TypeScript 型別判定上，為什麼這裡型別檢查這麼嚴格？難道我一定要給個 any 才會過嗎？直到學會如何定義 Interface 之後，後續開發就會順利不少，尤其是在打電文時更是如此，能事先統一 Request 和 Response 的格式，就比較不容易出現意外的錯誤。
+
+## 延伸閱讀
+
+- [[week 21] 初探 React：Component、JSX 語法、props 與 state 的不同](/react-jsx-props/)
+- [【學習筆記】談談 Next.js：基於 React 的 SSR 框架](/next-react-ssr/)
+- [[week 3] 設定 ESLint：用來檢查語法的工具](/eslint/)

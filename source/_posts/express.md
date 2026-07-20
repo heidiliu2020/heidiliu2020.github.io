@@ -50,11 +50,11 @@ server.listen(5001)
 
 接著在 CLI 介面執行 js 檔，會發現什麼事也沒發生，但其實我們已經成功運行一個 server，否則程式會直接執行結束：
 
-![](https://i.imgur.com/2Bv9WKj.png)
+![](/images/posts/express/2Bv9WKj.png)
 
 可以在瀏覽器輸入 `http://localhost:5001/`，連到本地端的 5001 port，就會看到回傳內容 `Hello World!`：
 
-![](https://i.imgur.com/ZY79LWh.png)
+![](/images/posts/express/ZY79LWh.png)
 
 或者我們也可以根據不同 url，來回傳不同內容：
 
@@ -83,11 +83,11 @@ server.listen(5001)
 
 在瀏覽器運行結果如下，瀏覽器會根據內容格式（Content-Type）解析網頁：
 
-![](https://i.imgur.com/LbCRc8S.png)
+![](/images/posts/express/LbCRc8S.png)
 
 而當我們切換網址時，CLI 介面也會印出 url 文字，其中 `/favicon.ico` 代表瀏覽器標籤的 logo：
 
-![](https://i.imgur.com/t5Gx1JF.png)
+![](/images/posts/express/t5Gx1JF.png)
 
 我們也可以利用 `res.writeHead()` 來導向其他網址，如下方範例。這時如果輸入 `http://localhost:5001/bye`，就會重新導向至 google 首頁：
 
@@ -141,7 +141,7 @@ server.listen(5001)
 $ npm init
 ```
 
-![](https://i.imgur.com/Ya0XugX.png)
+![](/images/posts/express/Ya0XugX.png)
 
 #### Step2. 安裝 Express
 
@@ -151,7 +151,7 @@ $ npm init
 $ npm install express --save
 ```
 
-![](https://i.imgur.com/qOagjRg.png)
+![](/images/posts/express/qOagjRg.png)
 
 #### Step3. 實作範例：Hello world
 
@@ -182,15 +182,15 @@ app.listen(port, () => {
 
 在 CLI 介面執行 index.js，出現下方文字代表有成功運行程式：
 
-![](https://i.imgur.com/VG4okLU.png)
+![](/images/posts/express/VG4okLU.png)
 
 這時在瀏覽器輸入 `http://localhost:5001/`，就會看到回傳內容：
 
-![](https://i.imgur.com/NYQmfRF.png)
+![](/images/posts/express/NYQmfRF.png)
 
 如果發現修改後，網頁還是會導回先前設定的網址，可透過開發者工具來清除快取（cache），重整頁面就能看到結果：
 
-![](https://i.imgur.com/6T6umyx.png)
+![](/images/posts/express/6T6umyx.png)
 
 和最一開始的範例做比較的話，其實可以發現到，寫法和使用 Node.js 實作 Server 非常類似。
 
@@ -205,14 +205,14 @@ app.listen(port, () => {
 - 瀏覽器會發 request 給 Apache Server，再交給 PHP 處理，處理完成後再傳 response 回去
 - [檔案系統](https://zh.wikipedia.org/zh-tw/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F)：預設路徑長什麼樣子，在該資料夾底下就會有對應的 php 檔
 
-![](https://i.imgur.com/EYfvLe0.png)
+![](/images/posts/express/EYfvLe0.png)
 
 #### Express
 
 - 瀏覽器發 request 給 Express Server，經過處理後會根據 url 回傳 response
 - 和前者的最大差別，就是沒有 PHP 處理器，Express 本身就是一個 Server，透過路由系統決定什麼路徑回傳什麼資料，而不會侷限在檔案系統
 
-![](https://i.imgur.com/zXWH67g.png)
+![](/images/posts/express/zXWH67g.png)
 
 ## MVC 基本架構
 
@@ -227,7 +227,7 @@ MVC（Model–view–controller）：是一種應用程式架構，透過將程�
 3. Controller 再把拿到的資料給 View，由 View 提供的 template
 4. 最後 Controller 再結合 data 和 template，回傳 response
 
-![](https://i.imgur.com/aYBYHlx.png)
+![](/images/posts/express/aYBYHlx.png)
 
 簡單來說：
 
@@ -247,7 +247,7 @@ MVC（Model–view–controller）：是一種應用程式架構，透過將程�
 $ npm install ejs
 ```
 
-![](https://i.imgur.com/DixdfOM.png)
+![](/images/posts/express/DixdfOM.png)
 
 - EJS 語法是透過 `<%  %>` 符號，和 PHP 語法其實很類似，語法又可分為三種：
 
@@ -272,7 +272,7 @@ app.set('view engine', 'ejs')
 3. 預設目錄會是 `/views`，因此需要新建一個資料夾 views，並在資料夾中建立一個 hello.ejs 檔
 
 4. 記得在 VS Code 等編譯器中安裝 ejs 插件，才能夠解析 ejs 檔：
-![](https://i.imgur.com/PVJjWAG.png)
+![](/images/posts/express/PVJjWAG.png)
 
 5. 在 hello.ejs 檔中輸入簡單的程式碼進行測試，例如：`<h1>hello</h1>`
 6. 接著調整 index.js 程式碼，告訴 express 去 render views 目錄底下叫做 hello 的檔案：
@@ -301,11 +301,11 @@ app.listen(port, () => {
 
 7. 輸入 node index.js 指令運行，在瀏覽器可以看到結果：
 
-![](https://i.imgur.com/G32u0NI.png)
+![](/images/posts/express/G32u0NI.png)
 
 8. 如果想要修改 views 中的 template，也就是 ejs 檔的內容，只要重整瀏覽器畫面即可，不需再重新運行 Node.js：
 
-![](https://i.imgur.com/dKhAwTu.png)
+![](/images/posts/express/dKhAwTu.png)
 
 ### 實作簡易的 todo list API
 
@@ -355,7 +355,7 @@ app.listen(port, () => {
 
 3. 在瀏覽器運行，這樣能根據之前設立的 data 輸出 todos：
 
-![](https://i.imgur.com/zGLAWIT.png)
+![](/images/posts/express/zGLAWIT.png)
 
 4. 接著回到 index.js 檔，用同樣的方式，根據不同 id 來拿取對應的 todo：
 
@@ -381,7 +381,7 @@ app.get('/todos/:id', (req, res) => {
 
 6. 透過網址列上的 id，能夠讀取相對應的 todo：
 
-![](https://i.imgur.com/crYUBSj.png)
+![](/images/posts/express/crYUBSj.png)
 
 這樣就透過 Express 結合 view template engine 完成了簡單的範例，也可以再增加 header 或 footer 等來豐富內容。
 
@@ -492,7 +492,7 @@ $ npm install mysql2
 
 > 2026 年註：本文範例使用 callback 寫法，現代專案多會改用 `mysql2/promise` 搭配 async/await，觀念相同、寫法更簡潔。
 
-![](https://i.imgur.com/tR8kezb.png)
+![](/images/posts/express/tR8kezb.png)
 
 引入 MySQL 模組後，接著就可以進行資料庫的連線和其他操作了。
 
@@ -502,15 +502,15 @@ $ npm install mysql2
 
 1. 開啟 XAMPP 連線 MySQL，其實這樣就已經啟動資料庫了，但如果要使用 phpmyadmin 介面操作，就必須同時運行 Apache Server 才能使用：
 
-![](https://i.imgur.com/kCpCApB.png)
+![](/images/posts/express/kCpCApB.png)
 
 2. 接著建立一個 app database，並在裡面新增一個 todos table
 
-![](https://i.imgur.com/Flh0kkx.png)
+![](/images/posts/express/Flh0kkx.png)
 
 3. 在 todos table 新增幾筆資料
 
-![](https://i.imgur.com/Bd9TEJB.png)
+![](/images/posts/express/Bd9TEJB.png)
 
 ### Step3. 串接 MySQL 資料庫
 
@@ -541,7 +541,7 @@ connection.end();
 
 接著在 CLI 介面執行 `node db.js`，如果有輸出資料就代表連線成功！
 
-![](https://i.imgur.com/UKf0NJ7.png)
+![](/images/posts/express/UKf0NJ7.png)
 
 其中 RowDataPacket 是一種自訂的資料格式，如果把 `console.log(results);` 改成：
 
@@ -551,7 +551,7 @@ console.log(results[0].content);
 
 就會達到拿到第一個 todo 的內容：
 
-![](https://i.imgur.com/M9sO5ZS.png)
+![](/images/posts/express/M9sO5ZS.png)
 
 ### 補充：權限不足問題
 
@@ -564,7 +564,7 @@ rd: YES)
 
 後來是在使用者帳號頁面發現，root 這組帳號當初設定不用密碼就可以登入了，真是烏龍一場XD
 
-![](https://i.imgur.com/KGhvnqv.png)
+![](/images/posts/express/KGhvnqv.png)
 
 ### Step4. 重構程式碼
 
@@ -700,11 +700,11 @@ module.exports = todoController
 
 > 這裡 port 之所以變成 5002，是因為前面在嘗試修改連線時，不知在哪個環節佔用了 5001，因此先改成另一個沒有使用的 port
 
-![](https://i.imgur.com/aSpv3e4.png)
+![](/images/posts/express/aSpv3e4.png)
 
 接著是 Todo，會發現輸出結果是 Object。這是因為 `<%= %>` 語法會直接印出字串，當我們想要把一個 Object 轉成字串時，就會發生下列情形：
 
-![](https://i.imgur.com/WMopGth.png)
+![](/images/posts/express/WMopGth.png)
 
 只要將 Todo 部分修改成輸出 `todo.content`：
 
@@ -716,11 +716,11 @@ module.exports = todoController
 
 結果就會是相對應的 todo：
 
-![](https://i.imgur.com/02Wnbnb.png)
+![](/images/posts/express/02Wnbnb.png)
 
 如果對資料庫操作 CRUD，重整頁面也會動態更新：
 
-![](https://i.imgur.com/NZ0Hzj3.png)
+![](/images/posts/express/NZ0Hzj3.png)
 
 學到目前為止，透過上面這些範例，我們其實已經能寫出一些簡單的網頁程式了，並且有 MVC 架構，能夠簡化程式碼且便於維護。
 
@@ -735,3 +735,9 @@ module.exports = todoController
 參考資料：
 - [使用 Node.js + Express 建構一個簡單的微博網站](https://cythilya.github.io/2014/11/23/nodejs-express-microblog/)
 - [用 Express & Sequelize 打造 MVC 餐廳網站（上）](https://nicolakacha.coderbridge.io/2020/10/25/express-mvc-practice-1/)
+
+## 延伸閱讀
+
+- [[week 17] 後端中階 - Express 中不可或缺的拼圖：淺談 Middleware](/express-middleware/)
+- [[week 17] 後端中階 - Express 實戰：簡易會員註冊系統 & 留言板](/express-board/)
+- [[week 17] 後端中階 - 淺談 Sequelize：使用 ORM 框架串接資料庫](/sequelize-orm/)

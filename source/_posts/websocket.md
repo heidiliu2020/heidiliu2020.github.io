@@ -7,9 +7,10 @@ categories:
   - 技術學習
   - Front-End
   - Internet
+description: 淺談 WebSocket 協定：說明 WebSocket 與 HTTP 的差異、為什麼需要雙向即時溝通、與輪詢（Polling）相比的效能優勢，並動手實作一個簡單的即時聊天室範例，理解訊息推播與即時通訊功能背後的原理。
 date: 2022-12-23 16:23:00
 ---
-![](https://i.imgur.com/xLBMhye.png)
+![](/images/posts/websocket/xLBMhye.png)
 > 參考資料：https://leesonhsu.blogspot.com/2018/07/socketwebsocketsocketio.html
 
 ## What is WebSocket?
@@ -26,7 +27,7 @@ date: 2022-12-23 16:23:00
 - 透過 [HTTP 1.1 持久連接（keep-alive）](https://zh.wikipedia.org/wiki/HTTP%E6%8C%81%E4%B9%85%E8%BF%9E%E6%8E%A5)，有效解決 HTTP [輪詢（Polling）](https://zh.wikipedia.org/zh-tw/%E8%BC%AA%E8%A9%A2)產生的效能問題，節省伺服器資源
 - 實際範例：訊息推播、即時聊天室、共同編輯等功能
 
-![](https://i.imgur.com/S3Mhxau.png)
+![](/images/posts/websocket/S3Mhxau.png)
 
 ## How to use WebSocket?
 
@@ -127,7 +128,7 @@ $ node server.js
 
 出現以下 log 代表 Server 正在監聽 8080 port：
 
-![](https://i.imgur.com/mwIvN1w.png)
+![](/images/posts/websocket/mwIvN1w.png)
 
 ### Client 端：與 WebSocket Server 連線
 
@@ -157,7 +158,7 @@ $ node server.js
 
 渲染後如下圖所示：
 
-![](https://i.imgur.com/0zhHOVC.png)
+![](/images/posts/websocket/0zhHOVC.png)
 
 - 邏輯處理：新增一個 index.js 檔案
 
@@ -208,7 +209,7 @@ $ http-server -p 3000
 
 實際運行如下方所示 ：
 
-![](https://i.imgur.com/SYUbMM9.gif)
+![](/images/posts/websocket/SYUbMM9.gif)
 
 建立好 WebSocket 連結之後，就可以進行雙向溝通了！
 
@@ -380,7 +381,7 @@ function disconnect() {
 
 實際運行如下圖，完成具備廣播功能的即時聊天室！
 
-![](https://i.imgur.com/AdQEjiF.gif)
+![](/images/posts/websocket/AdQEjiF.gif)
 
 ## WebSocket API
 
@@ -408,7 +409,7 @@ function disconnect() {
 
 [Socket](https://zh.wikipedia.org/zh-tw/%E7%B6%B2%E8%B7%AF%E6%8F%92%E5%BA%A7)、Websocket、[Socket.io](http://socket.io/) 這三者都和網路即時通訊有關，名稱也有 87 像，但實際上是不同的東西，以下做簡單的整理介紹：
 
-![](https://i.imgur.com/aI5zQVj.png)
+![](/images/posts/websocket/aI5zQVj.png)
 
 > 參考資料：[https://leesonhsu.blogspot.com/2018/07/socketwebsocketsocketio.html](https://leesonhsu.blogspot.com/2018/07/socketwebsocketsocketio.html)
 

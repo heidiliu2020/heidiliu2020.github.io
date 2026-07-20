@@ -8,6 +8,7 @@ categories:
   - 技術學習
   - Front-End
   - React
+description: Next.js 入門筆記：說明 React 函式庫與 Next.js 框架的差異，比較 CSR、SSR、SSG 等渲染方式與預渲染（Pre-rendering）的優缺點，理解為什麼需要伺服器端渲染來改善 SEO 與首屏載入速度，建立學習 Next.js 的基礎。
 date: 2024-01-16 11:50:01
 ---
 ![image](https://hackmd.io/_uploads/SkvRg5cd6.png)
