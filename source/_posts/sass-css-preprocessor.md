@@ -7,6 +7,7 @@ categories:
   - 技術學習
   - Front-End
   - HTML & CSS
+description: Sass/SCSS 入門教學：認識 CSS 預處理器解決了哪些問題，整理變數、巢狀結構、混入（mixin）、繼承（extend）等核心語法與編譯方式，並說明 Dart Sass 時代 @use 取代 @import 的寫法，讓 CSS 更好維護。
 date: 2021-04-13 21:20:00
 updated: 2026-07-13 12:00:00
 ---

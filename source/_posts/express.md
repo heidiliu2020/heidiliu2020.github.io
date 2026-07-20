@@ -7,6 +7,7 @@ categories:
   - 技術學習
   - Back-End
   - Express
+description: Node.js + Express 入門筆記：從不用框架的原生 http 模組開始，理解為什麼需要 Web 框架，接著實作 Express 靜態網頁伺服器，介紹路由、middleware 運作機制與常用套件，並補充 Express 5 版本差異，適合後端新手入門。
 date: 2020-10-26 00:36:00
 updated: 2026-07-09 12:00:00
 ---

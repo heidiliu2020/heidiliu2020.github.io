@@ -1,4 +1,5 @@
-<div class="ad-sidebar" style="margin-top: 20px;">
+{# min-height 預留廣告空間，避免載入時版面位移（CLS） #}
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"

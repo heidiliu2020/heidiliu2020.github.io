@@ -5,6 +5,7 @@ tags:
 categories:
   - 技術學習
   - Front-End
+description: Prettier 自動整理程式碼格式教學：搭配 husky 與 lint-staged，在 git commit 前自動格式化 JavaScript、TypeScript、CSS 程式碼，統一團隊 Coding Style。包含安裝設定、.prettierrc 常用選項，以及 Prettier 3 與新版 husky 的差異說明。
 date: 2020-12-13 00:59:00
 updated: 2026-07-13 12:00:00
 ---

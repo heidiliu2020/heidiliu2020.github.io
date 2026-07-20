@@ -7,6 +7,7 @@ categories:
   - 技術學習
   - Back-End
   - Sequelize
+description: 什麼是 ORM？本篇以 Node.js 的 Sequelize 為例，說明 ORM（物件關聯對映）的概念、優缺點與 N+1 problem，示範如何用 JavaScript 物件導向的方式操作 MySQL 資料庫，理解 Model 與資料庫之間的映射關係。
 date: 2020-10-31 00:39:00
 updated: 2026-07-09 12:00:00
 ---

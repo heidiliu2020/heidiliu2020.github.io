@@ -7,6 +7,7 @@ categories:
   - Blog
   - Hexo
 author: Heidi Liu
+description: 手把手教你用 Hexo + GitHub Pages 免費架設個人部落格：從安裝 Node.js 與 Hexo CLI、建立專案與環境、常用指令介紹，到部署上 GitHub Pages 的完整流程，並補充 GitHub Actions 自動部署選項，新手也能快速上線自己的網誌。
 date: 2020-11-07 20:10:00
 updated: 2026-07-13 12:00:00
 ---

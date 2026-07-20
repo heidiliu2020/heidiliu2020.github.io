@@ -1,5 +1,6 @@
 {% if page.comments and not page.no_ads %}
-<div class="ad-post-footer" style="margin: 2rem 0;">
+{# min-height 預留廣告空間，避免載入時版面位移（CLS） #}
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"

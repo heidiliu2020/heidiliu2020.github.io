@@ -5,6 +5,7 @@ tags:
 categories:
   - 技術學習
   - Git
+description: 如何寫出好的 Git Commit Message？本篇整理 Commit Message 的規範與準則：Header、Body、Footer 結構與 type、scope、subject 格式，說明 What、Why、How 三要素，並附上團隊實務範例與常見 type 分類，讓版本紀錄更易讀、易維護。
 date: 2021-03-06 22:48:00
 updated: 2026-07-09 16:01:08
 ---

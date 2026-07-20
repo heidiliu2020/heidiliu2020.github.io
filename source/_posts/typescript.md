@@ -8,6 +8,7 @@ categories:
   - 技術學習
   - Front-End
   - JavaScript
+description: TypeScript 基礎入門筆記：從型別談起，介紹 TypeScript 與 JavaScript 的差異、為什麼需要靜態型別，整理原始型別、陣列、元組、列舉、any 與 unknown 等常見型別的宣告方式，以及型別推論與聯合型別的觀念，適合初學者建立型別基礎。
 date: 2021-10-11 13:16:00
 updated: 2026-07-13 12:00:00
 ---
