@@ -1,6 +1,358 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://heidiliu2020.github.io/shadcn-ui/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/search-string-in-javascript/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/sass-babel/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/safari-web-api-resize-and-console/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/safari-pinch-and-double-tap/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/rxjs-note/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/regex/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/react/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/react-virtual-dom/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/react-usestate/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/react-useeffect/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/react-usecontext/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/react-test/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/react-styled-component/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/react-router/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/react-proptypes/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/react-optimization/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/react-jsx-props/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/react-class-function-hook/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/php-board/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/php-api/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/pd101-lidemy/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/nextjs-i18next/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/nextjs-error-fix/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/nextjs-app-router/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/next-react-ssr/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/mtr04-plugin/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/lidemy-learning-2/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/lidemy-learing-1/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/leetcode/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/learn-about-testing/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/jquery-bootstrap/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/javascript/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/javascript-variable/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/javascript-this/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/javascript-oop-prototype/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/javascript-npm/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/javascript-jest/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/javascript-hoisting/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/javascript-for-loop/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/javascript-event/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/javascript-dom/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/javascript-closure/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/ironman-2023-day-5/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/ironman-2023-day-4/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/ironman-2023-day-31/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/ironman-2023-day-30/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/ironman-2023-day-3/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/ironman-2023-day-29/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/ironman-2023-day-28/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/ironman-2023-day-25/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/ironman-2023-day-24/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/ironman-2023-day-23/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/ironman-2023-day-21/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/ironman-2023-day-2/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/ironman-2023-day-19/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/ironman-2023-day-18/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/ironman-2023-day-16/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/ironman-2023-day-12/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/ironman-2023-day-1/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/ios-app-webview/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/information-security-about-p2p/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/http-protocol/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/html/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/hexo-theme/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/hexo-admin/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/hash-security/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/gulp-webpack/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/google-advertising-service/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/google-adsense/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/git/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/git-github/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/fetch-promise/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/express-middleware/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/express-board/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/eslint/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/docusaurus-react-blog/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/css/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/css-optimization/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/command-line/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/claude-agent-sdk/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/callback-event-loop/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/browser-and-ajax/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/backend-system-design/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/backend-aws-ubuntu/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/angular-cli/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/angular-binding/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
+    <loc>https://heidiliu2020.github.io/about-lidemy/</loc>
+    <lastmod>2026-07-20</lastmod>
+  </url>
+  <url>
     <loc>https://heidiliu2020.github.io/websocket/</loc>
     <lastmod>2026-07-20</lastmod>
   </url>
@@ -10,14 +362,6 @@
   </url>
   <url>
     <loc>https://heidiliu2020.github.io/stripe-payment/</loc>
-    <lastmod>2026-07-20</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/nextjs-app-router/</loc>
-    <lastmod>2026-07-20</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/next-react-ssr/</loc>
     <lastmod>2026-07-20</lastmod>
   </url>
   <url>
@@ -53,67 +397,7 @@
     <lastmod>2026-07-09</lastmod>
   </url>
   <url>
-    <loc>https://heidiliu2020.github.io/sass-babel/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/safari-web-api-resize-and-console/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/rxjs-note/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/safari-pinch-and-double-tap/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/regex/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/react/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/react-usestate/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/react-usecontext/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/react-useeffect/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/react-router/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/react-optimization/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
     <loc>https://heidiliu2020.github.io/react-hooks/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/react-class-function-hook/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/nextjs-i18next/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/pd101-lidemy/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/mtr04-plugin/</loc>
     <lastmod>2026-07-09</lastmod>
   </url>
   <url>
@@ -121,39 +405,7 @@
     <lastmod>2026-07-09</lastmod>
   </url>
   <url>
-    <loc>https://heidiliu2020.github.io/jquery-bootstrap/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/javascript-oop-prototype/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/javascript-this/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/javascript-npm/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/javascript-hoisting/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/javascript-event/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
     <loc>https://heidiliu2020.github.io/ironman-2023-day-9/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/javascript-dom/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/javascript-closure/</loc>
     <lastmod>2026-07-09</lastmod>
   </url>
   <url>
@@ -165,30 +417,6 @@
     <lastmod>2026-07-09</lastmod>
   </url>
   <url>
-    <loc>https://heidiliu2020.github.io/ironman-2023-day-4/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/ironman-2023-day-31/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/ironman-2023-day-30/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/ironman-2023-day-3/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/ironman-2023-day-29/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/ironman-2023-day-28/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
     <loc>https://heidiliu2020.github.io/ironman-2023-day-27/</loc>
     <lastmod>2026-07-09</lastmod>
   </url>
@@ -197,27 +425,7 @@
     <lastmod>2026-07-09</lastmod>
   </url>
   <url>
-    <loc>https://heidiliu2020.github.io/ironman-2023-day-25/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/ironman-2023-day-24/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/ironman-2023-day-23/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
     <loc>https://heidiliu2020.github.io/ironman-2023-day-22/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/ironman-2023-day-21/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/ironman-2023-day-19/</loc>
     <lastmod>2026-07-09</lastmod>
   </url>
   <url>
@@ -225,19 +433,7 @@
     <lastmod>2026-07-09</lastmod>
   </url>
   <url>
-    <loc>https://heidiliu2020.github.io/ironman-2023-day-2/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
     <loc>https://heidiliu2020.github.io/ironman-2023-day-17/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/ironman-2023-day-18/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/ironman-2023-day-15/</loc>
     <lastmod>2026-07-09</lastmod>
   </url>
   <url>
@@ -249,7 +445,7 @@
     <lastmod>2026-07-09</lastmod>
   </url>
   <url>
-    <loc>https://heidiliu2020.github.io/ironman-2023-day-11/</loc>
+    <loc>https://heidiliu2020.github.io/ironman-2023-day-15/</loc>
     <lastmod>2026-07-09</lastmod>
   </url>
   <url>
@@ -257,43 +453,7 @@
     <lastmod>2026-07-09</lastmod>
   </url>
   <url>
-    <loc>https://heidiliu2020.github.io/ironman-2023-day-12/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/information-security-about-p2p/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/ios-app-webview/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/http-protocol/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/html/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/hexo-admin/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/hash-security/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/google-advertising-service/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/gulp-webpack/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/google-adsense/</loc>
+    <loc>https://heidiliu2020.github.io/ironman-2023-day-11/</loc>
     <lastmod>2026-07-09</lastmod>
   </url>
   <url>
@@ -305,51 +465,7 @@
     <lastmod>2026-07-09</lastmod>
   </url>
   <url>
-    <loc>https://heidiliu2020.github.io/git-github/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/fetch-promise/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/express-middleware/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/eslint/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/express-board/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/docusaurus-react-blog/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
     <loc>https://heidiliu2020.github.io/claude-structured-outputs/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/command-line/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/claude-agent-sdk/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/browser-and-ajax/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/backend-system-design/</loc>
-    <lastmod>2026-07-09</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/backend-aws-ubuntu/</loc>
     <lastmod>2026-07-09</lastmod>
   </url>
   <url>
@@ -369,35 +485,7 @@
     <lastmod>2026-07-09</lastmod>
   </url>
   <url>
-    <loc>https://heidiliu2020.github.io/shadcn-ui/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/search-string-in-javascript/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
     <loc>https://heidiliu2020.github.io/review/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/react-virtual-dom/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/react-test/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/react-styled-component/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/react-proptypes/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/react-jsx-props/</loc>
     <lastmod>2026-04-23</lastmod>
   </url>
   <url>
@@ -405,51 +493,11 @@
     <lastmod>2026-04-23</lastmod>
   </url>
   <url>
-    <loc>https://heidiliu2020.github.io/php-board/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/php-api/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
     <loc>https://heidiliu2020.github.io/php-blog/</loc>
     <lastmod>2026-04-23</lastmod>
   </url>
   <url>
-    <loc>https://heidiliu2020.github.io/nextjs-error-fix/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/lidemy-learing-1/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/lidemy-learning-2/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/leetcode/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/learn-about-testing/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
     <loc>https://heidiliu2020.github.io/js201-hw/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/javascript-variable/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/javascript/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/javascript-jest/</loc>
     <lastmod>2026-04-23</lastmod>
   </url>
   <url>
@@ -461,59 +509,11 @@
     <lastmod>2026-04-23</lastmod>
   </url>
   <url>
-    <loc>https://heidiliu2020.github.io/javascript-for-loop/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
     <loc>https://heidiliu2020.github.io/javascript-es6/</loc>
     <lastmod>2026-04-23</lastmod>
   </url>
   <url>
     <loc>https://heidiliu2020.github.io/ironman-2023-day-6/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/ironman-2023-day-5/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/ironman-2023-day-16/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/ironman-2023-day-1/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/hexo-theme/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/git/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/css/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/css-optimization/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/callback-event-loop/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/angular-cli/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/angular-binding/</loc>
-    <lastmod>2026-04-23</lastmod>
-  </url>
-  <url>
-    <loc>https://heidiliu2020.github.io/about-lidemy/</loc>
     <lastmod>2026-04-23</lastmod>
   </url>
 </urlset> 
