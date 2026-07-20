@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="原文連結：今さら聞けないログの基本と設計指針 - Qiita  在進行程式開發時，不論是前後端，應該都對 Log（日誌）再熟悉不過。尤其是在遇到非預期性的錯誤時，通常會需要立即調閱 Log，查看是否顯示錯誤訊息；或是在改良軟體時，需要透過 Log 來分析使用者行為等等。 接下來這篇文章，將會針對 Log（日誌）主題進行介紹，從 Log 相關的基礎知識、設計方法、操作時的注意事項，再到實際應用說明">
@@ -55,6 +53,28 @@
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[2023 15th鐵人賽] Day28 - 事到如今問不出口的 Log 基礎和設計指南",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2023-10-13T00:46:01.000Z",
+  "dateModified": "2026-07-09T06:06:05.697Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/ironman-2023-day-28/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
 
   <title>[2023 15th鐵人賽] Day28 - 事到如今問不出口的 Log 基礎和設計指南 | Liusan's Blog</title>
   
@@ -91,7 +111,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -324,7 +344,7 @@
 <p>而設計 Log 的原因在於，將有助於選擇符合目的的 Log 並適當顯示。如上所述，Log 存在各種不同的類型，也因為如此，如何進行選擇和顯示其實相當複雜。</p>
 <p>例如，以下將介紹使用 AWS 等雲端服務，進行系統開發的範例。雲端服務可以輕鬆實現橫向擴充和縮減，是非常方便的功能。</p>
 <p>然而，容易擴展也意味著，可能存在大量不知道何時會出現或消失的伺服器。因此，在雲端系統中，各伺服器的 Log 會非同步寫入，即使將範圍縮小到毫秒單位，也很難找到特定的 Log。</p>
-<p><img src="https://hackmd.io/_uploads/rJGyp9rZT.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/rJGyp9rZT.png"></p>
 <p>因此，Log 的設計就變得非常重要。透過為特定事件的請求和回應，分配唯一可識別的 ID，即可藉此搜尋與目標事件相關的 Log。透過提前設計 Log，將有助於大幅減少 Log 搜尋時間。</p>
 <p>以上只是一個範例，但建議在開發和操作複雜的系統時，務必進行 Log 設計。</p>
 <h2 id="有關-Log-的基礎知識"><a href="#有關-Log-的基礎知識" class="headerlink" title="有關 Log 的基礎知識"></a>有關 Log 的基礎知識</h2><p>在介紹 Log 的設計之前，這裡先來瞭解有關 Log 的基礎知識！以下將簡單解釋相關內容，因此可以只挑選還不熟悉的部分閱讀。</p>
@@ -703,17 +723,18 @@
       <div class="popular-posts-title"><a href="/ironman-2023-day-20/" rel="bookmark">[2023 15th鐵人賽] Day20 - 馬上就能使用的免費 Web API 總覽【2023年最新版】</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/ironman-2023-day-10/" rel="bookmark">[2023 15th鐵人賽] Day10 - 透過圖文理解 S.O.L.I.D 原則</a></div>
-    </li>
-    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/ironman-2023-day-12/" rel="bookmark">[2023 15th鐵人賽] Day12 - 外國「為什麼日本無法像硬體時代一樣在軟體方面表現出色？」</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/ironman-2023-day-21/" rel="bookmark">[2023 15th鐵人賽] Day21 - 日本數位廳的網站太扯了www</a></div>
+      <div class="popular-posts-title"><a href="/ironman-2023-day-10/" rel="bookmark">[2023 15th鐵人賽] Day10 - 透過圖文理解 S.O.L.I.D 原則</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/ironman-2023-day-22/" rel="bookmark">[2023 15th鐵人賽] Day22 - 程式設計最難的部分我認為是「估算成本」</a></div>
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -884,7 +905,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -946,12 +968,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

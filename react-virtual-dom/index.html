@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 [FE302] React 基礎 - hooks 版本 這門課程的學習筆記。如有錯誤歡迎指正！">
@@ -62,6 +60,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 21] React 性能優化：Virtual DOM & 如何避免 re-render",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-12-09T16:56:00.000Z",
+  "dateModified": "2026-04-23T06:14:18.260Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/react-virtual-dom/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[week 21] React 性能優化：Virtual DOM & 如何避免 re-render | Liusan's Blog</title>
   
 
@@ -97,7 +117,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -287,9 +307,9 @@
 </blockquote>
 <span id="more"></span>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在 React 課程最一開始，也就是<span class="exturl" data-url="aHR0cHM6Ly9oYWNrbWQuaW8vQEhlaWRpLUxpdS9ub3RlLWZlMzAyLXJldmlldw==" title="https://hackmd.io/@Heidi-Liu/note-fe302-review">實作 Todo List<i class="fa fa-external-link"></i></span> 作為範例有提到，新增 todo 時「透過更改資料，畫面再根據資料進行渲染」，可確保兩者永遠一致：</p>
-<p><img src="https://i.imgur.com/k1STU0n.png"></p>
+<p><img data-src="https://i.imgur.com/k1STU0n.png"></p>
 <p>那時採取的是簡單暴力的作法，也就是當 State 改變，我們就清空畫面並重新渲染 DOM 元素：</p>
-<p><img src="https://i.imgur.com/vf17UN9.png"></p>
+<p><img data-src="https://i.imgur.com/vf17UN9.png"></p>
 <p>但這其實會有效能問題，假如我們今天總共有 100 個 DOM，即使只修改其中一個，卻還是必須清空並重新 Render 這 100 個 DOM。</p>
 <p>這樣其實非常沒有效率，應該只需要重新 Render 有更動的部分就好。那麼 React 是如何解決這個問題呢？其實核心概念就是「如何快速找到要改變的地方」。</p>
 <h2 id="Reconciliation：React-的渲染機制"><a href="#Reconciliation：React-的渲染機制" class="headerlink" title="Reconciliation：React 的渲染機制"></a>Reconciliation：React 的渲染機制</h2><p>在 React 當中，透過 Reconciliation 渲染機制可以快速找出 State 改變的地方：</p>
@@ -297,10 +317,10 @@
 <li>透過 State 的改變，render 出 Virtual DOM</li>
 <li>透過比對 Virtual DOM 的不同，再更新真的 DOM 到畫面</li>
 </ul>
-<p><img src="https://i.imgur.com/ApLV4M6.png"></p>
+<p><img data-src="https://i.imgur.com/ApLV4M6.png"></p>
 <h3 id="什麼是-Virtual-DOM？"><a href="#什麼是-Virtual-DOM？" class="headerlink" title="什麼是 Virtual DOM？"></a>什麼是 Virtual DOM？</h3><p>Virtual DOM 實際上就是用 JavaScript 物件來描述 DOM 結構。</p>
 <p>當 DOM 的節點需要更動時，不會直接修改 DOM，而是透過 DOM diff 演算法比較 Virtual DOM 修改前與修改後的樹狀結構，再批次更新真實的 DOM 節點。</p>
-<p><img src="https://i.imgur.com/ADMTzi4.png"><br>（圖片來源：<span class="exturl" data-url="aHR0cHM6Ly90dXRvcmlhbHNsaW5rLmNvbS9BcnRpY2xlcy9XaGF0LWlzLVZpcnR1YWwtRE9NLzE1ODAlRUYlQkMlODk=" title="https://tutorialslink.com/Articles/What-is-Virtual-DOM/1580%EF%BC%89">https://tutorialslink.com/Articles/What-is-Virtual-DOM/1580）<i class="fa fa-external-link"></i></span></p>
+<p><img data-src="https://i.imgur.com/ADMTzi4.png"><br>（圖片來源：<span class="exturl" data-url="aHR0cHM6Ly90dXRvcmlhbHNsaW5rLmNvbS9BcnRpY2xlcy9XaGF0LWlzLVZpcnR1YWwtRE9NLzE1ODAlRUYlQkMlODk=" title="https://tutorialslink.com/Articles/What-is-Virtual-DOM/1580%EF%BC%89">https://tutorialslink.com/Articles/What-is-Virtual-DOM/1580）<i class="fa fa-external-link"></i></span></p>
 <p>比如下方這段 DOM 結構：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div className=&quot;APP&quot;&gt;</span><br><span class="line">  &lt;TodoItem&gt;</span><br><span class="line">    Watch a Movie</span><br><span class="line">  &lt;/TodoItem&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 
@@ -357,11 +377,11 @@
 <hr>
 <h2 id="React-事件機制"><a href="#React-事件機制" class="headerlink" title="React 事件機制"></a>React 事件機制</h2><p>在 React 的事件機制，其實是透過 root 這層進行事件代理，而不是綁在 button 等 DOM 節點上。</p>
 <p>當我們開啟開發者工具，查看修改 todo 狀態 button 的監聽事件，會是以下畫面：</p>
-<p><img src="https://i.imgur.com/YKxqY4S.png"></p>
+<p><img data-src="https://i.imgur.com/YKxqY4S.png"></p>
 <p>但如果把 button 的 click 監聽事件給 remove，還是能夠更改狀態：</p>
-<p><img src="https://i.imgur.com/7jftRiR.png"></p>
+<p><img data-src="https://i.imgur.com/7jftRiR.png"></p>
 <p>這是因為，React 是由上層的節點 root 進行事件監聽，也就是以 <code>&lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</code> 作為事件代理：</p>
-<p><img src="https://i.imgur.com/7I8Yekk.png"></p>
+<p><img data-src="https://i.imgur.com/7I8Yekk.png"></p>
 <p>React 透過這樣的事件機制能夠提升效能，也確保動態新增的元素能夠捕捉到事件機制。</p>
 <hr>
 <h2 id="useContext：用來解決-Props-drilling"><a href="#useContext：用來解決-Props-drilling" class="headerlink" title="useContext：用來解決 Props drilling"></a>useContext：用來解決 Props drilling</h2><p>由於 React 單向資料流的特性，資料傳遞須遵循從上到下的單一方向性。</p>
@@ -377,11 +397,11 @@
 <hr>
 <h2 id="補充：Virtual-DOM-的起源"><a href="#補充：Virtual-DOM-的起源" class="headerlink" title="補充：Virtual DOM 的起源"></a>補充：Virtual DOM 的起源</h2><p>推薦這篇：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL01yRXJIdS9ibG9nL2lzc3Vlcy8yNg==" title="https://github.com/MrErHu/blog/issues/26">了不起的Virtual DOM(一)：起源<i class="fa fa-external-link"></i></span>，有談到 Virtual DOM 的起源，其實任何技術或工具的誕生都是有原因的，例如框架是因應逐漸擴大的程式規模，為了可維護性與便於開發而出現。</p>
 <p>前端在 MVC 模式中，隨著應用規模增加，Model 與 View 之間的複雜關係使得開發難度增加。</p>
-<p><img src="https://i.imgur.com/09TAbTq.png"></p>
+<p><img data-src="https://i.imgur.com/09TAbTq.png"></p>
 <p>而為了改善 MVC 模式，之後就出現了 MVP 模式，將 MVC 中的 Controller 改為 Presenter，使 Model 和 View 兩者之間相互獨立，但這同樣有個缺點，就是 Presenter 需要承擔的功能過多，難以後續維護。</p>
-<p><img src="https://i.imgur.com/UOlvxGZ.png"></p>
+<p><img data-src="https://i.imgur.com/UOlvxGZ.png"></p>
 <p>MVVM 結構是以 MVP 作為基礎進行改良，將原來的 Presenter 進化為 View Of Model（VM：視圖模型），負責 View 與 Model 的雙向綁定，將 View與 Model 之間的手動維護更新改為自動更新，這麼做的好處是大幅提高可維護性。但也需注意 ViewModel 構建與維護成本相對較高，複雜的視圖也帶來性能成本，因此不適用較簡單的頁面。</p>
-<p><img src="https://i.imgur.com/XaC6n6i.png"></p>
+<p><img data-src="https://i.imgur.com/XaC6n6i.png"></p>
 <p>直到 React 出現，解決思路就是「當 Model 發生改變時直接重新渲染 View」，引入 Virtual DOM 的概念。透過 JavaScript 物件來描述 DOM 結構，產生當下 Model 對應的 Virtual DOM 結構，再和上次的 Virtual DOM 結構透過 Diff 演算法比較，再將兩者差異建立在真實 DOM 上。</p>
 <h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>其實關於 React 優化，還是不太瞭解該如何使用 hooks 來避免重新渲染，只有大概瞭解原理，還有並不是所有情況都是用性能優化。除非是在大型專案，需要進行昂貴的計算才可能會用到，因此這部分等之後有機會再來深入研究。</p>
 
@@ -403,14 +423,15 @@
       <div class="popular-posts-title"><a href="/nextjs-app-router/" rel="bookmark">【學習筆記】Next.js 路由系統：App Router vs Page Router</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/nextjs-error-fix/" rel="bookmark">【學習筆記】Next.js 錯誤修復紀錄： 「Window is not defined」、「use client & missing generateStaticParams() error」</a></div>
+      <div class="popular-posts-title"><a href="/nextjs-i18next/" rel="bookmark">【學習筆記】Next.js 實現多國語系：react-i18next & next-i18next</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/nextjs-i18next/" rel="bookmark">【學習筆記】Next.js 實現多國語系：react-i18next & next-i18next</a></div>
+      <div class="popular-posts-title"><a href="/nextjs-error-fix/" rel="bookmark">【學習筆記】Next.js 錯誤修復紀錄： 「Window is not defined」、「use client & missing generateStaticParams() error」</a></div>
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -578,7 +599,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -640,12 +662,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

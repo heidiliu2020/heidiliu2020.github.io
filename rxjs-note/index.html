@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 JSDC 2017 - R201#D105​ RxJS - 封裝程式的藝術 By Jerry Hong 這場演講的學習筆記。如有錯誤歡迎指正。">
@@ -67,6 +65,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "【學習筆記】RxJS - 封裝程式的藝術",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2021-10-08T15:59:00.000Z",
+  "dateModified": "2026-07-09T06:06:05.726Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/rxjs-note/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>【學習筆記】RxJS - 封裝程式的藝術 | Liusan's Blog</title>
   
 
@@ -102,7 +122,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -292,7 +312,7 @@
 <p>或著更精準的說法，RxJS 就是「一個透過 Observable 來組合各種非同步行為的 Library」。</p>
 <p>但我們不是已經有 Promise 來處理非同步了？為什麼我們還需要學 Observable 呢？</p>
 <h2 id="Why-we-need-RxJS？"><a href="#Why-we-need-RxJS？" class="headerlink" title="Why we need RxJS？"></a>Why we need RxJS？</h2><p>以下方程式碼為例，這是用來實作無限滾動的程式碼：</p>
-<p><img src="https://i.imgur.com/wXgT9xs.png"></p>
+<p><img data-src="https://i.imgur.com/wXgT9xs.png"></p>
 <p>這段程式碼的邏輯大致如下：</p>
 <ul>
 <li>註冊滾動事件：因為是無限滾動，我們需針對 Scroll 監聽事件。</li>
@@ -319,7 +339,7 @@
 <p>我們一定要寫這麼醜的程式碼嗎？</p>
 </blockquote>
 <h3 id="VanillaJS-vs-RxJS"><a href="#VanillaJS-vs-RxJS" class="headerlink" title="VanillaJS vs RxJS"></a>VanillaJS vs RxJS</h3><p>以下分別是使用原生 JavaScript 和 RxJS 所撰寫的程式碼：</p>
-<p><img src="https://i.imgur.com/QXTxO4G.png"></p>
+<p><img data-src="https://i.imgur.com/QXTxO4G.png"></p>
 <p>可以很明顯看出，後者 RxJS 的寫法，即使不知道這些方法的實際用途，卻也能從語意大概猜出每個 function 的功能，大大提高程式碼可讀性。</p>
 <hr>
 <h2 id="What-is-Observable？"><a href="#What-is-Observable？" class="headerlink" title="What is Observable？"></a>What is Observable？</h2><p>想要瞭解 RxJS，就必須先從 Observable 談起。簡單來說，Observable 就是一個集合，再加上時間的維度：</p>
@@ -371,7 +391,7 @@
 <li>可用來退訂（unsubscribe），observable 就不會再執行其他動作</li>
 <li>可以和其他訂單合併，一直執行退訂動作</li>
 </ul>
-<h3 id="舉個例子：生產線"><a href="#舉個例子：生產線" class="headerlink" title="舉個例子：生產線"></a>舉個例子：生產線</h3><p><img src="https://i.imgur.com/5BLZJz0.png"></p>
+<h3 id="舉個例子：生產線"><a href="#舉個例子：生產線" class="headerlink" title="舉個例子：生產線"></a>舉個例子：生產線</h3><p><img data-src="https://i.imgur.com/5BLZJz0.png"></p>
 <ul>
 <li>observable 的元素：生產線上的產品</li>
 <li>operator：生產線上的機具，用來包裝或篩選產品</li>
@@ -460,23 +480,23 @@
 <h3 id="1-Readable-可讀的"><a href="#1-Readable-可讀的" class="headerlink" title="(1) Readable 可讀的"></a>(1) Readable 可讀的</h3><h3 id="【範例】scrollOverNinePercent-amp-getPostObservable"><a href="#【範例】scrollOverNinePercent-amp-getPostObservable" class="headerlink" title="【範例】scrollOverNinePercent &amp; getPostObservable"></a>【範例】<code>scrollOverNinePercent</code> &amp; <code>getPostObservable</code></h3><ol>
 <li>抽取出有意義的、可能被多次使用的 Observable，並 assign 給一個變數：<code>$scroll</code></li>
 </ol>
-<p><img src="https://i.imgur.com/02pG8l2.png"></p>
+<p><img data-src="https://i.imgur.com/02pG8l2.png"></p>
 <ol start="2">
 <li>抽取出共用的 Operator，並命名為一個 function：<code>scrollOverNinePercent()</code></li>
 </ol>
-<p><img src="https://i.imgur.com/nVzS445.png"></p>
+<p><img data-src="https://i.imgur.com/nVzS445.png"></p>
 <ol start="3">
 <li>為了避免出現多個小括號，可使用 <code>let</code> operator，即可取得 function 的回傳值</li>
 </ol>
-<p><img src="https://i.imgur.com/oYZpodN.png"></p>
+<p><img data-src="https://i.imgur.com/oYZpodN.png"></p>
 <ol start="4">
 <li>將共用 function 放到獨立的檔案</li>
 </ol>
-<p><img src="https://i.imgur.com/9YHOHSi.png"></p>
+<p><img data-src="https://i.imgur.com/9YHOHSi.png"></p>
 <ol start="5">
 <li>抽離 Observable creator，也就是抽出「有建立新的 Observable」的程式碼：<code>getPostObservable()</code></li>
 </ol>
-<p><img src="https://i.imgur.com/TFVZKyO.png"></p>
+<p><img data-src="https://i.imgur.com/TFVZKyO.png"></p>
 <p>修改後的程式碼如下，透過簡化邏輯，提高了程式碼可讀性：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; scrollOverNinePercent &#125; <span class="keyword">from</span> <span class="string">&#x27;...&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; getPostObservable &#125; <span class="keyword">from</span> <span class="string">&#x27;xxx&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Observable</span>.<span class="title function_">fromEvent</span>(scrollView, <span class="string">&#x27;scroll&#x27;</span>)  <span class="comment">// scroll 事件</span></span><br><span class="line"></span><br><span class="line">scroll$</span><br><span class="line">  .<span class="title function_">let</span>(scrollOverNinePercent)    <span class="comment">// 判斷是否滾動超過 90%</span></span><br><span class="line">  .<span class="title function_">exhaustMap</span>(getPostObservable) <span class="comment">// 抓取文章 API</span></span><br><span class="line">  .<span class="title function_">subscribe</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// Do sometheing to change view</span></span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
 
@@ -498,16 +518,16 @@
 <p>詳細可參考這篇文章：<span class="exturl" data-url="aHR0cHM6Ly9yZWFkMDEuY29tL3poLXR3L254ZDR5ekouaHRtbCMuWVYwQ1JwNHpaVFk=" title="https://read01.com/zh-tw/nxd4yzJ.html#.YV0CRp4zZTY">[譯] Pipeable 操作符<i class="fa fa-external-link"></i></span></p>
 </blockquote>
 <h3 id="【範例】scrollOver-amp-onErrorReturn"><a href="#【範例】scrollOver-amp-onErrorReturn" class="headerlink" title="【範例】scrollOver &amp; onErrorReturn"></a>【範例】<code>scrollOver</code> &amp; <code>onErrorReturn</code></h3><h4 id="1-scrollOverNinePercent-gt-scrollOver"><a href="#1-scrollOverNinePercent-gt-scrollOver" class="headerlink" title="1. scrollOverNinePercent() =&gt; scrollOver()"></a>1. <code>scrollOverNinePercent()</code> =&gt; <code>scrollOver()</code></h4><p>還記得我們剛才寫的 <code>scrollOverNinePercent()</code> 嗎？實際上，這個 Function 並不易用來重組，因為 scroll 觸發時機點不一定會在 90%。</p>
-<p><img src="https://i.imgur.com/9Co9BLb.png"></p>
+<p><img data-src="https://i.imgur.com/9Co9BLb.png"></p>
 <p>這時可透過 <span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU5JUFCJTk4JUU5JTk4JUI2JUU1JTg3JUJEJUU2JTk1JUIw" title="https://zh.wikipedia.org/wiki/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0">Higher Order Function<i class="fa fa-external-link"></i></span> 解決，也就是用一個 Function 回傳另一個新的 Function，作法如下：</p>
 <ol>
 <li>在第一個 Function 傳入 <code>criticalP</code>（代表臨界點），取代原本 0.9 的位置 </li>
 </ol>
-<p><img src="https://i.imgur.com/nC7dCI6.png"></p>
+<p><img data-src="https://i.imgur.com/nC7dCI6.png"></p>
 <ol start="2">
 <li>接著可使用 Pipeable Operators，也就是改用 <code>pipe</code> 來組合多個 operator，傳入的 Observable 會回傳新的 Observable，再繼續往下傳遞</li>
 </ol>
-<p><img src="https://i.imgur.com/dec0xAI.png"></p>
+<p><img data-src="https://i.imgur.com/dec0xAI.png"></p>
 <p>修改後的程式碼如下，讓 scrollOver() 的使用更加彈性，同時也透過 pipe 來簡化程式碼邏輯：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; scrollOver &#125; <span class="keyword">from</span> <span class="string">&#x27;...&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; getPostObservable &#125; <span class="keyword">from</span> <span class="string">&#x27;xxx&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; exhaustMap &#125; <span class="keyword">from</span> <span class="string">&#x27;rxjs/operators&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Observable</span>.<span class="title function_">fromEvent</span>(scrollView, <span class="string">&#x27;scroll&#x27;</span>)  <span class="comment">// scroll 事件</span></span><br><span class="line"></span><br><span class="line">scroll$</span><br><span class="line">  .<span class="title function_">pipe</span>(</span><br><span class="line">    <span class="title function_">scrollOver</span>(<span class="number">0.9</span>),</span><br><span class="line">    <span class="title function_">exhaustMap</span>(getPostObservable),</span><br><span class="line">  )</span><br><span class="line">  .<span class="title function_">subscribe</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// Do sometheing to change view</span></span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
 
@@ -556,7 +576,7 @@
 
 <p>嗯？這段程式碼怎麼好像似曾相識？</p>
 <p>把剛才的兩個範例拿來比對：</p>
-<p><img src="https://i.imgur.com/yhKwbV5.png"></p>
+<p><img data-src="https://i.imgur.com/yhKwbV5.png"></p>
 <p>可以發現到，程式碼竟然有 87% 像！因為兩段邏輯其實極為類似，都是在「做某件事情後，再做另一個非同步行為」，而這個非同步行為，會在某個時間點、發生某件事情時而被取消。</p>
 <p>既然是相同邏輯，何不重用乎？</p>
 <h3 id="3-Testable-可測試的"><a href="#3-Testable-可測試的" class="headerlink" title="(3) Testable 可測試的"></a>(3) Testable 可測試的</h3><p>程式碼寫得好壞，通常是和「是否可進行測試」畫上等號的。因為能夠被測試的程式，才能被檢驗程式的品質。</p>
@@ -589,9 +609,9 @@
 </li>
 </ul>
 <p>以下是之前舉的彈珠圖範例：</p>
-<p><img src="https://i.imgur.com/s3kEdzR.png"></p>
+<p><img data-src="https://i.imgur.com/s3kEdzR.png"></p>
 <p>撰寫測試如下，透過預知最後結果的彈珠圖，我們可用來進行單元測：</p>
-<p><img src="https://i.imgur.com/asnKEUk.png"></p>
+<p><img data-src="https://i.imgur.com/asnKEUk.png"></p>
 <ul>
 <li>更多 Unit Test 教學，可參考這篇：<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmplcnJ5LWhvbmcuY29tL3NwZWFraW5nL3J4anMtbWFyYmxlLXRlc3Rpbmcv" title="https://blog.jerry-hong.com/speaking/rxjs-marble-testing/">如何「畫圖」寫測試 - RxJS Marble Test<i class="fa fa-external-link"></i></span></li>
 </ul>
@@ -637,7 +657,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -806,7 +827,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -868,12 +890,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

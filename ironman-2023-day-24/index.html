@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="原文連結：えっ、まだChatGPT使ってんの？ Bingは無料でGPT-4使えますよ！ - Qiita  這篇文章主要是介紹 Bing Chat，和 ChatGPT Plus 同樣支援 GPT-4，卻能夠免費使用！然而，使用次數限制卻是一大硬傷，這點文中也有提及，但用作個人開發等用途，或許也不失為一種選擇。 此外，作者也舉出幾項實際導入開發使用的範例，可提供參考：  用於建立 Debug 配置">
@@ -66,6 +64,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[2023 15th鐵人賽] Day24 - 啊？你還在用 ChatGPT 嗎？ Bing 可以免費使用 GPT-4 喔！ ",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2023-10-09T01:50:01.000Z",
+  "dateModified": "2026-07-09T06:06:05.671Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/ironman-2023-day-24/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[2023 15th鐵人賽] Day24 - 啊？你還在用 ChatGPT 嗎？ Bing 可以免費使用 GPT-4 喔！  | Liusan's Blog</title>
   
 
@@ -101,7 +121,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -310,7 +330,7 @@
 <blockquote>
 <p>※ 確切來說是 20 美元，以 1 美元兌換 150 日圓的匯率計算，會是 3000 日圓。</p>
 </blockquote>
-<p><img src="https://hackmd.io/_uploads/BJocvZxb6.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/BJocvZxb6.png"></p>
 <h2 id="一起免費使用-GPT-4-吧"><a href="#一起免費使用-GPT-4-吧" class="headerlink" title="一起免費使用 GPT-4 吧"></a>一起免費使用 GPT-4 吧</h2><p>想使用 GPT-4！但每個月 3000 日圓有點貴啊！ ！</p>
 <p>在這種情況下，試試免費使用 GPT-4 吧！ ！</p>
 <p>是否能在不支付 3,000 日圓的情況使用 GPT-4？</p>
@@ -321,45 +341,45 @@
 <p>Bing 搜尋有個名為「Chat」的功能，其功能與 ChatGPT 完全相同，並且也可以使用 GPT-4。</p>
 <p>選擇「より厳密に（更精確）」的選項，將得到更準確的答案（與 AI 查詢資訊來源一致）。<br>如果使用個人帳號登入，UI 會略有不同，可以透過開啟「使用 GPT-4」的開關來使用 GPT-4。</p>
 <p>當然，這是可以免費使用的。</p>
-<p><img src="https://hackmd.io/_uploads/HJjAoGeZT.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/HJjAoGeZT.png"></p>
 <p>在過去兩週中，我透過 Bing Chat 來編寫程式和進行研究。我的感想是，Bing Chat 能做到與  ChatGPT 的 GPT-4（每個月 3,000日圓的方案）相同的事情。</p>
 <p>首先，由於是 GPT-4，回答給出的程式碼相當準確。</p>
 <p>我當時基於興趣，正在學習 Go 語言，僅透過複製貼上的動作，就完成了一個 Web 程式。</p>
 <p>若是 ChatGPT 的免費版本（GPT-3.5），在許多情況下都需要進行些微修改，因此不出所料 GPT-4 表現得更好。</p>
 <h2 id="唯一的缺點"><a href="#唯一的缺點" class="headerlink" title="唯一的缺點"></a>唯一的缺點</h2><p><del>依照 Microsoft 的慣例，使用 Bing Chat 必須透過 Microsoft Edge 瀏覽器。</del><br><del>請注意如果不是用 Edge 瀏覽器，就無法使用 Bing Chat。</del><br><del>Fu○k Microsoft！</del></p>
 <p>2023 年 9 月 4 日 追記<br>Bing Chat 現在也可以在 Google Chrome 中使用了。謝謝 Microsoft！</p>
-<p><img src="https://hackmd.io/_uploads/HJ-RXQgZp.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/HJ-RXQgZp.png"></p>
 <p>2023 年 9 月 28 日 追記<br>雖然在 Google Chrome 也可以使用 Bing Chat，但似乎只能保留 5 次對話紀錄。而在 Microsoft Edge 可保留 30 次對話紀錄，看來 Edge 以外的瀏覽器還是存在著限制⋯⋯（此外，這是以 Microsoft 帳號登入使用 Bing 為前提。）</p>
-<p><img src="https://hackmd.io/_uploads/BJ-QEveZT.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/BJ-QEveZT.png"></p>
 <p>上下分別代表使用 Microsoft Edge 和 Google Chrome 瀏覽器的對話紀錄次數。</p>
 <h2 id="實踐：嘗試在實際開發中導入使用"><a href="#實踐：嘗試在實際開發中導入使用" class="headerlink" title="實踐：嘗試在實際開發中導入使用"></a>實踐：嘗試在實際開發中導入使用</h2><h3 id="建立用於-Debug-的配置！"><a href="#建立用於-Debug-的配置！" class="headerlink" title="建立用於 Debug 的配置！"></a>建立用於 Debug 的配置！</h3><p>雖然想要自己建立 VS Code 的 Debug 配置，但完全不知道該怎麼寫才好。</p>
 <p>因此，我決定完全交給 Bing Chat。</p>
-<p><img src="https://hackmd.io/_uploads/BJiXZrlZa.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/BJiXZrlZa.png"></p>
 <p>將 Bing Chat 編寫的 Debug 配置複製貼上，並嘗試進行 Debug。 </p>
 <p>結果，不需要任何人工介入，Debug 就可以完美進行。</p>
 <p>這樣的高準確度，不愧是 GPT-4。 （如果是用 GPT-3.5，可能會出現部分錯誤，導致無法運行。）</p>
-<p><img src="https://hackmd.io/_uploads/r1wIZSeWp.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/r1wIZSeWp.png"></p>
 <h3 id="完成轉換（移植）腳本語言！"><a href="#完成轉換（移植）腳本語言！" class="headerlink" title="完成轉換（移植）腳本語言！"></a>完成轉換（移植）腳本語言！</h3><p>過去建立的 Windows 批次檔（.bat），通常缺乏可維護性。</p>
 <p>如果習慣可能就沒有問題，但對於只熟悉高階語言（例如 Python 或 Java）的人來說，或許會感到困難。現代 Windows 似乎已經將 PowerShell 作為標準，那麼何不將其移植到 PowerShell，使其向高級語言一樣，藉此提高可維護性。</p>
 <p>在這種情況下，透過 Bing Chat，語言轉換（移植）即可瞬間完成。</p>
-<p><img src="https://hackmd.io/_uploads/SJAlE8xbp.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/SJAlE8xbp.png"></p>
 <p>只需複製貼上 Bing Chat 生成的腳本，建立 PowerShell 腳本（.ps1 文件），即可正常運行。</p>
-<p><img src="https://hackmd.io/_uploads/BJMzVLlW6.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/BJMzVLlW6.png"></p>
 <h3 id="試著改善了程式！"><a href="#試著改善了程式！" class="headerlink" title="試著改善了程式！"></a>試著改善了程式！</h3><h4 id="之一：重構所寫的程式"><a href="#之一：重構所寫的程式" class="headerlink" title="之一：重構所寫的程式"></a>之一：重構所寫的程式</h4><p>對於自己編寫的程式碼，可能會想知道是否有更好的寫法。</p>
 <p>但也不可能每次都請專家來檢查⋯⋯這種時候，就使用 GPT-4 來幫忙檢查重構吧！</p>
-<p><img src="https://i.imgur.com/GnDAoz5.png"></p>
+<p><img data-src="https://i.imgur.com/GnDAoz5.png"></p>
 <h4 id="之二：在自己編寫的程式導入-OR-Mapper（對象關係對映）"><a href="#之二：在自己編寫的程式導入-OR-Mapper（對象關係對映）" class="headerlink" title="之二：在自己編寫的程式導入 OR Mapper（對象關係對映）"></a>之二：在自己編寫的程式導入 <span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3poLXR3LyVFNSVBRiVCOSVFOCVCMSVBMSVFNSU4NSVCMyVFNyVCMyVCQiVFNiU5OCVBMCVFNSVCMCU4NA==" title="https://zh.wikipedia.org/zh-tw/%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84">OR Mapper（對象關係對映）<i class="fa fa-external-link"></i></span></h4><p>在編寫程式時，你是否曾經出現過「有沒有更好的作法啊？」這樣的想法呢？<br>這種時候，就讓 GPT-4 來實現這個更好的做法吧！</p>
 <p>這次因為不想對 SQL 硬編碼（Hard Code），因此想導入使用 OR Mapper。如果想要靠自己引入 OR Mapper，可能會花費相當大的學習成本。</p>
 <p>但有了 GPT-4 就是一瞬間的事情，更友善的是，還可以得知推薦使的工具以及安裝方式（如以下回答，是介紹 Go 的使用方式）。</p>
-<p><img src="https://i.imgur.com/yXdIYEN.png"></p>
+<p><img data-src="https://i.imgur.com/yXdIYEN.png"></p>
 <h4 id="之三：由於替換不同的-Library，需要修改程式"><a href="#之三：由於替換不同的-Library，需要修改程式" class="headerlink" title="之三：由於替換不同的 Library，需要修改程式"></a>之三：由於替換不同的 Library，需要修改程式</h4><p>在替換 Library 時，大多數的情況下，函數的使用方式也會改變。換句話說，必須全面重新檢查該程式。</p>
 <p>因為通常會發生錯誤，因此需要瞭解該修復的部分，但是「那該如何重新編寫才對？」這件事將會產生學習成本。閱讀文本學習需要花費許多時間，希望能夠快速完成。</p>
 <p>能夠自己閱讀和理解固然重要，但如果能更先查看完成的程式碼，或許有助於更快理解內容。特別是在工作時間內，可能無法提供太多的學習時間。</p>
 <p>像這種程式修改的情況，有了 GPT-4 將能夠立即完成，準確性也非常出色，只需複製貼上程式碼，程式即可如預期運行。</p>
-<p><img src="https://i.imgur.com/tW2Pckm.png"></p>
+<p><img data-src="https://i.imgur.com/tW2Pckm.png"></p>
 <h4 id="之四：將冗長的程式碼進行拆分"><a href="#之四：將冗長的程式碼進行拆分" class="headerlink" title="之四：將冗長的程式碼進行拆分"></a>之四：將冗長的程式碼進行拆分</h4><p>有時在實作中得意忘形，可能一不小心寫出冗長的程式碼⋯⋯<br>雖然想要拆分成多個檔案，但又不確定該如何分割才好⋯⋯</p>
 <p>你是否有過這樣的想法呢？<br>在這種時候，使用 GPT-4 來協助進行分割吧。</p>
-<p><img src="https://i.imgur.com/nIjqJce.png"></p>
+<p><img data-src="https://i.imgur.com/nIjqJce.png"></p>
 <h2 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h2><p>至今為止，為了使用 GPT-4，必須每個月支付 3,000 日圓給 ChatGPT，但當我意識到 Bing Chat 的 GPT-4 也相當優秀後，便開始用於個人興趣的開發用途，並停止支付 ChatGPT 的費用。</p>
 <p>GPT-4 回答的精確度非常高，和程式設計的相容性極佳。若是想使用 GPT-4 的同時節省費用，請務必嘗試使用 Bing Chat！</p>
 <blockquote>
@@ -378,10 +398,10 @@
       <div class="popular-posts-title"><a href="/ironman-2023-day-23/" rel="bookmark">[2023 15th鐵人賽] Day23 - ChatGPT 使用方法總整理</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/ironman-2023-day-10/" rel="bookmark">[2023 15th鐵人賽] Day10 - 透過圖文理解 S.O.L.I.D 原則</a></div>
+      <div class="popular-posts-title"><a href="/ironman-2023-day-1/" rel="bookmark">[2023 15th鐵人賽] Day1 - 前言與系列大綱</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/ironman-2023-day-1/" rel="bookmark">[2023 15th鐵人賽] Day1 - 前言與系列大綱</a></div>
+      <div class="popular-posts-title"><a href="/ironman-2023-day-12/" rel="bookmark">[2023 15th鐵人賽] Day12 - 外國「為什麼日本無法像硬體時代一樣在軟體方面表現出色？」</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/ironman-2023-day-11/" rel="bookmark">[2023 15th鐵人賽] Day11 - 調查工程師的 alias 設定排行</a></div>
@@ -391,7 +411,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -561,7 +582,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -623,12 +645,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

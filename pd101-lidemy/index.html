@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 [PD101] 淺談產品開發與工作流程 這門課程的學習筆記。如有錯誤歡迎指正！  透過這堂課程，我們能夠在進入職場之前，先試著瞭解開發流程，雖然每間公司實際工作情形不一定相同，但也能先有個初步概念：">
@@ -71,6 +69,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 19] 淺談產品開發與工作流程",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-11-01T16:41:00.000Z",
+  "dateModified": "2026-07-09T06:06:05.713Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/pd101-lidemy/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[week 19] 淺談產品開發與工作流程 | Liusan's Blog</title>
   
 
@@ -106,7 +126,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -293,11 +313,11 @@
 <p>透過這堂課程，我們能夠在進入職場之前，先試著瞭解開發流程，雖然每間公司實際工作情形不一定相同，但也能先有個初步概念：</p>
 <span id="more"></span>
 
-<p><img src="https://i.imgur.com/PPlaGG2.png"></p>
+<p><img data-src="https://i.imgur.com/PPlaGG2.png"></p>
 <p>課程內容也會以之前 Huli 和助教共同實作的 Lidemy 學習系統作為範例。</p>
 <hr>
 <h2 id="在實際開發之前"><a href="#在實際開發之前" class="headerlink" title="在實際開發之前"></a>在實際開發之前</h2><p>工程師會根據 PM 提出的產品需求來進行開發，而一個產品需求產生的流程如下：</p>
-<p><img src="https://i.imgur.com/EHWat4x.png"></p>
+<p><img data-src="https://i.imgur.com/EHWat4x.png"></p>
 <ul>
 <li>stakeholder 利益相關者，也就是客戶</li>
 <li>Product Requirement Document 產品需求文件</li>
@@ -374,27 +394,27 @@
 <li>so that I can… 我就可以…</li>
 </ul>
 <p>以開發 Lidemy 作業系統為例子，這是初步的產品需求：</p>
-<p><img src="https://i.imgur.com/5Ho0Vcl.png"></p>
+<p><img data-src="https://i.imgur.com/5Ho0Vcl.png"></p>
 <p>若以 User Story 方式撰寫，就能夠使產品需求更加明確化，也能瞭解不同使用者身份的需求以及開發順序：</p>
-<p><img src="https://i.imgur.com/Fewp6BB.png"></p>
+<p><img data-src="https://i.imgur.com/Fewp6BB.png"></p>
 <h3 id="繪製-Flowchart-amp-Wireframe"><a href="#繪製-Flowchart-amp-Wireframe" class="headerlink" title="繪製 Flowchart &amp; Wireframe"></a>繪製 Flowchart &amp; Wireframe</h3><p>此外還有像是 User Flow 使用流程和 Wireframe 設計線稿，也能幫助理解產品邏輯：</p>
 <ul>
 <li>User Flow</li>
 </ul>
-<p><img src="https://i.imgur.com/YH4yf2T.png"></p>
+<p><img data-src="https://i.imgur.com/YH4yf2T.png"></p>
 <ul>
 <li>Wireframe</li>
 </ul>
-<p><img src="https://i.imgur.com/xuiuBsv.png"></p>
+<p><img data-src="https://i.imgur.com/xuiuBsv.png"></p>
 <p>繪製 Flowchart 時，也找了一些參考資料，瞭解該如何繪製：</p>
 <ul>
 <li><span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL2FzLWEtcHJvZHVjdC1kZXNpZ25lci8lRTUlODUlODglRTUlODglQTUlRTYlODAlQTUlRTglOTElOTclRTclOTUlQUJ1aS0lRTQlQkQlQTAlRTglODElQkQlRTklODElOEVmbG93LWNoYXJ0JUU1JTk3JThFLWM2NzE1ZjA1NWNmYw==" title="https://medium.com/as-a-product-designer/%E5%85%88%E5%88%A5%E6%80%A5%E8%91%97%E7%95%ABui-%E4%BD%A0%E8%81%BD%E9%81%8Eflow-chart%E5%97%8E-c6715f055cfc">先別急著畫 UI，你聽過 Flow Chart 嗎<i class="fa fa-external-link"></i></span></li>
 <li><span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGVseS5jb20vZGlhZ3JhbS1jb21tdW5pdHkvcG9wdWxhci90L2Zsb3djaGFydA==" title="https://creately.com/diagram-community/popular/t/flowchart">Flowchart Templates | Editable Online or Download for Free<i class="fa fa-external-link"></i></span></li>
 </ul>
-<p>像是流程圖其實能透過規範的符號來統一：<br><img src="https://miro.medium.com/max/1000/1*EYsGjOTefEx3BfT4TpSKcg.png"></p>
+<p>像是流程圖其實能透過規範的符號來統一：<br><img data-src="https://miro.medium.com/max/1000/1*EYsGjOTefEx3BfT4TpSKcg.png"></p>
 <p>試做有關會員的 User Flow：</p>
 <p><span class="exturl" data-url="aHR0cHM6Ly93aGltc2ljYWwuY29tL3VzZXItZmxvdy0zdEVpM2hHM0dLUnNFaGtTMk5XeVVy" title="https://whimsical.com/user-flow-3tEi3hG3GKRsEhkS2NWyUr">DEMO 連結<i class="fa fa-external-link"></i></span></p>
-<p><img src="https://i.imgur.com/aZ4xEt5.png"></p>
+<p><img data-src="https://i.imgur.com/aZ4xEt5.png"></p>
 <hr>
 <h2 id="Card-Ticket-Task-Issue"><a href="#Card-Ticket-Task-Issue" class="headerlink" title="Card = Ticket = Task = Issue"></a>Card = Ticket = Task = Issue</h2><p>在實際開發過程，通常會把每個功能切割成一個任務，以下這些名詞均可代表工作的最小單位：</p>
 <ul>
@@ -404,7 +424,7 @@
 <li>Ticket：票</li>
 </ul>
 <p>通常會利用現成的平台，像是 <span class="exturl" data-url="aHR0cHM6Ly93d3cuYXRsYXNzaWFuLmNvbS9zb2Z0d2FyZS9qaXJhPyZhY2VpZD0mYWRwb3NpdGlvbj0mYWRncm91cD05NTAwMzY0NTQ0OSZjYW1wYWlnbj05MTI0ODc4NzAyJmNyZWF0aXZlPTQxNTU0Mjc1MjM2NSZkZXZpY2U9YyZrZXl3b3JkPWppcmEmbWF0Y2h0eXBlPWUmbmV0d29yaz1nJnBsYWNlbWVudD0mZHNfa2lkcz1wNTEyNDIxODkzMTgmZHNfZT1HT09HTEUmZHNfZWlkPTcwMDAwMDAwMTU1ODUwMSZkc19lMT1HT09HTEUmZ2NsaWQ9Q2owS0NRaUFxZFA5QlJEVkFSSXNBR1NaOEFtemJmWHZheGx3c2wtOTBDSUlVQWtPc2dMQWNCSVFxdnVCSUJYNlIxcHVzejFKdFBGLVlOMGFBbUF6RUFMd193Y0ImZ2Nsc3JjPWF3LmRz" title="https://www.atlassian.com/software/jira?&aceid=&adposition=&adgroup=95003645449&campaign=9124878702&creative=415542752365&device=c&keyword=jira&matchtype=e&network=g&placement=&ds_kids=p51242189318&ds_e=GOOGLE&ds_eid=700000001558501&ds_e1=GOOGLE&gclid=Cj0KCQiAqdP9BRDVARIsAGSZ8AmzbfXvaxlwsl-90CIIUAkOsgLAcBIQqvuBIBX6R1pusz1JtPF-YN0aAmAzEALw_wcB&gclsrc=aw.ds">Jira<i class="fa fa-external-link"></i></span> 或 <span class="exturl" data-url="aHR0cHM6Ly93d3cuZ29vZ2xlYWRzZXJ2aWNlcy5jb20vcGFnZWFkL2FjbGs/c2E9TCZhaT1EQ2hjU0V3amNzOWV4MTR2dEFoVUoySllLSFVjQ0RwQVlBQkFBR2dKMGJBJm9ob3N0PXd3dy5nb29nbGUuY29tJmNpZD1DQUVTUWVEMldGdExWeDdtNHN4eUFFVHEwUWhGcHY0YW9HVlhYQzRCVmlyN3VaZzN3LTEzT1lZU09BZTFKcUVqQUpsVnAzRDhzSmItQ0MyX2NWaHNXeTRZdU9WWCZzaWc9QU9ENjRfMHU1MzM1TTdSTjlSLTgxeDh2RlVtXzBBZHIzQSZxJmFkdXJsJnZlZD0yYWhVS0V3amdqdEd4MTR2dEFoVUh3b3NCSGZBakNGMFEwUXg2QkFnTUVBRQ==" title="https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwjcs9ex14vtAhUJ2JYKHUcCDpAYABAAGgJ0bA&ohost=www.google.com&cid=CAESQeD2WFtLVx7m4sxyAETq0QhFpv4aoGVXXC4BVir7uZg3w-13OYYSOAe1JqEjAJlVp3D8sJb-CC2_cVhsWy4YuOVX&sig=AOD64_0u5335M7RN9R-81x8vFUm_0Adr3A&q&adurl&ved=2ahUKEwjgjtGx14vtAhUHwosBHfAjCF0Q0Qx6BAgMEAE">Trello<i class="fa fa-external-link"></i></span> 來管理任務，通常一個 User Story 就會切割成一張票：</p>
-<p><img src="https://i.imgur.com/l4GdKJq.png"></p>
+<p><img data-src="https://i.imgur.com/l4GdKJq.png"></p>
 <p>透過這些平台，能夠用來切割工作區塊，也能讓整個團隊快速瀏覽整體工作進度。</p>
 <p>參考資料：</p>
 <ul>
@@ -418,7 +438,7 @@
 <li>Waterfall 瀑布流</li>
 <li>Agile 敏捷</li>
 </ul>
-<h3 id="Waterfall-瀑布流"><a href="#Waterfall-瀑布流" class="headerlink" title="Waterfall 瀑布流"></a>Waterfall 瀑布流</h3><p><img src="https://i.imgur.com/XRtzTAx.png"></p>
+<h3 id="Waterfall-瀑布流"><a href="#Waterfall-瀑布流" class="headerlink" title="Waterfall 瀑布流"></a>Waterfall 瀑布流</h3><p><img data-src="https://i.imgur.com/XRtzTAx.png"></p>
 <ul>
 <li>從上往下，不能往回，一次性</li>
 <li>呈現完整性較高</li>
@@ -430,7 +450,7 @@
 <li><span class="exturl" data-url="aHR0cHM6Ly93d3cuc21hcnRzaGVldC5jb20vYWdpbGUtdnMtc2NydW0tdnMtd2F0ZXJmYWxsLXZzLWthbmJhbg==" title="https://www.smartsheet.com/agile-vs-scrum-vs-waterfall-vs-kanban">What’s the Difference? Agile vs Scrum vs Waterfall vs Kanban<i class="fa fa-external-link"></i></span></li>
 <li><span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tLzNwbS1sYWIvcG0tcG9kY2FzdC1lcDAzLXdhdGVyZmFsbC12cy1hZ2lsZS04MmIyMTQ4NTMxMTI=" title="https://medium.com/3pm-lab/pm-podcast-ep03-waterfall-vs-agile-82b214853112">【Podcast EP03】敏捷或瀑布開發哪個好？流程用哪種重要嗎？<i class="fa fa-external-link"></i></span></li>
 </ul>
-<h3 id="Agile-敏捷"><a href="#Agile-敏捷" class="headerlink" title="Agile 敏捷"></a>Agile 敏捷</h3><p><img src="https://i.imgur.com/Rp9dRyX.png"></p>
+<h3 id="Agile-敏捷"><a href="#Agile-敏捷" class="headerlink" title="Agile 敏捷"></a>Agile 敏捷</h3><p><img data-src="https://i.imgur.com/Rp9dRyX.png"></p>
 <ul>
 <li>及早並持續地交付，精簡化</li>
 <li>彈性較高，能夠改變需求</li>
@@ -444,17 +464,17 @@
 <li><span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1IRG1PN0V2N01sYw==" title="https://www.youtube.com/watch?v=HDmO7Ev7Mlc">【敏捷系列 - 1】什麼是敏捷？敏捷實例分享<i class="fa fa-external-link"></i></span></li>
 </ul>
 <h3 id="實作-Agile-概念：Kanban-看板"><a href="#實作-Agile-概念：Kanban-看板" class="headerlink" title="實作 Agile 概念：Kanban 看板"></a>實作 Agile 概念：Kanban 看板</h3><p>這裡以 Trello 和 Jira 平台為例：</p>
-<p><img src="https://i.imgur.com/dvYXPf0.png"></p>
+<p><img data-src="https://i.imgur.com/dvYXPf0.png"></p>
 <ul>
 <li>Trello</li>
 </ul>
-<p><img src="https://i.imgur.com/5dSZWIc.png"></p>
+<p><img data-src="https://i.imgur.com/5dSZWIc.png"></p>
 <ul>
 <li>Jira 平台的 Kanban Board</li>
 </ul>
-<p><img src="https://i.imgur.com/6oPUTVR.png"></p>
-<p><img src="https://i.imgur.com/a9XYtOX.png"></p>
-<h3 id="實作-Agile-概念：Scrum"><a href="#實作-Agile-概念：Scrum" class="headerlink" title="實作 Agile 概念：Scrum"></a>實作 Agile 概念：Scrum</h3><p><img src="https://i.imgur.com/Xs7PQ5q.png"></p>
+<p><img data-src="https://i.imgur.com/6oPUTVR.png"></p>
+<p><img data-src="https://i.imgur.com/a9XYtOX.png"></p>
+<h3 id="實作-Agile-概念：Scrum"><a href="#實作-Agile-概念：Scrum" class="headerlink" title="實作 Agile 概念：Scrum"></a>實作 Agile 概念：Scrum</h3><p><img data-src="https://i.imgur.com/Xs7PQ5q.png"></p>
 <p>透過 Scrum 的開發流程：</p>
 <ul>
 <li>Product Backlog：列出產品所有功能</li>
@@ -464,7 +484,7 @@
 <li>Daily Scrum：例行溝通進度</li>
 <li>Review、Retrospective：檢視進度與檢討</li>
 </ul>
-<p><img src="https://i.imgur.com/qMvYoim.png"></p>
+<p><img data-src="https://i.imgur.com/qMvYoim.png"></p>
 <p>在實際開發扮演的角色：</p>
 <ul>
 <li>Product Owner：決定產品走向</li>
@@ -583,7 +603,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -753,7 +774,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -815,12 +837,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

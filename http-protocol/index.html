@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 [NET101] 網路基礎概論（搭配 JS 實作練習） 這門課程的學習筆記。如有錯誤歡迎指正。  12345678910111213學習目標： 知道網路背後大概的運作模式 知道什麼是 Request 跟 Response 知道什麼是 DNS 以及運作原理 知道 HTTP 與 HTTPS 的差異 知道 localhost 跟 127.0.0.1 是什麼 知道 GET 與 POST 的差別">
@@ -81,6 +79,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 4] 網路基礎概論 - HTTP 協定、TCP/IP",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-07-12T05:39:00.000Z",
+  "dateModified": "2026-07-09T06:06:05.659Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/http-protocol/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[week 4] 網路基礎概論 - HTTP 協定、TCP/IP | Liusan's Blog</title>
   
 
@@ -116,7 +136,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -312,7 +332,7 @@
 <p>HTTP 是一套網路傳輸協定，為<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3poLXR3LyVFOCVCNiU4NSVFNiU5NiU4NyVFNiU5QyVBQyVFNCVCQyVBMCVFOCVCRSU5MyVFNSU4RCU4RiVFOCVBRSVBRQ==" title="https://zh.wikipedia.org/zh-tw/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE">全球資訊網的資料通訊的基礎<i class="fa fa-external-link"></i></span>。也就是說，網頁前端和後端在溝通時，就是透過 HTTP 協定進行。</p>
 <h3 id="為什麼我們需要-Protocol（協定）？"><a href="#為什麼我們需要-Protocol（協定）？" class="headerlink" title="為什麼我們需要 Protocol（協定）？"></a>為什麼我們需要 Protocol（協定）？</h3><p>簡言之，協定就是一個「標準」。協定是為了讓彼此溝通而建立的規範，制定標準以統一格式，如此能夠進行規模化。</p>
 <h2 id="Client-amp-Server"><a href="#Client-amp-Server" class="headerlink" title="Client &amp; Server"></a>Client &amp; Server</h2><p>而透過協議溝通的兩端，通常可分為客戶端（Client）和伺服器端（Server）。</p>
-<p><img src="https://i.imgur.com/EYmEfr8.png"></p>
+<p><img data-src="https://i.imgur.com/EYmEfr8.png"></p>
 <h3 id="我們如何看到網頁的畫面？"><a href="#我們如何看到網頁的畫面？" class="headerlink" title="我們如何看到網頁的畫面？"></a>我們如何看到網頁的畫面？</h3><p>網頁上的資訊，其實就是由許多 request 跟 response 構成。且兩者內容均分成 header 與 body，分別帶著不同資訊：</p>
 <ul>
 <li>header：額外資訊</li>
@@ -324,7 +344,7 @@
 <li>Server 經過處理後，回傳一個「response」</li>
 <li>再由瀏覽器進行解析（html、css、js 等），將程式碼渲染成我們所熟悉的網頁介面</li>
 </ol>
-<p><img src="https://i.imgur.com/4pi9zu5.png" alt="瀏覽器"></p>
+<p><img data-src="https://i.imgur.com/4pi9zu5.png" alt="瀏覽器"></p>
 <h2 id="DNS-域名系統"><a href="#DNS-域名系統" class="headerlink" title="DNS 域名系統"></a>DNS 域名系統</h2><p>全名是 Domain Name System，負責將域名轉換成 IP 位置。</p>
 <ul>
 <li>域名（Domain）：即常用的網址。google.com 就是一個域名，類似景點名稱。</li>
@@ -346,9 +366,9 @@
 <p><span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvR29vZ2xlX1B1YmxpY19ETlM=" title="https://zh.wikipedia.org/wiki/Google_Public_DNS">Google 提供免費的 DNS 伺服器<i class="fa fa-external-link"></i></span> 8.8.8.8 和 8.8.4.4，如此可透過搜尋引擎來蒐集大數據。</p>
 </blockquote>
 <h3 id="以-GitHub-網站為例"><a href="#以-GitHub-網站為例" class="headerlink" title="以 GitHub 網站為例"></a>以 GitHub 網站為例</h3><p>就是透過 DNS 把 Request URL（github.com） 轉換成實際 IP 位置（13.250.177.223）。</p>
-<p><img src="https://i.imgur.com/LsnJjwB.png" alt="DNS"></p>
+<p><img data-src="https://i.imgur.com/LsnJjwB.png" alt="DNS"></p>
 <h3 id="nslookup-指令"><a href="#nslookup-指令" class="headerlink" title="nslookup 指令"></a><code>nslookup</code> 指令</h3><p>在終端機輸入 <code>nslookup &#39;網址&#39;</code>：可查詢 DNS 伺服器。有可能出現多個結果，代表對應到多個 server。</p>
-<p><img src="https://i.imgur.com/wTIOWZF.png" alt="nslookup"></p>
+<p><img data-src="https://i.imgur.com/wTIOWZF.png" alt="nslookup"></p>
 <h2 id="瀏覽器只是一個程式"><a href="#瀏覽器只是一個程式" class="headerlink" title="瀏覽器只是一個程式"></a>瀏覽器只是一個程式</h2><p>即使我們沒有瀏覽器，也能夠過其他方式發送 request 跟取得 response。</p>
 <h3 id="實做一個-Client-端發送-request"><a href="#實做一個-Client-端發送-request" class="headerlink" title="實做一個 Client 端發送 request"></a>實做一個 Client 端發送 request</h3><p>利用 Node.js 的一套 library：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JlcXVlc3QvcmVxdWVzdA==" title="https://github.com/request/request">request - Simplified HTTP client<i class="fa fa-external-link"></i></span>，來模擬瀏覽器發送 request 的過程，步驟如下：</p>
 <ol>
@@ -365,7 +385,7 @@
 <ol start="4">
 <li>執行 <code>node index.js</code> 可拿到 response</li>
 </ol>
-<p><img src="https://i.imgur.com/795sNFV.png" alt="執行 request"></p>
+<p><img data-src="https://i.imgur.com/795sNFV.png" alt="執行 request"></p>
 <ol start="5">
 <li>或是利用 <code>node index.js &gt; github.html</code> 導入程式碼，一樣能打開網頁</li>
 </ol>
@@ -411,15 +431,15 @@
 <li>安全性：較 POST 不安全，因為傳遞的引數會在 URL 上顯示</li>
 <li>例如：讀取連結或圖片</li>
 </ul>
-<p><img src="https://i.imgur.com/C2MUvS4.png" alt="GET"></p>
+<p><img data-src="https://i.imgur.com/C2MUvS4.png" alt="GET"></p>
 <h4 id="POST：將要處理的資料提交給指定的資源，類似於更新操作。"><a href="#POST：將要處理的資料提交給指定的資源，類似於更新操作。" class="headerlink" title="POST：將要處理的資料提交給指定的資源，類似於更新操作。"></a><code>POST</code>：將要處理的資料提交給指定的資源，類似於更新操作。</h4><ul>
 <li>資料傳遞方式：將引數放在 request body 中傳遞</li>
 <li>安全性：較 GET 安全，適合用於隱密性較高的資料</li>
 <li>例如：會員登入系統（如下圖所示）</li>
 </ul>
-<p><img src="https://i.imgur.com/K7UVu6f.png" alt="POST"></p>
+<p><img data-src="https://i.imgur.com/K7UVu6f.png" alt="POST"></p>
 <p>在最下方夾帶 request 資訊：</p>
-<p><img src="https://i.imgur.com/7dixXCe.png" alt="request body"></p>
+<p><img data-src="https://i.imgur.com/7dixXCe.png" alt="request body"></p>
 <h3 id="HTTP-Status-Code-狀態碼"><a href="#HTTP-Status-Code-狀態碼" class="headerlink" title="HTTP Status Code 狀態碼"></a>HTTP Status Code 狀態碼</h3><p>是 HTTP 用「3 位數字代碼」來表示回應狀態，通常以開頭的數字來進行區分。詳細可參考 <span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvSFRUUCVFNyU4QSVCNiVFNiU4MCU4MSVFNyVBMCU4MQ==" title="https://zh.wikipedia.org/wiki/HTTP%E7%8A%B6%E6%80%81%E7%A0%81">HTTP 狀態碼- 維基百科<i class="fa fa-external-link"></i></span>：</p>
 <h4 id="1xx：訊息（較少見）"><a href="#1xx：訊息（較少見）" class="headerlink" title="1xx：訊息（較少見）"></a>1xx：訊息（較少見）</h4><h4 id="2xx：Success-成功"><a href="#2xx：Success-成功" class="headerlink" title="2xx：Success 成功"></a>2xx：Success 成功</h4><ul>
 <li><code>200 OK</code>：代表成功</li>
@@ -456,7 +476,7 @@
 <li><p>在瀏覽器輸入網址 <code>localhost:5000</code> 會跑出下列畫面：</p>
 </li>
 </ol>
-<p><img src="https://i.imgur.com/PUPfab0.png" alt="localhost:5000"></p>
+<p><img data-src="https://i.imgur.com/PUPfab0.png" alt="localhost:5000"></p>
 <ol start="4">
 <li>若修改程式碼如下，即可根據「不同網址」給出「不同回應」：</li>
 </ol>
@@ -465,11 +485,11 @@
 <ul>
 <li>輸入網址 <code>localhost:5000</code>：回應 welcome</li>
 </ul>
-<p><img src="https://i.imgur.com/p1PKLHk.png" alt="welcome"></p>
+<p><img data-src="https://i.imgur.com/p1PKLHk.png" alt="welcome"></p>
 <ul>
 <li>輸入網址 <code>localhost:5000/hello</code>：回應 hello</li>
 </ul>
-<p><img src="https://i.imgur.com/Ay4ut32.png" alt="hello"></p>
+<p><img data-src="https://i.imgur.com/Ay4ut32.png" alt="hello"></p>
 <ol start="5">
 <li>再增加 <code>redirect</code> 部分和 <code>res.writeHead(404)</code>，就完成一個較完整的 Server 端：</li>
 </ol>
@@ -478,11 +498,11 @@
 <ul>
 <li>若輸入不存在的網址，就會出現狀態 <code>404 Not Found</code>：</li>
 </ul>
-<p><img src="https://i.imgur.com/Dy8kyCR.png" alt="404"></p>
+<p><img data-src="https://i.imgur.com/Dy8kyCR.png" alt="404"></p>
 <ul>
 <li>若輸入 <code>localhost:5000/redirect</code>，會在 Response Headers 會出現 <code>&#39;lidemy&#39;: &#39;good&#39;</code>：</li>
 </ul>
-<p><img src="https://i.imgur.com/KufqrXq.png" alt="&#39;lidemy&#39;: &#39;good&#39;"></p>
+<p><img data-src="https://i.imgur.com/KufqrXq.png" alt="&#39;lidemy&#39;: &#39;good&#39;"></p>
 <ol start="6">
 <li>在之前的狀態碼有提到，若要轉址必須改成 <code>302 Found</code>：</li>
 </ol>
@@ -491,7 +511,7 @@
 <ol start="7">
 <li>輸入網址 <code>&#39;localhost:5000/redirect</code>，瀏覽器就會轉址到新位置：</li>
 </ol>
-<p><img src="https://i.imgur.com/WX6bq3s.png" alt="302"></p>
+<p><img data-src="https://i.imgur.com/WX6bq3s.png" alt="302"></p>
 <ul>
 <li>若將程式碼改成 <code>&#39;Location&#39;: &#39;https://google.com&#39;</code>：輸入網址 <code>localhost:5000/redirect</code> 就會直接連到 <code>google.com</code></li>
 </ul>
@@ -500,9 +520,9 @@
 <p>分層的好處，是只要處理該層級的事情就好，因為每個階層的程式碼可以獨立撰寫，功能也不會相互干擾。</p>
 <p>而著名的分層模型主要有兩種：</p>
 <h3 id="OSI-七層協定"><a href="#OSI-七層協定" class="headerlink" title="OSI 七層協定"></a>OSI 七層協定</h3><p>由於協定非常嚴謹，較偏向理論。</p>
-<p><img src="https://i.imgur.com/wLsG4hH.png" alt="OSI"></p>
+<p><img data-src="https://i.imgur.com/wLsG4hH.png" alt="OSI"></p>
 <h3 id="TCP-IP-四層模型"><a href="#TCP-IP-四層模型" class="headerlink" title="TCP/IP 四層模型"></a>TCP/IP 四層模型</h3><p>TCP/IP 是由 OSI 七層協定簡化而來，為目前網路通訊的基礎架構。以下為兩者之間的比較圖與常見的通訊協定：</p>
-<p><img src="https://i.imgur.com/GFDpM8z.png" alt="OSI TCP/IP"></p>
+<p><img data-src="https://i.imgur.com/GFDpM8z.png" alt="OSI TCP/IP"></p>
 <p>參考資料：<span class="exturl" data-url="aHR0cDovL2xpbnV4LnZiaXJkLm9yZy9saW51eF9zZXJ2ZXIvMDExMG5ldHdvcmtfYmFzaWMucGhwI3doYXRpc25ldHdvcmtfdGNwaXA=" title="http://linux.vbird.org/linux_server/0110network_basic.php#whatisnetwork_tcpip">2.4 TCP/IP 的傳輸層相關封包與資料 - 鳥哥的 Linux 私房菜<i class="fa fa-external-link"></i></span></p>
 <hr>
 <h2 id="網路層-IP-地址"><a href="#網路層-IP-地址" class="headerlink" title="網路層 - IP 地址"></a>網路層 - IP 地址</h2><p>IP 的全名是 Internet Protocol，中文是「網際網路協定」。</p>
@@ -527,7 +547,7 @@
 <blockquote>
 <p>通常以 <code>192.168</code> 或 <code>10.0</code> 開頭的，都是虛擬 IP。</p>
 </blockquote>
-<p><img src="https://i.imgur.com/TFcsKyY.png" alt="虛擬 IP"></p>
+<p><img data-src="https://i.imgur.com/TFcsKyY.png" alt="虛擬 IP"></p>
 <p>參考資料：<span class="exturl" data-url="aHR0cHM6Ly9pdGhlbHAuaXRob21lLmNvbS50dy9xdWVzdGlvbnMvMTAwMDA3OTY=" title="https://ithelp.ithome.com.tw/questions/10000796">浮動 IP 與 固定 IP 有何不同?? 各有何優缺點??<i class="fa fa-external-link"></i></span></p>
 <hr>
 <h2 id="Port-連接埠（端口）"><a href="#Port-連接埠（端口）" class="headerlink" title="Port 連接埠（端口）"></a>Port 連接埠（端口）</h2><p>在應用層當中，每台電腦主機 IP 位置（localhost），可能對應到不同應用程式。例如：HTTP、FTP、信件收發等服務。</p>
@@ -550,7 +570,7 @@
 <li>是一種可靠的資料傳輸，因此大部分的網路協定都是建立在 TCP 上面</li>
 <li>透過「三次握手」確認建立一個連接：</li>
 </ul>
-<p><img src="https://i.imgur.com/PHSLrDe.png"></p>
+<p><img data-src="https://i.imgur.com/PHSLrDe.png"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">若以「傳紙條概念」比喻三次握手：</span><br><span class="line">小明：安安，在嗎？</span><br><span class="line">小美：在阿，你好。</span><br><span class="line">小明：收到，太好了！</span><br></pre></td></tr></table></figure>
 
 <h3 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h3><ul>
@@ -570,7 +590,7 @@
 <li>網路層（IP）：傳輸地址</li>
 <li>實體層（網路電纜）：實體傳輸</li>
 </ul>
-<p><img src="https://i.imgur.com/oJPxLiH.png" alt="傳紙條概念"></p>
+<p><img data-src="https://i.imgur.com/oJPxLiH.png" alt="傳紙條概念"></p>
 <hr>
 <h2 id="淺談-API"><a href="#淺談-API" class="headerlink" title="淺談 API"></a>淺談 API</h2><blockquote>
 <p>可參考 <span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL0BodWxpdHcvcmFtZW4tYW5kLWFwaS02MjM4NDM3ZGM1NDQ=" title="https://medium.com/@hulitw/ramen-and-api-6238437dc544">Huli - 從拉麵店的販賣機理解什麼是 API<i class="fa fa-external-link"></i></span>，或是這部影片：<span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj16dkthZGQ5Q2ZsYyZmZWF0dXJlPWVtYl9sb2dv" title="https://www.youtube.com/watch?v=zvKadd9Cflc&feature=emb_logo">什麼是 API？<i class="fa fa-external-link"></i></span>來瞭解。</p>
@@ -606,7 +626,7 @@
 
 <h3 id="Step2-串接-Regres-API"><a href="#Step2-串接-Regres-API" class="headerlink" title="Step2. 串接 Regres API"></a>Step2. 串接 <span class="exturl" data-url="aHR0cHM6Ly9yZXFyZXMuaW4vYXBpL3VzZXJz" title="https://reqres.in/api/users">Regres<i class="fa fa-external-link"></i></span> API</h3><p>將範本中的 google 網址改成 <code>https://reqres.in/api/users</code></p>
 <h3 id="Step3-用-node-js-運行"><a href="#Step3-用-node-js-運行" class="headerlink" title="Step3. 用 node.js 運行"></a>Step3. 用 node.js 運行</h3><p>在終端機輸入 <code>node index.js</code>，即可獲得 Regres API 所提供的資訊：</p>
-<p><img src="https://i.imgur.com/DWirKxl.png" alt="運行"></p>
+<p><img data-src="https://i.imgur.com/DWirKxl.png" alt="運行"></p>
 <p>這樣其實就完成了簡單的 API 串接！透過丟一個 request 到網站，我們能夠獲取想要的資訊。</p>
 <h2 id="學會查看官方文件"><a href="#學會查看官方文件" class="headerlink" title="學會查看官方文件"></a>學會查看官方文件</h2><p>而透過 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JlcXVlc3QvcmVxdWVzdCNmb3Jtcw==" title="https://github.com/request/request#forms">request 文件<i class="fa fa-external-link"></i></span>，我們能找到不同的 <code>request.METHOD()</code>，瞭解如何使用各種方法：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">request.<span class="title function_">get</span>(): <span class="title class_">Defaults</span> to <span class="attr">method</span>: <span class="string">&quot;GET&quot;</span>.</span><br><span class="line">request.<span class="title function_">post</span>(): <span class="title class_">Defaults</span> to <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>.</span><br><span class="line">request.<span class="title function_">put</span>(): <span class="title class_">Defaults</span> to <span class="attr">method</span>: <span class="string">&quot;PUT&quot;</span>.</span><br><span class="line">request.<span class="title function_">patch</span>(): <span class="title class_">Defaults</span> to <span class="attr">method</span>: <span class="string">&quot;PATCH&quot;</span>.</span><br><span class="line">request.<span class="title function_">del</span>() / request.<span class="title function_">delete</span>(): <span class="title class_">Defaults</span> to <span class="attr">method</span>: <span class="string">&quot;DELETE&quot;</span>.</span><br></pre></td></tr></table></figure>
@@ -617,17 +637,17 @@
 <li>透過 <span class="exturl" data-url="aHR0cHM6Ly9yZXFyZXMuaW4v" title="https://reqres.in/">Reqres 官網<i class="fa fa-external-link"></i></span>可知，更改 「Request 網址結尾」可獲得不同使用者資訊，以 <code>/api/users/2</code> 為例：</li>
 </ul>
 <p>方法一：直接將網址改成 <code>https://reqres.in/api/users/2</code></p>
-<p><img src="https://i.imgur.com/JiCCL5b.png" alt="id 2"></p>
+<p><img data-src="https://i.imgur.com/JiCCL5b.png" alt="id 2"></p>
 <p>方法二：使用 node.js 內建 library <code>process</code></p>
 <p>這個方法是利用 <code>process.argv</code> 達成帶入參數，我們可以先用 <code>console.log</code> 來查看 <code>process.argv</code> 是什麼：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> process = <span class="built_in">require</span>(<span class="string">&quot;process&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(process.<span class="property">argv</span>);</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/HrpOUWq.png" alt="array"></p>
+<p><img data-src="https://i.imgur.com/HrpOUWq.png" alt="array"></p>
 <p>會發現 <code>process.argv</code> 其實是一個陣列，利用 <code>process.argv[2]</code> 就可以拿到我們需要的參數：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> request = <span class="built_in">require</span>(<span class="string">&quot;request&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> process = <span class="built_in">require</span>(<span class="string">&quot;process&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="title function_">request</span>(</span><br><span class="line">  <span class="string">&quot;https://reqres.in/api/users/&quot;</span> + process.<span class="property">argv</span>[<span class="number">2</span>],</span><br><span class="line">  <span class="keyword">function</span> (<span class="params">error, response, body</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;body:&quot;</span>, body);</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
 <p>輸入 <code>node index.js 2</code>，就可獲得 <code>id: 2</code> 的使用者資料：</p>
-<p><img src="https://i.imgur.com/dRHS9rO.png" alt="node index.js 2"></p>
+<p><img data-src="https://i.imgur.com/dRHS9rO.png" alt="node index.js 2"></p>
 <h3 id="情境二：新增使用者資料"><a href="#情境二：新增使用者資料" class="headerlink" title="情境二：新增使用者資料"></a>情境二：新增使用者資料</h3><ul>
 <li>method：POST</li>
 <li>url ：<code>https://reqres.in/api/users/</code></li>
@@ -639,7 +659,7 @@
 <blockquote>
 <p>註：這裡的操作只是測試用，並不會真的新增資料到網站。</p>
 </blockquote>
-<p><img src="https://i.imgur.com/SOHZu0h.png" alt="新增使用者資料"></p>
+<p><img data-src="https://i.imgur.com/SOHZu0h.png" alt="新增使用者資料"></p>
 <h3 id="情境三：刪除使用者資料"><a href="#情境三：刪除使用者資料" class="headerlink" title="情境三：刪除使用者資料"></a>情境三：刪除使用者資料</h3><ul>
 <li>method：DELETE</li>
 <li>url ：<code>https://reqres.in/api/users/&lt;userID&gt;</code></li>
@@ -647,7 +667,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> request = <span class="built_in">require</span>(<span class="string">&quot;request&quot;</span>);</span><br><span class="line">request.<span class="title function_">delete</span>(</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">url</span>: <span class="string">`https://reqres.in/api/users/2`</span>, <span class="comment">// 將使用者 id 帶入</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="keyword">function</span> (<span class="params">error, response, body</span>) &#123;</span><br><span class="line">    <span class="comment">// console.log(JSON.parse(body));</span></span><br><span class="line">    <span class="comment">// 因為是刪除，所以不會回傳東西，因此轉印狀態碼</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;status code:&quot;</span>, response.<span class="property">statusCode</span>);</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
 <p>回傳 <code>204</code>，代表成功刪除使用者資料：</p>
-<p><img src="https://i.imgur.com/JHOyAUo.png" alt="delete"></p>
+<p><img data-src="https://i.imgur.com/JHOyAUo.png" alt="delete"></p>
 <h3 id="情境四：修改使用者資料"><a href="#情境四：修改使用者資料" class="headerlink" title="情境四：修改使用者資料"></a>情境四：修改使用者資料</h3><ul>
 <li>method ：PATCH</li>
 <li>url ：<code>https://reqres.in/api/users/&lt;userID&gt;</code></li>
@@ -655,7 +675,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> request = <span class="built_in">require</span>(<span class="string">&quot;request&quot;</span>);</span><br><span class="line">request.<span class="title function_">patch</span>(</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">url</span>: <span class="string">`https://reqres.in/api/users/2`</span>,</span><br><span class="line">    <span class="attr">form</span>: &#123;</span><br><span class="line">      <span class="comment">// 傳入要修改的資料</span></span><br><span class="line">      <span class="attr">name</span>: <span class="string">&quot;hello&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="keyword">function</span> (<span class="params">error, response, body</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">parse</span>(body));</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
 <p>成功修改使用者資料：</p>
-<p><img src="https://i.imgur.com/HXbVmTk.png" alt="patch"></p>
+<p><img data-src="https://i.imgur.com/HXbVmTk.png" alt="patch"></p>
 <h3 id="綜合應用"><a href="#綜合應用" class="headerlink" title="綜合應用"></a>綜合應用</h3><p>Base URL: <span class="exturl" data-url="aHR0cHM6Ly9saWRlbXktYm9vay1zdG9yZS5oZXJva3VhcHAuY29tLw==" title="https://lidemy-book-store.herokuapp.com/">https://lidemy-book-store.herokuapp.com<i class="fa fa-external-link"></i></span></p>
 <table>
 <thead>
@@ -758,7 +778,7 @@
 <p>因此使用內建函式 <code>JSON.parse()</code> 做處理，就會轉成「JS 物件」：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> request = <span class="built_in">require</span>(<span class="string">&quot;request&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="title function_">request</span>(<span class="string">`https://reqres.in/api/users/2`</span>, <span class="keyword">function</span> (<span class="params">error, response, body</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;原始格式，JSON 格式的字串----------&quot;</span>);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(body);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;轉成 JS 物件--------------------&quot;</span>);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">parse</span>(body));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/rxiOXN2.png" alt="json"></p>
+<p><img data-src="https://i.imgur.com/rxiOXN2.png" alt="json"></p>
 <p>如此就可以「物件」方式來取出想要的資料：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> request = <span class="built_in">require</span>(<span class="string">&quot;request&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="title function_">request</span>(<span class="string">`https://reqres.in/api/users/2`</span>, <span class="keyword">function</span> (<span class="params">error, response, body</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> json = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(body); <span class="comment">// JSON 物件</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(json.<span class="property">data</span>.<span class="property">first_name</span>); <span class="comment">// 印出 Janet</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
@@ -775,7 +795,7 @@
 <li>輸入 <code>crul &#39;http://www.google.com&#39;</code>：即可下載該網頁程式碼</li>
 <li>或輸入 <code>crul &#39;網址&#39; &gt; google.html</code>：可將回傳值導向其他檔案</li>
 </ul>
-<p><img src="https://i.imgur.com/RbyGVvV.png"></p>
+<p><img data-src="https://i.imgur.com/RbyGVvV.png"></p>
 <p>參考資料：</p>
 <ol>
 <li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLjUxY3RvLmNvbS9kb2lpZG8vMTU2NDYzMQ==" title="https://blog.51cto.com/doiido/1564631">linux 指令 curl 指令详解<i class="fa fa-external-link"></i></span></li>
@@ -808,7 +828,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -977,7 +998,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -1039,12 +1061,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

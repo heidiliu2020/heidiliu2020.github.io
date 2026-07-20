@@ -14,21 +14,19 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="前言 2026.07 更新：修正過時的版本資訊（Node.js、預設分支 main）、GitHub 認證方式，並補充 GitHub Actions 部署的選項。整體架站流程至今仍適用。  本篇主要介紹如何使用 Hexo 並搭配 GitHub 來快速架設網誌。從介紹什麼是 Hexo 框架，該如何安裝、建立環境，接著介紹一些常用指令，以及如何部署到 GitHub 上。">
+  <meta name="description" content="手把手教你用 Hexo + GitHub Pages 免費架設個人部落格：從安裝 Node.js 與 Hexo CLI、建立專案與環境、常用指令介紹，到部署上 GitHub Pages 的完整流程，並補充 GitHub Actions 自動部署選項，新手也能快速上線自己的網誌。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【學習筆記】如何使用 Hexo + GitHub Pages 架設個人網誌">
 <meta property="og:url" content="https://heidiliu2020.github.io/hexo-github/index.html">
 <meta property="og:site_name" content="Liusan&#39;s Blog">
-<meta property="og:description" content="前言 2026.07 更新：修正過時的版本資訊（Node.js、預設分支 main）、GitHub 認證方式，並補充 GitHub Actions 部署的選項。整體架站流程至今仍適用。  本篇主要介紹如何使用 Hexo 並搭配 GitHub 來快速架設網誌。從介紹什麼是 Hexo 框架，該如何安裝、建立環境，接著介紹一些常用指令，以及如何部署到 GitHub 上。">
+<meta property="og:description" content="手把手教你用 Hexo + GitHub Pages 免費架設個人部落格：從安裝 Node.js 與 Hexo CLI、建立專案與環境、常用指令介紹，到部署上 GitHub Pages 的完整流程，並補充 GitHub Actions 自動部署選項，新手也能快速上線自己的網誌。">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://i.imgur.com/dOOM0JO.png">
 <meta property="og:image" content="https://i.imgur.com/JEdBf4y.png">
@@ -66,6 +64,29 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "【學習筆記】如何使用 Hexo + GitHub Pages 架設個人網誌",
+  "description": "手把手教你用 Hexo + GitHub Pages 免費架設個人部落格：從安裝 Node.js 與 Hexo CLI、建立專案與環境、常用指令介紹，到部署上 GitHub Pages 的完整流程，並補充 GitHub Actions 自動部署選項，新手也能快速上線自己的網誌。",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-11-07T12:10:00.000Z",
+  "dateModified": "2026-07-13T04:00:00.000Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/hexo-github/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>【學習筆記】如何使用 Hexo + GitHub Pages 架設個人網誌 | Liusan's Blog</title>
   
 
@@ -101,7 +122,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -276,6 +297,7 @@
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
               <span>4 分鐘</span>
             </span>
+            <div class="post-description">手把手教你用 Hexo + GitHub Pages 免費架設個人部落格：從安裝 Node.js 與 Hexo CLI、建立專案與環境、常用指令介紹，到部署上 GitHub Pages 的完整流程，並補充 GitHub Actions 自動部署選項，新手也能快速上線自己的網誌。</div>
 
         </div>
       </header>
@@ -286,7 +308,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="https://i.imgur.com/dOOM0JO.png"></p>
+        <p><img data-src="https://i.imgur.com/dOOM0JO.png"></p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
 <p>2026.07 更新：修正過時的版本資訊（Node.js、預設分支 main）、GitHub 認證方式，並補充 GitHub Actions 部署的選項。整體架站流程至今仍適用。</p>
 </blockquote>
@@ -324,14 +346,14 @@
 <blockquote>
 <p>撰文當時的 LTS 是 14.15.0，現在請直接安裝官網當前的 LTS 版本；Hexo 7 要求 Node.js 14 以上。若不確定電腦上的版本，可在終端機輸入 <code>node -v</code> 查看版本號。</p>
 </blockquote>
-<p><img src="https://i.imgur.com/JEdBf4y.png"></p>
+<p><img data-src="https://i.imgur.com/JEdBf4y.png"></p>
 <ul>
 <li><h4 id="Git：用來將檔案發布到-GitHub-Page"><a href="#Git：用來將檔案發布到-GitHub-Page" class="headerlink" title="Git：用來將檔案發布到 GitHub Page"></a><span class="exturl" data-url="aHR0cHM6Ly9naXQtc2NtLmNvbS8=" title="https://git-scm.com/">Git<i class="fa fa-external-link"></i></span>：用來將檔案發布到 GitHub Page</h4></li>
 </ul>
 <blockquote>
 <p>Git 基礎用法可參考：<span class="exturl" data-url="aHR0cHM6Ly9oYWNrbWQuaW8vQEhlaWRpLUxpdS9ub3RlLWdpdA==" title="https://hackmd.io/@Heidi-Liu/note-git">版本控制 - Git 概念 ＆ 基本指令<i class="fa fa-external-link"></i></span></p>
 </blockquote>
-<p><img src="https://i.imgur.com/drhF9RQ.png"></p>
+<p><img data-src="https://i.imgur.com/drhF9RQ.png"></p>
 <blockquote>
 <p>[補充] <span class="exturl" data-url="aHR0cHM6Ly9oYWNrbWQuaW8vQEhlaWRpLUxpdS9ub3RlLWdpdC1hbmQtZ2l0aHVi" title="https://hackmd.io/@Heidi-Liu/note-git-and-github">Git 和 GitHub 的差別？<i class="fa fa-external-link"></i></span><br>Git 是用來版本控制的程式；GitHub 則是提供存放 Git Repository 的服務，讓使用者能在視覺化界面進行管理。</p>
 </blockquote>
@@ -339,25 +361,25 @@
 <blockquote>
 <p>若對 CLI 不熟悉，可參考：<span class="exturl" data-url="aHR0cHM6Ly9oYWNrbWQuaW8vQEhlaWRpLUxpdS9ub3RlLWNsaQ==" title="https://hackmd.io/@Heidi-Liu/note-cli">Command Line 入門 &amp; 基本指令<i class="fa fa-external-link"></i></span></p>
 </blockquote>
-<h3 id="Step1-安裝-Hexo"><a href="#Step1-安裝-Hexo" class="headerlink" title="Step1. 安裝 Hexo"></a>Step1. 安裝 Hexo</h3><p><img src="https://i.imgur.com/3162t1b.png"></p>
+<h3 id="Step1-安裝-Hexo"><a href="#Step1-安裝-Hexo" class="headerlink" title="Step1. 安裝 Hexo"></a>Step1. 安裝 Hexo</h3><p><img data-src="https://i.imgur.com/3162t1b.png"></p>
 <p>開啟 CLI 介面（例如 cmd、git-bash 等終端機），並輸入下列指令安裝 Hexo：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/20qI9yU.png"></p>
+<p><img data-src="https://i.imgur.com/20qI9yU.png"></p>
 <p>安裝完後，可輸入 <code>hexo version</code> 或 <code>hexo -v</code> 查看 Hexo 版本，確認是否有安裝成功：</p>
-<p><img src="https://i.imgur.com/PRFQNVz.png"></p>
+<p><img data-src="https://i.imgur.com/PRFQNVz.png"></p>
 <h3 id="Step2-初始化-Hexo"><a href="#Step2-初始化-Hexo" class="headerlink" title="Step2. 初始化 Hexo"></a>Step2. 初始化 Hexo</h3><p>接著要初始化 Hexo，這裡有兩種做法：</p>
 <ol>
 <li>直接輸入下面指令，會自動於所在目錄建立一個新資料夾以操作 Hexo。記得將括號內修改成自己的資料夾名稱，若不指定資料夾名稱，則會直接初始化當前目錄：</li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;資料夾名稱&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.imgur.com/tPOIIKP.png"></p>
+<p><img data-src="https://i.imgur.com/tPOIIKP.png"></p>
 <ol start="2">
 <li>也可以先建立好資料夾，並在該資料夾輸入上述指令，同樣能進行初始化。可使用 cd 指令來切換路徑：</li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cd &lt;資料夾名稱 or 資料夾路徑&gt;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/t1vVcEC.png"></p>
+<p><img data-src="https://i.imgur.com/t1vVcEC.png"></p>
 <h3 id="Step3-在資料夾安裝所需檔案"><a href="#Step3-在資料夾安裝所需檔案" class="headerlink" title="Step3. 在資料夾安裝所需檔案"></a>Step3. 在資料夾安裝所需檔案</h3><p>確認 CLI 上的路徑是在資料夾中，接著執行下列指令，安裝所需的 npm 套件：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
 
@@ -420,11 +442,11 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/JUHZ8Lw.png"></p>
+<p><img data-src="https://i.imgur.com/JUHZ8Lw.png"></p>
 <h2 id="部署到-GitHub"><a href="#部署到-GitHub" class="headerlink" title="部署到 GitHub"></a>部署到 GitHub</h2><h3 id="建立-GitHub-專案"><a href="#建立-GitHub-專案" class="headerlink" title="建立 GitHub 專案"></a>建立 GitHub 專案</h3><p>在架設網誌之前，還必須準備一個存放網站的空間，例如架設主機，或是選擇現有的平台，例如 GitHub Pages、Netlify、Vercel 等，本篇以 GitHub 作為範例。</p>
 <p>接著可依照下列步驟在 GitHub 新增專案：</p>
-<h4 id="Step1-註冊-GitHub-帳號並登入"><a href="#Step1-註冊-GitHub-帳號並登入" class="headerlink" title="Step1. 註冊 GitHub 帳號並登入"></a>Step1. 註冊 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tLw==" title="https://github.com/">GitHub<i class="fa fa-external-link"></i></span> 帳號並登入</h4><h4 id="Step2-點選-New-新增一個-Repository（專案）"><a href="#Step2-點選-New-新增一個-Repository（專案）" class="headerlink" title="Step2. 點選 New 新增一個 Repository（專案）"></a>Step2. 點選 New 新增一個 Repository（專案）</h4><p><img src="https://i.imgur.com/nDvzP4k.png"></p>
-<h4 id="Step3-將專案名稱命名為-username-github-io，username-記得改成自己的帳號名稱"><a href="#Step3-將專案名稱命名為-username-github-io，username-記得改成自己的帳號名稱" class="headerlink" title="Step3. 將專案名稱命名為 username.github.io，username 記得改成自己的帳號名稱"></a>Step3. 將專案名稱命名為 <code>username.github.io</code>，username 記得改成自己的帳號名稱</h4><p><img src="https://i.imgur.com/0i5Fg2R.png"></p>
+<h4 id="Step1-註冊-GitHub-帳號並登入"><a href="#Step1-註冊-GitHub-帳號並登入" class="headerlink" title="Step1. 註冊 GitHub 帳號並登入"></a>Step1. 註冊 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tLw==" title="https://github.com/">GitHub<i class="fa fa-external-link"></i></span> 帳號並登入</h4><h4 id="Step2-點選-New-新增一個-Repository（專案）"><a href="#Step2-點選-New-新增一個-Repository（專案）" class="headerlink" title="Step2. 點選 New 新增一個 Repository（專案）"></a>Step2. 點選 New 新增一個 Repository（專案）</h4><p><img data-src="https://i.imgur.com/nDvzP4k.png"></p>
+<h4 id="Step3-將專案名稱命名為-username-github-io，username-記得改成自己的帳號名稱"><a href="#Step3-將專案名稱命名為-username-github-io，username-記得改成自己的帳號名稱" class="headerlink" title="Step3. 將專案名稱命名為 username.github.io，username 記得改成自己的帳號名稱"></a>Step3. 將專案名稱命名為 <code>username.github.io</code>，username 記得改成自己的帳號名稱</h4><p><img data-src="https://i.imgur.com/0i5Fg2R.png"></p>
 <p>這樣就成功建立了一個網域：<code>username.github.io</code></p>
 <h3 id="將檔案發布到-GitHub"><a href="#將檔案發布到-GitHub" class="headerlink" title="將檔案發布到 GitHub"></a>將檔案發布到 GitHub</h3><h4 id="Step1-安裝-Git-相關套件"><a href="#Step1-安裝-Git-相關套件" class="headerlink" title="Step1. 安裝 Git 相關套件"></a>Step1. 安裝 Git 相關套件</h4><p>回到 hexo 資料夾，在終端機輸入下列指令安裝部署所需套件：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
@@ -440,7 +462,7 @@
 <li>repo：GitHub repository 的連結，記得將 username 修改成自己的帳號名稱</li>
 <li>branch：選擇分支。GitHub 新建 repo 的預設分支已從 <code>master</code> 改為 <code>main</code>，這裡要填 GitHub Pages 設定的來源分支（可在 repo 的 Settings → Pages 確認）</li>
 </ul>
-<p><img src="https://i.imgur.com/bVw4OIH.png"></p>
+<p><img data-src="https://i.imgur.com/bVw4OIH.png"></p>
 <h4 id="Step3-輸入部署指令"><a href="#Step3-輸入部署指令" class="headerlink" title="Step3. 輸入部署指令"></a>Step3. 輸入部署指令</h4><p>使用下列指令即可部署檔案到網站上，第一次輸入會要求 GitHub 認證：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
@@ -455,7 +477,7 @@
 <p>補充：除了本篇介紹的 <code>hexo-deployer-git</code> 一鍵部署，Hexo 官方文件現在也提供透過 GitHub Actions 在 push 後自動建置部署的做法，適合不想在本機執行 deploy 指令的人，可參考<span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3MvZ2l0aHViLXBhZ2Vz" title="https://hexo.io/docs/github-pages">官方教學<i class="fa fa-external-link"></i></span>。</p>
 </blockquote>
 <p>這樣就完成部署網誌到 GitHub 了！可在個人頁面 <code>https://username.github.io</code> 確認是否有發布成功，預設畫面如下：</p>
-<p><img src="https://i.imgur.com/X0cAUy6.png"></p>
+<p><img data-src="https://i.imgur.com/X0cAUy6.png"></p>
 <hr>
 <h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>當初之所以會對 Hexo 產生興趣，是因為在課程第十四週時，學到該如何購買個人主機和網域來部署，主要是部署動態網頁為主，例如 <span class="exturl" data-url="aHR0cDovL2hlaWRpbGl1LnR3L3RvZG9saXN0Lw==" title="http://heidiliu.tw/todolist/">todolist<i class="fa fa-external-link"></i></span> 和 <span class="exturl" data-url="aHR0cDovL2hlaWRpbGl1LnR3L2JvYXJkLw==" title="http://heidiliu.tw/board/">board<i class="fa fa-external-link"></i></span>。</p>
 <p>本來也想要嘗試放看看 Markdown 檔案，卻沒想到瀏覽器並不支援，會導致部分內容變成亂碼等等。上網查該如何解決，就找到許多和 Hexo + GitHub 架設網誌有關的文章，能夠快速架設並且支援解析 Markdown 檔案，想著之後一定也要來挑戰看看！</p>
@@ -491,7 +513,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -660,7 +683,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -722,12 +746,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

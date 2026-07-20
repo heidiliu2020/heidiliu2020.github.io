@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 [BE101] 用 PHP 與 MySQL 學習後端基礎 這門課程的學習筆記。如有錯誤歡迎指正。  課程筆記：[week 9] 後端基礎 - PHP 語法、資料庫 MySQL">
@@ -59,6 +57,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 9] 利用 PHP 實作留言板 - 初階實作篇",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-09-09T06:10:00.000Z",
+  "dateModified": "2026-04-23T06:14:18.252Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/php-board/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[week 9] 利用 PHP 實作留言板 - 初階實作篇 | Liusan's Blog</title>
   
 
@@ -94,7 +114,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -290,7 +310,7 @@
 <li>規劃產品路由與功能</li>
 <li>規劃資料結構：建立資料庫</li>
 </ul>
-<h3 id="Step1-規劃產品路由與功能"><a href="#Step1-規劃產品路由與功能" class="headerlink" title="Step1. 規劃產品路由與功能"></a>Step1. 規劃產品路由與功能</h3><p><img src="https://i.imgur.com/HKuwCYA.png"></p>
+<h3 id="Step1-規劃產品路由與功能"><a href="#Step1-規劃產品路由與功能" class="headerlink" title="Step1. 規劃產品路由與功能"></a>Step1. 規劃產品路由與功能</h3><p><img data-src="https://i.imgur.com/HKuwCYA.png"></p>
 <h4 id="頁面"><a href="#頁面" class="headerlink" title="頁面"></a>頁面</h4><ul>
 <li>留言板首頁 <code>index.php</code></li>
 <li>註冊頁面 <code>register.php</code></li>
@@ -308,7 +328,7 @@
 <li>content</li>
 <li>creat_at</li>
 </ul>
-<p><img src="https://i.imgur.com/4WWjEaA.png"></p>
+<p><img data-src="https://i.imgur.com/4WWjEaA.png"></p>
 <h4 id="建立-users-資料庫"><a href="#建立-users-資料庫" class="headerlink" title="建立 users 資料庫"></a>建立 users 資料庫</h4><ul>
 <li>id</li>
 <li>nickname</li>
@@ -316,7 +336,7 @@
 <li>password</li>
 <li>creat_at</li>
 </ul>
-<p><img src="https://i.imgur.com/w8cOsfs.png"></p>
+<p><img data-src="https://i.imgur.com/w8cOsfs.png"></p>
 <hr>
 <h2 id="實作留言板"><a href="#實作留言板" class="headerlink" title="實作留言板"></a>實作留言板</h2><p>可分為前後端。通常會先切出前端頁面，再加入功能，從資料庫取出並資料串聯到頁面。</p>
 <h3 id="Step3-實作前端頁面"><a href="#Step3-實作前端頁面" class="headerlink" title="Step3. 實作前端頁面"></a>Step3. 實作前端頁面</h3><p>依照設計稿切出所需頁面，可參考<span class="exturl" data-url="aHR0cDovL21lbnRvci1wcm9ncmFtLmNvL210cjA0Z3JvdXAyL0hlaWRpL3dlZWs5L2luZGV4LnBocA==" title="http://mentor-program.co/mtr04group2/Heidi/week9/index.php">留言板 DEMO<i class="fa fa-external-link"></i></span>。</p>
@@ -349,7 +369,7 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">  // 把 $result 資料的 Key 值設定為欄位名稱的陣列</span><br><span class="line">  while($row = $result-&gt;fetch_assoc()) &#123;</span><br><span class="line">?&gt;</span><br><span class="line">  &lt;div class=&quot;card&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;card__avatar&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;card__body&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;card__info&quot;&gt;</span><br><span class="line">          &lt;span class=&quot;card__author&quot;&gt;&lt;?php echo $row[&#x27;nickname&#x27;]; ?&gt;&lt;/span&gt;</span><br><span class="line">          &lt;span class=&quot;card__time&quot;&gt;&lt;?php echo $row[&#x27;created_at&#x27;]; ?&gt;&lt;/span&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;p class=&quot;card__content&quot;&gt;&lt;?php echo $row[&#x27;content&#x27;]; ?&gt;&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;board__hr&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;?php &#125; ?&gt;</span><br></pre></td></tr></table></figure>
 
-<p>若以 <code>print_r($row);</code> 印出上述程式碼，可知 <code>$row</code> 為陣列：<br><img src="https://i.imgur.com/EnxNFAl.png"></p>
+<p>若以 <code>print_r($row);</code> 印出上述程式碼，可知 <code>$row</code> 為陣列：<br><img data-src="https://i.imgur.com/EnxNFAl.png"></p>
 <h4 id="檢查是否存在"><a href="#檢查是否存在" class="headerlink" title="檢查是否存在"></a>檢查是否存在</h4><ul>
 <li><code>isset()</code>：檢查是否有此變數</li>
 <li><code>empty()</code>：檢查是否有值</li>
@@ -392,12 +412,12 @@
 </ul>
 <p>由於 HTTP 是一個無狀態協議，會把每一次收到的請求都視為獨立的行為。但伺服器能透過 response header 的 <code>Set-Cookie</code> 屬性，將使用者狀態記錄在 Cookie。</p>
 <p>瀏覽器會在每次發送請求時，自動在 request header 帶上 Cookie 資料；伺服器即可藉由檢視 Cookie 內容，得知瀏覽器使用者的狀態。</p>
-<p><img src="https://i.imgur.com/WsBvdz5.png"></p>
+<p><img data-src="https://i.imgur.com/WsBvdz5.png"></p>
 <p>但這麼做有個缺點，儲存在 client 端的 Cookie 是能夠被竄改的，因此不適合放機密或重要的資訊。這時有兩種解法：</p>
 <h4 id="1-將-Cookie-內容加密"><a href="#1-將-Cookie-內容加密" class="headerlink" title="1. 將 Cookie 內容加密"></a>1. 將 Cookie 內容加密</h4><p>也就是 Cookie-based session，把狀態加密後存在 Cookie。但如果加密方式以及密鑰被破解，往後仍有安全疑慮。</p>
 <h4 id="2-透過-Session-ID-辨識身分"><a href="#2-透過-Session-ID-辨識身分" class="headerlink" title="2. 透過 Session ID 辨識身分"></a>2. 透過 Session ID 辨識身分</h4><p>全名是 Session Identifier。如此 Server 只需在 Cookie 儲存一組亂數產生的 Session ID，其餘狀態資訊則存在 Server 端。</p>
 <p>因此，Session 其實就是一種讓 Request 變成 stateful 的機制。</p>
-<p><img src="https://i.imgur.com/Nbk8TCj.png"></p>
+<p><img data-src="https://i.imgur.com/Nbk8TCj.png"></p>
 <h3 id="如何使用-Session"><a href="#如何使用-Session" class="headerlink" title="如何使用 Session"></a>如何使用 Session</h3><h4 id="儲存-Session"><a href="#儲存-Session" class="headerlink" title="儲存 Session"></a>儲存 Session</h4><p>當 <code>$_SEESION</code> 儲存成功，會進行下列三件事：</p>
 <ol>
 <li>產生 sesseion id (token) </li>
@@ -431,23 +451,24 @@
   <div class="popular-posts-header">相關文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/php-api/" rel="bookmark">[week 12] 利用 PHP 實作留言板 - API 篇</a></div>
-    </li>
-    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/php-blog/" rel="bookmark">[week 11] 利用 PHP 實作陽春部落格</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/php-mysql/" rel="bookmark">[week 9] 後端基礎 - PHP 語法、資料庫 MySQL</a></div>
+      <div class="popular-posts-title"><a href="/php-api/" rel="bookmark">[week 12] 利用 PHP 實作留言板 - API 篇</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/php-todolist/" rel="bookmark">[week 12] 結合前端與後端功能實作 Todo List</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/php-mysql/" rel="bookmark">[week 9] 後端基礎 - PHP 語法、資料庫 MySQL</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/browser-and-ajax/" rel="bookmark">[week 8] 傳送資料的方式 & 瀏覽器的限制</a></div>
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -616,7 +637,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -678,12 +700,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

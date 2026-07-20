@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="關於 Angular The modern web developer’s platform（一套框架，多種平臺）">
@@ -63,6 +61,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "初探 Angular｜基本介紹與環境建置",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2021-03-10T14:00:00.000Z",
+  "dateModified": "2026-04-23T06:14:18.202Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/angular-cli/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>初探 Angular｜基本介紹與環境建置 | Liusan's Blog</title>
   
 
@@ -98,7 +118,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -288,7 +308,7 @@
 </blockquote>
 <span id="more"></span>
 
-<p><img src="https://i.imgur.com/I9XUKCr.png"></p>
+<p><img data-src="https://i.imgur.com/I9XUKCr.png"></p>
 <p>Angular 是由 Google 開發，基於 TypeScript 編寫的 JavaScript 前端框架，常和同為三大框架的 React 和 Vue 比較。</p>
 <p>1.x 版的 AngularJS 其實還算是函式庫，直到 Angular 2 版本出現之後，與其說是一套框架，更常被稱作是一個開發平台，因為 Angular 強大的地方在於，整合了非常多功能給開發者使用：</p>
 <ul>
@@ -303,7 +323,7 @@
 <p>可參考 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1RlYW1TdHVRL3NraWxsLW1hcC9ibG9iL21hc3Rlci9kYXRhL2Rlc2lnbmJ5U3R1US9wbmctQW5ndWxhcjItYnktU3R1US5wbmc=" title="https://github.com/TeamStuQ/skill-map/blob/master/data/designbyStuQ/png-Angular2-by-StuQ.png">Angular 2 skill map<i class="fa fa-external-link"></i></span>。</p>
 </blockquote>
 <h3 id="Angular-基本架構"><a href="#Angular-基本架構" class="headerlink" title="Angular 基本架構"></a>Angular 基本架構</h3><p>以下是官網提供的 Angular 架構圖：</p>
-<p><img src="https://i.imgur.com/TevuOoo.png"></p>
+<p><img data-src="https://i.imgur.com/TevuOoo.png"></p>
 <p>Angular App 主要由這八個元素構成：</p>
 <ul>
 <li>Metadata 元資料、描述資料<ul>
@@ -362,36 +382,36 @@
 <p>輸入下方指令進行安裝：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g @angular/cli</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/vT0Tdas.png"></p>
+<p><img data-src="https://i.imgur.com/vT0Tdas.png"></p>
 <p>如果是在 mac 系統，指令必須加上 <code>sudo</code>，切換成管理員帳戶才有權限安裝：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo npm install -g @angular/cli</span><br></pre></td></tr></table></figure>
 
 <p>可輸入 <code>ng version</code> 或是 <code>ng v</code> 指令查看版本資訊，確認是否安裝成功，畫面如下：</p>
-<p><img src="https://i.imgur.com/uKEUiSA.png"></p>
+<p><img data-src="https://i.imgur.com/uKEUiSA.png"></p>
 <h3 id="第二步：建立-Angular-初始專案"><a href="#第二步：建立-Angular-初始專案" class="headerlink" title="第二步：建立 Angular 初始專案"></a>第二步：建立 Angular 初始專案</h3><p>透過 <code>new</code> 指令，可在當前目錄建立一個 Angluar 工作空間 （Workspace），並初始化 Angular 專案所需要的配置：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ng new my-app</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/IKVBKmI.png"></p>
+<p><img data-src="https://i.imgur.com/IKVBKmI.png"></p>
 <p>安裝需要一段時間，完成後會出現 <code>Packages installed successfully. Successfully initialized git.</code> 這段文字：</p>
-<p><img src="https://i.imgur.com/kQvlGXB.png"></p>
+<p><img data-src="https://i.imgur.com/kQvlGXB.png"></p>
 <p>除了透過 NPM 安裝必要套件，還會利用 Git 進行版本控制，並完成第一次提交（commit）。</p>
 <h3 id="第三步：啟動開發伺服器"><a href="#第三步：啟動開發伺服器" class="headerlink" title="第三步：啟動開發伺服器"></a>第三步：啟動開發伺服器</h3><p>在本地端 build 和 serve 專案，並運行在 <code>http://localhost:4200/</code>：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd my-app</span><br><span class="line">$ ng serve --open</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/Fm81XkW.png"></p>
+<p><img data-src="https://i.imgur.com/Fm81XkW.png"></p>
 <ul>
 <li>ng serve 指令會啟動開發伺服器，並監視檔案變化，一旦有改變就會重新建構應用</li>
 <li><code>--open</code> 或簡寫 <code>-o</code> 可自動開啟瀏覽器</li>
 </ul>
 <p>預設畫面如下：</p>
-<p><img src="https://i.imgur.com/FspJDDM.png"></p>
+<p><img data-src="https://i.imgur.com/FspJDDM.png"></p>
 <h3 id="VSCode-擴充套件：Angular-Extension-Pack"><a href="#VSCode-擴充套件：Angular-Extension-Pack" class="headerlink" title="VSCode 擴充套件：Angular Extension Pack"></a>VSCode 擴充套件：Angular Extension Pack</h3><p>若使用 VSCode（Visual Studio Code）編輯器，可安裝一個叫做 Angular Extension Pack 的擴充套件，整合了 Angular 相關擴充套件方便使用：</p>
-<p><img src="https://i.imgur.com/tda1vFZ.png"></p>
+<p><img data-src="https://i.imgur.com/tda1vFZ.png"></p>
 <h2 id="預設專案架構"><a href="#預設專案架構" class="headerlink" title="預設專案架構"></a>預設專案架構</h2><blockquote>
 <p>詳細可參考這篇：<span class="exturl" data-url="aHR0cHM6Ly9pdGhlbHAuaXRob21lLmNvbS50dy9hcnRpY2xlcy8xMDIwMzUzNA==" title="https://ithelp.ithome.com.tw/articles/10203534">[Angular 深入淺出三十天] Day 04 - 資料夾結構說明<i class="fa fa-external-link"></i></span>。</p>
 </blockquote>
 <p>建立好 Angular 專案之後，預設架構如下：</p>
-<p><img src="https://i.imgur.com/YAtLAJT.png"></p>
+<p><img data-src="https://i.imgur.com/YAtLAJT.png"></p>
 <ul>
 <li>根目錄 my-app：一個新的 workspace</li>
 <li>子目錄 src/：主要開發原始碼<ul>
@@ -416,7 +436,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ng g c &lt;name&gt;</span><br></pre></td></tr></table></figure>
 
 <p>舉例來說，如果要建立一個叫做 todo-list 的 Component，指令是 <code>ng g c todo-list</code>，接著 Angular 就會建立四個檔案，以及更新 app.module.ts：</p>
-<p><img src="https://i.imgur.com/HDeeSVB.png"></p>
+<p><img data-src="https://i.imgur.com/HDeeSVB.png"></p>
 <ul>
 <li>todo-list.component.html：模板 Template</li>
 <li>todo-list.component.spec.ts：執行 ng test 命令會透過 Karma 進行測試</li>
@@ -441,7 +461,8 @@
     
       
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -606,7 +627,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -668,12 +690,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

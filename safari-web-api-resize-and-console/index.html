@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="Photo by Pandhuya Niking on Unsplash 前言：iOS 之坑、再次襲來既上篇的「【學習筆記】 關於 iOS Safari 的那些坑：禁止選取 &amp; 縮放設定」之後，因為 Web APP 開發需同時支援 Android 和 iOS 裝置，在過程中仍不時被新的隕石砸中，只好再挖新的坑來填補。">
@@ -59,6 +57,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "【學習筆記】關於 iOS 的那些坑之二：Web API、Resize 與消失的 Console",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2023-05-17T03:45:00.000Z",
+  "dateModified": "2026-07-09T06:06:05.727Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/safari-web-api-resize-and-console/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>【學習筆記】關於 iOS 的那些坑之二：Web API、Resize 與消失的 Console | Liusan's Blog</title>
   
 
@@ -94,7 +114,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -275,7 +295,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="https://images.unsplash.com/photo-1639656333400-ee5240f757a0?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb" alt="Photo by [Pandhuya Niking](https://unsplash.com/@dispandu?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/rl6aomPDKl8?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText)"></p>
+        <p><img data-src="https://images.unsplash.com/photo-1639656333400-ee5240f757a0?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb" alt="Photo by [Pandhuya Niking](https://unsplash.com/@dispandu?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/rl6aomPDKl8?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText)"></p>
 <p>Photo by <span class="exturl" data-url="aHR0cHM6Ly91bnNwbGFzaC5jb20vQGRpc3BhbmR1P3V0bV9zb3VyY2U9dW5zcGxhc2gmdXRtX21lZGl1bT1yZWZlcnJhbCZ1dG1fY29udGVudD1jcmVkaXRDb3B5VGV4dA==" title="https://unsplash.com/@dispandu?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Pandhuya Niking<i class="fa fa-external-link"></i></span> on <span class="exturl" data-url="aHR0cHM6Ly91bnNwbGFzaC5jb20vcGhvdG9zL3JsNmFvbVBES2w4P3V0bV9zb3VyY2U9dW5zcGxhc2gmdXRtX21lZGl1bT1yZWZlcnJhbCZ1dG1fY29udGVudD1jcmVkaXRDb3B5VGV4dA==" title="https://unsplash.com/photos/rl6aomPDKl8?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash<i class="fa fa-external-link"></i></span></p>
 <h2 id="前言：iOS-之坑、再次襲來"><a href="#前言：iOS-之坑、再次襲來" class="headerlink" title="前言：iOS 之坑、再次襲來"></a>前言：iOS 之坑、再次襲來</h2><p>既上篇的「<a href="https://heidiliu2020.github.io/safari-pinch-and-double-tap/">【學習筆記】 關於 iOS Safari 的那些坑：禁止選取 &amp; 縮放設定</a>」之後，因為 Web APP 開發需同時支援 Android 和 iOS 裝置，在過程中仍不時被新的隕石砸中，只好再挖新的坑來填補。</p>
 <span id="more"></span>
@@ -292,7 +312,7 @@
 <li>實際操作：裝置升級至 iOS 16.4 版本後，需注意可能發生無法 Debug 的情況，尤其在需要測試行動裝置時，發現 console 畫面無法顯示任何資訊</li>
 </ul>
 <p>儘管仍可查看元件樣式，但主控台呈現一片空白：</p>
-<p><img src="https://hackmd.io/_uploads/BynS2TbSn.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/BynS2TbSn.png"></p>
 <blockquote>
 <p>白天不懂夜的黑，Console 不懂我的悲QQ</p>
 </blockquote>
@@ -328,10 +348,10 @@
 </li>
 </ul>
 <p>以下是不同裝置上的瀏覽器對 Fullscreen API 支援度：</p>
-<p><img src="https://hackmd.io/_uploads/rk2Y3pZSh.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/rk2Y3pZSh.png"></p>
 <p>可以看到 Safari 雖然在行動裝置僅支援到 iOS 12，在 PC 上還是能支援到 16.4。但需注意的是，不像其他瀏覽器，Fullscreen API 只能套用在 video 元素上，若用在其他像是 div 元素時一概沒有反應，這點真的很不友善。</p>
 <p>但如果因為功能需求，必須套用在 div 元素上的話，還是有方法可以繞過這個限制，例如透過 PWA 來實現全螢幕效果，外觀就像 Native APP 一樣。</p>
-<h3 id="What-is-PWA"><a href="#What-is-PWA" class="headerlink" title="What is PWA?"></a>What is PWA?</h3><p><img src="https://hackmd.io/_uploads/ByFz66WBh.png"><br>Ref: <span class="exturl" data-url="aHR0cHM6Ly93d3cuZXZlcnRvcC5wbC9lbi9wcm9ncmVzc2l2ZS13ZWItYXBwLXB3YS8=" title="https://www.evertop.pl/en/progressive-web-app-pwa/">https://www.evertop.pl/en/progressive-web-app-pwa/<i class="fa fa-external-link"></i></span></p>
+<h3 id="What-is-PWA"><a href="#What-is-PWA" class="headerlink" title="What is PWA?"></a>What is PWA?</h3><p><img data-src="https://hackmd.io/_uploads/ByFz66WBh.png"><br>Ref: <span class="exturl" data-url="aHR0cHM6Ly93d3cuZXZlcnRvcC5wbC9lbi9wcm9ncmVzc2l2ZS13ZWItYXBwLXB3YS8=" title="https://www.evertop.pl/en/progressive-web-app-pwa/">https://www.evertop.pl/en/progressive-web-app-pwa/<i class="fa fa-external-link"></i></span></p>
 <p>以下是 MDN 關於 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtVFcvZG9jcy9XZWIvUHJvZ3Jlc3NpdmVfd2ViX2FwcHM=" title="https://developer.mozilla.org/zh-TW/docs/Web/Progressive_web_apps">PWA<i class="fa fa-external-link"></i></span> 的介紹：</p>
 <blockquote>
 <p><strong>Progressive Web Apps</strong> (PWAs) are web apps that use <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvQVBJL1NlcnZpY2VfV29ya2VyX0FQSQ==" title="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API">service workers<i class="fa fa-external-link"></i></span>, <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvTWFuaWZlc3Q=" title="https://developer.mozilla.org/en-US/docs/Web/Manifest">manifests<i class="fa fa-external-link"></i></span>, and other web-platform features in combination with <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9HbG9zc2FyeS9Qcm9ncmVzc2l2ZV9FbmhhbmNlbWVudA==" title="https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement">progressive enhancement<i class="fa fa-external-link"></i></span> to give users an experience on par with native apps.</p>
@@ -349,7 +369,7 @@
 <h3 id="Vibration-API-使裝置震動"><a href="#Vibration-API-使裝置震動" class="headerlink" title="Vibration API 使裝置震動"></a>Vibration API 使裝置震動</h3><ul>
 <li>Reference：<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvQVBJL1ZpYnJhdGlvbl9BUEk=" title="https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API">Vibration API - MDN Web Docs<i class="fa fa-external-link"></i></span></li>
 </ul>
-<p><img src="https://hackmd.io/_uploads/S11Rn6WB2.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/S11Rn6WB2.png"></p>
 <p>Safari 沒有懸念不支援 Vibration API，但令人感到意外的是 Firefox 也僅支援較低版本。</p>
 <p>此外，需注意在 Safari 瀏覽器下呼叫 vibrate() 時，有可能因出現 error 導致無法進行後續動作，最保險的做法還是加上防呆驗證，確定裝置有支援才執行功能。</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> userAgent = <span class="variable language_">window</span>.<span class="property">navigator</span>.<span class="property">userAgent</span>;</span><br><span class="line"><span class="keyword">if</span>(!userAgent.<span class="title function_">includes</span>(<span class="string">&#x27;iOS&#x27;</span>) &amp;&amp; !userAgent.<span class="title function_">includes</span>(<span class="string">&#x27;Mac OS&#x27;</span>)) navigator.<span class="title function_">vibrate</span>();</span><br></pre></td></tr></table></figure>
@@ -382,7 +402,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -552,7 +573,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -614,12 +636,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

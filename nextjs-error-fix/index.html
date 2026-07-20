@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="前言這篇主要用來記錄 Next.js 開發過程採的坑，後續也會不定期更新：  問題一：如何修復 &quot;Window is not defined&quot; error 問題二：在 use client 頁面實作動態路由顯示 missing generateStaticParams() error">
@@ -55,6 +53,28 @@
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "【學習筆記】Next.js 錯誤修復紀錄： 「Window is not defined」、「use client & missing generateStaticParams() error」",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2024-03-18T09:47:01.000Z",
+  "dateModified": "2026-04-23T06:14:18.250Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/nextjs-error-fix/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
 
   <title>【學習筆記】Next.js 錯誤修復紀錄： 「Window is not defined」、「use client & missing generateStaticParams() error」 | Liusan's Blog</title>
   
@@ -91,7 +111,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -306,14 +326,14 @@
 <li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vcy9yZWFjdCUyMHdpbmRvdyUyMGlzJTIwbm90JTIwZGVmaW5lZCUyMG5leHQlMjBqcw==" title="https://juejin.cn/s/react%20window%20is%20not%20defined%20next%20js">如何修复Next.js中的 “window is not defined”？ - 掘金<i class="fa fa-external-link"></i></span></li>
 </ul>
 <h2 id="問題二：在-use-client-頁面實作動態路由顯示-missing-generateStaticParams-error"><a href="#問題二：在-use-client-頁面實作動態路由顯示-missing-generateStaticParams-error" class="headerlink" title="問題二：在 use client 頁面實作動態路由顯示 missing generateStaticParams() error"></a>問題二：在 use client 頁面實作動態路由顯示 <code>missing generateStaticParams()</code> error</h2><p>事情發生在開發 Next.js APP，實作 dynamic routing 時（如：<code>server/[evo]/page.tsx</code>），會顯示以下錯誤：</p>
-<p><img src="https://hackmd.io/_uploads/HJ8MieYbA.png" alt="error"></p>
+<p><img data-src="https://hackmd.io/_uploads/HJ8MieYbA.png" alt="error"></p>
 <p>上述錯誤訊息中的<code>&quot;output: export&quot;</code>，是 Next.js 提供支援 <span class="exturl" data-url="aHR0cHM6Ly9uZXh0anMub3JnL2RvY3MvYXBwL2J1aWxkaW5nLXlvdXItYXBwbGljYXRpb24vZGVwbG95aW5nL3N0YXRpYy1leHBvcnRz" title="https://nextjs.org/docs/app/building-your-application/deploying/static-exports">Static Exports（靜態導出）<i class="fa fa-external-link"></i></span>，透過在設定檔 <code>next.config.js</code> 加上參數：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** <span class="doctag">@type</span> &#123;<span class="type">import(&#x27;next&#x27;).NextConfig</span>&#125; */</span></span><br><span class="line"><span class="keyword">const</span> nextConfig = &#123;</span><br><span class="line">  <span class="attr">output</span>: <span class="string">&#x27;export&#x27;</span>, <span class="comment">// Outputs a Single-Page Application (SPA)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> nextConfig</span><br></pre></td></tr></table></figure>
 
 <p>如此一來，即可在 <code>next build</code> 建置時實現 SPA （single-page application），將會在 <code>out</code> 資料夾底下生成靜態檔案，將每個路由分解為單獨的 HTML 檔案，避免在 Client 端載入不必要的 JS 程式碼，減少 bundle 大小以提高頁面效能。</p>
 <h3 id="發生原因-1"><a href="#發生原因-1" class="headerlink" title="發生原因"></a>發生原因</h3><p>但在 Next.js 若想要實現 Dynamic Routes（動態路由），必須加上 <code>generateStaticParams()</code> 方法，這段 function 只能在 Server Component 執行，在 Client Component 並不支援。</p>
 <p><span class="exturl" data-url="aHR0cHM6Ly9uZXh0anMub3JnL2RvY3MvYXBwL2J1aWxkaW5nLXlvdXItYXBwbGljYXRpb24vZGVwbG95aW5nL3N0YXRpYy1leHBvcnRzI3Vuc3VwcG9ydGVkLWZlYXR1cmVz" title="https://nextjs.org/docs/app/building-your-application/deploying/static-exports#unsupported-features">官方文件（Deploying: Static Exports | Next.js）<i class="fa fa-external-link"></i></span> 也提到 App Routing 若想要 Dynamic Routes 必須搭配「只能在 SSR 運行的 <code>generateStaticParams()</code>」：</p>
-<p><img src="https://hackmd.io/_uploads/S1xrigt-A.png" alt="unsupported"></p>
+<p><img data-src="https://hackmd.io/_uploads/S1xrigt-A.png" alt="unsupported"></p>
 <h3 id="如何解決？-1"><a href="#如何解決？-1" class="headerlink" title="如何解決？"></a>如何解決？</h3><p>如果想要輸出 SPA，又希望能在 <code>&#39;use client&#39;</code> 情境中實現動態路由，則需要將元件拆成兩個部分實作：</p>
 <ul>
 <li>在 Server Component 引入 <code>generateStaticParams()</code> 方法，以實現動態路由</li>
@@ -364,7 +384,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -534,7 +555,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -596,12 +618,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

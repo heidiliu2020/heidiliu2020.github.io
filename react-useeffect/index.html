@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 [FE302] React 基礎 - hooks 版本 這門課程的學習筆記。如有錯誤歡迎指正！  在 React Hooks 當中，最重要的就是 useState 和 useEffect，若能學會如何使用這兩個 hook，對於 React 應用也會更容易上手。">
@@ -58,6 +56,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 21] React Hooks API：useEffect & 實作一個自己的鉤子",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-12-05T16:55:00.000Z",
+  "dateModified": "2026-07-09T06:06:05.723Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/react-useeffect/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[week 21] React Hooks API：useEffect & 實作一個自己的鉤子 | Liusan's Blog</title>
   
 
@@ -93,7 +113,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -292,14 +312,14 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 從 react 引入使用useEffect</span></span><br><span class="line"><span class="keyword">import</span> &#123; useEffect &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&quot;執行完畢!&quot;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>就會在每次畫面 render 結束後執行 useEffect 傳入的 function：</p>
-<p><img src="https://i.imgur.com/QJJIuOp.png"></p>
+<p><img data-src="https://i.imgur.com/QJJIuOp.png"></p>
 <p>但通常我們不會想要在每次 render 後都執行 function，像是設定在某些 state 改變時才會執行。</p>
 <h3 id="範例：把資料同步到-LocalStorage"><a href="#範例：把資料同步到-LocalStorage" class="headerlink" title="範例：把資料同步到 LocalStorage"></a>範例：把資料同步到 LocalStorage</h3><p>以把 todo APP 同步到 LocalStorage 這個功能為例：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">writeTodosToLocalStorage</span>(<span class="params">todos</span>) &#123;</span><br><span class="line">  <span class="comment">// localStorage 只能存字串</span></span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">localStorage</span>.<span class="title function_">setItem</span>(<span class="string">&quot;todos&quot;</span>, <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(todos));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="setState-：非同步更新狀態"><a href="#setState-：非同步更新狀態" class="headerlink" title="setState()：非同步更新狀態"></a>setState()：非同步更新狀態</h3><p>此外，還有很重要的一點，就是之前實作的 setTodos() 功能其實是非同步行為。</p>
 <p>如果在新增 todo 的同時進行 <code>console.log(todos)</code>，會發現畫面 render 了，todos 卻還沒有更新：</p>
-<p><img src="https://i.imgur.com/ATpucjM.png"></p>
+<p><img data-src="https://i.imgur.com/ATpucjM.png"></p>
 <p>因此不能直接在 function 中寫入 todos，而是要直接寫入更新過的狀態，其他功能也以此類推，在每次改變 todo 時都要執行 writeTodosToLocalStorage()：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">handleButtonClick</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="title function_">setTodos</span>([</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">id</span>: id.<span class="property">current</span>,</span><br><span class="line">      <span class="attr">content</span>: value,</span><br><span class="line">    &#125;,</span><br><span class="line">    ...todos,</span><br><span class="line">  ]);</span><br><span class="line">  <span class="comment">// 因為 setTodos 非同步，不能直接傳入 todos</span></span><br><span class="line">  <span class="title function_">writeTodosToLocalStorage</span>([</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">id</span>: id.<span class="property">current</span>,</span><br><span class="line">      <span class="attr">content</span>: value,</span><br><span class="line">    &#125;,</span><br><span class="line">    ...todos,</span><br><span class="line">  ]);</span><br><span class="line">  <span class="title function_">setValue</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">  id.<span class="property">current</span>++;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
@@ -309,7 +329,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 每次 render 後會執行 useEffect 中的 function</span></span><br><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="title function_">writeTodosToLocalStorage</span>(todos);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(todos));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>這樣就成功在每次 render 後，都把最新的 todos 狀態同步到 localStorage：</p>
-<p><img src="https://i.imgur.com/UKSkzM7.png"></p>
+<p><img data-src="https://i.imgur.com/UKSkzM7.png"></p>
 <p>但這樣做其實有個缺點，透過執行的 console.log()，可發現連在輸入 input 時也會執行 render，應該只需要在 todos 有改變時才進行 render。</p>
 <h3 id="useEffect-：可接收兩個參數"><a href="#useEffect-：可接收兩個參數" class="headerlink" title="useEffect()：可接收兩個參數"></a>useEffect()：可接收兩個參數</h3><p>而 useEffect 的第二個參數可以解決這個問題，需傳入一個陣列，用來放想要關注的資料，當變數改變時才會執行 useEffect：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123; code &#125;, [array]);</span><br><span class="line"><span class="comment">// 第一個參數：一個函式，表示要做什麼事</span></span><br><span class="line"><span class="comment">// 第二個參數：一個陣列，定義哪寫變數改變時，才會重新執行 useEffect</span></span><br></pre></td></tr></table></figure>
@@ -322,7 +342,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 進行初始化: setTodos 或是拿 API</span></span><br><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 拿取資料，沒有資料的話就是空字串（進行錯誤處理）</span></span><br><span class="line">  <span class="keyword">const</span> todoData = <span class="variable language_">window</span>.<span class="property">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&quot;todos&quot;</span>) || <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="keyword">if</span> (todoData) &#123;</span><br><span class="line">    <span class="comment">// 把 todoData 放回 state</span></span><br><span class="line">    <span class="title function_">setTodos</span>(<span class="title class_">JSON</span>.<span class="title function_">parse</span>(todoData));</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// 傳入空陣列: 代表只有第一次 render 才會執行這個 useEffect</span></span><br><span class="line">&#125;, []);</span><br></pre></td></tr></table></figure>
 
 <h3 id="useEffect-會遇到的問題"><a href="#useEffect-會遇到的問題" class="headerlink" title="useEffect 會遇到的問題"></a>useEffect 會遇到的問題</h3><p>但是在重整頁面瞬間，會發現畫面閃了一下，這是因為第一次 render 畫面顯示的是 useState 初始設定，第二次 render 才是放入 todoDate：</p>
-<p><img src="https://i.imgur.com/asdZh1d.gif"></p>
+<p><img data-src="https://i.imgur.com/asdZh1d.gif"></p>
 <p>那麼該如何解決 useEffect 這個問題呢？接下來會繼續介紹其他功能來改善。</p>
 <h2 id="useLayoutEffect：render-時同步執行"><a href="#useLayoutEffect：render-時同步執行" class="headerlink" title="useLayoutEffect：render 時同步執行"></a>useLayoutEffect：render 時同步執行</h2><p>我們在開頭提到，可透過 useEffect 這個 hook，告訴 React「component 在 render 之後要做的事情」。</p>
 <p>但其實更精確的，應該是「在 render 完，瀏覽器 paint 以後要做的事情」，所以才會有 render 後畫面閃一下的情況發生。</p>
@@ -336,9 +356,9 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 從 react 引入 hook</span></span><br><span class="line"><span class="keyword">import</span> &#123; useState, useRef, useEffect, useLayoutEffect &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 把讀取 todoData 的 useEffect 改用 useLayoutEffect</span></span><br><span class="line">  <span class="title function_">useLayoutEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> todoData = <span class="variable language_">window</span>.<span class="property">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&quot;todos&quot;</span>) || <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span> (todoData) &#123;</span><br><span class="line">      <span class="title function_">setTodos</span>(<span class="title class_">JSON</span>.<span class="title function_">parse</span>(todoData));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, []);</span><br></pre></td></tr></table></figure>
 
 <p>如此畫面就不會再閃一次初始的資料了：</p>
-<p><img src="https://i.imgur.com/HNXymGK.gif"></p>
+<p><img data-src="https://i.imgur.com/HNXymGK.gif"></p>
 <p>至於為什麼會產生這個情況，可從 React 的 Hook Flow 談起。</p>
-<h3 id="Hook-Flow-流程圖"><a href="#Hook-Flow-流程圖" class="headerlink" title="Hook Flow 流程圖"></a>Hook Flow 流程圖</h3><p><img src="https://i.imgur.com/usOw4li.png"><br>（圖片來源：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2RvbmF2b24vaG9vay1mbG93L2Jsb2IvbWFzdGVyL1JFQURNRS5tZCVFRiVCQyU4OQ==" title="https://github.com/donavon/hook-flow/blob/master/README.md%EF%BC%89">https://github.com/donavon/hook-flow/blob/master/README.md）<i class="fa fa-external-link"></i></span></p>
+<h3 id="Hook-Flow-流程圖"><a href="#Hook-Flow-流程圖" class="headerlink" title="Hook Flow 流程圖"></a>Hook Flow 流程圖</h3><p><img data-src="https://i.imgur.com/usOw4li.png"><br>（圖片來源：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2RvbmF2b24vaG9vay1mbG93L2Jsb2IvbWFzdGVyL1JFQURNRS5tZCVFRiVCQyU4OQ==" title="https://github.com/donavon/hook-flow/blob/master/README.md%EF%BC%89">https://github.com/donavon/hook-flow/blob/master/README.md）<i class="fa fa-external-link"></i></span></p>
 <p>Hook 執行流程可分為三個部分：</p>
 <ul>
 <li>Mount：把 component 放到畫面上</li>
@@ -465,14 +485,15 @@
       <div class="popular-posts-title"><a href="/nextjs-app-router/" rel="bookmark">【學習筆記】Next.js 路由系統：App Router vs Page Router</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/nextjs-error-fix/" rel="bookmark">【學習筆記】Next.js 錯誤修復紀錄： 「Window is not defined」、「use client & missing generateStaticParams() error」</a></div>
+      <div class="popular-posts-title"><a href="/nextjs-i18next/" rel="bookmark">【學習筆記】Next.js 實現多國語系：react-i18next & next-i18next</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/nextjs-i18next/" rel="bookmark">【學習筆記】Next.js 實現多國語系：react-i18next & next-i18next</a></div>
+      <div class="popular-posts-title"><a href="/nextjs-error-fix/" rel="bookmark">【學習筆記】Next.js 錯誤修復紀錄： 「Window is not defined」、「use client & missing generateStaticParams() error」</a></div>
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -640,7 +661,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -702,12 +724,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

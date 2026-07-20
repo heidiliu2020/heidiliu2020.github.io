@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="Photo by Daniel Korpai on Unsplash  What is Webview？Webview 其實就是一個精簡的瀏覽器，透過渲染引擎（Webkit）呈現網頁內容，中文又翻作「網頁視圖」。">
@@ -57,6 +55,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "【學習筆記】如何在 iOS APP 透過 WKWebView 實現內嵌網頁功能",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2023-08-25T09:01:00.000Z",
+  "dateModified": "2026-07-09T06:06:05.660Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/ios-app-webview/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>【學習筆記】如何在 iOS APP 透過 WKWebView 實現內嵌網頁功能 | Liusan's Blog</title>
   
 
@@ -92,7 +112,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -273,7 +293,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="https://hackmd.io/_uploads/BJXLBiH6n.jpg"></p>
+        <p><img data-src="https://hackmd.io/_uploads/BJXLBiH6n.jpg"></p>
 <blockquote>
 <p>Photo by <span class="exturl" data-url="aHR0cHM6Ly91bnNwbGFzaC5jb20vQGRhbmllbGtvcnBhaT91dG1fc291cmNlPXVuc3BsYXNoJnV0bV9tZWRpdW09cmVmZXJyYWwmdXRtX2NvbnRlbnQ9Y3JlZGl0Q29weVRleHQ=" title="https://unsplash.com/@danielkorpai?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Daniel Korpai<i class="fa fa-external-link"></i></span> on <span class="exturl" data-url="aHR0cHM6Ly91bnNwbGFzaC5jb20vcGhvdG9zL1kzTEdXQ3NyZ21nP3V0bV9zb3VyY2U9dW5zcGxhc2gmdXRtX21lZGl1bT1yZWZlcnJhbCZ1dG1fY29udGVudD1jcmVkaXRDb3B5VGV4dA==" title="https://unsplash.com/photos/Y3LGWCsrgmg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash<i class="fa fa-external-link"></i></span></p>
 </blockquote>
@@ -297,12 +317,12 @@
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> SwiftUI</span><br><span class="line"><span class="keyword">import</span> SafariServices</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">SafariView</span>: <span class="title class_ inherited__">UIViewControllerRepresentable</span> &#123;</span><br><span class="line">    <span class="comment">// TODO...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="實戰練習"><a href="#實戰練習" class="headerlink" title="實戰練習"></a>實戰練習</h2><h3 id="Step1-環境架設：安裝-XCode"><a href="#Step1-環境架設：安裝-XCode" class="headerlink" title="Step1. 環境架設：安裝 XCode"></a>Step1. 環境架設：安裝 XCode</h3><p>首先進入<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYXBwbGUuY29tL2Rvd25sb2FkL2FwcGxpY2F0aW9ucy8=" title="https://developer.apple.com/download/applications/">官網下載頁面<i class="fa fa-external-link"></i></span>，登入後選擇要下載 XCode 版本。</p>
-<p><img src="https://hackmd.io/_uploads/BJ0BxoST3.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/BJ0BxoST3.png"></p>
 <p>不同版本的 XCode，在使用上須考慮開發環境、APP 套件與 iOS 版本相容性，若需要安裝特定版本的 XCode，可參考這篇文章：<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLnBveWNoYW5nLm5ldC9tYW51YWxseS1kb3dubG9hZC1tdWx0aXBsZS12ZXJzaW9ucy1vZi14Y29kZS8=" title="https://blog.poychang.net/manually-download-multiple-versions-of-xcode/">如何手動快速下載不同版本的Xcode - Poy Chang<i class="fa fa-external-link"></i></span>。</p>
 <h3 id="Step2-建立新專案"><a href="#Step2-建立新專案" class="headerlink" title="Step2. 建立新專案"></a>Step2. 建立新專案</h3><p>運行 XCode 後，點擊「Create a new Xcode project」建立新專案。</p>
-<p><img src="https://hackmd.io/_uploads/B1ST1sB63.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/B1ST1sB63.png"></p>
 <p>接著點選 APP 建立專案範本，內建範本有預設程式碼，能夠協助快速開發：</p>
-<p><img src="https://hackmd.io/_uploads/HkRefsBan.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/HkRefsBan.png"></p>
 <h3 id="Step3-利用-UIViewRepresentable-協定調用-WKWebView"><a href="#Step3-利用-UIViewRepresentable-協定調用-WKWebView" class="headerlink" title="Step3. 利用 UIViewRepresentable 協定調用 WKWebView"></a>Step3. 利用 UIViewRepresentable 協定調用 WKWebView</h3><p>接著透過 <code>UIViewRepresentable</code> 協定包裝 View，顯示指定的網頁內容：</p>
 <ul>
 <li>ContentView.swift</li>
@@ -315,7 +335,7 @@
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> SwiftUI</span><br><span class="line"><span class="keyword">import</span> WebKit</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">WebView</span>: <span class="title class_ inherited__">UIViewRepresentable</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> url: <span class="type">URL</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">makeUIView</span>(<span class="params">context</span>: <span class="type">Context</span>) -&gt; <span class="type">WKWebView</span>  &#123;</span><br><span class="line">        <span class="keyword">let</span> wkwebView <span class="operator">=</span> <span class="type">WKWebView</span>()</span><br><span class="line">        wkwebView.load(<span class="type">URLRequest</span>(url: url))</span><br><span class="line">        <span class="keyword">return</span> wkwebView</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">updateUIView</span>(<span class="keyword">_</span> <span class="params">uiView</span>: <span class="type">WKWebView</span>, <span class="params">context</span>: <span class="type">Context</span>) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="Step4-Building-and-running-an-app"><a href="#Step4-Building-and-running-an-app" class="headerlink" title="Step4. Building and running an app"></a>Step4. <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYXBwbGUuY29tL2RvY3VtZW50YXRpb24veGNvZGUvYnVpbGRpbmctYW5kLXJ1bm5pbmctYW4tYXBw" title="https://developer.apple.com/documentation/xcode/building-and-running-an-app">Building and running an app<i class="fa fa-external-link"></i></span></h3><p>最後是運行 APP 驗證結果，點選上方的開始鍵執行 Building，點開右側的選單可選擇要運行的裝置版本，或是透過傳輸線連接在實體機上進行測試。</p>
-<p><img src="https://hackmd.io/_uploads/BkG1Usrpn.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/BkG1Usrpn.png"></p>
 <h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>同樣是因為專案上的測試需求，沒想到這回又再次把 Xcode 安裝回電腦中，也許因為過去曾稍微接觸過一點，這回相對沒那麼迷惘。</p>
 <p>能夠直接把 APP Build 到實體手機測試，和透過 XCode 模擬器終究還是有很大區別，雖然要實際上架到 App Store 需要課金，但以現階段而言也已經很夠用了。回顧過去所接觸的知識，似乎明白儘管當初一知半解，只要再多經歷幾次也能夠好好運用這些技術了。</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
@@ -339,7 +359,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -507,7 +528,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -569,12 +591,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

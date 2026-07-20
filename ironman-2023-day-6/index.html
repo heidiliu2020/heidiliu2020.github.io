@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="原文連結：フリーWi-Fiを使ったら秘密情報を抜かれる経路にはどのようなものがあるか - Qiita  常聽聞免費 Wi-Fi 可能暗藏資安危機，究竟原理是如何、可能造成什麼影響，又該如何預防等等，本文將針對這個主題進行介紹。">
@@ -58,6 +56,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[2023 15th鐵人賽] Day6 - 你知道使用免費 Wi-Fi 時可能洩露機密訊息的途徑有哪些嗎",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2023-09-21T00:33:20.000Z",
+  "dateModified": "2026-04-23T06:14:18.235Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/ironman-2023-day-6/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[2023 15th鐵人賽] Day6 - 你知道使用免費 Wi-Fi 時可能洩露機密訊息的途徑有哪些嗎 | Liusan's Blog</title>
   
 
@@ -93,7 +113,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -287,19 +307,19 @@
 <p>以下正文開始！</p>
 <hr>
 <p>這是在黃金週的開始（4月29日）發布的推文，截至 5 月 7 日晚上 8 點，已經累積 1938.8 萬次觀看次數，顯然引起很大的關注。</p>
-<p><img src="https://imgur.com/Y6fmxhU.png"></p>
+<p><img data-src="https://imgur.com/Y6fmxhU.png"></p>
 <blockquote>
 <p>我叫阿席達卡！我在星巴克使用免費 Wi-Fi 處理公司的機密資訊時，結果訊息全部外洩了。我該怎麼辦才好！（<span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9NYWNvcGVuaW5TVVRBQkEvc3RhdHVzLzE2NTIzMTUzNjYzNzMzNjM3MTI/cmVmX3NyYz10d3NyYyU1RXRmdyU3Q3R3Y2FtcCU1RXR3ZWV0ZW1iZWQlN0N0d3Rlcm0lNUUxNjUyMzE1MzY2MzczMzYzNzEyJTdDdHdnciU1RTJjMTZhNWYyYjRjZTFlODAzOTQ0Y2U5NjI2YjVjZDAxODcyYzI2OTYlN0N0d2NvbiU1RXMxXyZyZWZfdXJsPWh0dHBzOi8vcHVibGlzaC50d2l0dGVyLmNvbS8/cXVlcnk9aHR0cHMzQTJGMkZ0d2l0dGVyLmNvbTJGTWFjb3BlbmluU1VUQUJBMkZzdGF0dXMyRjE2NTIzMTUzNjYzNzMzNjM3MTJ3aWRnZXQ9VHdlZXQ=" title="https://twitter.com/MacopeninSUTABA/status/1652315366373363712?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1652315366373363712%7Ctwgr%5E2c16a5f2b4ce1e803944ce9626b5cd01872c2696%7Ctwcon%5Es1_&ref_url=https://publish.twitter.com/?query=https3A2F2Ftwitter.com2FMacopeninSUTABA2Fstatus2F1652315366373363712widget=Tweet">原推文連結<i class="fa fa-external-link"></i></span>）</p>
 </blockquote>
 <p>對此，我發布了以下的推文，同樣也吸引不少關注，累積 124.1 萬次的觀看次數。雖然收到了許多反饋，但卻是出乎意料的難題，我打算在黃金週結束後，接著介紹幾種可能的訊息洩漏途徑。</p>
-<p><img src="https://imgur.com/HfFt9JH.jpg"></p>
+<p><img data-src="https://imgur.com/HfFt9JH.jpg"></p>
 <blockquote>
 <p>應該把這當作入職考試題目嗎？請說明「在星巴克使用免費 Wi-Fi 處理公司機密資訊時，導致所有訊息外洩的情況」在現實中可能導致的威脅。我認為這問題相當具有挑戰性。（<span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9vY2tlZ2hlbS9zdGF0dXMvMTY1MjY3MzE3Njg1MjM4MTY5Nj9yZWZfc3JjPXR3c3JjJTVFdGZ3JTdDdHdjYW1wJTVFdHdlZXRlbWJlZCU3Q3R3dGVybSU1RTE2NTI2NzMxNzY4NTIzODE2OTYlN0N0d2dyJTVFOTNkYmNlNDFkYzNmNjUwZmE2MzNiMWJhMjFjMmM0MmNkMDIyYmFhMyU3Q3R3Y29uJTVFczFfJnJlZl91cmw9aHR0cHM6Ly9xaWl0YS5jb20vb2NrZWdoZW0vaXRlbXMvYzZhMzYwMmQyYzI0MDlmODlmYmI=" title="https://twitter.com/ockeghem/status/1652673176852381696?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1652673176852381696%7Ctwgr%5E93dbce41dc3f650fa633b1ba21c2c42cd022baa3%7Ctwcon%5Es1_&ref_url=https://qiita.com/ockeghem/items/c6a3602d2c2409f89fbb">原推文連結<i class="fa fa-external-link"></i></span>）</p>
 </blockquote>
 <h2 id="針對無線區域網路的攻擊"><a href="#針對無線區域網路的攻擊" class="headerlink" title="針對無線區域網路的攻擊"></a>針對無線區域網路的攻擊</h2><p>由於背景是以「在星巴克使用免費 Wi-Fi 時」為前提，這裡會解釋有關無線區域網路（Wireless LAN）所帶來的威脅。一般來說，當提到無線 LAN 的威脅時，多數人會先想到「未加密的無線 LAN」，然而實際上，許多免費 Wi-Fi 也存在「即使有加密也能被竊聽」的問題。原因是無線 LAN 的密碼（預共享金鑰 PSK、密碼短語 Passphrase）已經被公開。以下文章可作為參考：</p>
 <p><span class="exturl" data-url="aHR0cHM6Ly94dGVjaC5uaWtrZWkuY29tL2l0L2F0Y2wvY29sdW1uLzE3LzA5MDYwMDM3MC8wOTExMDAwMDgv" title="https://xtech.nikkei.com/it/atcl/column/17/090600370/091100008/">パスワードが公開された公衆無線LAN、暗号化されていても盗聴できる？ | 日経クロステック（xTECH）<i class="fa fa-external-link"></i></span></p>
 <p>此外，還存在偽造存取點（Fake Access Point）的威脅，意即攻擊者偽裝成咖啡廳的 Wi-Fi 存取點。設置與真正存取點相同的 SSID 和密碼的偽造存取點，被稱作孿生惡魔（Evil Twin, <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvRXZpbF90d2luXyh3aXJlbGVzc19uZXR3b3Jrcyk=" title="https://en.wikipedia.org/wiki/Evil_twin_(wireless_networks)">英語版WikiPedia<i class="fa fa-external-link"></i></span>），對使用者來說難以區分真偽，因此構成嚴重的威脅。以下是以咖啡廳 Wi-Fi 為例，說明偽造存取點帶來的威脅（見下圖）。</p>
-<p><img src="https://imgur.com/7jip5n8.png" alt="Fake AP"></p>
+<p><img data-src="https://imgur.com/7jip5n8.png" alt="Fake AP"></p>
 <p>在偽造存取點的情況，可在上圖中的有線 LAN 區段進行竊聽，因此與無線加密無關。此外，也可能出現<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3poLXR3LyVFNCVCOCVBRCVFOSU5NyVCNCVFNCVCQSVCQSVFNiU5NCVCQiVFNSU4NyVCQg==" title="https://zh.wikipedia.org/zh-tw/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB">中間人攻擊<i class="fa fa-external-link"></i></span>（man-in-the-middle attack; MITM），使攻擊的種類更加多樣。</p>
 <p>在任何情況下，如果通訊路徑是透過 HTTPS（TLS）加密的話，通訊內容就不容易被竊聽。但如果網站存在漏洞，或使用者的使用方式不正確，仍有可能會洩露通訊內容。</p>
 <h2 id="未使用-HTTPS-進行連線"><a href="#未使用-HTTPS-進行連線" class="headerlink" title="未使用 HTTPS 進行連線"></a>未使用 HTTPS 進行連線</h2><p>如果使用的網站不支援 HTTPS，或即便網站支援 HTTPS，但使用者仍使用 HTTP 進行連線，那通訊內容還是會透過上述方法被全部竊聽。</p>
@@ -318,7 +338,7 @@
 <li>使用者端：當瀏覽器出現憑證錯誤時即停止使用</li>
 </ul>
 <p>在上述影片所介紹的巨型銀行就未設定 HSTS。</p>
-<p><img src="https://imgur.com/R6Q9t8C.jpg"></p>
+<p><img data-src="https://imgur.com/R6Q9t8C.jpg"></p>
 <h2 id="使用特定-APP-而非瀏覽器，但該-APP-存在漏洞並且未經過憑證授權"><a href="#使用特定-APP-而非瀏覽器，但該-APP-存在漏洞並且未經過憑證授權" class="headerlink" title="使用特定 APP 而非瀏覽器，但該 APP 存在漏洞並且未經過憑證授權"></a>使用特定 APP 而非瀏覽器，但該 APP 存在漏洞並且未經過憑證授權</h2><p>在透過手機 APP 而非瀏覽器使用服務的情況，檢驗憑證將成為 APP 方的責任。有時 APP 方檢驗憑證不夠嚴謹，可能導致訊息被竊取。以下是筆者發現的一個例子。</p>
 <p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLnRva3VtYXJ1Lm9yZy8yMDE0LzA5L2FuZHJvaWRraW5kbGVzc2xjdmUtMjAxNC0zOTA4Lmh0bWw=" title="https://blog.tokumaru.org/2014/09/androidkindlesslcve-2014-3908.html">Android版KindleにおけるSSLサーバ証明書の検証不備の脆弱性CVE-2014-3908 | 徳丸浩の日記<i class="fa fa-external-link"></i></span></p>
 <p>針對這種情況的防範措施，如下所示：</p>
@@ -429,10 +449,10 @@
       <div class="popular-posts-title"><a href="/ironman-2023-day-8/" rel="bookmark">[2023 15th鐵人賽] Day8 - 鹽加密的鹽通常會存放在哪裡</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/ironman-2023-day-10/" rel="bookmark">[2023 15th鐵人賽] Day10 - 透過圖文理解 S.O.L.I.D 原則</a></div>
+      <div class="popular-posts-title"><a href="/ironman-2023-day-1/" rel="bookmark">[2023 15th鐵人賽] Day1 - 前言與系列大綱</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/ironman-2023-day-1/" rel="bookmark">[2023 15th鐵人賽] Day1 - 前言與系列大綱</a></div>
+      <div class="popular-posts-title"><a href="/ironman-2023-day-12/" rel="bookmark">[2023 15th鐵人賽] Day12 - 外國「為什麼日本無法像硬體時代一樣在軟體方面表現出色？」</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/ironman-2023-day-11/" rel="bookmark">[2023 15th鐵人賽] Day11 - 調查工程師的 alias 設定排行</a></div>
@@ -442,7 +462,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -612,7 +633,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -674,12 +696,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

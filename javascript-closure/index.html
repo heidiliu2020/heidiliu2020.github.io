@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 [JS201] 進階 JavaScript：那些你一直搞不懂的地方 這門課程的學習筆記。如有錯誤歡迎指正！">
@@ -53,6 +51,28 @@
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 16] JavaScript 進階 - 什麼是閉包？探討 Closure & Scope Chain",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-10-19T16:25:00.000Z",
+  "dateModified": "2026-07-09T06:06:05.703Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/javascript-closure/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
 
   <title>[week 16] JavaScript 進階 - 什麼是閉包？探討 Closure & Scope Chain | Liusan's Blog</title>
   
@@ -89,7 +109,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -376,10 +396,10 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">one</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="title function_">two</span>();</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">two</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">    <span class="title function_">three</span>();</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">three</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> c = <span class="number">3</span>;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(a + b + c);   <span class="comment">// 6</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">one</span>();</span><br></pre></td></tr></table></figure>
 
 <p>從 Global Context 呼叫 one()，one() 再呼叫 two()，接著再呼叫 three()，最後在 function three 執行 console.log()。下圖在建立階段的堆疊示意圖：</p>
-<p><img src="https://i.imgur.com/RtkT8LP.png"></p>
+<p><img data-src="https://i.imgur.com/RtkT8LP.png"></p>
 <p>當 JavaScript 要執行 <code>console.log(a + b + c)</code> 這行程式，會不斷往 Scope Chain 去尋找。</p>
 <p>就像前面所說的，一開始會先在自己的 VO 找，找不到在換下一個，一直到 global 為止，如果找不到就會拋出錯誤。過程如下圖：</p>
-<p><img src="https://i.imgur.com/9ROutJb.png"></p>
+<p><img data-src="https://i.imgur.com/9ROutJb.png"></p>
 <p>（圖片來源：<span class="exturl" data-url="aHR0cHM6Ly9hbmR5eW91LmdpdGh1Yi5pby8yMDE1LzA0LzIwL3VuZGVyc3RhbmQtY2xvc3VyZXMtYW5kLXNjb3BlLWNoYWluLw==" title="https://andyyou.github.io/2015/04/20/understand-closures-and-scope-chain/">https://andyyou.github.io/2015/04/20/understand-closures-and-scope-chain/<i class="fa fa-external-link"></i></span> ）</p>
 <h3 id="ECMAScript-中的作用域"><a href="#ECMAScript-中的作用域" class="headerlink" title="ECMAScript 中的作用域"></a>ECMAScript 中的作用域</h3><p>每個執行環境都有一個 Scope Chain。也就是說，一旦進入該執行環境，就會建立 Scope Chain 並進行初始化。</p>
 <p>以 global 執行環境來說，初始化後會把 VO 放進 Scope Chain 內，可表示為：</p>
@@ -544,7 +564,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -712,7 +733,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -774,12 +796,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

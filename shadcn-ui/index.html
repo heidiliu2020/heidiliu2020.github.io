@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="GitHub - https:&#x2F;&#x2F;github.com&#x2F;shadcn-ui&#x2F;ui  What is Shadcn UI?Shadcn UI 是基於 Tailwind CSS 底層封裝 Radix UI 的 React UI 元件集合，能夠支援 Next.js, Astro, Remix, Gatsby 等框架。">
@@ -61,6 +59,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "初探 Shadcn UI：基於 Tailwind CSS + Radix UI 的元件合集",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2024-08-02T03:13:00.000Z",
+  "dateModified": "2026-04-23T06:14:18.273Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/shadcn-ui/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>初探 Shadcn UI：基於 Tailwind CSS + Radix UI 的元件合集 | Liusan's Blog</title>
   
 
@@ -96,7 +116,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -281,7 +301,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="https://hackmd.io/_uploads/B1RYAaBtA.png" alt="cover"></p>
+        <p><img data-src="https://hackmd.io/_uploads/B1RYAaBtA.png" alt="cover"></p>
 <blockquote>
 <p>GitHub - <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NoYWRjbi11aS91aQ==" title="https://github.com/shadcn-ui/ui">https://github.com/shadcn-ui/ui<i class="fa fa-external-link"></i></span></p>
 </blockquote>
@@ -310,7 +330,7 @@
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx create-next-app@latest my-app --typescript --tailwind --eslint</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://hackmd.io/_uploads/rk3c9__tA.png" alt="next.js"></p>
+<p><img data-src="https://hackmd.io/_uploads/rk3c9__tA.png" alt="next.js"></p>
 <ol start="2">
 <li>執行 CLI <code>shadcn-ui</code> 初始專案</li>
 </ol>
@@ -321,7 +341,7 @@
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Which style would you like to use? › Default</span><br><span class="line">Which color would you like to use as base color? › Slate</span><br><span class="line">Do you want to use CSS variables for colors? › no / yes</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://hackmd.io/_uploads/HJ1SsudtC.png" alt="init config"></p>
+<p><img data-src="https://hackmd.io/_uploads/HJ1SsudtC.png" alt="init config"></p>
 <p>建立好的 Next.js 專案架構可參考如下，其中引入的 Shadcn 元件會放在 <code>compoent/ui</code> 資料夾底下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── app</span><br><span class="line">│   ├── layout.tsx</span><br><span class="line">│   └── page.tsx</span><br><span class="line">├── components    </span><br><span class="line">│   ├── ui                   // 引入的元件可在專案中進行編輯</span><br><span class="line">│   │   ├── alert-dialog.tsx</span><br><span class="line">│   │   ├── button.tsx</span><br><span class="line">│   │   ├── dropdown-menu.tsx</span><br><span class="line">│   │   └── ...</span><br><span class="line">│   ├── main-nav.tsx         // 將引入的元件進一步客製化元件</span><br><span class="line">│   ├── page-header.tsx</span><br><span class="line">│   ├── alert.tsx</span><br><span class="line">│   ├── sidebar.tsx</span><br><span class="line">│   └── ...</span><br><span class="line">├── lib</span><br><span class="line">│   └── utils.ts</span><br><span class="line">├── styles                   // 自定義樣式</span><br><span class="line">│   └── globals.css</span><br><span class="line">├── next.config.js</span><br><span class="line">├── package.json</span><br><span class="line">├── postcss.config.js</span><br><span class="line">├── tailwind.config.js       // Tailwind 設定檔</span><br><span class="line">└── tsconfig.json</span><br></pre></td></tr></table></figure>
 
@@ -342,20 +362,20 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx shadcn-ui@latest add button</span><br></pre></td></tr></table></figure>
 
 <p>安裝好的元件路徑會在 components 底下：<code>@components/ui/button</code></p>
-<p><img src="https://hackmd.io/_uploads/S1LnfY_F0.png" alt="button"></p>
+<p><img data-src="https://hackmd.io/_uploads/S1LnfY_F0.png" alt="button"></p>
 <ol start="2">
 <li>即可引入專案使用</li>
 </ol>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/page.tsx</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Button</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@/components/ui/button&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Home</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Button</span>&gt;</span>Enter!<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://hackmd.io/_uploads/H1cGNtdtC.png" alt="demo-1"></p>
+<p><img data-src="https://hackmd.io/_uploads/H1cGNtdtC.png" alt="demo-1"></p>
 <ol start="3">
 <li>除了預設樣式，也可直接編輯元件程式碼，例如在 <code>components/ui/button.tsx</code> 檔案中新增自訂義樣式 <code>newButton</code>，即可在頁面使用</li>
 </ol>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/page.tsx</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Button</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@/components/ui/button&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Home</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Button</span> <span class="attr">variant</span>=<span class="string">&quot;outline&quot;</span>&gt;</span>outline<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Button</span> <span class="attr">variant</span>=<span class="string">&quot;link&quot;</span>&gt;</span>link<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Button</span> <span class="attr">variant</span>=<span class="string">&quot;newButton&quot;</span>&gt;</span>newButton<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>結果如下：</p>
-<p><img src="https://hackmd.io/_uploads/ryOrYj_tR.png" alt="button"></p>
+<p><img data-src="https://hackmd.io/_uploads/ryOrYj_tR.png" alt="button"></p>
 <h3 id="暗色主題-Dark-Mode"><a href="#暗色主題-Dark-Mode" class="headerlink" title="暗色主題 Dark Mode"></a>暗色主題 Dark Mode</h3><p>由於 Shadcn UI 所有元件已內建 Dark Mode 樣式設定，因此只需搭配 Themes 來實作，而 Next.js 可搭配 <code>next-themes</code> 套件</p>
 <ol>
 <li>透過 CLI 安裝 <code>next-themes</code></li>
@@ -383,7 +403,7 @@
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;use client&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&quot;react&quot;</span></span><br><span class="line"><span class="keyword">import</span> &#123; useTheme &#125; <span class="keyword">from</span> <span class="string">&quot;next-themes&quot;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">MoonIcon</span>, <span class="title class_">SunIcon</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@radix-ui/react-icons&quot;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Button</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@/components/ui/button&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Home</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; theme, setTheme &#125; = <span class="title function_">useTheme</span>();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Button</span> <span class="attr">variant</span>=<span class="string">&quot;outline&quot;</span>&gt;</span>outline<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Button</span> <span class="attr">variant</span>=<span class="string">&quot;link&quot;</span>&gt;</span>link<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Button</span> <span class="attr">variant</span>=<span class="string">&quot;newButton&quot;</span>&gt;</span>newButton<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Button</span> <span class="attr">variant</span>=<span class="string">&quot;outline&quot;</span> <span class="attr">size</span>=<span class="string">&quot;icon&quot;</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> setTheme(theme === &quot;light&quot; ? &quot;dark&quot; : &quot;light&quot;)&#125;&gt;</span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">SunIcon</span> <span class="attr">className</span>=<span class="string">&quot;h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">MoonIcon</span> <span class="attr">className</span>=<span class="string">&quot;absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">span</span> <span class="attr">className</span>=<span class="string">&quot;sr-only&quot;</span>&gt;</span>Toggle theme<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>效果如下：</p>
-<p><img src="https://hackmd.io/_uploads/Hy4Jv6uK0.gif" alt="demo-dark"></p>
+<p><img data-src="https://hackmd.io/_uploads/Hy4Jv6uK0.gif" alt="demo-dark"></p>
 <h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>前陣子在開發 Next.js 專案時，是搭配使用 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL211aS9tYXRlcmlhbC11aQ==" title="https://github.com/mui/material-ui">material-ui<i class="fa fa-external-link"></i></span> 這套 UI Framework，卻意外發現在過程中遇到許多痛點：</p>
 <ul>
 <li>MUI 和 Tailwind 樣式需分開設定，可能發生樣式衝突，不易整合管理</li>
@@ -412,17 +432,18 @@
       <div class="popular-posts-title"><a href="/nextjs-app-router/" rel="bookmark">【學習筆記】Next.js 路由系統：App Router vs Page Router</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/nextjs-error-fix/" rel="bookmark">【學習筆記】Next.js 錯誤修復紀錄： 「Window is not defined」、「use client & missing generateStaticParams() error」</a></div>
+      <div class="popular-posts-title"><a href="/nextjs-i18next/" rel="bookmark">【學習筆記】Next.js 實現多國語系：react-i18next & next-i18next</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/nextjs-i18next/" rel="bookmark">【學習筆記】Next.js 實現多國語系：react-i18next & next-i18next</a></div>
+      <div class="popular-posts-title"><a href="/nextjs-error-fix/" rel="bookmark">【學習筆記】Next.js 錯誤修復紀錄： 「Window is not defined」、「use client & missing generateStaticParams() error」</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/react-styled-component/" rel="bookmark">[week 21] React 基礎：style & 如何撰寫 CSS</a></div>
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -592,7 +613,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -654,12 +676,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

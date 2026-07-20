@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="原文連結：エンジニア歴20数年の私が、設計書を書く際に心がけていること - Qiita  上一篇主要介紹「需求定義到內部設計」的流程，接下來這篇文章，將著重於設計規格書的寫法。 先是從作者個人角度統整觀點，如何提升文件的易讀性，以及如何避免資訊混淆等；而在團隊開發中，如何制定一致的「規格書撰寫方式」，使其易於後續維護。">
@@ -52,6 +50,31 @@
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
+
+
+<meta property="og:image" content="https://heidiliu2020.github.io/images/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[2023 15th鐵人賽] Day26 - 擁有 20 多年工程師經驗的我，在撰寫設計規格書時所注意的事情",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2023-10-11T00:08:01.000Z",
+  "dateModified": "2026-07-09T06:06:05.691Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/ironman-2023-day-26/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
 
   <title>[2023 15th鐵人賽] Day26 - 擁有 20 多年工程師經驗的我，在撰寫設計規格書時所注意的事情 | Liusan's Blog</title>
   
@@ -88,7 +111,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -426,13 +449,10 @@
   <div class="popular-posts-header">相關文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/ironman-2023-day-10/" rel="bookmark">[2023 15th鐵人賽] Day10 - 透過圖文理解 S.O.L.I.D 原則</a></div>
-    </li>
-    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/ironman-2023-day-12/" rel="bookmark">[2023 15th鐵人賽] Day12 - 外國「為什麼日本無法像硬體時代一樣在軟體方面表現出色？」</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/ironman-2023-day-21/" rel="bookmark">[2023 15th鐵人賽] Day21 - 日本數位廳的網站太扯了www</a></div>
+      <div class="popular-posts-title"><a href="/ironman-2023-day-10/" rel="bookmark">[2023 15th鐵人賽] Day10 - 透過圖文理解 S.O.L.I.D 原則</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/ironman-2023-day-22/" rel="bookmark">[2023 15th鐵人賽] Day22 - 程式設計最難的部分我認為是「估算成本」</a></div>
@@ -440,9 +460,13 @@
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/ironman-2023-day-25/" rel="bookmark">[2023 15th鐵人賽] Day25 - 成為具備需求定義～系統設計能力人才的文章！ </a></div>
     </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/ironman-2023-day-21/" rel="bookmark">[2023 15th鐵人賽] Day21 - 日本數位廳的網站太扯了www</a></div>
+    </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -612,7 +636,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -674,12 +699,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

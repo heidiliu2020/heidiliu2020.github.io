@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 [GIT101] Git 超新手入門 這門課程的學習筆記。  1234學習目標： 了解 Git 在做什麼，以及為何我們需要 Git 知道 add、commit、push、pull 等基本 Git 指令">
@@ -63,6 +61,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 1] 版本控制 - Git 概念 ＆ 基本指令",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-06-13T16:30:00.000Z",
+  "dateModified": "2026-04-23T06:14:18.214Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/git/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[week 1] 版本控制 - Git 概念 ＆ 基本指令 | Liusan's Blog</title>
   
 
@@ -98,7 +118,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -286,7 +306,7 @@
 <span id="more"></span>
 <hr>
 <h2 id="什麼是版本控制？"><a href="#什麼是版本控制？" class="headerlink" title="什麼是版本控制？"></a>什麼是版本控制？</h2><h4 id="簡言之，就是將一個檔案所有歷史紀錄的版本都保存起來，以便日後參考。"><a href="#簡言之，就是將一個檔案所有歷史紀錄的版本都保存起來，以便日後參考。" class="headerlink" title="簡言之，就是將一個檔案所有歷史紀錄的版本都保存起來，以便日後參考。"></a>簡言之，就是將一個檔案所有歷史紀錄的版本都保存起來，以便日後參考。</h4><p>我們其實曾接觸過版本控制，例如備份檔案，或是以不同檔名保存編輯過的檔案：</p>
-<p><img src="https://i.imgur.com/2nnCsCD.png" alt="個人的版本控制"></p>
+<p><img data-src="https://i.imgur.com/2nnCsCD.png" alt="個人的版本控制"></p>
 <h2 id="但這種管理方式會碰到哪些問題？"><a href="#但這種管理方式會碰到哪些問題？" class="headerlink" title="但這種管理方式會碰到哪些問題？"></a>但這種管理方式會碰到哪些問題？</h2><ol>
 <li>檔案一多、時間久了之後不易管理</li>
 <li>多人協作易發生衝突，無法快速分辨檔案差異</li>
@@ -308,7 +328,7 @@
 </blockquote>
 <hr>
 <h2 id="Git-基本指令操作"><a href="#Git-基本指令操作" class="headerlink" title="Git 基本指令操作"></a>Git 基本指令操作</h2><h3 id="git-init：初始化當前目錄"><a href="#git-init：初始化當前目錄" class="headerlink" title="git init：初始化當前目錄"></a><code>git init</code>：初始化當前目錄</h3><p>在當前位置新增 <code>.git</code> 隱藏資料夾，也就是建立 Git Repository（檔案庫）。目的是初始化這個目錄，讓 Git 對這個目錄做版本控管。</p>
-<p><img src="https://i.imgur.com/BVuxZag.png" alt="init 初始化"></p>
+<p><img data-src="https://i.imgur.com/BVuxZag.png" alt="init 初始化"></p>
 <h3 id="git-status：檢查當前版本狀態"><a href="#git-status：檢查當前版本狀態" class="headerlink" title="git status：檢查當前版本狀態"></a><code>git status</code>：檢查當前版本狀態</h3><p>例如：未進入版本控管（Untracked）、新增檔案（New File）、刪除檔案（Deleted）、檔案已修改（Modified）等。是會經常使用的指令。</p>
 <h3 id="git-add：加入版本控制"><a href="#git-add：加入版本控制" class="headerlink" title="git add：加入版本控制"></a><code>git add</code>：加入版本控制</h3><p>把檔案從 Untracked（不加入的檔案）移到 stage（加入版本控制的檔案）。</p>
 <p>依照括號內提示可知：</p>
@@ -317,44 +337,44 @@
 <li><code>git add &lt;file&gt;</code>：加入版控</li>
 <li>若檔案數量太多，可使用 <code>git add .</code> 把檔案全部加入版本控制。</li>
 </ul>
-<p><img src="https://i.imgur.com/vX2e43W.png" alt="git add 指令"></p>
+<p><img data-src="https://i.imgur.com/vX2e43W.png" alt="git add 指令"></p>
 <h3 id="git-commit：新建版本"><a href="#git-commit：新建版本" class="headerlink" title="git commit：新建版本"></a><code>git commit</code>：新建版本</h3><ol>
 <li>輸入指令後會進入 vim 介面，就可以編輯提交版本訊息（commit message）</li>
 <li>若不想進入 vim，也可輸入 <code>git commit -m &quot;message&quot;</code> 直接建立新版本</li>
 </ol>
-<p><img src="https://i.imgur.com/NlBaU85.png" alt="git commit 指令"></p>
+<p><img data-src="https://i.imgur.com/NlBaU85.png" alt="git commit 指令"></p>
 <h3 id="小技巧：git-commit-am-quot-message-quot"><a href="#小技巧：git-commit-am-quot-message-quot" class="headerlink" title="小技巧：git commit -am　&quot;message&quot;"></a>小技巧：<code>git commit -am　&quot;message&quot;</code></h3><p>輸入 <code>git commit -am &quot;message&quot;</code> 可一次完成 <code>add</code> 和 <code>commit</code> 兩個指令動作。</p>
 <h4 id="但需注意："><a href="#但需注意：" class="headerlink" title="但需注意："></a>但需注意：</h4><ol>
 <li><code>-a</code> 指令只對「已存在」的檔案有效；不適用於新加入的檔案（Untracked File）</li>
 <li>若有新增的檔案，仍須先 <code>add</code> 再 <code>commit</code> ，才能把新檔加入版控</li>
 </ol>
 <h3 id="git-log：查看版本紀錄"><a href="#git-log：查看版本紀錄" class="headerlink" title="git log：查看版本紀錄"></a><code>git log</code>：查看版本紀錄</h3><p>從新到舊列出，內容分別是版本號碼、提交者、提交時間。</p>
-<p><img src="https://i.imgur.com/gZ9G2c1.png" alt="git log 指令"></p>
+<p><img data-src="https://i.imgur.com/gZ9G2c1.png" alt="git log 指令"></p>
 <ul>
 <li><code>git log --oneline</code>：輸出更簡短的 log，只用版本號前七碼代值</li>
 </ul>
-<p><img src="https://i.imgur.com/V0HyJbP.png" alt="git log --oneline 指令"></p>
+<p><img data-src="https://i.imgur.com/V0HyJbP.png" alt="git log --oneline 指令"></p>
 <h3 id="git-checkout：切換到某個版本"><a href="#git-checkout：切換到某個版本" class="headerlink" title="git checkout：切換到某個版本"></a><code>git checkout</code>：切換到某個版本</h3><p>切換到某個版本，可查看過去的版本內容。</p>
 <ul>
 <li><code>git checkout &lt;版本號碼&gt;</code> ：切換到指定版本</li>
 <li><code>git checkout master</code> ：切換到最新版本</li>
 </ul>
-<p><img src="https://i.imgur.com/hqROiIw.png" alt="git checkout 指令"></p>
+<p><img data-src="https://i.imgur.com/hqROiIw.png" alt="git checkout 指令"></p>
 <h3 id="gitignore：忽略不要版本控制的檔案"><a href="#gitignore：忽略不要版本控制的檔案" class="headerlink" title=".gitignore：忽略不要版本控制的檔案"></a><code>.gitignore</code>：忽略不要版本控制的檔案</h3><p><code>.gitignore</code> 這個檔案本身也需加入版本控制。通常會加入忽略清單的檔案有：系統檔案、記錄檔、暫存檔等，可參考 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2ZhY2Vib29rL3JlYWN0L2Jsb2IvbWFzdGVyLy5naXRpZ25vcmU=" title="https://github.com/facebook/react/blob/master/.gitignore">Facebook 開源專案 React 裡的 .gitignore<i class="fa fa-external-link"></i></span> 為例子。</p>
 <h4 id="那麼，該如何建立忽略清單呢？"><a href="#那麼，該如何建立忽略清單呢？" class="headerlink" title="那麼，該如何建立忽略清單呢？"></a>那麼，該如何建立忽略清單呢？</h4><ol>
 <li><p>輸入 <code>touch .gitignore</code> 建立檔案</p>
 </li>
 <li><p>輸入 <code>vim .gitignore</code> 進入 <code>vim</code> 介面</p>
-<p><img src="https://i.imgur.com/dwIzY2m.png" alt="進入vim介面"></p>
+<p><img data-src="https://i.imgur.com/dwIzY2m.png" alt="進入vim介面"></p>
 </li>
 <li><p>以不加入版控的 test 為例，輸入完 test 後儲存離開</p>
 </li>
 </ol>
-<p><img src="https://i.imgur.com/WtYtJkL.png" alt="建立忽略清單"></p>
+<p><img data-src="https://i.imgur.com/WtYtJkL.png" alt="建立忽略清單"></p>
 <ol start="4">
 <li>以 <code>git status</code> 查看，可知 test 這個檔案已被 git 忽略</li>
 </ol>
-<p><img src="https://i.imgur.com/XUsgqPr.png" alt="完成忽略清單"></p>
+<p><img data-src="https://i.imgur.com/XUsgqPr.png" alt="完成忽略清單"></p>
 <ol start="5">
 <li>如此即可使用 <code>git add .</code> 把所有檔案加入版本控制，包括新舊檔案；<br>再用 <code>git commit -m &quot;message&quot;</code> 建立新版本</li>
 </ol>
@@ -376,7 +396,7 @@
 </blockquote>
 <hr>
 <h3 id="補充-1：檔案在-Git-底下的四種狀態"><a href="#補充-1：檔案在-Git-底下的四種狀態" class="headerlink" title="補充 1：檔案在 Git 底下的四種狀態"></a>補充 1：檔案在 Git 底下的四種狀態</h3><ul>
-<li>File status lifecycle（圖片來自 <span class="exturl" data-url="aHR0cHM6Ly9rdWVpYmxvZy5oZXJva3VhcHAuY29tL3Bvc3QvZ2l0JUU1JUFEJUI4JUU3JUJGJTkyJUU0JUI5JThCJUU0JUJBJThDJTIwLSUyMGNvbW1pdCVFOCVBQyU5QiVFOCVBNyVBMyVFMyU4MCU4MXJlc2V0JUU1JUJFJUE5JUU1JThFJTlGJUU3JTg5JTg4JUU2JTlDJUFDJUUzJTgwJTgxJUU1JUJCJUJBJUU3JUFCJThCJUU1JTg4JTg2JUU2JTk0JUFGLw==" title="https://kueiblog.herokuapp.com/post/git%E5%AD%B8%E7%BF%92%E4%B9%8B%E4%BA%8C%20-%20commit%E8%AC%9B%E8%A7%A3%E3%80%81reset%E5%BE%A9%E5%8E%9F%E7%89%88%E6%9C%AC%E3%80%81%E5%BB%BA%E7%AB%8B%E5%88%86%E6%94%AF/">link<i class="fa fa-external-link"></i></span>）<br><img src="https://i.imgur.com/jz9qufH.png" alt="File status lifecycle"></li>
+<li>File status lifecycle（圖片來自 <span class="exturl" data-url="aHR0cHM6Ly9rdWVpYmxvZy5oZXJva3VhcHAuY29tL3Bvc3QvZ2l0JUU1JUFEJUI4JUU3JUJGJTkyJUU0JUI5JThCJUU0JUJBJThDJTIwLSUyMGNvbW1pdCVFOCVBQyU5QiVFOCVBNyVBMyVFMyU4MCU4MXJlc2V0JUU1JUJFJUE5JUU1JThFJTlGJUU3JTg5JTg4JUU2JTlDJUFDJUUzJTgwJTgxJUU1JUJCJUJBJUU3JUFCJThCJUU1JTg4JTg2JUU2JTk0JUFGLw==" title="https://kueiblog.herokuapp.com/post/git%E5%AD%B8%E7%BF%92%E4%B9%8B%E4%BA%8C%20-%20commit%E8%AC%9B%E8%A7%A3%E3%80%81reset%E5%BE%A9%E5%8E%9F%E7%89%88%E6%9C%AC%E3%80%81%E5%BB%BA%E7%AB%8B%E5%88%86%E6%94%AF/">link<i class="fa fa-external-link"></i></span>）<br><img data-src="https://i.imgur.com/jz9qufH.png" alt="File status lifecycle"></li>
 </ul>
 <ol>
 <li>untracked（未追蹤的）：代表檔案尚未被加入版控</li>
@@ -422,7 +442,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -587,7 +608,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -649,12 +671,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

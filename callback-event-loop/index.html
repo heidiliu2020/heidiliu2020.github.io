@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 JavaScript 中的同步與非同步（上）：先成為 callback 大師吧！ 這篇文章的學習筆記。">
@@ -54,6 +52,28 @@
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 16] 淺談 JavaScript：同步與非同步 & Callback Function & Event Loop",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-10-23T16:29:00.000Z",
+  "dateModified": "2026-04-23T06:14:18.205Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/callback-event-loop/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
 
   <title>[week 16] 淺談 JavaScript：同步與非同步 & Callback Function & Event Loop | Liusan's Blog</title>
   
@@ -90,7 +110,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -284,7 +304,7 @@
 <h3 id="瀏覽器-vs-Node-js"><a href="#瀏覽器-vs-Node-js" class="headerlink" title="瀏覽器 vs Node.js"></a>瀏覽器 vs Node.js</h3><p>JS 程式碼可以選擇跑在瀏覽器上，透過瀏覽器這個執行環境提供的東西操控畫面，或是發送 Request。</p>
 <p>也可以選擇跑在 Node.js 這個執行環境上面，就可以利用 Node.js 提供的東西，例如使用 file system（控制檔案的介面），或是利用 http這個模組來寫 server。</p>
 <p>可參考下方示意圖：</p>
-<p><img src="https://i.imgur.com/nP7n8as.png"></p>
+<p><img data-src="https://i.imgur.com/nP7n8as.png"></p>
 <p>也就是說，執行環境不同，能夠使用的就不同，執行方式也會不同。</p>
 <p>以瀏覽器來說，是用 <code>&lt;script src=&quot;index.js&quot;&gt;</code> 引入一個 JavaScript 檔案，然後就可以在瀏覽器上執行。</p>
 <p>以 Node.js 來說，則必須先在電腦上安裝 Node.js 這個執行環境，然後以 CLI 的方式輸入 <code>node index.js</code> 這個指令來執行。</p>
@@ -362,14 +382,14 @@
 </ol>
 <p>接著 JavaScript 會優先處理執行堆疊中最上面的執行環境。一旦執行完該 function 後，該執行環境就會從最上面被移除（pop off），同時儲存在該 function 中的資訊也會被銷毀，然後再回到之前的執行環境，直到回到 Global EC 為止。</p>
 <p>可參考下方示意圖：</p>
-<p><img src="https://i.imgur.com/SiRxsOL.png"><br>（參考來源：<span class="exturl" data-url="aHR0cHM6Ly9kZXYudG8vYWhtZWR0YWhpci93aGF0LWlzLXRoZS1leGVjdXRpb24tY29udGV4dC1leGVjdXRpb24tc3RhY2stc2NvcGUtY2hhaW4taW4tanMtMjZuYyVFRiVCQyU4OQ==" title="https://dev.to/ahmedtahir/what-is-the-execution-context-execution-stack-scope-chain-in-js-26nc%EF%BC%89">https://dev.to/ahmedtahir/what-is-the-execution-context-execution-stack-scope-chain-in-js-26nc）<i class="fa fa-external-link"></i></span></p>
+<p><img data-src="https://i.imgur.com/SiRxsOL.png"><br>（參考來源：<span class="exturl" data-url="aHR0cHM6Ly9kZXYudG8vYWhtZWR0YWhpci93aGF0LWlzLXRoZS1leGVjdXRpb24tY29udGV4dC1leGVjdXRpb24tc3RhY2stc2NvcGUtY2hhaW4taW4tanMtMjZuYyVFRiVCQyU4OQ==" title="https://dev.to/ahmedtahir/what-is-the-execution-context-execution-stack-scope-chain-in-js-26nc%EF%BC%89">https://dev.to/ahmedtahir/what-is-the-execution-context-execution-stack-scope-chain-in-js-26nc）<i class="fa fa-external-link"></i></span></p>
 <p>但 call stack 能夠存取的內容是有限的，一旦超出 stack 負荷就有可能出現錯誤 stack overflow。例如遞迴呼叫一個 function 十萬次，因為 stack 沒辦法存這麼多東西，就會拋出錯誤。</p>
 <p>既然 JavaScript 同一個時間只能執行一件事，那要如何達到非同步操作呢？回到先前談的執行環境。</p>
 <p>這裡以 setTimeout 為例：</p>
 <p>setTimeout(fn, 2000) 只是在告訴瀏覽器說：「2 秒以後幫我呼叫 fn 這個 function」，瀏覽器就可以開另外一個 thread 去計時，而不是利用 main thread 做這件事。</p>
 <p>當這些其他 thread 的事情做完以後，要再重新丟回 main thread 執行 JavaScript，這就是 Event Loop 在做的事情。</p>
 <p>可參考這張 Event Loop 示意圖：</p>
-<p><img src="https://i.imgur.com/F4oAQmS.png"></p>
+<p><img data-src="https://i.imgur.com/F4oAQmS.png"></p>
 <p>（圖片來源：<span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL0BSYWh1bHgxL3VuZGVyc3RhbmRpbmctZXZlbnQtbG9vcC1jYWxsLXN0YWNrLWV2ZW50LWpvYi1xdWV1ZS1pbi1qYXZhc2NyaXB0LTYzZGNkMmM3MWVjZA==" title="https://medium.com/@Rahulx1/understanding-event-loop-call-stack-event-job-queue-in-javascript-63dcd2c71ecd">Understanding Event Loop, Call Stack, Event &amp; Job Queue in Javascript<i class="fa fa-external-link"></i></span>）</p>
 <p>以執行 setTimeout(fn, 2000) 這行程式碼來說，步驟可想像成：</p>
 <ol>
@@ -421,11 +441,12 @@
       <div class="popular-posts-title"><a href="/ironman-2023-day-17/" rel="bookmark">[2023 15th鐵人賽] Day17 - 告別 jQuery：現代開發不可或缺的 JavaScript 方法</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/javascript-closure/" rel="bookmark">[week 16] JavaScript 進階 - 什麼是閉包？探討 Closure & Scope Chain</a></div>
+      <div class="popular-posts-title"><a href="/javascript-dom/" rel="bookmark">[week 7] DOM 事件傳遞機制：捕獲與冒泡、事件代理</a></div>
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -593,7 +614,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -655,12 +677,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

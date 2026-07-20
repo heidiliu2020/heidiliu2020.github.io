@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="原文連結：ChatGPT使い方総まとめ - Qiita  這篇文章主要介紹現在正流行的 ChatGPT，整理幾項不論是日常或在工作上，都很實用的提問方式。作者是 sakasegawa。 使用方法分類如下：  文章範例 提問-回答 創作 Wikipedia 風格的文章 建立任務列表 建立時間表 歸納 將列點用文章呈現 將文章列點呈現   程式碼 生成程式碼 生成程式碼的文件 重構 單元測試 DB">
@@ -83,6 +81,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[2023 15th鐵人賽] Day23 - ChatGPT 使用方法總整理",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2023-10-08T01:31:01.000Z",
+  "dateModified": "2026-07-09T06:06:05.667Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/ironman-2023-day-23/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[2023 15th鐵人賽] Day23 - ChatGPT 使用方法總整理 | Liusan's Blog</title>
   
 
@@ -118,7 +138,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -346,79 +366,79 @@
 <p><span class="exturl" data-url="aHR0cHM6Ly9xaWl0YS5jb20vc2FrYXNlZ2F3YS9pdGVtcy9lMTNlMjljOTZmYzcxMWNmODRiYg==" title="https://qiita.com/sakasegawa/items/e13e29c96fc711cf84bb">ChatGPTの仕組みを考えながらプロンプトを作る手法はこちらに別途まとめています<i class="fa fa-external-link"></i></span></p>
 <h2 id="使用範例"><a href="#使用範例" class="headerlink" title="使用範例"></a>使用範例</h2><h3 id="提問-回答"><a href="#提問-回答" class="headerlink" title="提問-回答"></a>提問-回答</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">〜について教えて</span><br><span class="line"></span><br><span class="line">請告訴我關於～</span><br><span class="line"></span><br><span class="line">[範例] 請告訴我什麼是 TPP</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://hackmd.io/_uploads/rJFsKf1Z6.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/rJFsKf1Z6.png"></p>
 <p>以下是中文版本：</p>
-<p><img src="https://hackmd.io/_uploads/r1SRKzyWa.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/r1SRKzyWa.png"></p>
 <h3 id="創作-Wikipedia-風格的文章"><a href="#創作-Wikipedia-風格的文章" class="headerlink" title="創作 Wikipedia 風格的文章"></a>創作 Wikipedia 風格的文章</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">〜について説明するWikipedia風の記事を出力して</span><br><span class="line"></span><br><span class="line">請寫出用 Wikipedia ****風格的文章來解釋～</span><br><span class="line"></span><br><span class="line">[範例] 請用 Wikipedia 風格來解釋 gpt-3</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://hackmd.io/_uploads/Hk8N5fJWa.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/Hk8N5fJWa.png"></p>
 <p>以下是中文版本：</p>
-<p><img src="https://hackmd.io/_uploads/B1EI5f1ba.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/B1EI5f1ba.png"></p>
 <h3 id="建立任務列表"><a href="#建立任務列表" class="headerlink" title="建立任務列表"></a>建立任務列表</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">〜をタスク化して</span><br><span class="line"></span><br><span class="line">請將～任務化</span><br><span class="line"></span><br><span class="line">[範例] 請舉出「APEX 變強的方法」</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://hackmd.io/_uploads/HJFvczy-a.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/HJFvczy-a.png"></p>
 <p>以下是中文版本，發現如果用「任務化」步驟會太詳細，因此換個方式問：</p>
-<p><img src="https://hackmd.io/_uploads/r1Dd5zkZ6.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/r1Dd5zkZ6.png"></p>
 <h3 id="建立時間表"><a href="#建立時間表" class="headerlink" title="建立時間表"></a>建立時間表</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">xx〜yyの間にzzします。この間のスケジュールを30分刻みで提示して</span><br><span class="line"></span><br><span class="line">zz 介於 xx 和 yy 之間，請以 30 分鐘為單位，顯示該時段的時間表</span><br><span class="line"></span><br><span class="line">[範例] 我想在 20:00-24:00 這段時間製作報告，請以 30 分鐘為單位安排時間表</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://hackmd.io/_uploads/S1f5qM1-a.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/S1f5qM1-a.png"></p>
 <p>以下是中文版本：</p>
-<p><img src="https://hackmd.io/_uploads/ryeR9zyb6.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/ryeR9zyb6.png"></p>
 <h3 id="歸納"><a href="#歸納" class="headerlink" title="歸納"></a>歸納</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">以下を要約して</span><br><span class="line"></span><br><span class="line">請歸納以下內容</span><br><span class="line"></span><br><span class="line">[範例] 請歸納以下內容：</span><br><span class="line"></span><br><span class="line">## GPU Resourse 的取得方法</span><br><span class="line"></span><br><span class="line">若想要取得 GPU Resourse，現在主要有以下幾種方式：</span><br><span class="line"></span><br><span class="line">基本上是根據預算和目的做選擇。</span><br><span class="line"></span><br><span class="line">- Host 型的 Juptyer Notebook Service</span><br><span class="line">	- 目的：使用 Spot</span><br><span class="line">	- 預算：每個月 5000 日幣</span><br><span class="line">- GPU（租用或購買 Gaming PC）</span><br><span class="line">	- 目的：持續性學習與推論</span><br><span class="line">	- 預算：每個月 1 萬日幣～</span><br><span class="line">- Cloud GPU</span><br><span class="line">	- 目的：持續性學習與推論</span><br><span class="line">	- 預算：每個月 2 萬日幣～</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://hackmd.io/_uploads/r1kgjGJ-T.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/r1kgjGJ-T.png"></p>
 <p>以下是中文版本，這裡意外發現如果沒有加上「幾句話」，會一直鬼打牆用列點的方式回答，因此還是要確實指定希望的格式：</p>
-<p><img src="https://hackmd.io/_uploads/rk9xoM1-T.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/rk9xoM1-T.png"></p>
 <h3 id="將列點用文章呈現"><a href="#將列點用文章呈現" class="headerlink" title="將列點用文章呈現"></a>將列點用文章呈現</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">以下を文章化して</span><br><span class="line"></span><br><span class="line">請將以下內容用文章呈現</span><br><span class="line"></span><br><span class="line">[範例] 請用以下內容，寫出一段文章：</span><br><span class="line"></span><br><span class="line">## GPU Resourse 的取得方法</span><br><span class="line"></span><br><span class="line">若想要取得 GPU Resourse，現在主要有以下幾種方式：</span><br><span class="line"></span><br><span class="line">基本上是根據預算和目的做選擇。</span><br><span class="line"></span><br><span class="line">- Host 型的 Juptyer Notebook Service</span><br><span class="line">	- 目的：使用 Spot</span><br><span class="line">	- 預算：每個月 5000 日幣</span><br><span class="line">- GPU（租用或購買 Gaming PC）</span><br><span class="line">	- 目的：持續性學習與推論</span><br><span class="line">	- 預算：每個月 1 萬日幣～</span><br><span class="line">- Cloud GPU</span><br><span class="line">	- 目的：持續性學習與推論</span><br><span class="line">	- 預算：每個月 2 萬日幣～</span><br><span class="line">ChatGPT</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://hackmd.io/_uploads/HkkfjG1-6.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/HkkfjG1-6.png"></p>
 <p>以下是中文版本：</p>
-<p><img src="https://hackmd.io/_uploads/B1CfjMk-a.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/B1CfjMk-a.png"></p>
 <h3 id="將文章列點呈現"><a href="#將文章列點呈現" class="headerlink" title="將文章列點呈現"></a>將文章列點呈現</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">以下をタスク化して</span><br><span class="line"></span><br><span class="line">將以下內容列點呈現</span><br><span class="line"></span><br><span class="line">[範例] 將以下內容列點呈現：</span><br><span class="line">明天早上吃完早餐後要去學校午休時必須到花圃澆水，接著放學後要去社團跟老師道歉</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://hackmd.io/_uploads/BJRNiMJWT.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/BJRNiMJWT.png"></p>
 <p>以下是中文版本：</p>
-<p><img src="https://hackmd.io/_uploads/BJoBiG1Za.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/BJoBiG1Za.png"></p>
 <h2 id="程式碼"><a href="#程式碼" class="headerlink" title="程式碼"></a>程式碼</h2><h3 id="生成程式碼"><a href="#生成程式碼" class="headerlink" title="生成程式碼"></a>生成程式碼</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">xxするyyの関数を出力して</span><br><span class="line"></span><br><span class="line">請輸出執行 xx 的 yy 函數</span><br><span class="line"></span><br><span class="line">[範例] 請寫出如何判斷閏年的 JavaScript 函數</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://hackmd.io/_uploads/S1SwoMyWp.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/S1SwoMyWp.png"></p>
 <p>以下是中文版本：</p>
-<p><img src="https://hackmd.io/_uploads/rJz_sGJZT.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/rJz_sGJZT.png"></p>
 <h3 id="生成程式碼的文件"><a href="#生成程式碼的文件" class="headerlink" title="生成程式碼的文件"></a>生成程式碼的文件</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">以下の関数のドキュメントをxx形式で出力して</span><br><span class="line"></span><br><span class="line">請將以下函數的文件以 xx 形式呈現</span><br><span class="line"></span><br><span class="line">[範例] 請將下方函數的說明以 <span class="title class_">JSDoc</span> 形式表示：</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">isLeapYear</span>(<span class="params">year</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> ((year % <span class="number">4</span> === <span class="number">0</span> &amp;&amp; year % <span class="number">100</span> !== <span class="number">0</span>) || (year % <span class="number">400</span> === <span class="number">0</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>; </span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://hackmd.io/_uploads/HkQYoz1Wp.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/HkQYoz1Wp.png"></p>
 <p>以下是中文版本：</p>
-<p><img src="https://hackmd.io/_uploads/rke9oz1ba.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/rke9oz1ba.png"></p>
 <h3 id="重構"><a href="#重構" class="headerlink" title="重構"></a>重構</h3><p>以下程式碼的<span class="exturl" data-url="aHR0cHM6Ly93d3cuc2VwbHVzLmpwL2Rva3VzaHV6ZW1pL2Jsb2cvMjAxOC8wNy9wcmFjdGljZV9yZWZhY3RvcmluZy5odG1s" title="https://www.seplus.jp/dokushuzemi/blog/2018/07/practice_refactoring.html">引用出處<i class="fa fa-external-link"></i></span>。</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">以下をリファクタリングして</span><br><span class="line"></span><br><span class="line">請重構以下內容</span><br><span class="line"></span><br><span class="line">[範例] 請重構以下程式碼：</span><br><span class="line"></span><br><span class="line">package composing_methods.<span class="property">replace_temp_with_query</span>.<span class="property">after</span>;</span><br><span class="line"></span><br><span class="line">public <span class="keyword">class</span> <span class="title class_">Example</span> &#123;</span><br><span class="line"></span><br><span class="line">    private int quantity;</span><br><span class="line">    private int itemPrice;</span><br><span class="line"></span><br><span class="line">    public double <span class="title function_">getPrice</span>(<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">        int basePrice = quantity * itemPrice;</span><br><span class="line">        double discountFactor;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(basePrice &gt; <span class="number">1000</span>) &#123;</span><br><span class="line">            discountFactor = <span class="number">0.95</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            discountFactor = <span class="number">0.98</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> basePrice * discountFactor;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://hackmd.io/_uploads/SJX6oMkbT.png"></p>
-<p><img src="https://hackmd.io/_uploads/SktpozyWa.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/SJX6oMkbT.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/SktpozyWa.png"></p>
 <p>以下是中文版本：</p>
-<p><img src="https://hackmd.io/_uploads/BJ01nz1Z6.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/BJ01nz1Z6.png"></p>
 <h3 id="單元測試"><a href="#單元測試" class="headerlink" title="單元測試"></a>單元測試</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">以下の単体テストを書いて</span><br><span class="line"></span><br><span class="line">請根據以下內容，寫出單元測試</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://hackmd.io/_uploads/rk8RoMJ-a.png"></p>
-<p><img src="https://hackmd.io/_uploads/ryWy2zyWT.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/rk8RoMJ-a.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/ryWy2zyWT.png"></p>
 <p>※ 第二項測試的 expected 有誤，因為 900*0.98 = 882 才正確，需注意由 AI 產出的測試程式碼也必須經過測試。</p>
 <h3 id="DB-設計（資料庫設計）"><a href="#DB-設計（資料庫設計）" class="headerlink" title="DB 設計（資料庫設計）"></a>DB 設計（資料庫設計）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">〜に必要なtable一覧を出力して</span><br><span class="line"></span><br><span class="line">請輸出～必要的 table 列表</span><br><span class="line"></span><br><span class="line">[範例] 請列出建立 EC 網站必需的 table 列表</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://hackmd.io/_uploads/S1kZ3M1WT.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/S1kZ3M1WT.png"></p>
 <p>以下是中文版本：</p>
-<p><img src="https://hackmd.io/_uploads/rkq-3My-6.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/rkq-3My-6.png"></p>
 <h2 id="故事"><a href="#故事" class="headerlink" title="故事"></a>故事</h2><h3 id="語氣變化"><a href="#語氣變化" class="headerlink" title="語氣變化"></a>語氣變化</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">「〜ですの」を語尾につけてxxについて説明して</span><br><span class="line"></span><br><span class="line">請在句尾加上「〜ですの」對 xx 內容進行說明</span><br><span class="line"></span><br><span class="line">[範例] 請用「的語氣」對 xx 內容進行說明</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://hackmd.io/_uploads/B1b7hfJWp.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/B1b7hfJWp.png"></p>
 <p>也可以加上「用 ◯◯ 語調」、「用 ◯◯ 風格」等指令來表示。</p>
 <p>以下是中文版本：</p>
-<p><img src="https://hackmd.io/_uploads/Bko42zkba.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/Bko42zkba.png"></p>
 <h3 id="模仿角色的語氣來回答"><a href="#模仿角色的語氣來回答" class="headerlink" title="模仿角色的語氣來回答"></a>模仿角色的語氣來回答</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">以下はxxのセリフです</span><br><span class="line">&#123;セリフ例&#125;</span><br><span class="line">xxっぽく、敬語を使わず可愛く、yyについて説明してください。</span><br><span class="line"></span><br><span class="line">以下是 xx 的台詞</span><br><span class="line">&#123;台詞範例&#125;</span><br><span class="line">請不用敬語，以可愛並且類似 xx 的方式說明 yy</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://hackmd.io/_uploads/rynXnfJbT.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/rynXnfJbT.png"></p>
 <p>以下是中文版本：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[範例] 以下是魯夫的台詞</span><br><span class="line"></span><br><span class="line">&quot;我要成為海賊王！&quot;</span><br><span class="line">&quot;如果你是我的夥伴，我會保護你直到最後一刻！&quot;</span><br><span class="line">&quot;不管發生什麼事，我絕不會成為別人的部下！&quot;</span><br><span class="line">&quot;我不會對任何人低頭，即使是海軍上將也一樣！&quot;</span><br><span class="line">&quot;夢想是不會死的！&quot;</span><br><span class="line">&quot;我要保護的東西，絕對不會被奪走！&quot;</span><br><span class="line">&quot;即使是一個人也要勇往直前！&quot;</span><br><span class="line"></span><br><span class="line">請用像魯夫的語氣，不使用敬語且充滿朝氣又像個笨蛋，針對薩爾達傳說進行說明。</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://hackmd.io/_uploads/HJWK3Mk-6.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/HJWK3Mk-6.png"></p>
 <h2 id="Bonus"><a href="#Bonus" class="headerlink" title="Bonus"></a>Bonus</h2><h3 id="GPT-3-的特性"><a href="#GPT-3-的特性" class="headerlink" title="GPT-3 的特性"></a>GPT-3 的特性</h3><ul>
 <li>可以做到<ul>
 <li>自動生成各種文件</li>
@@ -496,10 +516,10 @@
       <div class="popular-posts-title"><a href="/ironman-2023-day-24/" rel="bookmark">[2023 15th鐵人賽] Day24 - 啊？你還在用 ChatGPT 嗎？ Bing 可以免費使用 GPT-4 喔！ </a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/ironman-2023-day-10/" rel="bookmark">[2023 15th鐵人賽] Day10 - 透過圖文理解 S.O.L.I.D 原則</a></div>
+      <div class="popular-posts-title"><a href="/ironman-2023-day-1/" rel="bookmark">[2023 15th鐵人賽] Day1 - 前言與系列大綱</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/ironman-2023-day-1/" rel="bookmark">[2023 15th鐵人賽] Day1 - 前言與系列大綱</a></div>
+      <div class="popular-posts-title"><a href="/ironman-2023-day-12/" rel="bookmark">[2023 15th鐵人賽] Day12 - 外國「為什麼日本無法像硬體時代一樣在軟體方面表現出色？」</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/ironman-2023-day-11/" rel="bookmark">[2023 15th鐵人賽] Day11 - 調查工程師的 alias 設定排行</a></div>
@@ -509,7 +529,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -679,7 +700,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -741,12 +763,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

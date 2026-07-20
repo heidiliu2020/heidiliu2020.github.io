@@ -14,21 +14,19 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="2026.07 更新：校對內容，補充 unknown 型別與 TypeScript 5.x 相關註記。本文介紹的型別基礎不受版本影響，可安心閱讀。  本篇為以下資源之學習筆記：  Github - microsoft&#x2F;TypeScript TypeScript 新手指南 Angular Tutorial for Beginners: Learn Angular &amp; TypeScript">
+  <meta name="description" content="TypeScript 基礎入門筆記：從型別談起，介紹 TypeScript 與 JavaScript 的差異、為什麼需要靜態型別，整理原始型別、陣列、元組、列舉、any 與 unknown 等常見型別的宣告方式，以及型別推論與聯合型別的觀念，適合初學者建立型別基礎。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【學習筆記】TypeScript 基礎入門：從型別談起">
 <meta property="og:url" content="https://heidiliu2020.github.io/typescript/index.html">
 <meta property="og:site_name" content="Liusan&#39;s Blog">
-<meta property="og:description" content="2026.07 更新：校對內容，補充 unknown 型別與 TypeScript 5.x 相關註記。本文介紹的型別基礎不受版本影響，可安心閱讀。  本篇為以下資源之學習筆記：  Github - microsoft&#x2F;TypeScript TypeScript 新手指南 Angular Tutorial for Beginners: Learn Angular &amp; TypeScript">
+<meta property="og:description" content="TypeScript 基礎入門筆記：從型別談起，介紹 TypeScript 與 JavaScript 的差異、為什麼需要靜態型別，整理原始型別、陣列、元組、列舉、any 與 unknown 等常見型別的宣告方式，以及型別推論與聯合型別的觀念，適合初學者建立型別基礎。">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://i.imgur.com/uowtOyV.png">
 <meta property="og:image" content="https://i.imgur.com/nTdyP5I.png">
@@ -58,6 +56,29 @@
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "【學習筆記】TypeScript 基礎入門：從型別談起",
+  "description": "TypeScript 基礎入門筆記：從型別談起，介紹 TypeScript 與 JavaScript 的差異、為什麼需要靜態型別，整理原始型別、陣列、元組、列舉、any 與 unknown 等常見型別的宣告方式，以及型別推論與聯合型別的觀念，適合初學者建立型別基礎。",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2021-10-11T05:16:00.000Z",
+  "dateModified": "2026-07-13T04:00:00.000Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/typescript/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
 
   <title>【學習筆記】TypeScript 基礎入門：從型別談起 | Liusan's Blog</title>
   
@@ -94,7 +115,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -269,6 +290,7 @@
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
               <span>8 分鐘</span>
             </span>
+            <div class="post-description">TypeScript 基礎入門筆記：從型別談起，介紹 TypeScript 與 JavaScript 的差異、為什麼需要靜態型別，整理原始型別、陣列、元組、列舉、any 與 unknown 等常見型別的宣告方式，以及型別推論與聯合型別的觀念，適合初學者建立型別基礎。</div>
 
         </div>
       </header>
@@ -291,7 +313,7 @@
 </ul>
 <span id="more"></span>
 
-<h2 id="什麼是-TypeScript？"><a href="#什麼是-TypeScript？" class="headerlink" title="什麼是 TypeScript？"></a>什麼是 TypeScript？</h2><p><img src="https://i.imgur.com/uowtOyV.png"></p>
+<h2 id="什麼是-TypeScript？"><a href="#什麼是-TypeScript？" class="headerlink" title="什麼是 TypeScript？"></a>什麼是 TypeScript？</h2><p><img data-src="https://i.imgur.com/uowtOyV.png"></p>
 <p>根據 <span class="exturl" data-url="aHR0cHM6Ly93d3cudHlwZXNjcmlwdGxhbmcub3JnLw==" title="https://www.typescriptlang.org/">TypeScript 官網<i class="fa fa-external-link"></i></span> 說明：</p>
 <blockquote>
 <p>TypeScript extends JavaScript by adding types.</p>
@@ -318,7 +340,7 @@
 <li>提供型別系統（Type System），能夠在開發時期宣告型別</li>
 <li>支援 ECMAScript，可將 TS 檔編譯成 JS 檔給瀏覽器解讀</li>
 </ul>
-<p><img src="https://i.imgur.com/nTdyP5I.png"><br>（圖片來源：<span class="exturl" data-url="aHR0cHM6Ly93d3cuc25lcHBldHMuY29tL2FuZ3VsYXIvdHlwZXNjcmlwdC12cy1lczYtdnMtZXM1Lw==" title="https://www.sneppets.com/angular/typescript-vs-es6-vs-es5/">Angular TypeScript Vs ES6 Vs ES5<i class="fa fa-external-link"></i></span>）</p>
+<p><img data-src="https://i.imgur.com/nTdyP5I.png"><br>（圖片來源：<span class="exturl" data-url="aHR0cHM6Ly93d3cuc25lcHBldHMuY29tL2FuZ3VsYXIvdHlwZXNjcmlwdC12cy1lczYtdnMtZXM1Lw==" title="https://www.sneppets.com/angular/typescript-vs-es6-vs-es5/">Angular TypeScript Vs ES6 Vs ES5<i class="fa fa-external-link"></i></span>）</p>
 <h2 id="型別系統-Type-System"><a href="#型別系統-Type-System" class="headerlink" title="型別系統 Type System"></a>型別系統 Type System</h2><p>由於 JavaScript 是弱型別語言，TypeScript 的出現就是為了解決這個問題。</p>
 <p>而 TypeScript 就是原生 JavaScript 的延伸，包含 ES3、ES5 與 ES6+ 語法，以及本身的擴充內容，也就是說，TypeScript 具備以下特性：</p>
 <ul>
@@ -383,7 +405,7 @@
 </ul>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> noReturn = <span class="keyword">function</span> <span class="title function_">sayHello</span>(<span class="params"></span>)&#123;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;hello&#x27;</span>);      <span class="comment">// 不會有回傳值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/POJa4wH.png"></p>
+<p><img data-src="https://i.imgur.com/POJa4wH.png"></p>
 <ul>
 <li>Never 型別<ul>
 <li>應該要回傳，但因為函式中斷執行或進入無窮迴圈，永遠不會有回傳值的函式</li>
@@ -393,12 +415,12 @@
 </ul>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> neverEnd = <span class="keyword">function</span> <span class="title function_">forever</span>(<span class="params"></span>)&#123;</span><br><span class="line">   <span class="keyword">while</span>(<span class="literal">true</span>)&#123;    <span class="comment">// 無窮迴圈</span></span><br><span class="line">     <span class="comment">// code</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/RNQgOoe.png"></p>
+<p><img data-src="https://i.imgur.com/RNQgOoe.png"></p>
 <p>參考資料：<span class="exturl" data-url="aHR0cHM6Ly9pdGhlbHAuaXRob21lLmNvbS50dy9hcnRpY2xlcy8xMDIyMjkxNg==" title="https://ithelp.ithome.com.tw/articles/10222916">【Day 15】TypeScript 資料型別 - 特殊型別(上)- Never<i class="fa fa-external-link"></i></span></p>
 <h3 id="任意型別-any：不檢查型別"><a href="#任意型別-any：不檢查型別" class="headerlink" title="任意型別 any：不檢查型別"></a>任意型別 any：不檢查型別</h3><p>其實就類似在 JavaScript 使用 var 宣告變數。一旦將變數宣告成 any 型別，或在定義時沒有賦值，不管之後有沒有賦值，都會被推斷成 any 型別，完全不會進行型別檢查：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myFavoriteNumber;</span><br><span class="line">myFavoriteNumber = <span class="string">&#x27;seven&#x27;</span>;</span><br><span class="line">myFavoriteNumber = <span class="number">7</span>;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/u8oOgg5.png"></p>
+<p><img data-src="https://i.imgur.com/u8oOgg5.png"></p>
 <blockquote>
 <p>注意：不要濫用 any 任意型別，否則將失去型別檢查保障！</p>
 </blockquote>
@@ -568,17 +590,18 @@
       <div class="popular-posts-title"><a href="/fetch-promise/" rel="bookmark">[week 13] Fetch & Promise 補充</a></div>
     </li>
     <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/javascript-native-array/" rel="bookmark">【學習筆記】JavaScript 的陣列遍歷（二）：forEach/map/filter/every/some/reduce</a></div>
+    </li>
+    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/javascript-floating-number/" rel="bookmark">【學習筆記】JavaScript 的浮點數計算、平方根</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/javascript-for-loop/" rel="bookmark">【學習筆記】JavaScript 的陣列遍歷（ㄧ）：for/for...of/for...in/forEach</a></div>
     </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/javascript-native-array/" rel="bookmark">【學習筆記】JavaScript 的陣列遍歷（二）：forEach/map/filter/every/some/reduce</a></div>
-    </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -748,7 +771,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -810,12 +834,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

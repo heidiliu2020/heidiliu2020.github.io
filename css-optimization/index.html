@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="前端優化關於前端優化方式，可從下列幾個方向進行：  資源本身的大小 資源載入的方式 資源執行的方式">
@@ -55,6 +53,28 @@
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 13] 前端進階 - 如何優化執行 CSS 效能",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-09-30T10:20:00.000Z",
+  "dateModified": "2026-04-23T06:14:18.207Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/css-optimization/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
 
   <title>[week 13] 前端進階 - 如何優化執行 CSS 效能 | Liusan's Blog</title>
   
@@ -91,7 +111,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -297,18 +317,18 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://i.imgur.com/sywJHI7.png"></p>
+<p><img data-src="https://i.imgur.com/sywJHI7.png"></p>
 <ul>
 <li>CSS Sprites：將每個小檔案打包後，只需發出一個 Request  ，載入完成後再拆開引用<ul>
 <li>例如：將小圖片打包成大圖片，再取用需要的區塊</li>
 </ul>
 </li>
 </ul>
-<p><img src="https://i.imgur.com/XV6V5ak.png"></p>
+<p><img data-src="https://i.imgur.com/XV6V5ak.png"></p>
 <ul>
 <li>Cache*：將資料暫存在瀏覽器，只有第一次登入網站需下載，之後就能快速讀取暫存檔</li>
 </ul>
-<p><img src="https://i.imgur.com/8n3U6Qj.png"></p>
+<p><img data-src="https://i.imgur.com/8n3U6Qj.png"></p>
 <h3 id="執行方式"><a href="#執行方式" class="headerlink" title="執行方式"></a>執行方式</h3><ul>
 <li><p>選擇器：降低選擇器的複雜性</p>
 <ul>
@@ -390,11 +410,12 @@
       <div class="popular-posts-title"><a href="/react-styled-component/" rel="bookmark">[week 21] React 基礎：style & 如何撰寫 CSS</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/sass-babel/" rel="bookmark">[week 13] 前端工具之二 - CSS 預處理器、Babel</a></div>
+      <div class="popular-posts-title"><a href="/sass-css-preprocessor/" rel="bookmark">Sass/SCSS 入門：變數、巢狀、混入、繼承</a></div>
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -563,7 +584,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -625,12 +647,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

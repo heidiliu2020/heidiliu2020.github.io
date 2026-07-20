@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 [FE102] 前端必備：JavaScript 這門課程的學習筆記。如有錯誤歡迎指正。  當我們運用 JavaScript 在網頁進行操作時，主要可分為下列三大面向：  介面（Interface）：如何改變介面 事件（Event）：如何監聽事件並做出反應 資料（Data）：如何和伺服器交換資料">
@@ -57,6 +55,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 8] 傳送資料的方式 & 瀏覽器的限制",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-09-09T03:24:00.000Z",
+  "dateModified": "2026-07-09T06:06:05.602Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/browser-and-ajax/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[week 8] 傳送資料的方式 & 瀏覽器的限制 | Liusan's Blog</title>
   
 
@@ -92,7 +112,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -295,12 +315,12 @@
 <li>是直接發出 request 到 Server，再直接收到 Server 的 request</li>
 <li>中間不會受到任何限制</li>
 </ul>
-<p><img src="https://i.imgur.com/pOzNqr8.png"></p>
+<p><img data-src="https://i.imgur.com/pOzNqr8.png"></p>
 <h3 id="瀏覽器上"><a href="#瀏覽器上" class="headerlink" title="瀏覽器上"></a>瀏覽器上</h3><ul>
 <li>透過瀏覽器發出 request 到 Server，再透過瀏覽器接收 Server 的 response</li>
 <li>中間可能會受瀏覽器處理影響，必須按照瀏覽器的規則獲取資料</li>
 </ul>
-<p><img src="https://i.imgur.com/FCaXrNH.png"></p>
+<p><img data-src="https://i.imgur.com/FCaXrNH.png"></p>
 <h2 id="傳送資料的方式-表單-form"><a href="#傳送資料的方式-表單-form" class="headerlink" title="傳送資料的方式 - 表單 form"></a>傳送資料的方式 - 表單 form</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;app&quot;&gt;</span><br><span class="line">  &lt;form method=&quot;GET&quot; action=&quot;https://google.com&quot;&gt;</span><br><span class="line">    username：&lt;input name=&quot;username&quot;/&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot;&gt;</span><br><span class="line">  &lt;/form&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 
 <p>實際上 request 流程（和 JavaScript 無關）：</p>
@@ -333,7 +353,7 @@
 <p>參考資料：<span class="exturl" data-url="aHR0cHM6Ly90dy5hbHBoYWNhbXAuY28vYmxvZy9hamF4LWFzeW5jaHJvbm91cy1yZXF1ZXN0" title="https://tw.alphacamp.co/blog/ajax-asynchronous-request">什麼是 Ajax？ 搞懂非同步請求 (Asynchronous request)概念<i class="fa fa-external-link"></i></span></p>
 <hr>
 <h2 id="瀏覽器的限制-同源政策與跨網域問題"><a href="#瀏覽器的限制-同源政策與跨網域問題" class="headerlink" title="瀏覽器的限制 - 同源政策與跨網域問題"></a>瀏覽器的限制 - 同源政策與跨網域問題</h2><p>當我們發出 request 給 Google 網頁時，會出現下列訊息，顯示無法取得 response：</p>
-<p><img src="https://i.imgur.com/YJCjsgp.png"></p>
+<p><img data-src="https://i.imgur.com/YJCjsgp.png"></p>
 <p>這是因為瀏覽器為了安全性而設置的同源政策。一旦脫離瀏覽器，就不會有這些限制。</p>
 <h3 id="Same-Origin-Policy-同源政策"><a href="#Same-Origin-Policy-同源政策" class="headerlink" title="Same Origin Policy 同源政策"></a>Same Origin Policy 同源政策</h3><ul>
 <li>兩個網頁具有相同網域、埠號（如果有）以及主機位置</li>
@@ -420,14 +440,15 @@
       <div class="popular-posts-title"><a href="/ironman-2023-day-20/" rel="bookmark">[2023 15th鐵人賽] Day20 - 馬上就能使用的免費 Web API 總覽【2023年最新版】</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/javascript-floating-number/" rel="bookmark">【學習筆記】JavaScript 的浮點數計算、平方根</a></div>
+      <div class="popular-posts-title"><a href="/javascript-native-array/" rel="bookmark">【學習筆記】JavaScript 的陣列遍歷（二）：forEach/map/filter/every/some/reduce</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/javascript-for-loop/" rel="bookmark">【學習筆記】JavaScript 的陣列遍歷（ㄧ）：for/for...of/for...in/forEach</a></div>
+      <div class="popular-posts-title"><a href="/javascript-floating-number/" rel="bookmark">【學習筆記】JavaScript 的浮點數計算、平方根</a></div>
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -597,7 +618,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -659,12 +681,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

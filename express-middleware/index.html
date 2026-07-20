@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 [BE201] 後端中階：Express 與 Sequelize 這門課程的學習筆記。如有錯誤歡迎指正！  1234學習目標： P1 學習如何使用 Express 及其相關套件 P1 我理解為什麼會需要框架">
@@ -69,6 +67,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 17] 後端中階 - Express 中不可或缺的拼圖：淺談 Middleware",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-10-28T16:37:00.000Z",
+  "dateModified": "2026-07-09T06:06:05.650Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/express-middleware/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[week 17] 後端中階 - Express 中不可或缺的拼圖：淺談 Middleware | Liusan's Blog</title>
   
 
@@ -104,7 +124,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -298,7 +318,7 @@
 <h2 id="Middleware-中間介"><a href="#Middleware-中間介" class="headerlink" title="Middleware 中間介"></a>Middleware 中間介</h2><p>在上一篇筆記 <span class="exturl" data-url="aHR0cHM6Ly9oYWNrbWQuaW8vQEhlaWRpLUxpdS9ub3RlLWJlMjAxLWV4cHJlc3Mtbm9kZQ==" title="https://hackmd.io/@Heidi-Liu/note-be201-express-node">後端中階 - Node.js + Express 框架：建立一個靜態網頁<i class="fa fa-external-link"></i></span>，我們學到如何透過 Node.js 搭配 Express 框架，來快速建立一個靜態網頁。並瞭解到什麼是 MVC 架構，以及如何串接 MySQL 資料庫。</p>
 <p>而 Express 的核心，其實就是由 Routing（路由系統）和 Middleware（中間介）兩個部分所組成。</p>
 <p>也就是說，Express 會根據定義不同路由來執行接收到的 request，過程中會透過一連串的 middleware 處理，執行到最後產生 response。</p>
-<p><img src="https://i.imgur.com/uvrlRi6.png"></p>
+<p><img data-src="https://i.imgur.com/uvrlRi6.png"></p>
 <p>接下來我們會針對 Middleware 的部分做介紹。</p>
 <h3 id="什麼是-Middleware？"><a href="#什麼是-Middleware？" class="headerlink" title="什麼是 Middleware？"></a>什麼是 Middleware？</h3><p>在 Express 開發框架中，middleware 扮演資料庫與應用程式之間的溝通橋樑，透過不同類別的 middleware，依照需求對資料進行不同處裡，讓資料傳遞更加便利。</p>
 <p>例如先前範例中的 <code>app.get(&#39;/todos&#39;, todoController.getAll)</code>，其實就可以看做是一個 middleware。</p>
@@ -312,14 +332,14 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> db = <span class="built_in">require</span>(<span class="string">&#x27;./db&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line"><span class="keyword">const</span> port = <span class="number">5002</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> todoController = <span class="built_in">require</span>(<span class="string">&#x27;./controllers/todo&#x27;</span>)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">set</span>(<span class="string">&#x27;view engine&#x27;</span>, <span class="string">&#x27;ejs&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// app.use(): 代表整個程式都能使用這個 middleware</span></span><br><span class="line">app.<span class="title function_">use</span>(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Time: &#x27;</span>, <span class="keyword">new</span> <span class="title class_">Date</span>())</span><br><span class="line">  res.<span class="title function_">end</span>()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/todos&#x27;</span>, todoController.<span class="property">getAll</span>)</span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/todos/:id&#x27;</span>, todoController.<span class="property">get</span>)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(port, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  db.<span class="title function_">connect</span>()</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Example app listening at http://localhost:<span class="subst">$&#123;port&#125;</span>`</span>)</span><br><span class="line">&#125;) </span><br></pre></td></tr></table></figure>
 
 <p>重整瀏覽器頁面時，會發現畫面什麼東西都沒有：</p>
-<p><img src="https://i.imgur.com/N6etIbh.png"></p>
+<p><img data-src="https://i.imgur.com/N6etIbh.png"></p>
 <p>但是在 CLI 介面會印出執行結果，每重整一次畫面就會執行 log 一次：</p>
-<p><img src="https://i.imgur.com/J3r3CtM.png"></p>
+<p><img data-src="https://i.imgur.com/J3r3CtM.png"></p>
 <p>之所以沒有得到 response，是因為沒有加入第三個參數，也就是呼叫 next 把控制權轉移到下一個 middleware。可以把程式碼修改如下：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">use</span>(<span class="function">(<span class="params">req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Time: &#x27;</span>, <span class="keyword">new</span> <span class="title class_">Date</span>())</span><br><span class="line">  <span class="title function_">next</span>()  <span class="comment">// 呼叫 next 把控制權轉移到下一個 middleware</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>重整頁面後，就能看到經渲染過的畫面，同時 CLI 介面上也會印出接收 request 的時間：</p>
-<p><img src="https://i.imgur.com/9vEZvbU.png"></p>
+<p><img data-src="https://i.imgur.com/9vEZvbU.png"></p>
 <p>這其實就是一個簡單的 middleware 應用。那這個機制實際上在 Express 有哪些用處呢？比如說，在 Express 程式中，並沒有內建解析透過 post method 的 request body、管理 session 機制等功能，就必須透過 middleware 來實現。</p>
 <p>此外，middleware 處理是有順序性的。以一個簡單的權限管理機制為範例，例如網址列上必須有 <code>admin</code> 才能顯示頁面：</p>
 <h4 id="方法一：最直覺的作法"><a href="#方法一：最直覺的作法" class="headerlink" title="方法一：最直覺的作法"></a>方法一：最直覺的作法</h4><p>這個方法是透過 Express 內建的 <code>.query</code> 語法，來拿到網址列上的參數。</p>
@@ -327,13 +347,13 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> todoModel = <span class="built_in">require</span>(<span class="string">&#x27;../models/todo&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">checkPermission</span>(<span class="params">req</span>) &#123;</span><br><span class="line">  <span class="comment">// 利用 .query 能夠拿到網址列上的參數</span></span><br><span class="line">  <span class="keyword">return</span> req.<span class="property">query</span>.<span class="property">admin</span> === <span class="string">&#x27;1&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> todoController = &#123;</span><br><span class="line">  <span class="attr">getAll</span>: <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 如果驗證失敗就結束 request</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="title function_">checkPermission</span>(req)) <span class="keyword">return</span> res.<span class="title function_">end</span>();</span><br><span class="line">    todoModel.<span class="title function_">getAll</span>(<span class="function">(<span class="params">err, results</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (err) <span class="keyword">return</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(err);</span><br><span class="line">      res.<span class="title function_">render</span>(<span class="string">&#x27;todos&#x27;</span>, &#123;</span><br><span class="line">        <span class="attr">todos</span>: results</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="attr">get</span>: <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 如果驗證失敗就結束 request</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="title function_">checkPermission</span>(req)) <span class="keyword">return</span> res.<span class="title function_">end</span>();</span><br><span class="line">    <span class="keyword">const</span> id = req.<span class="property">params</span>.<span class="property">id</span></span><br><span class="line">    todoModel.<span class="title function_">get</span>(id, <span class="function">(<span class="params">err, results</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (err) <span class="keyword">return</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(err);</span><br><span class="line">      res.<span class="title function_">render</span>(<span class="string">&#x27;todo&#x27;</span>, &#123;</span><br><span class="line">        <span class="attr">todo</span>: results[<span class="number">0</span>]</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = todoController</span><br></pre></td></tr></table></figure>
 
 <p>回到瀏覽器，會發現必須網址列加上 <code>?admin=1</code> 參數才能讀取畫面：</p>
-<p><img src="https://i.imgur.com/rJV2764.png"></p>
+<p><img data-src="https://i.imgur.com/rJV2764.png"></p>
 <p>這樣就完成簡單的權限驗證機制，但這其實不是一個好做法，一旦 function 變多就會不易管理。這種情況就是 middleware 登場的時候了！</p>
 <h4 id="方法二：透過-middleware-機制"><a href="#方法二：透過-middleware-機制" class="headerlink" title="方法二：透過 middleware 機制"></a>方法二：透過 middleware 機制</h4><p>在 index.js 加上 app.use()，並傳入 next 參數，若網址列通過驗證就會把控制權傳下去：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">use</span>(<span class="function">(<span class="params">req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 如果網址列通過驗證，就把控制權傳下去</span></span><br><span class="line">  <span class="keyword">if</span> (req.<span class="property">query</span>.<span class="property">admin</span> === <span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">    <span class="title function_">next</span>();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 不通過的話就顯示 Error</span></span><br><span class="line">    res.<span class="title function_">end</span>(<span class="string">&#x27;Error&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>執行結果如下：</p>
-<p><img src="https://i.imgur.com/WkQUoAq.png"></p>
+<p><img data-src="https://i.imgur.com/WkQUoAq.png"></p>
 <p>這其實就是 middleware 的作用，相較於方法一，我們能透過 middleware 來簡化程式碼。</p>
 <p>此外，我們也能改寫上述程式碼，獨立出 checkPermission() 這個 function 來進行驗證：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">checkPermission</span>(<span class="params">req, res, next</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (req.<span class="property">query</span>.<span class="property">admin</span> === <span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">    <span class="title function_">next</span>();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    res.<span class="title function_">end</span>(<span class="string">&#x27;Error&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(checkPermission)</span><br></pre></td></tr></table></figure>
@@ -342,15 +362,15 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/todos&#x27;</span>, checkPermission, todoController.<span class="property">getAll</span>)</span><br></pre></td></tr></table></figure>
 
 <p>在 <code>/todos</code> 這個路由，必須加上 <code>?admin=1</code>  才能顯示畫面：</p>
-<p><img src="https://i.imgur.com/38VqxUf.png"></p>
+<p><img data-src="https://i.imgur.com/38VqxUf.png"></p>
 <p>但是 <code>/todos/:id</code> 這個路由不會受到影響，因為沒有加上 checkPermission() 這個 middleware：</p>
-<p><img src="https://i.imgur.com/wqOkqgg.png"></p>
+<p><img data-src="https://i.imgur.com/wqOkqgg.png"></p>
 <p>在上一篇筆記的 todolist 範例中，之所以沒有寫到 next 來轉移控制權，是因為處理完就回傳 response 資料，既然不會用到 next 這個參數，就可省略宣告。</p>
 <h2 id="body-parser：用來解析-HTTP-Request"><a href="#body-parser：用來解析-HTTP-Request" class="headerlink" title="body-parser：用來解析 HTTP Request"></a>body-parser：用來解析 HTTP Request</h2><p>接著要來介紹 body-parser 這個很常使用到的 middleware，使用方法可參考 GitHub 上 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2V4cHJlc3Nqcy9ib2R5LXBhcnNlciNyZWFkbWU=" title="https://github.com/expressjs/body-parser#readme">expressjs/body-parser<i class="fa fa-external-link"></i></span> 的範例。</p>
 <p>body-parser 是一個用來解析解析 HTTP Request 的中間介。前面有提到說，我透過 Express 內建的語法，我們只能拿到 query string，因此只適用於 GET method，但若是 POST method 就必須透過 middleware 才能拿到 request body。</p>
 <h3 id="安裝-body-parser"><a href="#安裝-body-parser" class="headerlink" title="安裝 body-parser"></a>安裝 body-parser</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install body-parser</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/4q8sKI0.png"></p>
+<p><img data-src="https://i.imgur.com/4q8sKI0.png"></p>
 <h3 id="body-parser-語法"><a href="#body-parser-語法" class="headerlink" title="body-parser 語法"></a>body-parser 語法</h3><p>body-parser 根據不同語法，能夠處理下列幾種格式資料：</p>
 <ul>
 <li>bodyParser.urlencoded()<ul>
@@ -394,9 +414,9 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;<span class="title class_">Add</span> <span class="title class_">Todo</span>&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">&quot;POST&quot;</span>&quot; <span class="attr">action</span>=<span class="string">&quot;/todos&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  Content: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;content&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
 <p>執行後可在瀏覽器確認是否有畫面：</p>
-<p><img src="https://i.imgur.com/scuiz9Q.png"></p>
+<p><img data-src="https://i.imgur.com/scuiz9Q.png"></p>
 <p>這時如果點選提交，會跳轉到錯誤頁面，這是因為還沒有處理路由：</p>
-<p><img src="https://i.imgur.com/9xs6k0Y.png"></p>
+<p><img data-src="https://i.imgur.com/9xs6k0Y.png"></p>
 <ol start="4">
 <li>回到 index.js 新增一個處理 newTodo 的路由：</li>
 </ol>
@@ -408,7 +428,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">newTodo</span>: <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 透過 body-parser 解析 resquest body 來拿取 content</span></span><br><span class="line">  <span class="keyword">const</span> content = req.<span class="property">body</span>.<span class="property">content</span></span><br><span class="line">  <span class="comment">// 先輸出確認是否有拿到資料</span></span><br><span class="line">  res.<span class="title function_">end</span>(content)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 
 <p>在瀏覽器提交表單，確認有拿到資料：</p>
-<p><img src="https://i.imgur.com/EQIScXT.png"></p>
+<p><img data-src="https://i.imgur.com/EQIScXT.png"></p>
 <p>之所以能夠拿到表單提交的資料，是透過 body-parser 這個中間介解析 resquest body，才能拿取 content，否則程式會因為無法解析而出現錯誤。</p>
 <ol start="6">
 <li>接著繼續修改 newTodo Controller，把資料交給 Model 處理：</li>
@@ -421,12 +441,12 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 新增 todoModel.add()</span></span><br><span class="line"><span class="attr">add</span>: <span class="function">(<span class="params">content, cb</span>) =&gt;</span> &#123;</span><br><span class="line">  db.<span class="title function_">query</span>(</span><br><span class="line">    <span class="string">&#x27;INSERT INTO todos(content) VALUES(?)&#x27;</span>, [content], <span class="function">(<span class="params">err, results</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (err) <span class="keyword">return</span> <span class="title function_">cb</span>(err);</span><br><span class="line">      <span class="title function_">cb</span>(<span class="literal">null</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>回到瀏覽器確認是否能夠新增 todo：</p>
-<p><img src="https://i.imgur.com/Y9fPgmN.png"></p>
+<p><img data-src="https://i.imgur.com/Y9fPgmN.png"></p>
 <p>這樣就完成一個簡單的 Back-end 專案了！並且有 MVC 架構，也就是 View 顯示畫面，Model 處理資料，Controller 藉由不同路由接收 requset，會執行相對應的 method；還有透過 body-parser 這個 middleware 處理 POST 表單提交的資料。</p>
 <h2 id="express-session：負責管理-session"><a href="#express-session：負責管理-session" class="headerlink" title="express-session：負責管理 session"></a>express-session：負責管理 session</h2><p>再來介紹 Express 框架中，用來管理 session 的中間介：express-session，使用方法可參考 GitHub 的 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2V4cHJlc3Nqcy9zZXNzaW9u" title="https://github.com/expressjs/session">expressjs/session<i class="fa fa-external-link"></i></span> 頁面。</p>
 <h3 id="安裝-express-session"><a href="#安裝-express-session" class="headerlink" title="安裝 express-session"></a>安裝 express-session</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install express-session</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/jWw5ZYd.png"></p>
+<p><img data-src="https://i.imgur.com/jWw5ZYd.png"></p>
 <h3 id="實作簡易登入功能"><a href="#實作簡易登入功能" class="headerlink" title="實作簡易登入功能"></a>實作簡易登入功能</h3><p>接著延續前面的 todolist 範例，實作一個簡單的登入功能。</p>
 <ol>
 <li>在 index.js引入 express-session 套件：</li>
@@ -459,7 +479,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;<span class="title class_">Login</span>&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">&quot;POST&quot;</span> <span class="attr">action</span>=<span class="string">&quot;/login&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  Password: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
 <p>執行結果：</p>
-<p><img src="https://i.imgur.com/3RZUKgn.png"></p>
+<p><img data-src="https://i.imgur.com/3RZUKgn.png"></p>
 <p>這樣就透過 express-session 中間介提供的功能，完成簡單的登入登出功能。</p>
 <p>但這種寫法其實會遇到一個問題，也就是每個 render 的頁面都要加上 isLogin 判斷登入狀態，我們再來要介紹的中間介就可以解決這個問題。</p>
 <h2 id="connect-flash：顯示錯誤訊息"><a href="#connect-flash：顯示錯誤訊息" class="headerlink" title="connect-flash：顯示錯誤訊息"></a>connect-flash：顯示錯誤訊息</h2><p>藉由 connect-flash 提供的 flash message 功能，我們就能在頁面顯示錯誤訊息等等，其實這背後的機制就是透過 session，能夠和 express-session 搭配使用。</p>
@@ -486,7 +506,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;<span class="title class_">Login</span>&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>&lt;%= errorMessage %&gt;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">&quot;POST&quot;</span> <span class="attr">action</span>=<span class="string">&quot;/login&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  Password: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
 <p>執行結果如下，當提交錯誤時會顯示 errorMessage，重整頁面後就會消失，這就是 flash 的功用：</p>
-<p><img src="https://i.imgur.com/OepYfsy.png"></p>
+<p><img data-src="https://i.imgur.com/OepYfsy.png"></p>
 <p>但這種寫法其實還是不夠簡潔，如果要判斷輸出錯誤都還是要向 isLogin 那樣加上 errorMessage。</p>
 <h3 id="重構程式碼：透過-res-locals-傳值給-view"><a href="#重構程式碼：透過-res-locals-傳值給-view" class="headerlink" title="重構程式碼：透過 res.locals 傳值給 view"></a>重構程式碼：透過 res.locals 傳值給 view</h3><p>其實在 express 中有個捷徑，我們可以自己新增 middleware。也就是把東西存放在 <code>res.locals</code> ，view 就可以直接從 locals 存取使用，可想像成全域變數的感覺：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 透過 locals 傳值給 view: session 功能和 errorMessage</span></span><br><span class="line">app.<span class="title function_">use</span>(<span class="function">(<span class="params">req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">  res.<span class="property">locals</span>.<span class="property">isLogin</span> = req.<span class="property">session</span>.<span class="property">isLogin</span></span><br><span class="line">  res.<span class="property">locals</span>.<span class="property">errorMessage</span> = req.<span class="title function_">flash</span>(<span class="string">&#x27;errorMessage&#x27;</span>)</span><br><span class="line">  <span class="comment">// 記得加上 next() 把控制權轉移到下一個中間介</span></span><br><span class="line">  <span class="title function_">next</span>()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 就不需在路由加上 errorMessage</span></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/login&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.<span class="title function_">render</span>(<span class="string">&#x27;login&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
@@ -544,7 +564,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -713,7 +734,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -775,12 +797,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

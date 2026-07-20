@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 [FE302] React 基礎 - hooks 版本 這門課程的學習筆記。如有錯誤歡迎指正！   參考：從實際案例看 class 與 function component 的差異">
@@ -60,6 +58,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 22] 再探 React：Function component vs Class component",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-12-14T17:03:00.000Z",
+  "dateModified": "2026-07-09T06:06:05.716Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/react-class-function-hook/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[week 22] 再探 React：Function component vs Class component | Liusan's Blog</title>
   
 
@@ -95,7 +115,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -311,7 +331,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">class</span> <span class="title class_">TodoItemC</span>  <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="comment">// 變成 component 的 method (也可用 inline function 的寫法)</span></span><br><span class="line">  <span class="title function_">handleToggleClick</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; handleToggleIsDone, todo &#125; = <span class="variable language_">this</span>.<span class="property">props</span>;</span><br><span class="line">    <span class="title function_">handleToggleIsDone</span>(todo.<span class="property">id</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">handleDeleteClick</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; handleDeleteTodo, todo &#125; = <span class="variable language_">this</span>.<span class="property">props</span>;</span><br><span class="line">    <span class="title function_">handleDeleteTodo</span>(todo.<span class="property">id</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; todo &#125; = <span class="variable language_">this</span>.<span class="property">props</span>;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">TodoItemWrapper</span> <span class="attr">data-todo-id</span>=<span class="string">&#123;todo.id&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">TodoContent</span> $<span class="attr">isDone</span>=<span class="string">&#123;todo.isDone&#125;</span>&gt;</span>&#123;todo.content&#125;<span class="tag">&lt;/<span class="name">TodoContent</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">TodoButtonWrapper</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">Button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleToggleClick&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            &#123;todo.isDone ? &quot;已完成&quot; : &quot;未完成&quot;&#125;</span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">RedButton</span> <span class="attr">onClick</span>=<span class="string">&#123;handleDeleteClick&#125;</span>&gt;</span>刪除<span class="tag">&lt;/<span class="name">RedButton</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">TodoButtonWrapper</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">TodoItemWrapper</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>這是因為 this 的值會根據怎麼呼叫 function 決定，在嚴格模式中直接呼叫 onClick 的話 this 的值就會是 undefined：</p>
-<p><img src="https://i.imgur.com/ZQOcT1O.png"></p>
+<p><img data-src="https://i.imgur.com/ZQOcT1O.png"></p>
 <p>有兩種解決方式：</p>
 <ul>
 <li>透過 cunstructor 初始化 props 並綁定 this 指向</li>
@@ -327,9 +347,9 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">class</span> <span class="title class_">TodoItemC</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="comment">// 初始化</span></span><br><span class="line">    <span class="variable language_">super</span>(props);</span><br><span class="line">    <span class="comment">// 設定初始 state</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">      <span class="attr">counter</span>: <span class="number">1</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  handleToggleClick = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; handleToggleIsDone, todo &#125; = <span class="variable language_">this</span>.<span class="property">props</span>;</span><br><span class="line">    <span class="title function_">handleToggleIsDone</span>(todo.<span class="property">id</span>);</span><br><span class="line">    <span class="comment">// 設定 state</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">setState</span> = &#123;</span><br><span class="line">      <span class="attr">counter</span>: <span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">counter</span> + <span class="number">1</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
 
 <h2 id="Class-component-的生命週期"><a href="#Class-component-的生命週期" class="headerlink" title="Class component 的生命週期"></a>Class component 的生命週期</h2><p>關於 class component 的生命週期架構可參考附圖：</p>
-<p><img src="https://i.imgur.com/CV4MKmC.png"><br>（圖片來源：<span class="exturl" data-url="aHR0cHM6Ly9wcm9qZWN0cy53b2p0ZWttYWoucGwvcmVhY3QtbGlmZWN5Y2xlLW1ldGhvZHMtZGlhZ3JhbS8=" title="https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/">React LifeCycle Methods Diagram<i class="fa fa-external-link"></i></span>）</p>
+<p><img data-src="https://i.imgur.com/CV4MKmC.png"><br>（圖片來源：<span class="exturl" data-url="aHR0cHM6Ly9wcm9qZWN0cy53b2p0ZWttYWoucGwvcmVhY3QtbGlmZWN5Y2xlLW1ldGhvZHMtZGlhZ3JhbS8=" title="https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/">React LifeCycle Methods Diagram<i class="fa fa-external-link"></i></span>）</p>
 <p>可和之前提過的 React Hook 流程圖進行對照，改成用 useEffect 執行：</p>
-<p><img src="https://i.imgur.com/iY123nV.png"><br>（圖片來源：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2RvbmF2b24vaG9vay1mbG93JUVGJUJDJTg5" title="https://github.com/donavon/hook-flow%EF%BC%89">https://github.com/donavon/hook-flow）<i class="fa fa-external-link"></i></span></p>
+<p><img data-src="https://i.imgur.com/iY123nV.png"><br>（圖片來源：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2RvbmF2b24vaG9vay1mbG93JUVGJUJDJTg5" title="https://github.com/donavon/hook-flow%EF%BC%89">https://github.com/donavon/hook-flow）<i class="fa fa-external-link"></i></span></p>
 <h3 id="實作一個-Counter-component"><a href="#實作一個-Counter-component" class="headerlink" title="實作一個 Counter component"></a>實作一個 Counter component</h3><p>這裡重新建立一個 Counter.js 作為範例，首先將 index.js 改成引入 Counter：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">ReactDOM</span> <span class="keyword">from</span> <span class="string">&quot;react-dom&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Counter</span> <span class="keyword">from</span> <span class="string">&quot;./Counter&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">Counter</span> /&gt;</span></span>, <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;root&quot;</span>));</span><br></pre></td></tr></table></figure>
 
@@ -363,13 +383,13 @@
    
 
 <p>第一次渲染畫面，只有第一次會有 constructor 和 mount：</p>
-<p><img src="https://i.imgur.com/iG3pxlB.png"></p>
+<p><img data-src="https://i.imgur.com/iG3pxlB.png"></p>
 <p>點擊第一次，第二次渲染畫面，count 不等於 1，test unmount：</p>
-<p><img src="https://i.imgur.com/RLdOBft.png"></p>
+<p><img data-src="https://i.imgur.com/RLdOBft.png"></p>
 <p>點擊第二次，第三次渲染畫面：</p>
-<p><img src="https://i.imgur.com/r6zc3yw.png"></p>
+<p><img data-src="https://i.imgur.com/r6zc3yw.png"></p>
 <h3 id="其他少見的-method"><a href="#其他少見的-method" class="headerlink" title="其他少見的 method"></a>其他少見的 method</h3><p>輸入 component 會發現有些 method 被畫刪除線，代表目前版本不建議使用：</p>
-<p><img src="https://i.imgur.com/xWDgAL8.png"></p>
+<p><img data-src="https://i.imgur.com/xWDgAL8.png"></p>
 <ul>
 <li>componentDidCatch：進行錯誤處理</li>
 <li>shouldComponentUpdate：決定要不要 update，也可透過傳入的參數決定要不要 update，詳細可參考<span class="exturl" data-url="aHR0cHM6Ly96aC1oYW50LnJlYWN0anMub3JnL2RvY3MvcmVhY3QtY29tcG9uZW50Lmh0bWw=" title="https://zh-hant.reactjs.org/docs/react-component.html">官方文件<i class="fa fa-external-link"></i></span></li>
@@ -381,7 +401,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">shouldComponentUpdate</span>(<span class="params">nextProps, nextState</span>) &#123;</span><br><span class="line">  <span class="comment">// 當 counter &gt; 5 時，就不會再 update</span></span><br><span class="line">  <span class="keyword">if</span> (nextState.<span class="property">counter</span> &gt; <span class="number">5</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>結果如下，當 counter: 5 之後，再點擊也不會有反應：</p>
-<p><img src="https://i.imgur.com/XrScAIB.png"></p>
+<p><img data-src="https://i.imgur.com/XrScAIB.png"></p>
 <p>這通常會和之前在 React 效能優化提到的 memo 搭配使用，根據比對 props 是否相同或自訂條件。</p>
 <p>另一個方法，是把 Component 改寫成 PureComponent，和 memo 的效果類似：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">class</span> <span class="title class_">Counter</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.PureComponent</span></span><br></pre></td></tr></table></figure>
@@ -423,14 +443,15 @@
       <div class="popular-posts-title"><a href="/nextjs-app-router/" rel="bookmark">【學習筆記】Next.js 路由系統：App Router vs Page Router</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/nextjs-error-fix/" rel="bookmark">【學習筆記】Next.js 錯誤修復紀錄： 「Window is not defined」、「use client & missing generateStaticParams() error」</a></div>
+      <div class="popular-posts-title"><a href="/nextjs-i18next/" rel="bookmark">【學習筆記】Next.js 實現多國語系：react-i18next & next-i18next</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/nextjs-i18next/" rel="bookmark">【學習筆記】Next.js 實現多國語系：react-i18next & next-i18next</a></div>
+      <div class="popular-posts-title"><a href="/nextjs-error-fix/" rel="bookmark">【學習筆記】Next.js 錯誤修復紀錄： 「Window is not defined」、「use client & missing generateStaticParams() error」</a></div>
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -598,7 +619,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -660,12 +682,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

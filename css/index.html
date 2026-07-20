@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 [FE101] 前端基礎：HTML 與 CSS 這門課程的學習筆記。如有錯誤歡迎指正。  123456789學習目標: P1 你知道 CSS 是什麼 P1 你知道 inline、block 跟 inline-block 的區別 P1 你知道什麼是 box model P1 你知道 position 的所有屬性及其差別 P2 你知道 :hover, :before, :after P2 你">
@@ -59,6 +57,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 6] CSS - 認識基礎標籤 & 屬性",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-07-26T05:52:00.000Z",
+  "dateModified": "2026-04-23T06:14:18.208Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/css/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[week 6] CSS - 認識基礎標籤 & 屬性 | Liusan's Blog</title>
   
 
@@ -94,7 +114,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -392,7 +412,7 @@
 </ol>
 <hr>
 <h2 id="box-model-盒模型"><a href="#box-model-盒模型" class="headerlink" title="box model 盒模型"></a>box model 盒模型</h2><p>盒模型又稱為區塊模型，意思是所有 HTML 元素均可被視為一個盒子。我們能透過 CSS 控制內距、外距、邊框屬性，來調整盒子的外觀及位置。</p>
-<p><img src="https://i.imgur.com/HzfLkAY.png" alt="box model"></p>
+<p><img data-src="https://i.imgur.com/HzfLkAY.png" alt="box model"></p>
 <p>盒模型的組成由外而內分別為：</p>
 <ul>
 <li>margin（外邊距）</li>
@@ -411,11 +431,11 @@
 <ul>
 <li><code>box-sizing: content-box</code>：為預設屬性。「內容」就等於長寬度。</li>
 </ul>
-<p><img src="https://i.imgur.com/euaGSlb.png" alt="content-box"><br>加上 border 和 padding 會導致元素實際大小比設定值還大。</p>
+<p><img data-src="https://i.imgur.com/euaGSlb.png" alt="content-box"><br>加上 border 和 padding 會導致元素實際大小比設定值還大。</p>
 <ul>
 <li><code>box-sizing: border-box</code>：「邊框到邊框之間的範圍」等於長寬度。</li>
 </ul>
-<p><img src="https://i.imgur.com/BdytGoL.png" alt="border-box"><br>此時長寬設定會套用到 border、padding、content。</p>
+<p><img data-src="https://i.imgur.com/BdytGoL.png" alt="border-box"><br>此時長寬設定會套用到 border、padding、content。</p>
 <p>而 margin 在兩種盒模型都是額外加上去的，並不會影響盒子長寬。</p>
 <p>參考資料：</p>
 <ol>
@@ -440,9 +460,9 @@
 <li>以 inline 方式呈現：可水平排列</li>
 <li>擁有 block 的屬性：可設定元素的寬高/margin/padding</li>
 </ul>
-<h3 id="以長寬同樣為-100px-的-box-為例："><a href="#以長寬同樣為-100px-的-box-為例：" class="headerlink" title="以長寬同樣為 100px 的 box 為例："></a>以長寬同樣為 100px 的 box 為例：</h3><h4 id="display-block"><a href="#display-block" class="headerlink" title="display: block"></a><code>display: block</code></h4><p><img src="https://i.imgur.com/jx5DjYZ.png" alt="block"></p>
-<h4 id="display-inline"><a href="#display-inline" class="headerlink" title="display: inline"></a><code>display: inline</code></h4><p><img src="https://i.imgur.com/SBjWPnH.png" alt="inline"></p>
-<h4 id="display-inline-block"><a href="#display-inline-block" class="headerlink" title="display: inline-block"></a><code>display: inline-block</code></h4><p><img src="https://i.imgur.com/I4pokc3.png" alt="inline-block"></p>
+<h3 id="以長寬同樣為-100px-的-box-為例："><a href="#以長寬同樣為-100px-的-box-為例：" class="headerlink" title="以長寬同樣為 100px 的 box 為例："></a>以長寬同樣為 100px 的 box 為例：</h3><h4 id="display-block"><a href="#display-block" class="headerlink" title="display: block"></a><code>display: block</code></h4><p><img data-src="https://i.imgur.com/jx5DjYZ.png" alt="block"></p>
+<h4 id="display-inline"><a href="#display-inline" class="headerlink" title="display: inline"></a><code>display: inline</code></h4><p><img data-src="https://i.imgur.com/SBjWPnH.png" alt="inline"></p>
+<h4 id="display-inline-block"><a href="#display-inline-block" class="headerlink" title="display: inline-block"></a><code>display: inline-block</code></h4><p><img data-src="https://i.imgur.com/I4pokc3.png" alt="inline-block"></p>
 <h3 id="以文字排版為例："><a href="#以文字排版為例：" class="headerlink" title="以文字排版為例："></a>以文字排版為例：</h3><iframe height="265" style="width: 100%;" scrolling="no" title="Box Model" src="https://codepen.io/heidiliu2020/embed/xxZBNPR?height=265&theme-id=dark&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
   See the Pen <a target="_blank" rel="noopener" href='https://codepen.io/heidiliu2020/pen/xxZBNPR'>display</a> by Heidi-Liu
   (<a target="_blank" rel="noopener" href='https://codepen.io/heidiliu2020'>@heidiliu2020</a>) on <a target="_blank" rel="noopener" href='https://codepen.io'>CodePen</a>.
@@ -577,11 +597,12 @@
       <div class="popular-posts-title"><a href="/react-styled-component/" rel="bookmark">[week 21] React 基礎：style & 如何撰寫 CSS</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/sass-babel/" rel="bookmark">[week 13] 前端工具之二 - CSS 預處理器、Babel</a></div>
+      <div class="popular-posts-title"><a href="/sass-css-preprocessor/" rel="bookmark">Sass/SCSS 入門：變數、巢狀、混入、繼承</a></div>
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -750,7 +771,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -812,12 +834,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

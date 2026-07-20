@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 [JS101] 用 JavaScript 一步步打造程式基礎 這門課程的學習筆記。如有錯誤歡迎指正！  123456學習目標： P1 你能靈活運用變數、迴圈、判斷式等等基本概念來解題 P1 你能一行行的說出現在程式在做什麼 P1 你知道「回傳」跟「輸出」的差異 P1 你可以把用文字寫好的演算法轉成程式碼">
@@ -75,6 +73,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 2] JavaScript 基礎 - 基本語法、值的型別、變數、迴圈、函數",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-06-23T16:21:00.000Z",
+  "dateModified": "2026-04-23T06:14:18.244Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/javascript/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[week 2] JavaScript 基礎 - 基本語法、值的型別、變數、迴圈、函數 | Liusan's Blog</title>
   
 
@@ -110,7 +130,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -312,30 +332,30 @@
 </blockquote>
 <p>安裝完成後，就可以在 Command Line 輸入指令：</p>
 <h3 id="node-v：查看目前-Node-js-版本號"><a href="#node-v：查看目前-Node-js-版本號" class="headerlink" title="node -v：查看目前 Node.js 版本號"></a><code>node -v</code>：查看目前 Node.js 版本號</h3><p>出現版本號就代表安裝成功。</p>
-<p><img src="https://i.imgur.com/IXXGrb0.png"></p>
+<p><img data-src="https://i.imgur.com/IXXGrb0.png"></p>
 <h3 id="node：直接在-CML-開啟-Node-環境"><a href="#node：直接在-CML-開啟-Node-環境" class="headerlink" title="node：直接在 CML 開啟 Node 環境"></a><code>node</code>：直接在 CML 開啟 Node 環境</h3><p>可在終端機輸入指令。按 Crtl+C 或輸入就<code>.exit</code> 即可退出。</p>
-<p><img src="https://i.imgur.com/L3DJaob.png"></p>
+<p><img data-src="https://i.imgur.com/L3DJaob.png"></p>
 <hr>
 <h2 id="如何執行-JavaScript-文件？"><a href="#如何執行-JavaScript-文件？" class="headerlink" title="如何執行 JavaScript 文件？"></a>如何執行 JavaScript 文件？</h2><h3 id="在瀏覽器執行"><a href="#在瀏覽器執行" class="headerlink" title="在瀏覽器執行"></a>在瀏覽器執行</h3><ol>
 <li>寫在 HTML 文件中的 <code>&lt;script &gt;</code> 標籤內</li>
 </ol>
-<p><img src="https://i.imgur.com/r1gMPnm.png" alt="HTML JS"></p>
+<p><img data-src="https://i.imgur.com/r1gMPnm.png" alt="HTML JS"></p>
 <ol start="2">
 <li>用瀏覽器開啟該檔案，點選右鍵選單的檢查，進入開發者工具介面</li>
 <li>可在 Console 主控台檢視或直接撰寫。通常用來測試代碼的可行性、或直接 debug 抓錯</li>
 </ol>
-<p><img src="https://i.imgur.com/1U5LzRD.png" alt="Google JS"></p>
+<p><img data-src="https://i.imgur.com/1U5LzRD.png" alt="Google JS"></p>
 <h3 id="在-Command-Line-執行"><a href="#在-Command-Line-執行" class="headerlink" title="在 Command Line 執行"></a>在 Command Line 執行</h3><ol>
 <li><code>vim index.js</code>：輸入 vim 指令建立檔案 index.js，並且編輯內容</li>
 </ol>
 <blockquote>
 <p>也可使用 VSCode、Sublime 等程式碼編輯器來撰寫程式碼</p>
 </blockquote>
-<p><img src="https://i.imgur.com/4392JMK.png" alt="vim 介面"></p>
+<p><img data-src="https://i.imgur.com/4392JMK.png" alt="vim 介面"></p>
 <ol start="2">
 <li><code>node index.js</code>：在 CML 執行檔案 index.js</li>
 </ol>
-<p><img src="https://i.imgur.com/zkJPsbj.png" alt="node 執行"></p>
+<p><img data-src="https://i.imgur.com/zkJPsbj.png" alt="node 執行"></p>
 <hr>
 <h2 id="基本語法"><a href="#基本語法" class="headerlink" title="基本語法"></a>基本語法</h2><h3 id="console-log-：將值輸出到瀏覽器控制台"><a href="#console-log-：將值輸出到瀏覽器控制台" class="headerlink" title="console.log()：將值輸出到瀏覽器控制台"></a>console.log()：將值輸出到瀏覽器控制台</h3><p>若要輸出字串，需用 ‘單引號’ 或 “雙引號” 括起來。</p>
 <p><code>console.log(’Hello World’)　　//　輸出值：Hello World</code></p>
@@ -345,11 +365,11 @@
 <li>在 JavaScript 中會被判定為 false 的值為：<code>0</code>、<code>&quot;&quot;</code>、<code>null</code>、<code>false</code>、<code>undefined</code>、<code>NaN</code></li>
 </ul>
 <h4 id="：or"><a href="#：or" class="headerlink" title="||：or"></a><code>||</code>：or</h4><p>只要其中一個是 true 就會返回 true，除非全部為 false。意即只要其中一個條件滿足就成立。</p>
-<p><img src="https://i.imgur.com/v0j07Ua.png" alt="or"></p>
+<p><img data-src="https://i.imgur.com/v0j07Ua.png" alt="or"></p>
 <h4 id="amp-amp-：and"><a href="#amp-amp-：and" class="headerlink" title="&amp;&amp;：and"></a><code>&amp;&amp;</code>：and</h4><p>全部為 true 才會是 true，否則均返回 false。意即全部條件都必須成立。</p>
-<p><img src="https://i.imgur.com/dbhRafe.png" alt="and"></p>
+<p><img data-src="https://i.imgur.com/dbhRafe.png" alt="and"></p>
 <h4 id="：not"><a href="#：not" class="headerlink" title="!：not"></a><code>!</code>：not</h4><p>做反向。</p>
-<p><img src="https://i.imgur.com/2scURgc.png" alt="!"></p>
+<p><img data-src="https://i.imgur.com/2scURgc.png" alt="!"></p>
 <h3 id="與-amp-amp-的短路性質"><a href="#與-amp-amp-的短路性質" class="headerlink" title="|| 與 &amp;&amp; 的短路性質"></a><code>||</code> 與 <code>&amp;&amp;</code> 的短路性質</h3><p>使用最短的路徑來求值，又稱<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU3JTlGJUFEJUU4JUI3JUFGJUU2JUIxJTgyJUU1JTgwJUJD" title="https://zh.wikipedia.org/wiki/%E7%9F%AD%E8%B7%AF%E6%B1%82%E5%80%BC">短路求值<i class="fa fa-external-link"></i></span>。只有當第一個運算數的值無法確定邏輯運算的結果時，才對第二個運算數進行求值。例如：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. 當 or 的第一個運算數為 true 時，最後結果必定為 true</span><br><span class="line">2. 當 and 的第一個運算數的值為 false 時，其結果必定為 false</span><br></pre></td></tr></table></figure>
 
@@ -364,8 +384,8 @@
 </blockquote>
 <h3 id="位移運算子：-lt-lt-與-gt-gt"><a href="#位移運算子：-lt-lt-與-gt-gt" class="headerlink" title="位移運算子：&lt;&lt; 與 &gt;&gt;"></a>位移運算子：<code>&lt;&lt;</code> 與 <code>&gt;&gt;</code></h3><p>首先來複習二進位制：</p>
 <p>0100 = 2^3<em>0 + 2^2</em>1 + 2^1<em>0 + 2^0</em>0 = 2^2 = 4<br>1000 = 2^3<em>1 + 2^2</em>0 + 2^1<em>0 + 2^0</em>0 = 2^3 = 8</p>
-<h4 id="lt-lt-：將位元往左移一位，可作為乘以-2。"><a href="#lt-lt-：將位元往左移一位，可作為乘以-2。" class="headerlink" title="&lt;&lt;：將位元往左移一位，可作為乘以 2。"></a>&lt;&lt;：將位元往左移一位，可作為乘以 2。</h4><p><img src="https://i.imgur.com/7f9YfSO.png" alt="&lt;&lt; 左移"></p>
-<h4 id="gt-gt-：將位元往右移一位，可作為除以-2。若無法整除則會直接捨去。"><a href="#gt-gt-：將位元往右移一位，可作為除以-2。若無法整除則會直接捨去。" class="headerlink" title="&gt;&gt;：將位元往右移一位，可作為除以 2。若無法整除則會直接捨去。"></a>&gt;&gt;：將位元往右移一位，可作為除以 2。若無法整除則會直接捨去。</h4><p><img src="https://i.imgur.com/RP4O8zV.png" alt="&gt;&gt; 右移"></p>
+<h4 id="lt-lt-：將位元往左移一位，可作為乘以-2。"><a href="#lt-lt-：將位元往左移一位，可作為乘以-2。" class="headerlink" title="&lt;&lt;：將位元往左移一位，可作為乘以 2。"></a>&lt;&lt;：將位元往左移一位，可作為乘以 2。</h4><p><img data-src="https://i.imgur.com/7f9YfSO.png" alt="&lt;&lt; 左移"></p>
+<h4 id="gt-gt-：將位元往右移一位，可作為除以-2。若無法整除則會直接捨去。"><a href="#gt-gt-：將位元往右移一位，可作為除以-2。若無法整除則會直接捨去。" class="headerlink" title="&gt;&gt;：將位元往右移一位，可作為除以 2。若無法整除則會直接捨去。"></a>&gt;&gt;：將位元往右移一位，可作為除以 2。若無法整除則會直接捨去。</h4><p><img data-src="https://i.imgur.com/RP4O8zV.png" alt="&gt;&gt; 右移"></p>
 <ul>
 <li>由於電腦使用的是二進位系統，位元運算的速度通常會快於乘法和除法運算。</li>
 </ul>
@@ -413,9 +433,9 @@
 </ol>
 <h3 id="typeof-lt-value-gt-：用來判斷參數型態"><a href="#typeof-lt-value-gt-：用來判斷參數型態" class="headerlink" title="typeof &lt;value&gt;：用來判斷參數型態"></a><code>typeof &lt;value&gt;</code>：用來判斷參數型態</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(&#x27;typeof true&#x27;, typeof true)</span><br><span class="line">//輸出 typeof true boolean</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/rT6DR1N.png"></p>
+<p><img data-src="https://i.imgur.com/rT6DR1N.png"></p>
 <p>在 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtVFcvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvT3BlcmF0b3JzL3R5cGVvZg==" title="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/typeof">MDN 網站<i class="fa fa-external-link"></i></span> 列出 typeof 的可能回傳值：</p>
-<p><img src="https://4.bp.blogspot.com/-dBndQxibqJ8/V3xngW8lK5I/AAAAAAAAnDU/L5PVWe-8j-gL3vzcA4xMznzsgqq4AcnkACLcB/s1600/1.png"></p>
+<p><img data-src="https://4.bp.blogspot.com/-dBndQxibqJ8/V3xngW8lK5I/AAAAAAAAnDU/L5PVWe-8j-gL3vzcA4xMznzsgqq4AcnkACLcB/s1600/1.png"></p>
 <blockquote>
 <p>null 使用 typeof 運算子，回傳的結果會是字串 “object”，這指出 null 可被認為是象徵「無物件」（no object）的一種特殊物件值。（參考資料：<span class="exturl" data-url="aHR0cHM6Ly93d3cudGVubG9uZy5jb20udHcvcHJvZHVjdHMvOTc4OTg2Mjc2NDQxMQ==" title="https://www.tenlong.com.tw/products/9789862764411">犀牛書<i class="fa fa-external-link"></i></span>）</p>
 <p>這其實是 JavaScript 最初發現的一個錯誤，然後被 ECMAScript 沿用了。現在，null 被認為是物件的佔位符，從而解釋了這一矛盾<br>（參考資料：<span class="exturl" data-url="aHR0cHM6Ly9pdGhlbHAuaXRob21lLmNvbS50dy9hcnRpY2xlcy8xMDIwMDg0MQ==" title="https://ithelp.ithome.com.tw/articles/10200841">你懂JavaScript 嗎？#4 型別（Types） <i class="fa fa-external-link"></i></span>）</p>
@@ -495,13 +515,13 @@
 <li>通常包含幾個變數及函式，當它們包含在物件中時被稱做屬性（properties）或函式（methods）</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 試著建立一個物件</span><br><span class="line"></span><br><span class="line">var heidi = &#123;</span><br><span class="line">    name: &#x27;heidi&#x27;,</span><br><span class="line">    scores: [20, 60, 100],</span><br><span class="line">    address: &#x27;Japan&#x27;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(heidi, typeof heidi) // 印出物件屬性、型別</span><br><span class="line">console.log(heidi.address)　　　　// 用點（.）取出物件屬性</span><br><span class="line"></span><br><span class="line">var key = &#x27;name&#x27;</span><br><span class="line">console.log(heidi[key])　　　　　　// 這裡 heidi[key] 等於 heidi.name</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.imgur.com/XKReoRy.png"></p>
+<p><img data-src="https://i.imgur.com/XKReoRy.png"></p>
 <hr>
 <h3 id="從-Object-的等號真正的理解變數"><a href="#從-Object-的等號真正的理解變數" class="headerlink" title="從 Object 的等號真正的理解變數"></a>從 Object 的等號真正的理解變數</h3><p>由 <code>console.log(1 === 1)</code>，會回傳 true 這個例子，來判斷下列情形：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.log([] === [])</span><br><span class="line">console.log([1] === [1])</span><br><span class="line">console.log(&#123;&#125; === &#123;&#125;)</span><br><span class="line">console.log(&#123;a: 1&#125; === &#123;a: 1&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>結果卻是：</p>
-<p><img src="https://i.imgur.com/x9CYSuk.png"></p>
+<p><img data-src="https://i.imgur.com/x9CYSuk.png"></p>
 <p>變數是一個箱子，在放入數字的情況下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a = 30</span><br><span class="line">console.log(a === 30)    // 印出 true，兩者相等</span><br></pre></td></tr></table></figure>
 
@@ -509,7 +529,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">    a:1</span><br><span class="line">&#125;</span><br><span class="line">console.log(obj === &#123;a:1&#125;)    // 印出 false，兩者不相等</span><br></pre></td></tr></table></figure>
 
 <p>可以想像成「記憶體位置」：儘管兩個箱子儲存的數值相同，但因記憶體位置不同，指向的元素不同，所以不會相等。</p>
-<p><img src="https://i.imgur.com/ZAY1PrG.png"></p>
+<p><img data-src="https://i.imgur.com/ZAY1PrG.png"></p>
 <p>如果換成下列情形：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">    a:1</span><br><span class="line">&#125;</span><br><span class="line">var obj2 = obj</span><br><span class="line">console.log(obj === obj2)        // 印出 true</span><br></pre></td></tr></table></figure>
 
@@ -517,12 +537,12 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">    a:1</span><br><span class="line">&#125;</span><br><span class="line">var obj2 = obj</span><br><span class="line">obj2.a = 2</span><br><span class="line">console.log(&#x27;obj&#x27;, obj2)         // obj &#123; a: 2 &#125;</span><br><span class="line">console.log(&#x27;obj2&#x27;, obj2)        // obj2 &#123; a: 2 &#125;</span><br><span class="line">console.log(obj === obj2)        // 印出 true，兩者相等</span><br></pre></td></tr></table></figure>
 
 <p>會發現 obj 的值也一起被更改了。這是因為 obj 和 obj2 指向同一個記憶體位置，指向同一個物件。</p>
-<p><img src="https://i.imgur.com/cgfJMmd.png"></p>
+<p><img data-src="https://i.imgur.com/cgfJMmd.png"></p>
 <p>但如果 <code>obj2 = &#123;b:1&#125;</code>：obj2 等於一個新的物件，會指向一個新的記憶體位置：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">    a:1</span><br><span class="line">&#125;</span><br><span class="line">var obj2 = obj</span><br><span class="line">obj2.a = 2</span><br><span class="line">obj2 = &#123;b:1&#125;</span><br><span class="line">console.log(&#x27;obj&#x27;, obj2)         // obj &#123; a: 2 &#125;</span><br><span class="line">console.log(&#x27;obj2&#x27;, obj2)        // obj2 &#123; b: 1 &#125;</span><br><span class="line">console.log(obj === obj2)        // 印出 false，兩者不相等</span><br></pre></td></tr></table></figure>
 
 <p>這是因為「往裡面放東西」與「改放全新的東西」是兩件完全不同的事情。後者會指向一個新的記憶體，可參考下圖理解：</p>
-<p><img src="https://i.imgur.com/JkzALWA.png"></p>
+<p><img data-src="https://i.imgur.com/JkzALWA.png"></p>
 <hr>
 <h2 id="判斷式"><a href="#判斷式" class="headerlink" title="判斷式"></a>判斷式</h2><p>判斷式在 JavaScript 中用來==控制流程==。當指定的條件成立時，就會執行後續的指令。判斷式的語法有兩種：<code>if...else</code> 和 <code>switch</code>。</p>
 <h3 id="if-else-statement"><a href="#if-else-statement" class="headerlink" title="if-else statement"></a><code>if-else</code> statement</h3><ul>
@@ -604,10 +624,10 @@
 <h4 id="break（中斷）：中斷整個迴圈語句，也就是「跳出」迴圈區塊"><a href="#break（中斷）：中斷整個迴圈語句，也就是「跳出」迴圈區塊" class="headerlink" title="break（中斷）：中斷整個迴圈語句，也就是「跳出」迴圈區塊"></a><code>break</code>（中斷）：中斷整個迴圈語句，也就是「跳出」迴圈區塊</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 範例：</span><br><span class="line"></span><br><span class="line">var i = 1</span><br><span class="line"></span><br><span class="line">do &#123;</span><br><span class="line">    console.log(i)　　　 // 印出 1 到 6</span><br><span class="line">    if (i === 6) &#123;</span><br><span class="line">        break　　　　  　// 當 i 等於 6 時跳出迴圈</span><br><span class="line">    &#125;</span><br><span class="line">    i++</span><br><span class="line">&#125; while (i &lt;= 10)</span><br><span class="line"></span><br><span class="line">console.log(&#x27;i=&#x27;, i)　　// 印出 i = 6</span><br></pre></td></tr></table></figure>
 
 <p>執行結果如下圖：</p>
-<p><img src="https://i.imgur.com/V9mi4KK.png" alt="break"></p>
+<p><img data-src="https://i.imgur.com/V9mi4KK.png" alt="break"></p>
 <h4 id="continue（繼續）：繼續下一次迴圈語句，會忽略在-continue-之後的語句，直接跳到下一次的迴圈開頭"><a href="#continue（繼續）：繼續下一次迴圈語句，會忽略在-continue-之後的語句，直接跳到下一次的迴圈開頭" class="headerlink" title="continue（繼續）：繼續下一次迴圈語句，會忽略在 continue 之後的語句，直接跳到下一次的迴圈開頭"></a><code>continue</code>（繼續）：繼續下一次迴圈語句，會忽略在 continue 之後的語句，直接跳到下一次的迴圈開頭</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 範例：</span><br><span class="line"></span><br><span class="line">var i = 1</span><br><span class="line"></span><br><span class="line">do &#123;</span><br><span class="line">    console.log(i)　　　// 印出 1 到 10</span><br><span class="line">    i++</span><br><span class="line">// 當 i 為奇數時，直接跳到　while 檢查條件，進入下一個迴圈</span><br><span class="line">    if (i % 2 === 1) &#123;　　　　</span><br><span class="line">        continue</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(&#x27;i++&#x27;, i)　　// 只會印出偶數的 i</span><br><span class="line">&#125; while (i &lt;= 10)</span><br><span class="line"></span><br><span class="line">console.log(&#x27;i=&#x27;, i)　　// 印出 i = 11</span><br></pre></td></tr></table></figure>
 <p>執行結果如下圖：</p>
-<p><img src="https://i.imgur.com/FoASLD1.png" alt="continue"></p>
+<p><img data-src="https://i.imgur.com/FoASLD1.png" alt="continue"></p>
 <hr>
 <h2 id="函式（Function）"><a href="#函式（Function）" class="headerlink" title="函式（Function）"></a>函式（Function）</h2><p>以前學的國中數學 <code>y = f(x)</code> 其實就是一種函式：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y = f(x)</span><br><span class="line">y：回傳值 / f(x)：函式 / x：參數</span><br></pre></td></tr></table></figure>
@@ -656,13 +676,13 @@
 
 <p>上述範例中，在 transform 函式裡面，double 函式取代了參數 transformFunction，也就是執行 double 函式內部的運算。</p>
 <p>也可直接把整組函式丟到 console.log() 括號內，就不需再額外命名。好處是可直接修改函式定義，如以下範例：</p>
-<p><img src="https://i.imgur.com/IatovLR.png" alt="function 傳入 log"></p>
+<p><img data-src="https://i.imgur.com/IatovLR.png" alt="function 傳入 log"></p>
 <hr>
 <h3 id="引數（Argument）與參數（Parameter）"><a href="#引數（Argument）與參數（Parameter）" class="headerlink" title="引數（Argument）與參數（Parameter）"></a>引數（Argument）與參數（Parameter）</h3><p>參數：方法定義中的變數<br>引數：在呼叫方法時真正傳入的值</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 範例：</span><br><span class="line">function add(a, b) &#123;        // 參數就是 a 和 b</span><br><span class="line">    console.log(arguments)    // 可印出引數</span><br><span class="line">    return a+b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add(2, 5)                   // 引數是 2 和　5</span><br></pre></td></tr></table></figure>
 
 <p>結果如下圖，印出 <code>&#123; &#39;0&#39;: 2, &#39;1&#39;: 5 &#125;</code>。</p>
-<p><img src="https://i.imgur.com/9BaESkL.png"></p>
+<p><img data-src="https://i.imgur.com/9BaESkL.png"></p>
 <h4 id="Argument-物件"><a href="#Argument-物件" class="headerlink" title="Argument 物件"></a>Argument 物件</h4><p>由上述範例可知，<code>arguments</code> 物件其實是種「類陣列物件」。</p>
 <ul>
 <li>arguments[0]：代表第一個引數</li>
@@ -820,7 +840,7 @@
 <p>可應用在迴圈：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var str = &#x27;hello!&#x27;</span><br><span class="line"></span><br><span class="line">for (var i=0; i&lt;str.length; i++)&#123;</span><br><span class="line">  console.log(str[i])            // 可在每行印出第 i 個字元</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/16SoONi.png"></p>
+<p><img data-src="https://i.imgur.com/16SoONi.png"></p>
 <h3 id="Array-類型的內建函式"><a href="#Array-類型的內建函式" class="headerlink" title="Array 類型的內建函式"></a>Array 類型的內建函式</h3><blockquote>
 <p>可參考：<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtVFcvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvR2xvYmFsX09iamVjdHMvQXJyYXk=" title="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array">Array - JavaScript - MDN - Mozilla<i class="fa fa-external-link"></i></span></p>
 </blockquote>
@@ -901,7 +921,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -1069,7 +1090,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -1131,12 +1153,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

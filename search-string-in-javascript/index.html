@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="Photo by Mick Haupt on Unsplash  在處理資料時，查找字串是一種常見的操作，JavaScript 提供不同的方法來搜索字串。其中，最常用的方法包括：search、indexOf、includes 和 match，能夠辨別字串裡是否有想要查找的文字：  String.prototype.search( ) String.prototype.indexOf( ) St">
@@ -54,6 +52,28 @@
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "【學習筆記】JavaScript 尋找字串的方法：includes/indexOf/search/match",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2023-02-21T08:33:00.000Z",
+  "dateModified": "2026-04-23T06:14:18.267Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/search-string-in-javascript/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
 
   <title>【學習筆記】JavaScript 尋找字串的方法：includes/indexOf/search/match | Liusan's Blog</title>
   
@@ -90,7 +110,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -271,7 +291,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="https://i.imgur.com/nZfxv6r.jpg"></p>
+        <p><img data-src="https://i.imgur.com/nZfxv6r.jpg"></p>
 <blockquote>
 <p>Photo by <span class="exturl" data-url="aHR0cHM6Ly91bnNwbGFzaC5jb20vQHJvY2luYW50ZV8xMT91dG1fc291cmNlPXVuc3BsYXNoJnV0bV9tZWRpdW09cmVmZXJyYWwmdXRtX2NvbnRlbnQ9Y3JlZGl0Q29weVRleHQ=" title="https://unsplash.com/@rocinante_11?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Mick Haupt<i class="fa fa-external-link"></i></span> on <span class="exturl" data-url="aHR0cHM6Ly91bnNwbGFzaC5jb20vcGhvdG9zL2VRMlo5YXk5V3dzP3V0bV9zb3VyY2U9dW5zcGxhc2gmdXRtX21lZGl1bT1yZWZlcnJhbCZ1dG1fY29udGVudD1jcmVkaXRDb3B5VGV4dA==" title="https://unsplash.com/photos/eQ2Z9ay9Wws?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash<i class="fa fa-external-link"></i></span></p>
 </blockquote>
@@ -360,7 +380,7 @@
 <p>專案中時常需要去搜尋特定字串，來達成特定目的。翻找筆記時，才發現自己竟然還沒有整理過這幾個 JavaScript 提供的方法的差異。</p>
 <p>也藉由這個機會，又好好重新複習正則表達式的一些觀念，雖然很多時候是需要用到的時候再查就好，但果然原生的底子還是基礎中的基礎。</p>
 <p>此外，也體驗了最近正夯的 <span class="exturl" data-url="aHR0cHM6Ly9vcGVuYWkuY29tL2Jsb2cvY2hhdGdwdC8=" title="https://openai.com/blog/chatgpt/">ChatGPT<i class="fa fa-external-link"></i></span>，給一段關鍵字寫出來的文章，差不多就完成了八七分架構，只需要再多補充一些觀念，一篇筆記就熱騰騰的誕生了ಠ_ಠ</p>
-<p><img src="https://i.imgur.com/Fd2VwfC.png"></p>
+<p><img data-src="https://i.imgur.com/Fd2VwfC.png"></p>
 <p>雖然這項功能方便又快速，結果卻不一定 100% 正確，有時也會出現一些瞎掰的，甚至與事實相差甚遠的回答；因此該如何善用這項工具，辨別結果並實際應用在工作上的開發、測試、寫文件等等，想必是使用者需要學習的課題吧。</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
 <li><span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL3VuYWxhaS8lRTglQUElOEQlRTglQUQlOTgtc2VhcmNoLWluZGV4b2YtaW5jbHVkZXMtJUU0JUI4JTg5JUU3JUE4JUFFJUU2JTkwJTlDJUU1JUIwJThCJUU1JUFEJTk3JUU0JUI4JUIyJUU3JTlBJTg0JUU3JTlCJUI4JUU5JTk3JTlDJUU2JTk2JUI5JUU2JUIzJTk1LTcwNDg1NjE3Njk1Mg==" title="https://medium.com/unalai/%E8%AA%8D%E8%AD%98-search-indexof-includes-%E4%B8%89%E7%A8%AE%E6%90%9C%E5%B0%8B%E5%AD%97%E4%B8%B2%E7%9A%84%E7%9B%B8%E9%97%9C%E6%96%B9%E6%B3%95-704856176952">認識 search、indexOf、includes 三種搜尋字串的相關方法 | by Lai | UnaLai | Medium<i class="fa fa-external-link"></i></span></li>
@@ -382,17 +402,18 @@
       <div class="popular-posts-title"><a href="/fetch-promise/" rel="bookmark">[week 13] Fetch & Promise 補充</a></div>
     </li>
     <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/javascript-native-array/" rel="bookmark">【學習筆記】JavaScript 的陣列遍歷（二）：forEach/map/filter/every/some/reduce</a></div>
+    </li>
+    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/javascript-floating-number/" rel="bookmark">【學習筆記】JavaScript 的浮點數計算、平方根</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/javascript-for-loop/" rel="bookmark">【學習筆記】JavaScript 的陣列遍歷（ㄧ）：for/for...of/for...in/forEach</a></div>
     </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/javascript-native-array/" rel="bookmark">【學習筆記】JavaScript 的陣列遍歷（二）：forEach/map/filter/every/some/reduce</a></div>
-    </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -561,7 +582,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -623,12 +645,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

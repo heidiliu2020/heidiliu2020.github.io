@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="參考來源：https:&#x2F;&#x2F;coderpad.io&#x2F;blog&#x2F;development&#x2F;the-complete-guide-to-regular-expressions-regex&#x2F; Why we need Regular Expression?正則表達式（Regular Expression），常簡寫為 RegEx、RegExp 或 RE，代表描述一種字串匹配的模式（pattern）。在程式語言中">
@@ -54,6 +52,28 @@
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "【學習筆記】JavaScript：Regex 正則表達式",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2022-03-08T17:21:00.000Z",
+  "dateModified": "2026-07-09T06:06:05.725Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/regex/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
 
   <title>【學習筆記】JavaScript：Regex 正則表達式 | Liusan's Blog</title>
   
@@ -90,7 +110,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -271,7 +291,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="/images/pasted-5.png" alt="upload successful"><br>參考來源：<span class="exturl" data-url="aHR0cHM6Ly9jb2RlcnBhZC5pby9ibG9nL2RldmVsb3BtZW50L3RoZS1jb21wbGV0ZS1ndWlkZS10by1yZWd1bGFyLWV4cHJlc3Npb25zLXJlZ2V4Lw==" title="https://coderpad.io/blog/development/the-complete-guide-to-regular-expressions-regex/">https://coderpad.io/blog/development/the-complete-guide-to-regular-expressions-regex/<i class="fa fa-external-link"></i></span></p>
+        <p><img data-src="/images/pasted-5.png" alt="upload successful"><br>參考來源：<span class="exturl" data-url="aHR0cHM6Ly9jb2RlcnBhZC5pby9ibG9nL2RldmVsb3BtZW50L3RoZS1jb21wbGV0ZS1ndWlkZS10by1yZWd1bGFyLWV4cHJlc3Npb25zLXJlZ2V4Lw==" title="https://coderpad.io/blog/development/the-complete-guide-to-regular-expressions-regex/">https://coderpad.io/blog/development/the-complete-guide-to-regular-expressions-regex/<i class="fa fa-external-link"></i></span></p>
 <h2 id="Why-we-need-Regular-Expression"><a href="#Why-we-need-Regular-Expression" class="headerlink" title="Why we need Regular Expression?"></a>Why we need Regular Expression?</h2><p>正則表達式（Regular Expression），常簡寫為 RegEx、RegExp 或 RE，代表描述一種字串匹配的模式（pattern）。在程式語言中，通常用來搜尋、比對、替換符合某個模式的文字。</p>
 <span id="more"></span>
 
@@ -303,7 +323,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> reStr = <span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">&#x27;abc&#x27;</span>)       <span class="comment">// 查詢第一次匹配項目</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="特殊字元"><a href="#特殊字元" class="headerlink" title="特殊字元"></a>特殊字元</h2><p>在正規表達式中，某些特殊字元或符號屬於保留字：</p>
-<p><img src="https://i.imgur.com/CIlAXQ8.png"></p>
+<p><img data-src="https://i.imgur.com/CIlAXQ8.png"></p>
 <p>以下為使用範例：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;The History of Hello World History&#x27;</span></span><br><span class="line"></span><br><span class="line">str.<span class="title function_">match</span>(<span class="regexp">/History/</span>)    <span class="comment">// [&#x27;History&#x27;, index: 4, ...</span></span><br><span class="line"><span class="comment">// ^：匹配輸入的開頭</span></span><br><span class="line">str.<span class="title function_">match</span>(<span class="regexp">/^History/</span>)   <span class="comment">// null</span></span><br><span class="line"><span class="comment">// $：匹配輸入的結尾</span></span><br><span class="line">str.<span class="title function_">match</span>(<span class="regexp">/History$/</span>)   <span class="comment">// [&#x27;History&#x27;, index: 27...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用反斜線 &#x27;\&#x27; 來跳脫特殊字元</span></span><br><span class="line"><span class="keyword">const</span> reg = <span class="regexp">/\$6/</span></span><br><span class="line">reg.<span class="title function_">test</span>(<span class="string">&#x27;$666&#x27;</span>)         <span class="comment">// ture</span></span><br></pre></td></tr></table></figure>
 
@@ -321,7 +341,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/pattern/flags</span><br><span class="line"></span><br><span class="line"> <span class="keyword">let</span> reStr = <span class="regexp">/abc/i</span>                   <span class="comment">// ignore：不區分大小寫</span></span><br><span class="line"> <span class="keyword">let</span> reStr = <span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">&#x27;abc&#x27;</span>, <span class="string">&#x27;g&#x27;</span>)   <span class="comment">// global：全局匹配   </span></span><br></pre></td></tr></table></figure>
 
 <p>可參考下圖，在 <span class="exturl" data-url="aHR0cHM6Ly9yZWdleHIuY29tLw==" title="https://regexr.com/">Regexr<i class="fa fa-external-link"></i></span> 網站的測試結果：</p>
-<p><img src="https://i.imgur.com/VKVMHff.png"></p>
+<p><img data-src="https://i.imgur.com/VKVMHff.png"></p>
 <br>
 
 <h2 id="常用語法"><a href="#常用語法" class="headerlink" title="常用語法"></a>常用語法</h2><p>在 JavaScript 中，常與 RegExp 物件搭配使用的函式如下：</p>
@@ -383,7 +403,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -551,7 +572,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -613,12 +635,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

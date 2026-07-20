@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 [GIT101] Git 超新手入門 這門課程的學習筆記。  在上一節我們學到 Git 基本指令，接下來要學習什麼是 Branch（分支），以及如何送出的 Pull Request 進行共同開發，以及介紹提供視覺化介面操作 Git 的 GitHub。 1234學習目標： 知道怎麼使用 branch 並送出 Pull Request 熟悉 Git Workflow（也就是交作業的流程）">
@@ -83,6 +81,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 1] 版本控制 - Git 進階指令 & GitHub",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-06-16T09:01:00.000Z",
+  "dateModified": "2026-07-09T06:06:05.654Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/git-github/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[week 1] 版本控制 - Git 進階指令 & GitHub | Liusan's Blog</title>
   
 
@@ -118,7 +138,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -312,41 +332,41 @@
 <li>在同一個 commit 上進行修改，容易產生衝突</li>
 <li><code>穩定版 + bug fix</code> 還參雜未完成的新功能，也可能產生更多問題</li>
 </ol>
-<p><img src="https://i.imgur.com/MuDKdgK.png" alt="一條線開發"></p>
+<p><img data-src="https://i.imgur.com/MuDKdgK.png" alt="一條線開發"></p>
 <h4 id="若能分成「穩定版本」和「新功能開發」，兩條分支就不會互相干擾："><a href="#若能分成「穩定版本」和「新功能開發」，兩條分支就不會互相干擾：" class="headerlink" title="若能分成「穩定版本」和「新功能開發」，兩條分支就不會互相干擾："></a>若能分成「穩定版本」和「新功能開發」，兩條分支就不會互相干擾：</h4><ol>
 <li><code>穩定版 + 修好 bug</code> → 得到新的穩定版</li>
 <li>待新功能開發完成，即可合併得到有新功能的版本，成為最新的穩定版</li>
 </ol>
-<p><img src="https://i.imgur.com/1S1hWYu.png" alt="兩條線開發"></p>
+<p><img data-src="https://i.imgur.com/1S1hWYu.png" alt="兩條線開發"></p>
 <hr>
 <h2 id="操作-branch-基本指令"><a href="#操作-branch-基本指令" class="headerlink" title="操作 branch 基本指令"></a>操作 branch 基本指令</h2><p>使用 Git 進行版本控制時，系統最初會自動建立第一個 branch ，也就是 <code>master</code>。</p>
-<p><img src="https://i.imgur.com/eDZEU1a.png" alt="預設分支為 master"></p>
+<p><img data-src="https://i.imgur.com/eDZEU1a.png" alt="預設分支為 master"></p>
 <h3 id="git-branch-v：查看目前在哪個分支"><a href="#git-branch-v：查看目前在哪個分支" class="headerlink" title="git branch -v：查看目前在哪個分支"></a><code>git branch -v</code>：查看目前在哪個分支</h3><p>下列訊息分別表示：分支名稱、版本號、版本訊息。</p>
-<p><img src="https://i.imgur.com/qbjckPW.png" alt="git branch -v 指令"></p>
+<p><img data-src="https://i.imgur.com/qbjckPW.png" alt="git branch -v 指令"></p>
 <ul>
 <li><code>git branch</code> ：如果後面沒接任何參數，只會顯示目前有哪些分支。</li>
 </ul>
 <h3 id="git-branch-lt-branchName-gt-：新增分支"><a href="#git-branch-lt-branchName-gt-：新增分支" class="headerlink" title="git branch &lt;branchName&gt;：新增分支"></a><code>git branch &lt;branchName&gt;</code>：新增分支</h3><blockquote>
 <p>提醒：開發新功能之前，養成開新分支的好習慣！</p>
 </blockquote>
-<p><img src="https://i.imgur.com/r51pPLL.png" alt="git branch"></p>
-<h3 id="git-branch-d-lt-branchName-gt-：刪除分支"><a href="#git-branch-d-lt-branchName-gt-：刪除分支" class="headerlink" title="git branch -d &lt;branchName&gt;：刪除分支"></a><code>git branch -d &lt;branchName&gt;</code>：刪除分支</h3><p><img src="https://i.imgur.com/OHjboYW.png" alt="git branch -d 指令"></p>
+<p><img data-src="https://i.imgur.com/r51pPLL.png" alt="git branch"></p>
+<h3 id="git-branch-d-lt-branchName-gt-：刪除分支"><a href="#git-branch-d-lt-branchName-gt-：刪除分支" class="headerlink" title="git branch -d &lt;branchName&gt;：刪除分支"></a><code>git branch -d &lt;branchName&gt;</code>：刪除分支</h3><p><img data-src="https://i.imgur.com/OHjboYW.png" alt="git branch -d 指令"></p>
 <h3 id="git-checkout-lt-branchName-gt-：切換分支"><a href="#git-checkout-lt-branchName-gt-：切換分支" class="headerlink" title="git checkout &lt;branchName&gt;：切換分支"></a><code>git checkout &lt;branchName&gt;</code>：切換分支</h3><p><span class="exturl" data-url="aHR0cHM6Ly9oYWNrbWQuaW8vT2hCQy14NVRSS1dGM001WlFESEJRUT9ib3RoI2dpdC1jaGVja291dA==" title="https://hackmd.io/OhBC-x5TRKWF3M5ZQDHBQQ?both#git-checkout">和上一節的切換版本指令<i class="fa fa-external-link"></i></span>原理相同，這裡是將 <code>&lt;版本號碼&gt;</code> 換成 <code>&lt;分支名稱&gt;</code></p>
 <ol>
 <li><code>git checkout &lt;版本名稱&gt;</code>：切換版本</li>
 <li><code>git checkout &lt;branchName&gt;</code>：切換分支</li>
 <li><code>git branch checkout -b &lt;branchName&gt;</code>：「新增」並「切換」到該分支</li>
 </ol>
-<p><img src="https://i.imgur.com/oxKtRfm.png" alt="git checkout 指令"></p>
+<p><img data-src="https://i.imgur.com/oxKtRfm.png" alt="git checkout 指令"></p>
 <h2 id="如何合併分支？"><a href="#如何合併分支？" class="headerlink" title="如何合併分支？"></a>如何合併分支？</h2><h3 id="git-merge-lt-branchName-gt-：把分支合併進來"><a href="#git-merge-lt-branchName-gt-：把分支合併進來" class="headerlink" title="git merge &lt;branchName&gt;：把分支合併進來"></a><code>git merge &lt;branchName&gt;</code>：把分支合併進來</h3><h4 id="範例：把分支-new-feature-合併到-master"><a href="#範例：把分支-new-feature-合併到-master" class="headerlink" title="範例：把分支 new-feature 合併到 master"></a>範例：把分支 <code>new-feature</code> 合併到 <code>master</code></h4><ol>
 <li>輸入 <code>git checkout master</code> 切換到 <code>master</code> 這個分支</li>
 <li>輸入 <code>git merge new-feature</code>，完成基本的分支合併<br>用 <code>git log</code> 查看版本紀錄，可知「合併」的過程會自動建立一個新版本</li>
 </ol>
-<p><img src="https://i.imgur.com/Mj5ABC7.png" alt="git merge 指令"></p>
+<p><img data-src="https://i.imgur.com/Mj5ABC7.png" alt="git merge 指令"></p>
 <ol start="3">
 <li>成功合併後，即可刪除分支 <code>new-feature</code></li>
 </ol>
-<p><img src="https://i.imgur.com/YZsSWZT.png" alt="合併後刪除分支"></p>
+<p><img data-src="https://i.imgur.com/YZsSWZT.png" alt="合併後刪除分支"></p>
 <h2 id="那在合併時發生-conflict（衝突）怎麼辦？"><a href="#那在合併時發生-conflict（衝突）怎麼辦？" class="headerlink" title="那在合併時發生 conflict（衝突）怎麼辦？"></a>那在合併時發生 conflict（衝突）怎麼辦？</h2><blockquote>
 <p>所謂的衝突，就是「同一份檔案的兩個版本，裡面有一個或多個不同的內容」。</p>
 </blockquote>
@@ -355,28 +375,28 @@
 <li>此時若把分支 <code>new-feature</code> 合併到 <code>master</code> 上</li>
 <li>顯示發生衝突，輸入 <code>git status</code> 可見提示說明：該檔案的兩個版本均有修改</li>
 </ol>
-<p><img src="https://i.imgur.com/G9ijEnc.png" alt="conflict"></p>
+<p><img data-src="https://i.imgur.com/G9ijEnc.png" alt="conflict"></p>
 <ol start="3">
 <li>進入該檔案會顯示衝突位置如下，需手動調整檔案內容</li>
 </ol>
-<p><img src="https://i.imgur.com/dGMmn2L.png" alt="conflict 手動調整"></p>
-<p><img src="https://i.imgur.com/nCAxx1Q.png" alt="調整完成"></p>
+<p><img data-src="https://i.imgur.com/dGMmn2L.png" alt="conflict 手動調整"></p>
+<p><img data-src="https://i.imgur.com/nCAxx1Q.png" alt="調整完成"></p>
 <ol start="4">
 <li>修改完後重新 commit，成功解決衝突</li>
 </ol>
-<p><img src="https://i.imgur.com/c3QKwyH.png" alt="conflict 解決"></p>
+<p><img data-src="https://i.imgur.com/c3QKwyH.png" alt="conflict 解決"></p>
 <hr>
 <h2 id="如何共同開發專案？"><a href="#如何共同開發專案？" class="headerlink" title="如何共同開發專案？"></a>如何共同開發專案？</h2><p>熟悉 Git 的基本操作後，來談談最一開始提到的多人協作。這些被版本控制的專案，我們稱為「Repository（檔案庫）」，多人協作就是共享同一份 Repository 來完成共同開發。</p>
 <h2 id="Git-vs-GitHub"><a href="#Git-vs-GitHub" class="headerlink" title="Git vs GitHub"></a>Git vs GitHub</h2><p>Git 是用來版本控制的程式。</p>
 <p>GitHub 是目前全球最大的 Git Server，有許多開放原始碼的專案都是使用 Github 進行程式碼的管理。可以想成「提供存放使用 Git 專案倉庫（Repository) 的服務」。也可以不用 GitHub 選擇其他服務，或是自己架一個 Git Sever。</p>
 <h3 id="GitHub：視覺化的-repository"><a href="#GitHub：視覺化的-repository" class="headerlink" title="GitHub：視覺化的 repository"></a>GitHub：視覺化的 repository</h3><p>透過 GitHub 的 GUI 介面能夠視覺化 repository，如此就可以在 repository 頁面查看該專案的 Commit 紀錄、檔案修改的歷史紀錄、修改者是誰等資訊，也可在 GitHub 執行 pull request 來進行合併。</p>
-<h3 id="建立新專案"><a href="#建立新專案" class="headerlink" title="建立新專案"></a>建立新專案</h3><p><img src="https://i.imgur.com/pl31b7Q.png" alt="建立新專案"></p>
+<h3 id="建立新專案"><a href="#建立新專案" class="headerlink" title="建立新專案"></a>建立新專案</h3><p><img data-src="https://i.imgur.com/pl31b7Q.png" alt="建立新專案"></p>
 <h2 id="將本地端資料推上遠端-GitHub（Local→Remote）"><a href="#將本地端資料推上遠端-GitHub（Local→Remote）" class="headerlink" title="將本地端資料推上遠端 GitHub（Local→Remote）"></a>將本地端資料推上遠端 GitHub（Local→Remote）</h2><p>建立好新專案後，可分兩種方式開始專案：</p>
 <ol>
 <li>開始全新專案，再同步到 GitHub</li>
 <li>已存在專案，將本地端的現存專案同步到 GitHub</li>
 </ol>
-<p><img src="https://i.imgur.com/Yc8mymH.png" alt="上傳本地專案到 GitHub"></p>
+<p><img data-src="https://i.imgur.com/Yc8mymH.png" alt="上傳本地專案到 GitHub"></p>
 <h4 id="git-remote：主要是跟遠端有關的操作"><a href="#git-remote：主要是跟遠端有關的操作" class="headerlink" title="git remote：主要是跟遠端有關的操作"></a><code>git remote</code>：主要是跟遠端有關的操作</h4><ul>
 <li><code>git remote add origin https://github.com/heidiliu2020/git101_test.git</code><br>代表加入遠端節點。也就是「為本地端檔案庫增加一個叫做 origin 的遠端檔案庫」。</li>
 <li>這裡的 <code>origin</code> 是遠端檔案庫的代名詞，代表後面那串 GitHub 伺服器位置。如果從 Server 上 clone 下來，origin 是預設的遠端節點名稱。</li>
@@ -392,48 +412,48 @@
 <h3 id="git-clone：從-GitHub-下載-Repository-到本地端"><a href="#git-clone：從-GitHub-下載-Repository-到本地端" class="headerlink" title="git clone：從 GitHub 下載 Repository 到本地端"></a><code>git clone</code>：從 GitHub 下載 Repository 到本地端</h3><ol>
 <li>在 GitHub 點選 <code>Clone or download</code>，可直接下載檔案</li>
 </ol>
-<p><img src="https://i.imgur.com/0yJIEim.png" alt="GitHub 點選 Clone"></p>
+<p><img data-src="https://i.imgur.com/0yJIEim.png" alt="GitHub 點選 Clone"></p>
 <ol start="2">
 <li>或是複製網址，到 Terminal 輸入 <code>git clone &lt;網址&gt;</code>：可將內容下載到本地端</li>
 </ol>
-<p><img src="https://i.imgur.com/uiF2oX7.png" alt="git clone"></p>
+<p><img data-src="https://i.imgur.com/uiF2oX7.png" alt="git clone"></p>
 <blockquote>
 <p>但要注意使用 Clone 的 Repository 沒有權限修改，也就無法再 push 回遠端。</p>
 </blockquote>
 <h3 id="Fork：將別人的-Repository-複製一份成為自己的-Repository"><a href="#Fork：將別人的-Repository-複製一份成為自己的-Repository" class="headerlink" title="Fork：將別人的 Repository 複製一份成為自己的 Repository"></a><code>Fork</code>：將別人的 Repository 複製一份成為自己的 Repository</h3><ol>
 <li>到想要複製的 Repository 頁面，點選 <code>Fork</code></li>
 </ol>
-<p><img src="https://i.imgur.com/Ms7FVgQ.png" alt="點選 fork"></p>
+<p><img data-src="https://i.imgur.com/Ms7FVgQ.png" alt="點選 fork"></p>
 <ol start="2">
 <li>即可複製一份 Repository 到自己的帳號底下</li>
 </ol>
-<p><img src="https://i.imgur.com/QKdoaYU.png" alt="fork 專案"></p>
+<p><img data-src="https://i.imgur.com/QKdoaYU.png" alt="fork 專案"></p>
 <ol start="3">
 <li>把專案 clone 到本地端，開新的 branch 進行修改</li>
 <li>Push 回自己的專案</li>
 <li>若為多人協作，可在自己的頁面提出 PR（pull request）給原作</li>
 </ol>
-<p><img src="https://i.imgur.com/leobPuk.png"></p>
+<p><img data-src="https://i.imgur.com/leobPuk.png"></p>
 <ol start="6">
 <li>若原作同意修改內容，就會在他的頁面按下「Merge pull request」合併 commit</li>
 </ol>
-<p><img src="https://i.imgur.com/ov638xA.png"></p>
+<p><img data-src="https://i.imgur.com/ov638xA.png"></p>
 <hr>
 <h3 id="補充：如何在-GitHub上同步-Fork-過來的-Repository"><a href="#補充：如何在-GitHub上同步-Fork-過來的-Repository" class="headerlink" title="補充：如何在 GitHub上同步 Fork 過來的 Repository"></a>補充：如何在 GitHub上同步 Fork 過來的 Repository</h3><ol>
 <li><code>git remote -v</code>：查看目前的遠端節點。只有最一開始設的 origin 這個節點。</li>
 </ol>
-<p><img src="https://i.imgur.com/Dw3UoD7.png" alt="git remote -v 指令"></p>
+<p><img data-src="https://i.imgur.com/Dw3UoD7.png" alt="git remote -v 指令"></p>
 <ol start="2">
 <li><code>git remote add &lt;節點名稱&gt; &lt;網址&gt;</code>：新增一個遠端節點。</li>
 </ol>
 <ul>
 <li><code>git remote add upstream https://github.com/Lidemy/mentor-program-4th.git</code>：為本地端檔案庫增加一個叫做 <code>upstream</code> 的遠端檔案庫。</li>
 </ul>
-<p><img src="https://i.imgur.com/YIsFYMS.png" alt="git remote add"></p>
+<p><img data-src="https://i.imgur.com/YIsFYMS.png" alt="git remote add"></p>
 <ol start="3">
 <li><code>git pull upstream master</code>：把遠端 Repo 同步回本地端電腦。若發生衝突，則手動修改解決。</li>
 </ol>
-<p><img src="https://i.imgur.com/XFW7jEo.png" alt="git pull"></p>
+<p><img data-src="https://i.imgur.com/XFW7jEo.png" alt="git pull"></p>
 <ol start="4">
 <li>修改完成後，使用 <code>git commit -am &quot;同步課綱 repo&quot;</code> 重新 commit。</li>
 <li><code>git push origin master</code>：同步回自己在 GitHub 的 遠端 Repo。</li>
@@ -452,11 +472,11 @@
 <h2 id="常見狀況劇："><a href="#常見狀況劇：" class="headerlink" title="常見狀況劇："></a>常見狀況劇：</h2><h3 id="commit-message-送出後，發現打錯字了想要修改"><a href="#commit-message-送出後，發現打錯字了想要修改" class="headerlink" title="commit message 送出後，發現打錯字了想要修改"></a>commit message 送出後，發現打錯字了想要修改</h3><ol>
 <li><code>git commit --amend</code>：進入 vim 編輯器，即可修改 commit message。但這個方法只能修改最後一次的 commit message</li>
 </ol>
-<p><img src="https://i.imgur.com/AD7xKzA.png" alt="git commit --amend"></p>
+<p><img data-src="https://i.imgur.com/AD7xKzA.png" alt="git commit --amend"></p>
 <ul>
 <li>vim 編輯器介面如下，編輯完成後回到普通模式，輸入 <code>:wq</code> 存檔退出</li>
 </ul>
-<p><img src="https://i.imgur.com/Qc6ICVi.png" alt="Vim 編輯器"></p>
+<p><img data-src="https://i.imgur.com/Qc6ICVi.png" alt="Vim 編輯器"></p>
 <ol start="2">
 <li><code>git rebase</code>：可以修改更之前的 commit message，可參考<span class="exturl" data-url="aHR0cHM6Ly9naXRib29rLnR3L2NoYXB0ZXJzL3Jld3JpdGUtaGlzdG9yeS9jaGFuZ2UtY29tbWl0LW1lc3NhZ2UuaHRtbA==" title="https://gitbook.tw/chapters/rewrite-history/change-commit-message.html">詳細操作流程<i class="fa fa-external-link"></i></span></li>
 </ol>
@@ -472,17 +492,17 @@
 <li><code>git checkout -- &lt;file&gt;</code>：把檔案回復到上一次 commit 的狀態</li>
 <li><code>git checkout -- .</code>：把專案內的所有檔案都回復</li>
 </ol>
-<p><img src="https://i.imgur.com/6gSEitU.png" alt="git checkout --"></p>
+<p><img data-src="https://i.imgur.com/6gSEitU.png" alt="git checkout --"></p>
 <ul>
 <li>也可使用 <code>git restore &lt;file&gt;</code>，和 <code>git checkout -- &lt;file&gt;</code> 作用相同。</li>
 </ul>
-<p><img src="https://i.imgur.com/WcRW8cK.png" alt="git restore"></p>
+<p><img data-src="https://i.imgur.com/WcRW8cK.png" alt="git restore"></p>
 <h3 id="改-branch-的名稱"><a href="#改-branch-的名稱" class="headerlink" title="改 branch 的名稱"></a>改 branch 的名稱</h3><p><code>git branch -m feature</code>：將分支名稱改成 feature。</p>
-<p><img src="https://i.imgur.com/keijtFp.png" alt="git branch -m 指令"></p>
+<p><img data-src="https://i.imgur.com/keijtFp.png" alt="git branch -m 指令"></p>
 <hr>
 <h2 id="GitHub-Flow"><a href="#GitHub-Flow" class="headerlink" title="GitHub Flow"></a>GitHub Flow</h2><p>GitHub 建議管理專案的流程：<span class="exturl" data-url="aHR0cHM6Ly9ndWlkZXMuZ2l0aHViLmNvbS9pbnRyb2R1Y3Rpb24vZmxvdy8=" title="https://guides.github.com/introduction/flow/">官網說明<i class="fa fa-external-link"></i></span></p>
 <p>當參與多人開發時：（圖片出自 <span class="exturl" data-url="aHR0cHM6Ly9hcmNjd2lraS51d3lvLmVkdS9pbmRleC5waHAvR2l0X1dvcmtmbG93" title="https://arccwiki.uwyo.edu/index.php/Git_Workflow">arccwiki<i class="fa fa-external-link"></i></span>）</p>
-<p><img src="https://i.imgur.com/p0VjqBQ.png" alt="GitHub Flow step "></p>
+<p><img data-src="https://i.imgur.com/p0VjqBQ.png" alt="GitHub Flow step "></p>
 <ol>
 <li>先 Fork 專案到自己的 repository，開新的 branch 進行開發</li>
 <li>修改內容後 commit 新增版本，再 push 回自己的 repository</li>
@@ -513,7 +533,7 @@
 <h2 id="補充：本地端與遠端-相關指令"><a href="#補充：本地端與遠端-相關指令" class="headerlink" title="補充：本地端與遠端 - 相關指令"></a>補充：本地端與遠端 - 相關指令</h2><ul>
 <li>以下示意圖出自<span class="exturl" data-url="aHR0cHM6Ly93d3cudXRzYy51dG9yb250by5jYS9+YXRhZmxpb3ZpY2gvY3NjYzAxL2xlY3R1cmVzLzAyLWNvbmZpZy1tYW5hZ2VtZW50LTIxLS5wZGY=" title="https://www.utsc.utoronto.ca/~atafliovich/cscc01/lectures/02-config-management-21-.pdf">此處<i class="fa fa-external-link"></i></span></li>
 </ul>
-<p><img src="https://i.imgur.com/avOoPLF.png" alt="git terminology"></p>
+<p><img data-src="https://i.imgur.com/avOoPLF.png" alt="git terminology"></p>
 <p>參考資料：</p>
 <ol>
 <li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLnRlY2hicmlkZ2UuY2MvMjAxOC8wMS8xNy9sZWFybmluZy1wcm9ncmFtbWluZy1hbmQtY29kaW5nLXdpdGgtcHl0aG9uLWdpdC1hbmQtZ2l0aHViLXR1dG9yaWFsLw==" title="https://blog.techbridge.cc/2018/01/17/learning-programming-and-coding-with-python-git-and-github-tutorial/">Git 與 Github 版本控制基本指令與操作入門教學<i class="fa fa-external-link"></i></span></li>
@@ -551,7 +571,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -719,7 +740,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -781,12 +803,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

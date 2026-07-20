@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="前言這是繼 HackMD 和 Hexo 之後，找到的下一個據點，打從第一眼看到 docs 版面配置，就在心底讚嘆：「這不就是我一直想做的功能嗎！」 能夠快速把過去所學的知識打包起來，並以有效率的方式整理，適用於內容驅動型的網站，並且內建支援夜間模式轉換功能。此外，使用的還是快被自己遺忘 React.js 語法，簡直一石多鳥，相見恨晚。 於是乎，這篇筆記就誕生了。">
@@ -60,6 +58,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "【學習筆記】如何使用 Docusaurus & React 快速架設靜態網站",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2022-12-19T02:13:00.000Z",
+  "dateModified": "2026-07-09T06:06:05.648Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/docusaurus-react-blog/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>【學習筆記】如何使用 Docusaurus & React 快速架設靜態網站 | Liusan's Blog</title>
   
 
@@ -95,7 +115,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -280,7 +300,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="https://i.imgur.com/7UpoFaC.jpg"></p>
+        <p><img data-src="https://i.imgur.com/7UpoFaC.jpg"></p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>這是繼 HackMD 和 Hexo 之後，找到的下一個據點，打從第一眼看到 docs 版面配置，就在心底讚嘆：「這不就是我一直想做的功能嗎！」</p>
 <p>能夠快速把過去所學的知識打包起來，並以有效率的方式整理，適用於內容驅動型的網站，並且內建支援夜間模式轉換功能。此外，使用的還是快被自己遺忘 React.js 語法，簡直一石多鳥，相見恨晚。</p>
 <p>於是乎，這篇筆記就誕生了。</p>
@@ -301,12 +321,12 @@
 </ul>
 </li>
 </ul>
-<h2 id="什麼是-Docusaurus？"><a href="#什麼是-Docusaurus？" class="headerlink" title="什麼是 Docusaurus？"></a>什麼是 Docusaurus？</h2><p><img src="https://i.imgur.com/BNVL8zg.png"></p>
+<h2 id="什麼是-Docusaurus？"><a href="#什麼是-Docusaurus？" class="headerlink" title="什麼是 Docusaurus？"></a>什麼是 Docusaurus？</h2><p><img data-src="https://i.imgur.com/BNVL8zg.png"></p>
 <blockquote>
 <p>Document（文件）+ saurus（恐龍）= Docusaurus<br>一直覺得這名字很難記，透過拆字希望能幫助記憶:3</p>
 </blockquote>
 <p><span class="exturl" data-url="aHR0cHM6Ly9kb2N1c2F1cnVzLmlvL2RvY3M=" title="https://docusaurus.io/docs">Docusaurus<i class="fa fa-external-link"></i></span> 是由 <span class="exturl" data-url="aHR0cHM6Ly9vcGVuc291cmNlLmZiLmNvbS8=" title="https://opensource.fb.com/">Facebook 推出<i class="fa fa-external-link"></i></span>的開源靜態網站生成工具，以 React 技術構建，提供快速建置以文檔內容為核心的網站。</p>
-<h3 id="為什麼選擇-Docusaurus？"><a href="#為什麼選擇-Docusaurus？" class="headerlink" title="為什麼選擇 Docusaurus？"></a>為什麼選擇 Docusaurus？</h3><p><img src="https://i.imgur.com/UuV6bh4.png"></p>
+<h3 id="為什麼選擇-Docusaurus？"><a href="#為什麼選擇-Docusaurus？" class="headerlink" title="為什麼選擇 Docusaurus？"></a>為什麼選擇 Docusaurus？</h3><p><img data-src="https://i.imgur.com/UuV6bh4.png"></p>
 <p>開頭有提到 Docusaurus 幾項特點，再參照官網說明後整理如下：</p>
 <ul>
 <li>支援 Markdown 擴充格式 <span class="exturl" data-url="aHR0cHM6Ly9tZHhqcy5jb20v" title="https://mdxjs.com/">MDX<i class="fa fa-external-link"></i></span></li>
@@ -338,7 +358,7 @@
 <ol start="4">
 <li>即可在 <code>http://localhost:3000/</code> 看到專案預設頁面如下，自動建立了首頁和 Tutorial、Blog 兩個文檔頁面： </li>
 </ol>
-<p><img src="https://i.imgur.com/4Ypjr15.png"></p>
+<p><img data-src="https://i.imgur.com/4Ypjr15.png"></p>
 <ol start="5">
 <li>在部署前，需將網站資料打包到 <code>/build</code> 資料夾中，即可在 GitHub 等平台部署靜態網頁</li>
 </ol>
@@ -388,7 +408,7 @@
 </li>
 </ul>
 <p>接著開啟剛才建置完成的專案目錄，docs 資料夾內的文檔對應頁面如下：</p>
-<p><img src="https://i.imgur.com/Rkpmx9z.png"></p>
+<p><img data-src="https://i.imgur.com/Rkpmx9z.png"></p>
 <h3 id="Docusaurus-網站相關配置"><a href="#Docusaurus-網站相關配置" class="headerlink" title="Docusaurus 網站相關配置"></a>Docusaurus 網站相關配置</h3><p>其中 <span class="exturl" data-url="aHR0cHM6Ly9kb2N1c2F1cnVzLmlvL2RvY3MvZG9jdXNhdXJ1cy5jb25maWcuanM=" title="https://docusaurus.io/docs/docusaurus.config.js">docusaurus.config.js<i class="fa fa-external-link"></i></span> 這個檔案，主要用來設定框架配置：</p>
 <h4 id="Required-fields-必要配置"><a href="#Required-fields-必要配置" class="headerlink" title="Required fields 必要配置"></a>Required fields 必要配置</h4><ul>
 <li>網站名稱、連結、根目錄</li>
@@ -437,7 +457,7 @@
 
 
 
-<h3 id="建立模板頁面"><a href="#建立模板頁面" class="headerlink" title="建立模板頁面"></a>建立模板頁面</h3><p><img src="https://i.imgur.com/7vcwgeU.png"></p>
+<h3 id="建立模板頁面"><a href="#建立模板頁面" class="headerlink" title="建立模板頁面"></a>建立模板頁面</h3><p><img data-src="https://i.imgur.com/7vcwgeU.png"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">id: intro</span><br><span class="line">title: 啦啦啦</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">這是我的 *新文件内容</span><br></pre></td></tr></table></figure>
 
 <p>markdown 內容<br>將你的文檔以 .md 文件的形式添加到 /docs 文件夾中，並確保每個文件都有正確的 header<br>最簡單的標題如下<br>id 是連結名稱，例如 docs/intro.html<br>title 是瀏覽器頁面的標題</p>
@@ -468,7 +488,7 @@
 <li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmFsYW53ZWkuY29tL2Jsb2cvMjAyMS8wMy8yMS9kb2N1c2F1cnVzLWdpdGh1Yi1kZXBsb3kv" title="https://blog.alanwei.com/blog/2021/03/21/docusaurus-github-deploy/">Docusaurus 配置 GitHub Action 自动发布<i class="fa fa-external-link"></i></span></li>
 <li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmFsYW50c2FpLm5ldC9wb3N0cy8yMDE4LzA3L21pZ3JhdGUtYmxvZy10by1zc2ctZGVtby1kZXZvcHMtOC1uZXRsaWZ5LWZyZWUtc3RhdGljLXNpdGUtaG9zdGluZy1zZXJ2aWNlI1dpektNT3V0bGluZV8xNTMwNDQ5Mjc1ODU0NDkx" title="https://blog.alantsai.net/posts/2018/07/migrate-blog-to-ssg-demo-devops-8-netlify-free-static-site-hosting-service#WizKMOutline_1530449275854491">[部落格改版學DevOps][08]netlify 超佛心的靜態網站hosting服務 - 不只做hosting還有更多<i class="fa fa-external-link"></i></span></li>
 </ul>
-<p><a target="_blank" rel="noopener" href="https://hackmd.io/xM0LI_7bSdSf8wGNiAbqcQ"><img src="https://hackmd.io/xM0LI_7bSdSf8wGNiAbqcQ/badge" alt="hackmd-github-sync-badge"></a></p>
+<p><a target="_blank" rel="noopener" href="https://hackmd.io/xM0LI_7bSdSf8wGNiAbqcQ"><img data-src="https://hackmd.io/xM0LI_7bSdSf8wGNiAbqcQ/badge" alt="hackmd-github-sync-badge"></a></p>
 
     </div>
 
@@ -485,17 +505,18 @@
       <div class="popular-posts-title"><a href="/nextjs-app-router/" rel="bookmark">【學習筆記】Next.js 路由系統：App Router vs Page Router</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/nextjs-error-fix/" rel="bookmark">【學習筆記】Next.js 錯誤修復紀錄： 「Window is not defined」、「use client & missing generateStaticParams() error」</a></div>
-    </li>
-    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/nextjs-i18next/" rel="bookmark">【學習筆記】Next.js 實現多國語系：react-i18next & next-i18next</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/react-class-function-hook/" rel="bookmark">[week 22] 再探 React：Function component vs Class component</a></div>
+      <div class="popular-posts-title"><a href="/nextjs-error-fix/" rel="bookmark">【學習筆記】Next.js 錯誤修復紀錄： 「Window is not defined」、「use client & missing generateStaticParams() error」</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/react-jsx-props/" rel="bookmark">[week 21] 初探 React：Component、JSX 語法、props 與 state 的不同</a></div>
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -664,7 +685,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -726,12 +748,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

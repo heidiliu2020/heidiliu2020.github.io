@@ -14,21 +14,19 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="本篇為 [BE201] 後端中階：Express 與 Sequelize 這門課程的學習筆記。如有錯誤歡迎指正！2026.07 更新：修正範例程式碼錯誤、補充 N+1 problem 說明，並將官方文件連結更新至 Sequelize v6。本文範例基於當年的 v5，基本觀念與 v6 相通。  瞭解如何使用 Express 這套 Web 應用框架之後，再來要介紹新的工具：Sequelize，這是一">
+  <meta name="description" content="什麼是 ORM？本篇以 Node.js 的 Sequelize 為例，說明 ORM（物件關聯對映）的概念、優缺點與 N+1 problem，示範如何用 JavaScript 物件導向的方式操作 MySQL 資料庫，理解 Model 與資料庫之間的映射關係。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[week 17] 後端中階 - 淺談 Sequelize：使用 ORM 框架串接資料庫">
 <meta property="og:url" content="https://heidiliu2020.github.io/sequelize-orm/index.html">
 <meta property="og:site_name" content="Liusan&#39;s Blog">
-<meta property="og:description" content="本篇為 [BE201] 後端中階：Express 與 Sequelize 這門課程的學習筆記。如有錯誤歡迎指正！2026.07 更新：修正範例程式碼錯誤、補充 N+1 problem 說明，並將官方文件連結更新至 Sequelize v6。本文範例基於當年的 v5，基本觀念與 v6 相通。  瞭解如何使用 Express 這套 Web 應用框架之後，再來要介紹新的工具：Sequelize，這是一">
+<meta property="og:description" content="什麼是 ORM？本篇以 Node.js 的 Sequelize 為例，說明 ORM（物件關聯對映）的概念、優缺點與 N+1 problem，示範如何用 JavaScript 物件導向的方式操作 MySQL 資料庫，理解 Model 與資料庫之間的映射關係。">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://i.imgur.com/sV6Dauj.png">
 <meta property="og:image" content="https://i.imgur.com/apIryUS.png">
@@ -77,6 +75,29 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 17] 後端中階 - 淺談 Sequelize：使用 ORM 框架串接資料庫",
+  "description": "什麼是 ORM？本篇以 Node.js 的 Sequelize 為例，說明 ORM（物件關聯對映）的概念、優缺點與 N+1 problem，示範如何用 JavaScript 物件導向的方式操作 MySQL 資料庫，理解 Model 與資料庫之間的映射關係。",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-10-30T16:39:00.000Z",
+  "dateModified": "2026-07-09T04:00:00.000Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/sequelize-orm/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[week 17] 後端中階 - 淺談 Sequelize：使用 ORM 框架串接資料庫 | Liusan's Blog</title>
   
 
@@ -112,7 +133,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -287,6 +308,7 @@
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
               <span>14 分鐘</span>
             </span>
+            <div class="post-description">什麼是 ORM？本篇以 Node.js 的 Sequelize 為例，說明 ORM（物件關聯對映）的概念、優缺點與 N+1 problem，示範如何用 JavaScript 物件導向的方式操作 MySQL 資料庫，理解 Model 與資料庫之間的映射關係。</div>
 
         </div>
       </header>
@@ -333,28 +355,28 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sequelize.<span class="title function_">sync</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 寫入對映欄位名稱的資料內容</span></span><br><span class="line">  <span class="title class_">User</span>.<span class="title function_">create</span>(&#123;</span><br><span class="line">    <span class="comment">// 記得 value 字串要加上引號</span></span><br><span class="line">    <span class="attr">firstName</span>: <span class="string">&#x27;Heidi&#x27;</span>,</span><br><span class="line">    <span class="attr">lastName</span>:<span class="string">&#x27;Liu&#x27;</span></span><br><span class="line">  &#125;).<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 執行成功後會印出文字</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;successfully created!!&#x27;</span>) </span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>在 CLI 介面執行後會發現 SQL log：</p>
-<p><img src="https://i.imgur.com/sV6Dauj.png"></p>
+<p><img data-src="https://i.imgur.com/sV6Dauj.png"></p>
 <p>Sequelize 就會根據 Model 定義，自動在資料庫建立 users table 和一筆資料，並且會自動生成 createdAt 和 updateAt 兩個欄位：</p>
-<p><img src="https://i.imgur.com/apIryUS.png"></p>
+<p><img data-src="https://i.imgur.com/apIryUS.png"></p>
 <h3 id="findAll-：選取所有資料"><a href="#findAll-：選取所有資料" class="headerlink" title=".findAll()：選取所有資料"></a><code>.findAll()</code>：選取所有資料</h3><p>如果要選取所有資料，就在 <code>.then()</code> 裡面用 <code>&lt;Table Name&gt;.findAll()</code>，而 <code>findAll()</code> 會回傳一個 promise，因此也要用 <code>.then()</code> 來接收：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sequelize.<span class="title function_">sync</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="title class_">User</span>.<span class="title function_">findAll</span>().<span class="title function_">then</span>(<span class="function"><span class="params">users</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 用 JSON.stringify() 來格式化輸出</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;All users:&quot;</span>, <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(users, <span class="literal">null</span>, <span class="number">4</span>));</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>就能拿到 All users 的資料：</p>
-<p><img src="https://i.imgur.com/mY7pNA4.png"></p>
+<p><img data-src="https://i.imgur.com/mY7pNA4.png"></p>
 <p>若試著印出 <code>user[0]</code> 的資料：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sequelize.<span class="title function_">sync</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="title class_">User</span>.<span class="title function_">findAll</span>().<span class="title function_">then</span>(<span class="function"><span class="params">users</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 用 JSON.stringify() 來格式化輸出</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(users[<span class="number">0</span>]);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>會得到一個 User 物件，除了資料訊息，也會有一些底線開頭的屬性，像是 Sequelize 設定的資訊：</p>
-<p><img src="https://i.imgur.com/mE0MsOM.png"></p>
+<p><img data-src="https://i.imgur.com/mE0MsOM.png"></p>
 <p>如果要存取 user 的資料訊息，可直接用 <code>user[0].id</code> 來拿到 id：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sequelize.<span class="title function_">sync</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="title class_">User</span>.<span class="title function_">findAll</span>().<span class="title function_">then</span>(<span class="function"><span class="params">users</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(users[<span class="number">0</span>].<span class="property">id</span>, users[<span class="number">0</span>].<span class="property">firstName</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/fWaQzG1.png"></p>
+<p><img data-src="https://i.imgur.com/fWaQzG1.png"></p>
 <h3 id="findAll-where-：設定資料條件"><a href="#findAll-where-：設定資料條件" class="headerlink" title=".findAll(where{ })：設定資料條件"></a>.findAll(where{ })：設定資料條件</h3><p>如果要指定讀取哪些資料，可在 <code>.findAll()</code> 裡面填入 <code>where&#123;&#125;</code> 這個物件來指定條件。假如在資料庫中找不到相對應的資料，就會回傳錯誤訊息：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sequelize.<span class="title function_">sync</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="title class_">User</span>.<span class="title function_">findAll</span>(&#123;</span><br><span class="line">    <span class="attr">where</span>: &#123;</span><br><span class="line">      <span class="attr">firstName</span>: <span class="string">&#x27;Apple&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;).<span class="title function_">then</span>(<span class="function"><span class="params">users</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(users[<span class="number">0</span>].<span class="property">id</span>, users[<span class="number">0</span>].<span class="property">firstName</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>印出符合條件的資料：</p>
-<p><img src="https://i.imgur.com/8raviKR.png"></p>
+<p><img data-src="https://i.imgur.com/8raviKR.png"></p>
 <p>這種寫法就相當於 SQL 語法的 <code>SELECT * FROM users WHERE firstName = Apple</code>，更多有關條件設定的語法可參考：<span class="exturl" data-url="aHR0cHM6Ly9zZXF1ZWxpemUub3JnL2RvY3MvdjYvY29yZS1jb25jZXB0cy9tb2RlbC1xdWVyeWluZy1iYXNpY3Mv" title="https://sequelize.org/docs/v6/core-concepts/model-querying-basics/">官方文件 - Model Querying<i class="fa fa-external-link"></i></span>。</p>
 <h3 id="findOne-：選取單一資料"><a href="#findOne-：選取單一資料" class="headerlink" title=".findOne()：選取單一資料"></a>.findOne()：選取單一資料</h3><p>如果只想選取單一資料，或是想要透過 id 來讀取資料，可以使用 <code>.findOne()</code>：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sequelize.<span class="title function_">sync</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="title class_">User</span>.<span class="title function_">findOne</span>(&#123;</span><br><span class="line">    <span class="attr">where</span>: &#123;</span><br><span class="line">      <span class="attr">id</span>: <span class="string">&#x27;1&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;).<span class="title function_">then</span>(<span class="function"><span class="params">user</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(user.<span class="property">firstName</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// Heidi</span></span><br></pre></td></tr></table></figure>
@@ -364,7 +386,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">sequelize.<span class="title function_">sync</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="title class_">User</span>.<span class="title function_">findOne</span>(&#123;</span><br><span class="line">    <span class="attr">where</span>: &#123;</span><br><span class="line">      <span class="attr">id</span>: <span class="string">&#x27;3&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;).<span class="title function_">then</span>(<span class="function"><span class="params">user</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 在 () 裡面用 &#123;&#125; 大括號包住要更新的內容</span></span><br><span class="line">    <span class="comment">// 記得 return，下一個 .then() 才會等 update 完成</span></span><br><span class="line">    <span class="keyword">return</span> user.<span class="title function_">update</span>(&#123;</span><br><span class="line">      <span class="attr">lastName</span>: <span class="string">&#x27;Banana&#x27;</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;).<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;update done!&#x27;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>這樣就成功更新 id 為 3 這筆資料的 lastName：</p>
-<p><img src="https://i.imgur.com/wZ95sPf.png"></p>
+<p><img data-src="https://i.imgur.com/wZ95sPf.png"></p>
 <h3 id="destroy-：刪除資料"><a href="#destroy-：刪除資料" class="headerlink" title=".destroy()：刪除資料"></a>.destroy()：刪除資料</h3><p>如果要刪除資料，可使用 <code>.then()</code> 接住資料，並在裡面傳入 function，用來執行 <code>user.destroy()</code>：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sequelize.<span class="title function_">sync</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="title class_">User</span>.<span class="title function_">findOne</span>(&#123;</span><br><span class="line">    <span class="attr">where</span>: &#123;</span><br><span class="line">      <span class="attr">id</span>: <span class="string">&#x27;2&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;).<span class="title function_">then</span>(<span class="function"><span class="params">user</span> =&gt;</span> &#123;</span><br><span class="line">    user.<span class="title function_">destroy</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;destroy done!&#x27;</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
@@ -375,44 +397,44 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">User</span> = sequelize.<span class="title function_">define</span>(<span class="string">&#x27;user&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">firstName</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="title class_">Sequelize</span>.<span class="property">STRING</span>,</span><br><span class="line">    <span class="attr">allowNull</span>: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">lastName</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="title class_">Sequelize</span>.<span class="property">STRING</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;, &#123;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Comment</span> = sequelize.<span class="title function_">define</span>(<span class="string">&#x27;comment&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">content</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="title class_">Sequelize</span>.<span class="property">STRING</span>,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="title class_">User</span>.<span class="title function_">hasMany</span>(<span class="title class_">Comment</span>);  <span class="comment">// 將兩個 table 進行關聯</span></span><br></pre></td></tr></table></figure>
 
 <p>執行後就會發現建立了 comments table，還多了 userId 這個欄位：</p>
-<p><img src="https://i.imgur.com/KiaKCDW.png"></p>
+<p><img data-src="https://i.imgur.com/KiaKCDW.png"></p>
 <h3 id="範例：新增留言"><a href="#範例：新增留言" class="headerlink" title="範例：新增留言"></a>範例：新增留言</h3><p>接著我們就能對資料庫進行操作，以新建一個 comment 為例，在 Comment 要填入 content 和 userId：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">sequelize.<span class="title function_">sync</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="title class_">Comment</span>.<span class="title function_">create</span>(&#123;</span><br><span class="line">    <span class="attr">userId</span>: <span class="string">&#x27;3&#x27;</span>,</span><br><span class="line">    <span class="attr">content</span>: <span class="string">&#x27;Hello!&#x27;</span></span><br><span class="line">  &#125;).<span class="title function_">then</span>(<span class="function">() =&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;done!&#x27;</span>)</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="title class_">User</span>.<span class="title function_">findOne</span>(&#123;</span><br><span class="line">    <span class="attr">where</span>: &#123;</span><br><span class="line">      <span class="attr">firstName</span>: <span class="string">&#x27;Apple&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;).<span class="title function_">then</span>(<span class="function"><span class="params">user</span> =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>執行成功會印出設定的 <code>done!</code>：</p>
-<p><img src="https://i.imgur.com/7HvR4V7.png"></p>
+<p><img data-src="https://i.imgur.com/7HvR4V7.png"></p>
 <p>這樣就成功在 comments table 建立了一則留言：</p>
-<p><img src="https://i.imgur.com/Qi9bRny.png"></p>
+<p><img data-src="https://i.imgur.com/Qi9bRny.png"></p>
 <h3 id="範例：撈取資料"><a href="#範例：撈取資料" class="headerlink" title="範例：撈取資料"></a>範例：撈取資料</h3><p>接著我們就可以利用關聯的 user id 來撈取資料，透過 <code>include:&lt;Table&gt;</code> 這個參數來指定 Model，如果要 include 多個 Model 可透過 Array 傳入：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sequelize.<span class="title function_">sync</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="title class_">User</span>.<span class="title function_">findOne</span>(&#123;</span><br><span class="line">    <span class="attr">where</span>: &#123;</span><br><span class="line">      <span class="attr">firstName</span>: <span class="string">&#x27;Apple&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 新增 include 這個參數來指定 Model</span></span><br><span class="line">    <span class="attr">include</span>: <span class="title class_">Comment</span></span><br><span class="line">  &#125;).<span class="title function_">then</span>(<span class="function"><span class="params">user</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(user)</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>若把 user 資料印出來，會發現包含很多資訊：</p>
-<p><img src="https://i.imgur.com/c6SBlsD.png"></p>
+<p><img data-src="https://i.imgur.com/c6SBlsD.png"></p>
 <p>利用 <code>JSON.stringify()</code> 來格式化輸出，即可忽略不需要的資訊：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sequelize.<span class="title function_">sync</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="title class_">User</span>.<span class="title function_">findOne</span>(&#123;</span><br><span class="line">    <span class="attr">where</span>: &#123;</span><br><span class="line">      <span class="attr">firstName</span>: <span class="string">&#x27;Apple&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">include</span>: <span class="title class_">Comment</span></span><br><span class="line">  &#125;).<span class="title function_">then</span>(<span class="function"><span class="params">user</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(user.<span class="property">comments</span>, <span class="literal">null</span>, <span class="number">4</span>));</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>就會拿到 userId 為 3 的使用者的所有留言：</p>
-<p><img src="https://i.imgur.com/RYpcxxT.png"></p>
+<p><img data-src="https://i.imgur.com/RYpcxxT.png"></p>
 <p>而 <code>User.hasMany(Comment);</code> 其實是單向關係，也就是將 User 對 Comment 進行關聯，但沒有說明 Comment 和 User 的關係是什麼。這時如果要從 comment 來查詢 user 的資料，就會出現錯誤訊息。</p>
 <p>需要加上 <code>Comment.belongsTo(User)</code>，透過這段指令將 Comment 對 User 做關聯，建立起雙向關係：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">User</span>.<span class="title function_">hasMany</span>(<span class="title class_">Comment</span>);</span><br><span class="line"><span class="title class_">Comment</span>.<span class="title function_">belongsTo</span>(<span class="title class_">User</span>);</span><br><span class="line"></span><br><span class="line">sequelize.<span class="title function_">sync</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="title class_">Comment</span>.<span class="title function_">findOne</span>(&#123;</span><br><span class="line">    <span class="attr">where</span>: &#123;</span><br><span class="line">      <span class="attr">content</span>: <span class="string">&#x27;Hello!&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">include</span>: <span class="title class_">User</span></span><br><span class="line">  &#125;).<span class="title function_">then</span>(<span class="function"><span class="params">comment</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(comment, <span class="literal">null</span>, <span class="number">4</span>));</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>就會拿到有關 comment 的 user 資訊：</p>
-<p><img src="https://i.imgur.com/5U9BsA1.png"></p>
+<p><img data-src="https://i.imgur.com/5U9BsA1.png"></p>
 <h3 id="什麼是-N-1-Problem？"><a href="#什麼是-N-1-Problem？" class="headerlink" title="什麼是 N+1 Problem？"></a>什麼是 N+1 Problem？</h3><p>上面的 <code>include</code> 其實正是 N+1 problem 的解法。所謂 N+1 problem，是指先用一次查詢撈出 N 筆資料（例如所有 user），再於迴圈中逐筆查詢每個 user 的 comments，總共就會發出 1 + N 次 SQL 查詢。當資料量變大，這會對資料庫造成大量不必要的負擔。</p>
 <p>而透過 <code>include</code>（也就是 eager loading，預先載入），Sequelize 會改用 JOIN 的方式一次撈出關聯資料，只需要一次查詢就能拿到 user 和其所有 comments，這也是使用 ORM 時特別需要留意的效能問題。</p>
 <h2 id="Sequelize-CLI"><a href="#Sequelize-CLI" class="headerlink" title="Sequelize CLI"></a>Sequelize CLI</h2><p>在實際開發時，為了讓程式碼更有結構性以及方便管理，可安裝 Sequelize CLI 這套工具，詳細內容可參考<span class="exturl" data-url="aHR0cHM6Ly9zZXF1ZWxpemUub3JnL2RvY3MvdjYvb3RoZXItdG9waWNzL21pZ3JhdGlvbnMv" title="https://sequelize.org/docs/v6/other-topics/migrations/">官方文件<i class="fa fa-external-link"></i></span>。</p>
 <h3 id="安裝並初始化"><a href="#安裝並初始化" class="headerlink" title="安裝並初始化"></a>安裝並初始化</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save sequelize-cli</span><br><span class="line">$ npx sequelize-cli init</span><br></pre></td></tr></table></figure>
 
 <p>完成初始化會建立 config.json 檔案，裡面會有連線資料庫的設定，包含 database 帳密等資訊，因此通常不會加到 commit：</p>
-<p><img src="https://i.imgur.com/UOauFVL.png"></p>
+<p><img data-src="https://i.imgur.com/UOauFVL.png"></p>
 <h3 id="設定連線資料庫"><a href="#設定連線資料庫" class="headerlink" title="設定連線資料庫"></a>設定連線資料庫</h3><p>接著可以在 config.json 更改成我們連線資料庫的設定，三種設定分別是在開發環境、測試環境、正式環境。因為我們現在是在 localhost 開發所以要修改 development 的部分：</p>
-<p><img src="https://i.imgur.com/opeKSyL.png"></p>
+<p><img data-src="https://i.imgur.com/opeKSyL.png"></p>
 <h3 id="建立-Model"><a href="#建立-Model" class="headerlink" title="建立 Model"></a>建立 Model</h3><p>接著我們可以直接透過 CLI 指令來建立 User 和 Comment 這兩個 Model：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string</span><br><span class="line">$ npx sequelize-cli model:generate --name Comment --attributes content:string</span><br></pre></td></tr></table></figure>
 
 <p>建立好 Model 之後，Sequelize 會自動在 models 和 migrations 資料夾底下建立檔案：</p>
-<p><img src="https://i.imgur.com/xTNnc3A.png"></p>
+<p><img data-src="https://i.imgur.com/xTNnc3A.png"></p>
 <p>我們可以透過 user.js 和 comment.js 這些檔案設定，來對 model 進行微調：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span>;</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="function">(<span class="params">sequelize, DataTypes</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="title class_">Comment</span> = sequelize.<span class="title function_">define</span>(<span class="string">&#x27;Comment&#x27;</span>, &#123;</span><br><span class="line">    <span class="attr">content</span>: <span class="title class_">DataTypes</span>.<span class="property">STRING</span></span><br><span class="line">  &#125;, &#123;&#125;);</span><br><span class="line">  <span class="title class_">Comment</span>.<span class="property">associate</span> = <span class="keyword">function</span>(<span class="params">models</span>) &#123;</span><br><span class="line">    <span class="comment">//  在這裡設定資料庫關聯</span></span><br><span class="line">    <span class="title class_">Comment</span>.<span class="title function_">belongsTo</span>(models.<span class="property">User</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> <span class="title class_">Comment</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -420,7 +442,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npx sequelize-cli db:migrate</span><br></pre></td></tr></table></figure>
 
 <p>接著就會在資料庫建立 SequelizeMeta table 來記錄執行過的 migrations；並且依照 migrations 中的檔案去操作資料庫，也就是建立 users 和 comments table：</p>
-<p><img src="https://i.imgur.com/RPTzLXv.png"></p>
+<p><img data-src="https://i.imgur.com/RPTzLXv.png"></p>
 <p>有了 migrations，就不需再透過 <code>sync()</code> 指令來操作資料庫，並且能夠以更結構性的方式進行管理。</p>
 <h3 id="透過-Migrations-關聯資料庫"><a href="#透過-Migrations-關聯資料庫" class="headerlink" title="透過 Migrations 關聯資料庫"></a>透過 Migrations 關聯資料庫</h3><p>接著在建立好的檔案 user.js 和 comment.js 加上關聯設定，其中 model 通常會以英文大寫開頭：</p>
 <ul>
@@ -440,7 +462,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">User</span> = db.<span class="property">User</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Comment</span> = db.<span class="property">Comment</span>;</span><br><span class="line"></span><br><span class="line"><span class="title class_">User</span>.<span class="title function_">create</span>(&#123;</span><br><span class="line">  <span class="attr">firstName</span>: <span class="string">&#x27;Hello&#x27;</span>,</span><br><span class="line">  <span class="attr">lastName</span>: <span class="string">&#x27;World&#x27;</span></span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;done!&#x27;</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>執行後成功在 User 新增一筆資料：</p>
-<p><img src="https://i.imgur.com/OPsscPV.png"></p>
+<p><img data-src="https://i.imgur.com/OPsscPV.png"></p>
 <hr>
 <h2 id="改造留言板系統"><a href="#改造留言板系統" class="headerlink" title="改造留言板系統"></a>改造留言板系統</h2><p>在瞭解到什麼是 Sequelize 和 ORM 之後，接著我們要來改造之前實作的<span class="exturl" data-url="aHR0cHM6Ly9oYWNrbWQuaW8vQEhlaWRpLUxpdS9ub3RlLWJlMjAxLWV4cHJlc3MtcHJhY3RpY2U=" title="https://hackmd.io/@Heidi-Liu/note-be201-express-practice">留言板系統<i class="fa fa-external-link"></i></span>，也就是把 Model 部分改用 Sequelize 實作。</p>
 <h3 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h3><p>在 express 專案中引入 Sequelize 套件，並進行初始化：</p>
@@ -459,23 +481,23 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npx sequelize-cli model:generate --name User --attributes username:string,password:string,nickname:string</span><br><span class="line"></span><br><span class="line">$ npx sequelize-cli model:generate --name Comment --attributes content:text</span><br></pre></td></tr></table></figure>
 
 <p>執行後會在 models 建立檔案：</p>
-<p><img src="https://i.imgur.com/XXR8r9j.png"></p>
+<p><img data-src="https://i.imgur.com/XXR8r9j.png"></p>
 <h3 id="執行-Migrations-1"><a href="#執行-Migrations-1" class="headerlink" title="執行 Migrations"></a>執行 Migrations</h3><p>再來執行 Migrations，才會真正把資料寫入資料庫來建立 table：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npx sequelize-cli db:migrate</span><br></pre></td></tr></table></figure>
 
 <p>執行後會在資料庫建立 table：</p>
-<p><img src="https://i.imgur.com/cJidV5z.png"></p>
+<p><img data-src="https://i.imgur.com/cJidV5z.png"></p>
 <p>但我們還需要在 comment table 加上 UserId 欄位，這部分要自己手動修改 migrations 中的 create-comment 檔案：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 新增 UserId 這個欄位，型態是數字</span></span><br><span class="line">  <span class="title class_">UserId</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="title class_">Sequelize</span>.<span class="property">INTEGER</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 
 <p>接著要重跑一次 Migrations，可透過下方<br>指令來撤銷上一個動作：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 單次撤銷（最近的一次）</span><br><span class="line">$ npx sequelize-cli db:migrate:undo</span><br><span class="line"></span><br><span class="line">// 撤銷所有</span><br><span class="line">$ npx sequelize-cli db:migrate:undo:all</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/iGSJ2HF.png"></p>
+<p><img data-src="https://i.imgur.com/iGSJ2HF.png"></p>
 <p>到資料庫會發現 comments 不見了，但 users 不會受到影響：</p>
-<p><img src="https://i.imgur.com/XKqaVdq.png"></p>
+<p><img data-src="https://i.imgur.com/XKqaVdq.png"></p>
 <p>再跑一次 Migrations 建立 Comment table，會多一個 UserId 欄位：</p>
-<p><img src="https://i.imgur.com/N6Hfsy7.png"></p>
+<p><img data-src="https://i.imgur.com/N6Hfsy7.png"></p>
 <h4 id="補充：設定-username-為-UNIQUE"><a href="#補充：設定-username-為-UNIQUE" class="headerlink" title="補充：設定 username 為 UNIQUE"></a>補充：設定 username 為 UNIQUE</h4><p>此外，也可透過修改 create-user 檔案，把 username 欄位設定為 UNIQUE，然後再重新 Migrations。如此可避免註冊時會有重複的 username：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">username</span>: &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="title class_">Sequelize</span>.<span class="property">STRING</span>,</span><br><span class="line">  <span class="attr">unique</span>: <span class="literal">true</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 
@@ -535,7 +557,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">update</span>: <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="title class_">Comment</span>.<span class="title function_">findOne</span>(&#123;</span><br><span class="line">    <span class="attr">where</span>: &#123;</span><br><span class="line">      <span class="attr">id</span>: req.<span class="property">params</span>.<span class="property">id</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;).<span class="title function_">then</span>(<span class="function"><span class="params">comment</span> =&gt;</span> &#123;</span><br><span class="line">    res.<span class="title function_">render</span>(<span class="string">&#x27;update&#x27;</span>, &#123;</span><br><span class="line">      comment</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line"><span class="attr">handleUpdate</span>: <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="title class_">Comment</span>.<span class="title function_">findOne</span>(&#123;</span><br><span class="line">    <span class="attr">where</span>: &#123;</span><br><span class="line">      <span class="attr">id</span>: req.<span class="property">params</span>.<span class="property">id</span>,</span><br><span class="line">      <span class="title class_">UserId</span>: req.<span class="property">session</span>.<span class="property">userId</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;).<span class="title function_">then</span>(<span class="function"><span class="params">comment</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> comment.<span class="title function_">update</span>(&#123;</span><br><span class="line">      <span class="attr">content</span>: req.<span class="property">body</span>.<span class="property">content</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;).<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    res.<span class="title function_">redirect</span>(<span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">  &#125;).<span class="title function_">catch</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    res.<span class="title function_">redirect</span>(<span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>修改結果：</p>
-<p><img src="https://i.imgur.com/aSeD9vH.png"></p>
+<p><img data-src="https://i.imgur.com/aSeD9vH.png"></p>
 <h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>這樣就成功透過 Express 搭配 Sequelize 修改之前的留言板結構，即使不使用 SQL 指令，也能以 ORM 提供的物件導向形式來操作資料庫。</p>
 <p>這種寫法和之前使用 PHP &amp; MySQL 實作留言板的方式很不相同：以前會比較偏向先完成切版，然後一步一步增加功能；但以 MVC 架構去撰寫程式碼，會先規劃不同功能對應的不同路由，接著再規劃 Model 資料結構，以及如何呈現在畫面上，這使得整體結構分工更明確，也有助於後續的維護。</p>
 <p>參考資料：</p>
@@ -569,7 +591,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -738,7 +761,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -800,12 +824,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

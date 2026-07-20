@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 Limedy「Fetch 與 Promise 補充系列」課程的學習筆記。如有錯誤歡迎指正。  以下內容將涵蓋：  如何發出 HTTP 請求 回顧 XMLHttpRequest 如何使用 Fetch 什麼是 Promise">
@@ -59,6 +57,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 13] Fetch & Promise 補充",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-09-30T12:20:00.000Z",
+  "dateModified": "2026-07-09T06:06:05.651Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/fetch-promise/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[week 13] Fetch & Promise 補充 | Liusan's Blog</title>
   
 
@@ -94,7 +114,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -313,17 +333,17 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="title function_">fetch</span>(<span class="string">&#x27;https://run.mocky.io/v3/d49195d4-9e5b-4b63-8b13-6f97e46eb605&#x27;</span>)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
 <p>使用開發者工具查看 Network，確實有收到 Response：</p>
-<p><img src="https://i.imgur.com/eOZlngN.png"></p>
+<p><img data-src="https://i.imgur.com/eOZlngN.png"></p>
 <p>或是直接將結果印出來，可知 fetch 其實會回傳一個 Promise：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">const</span> result = <span class="title function_">fetch</span>(<span class="string">&#x27;https://run.mocky.io/v3/d49195d4-9e5b-4b63-8b13-6f97e46eb605&#x27;</span>);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(result)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/QtvlDpl.png"></p>
+<p><img data-src="https://i.imgur.com/QtvlDpl.png"></p>
 <hr>
 <h2 id="什麼是-Promise"><a href="#什麼是-Promise" class="headerlink" title="什麼是 Promise"></a>什麼是 Promise</h2><p>Promist 是一個獨特的物件，簡單來說就是一個容器，裡面儲存著某個未來才會結束的事件（也就是非同步操作）的結果。</p>
 <h3 id="then-：拿取-Promise-Response"><a href="#then-：拿取-Promise-Response" class="headerlink" title="then()：拿取 Promise Response"></a><code>then()</code>：拿取 Promise Response</h3><p>那麼該如何拿到 Promise 結果呢？我們可利用 <code>.then()</code> 來拿到 Response，如下列程式碼：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">pringResult</span>(<span class="params">response</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(response)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> result = <span class="title function_">fetch</span>(<span class="string">&#x27;https://run.mocky.io/v3/d49195d4-9e5b-4b63-8b13-6f97e46eb605&#x27;</span>);</span><br><span class="line">  result.<span class="title function_">then</span>(pringResult)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/d88g2Ox.png"></p>
+<p><img data-src="https://i.imgur.com/d88g2Ox.png"></p>
 <p>可把上述程式碼簡化如下：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">fetch</span>(<span class="string">&#x27;https://run.mocky.io/v3/d49195d4-9e5b-4b63-8b13-6f97e46eb605&#x27;</span>)</span><br><span class="line">  .<span class="title function_">then</span>( <span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(response)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
 
@@ -331,12 +351,12 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> api200 = <span class="string">&#x27;https://run.mocky.io/v3/d49195d4-9e5b-4b63-8b13-6f97e46eb605&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">fetch</span>(api200)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    response.<span class="title function_">text</span>().<span class="title function_">then</span>(<span class="function"><span class="params">text</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(text)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
 
 <p>確認可在瀏覽器上印出 text 內容：</p>
-<p><img src="https://i.imgur.com/rqFF0In.png"></p>
+<p><img data-src="https://i.imgur.com/rqFF0In.png"></p>
 <h4 id="json"><a href="#json" class="headerlink" title=".json()"></a><code>.json()</code></h4><p>若確定 Response 是 JSON 格式，可使用 <code>.json()</code> 以相同寫法來處理，回傳的結果會如同 <code>JSON.parse()</code> 幫我們轉成 json 格式：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> api200 = <span class="string">&#x27;https://run.mocky.io/v3/d49195d4-9e5b-4b63-8b13-6f97e46eb605&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">fetch</span>(api200)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    response.<span class="title function_">json</span>().<span class="title function_">then</span>(<span class="function"><span class="params">json</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(json)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
 
 <p>確認得到 JSON 格式的結果：</p>
-<p><img src="https://i.imgur.com/3ZOk7YA.png"></p>
+<p><img data-src="https://i.imgur.com/3ZOk7YA.png"></p>
 <h3 id="簡化再簡化"><a href="#簡化再簡化" class="headerlink" title="簡化再簡化"></a>簡化再簡化</h3><p>由於 <code>response.json()</code> 這個 Promise 的回傳值是 text，我們可將程式碼簡化如下：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">fetch</span>(api200)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> response.<span class="title function_">json</span>()  <span class="comment">// 回傳值</span></span><br><span class="line">  &#125;).<span class="title function_">then</span>(<span class="function"><span class="params">json</span> =&gt;</span> &#123;         <span class="comment">// then() 會將回傳值帶到 Response</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(json)       <span class="comment">// 取到回傳值</span></span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
 
@@ -366,7 +386,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">fetch</span>(api200)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> response.<span class="title function_">json</span>()</span><br><span class="line">  &#125;).<span class="title function_">then</span>(<span class="function"><span class="params">json</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(json)</span><br><span class="line">  &#125;).<span class="title function_">catch</span>(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;error&#x27;</span>, err)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
 
 <p>再把原先的請求 URL 稍作修改，確認可接收錯誤訊息：</p>
-<p><img src="https://i.imgur.com/qN3HBCE.png"></p>
+<p><img data-src="https://i.imgur.com/qN3HBCE.png"></p>
 <p>簡言之，我們可使用 <code>then()</code> 來接收回傳的結果，<code>catch()</code> 來接收回傳的錯誤。</p>
 <h2 id="利用-Fetch-發-POST"><a href="#利用-Fetch-發-POST" class="headerlink" title="利用 Fetch 發 POST"></a>利用 Fetch 發 POST</h2><p>前面提到過，Fetch 預設方法是使用 GET，若要發出 POST Request，需帶入其他參數，以下列程式碼為例：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> data = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;heidi&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fetch</span>(api200, &#123;</span><br><span class="line">  <span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">  <span class="attr">body</span>: <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(data),</span><br><span class="line">  <span class="attr">headers</span>: <span class="keyword">new</span> <span class="title class_">Headers</span>(&#123;</span><br><span class="line">    <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> response.<span class="title function_">json</span>()</span><br><span class="line">  &#125;).<span class="title function_">then</span>(<span class="function"><span class="params">json</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(json)</span><br><span class="line">  &#125;).<span class="title function_">catch</span>(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;error&#x27;</span>, err)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
@@ -441,20 +461,21 @@
       <div class="popular-posts-title"><a href="/browser-and-ajax/" rel="bookmark">[week 8] 傳送資料的方式 & 瀏覽器的限制</a></div>
     </li>
     <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/javascript-native-array/" rel="bookmark">【學習筆記】JavaScript 的陣列遍歷（二）：forEach/map/filter/every/some/reduce</a></div>
+    </li>
+    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/javascript-floating-number/" rel="bookmark">【學習筆記】JavaScript 的浮點數計算、平方根</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/javascript-for-loop/" rel="bookmark">【學習筆記】JavaScript 的陣列遍歷（ㄧ）：for/for...of/for...in/forEach</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/javascript-native-array/" rel="bookmark">【學習筆記】JavaScript 的陣列遍歷（二）：forEach/map/filter/every/some/reduce</a></div>
-    </li>
-    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/jquery-bootstrap/" rel="bookmark">[week 12] 前端工具之一 - jQuery 與 Bootstrap</a></div>
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -623,7 +644,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -685,12 +707,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

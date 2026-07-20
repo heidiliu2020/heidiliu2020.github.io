@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 [BE101] 用 PHP 與 MySQL 學習後端基礎 這門課程的學習筆記。如有錯誤歡迎指正。  相關筆記：  [week 9] 後端基礎 - PHP 語法、資料庫 MySQL [week 9] 利用 PHP 實作留言板 - 初階實作篇">
@@ -57,6 +55,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 11] 資訊安全 - 雜湊與加密 & 常見攻擊：SQL Injection、XSS",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-09-16T06:13:00.000Z",
+  "dateModified": "2026-07-09T06:06:05.658Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/hash-security/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[week 11] 資訊安全 - 雜湊與加密 & 常見攻擊：SQL Injection、XSS | Liusan's Blog</title>
   
 
@@ -92,7 +112,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -293,7 +313,7 @@
 </ul>
 <p>因此我們需要透過「雜湊」來保護密碼。這也是為什麼，當我們忘記密碼時，網站會要我們重設密碼，而不是得到原先的密碼，因為雜湊不可逆，無法回推得到原碼。</p>
 <h2 id="加密？雜湊？"><a href="#加密？雜湊？" class="headerlink" title="加密？雜湊？"></a>加密？雜湊？</h2><p>兩者最大差別在於：「加密可逆，雜湊不可逆」。</p>
-<p><img src="https://i.imgur.com/ymLoNYw.png"></p>
+<p><img data-src="https://i.imgur.com/ymLoNYw.png"></p>
 <h3 id="加密（Encrypt）"><a href="#加密（Encrypt）" class="headerlink" title="加密（Encrypt）"></a>加密（Encrypt）</h3><ul>
 <li>一對一，可逆</li>
 <li>加密與解密必須要有金鑰（key）才能進行</li>
@@ -385,7 +405,7 @@
 <li>SQL 指令就變成：<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO <span class="title function_ invoke__">comments</span>(nickname, content)</span><br><span class="line"><span class="title function_ invoke__">VALUES</span>(<span class="string">&#x27;aaa&#x27;</span>, <span class="string">&#x27;&#x27;</span>), (<span class="string">&#x27;admin&#x27;</span>, <span class="string">&#x27;Hacking!&#x27;</span>)<span class="comment">#</span></span><br></pre></td></tr></table></figure></li>
 <li>執行後會新增兩筆留言，nickname 分別是 aaa 和 admin</li>
 </ol>
-<p><img src="https://i.imgur.com/zLfxN7g.png"></p>
+<p><img data-src="https://i.imgur.com/zLfxN7g.png"></p>
 <h3 id="防範方法：Prepare-Statement-預處理"><a href="#防範方法：Prepare-Statement-預處理" class="headerlink" title="防範方法：Prepare Statement 預處理"></a>防範方法：Prepare Statement 預處理</h3><p>透過 Prepare Statement 進行跳脫，以防止 SQL 注入。</p>
 <p>步驟如下：</p>
 <ol>
@@ -416,14 +436,14 @@
 <ul>
 <li>Reflected XSS（反射型）</li>
 </ul>
-<p><img src="https://i.imgur.com/zNQGEPN.png"></p>
+<p><img data-src="https://i.imgur.com/zNQGEPN.png"></p>
 <p>以網頁輸入欄位為例。若在輸入欄位內刻意植入 Javascript 語法，例如下列程式碼，即可竊取使用者的 cookie 資料：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(document.cookie)；&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>Stored XSS（儲存型）</li>
 </ul>
-<p><img src="https://i.imgur.com/A5qvwBe.png"></p>
+<p><img data-src="https://i.imgur.com/A5qvwBe.png"></p>
 <p>以留言板為例。攻擊者將惡意程式碼透過「新增留言」寫入資料庫，當使用者瀏覽到該頁面時，就會觸發程式碼，達到攻擊目的。</p>
 <h3 id="防範方法：過濾特殊字元"><a href="#防範方法：過濾特殊字元" class="headerlink" title="防範方法：過濾特殊字元"></a>防範方法：過濾特殊字元</h3><p>責任主要還是歸咎於網頁開發時留下的安全漏洞，但 Server 端與 Client 端可以藉由下列方法，來避免遭受攻擊：</p>
 <h4 id="Client-端"><a href="#Client-端" class="headerlink" title="Client 端"></a>Client 端</h4><ol>
@@ -566,11 +586,12 @@
       <div class="popular-posts-title"><a href="/express-board/" rel="bookmark">[week 17] 後端中階 - Express 實戰：簡易會員註冊系統 & 留言板</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/express-middleware/" rel="bookmark">[week 17] 後端中階 - Express 中不可或缺的拼圖：淺談 Middleware</a></div>
+      <div class="popular-posts-title"><a href="/express/" rel="bookmark">[week 17] 後端中階 - 使用 Node.js + Express 框架建立一個靜態網頁</a></div>
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -739,7 +760,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -801,12 +823,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

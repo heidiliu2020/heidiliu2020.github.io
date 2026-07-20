@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 [BE101] 用 PHP 與 MySQL 學習後端基礎 這門課程的學習筆記。如有錯誤歡迎指正。  12345678910學習目標： P1 你知道 PHP 是什麼 P1 你知道前端與後端的差別 P1 你知道什麼是資料庫 P1 你了解基本的 SQL 語法，包括 Select、Insert Into、Delete 與 Update P1 你能夠寫出基本的 CRUD 應用 P1 你知道什麼是">
@@ -66,6 +64,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 9] 後端基礎 - PHP 語法、資料庫 MySQL",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-08-21T06:09:00.000Z",
+  "dateModified": "2026-07-09T06:06:05.715Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/php-mysql/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[week 9] 後端基礎 - PHP 語法、資料庫 MySQL | Liusan's Blog</title>
   
 
@@ -101,7 +121,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -306,15 +326,15 @@
 <li>到 <span class="exturl" data-url="aHR0cHM6Ly93d3cuYXBhY2hlZnJpZW5kcy5vcmcvemhfdHcvaW5kZXguaHRtbA==" title="https://www.apachefriends.org/zh_tw/index.html">XAMPP 官網<i class="fa fa-external-link"></i></span> 下載程式並安裝</li>
 <li>開啟 XAMPP 並運行 Apache 和 MySQL</li>
 </ol>
-<p><img src="https://i.imgur.com/UwHMX0L.png"></p>
+<p><img data-src="https://i.imgur.com/UwHMX0L.png"></p>
 <ol start="3">
 <li>點選 Adimn 開啟網頁：<code>http://localhost/dashboard/</code>，出現以下畫面就代表安裝成功！</li>
 </ol>
-<p><img src="https://i.imgur.com/5V5s0ra.png" alt="XAMPP"></p>
+<p><img data-src="https://i.imgur.com/5V5s0ra.png" alt="XAMPP"></p>
 <ol start="4">
 <li>以 XAMPP 程式而言，PHP 檔案都會放在 htdocs 資料夾內，且<code>網址路徑 = 檔案路徑</code></li>
 </ol>
-<p><img src="https://i.imgur.com/0DMgMWL.png" alt="htdocs"></p>
+<p><img data-src="https://i.imgur.com/0DMgMWL.png" alt="htdocs"></p>
 <ol start="5">
 <li>以下為範例在 hotdocs 另建一個資料夾 heidi，裡面新建 test.php，並在編輯器輸入下列程式碼：</li>
 </ol>
@@ -323,22 +343,22 @@
 <ol start="6">
 <li>以瀏覽器運行該網址：<code>http://localhost/heidi/test.php</code></li>
 </ol>
-<p><img src="https://i.imgur.com/dt6vRqk.png" alt="test.php"></p>
+<p><img data-src="https://i.imgur.com/dt6vRqk.png" alt="test.php"></p>
 <hr>
 <h2 id="靜態網頁-vs-動態網頁"><a href="#靜態網頁-vs-動態網頁" class="headerlink" title="靜態網頁 vs 動態網頁"></a>靜態網頁 vs 動態網頁</h2><p>網頁中的「靜態」與「動態」，並非代表視覺上的移動，兩者差異在於是否以「伺服器程式」去產生網頁上的資料。</p>
 <h3 id="靜態網頁"><a href="#靜態網頁" class="headerlink" title="靜態網頁"></a>靜態網頁</h3><ul>
 <li>server 收到 request 後，找到相對應的檔案（<code>.css</code> 是靜態檔案）後，把檔案直接回傳 response</li>
 <li>檔案內容是什麼就回傳什麼</li>
 </ul>
-<p><img src="https://i.imgur.com/p1FRoiG.png"></p>
+<p><img data-src="https://i.imgur.com/p1FRoiG.png"></p>
 <h3 id="動態網頁"><a href="#動態網頁" class="headerlink" title="動態網頁"></a>動態網頁</h3><ul>
 <li>server 收到 request 後，會將 <code>.php</code> 檔案給 php 處理成 output，再傳給 server 後回傳 response</li>
 <li>可根據用戶的點擊、輸入等操作，迅速產生響應與動態變化，例如部落格、留言板等</li>
 </ul>
-<p><img src="https://i.imgur.com/Y5BDM4e.png"></p>
+<p><img data-src="https://i.imgur.com/Y5BDM4e.png"></p>
 <h2 id="PHP-是什麼？"><a href="#PHP-是什麼？" class="headerlink" title="PHP 是什麼？"></a>PHP 是什麼？</h2><p>PHP 全名是 Hypertext Preprocessor（超文本預處理器）。和 ASP、JSP 等都是動態網頁開發語言。</p>
 <p>PHP 語言是伺服器端（Server）執行的網頁，因此 PHP 必須在伺服器端執行完後，再將結果回傳給用戶端（Clint）的瀏覽器檢視並渲染。</p>
-<h3 id="Apache、PHP-與資料庫運作原理"><a href="#Apache、PHP-與資料庫運作原理" class="headerlink" title="Apache、PHP 與資料庫運作原理"></a>Apache、PHP 與資料庫運作原理</h3><p><img src="https://i.imgur.com/XHHg6LO.png"></p>
+<h3 id="Apache、PHP-與資料庫運作原理"><a href="#Apache、PHP-與資料庫運作原理" class="headerlink" title="Apache、PHP 與資料庫運作原理"></a>Apache、PHP 與資料庫運作原理</h3><p><img data-src="https://i.imgur.com/XHHg6LO.png"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">request → apache → php → output → apache → response</span><br><span class="line">　　　　　 (server)       (html)</span><br></pre></td></tr></table></figure>
 
 <p>執行步驟大致如下：</p>
@@ -368,7 +388,7 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">1</span>; <span class="variable">$i</span> &lt;= <span class="number">5</span>; <span class="variable">$i</span>++) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$i</span> . <span class="string">&#x27;&lt;br&gt;&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>結果如下：</p>
-<p><img src="https://i.imgur.com/RgZfI7h.png" alt="迴圈"></p>
+<p><img data-src="https://i.imgur.com/RgZfI7h.png" alt="迴圈"></p>
 <h3 id="陣列-array"><a href="#陣列-array" class="headerlink" title="陣列 array"></a>陣列 array</h3><ul>
 <li><code>sizeof()</code>：返回單元中的元素數量，和 <code>count()</code> 功能相同。</li>
 </ul>
@@ -413,9 +433,9 @@
 </ul>
 <h3 id="phpMyAdmin"><a href="#phpMyAdmin" class="headerlink" title="phpMyAdmin"></a>phpMyAdmin</h3><p>phpMyAdmin 是一套基於 PHP 寫的 GUI 資料庫管理軟體，其本質就是一個 PHP 檔案，讓管理者能夠以 GUI 介面來管理 MySQL 資料庫。</p>
 <p>可從 <code>http://localhost:8080</code> 點選 phpmyadmin 進入：</p>
-<p><img src="https://i.imgur.com/1guMNR9.png"></p>
+<p><img data-src="https://i.imgur.com/1guMNR9.png"></p>
 <p>管理介面如下所示：</p>
-<p><img src="https://i.imgur.com/hNpYDDJ.png"></p>
+<p><img data-src="https://i.imgur.com/hNpYDDJ.png"></p>
 <h2 id="Table-schema-結構簡介"><a href="#Table-schema-結構簡介" class="headerlink" title="Table schema 結構簡介"></a>Table schema 結構簡介</h2><p>Table schema（資料庫結構），當我們在開資料庫以前，要先進行資料型態、有無預設值、是否為唯一等設定，而之後的資料均須符合當初設定的結構，否則會無法成功新增。</p>
 <h3 id="資料型態"><a href="#資料型態" class="headerlink" title="資料型態"></a>資料型態</h3><ul>
 <li>id：<code>int</code><ul>
@@ -482,14 +502,14 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form method=&quot;GET&quot; action=&quot;test.php&quot;&gt;</span><br><span class="line">  name: &lt;input type=&quot;text&quot; name=&quot;name&quot;/&gt;</span><br><span class="line">  age: &lt;input type=&quot;text&quot; name=&quot;age&quot;/&gt;</span><br><span class="line">  &lt;input type=&quot;submit&quot;/&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
 
 <p>在瀏覽器開啟表單如下：</p>
-<p><img src="https://i.imgur.com/Dl9UlBX.png"></p>
+<p><img data-src="https://i.imgur.com/Dl9UlBX.png"></p>
 <ol start="2">
 <li>在接收資料的 test.php 檔案撰寫 php 語法</li>
 </ol>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="comment">// 用 empty 檢查表單是否為空</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">empty</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;name&#x27;</span>]) || <span class="keyword">empty</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;age&#x27;</span>]))&#123;</span><br><span class="line">      <span class="keyword">echo</span> <span class="string">&#x27;資料有缺，請再次填寫&lt;br&gt;&#x27;</span>;</span><br><span class="line">      <span class="keyword">exit</span>();   <span class="comment">// 終止程序</span></span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">// 接收 method 為 GET 的 From input</span></span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;Hello!&quot;</span> . <span class="variable">$_GET</span>[<span class="string">&#x27;name&#x27;</span>] . <span class="string">&quot; &lt;br&gt;&quot;</span>;</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;Your age is&quot;</span> . <span class="variable">$_GET</span>[<span class="string">&#x27;age&#x27;</span>] . <span class="string">&quot; &lt;br&gt;&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="title function_ invoke__">print_r</span>(<span class="variable">$_GET</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>在前端以 GET 方法提交表單，資料會以 Query String 的形式將加在網址後方：</p>
-<p><img src="https://i.imgur.com/nEr23zE.png"></p>
+<p><img data-src="https://i.imgur.com/nEr23zE.png"></p>
 <h2 id="用-PHP-操作-MySQL"><a href="#用-PHP-操作-MySQL" class="headerlink" title="用 PHP 操作 MySQL"></a>用 PHP 操作 MySQL</h2><h3 id="從-PHP-連線到-MySQL-資料庫"><a href="#從-PHP-連線到-MySQL-資料庫" class="headerlink" title="從 PHP 連線到 MySQL 資料庫"></a>從 PHP 連線到 MySQL 資料庫</h3><h4 id="conn-php"><a href="#conn-php" class="headerlink" title="conn.php"></a>conn.php</h4><ul>
 <li>存放帳密等重要資料，需加入 git.ignore 不進行版本控制</li>
 </ul>
@@ -527,17 +547,18 @@
       <div class="popular-posts-title"><a href="/backend-system-design/" rel="bookmark">[week 14] 後端基礎：資料庫 & 系統設計</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/php-api/" rel="bookmark">[week 12] 利用 PHP 實作留言板 - API 篇</a></div>
-    </li>
-    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/php-blog/" rel="bookmark">[week 11] 利用 PHP 實作陽春部落格</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/php-board/" rel="bookmark">[week 9] 利用 PHP 實作留言板 - 初階實作篇</a></div>
+      <div class="popular-posts-title"><a href="/php-api/" rel="bookmark">[week 12] 利用 PHP 實作留言板 - API 篇</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/php-todolist/" rel="bookmark">[week 12] 結合前端與後端功能實作 Todo List</a></div>
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -707,7 +728,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -769,12 +791,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

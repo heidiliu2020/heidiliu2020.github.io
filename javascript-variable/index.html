@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 [JS201] 進階 JavaScript：那些你一直搞不懂的地方 這門課程的學習筆記。如有錯誤歡迎指正！  1234學習目標： 瞭解 JavaScript 有哪些的資料型態 原始型態與物件型態在變數宣告賦值上的差異">
@@ -57,6 +55,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 16] JavaScript 進階 - 關於變數與資料型態",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-10-15T16:23:00.000Z",
+  "dateModified": "2026-04-23T06:14:18.244Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/javascript-variable/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[week 16] JavaScript 進階 - 關於變數與資料型態 | Liusan's Blog</title>
   
 
@@ -92,7 +112,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -312,7 +332,7 @@
 
 <p>結果得到 true 的資料型態是 boolean。</p>
 <p>接著我們再看看其他範例結果：</p>
-<p><img src="https://i.imgur.com/rT6DR1N.png"></p>
+<p><img data-src="https://i.imgur.com/rT6DR1N.png"></p>
 <p>由結果可知，array  和 null 也屬於 object 型態，但前面不是說 null 的屬於原始型態嗎？這其實是 JavaScript 的歷史 bug，詳細內容可查閱下方參考資料：</p>
 <blockquote>
 <p>null 使用 typeof 運算子，回傳的結果會是字串 “object”，這指出 null 可被認為是象徵「無物件」（no object）的一種特殊物件值。（參考資料：<span class="exturl" data-url="aHR0cHM6Ly93d3cudGVubG9uZy5jb20udHcvcHJvZHVjdHMvOTc4OTg2Mjc2NDQxMQ==" title="https://www.tenlong.com.tw/products/9789862764411">犀牛書<i class="fa fa-external-link"></i></span>）</p>
@@ -321,7 +341,7 @@
 <p>這其實是 JavaScript 最初發現的一個錯誤，然後被 ECMAScript 沿用至今。現在，null 被認為是物件的佔位符，從而解釋了這一矛盾。<br>（參考資料：<span class="exturl" data-url="aHR0cHM6Ly9pdGhlbHAuaXRob21lLmNvbS50dy9hcnRpY2xlcy8xMDIwMDg0MQ==" title="https://ithelp.ithome.com.tw/articles/10200841">你懂JavaScript 嗎？#4 型別（Types）<i class="fa fa-external-link"></i></span>）</p>
 </blockquote>
 <p>以下是在 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtVFcvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvT3BlcmF0b3JzL3R5cGVvZg==" title="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/typeof">MDN 網站<i class="fa fa-external-link"></i></span> 列出 typeof 的可能回傳值：</p>
-<p><img src="https://4.bp.blogspot.com/-dBndQxibqJ8/V3xngW8lK5I/AAAAAAAAnDU/L5PVWe-8j-gL3vzcA4xMznzsgqq4AcnkACLcB/s1600/1.png"></p>
+<p><img data-src="https://4.bp.blogspot.com/-dBndQxibqJ8/V3xngW8lK5I/AAAAAAAAnDU/L5PVWe-8j-gL3vzcA4xMznzsgqq4AcnkACLcB/s1600/1.png"></p>
 <h3 id="利用-typeof-確認變數是否有使用到"><a href="#利用-typeof-確認變數是否有使用到" class="headerlink" title="利用 typeof 確認變數是否有使用到"></a>利用 <code>typeof</code> 確認變數是否有使用到</h3><p>我們還可以利用 <code>typeof</code> 來確認某個變數是否有使用到（是否有被宣告），以下列程式碼為例：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> a)</span><br><span class="line"><span class="comment">// 宣告 a 但還沒賦值，所以結果是 undefind</span></span><br></pre></td></tr></table></figure>
 
@@ -355,7 +375,7 @@
 
 <p>可想像成是「記憶體位置不同」導致的結果。儘管兩個箱子儲存的數值相同，但因記憶體位置不同，指向的元素不同，所以不會相等。</p>
 <p>如下方示意圖：</p>
-<p><img src="https://i.imgur.com/ZAY1PrG.png"></p>
+<p><img data-src="https://i.imgur.com/ZAY1PrG.png"></p>
 <h3 id="關於-等號賦值"><a href="#關於-等號賦值" class="headerlink" title="關於 = 等號賦值"></a>關於 <code>=</code> 等號賦值</h3><p>如果換成下列情形，也就是將 obj 賦值給 obj2 時：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    <span class="attr">a</span>:<span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj2 = obj</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj === obj2)        <span class="comment">// 印出 true</span></span><br></pre></td></tr></table></figure>
 
@@ -363,12 +383,12 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    <span class="attr">a</span>:<span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj2 = obj          <span class="comment">// 賦值</span></span><br><span class="line">obj2.<span class="property">a</span> = <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;obj&#x27;</span>, obj2)       <span class="comment">// obj &#123; a: 2 &#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;obj2&#x27;</span>, obj2)      <span class="comment">// obj2 &#123; a: 2 &#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj === obj2)      <span class="comment">// 印出 true，兩者相等</span></span><br></pre></td></tr></table></figure>
 
 <p>之所以 obj 的值也一起被更改，是因為 obj 和 obj2 指向了相同記憶體位置（0x01），也就是指向同一個物件：</p>
-<p><img src="https://i.imgur.com/cgfJMmd.png"></p>
+<p><img data-src="https://i.imgur.com/cgfJMmd.png"></p>
 <p>但如果以 <code>obj2 = &#123;b:1&#125;</code> 將 obj2 賦值一個新的物件，此時就會指向一個新的記憶體位置。以下方程式碼為例：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  <span class="attr">a</span>:<span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj2 = obj</span><br><span class="line">obj2.<span class="property">a</span> = <span class="number">2</span></span><br><span class="line">obj2 = &#123;<span class="attr">b</span>:<span class="number">1</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;obj&#x27;</span>, obj2)         <span class="comment">// obj &#123; a: 2 &#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;obj2&#x27;</span>, obj2)        <span class="comment">// obj2 &#123; b: 1 &#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj === obj2)        <span class="comment">// 印出 false，兩者不相等</span></span><br></pre></td></tr></table></figure>
 
 <p>會發現 obj2 和 obj 不相等，這是因為「往裡面放東西」與「改放全新的東西」是兩件完全不同的事情。後者會指向一個新的記憶體，可參考下圖理解：</p>
-<p><img src="https://i.imgur.com/JkzALWA.png"></p>
+<p><img data-src="https://i.imgur.com/JkzALWA.png"></p>
 <p>若以陣列為例，會得到相同的結果，以下列程式碼為例：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = []</span><br><span class="line"><span class="keyword">var</span> arr2 = arr</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr, arr2)</span><br><span class="line"><span class="comment">// 印出 [] []</span></span><br><span class="line">arr2 = [<span class="string">&#x27;arr2&#x27;</span>]          <span class="comment">// 賦值，指向新的記憶體位置</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr, arr2)</span><br><span class="line"><span class="comment">// 印出 [] [&#x27;arr2&#x27;]</span></span><br></pre></td></tr></table></figure>
 
@@ -456,7 +476,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -624,7 +645,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -686,12 +708,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

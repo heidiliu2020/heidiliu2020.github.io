@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="原文連結：ソフトウェアはなぜバージョンアップしなければならないのか - Qiita  有時在一些官網下載軟體時（例如 node.js 或 Ubuntu ），會發現官方有提供兩種版本，分別是「LTS」和「Current」，其中 LTS 代表 Long Term Support（長期支援），穩定版本確保程式的安全性與可靠性，避免更新可能造成的風險。 軟體除了新增需求、修復 BUG 以外，是否就不需要">
@@ -57,6 +55,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[2023 15th鐵人賽] Day7 - 為什麼軟體必須要版本升級",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2023-09-22T00:07:20.000Z",
+  "dateModified": "2026-07-09T06:06:05.702Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/ironman-2023-day-7/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[2023 15th鐵人賽] Day7 - 為什麼軟體必須要版本升級 | Liusan's Blog</title>
   
 
@@ -92,7 +112,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -301,7 +321,7 @@
 <p>一般來說，運行的業務軟體不太可能單獨使用，通常會與其他協作軟體串接數據，或用於業務自動化的 API。</p>
 <p>以大規模的軟體而言，想要事先瞭解哪些業務會受到影響是不切實計的。即使試著更新版本，若出現問題，就必須拼命解決以確保不會長時間中斷業務；若無法解決，就只能土法煉鋼，退回到上一個的版本。</p>
 <p>像這樣<strong>有機會大幅提高工作時數</strong>的情況，是版本升級讓人感到麻煩的原因。</p>
-<p><img src="https://imgur.com/boLEH1c.png"></p>
+<p><img data-src="https://imgur.com/boLEH1c.png"></p>
 <blockquote>
 <p>版本升級導致業務中斷</p>
 </blockquote>
@@ -310,7 +330,7 @@
 <li><strong>版本升級頻率較低</strong>：維護工作的發生頻率較低，但每次會影響到多個業務運作，使工作量大幅增加。由於維護人力並不一定充足，可能無法應付大規模的升版工作，導致更新失敗的風險較高。</li>
 <li><strong>版本升級頻率較高</strong>：維護工作的發生頻率較高，但每次影響到的業務量較小，產生的工作量也較少。能夠在較短的時間內修復故障，更新失敗的風險較低。</li>
 </ul>
-<p><img src="https://imgur.com/XyCNIOy.png"></p>
+<p><img data-src="https://imgur.com/XyCNIOy.png"></p>
 <blockquote>
 <p>左圖代表版本升級頻率高的情況，失敗風險較低<br>右圖代表版本升級頻率低的情況，失敗風險較高</p>
 </blockquote>
@@ -325,7 +345,7 @@
 <li>很快的，負責維護內部協作工具的人員將不存在。這是因為「不更新 = 幾乎沒有維護工作 = 不需要這份工作」，因此人員會進行調職或者轉職。結果來說，軟體將會變得無法預測的狀態，意即成為地下城。</li>
 <li>老舊軟體不佳的使用體驗，大量數據導致運作變得緩慢。許多為此感到厭煩的冒險者，曾設法攻克這個地下城，但九成左右都會被黑暗所吞噬，白白浪費寶貴的時間和動力。</li>
 </ul>
-<p><img src="https://imgur.com/8tFS2tv.png"></p>
+<p><img data-src="https://imgur.com/8tFS2tv.png"></p>
 <p>最終的結果，可能是由某位大人物一聲令下，展開地下城攻略任務（= Replace Project 取代專案）。這將投入大量工時，包括釐清業務流程、選擇下一個軟體、重新安裝協作工具等等，克服重重問題並進行替換。<strong>只要能定期更新，本來是不需投入這些工時的。</strong></p>
 <h2 id="為了避免創造地下城"><a href="#為了避免創造地下城" class="headerlink" title="為了避免創造地下城"></a>為了避免創造地下城</h2><p>現在，既然已經明白推遲更新可能帶來的風險，接下來讓我們思考該如何避免這種可怕的未來。</p>
 <h3 id="每年至少升級一次"><a href="#每年至少升級一次" class="headerlink" title="每年至少升級一次"></a>每年至少升級一次</h3><p>首先最重要的，是能夠定期更新。理想情況下，應該每三個月更新一次，最長不超過一年更新一次。提高更新頻率，可有效減少更新時可能出現的問題，並提高更新的成功率。定期更新將更新流程標準化，也會使各部門熟悉操作，知道應該從什麼部分開始檢查。<br>一旦熟練流程，建議在環境中建立部署協作工具和驗證操作的流程，以便進行操作測試。</p>
@@ -354,13 +374,10 @@
   <div class="popular-posts-header">相關文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/ironman-2023-day-10/" rel="bookmark">[2023 15th鐵人賽] Day10 - 透過圖文理解 S.O.L.I.D 原則</a></div>
-    </li>
-    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/ironman-2023-day-12/" rel="bookmark">[2023 15th鐵人賽] Day12 - 外國「為什麼日本無法像硬體時代一樣在軟體方面表現出色？」</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/ironman-2023-day-21/" rel="bookmark">[2023 15th鐵人賽] Day21 - 日本數位廳的網站太扯了www</a></div>
+      <div class="popular-posts-title"><a href="/ironman-2023-day-10/" rel="bookmark">[2023 15th鐵人賽] Day10 - 透過圖文理解 S.O.L.I.D 原則</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/ironman-2023-day-22/" rel="bookmark">[2023 15th鐵人賽] Day22 - 程式設計最難的部分我認為是「估算成本」</a></div>
@@ -368,9 +385,13 @@
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/ironman-2023-day-25/" rel="bookmark">[2023 15th鐵人賽] Day25 - 成為具備需求定義～系統設計能力人才的文章！ </a></div>
     </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/ironman-2023-day-26/" rel="bookmark">[2023 15th鐵人賽] Day26 - 擁有 20 多年工程師經驗的我，在撰寫設計規格書時所注意的事情</a></div>
+    </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -540,7 +561,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -602,12 +624,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

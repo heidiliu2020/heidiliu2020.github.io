@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 [FE201] 前端中階：那些前端會用到的工具們 這門課程的學習筆記。如有錯誤歡迎指正。">
@@ -54,6 +52,28 @@
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 13] 前端工具之二 - CSS 預處理器、Babel",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-09-27T06:20:00.000Z",
+  "dateModified": "2026-07-09T06:06:05.727Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/sass-babel/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
 
   <title>[week 13] 前端工具之二 - CSS 預處理器、Babel | Liusan's Blog</title>
   
@@ -90,7 +110,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -299,7 +319,7 @@
 <li>沒有辦法組合</li>
 </ul>
 <p>因此 CSS 預處理器就誕生了，讓我們能夠以寫程式的方式處理樣式，方便進行維護。</p>
-<p><img src="https://i.imgur.com/p8sM9vr.png"></p>
+<p><img data-src="https://i.imgur.com/p8sM9vr.png"></p>
 <h3 id="什麼是-SASS？"><a href="#什麼是-SASS？" class="headerlink" title="什麼是 SASS？"></a>什麼是 SASS？</h3><h4 id="SASS（Syntactically-Awesome-Stylesheets）-SCSS"><a href="#SASS（Syntactically-Awesome-Stylesheets）-SCSS" class="headerlink" title="SASS（Syntactically Awesome Stylesheets）/ SCSS"></a><span class="exturl" data-url="aHR0cHM6Ly9zYXNzLWxhbmcuY29tL2luc3RhbGw=" title="https://sass-lang.com/install">SASS（Syntactically Awesome Stylesheets）/ SCSS<i class="fa fa-external-link"></i></span></h4><ul>
 <li>是 CSS 預處理器，能更有結構撰寫程式碼，方便後續維護</li>
 <li>適合大型專案使用</li>
@@ -453,10 +473,10 @@
       <div class="popular-posts-title"><a href="/css-list-style/" rel="bookmark">【學習筆記】CSS 自訂標號圖示、段落縮排效果</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/css-optimization/" rel="bookmark">[week 13] 前端進階 - 如何優化執行 CSS 效能</a></div>
+      <div class="popular-posts-title"><a href="/css/" rel="bookmark">[week 6] CSS - 認識基礎標籤 & 屬性</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/css/" rel="bookmark">[week 6] CSS - 認識基礎標籤 & 屬性</a></div>
+      <div class="popular-posts-title"><a href="/css-optimization/" rel="bookmark">[week 13] 前端進階 - 如何優化執行 CSS 效能</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/gulp-webpack/" rel="bookmark">[week 13] 前端工具之三 - gulp、webpack</a></div>
@@ -466,7 +486,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -636,7 +657,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -698,12 +720,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

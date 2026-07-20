@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 [ALG101] 先別急著寫 leetcode 這門課程的學習筆記。如有錯誤歡迎指正。 參考文章：程式解題新手入門注意事項 - Huli">
@@ -53,6 +51,28 @@
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 2] 先別急著寫 leetcode - 虛擬碼、Debugger、解題技巧",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-06-28T05:25:00.000Z",
+  "dateModified": "2026-04-23T06:14:18.247Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/leetcode/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
 
   <title>[week 2] 先別急著寫 leetcode - 虛擬碼、Debugger、解題技巧 | Liusan's Blog</title>
   
@@ -89,7 +109,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -431,13 +451,13 @@
 <ol start="3">
 <li>用 Chrome 開啟檔案，以開發者工具進行檢視，在 Sources 欄位點選 Step（F9），即可一步一步執行程式碼，進行除錯</li>
 </ol>
-<p><img src="https://i.imgur.com/lLFpAEk.png"></p>
+<p><img data-src="https://i.imgur.com/lLFpAEk.png"></p>
 <h2 id="Log-大法"><a href="#Log-大法" class="headerlink" title="Log 大法"></a>Log 大法</h2><p>另一個 debug 的方法，也就是「log 加好加滿」，透過 log 可以得知每個階段的值。</p>
 <p>舉例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">2</span>, <span class="number">7</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">let</span> max = arr[<span class="number">0</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;max:&#x27;</span>, max)</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;arr.<span class="property">length</span>; i++) &#123;　</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;i=&#x27;</span>, i, <span class="string">&#x27;arr[i]=&#x27;</span>, arr[i])</span><br><span class="line">    <span class="keyword">if</span> (arr[i] &gt; max) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;found new max!&#x27;</span>)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;arr[i]:&#x27;</span>, arr[i], <span class="string">&#x27;old max:&#x27;</span>, max)</span><br><span class="line">      max = arr[i];</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;new max:&#x27;</span>, max)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(max);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
 <p>檢視 console 欄位結果如下，可以檢視程式碼運作是否和所想的相同，是否有進入迴圈等等。</p>
-<p><img src="https://i.imgur.com/5jJvOFQ.png"></p>
+<p><img data-src="https://i.imgur.com/5jJvOFQ.png"></p>
 <h3 id="補充：為什麼用-console-log-印出來的值和想像中不一樣？"><a href="#補充：為什麼用-console-log-印出來的值和想像中不一樣？" class="headerlink" title="補充：為什麼用 console.log 印出來的值和想像中不一樣？"></a>補充：為什麼用 console.log 印出來的值和想像中不一樣？</h3><p>舉例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">2</span>, <span class="number">7</span>, <span class="number">5</span>];　　<span class="comment">//　[2, 7 , 5]</span></span><br><span class="line"><span class="keyword">let</span> max = arr[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;arr.<span class="property">length</span>; i++) &#123;　</span><br><span class="line">    <span class="keyword">if</span> (arr[i] &gt; max) &#123;</span><br><span class="line">      max = arr[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">arr.<span class="title function_">push</span>(<span class="number">3</span>);　　<span class="comment">//　[2, 7 , 5, 3] 註解是 Chrome 認為的 log</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(max);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
@@ -728,7 +748,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -896,7 +917,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -958,12 +980,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

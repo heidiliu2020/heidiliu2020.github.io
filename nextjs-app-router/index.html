@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="Ref: Next.js - Parallel Routes  前言接續上篇文章 【學習筆記】談談 Next.js：基於 React 的 SSR 框架，初步瞭解 Next.js 這套框架的特性以及網頁渲染方式，本篇將實際建立 Next.js 專案，以及介紹 Page Router 與 APP Router 兩種路由系統的差異。">
@@ -59,6 +57,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "【學習筆記】Next.js 路由系統：App Router vs Page Router",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2024-01-26T07:25:01.000Z",
+  "dateModified": "2026-04-23T06:14:18.250Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/nextjs-app-router/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>【學習筆記】Next.js 路由系統：App Router vs Page Router | Liusan's Blog</title>
   
 
@@ -94,7 +114,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -279,7 +299,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="https://hackmd.io/_uploads/SkK9xkWqp.png" alt="Parallel Routes"></p>
+        <p><img data-src="https://hackmd.io/_uploads/SkK9xkWqp.png" alt="Parallel Routes"></p>
 <blockquote>
 <p>Ref: <span class="exturl" data-url="aHR0cHM6Ly9uZXh0anMub3JnL2RvY3MvYXBwL2J1aWxkaW5nLXlvdXItYXBwbGljYXRpb24vcm91dGluZy9wYXJhbGxlbC1yb3V0ZXMjc3RyZWFtaW5n" title="https://nextjs.org/docs/app/building-your-application/routing/parallel-routes#streaming">Next.js - Parallel Routes<i class="fa fa-external-link"></i></span></p>
 </blockquote>
@@ -318,7 +338,7 @@
 <li>設定檔：包含 <code>next.config.js</code>、<code>tsconfig.json</code>、<code>package.json</code> 等用於設定專案配置的檔案</li>
 </ul>
 <p>接著輸入 <code>cd my-app</code> 指令移動到專案根目錄，再以 <code>npm run dev</code> 指令運行開發伺服器，進入 <code>http://localhost:3000/</code> 即可看到初始頁面如下，也就是 <code>app/page.tsx</code> 的內容：</p>
-<p><img src="https://hackmd.io/_uploads/ryQN1aXtT.png" alt="image"></p>
+<p><img data-src="https://hackmd.io/_uploads/ryQN1aXtT.png" alt="image"></p>
 <h2 id="Router-System-路由系統"><a href="#Router-System-路由系統" class="headerlink" title="Router System 路由系統"></a>Router System 路由系統</h2><p>過去我們在 React 專案中，曾使用 <code>react-router-dom</code> 這項套件來實現路由功能，詳細可參考這篇筆記：<a href="https://heidiliu2020.github.io/react-router/">[week 22] React：用 SPA 架構實作一個部落格（一）- Router</a>。</p>
 <p>由於 Next.js 使用基於檔案系統的路由（file-system based router），會依照專案的檔案結構自動定義路由。</p>
 <p>而根據版本不同，Next.js 提供兩種管理頁面路由的方式，分別是舊版本適用的 Pages Router 以及 v13 後推出的 App Router，兩者差異在於：</p>
@@ -370,7 +390,7 @@
 <li>呼叫 API：<code>page/api/user.tsx</code></li>
 </ul>
 <p>可參考官方部落格的這篇文章<span class="exturl" data-url="aHR0cHM6Ly9uZXh0anMub3JnL2Jsb2cvbGF5b3V0cy1yZmM=" title="https://nextjs.org/blog/layouts-rfc">《Layouts RFC》<i class="fa fa-external-link"></i></span>，包含以下檔案對應頁面路由的示意圖：</p>
-<p><img src="https://hackmd.io/_uploads/B1-kgTiKp.png" alt="image"></p>
+<p><img data-src="https://hackmd.io/_uploads/B1-kgTiKp.png" alt="image"></p>
 <h3 id="App-Router：基於目錄的路由系統"><a href="#App-Router：基於目錄的路由系統" class="headerlink" title="App Router：基於目錄的路由系統"></a>App Router：基於目錄的路由系統</h3><p>目錄架構示意：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">└── app</span><br><span class="line">    ├── blog</span><br><span class="line">    │   └── [slug]</span><br><span class="line">    │        └── page.tsx</span><br><span class="line">    ├── login</span><br><span class="line">    │   └── page.tsx</span><br><span class="line">    ├── @analytics</span><br><span class="line">    │   ├── page.tsx</span><br><span class="line">    │   ├── error.tsx</span><br><span class="line">    │   └── loading.tsx</span><br><span class="line">    ├── api</span><br><span class="line">    │   └── user</span><br><span class="line">    │       ├── index.ts</span><br><span class="line">    │       └── route.ts  </span><br><span class="line">    ├── components</span><br><span class="line">    │   ├── loading.tsx</span><br><span class="line">    │   └── button.tsx    </span><br><span class="line">    ├── globals.css</span><br><span class="line">    ├── layout.tsx</span><br><span class="line">    └── page.tsx</span><br></pre></td></tr></table></figure>
 
@@ -389,7 +409,7 @@
 </li>
 </ul>
 <p>可參考<span class="exturl" data-url="aHR0cHM6Ly9uZXh0anMub3JnL2RvY3MvYXBwL2J1aWxkaW5nLXlvdXItYXBwbGljYXRpb24vcm91dGluZw==" title="https://nextjs.org/docs/app/building-your-application/routing">官方文件<i class="fa fa-external-link"></i></span>，以下是目錄對應頁面路由的示意圖：</p>
-<p><img src="https://hackmd.io/_uploads/SyBL03sK6.png" alt="image"></p>
+<p><img data-src="https://hackmd.io/_uploads/SyBL03sK6.png" alt="image"></p>
 <h2 id="File-Convention-檔案規則"><a href="#File-Convention-檔案規則" class="headerlink" title="File Convention 檔案規則"></a>File Convention 檔案規則</h2><p>詳細的路由架構，可參考<span class="exturl" data-url="aHR0cHM6Ly9uZXh0anMub3JnL2RvY3MvYXBwL2J1aWxkaW5nLXlvdXItYXBwbGljYXRpb24vcm91dGluZw==" title="https://nextjs.org/docs/app/building-your-application/routing">官方文件<i class="fa fa-external-link"></i></span>，也可以直接在頁面左上方切換查看 App Router 或 Page Router。</p>
 <p>此外，Next.js 有設定<span class="exturl" data-url="aHR0cHM6Ly9uZXh0anMub3JnL2RvY3MvYXBwL2J1aWxkaW5nLXlvdXItYXBwbGljYXRpb24vcm91dGluZyNmaWxlLWNvbnZlbnRpb25z" title="https://nextjs.org/docs/app/building-your-application/routing#file-conventions">保留字<i class="fa fa-external-link"></i></span>給特殊檔案，以建立具有特定行為的 UI，以下副檔名為 <code>.js</code>、<code>.jsx</code>、<code>.tsx</code> 可視專案而定：</p>
 <ul>
@@ -404,7 +424,7 @@
 <li><span class="exturl" data-url="aHR0cHM6Ly9uZXh0anMub3JnL2RvY3MvYXBwL2FwaS1yZWZlcmVuY2UvZmlsZS1jb252ZW50aW9ucy9kZWZhdWx0" title="https://nextjs.org/docs/app/api-reference/file-conventions/default">default.js<i class="fa fa-external-link"></i></span>：處理 <span class="exturl" data-url="aHR0cHM6Ly9uZXh0anMub3JnL2RvY3MvYXBwL2J1aWxkaW5nLXlvdXItYXBwbGljYXRpb24vcm91dGluZy9wYXJhbGxlbC1yb3V0ZXM=" title="https://nextjs.org/docs/app/building-your-application/routing/parallel-routes">Parallel Routes（平行路由）<i class="fa fa-external-link"></i></span> 遇到渲染問題時，用來替代顯示的 UI（fallback UI）</li>
 </ul>
 <p>以下是官方文件提供的路由範例架構，可以看到父層和子層均有 layout、error 以及 loading 元件，用來處理各自的邏輯：</p>
-<p><img src="https://hackmd.io/_uploads/BJGCACec6.png" alt="router image"></p>
+<p><img data-src="https://hackmd.io/_uploads/BJGCACec6.png" alt="router image"></p>
 <h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>在查路由相關的資料時，會發現因為 App Router 是 Next.js v13 後才推出的路由系統，架構上和 Page Router 不相容，規則也有所差異，因此特別列出來進行比較，實際開發時使用預設的 App Router 即可。</p>
 <p>接下來預計會實作一個的部落格，希望包含簡易的登入機制、API 串接、顯示文章列表等功能。</p>
 <h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
@@ -425,10 +445,10 @@
       <div class="popular-posts-title"><a href="/next-react-ssr/" rel="bookmark">【學習筆記】談談 Next.js：基於 React 的 SSR 框架</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/nextjs-error-fix/" rel="bookmark">【學習筆記】Next.js 錯誤修復紀錄： 「Window is not defined」、「use client & missing generateStaticParams() error」</a></div>
+      <div class="popular-posts-title"><a href="/nextjs-i18next/" rel="bookmark">【學習筆記】Next.js 實現多國語系：react-i18next & next-i18next</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/nextjs-i18next/" rel="bookmark">【學習筆記】Next.js 實現多國語系：react-i18next & next-i18next</a></div>
+      <div class="popular-posts-title"><a href="/nextjs-error-fix/" rel="bookmark">【學習筆記】Next.js 錯誤修復紀錄： 「Window is not defined」、「use client & missing generateStaticParams() error」</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/shadcn-ui/" rel="bookmark">初探 Shadcn UI：基於 Tailwind CSS + Radix UI 的元件合集</a></div>
@@ -438,7 +458,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -608,7 +629,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -670,12 +692,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

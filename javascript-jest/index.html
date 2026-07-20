@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="123456學習目標： 了解為什麼我們需要 unit test 了解什麼是 unit test 了解如何寫 unit test 了解如何測試一個 function">
@@ -63,6 +61,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 3] 初探 Jest：如何測試程式？",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-07-25T07:34:00.000Z",
+  "dateModified": "2026-04-23T06:14:18.242Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/javascript-jest/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[week 3] 初探 Jest：如何測試程式？ | Liusan's Blog</title>
   
 
@@ -98,7 +118,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -294,7 +314,7 @@
 <h2 id="利用現成的框架-Jest-測試"><a href="#利用現成的框架-Jest-測試" class="headerlink" title="利用現成的框架 Jest 測試"></a>利用現成的框架 <span class="exturl" data-url="aHR0cHM6Ly9qZXN0anMuaW8v" title="https://jestjs.io/">Jest<i class="fa fa-external-link"></i></span> 測試</h2><ol>
 <li>用 npm 下載 Jest：輸入指令 <code>npm install -save-dev jest</code></li>
 </ol>
-<p><img src="https://i.imgur.com/P2V2LzG.png"></p>
+<p><img data-src="https://i.imgur.com/P2V2LzG.png"></p>
 <ol start="2">
 <li>利用模組將「測試」與「要測試的 Function」分開。</li>
 </ol>
@@ -316,20 +336,20 @@
 <ol start="3">
 <li>更新 package.json 檔案的 <code>&quot;scripts&quot;</code>：加入 <code>&quot;test&quot;: &quot;jest&quot;</code></li>
 </ol>
-<p><img src="https://i.imgur.com/85bIvDU.png" alt="&quot;test&quot;: &quot;jest&quot;"></p>
+<p><img data-src="https://i.imgur.com/85bIvDU.png" alt="&quot;test&quot;: &quot;jest&quot;"></p>
 <ol start="4">
 <li>如此即可運行 <code>npm run test</code> 進行測試，看到 PASS 可知測試有成功：</li>
 </ol>
-<p><img src="https://i.imgur.com/KGT6Vht.png" alt="test"></p>
+<p><img data-src="https://i.imgur.com/KGT6Vht.png" alt="test"></p>
 <p>之所以要用 npm 來跑 jest，而不是直接在終端機輸入 jest 指令，是因為 jest 只安裝在該專案底下，要使用時才會拿出來用。</p>
 <p>若只想測特定檔案，可以修改 <code>&quot;scripts&quot;</code>：<code>&quot;test&quot;: &quot;jest index.test.js&quot;</code>，後面加上檔名。</p>
-<p><img src="https://i.imgur.com/4byHuvz.png"></p>
+<p><img data-src="https://i.imgur.com/4byHuvz.png"></p>
 <p>或是用 <code>npx jest index.jest.js</code>，同樣能夠執行測試：</p>
-<p><img src="https://i.imgur.com/VGCuYis.png"></p>
+<p><img data-src="https://i.imgur.com/VGCuYis.png"></p>
 <p>也可以多跑幾個測式：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> repeat = <span class="built_in">require</span>(<span class="string">&#x27;./index&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="title function_">test</span>(<span class="string">&#x27;a 重複 5 次應該要等於aaaaa&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title function_">expect</span>(<span class="title function_">repeat</span>(<span class="string">&#x27;a&#x27;</span>, <span class="number">5</span>)).<span class="title function_">toBe</span>(<span class="string">&#x27;aaaaa&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="title function_">test</span>(<span class="string">&#x27;abc 重複 1 次應該要等於abc&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title function_">expect</span>(<span class="title function_">repeat</span>(<span class="string">&#x27;abc&#x27;</span>, <span class="number">1</span>)).<span class="title function_">toBe</span>(<span class="string">&#x27;abc&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="title function_">test</span>(<span class="string">&#x27; &quot;&quot; 重複 10 次應該要等於 &quot;&quot;&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title function_">expect</span>(<span class="title function_">repeat</span>(<span class="string">&#x27;&#x27;</span>, <span class="number">10</span>)).<span class="title function_">toBe</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/Ief4HX8.png" alt="測試結果"></p>
+<p><img data-src="https://i.imgur.com/Ief4HX8.png" alt="測試結果"></p>
 <p>也可以把測試項目放在 <code>describe()</code> 函式裡，這種寫法會更有結構一點：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 架構：</span></span><br><span class="line"></span><br><span class="line"><span class="string">`describe(&#x27;測試 XX&#x27;, function()&#123;</span></span><br><span class="line"><span class="string">  test(&#x27;名稱&#x27;, function() &#123;</span></span><br><span class="line"><span class="string">    expect(&#x27;回傳值&#x27;).toBe(&#x27;預期結果&#x27;);</span></span><br><span class="line"><span class="string">  &#125;)</span></span><br><span class="line"><span class="string">&#125;)`</span></span><br></pre></td></tr></table></figure>
 
@@ -338,9 +358,9 @@
 <h2 id="Unit-test-單元測試"><a href="#Unit-test-單元測試" class="headerlink" title="Unit test 單元測試"></a>Unit test 單元測試</h2><p>單元測試指的是測試一個工作單元（a unit of work）的行為。上述範例測試單一函式，就是一種單元測試。可用來確認每個 Unit 是否正確，也能夠進行規模化測試。</p>
 <hr>
 <h2 id="補充：如何在-Windows-上執行-Jest-也能有紅綠標籤"><a href="#補充：如何在-Windows-上執行-Jest-也能有紅綠標籤" class="headerlink" title="補充：如何在 Windows 上執行 Jest 也能有紅綠標籤"></a>補充：如何在 Windows 上執行 Jest 也能有紅綠標籤</h2><p>方法：把 <code>package.json</code> 裡的 <code>&quot;script&quot;</code> 中的內容改為 <code>&quot;test&quot;: &quot;jest --colors&quot;</code>，FAIL 和 PASS 標籤就會是紅綠標籤。</p>
-<p><img src="https://i.imgur.com/LaX4cI3.png" alt="color"></p>
+<p><img data-src="https://i.imgur.com/LaX4cI3.png" alt="color"></p>
 <p>奇怪的是，在 git commit 時都沒有問題，在執行 Jest 時卻出現亂碼。不太確定是不是因為更改 locale 才解決的，總之介面很神奇的變成中文了，可喜可賀。</p>
-<p><img src="https://i.imgur.com/4OCokvV.png" alt="UTF-8"></p>
+<p><img data-src="https://i.imgur.com/4OCokvV.png" alt="UTF-8"></p>
 <p>參考資料：</p>
 <ol>
 <li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2ZhY2Vib29rL2plc3QvaXNzdWVzLzM4Nzc=" title="https://github.com/facebook/jest/issues/3877">Colorful output in Bash terminal does not work (–colors option) <i class="fa fa-external-link"></i></span></li>
@@ -357,12 +377,12 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 先寫出預期結果：</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> reverse = <span class="built_in">require</span>(<span class="string">&#x27;./index&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="title function_">describe</span>(<span class="string">&#x27;測試 reverse&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title function_">test</span>(<span class="string">&#x27;123 reverse 要等於 321&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">expect</span>(<span class="title function_">reverse</span>(<span class="string">&#x27;123&#x27;</span>)).<span class="title function_">toBe</span>(<span class="string">&#x27;321&#x27;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">test</span>(<span class="string">&#x27;!!! reverse 要等於 !!!&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">expect</span>(<span class="title function_">reverse</span>(<span class="string">&#x27;!!!&#x27;</span>)).<span class="title function_">toBe</span>(<span class="string">&#x27;!!!&#x27;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">test</span>(<span class="string">&#x27; &quot;&quot; reverse 要等於 &quot;&quot;&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">expect</span>(<span class="title function_">reverse</span>(<span class="string">&#x27;&#x27;</span>)).<span class="title function_">toBe</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <h3 id="步驟二、執行測試，得到-Failed（紅燈）"><a href="#步驟二、執行測試，得到-Failed（紅燈）" class="headerlink" title="步驟二、執行測試，得到 Failed（紅燈）"></a>步驟二、執行測試，得到 Failed（紅燈）</h3><p>因為還沒撰寫目標程式，結果就會是 Failed。此步驟目的是確保測試程式可執行，沒有語法錯誤。</p>
-<p><img src="https://i.imgur.com/A38CQ2C.png" alt="運行測試"></p>
+<p><img data-src="https://i.imgur.com/A38CQ2C.png" alt="運行測試"></p>
 <h3 id="步驟三、實作「最低限度」的產品程式"><a href="#步驟三、實作「最低限度」的產品程式" class="headerlink" title="步驟三、實作「最低限度」的產品程式"></a>步驟三、實作「最低限度」的產品程式</h3><p>開始寫程式，以能夠通過測試為目標，不求將程式碼優化一步到位。完成到一個階段就可運行 jest 查看是否有錯誤：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//開始寫程式</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">reverse</span>(<span class="params">str</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> result = <span class="string">&#x27;&#x27;</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = str.<span class="property">length</span> - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i -= <span class="number">1</span>) &#123;</span><br><span class="line">    result += str[i]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = reverse</span><br></pre></td></tr></table></figure>
 
 <h3 id="步驟四：再次執行測試，得到-Passed（綠燈）"><a href="#步驟四：再次執行測試，得到-Passed（綠燈）" class="headerlink" title="步驟四：再次執行測試，得到 Passed（綠燈）"></a>步驟四：再次執行測試，得到 Passed（綠燈）</h3><p>在這個階段，即完成一個可運作且正確的程式版本，包含產品程式和測試程式。</p>
-<p><img src="https://i.imgur.com/dJHNZ1j.png" alt="Passed"></p>
+<p><img data-src="https://i.imgur.com/dJHNZ1j.png" alt="Passed"></p>
 <h3 id="步驟五：重構程式"><a href="#步驟五：重構程式" class="headerlink" title="步驟五：重構程式"></a>步驟五：重構程式</h3><p>最後是優化「產品程式」和「測試程式」的程式碼，因為測試程式也是專案需維護的一部份。如此即可提升程式的可讀性、可維護性、擴充性。</p>
 
     </div>
@@ -390,7 +410,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -559,7 +580,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -621,12 +643,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

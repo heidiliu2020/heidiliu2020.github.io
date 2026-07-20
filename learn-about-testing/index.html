@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="前言過去在程式導師實驗課程中，整理過這兩篇筆記探討「測試」是怎麼回事：  [week 3] 初探 Jest：如何測試程式？ [week 22] React：用 SPA 架構實作一個部落格（三）- 淺談測試  在轉職後的第一家公司，組內曾嘗試在既有專案中撰寫測試，卻因時程緊湊而不了了之。但或許是一聽到測試就浮現「好麻煩⋯⋯」的想法吧？與其花這個時間去寫程式來進行測試，還不如多修幾個 BUG 來得有">
@@ -59,6 +57,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "測試二三事（上）｜還記得你說，要和我寫測試",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2022-12-16T06:24:00.000Z",
+  "dateModified": "2026-04-23T06:14:18.246Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/learn-about-testing/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>測試二三事（上）｜還記得你說，要和我寫測試 | Liusan's Blog</title>
   
 
@@ -94,7 +114,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -275,7 +295,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="/images/pasted-2.png" alt="upload successful"></p>
+        <p><img data-src="/images/pasted-2.png" alt="upload successful"></p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>過去在程式導師實驗課程中，整理過這兩篇筆記探討「測試」是怎麼回事：</p>
 <ul>
 <li><a href="https://heidiliu2020.github.io/javascript-jest/">[week 3] 初探 Jest：如何測試程式？</a></li>
@@ -301,7 +321,7 @@
 <h2 id="What-is-Testing"><a href="#What-is-Testing" class="headerlink" title="What is Testing?"></a>What is Testing?</h2><p>說了這麼多，到底怎樣才是測試呢？</p>
 <p>從我們最熟悉的人工測試，到寫程式來測試程式，其實都是基於同樣的道理：「測試是藉由程式來模擬現實，比較『預期結果』和『實際結果』是否相同的過程」。</p>
 <h3 id="自動化測試金字塔-Test-Automation-Pyramid"><a href="#自動化測試金字塔-Test-Automation-Pyramid" class="headerlink" title="自動化測試金字塔 Test Automation Pyramid"></a>自動化測試金字塔 Test Automation Pyramid</h3><p>簡單來說，測試依規模大致可分成三個層次，構成自動化測試金字塔，如下圖所示：</p>
-<p><img src="https://i.imgur.com/L9sS6uH.png"></p>
+<p><img data-src="https://i.imgur.com/L9sS6uH.png"></p>
 <blockquote>
 <p><span class="exturl" data-url="aHR0cHM6Ly9hdXRvbWF0aW9ucGFuZGEuY29tLzIwMTgvMDgvMDEvdGhlLXRlc3RpbmctcHlyYW1pZC8=" title="https://automationpanda.com/2018/08/01/the-testing-pyramid/">Automation Panda<i class="fa fa-external-link"></i></span></p>
 </blockquote>
@@ -321,7 +341,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://i.imgur.com/ymjyD7I.png"></p>
+<p><img data-src="https://i.imgur.com/ymjyD7I.png"></p>
 <h3 id="單元測試-Unit-Testing"><a href="#單元測試-Unit-Testing" class="headerlink" title="單元測試 Unit Testing"></a>單元測試 Unit Testing</h3><ul>
 <li>以程式碼的最小單位（function、method 等）進行測試，也是自動測試化的基礎</li>
 <li>驗證單一行為、執行快速、具獨立性</li>
@@ -339,7 +359,7 @@
 <li><strong>BDD （Behavior-Deriven Development）行為驅動開發</strong><ul>
 <li>為 TDD 的進化版，但會先寫測試規格書，再寫測試，後實作功能</li>
 <li>專注系統的行為，較貼近使用者的角度進行測試</li>
-<li>使用 <code>describe()</code> 和 <code>it()</code> 需求為導向的設計語意化<img src="https://i.imgur.com/8NgSbPj.png">  </li>
+<li>使用 <code>describe()</code> 和 <code>it()</code> 需求為導向的設計語意化<img data-src="https://i.imgur.com/8NgSbPj.png">  </li>
 </ul>
 </li>
 </ul>
@@ -349,7 +369,7 @@
 <li>常用套件：<span class="exturl" data-url="aHR0cHM6Ly9hbmd1bGFyLmlvL2FwaS9jb3JlL3Rlc3RpbmcvVGVzdEJlZA==" title="https://angular.io/api/core/testing/TestBed">TestBed<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly90ZXN0aW5nLWxpYnJhcnkuY29tLw==" title="https://testing-library.com/">Testing Library<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9lbnp5bWVqcy5naXRodWIuaW8vZW56eW1lLw==" title="https://enzymejs.github.io/enzyme/">Enzyme<i class="fa fa-external-link"></i></span></li>
 </ul>
 <p>為什麼需要整合測試？單元測試都通過不就代表都 OK 了？下圖提供非常好的例子：</p>
-<p><img src="https://i.imgur.com/H30Yzer.gif"></p>
+<p><img data-src="https://i.imgur.com/H30Yzer.gif"></p>
 <blockquote>
 <p>門鎖 OK、開關門 OK、鎖門？？</p>
 </blockquote>
@@ -360,7 +380,7 @@
 <li>常用套件：<span class="exturl" data-url="aHR0cHM6Ly93d3cuY3lwcmVzcy5pby8=" title="https://www.cypress.io/">Cypress、<i class="fa fa-external-link"></i></span><span class="exturl" data-url="aHR0cHM6Ly9uaWdodHdhdGNoanMub3JnLw==" title="https://nightwatchjs.org/">Nightwatch<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3B1cHBldGVlci9wdXBwZXRlZXI=" title="https://github.com/puppeteer/puppeteer">Puppeteer<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly93d3cucHJvdHJhY3RvcnRlc3Qub3JnLw==" title="https://www.protractortest.org/">Protractor<i class="fa fa-external-link"></i></span>（<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FuZ3VsYXIvcHJvdHJhY3Rvci9pc3N1ZXMvNTUwMg==" title="https://github.com/angular/protractor/issues/5502">Angular v12 後棄用，不再內建於新專案中<i class="fa fa-external-link"></i></span>）</li>
 </ul>
 <p>如下所示，為 Cypress 使用範例，能夠看到使用者實際操作頁面的過程：</p>
-<p><img src="https://i.imgur.com/GzISa0E.gif"></p>
+<p><img data-src="https://i.imgur.com/GzISa0E.gif"></p>
 <blockquote>
 <p><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmN5cHJlc3MuaW8vZ3VpZGVzL3Rvb2xpbmcvdmlzdWFsLXRlc3Rpbmc=" title="https://docs.cypress.io/guides/tooling/visual-testing">Visual Testing | Cypress Documentation<i class="fa fa-external-link"></i></span></p>
 </blockquote>
@@ -399,7 +419,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -568,7 +589,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -630,12 +652,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

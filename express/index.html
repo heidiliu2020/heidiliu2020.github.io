@@ -14,21 +14,19 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="本篇為 [BE201] 後端中階：Express 與 Sequelize 這門課程的學習筆記。如有錯誤歡迎指正！2026.07 更新：修正錯字與範例程式碼，並補充 Express 5 與 mysql2 的版本註記，核心觀念不變。  1234學習目標： P1 學習如何使用 Express 及其相關套件 P1 我理解為什麼會需要框架">
+  <meta name="description" content="Node.js + Express 入門筆記：從不用框架的原生 http 模組開始，理解為什麼需要 Web 框架，接著實作 Express 靜態網頁伺服器，介紹路由、middleware 運作機制與常用套件，並補充 Express 5 版本差異，適合後端新手入門。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[week 17] 後端中階 - 使用 Node.js + Express 框架建立一個靜態網頁">
 <meta property="og:url" content="https://heidiliu2020.github.io/express/index.html">
 <meta property="og:site_name" content="Liusan&#39;s Blog">
-<meta property="og:description" content="本篇為 [BE201] 後端中階：Express 與 Sequelize 這門課程的學習筆記。如有錯誤歡迎指正！2026.07 更新：修正錯字與範例程式碼，並補充 Express 5 與 mysql2 的版本註記，核心觀念不變。  1234學習目標： P1 學習如何使用 Express 及其相關套件 P1 我理解為什麼會需要框架">
+<meta property="og:description" content="Node.js + Express 入門筆記：從不用框架的原生 http 模組開始，理解為什麼需要 Web 框架，接著實作 Express 靜態網頁伺服器，介紹路由、middleware 運作機制與常用套件，並補充 Express 5 版本差異，適合後端新手入門。">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://i.imgur.com/2Bv9WKj.png">
 <meta property="og:image" content="https://i.imgur.com/ZY79LWh.png">
@@ -82,6 +80,29 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 17] 後端中階 - 使用 Node.js + Express 框架建立一個靜態網頁",
+  "description": "Node.js + Express 入門筆記：從不用框架的原生 http 模組開始，理解為什麼需要 Web 框架，接著實作 Express 靜態網頁伺服器，介紹路由、middleware 運作機制與常用套件，並補充 Express 5 版本差異，適合後端新手入門。",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-10-25T16:36:00.000Z",
+  "dateModified": "2026-07-09T04:00:00.000Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/express/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[week 17] 後端中階 - 使用 Node.js + Express 框架建立一個靜態網頁 | Liusan's Blog</title>
   
 
@@ -117,7 +138,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -292,6 +313,7 @@
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
               <span>12 分鐘</span>
             </span>
+            <div class="post-description">Node.js + Express 入門筆記：從不用框架的原生 http 模組開始，理解為什麼需要 Web 框架，接著實作 Express 靜態網頁伺服器，介紹路由、middleware 運作機制與常用套件，並補充 Express 5 版本差異，適合後端新手入門。</div>
 
         </div>
       </header>
@@ -313,16 +335,16 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// node.js 內建 http 相關 module</span></span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>)</span><br><span class="line"><span class="comment">// createServer() 要傳入的參數是 function</span></span><br><span class="line"><span class="keyword">const</span> server = http.<span class="title function_">createServer</span>(handler)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 兩個參數分別是 request 和 response，這裡使用命名慣例寫法</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">handler</span>(<span class="params">req, res</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(req.<span class="property">url</span>)  <span class="comment">// 印出 req 網址</span></span><br><span class="line">  res.<span class="title function_">write</span>(<span class="string">&#x27;Hello World!&#x27;</span>)   <span class="comment">// 指定 respone 回傳內容</span></span><br><span class="line">  res.<span class="title function_">end</span>()   <span class="comment">// 結束這個 response</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 常見為 80 port，測試時使用 5001 port 就不易發生衝突</span></span><br><span class="line">server.<span class="title function_">listen</span>(<span class="number">5001</span>)</span><br></pre></td></tr></table></figure>
 
 <p>接著在 CLI 介面執行 js 檔，會發現什麼事也沒發生，但其實我們已經成功運行一個 server，否則程式會直接執行結束：</p>
-<p><img src="https://i.imgur.com/2Bv9WKj.png"></p>
+<p><img data-src="https://i.imgur.com/2Bv9WKj.png"></p>
 <p>可以在瀏覽器輸入 <code>http://localhost:5001/</code>，連到本地端的 5001 port，就會看到回傳內容 <code>Hello World!</code>：</p>
-<p><img src="https://i.imgur.com/ZY79LWh.png"></p>
+<p><img data-src="https://i.imgur.com/ZY79LWh.png"></p>
 <p>或者我們也可以根據不同 url，來回傳不同內容：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> server = http.<span class="title function_">createServer</span>(handler)</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">handler</span>(<span class="params">req, res</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(req.<span class="property">url</span>)  <span class="comment">// 印出 req 網址</span></span><br><span class="line">  <span class="keyword">if</span> (req.<span class="property">url</span> === <span class="string">&#x27;/hello&#x27;</span>) &#123;</span><br><span class="line">    <span class="comment">// 參數分別是 request 的 status code 和內容格式，告訴瀏覽器如何解析網頁</span></span><br><span class="line">    res.<span class="title function_">writeHead</span>(<span class="number">200</span>, &#123;            <span class="comment">// 200: 請求成功</span></span><br><span class="line">      <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/html&#x27;</span></span><br><span class="line">    &#125;)</span><br><span class="line">    res.<span class="title function_">write</span>(<span class="string">&#x27;&lt;h1&gt;hello!&lt;/h1&gt;&#x27;</span>)    <span class="comment">// 也可以加上 HTML 標籤</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (req.<span class="property">url</span> === <span class="string">&#x27;/bye&#x27;</span>) &#123;</span><br><span class="line">    res.<span class="title function_">write</span>(<span class="string">&#x27;bye!&#x27;</span>)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    res.<span class="title function_">write</span>(<span class="string">&#x27;Invalid url&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  res.<span class="title function_">end</span>()   <span class="comment">// 結束這個 response</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server.<span class="title function_">listen</span>(<span class="number">5001</span>)</span><br></pre></td></tr></table></figure>
 
 <p>在瀏覽器運行結果如下，瀏覽器會根據內容格式（Content-Type）解析網頁：</p>
-<p><img src="https://i.imgur.com/LbCRc8S.png"></p>
+<p><img data-src="https://i.imgur.com/LbCRc8S.png"></p>
 <p>而當我們切換網址時，CLI 介面也會印出 url 文字，其中 <code>/favicon.ico</code> 代表瀏覽器標籤的 logo：</p>
-<p><img src="https://i.imgur.com/t5Gx1JF.png"></p>
+<p><img data-src="https://i.imgur.com/t5Gx1JF.png"></p>
 <p>我們也可以利用 <code>res.writeHead()</code> 來導向其他網址，如下方範例。這時如果輸入 <code>http://localhost:5001/bye</code>，就會重新導向至 google 首頁：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> server = http.<span class="title function_">createServer</span>(handler)</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">handler</span>(<span class="params">req, res</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(req.<span class="property">url</span>)  <span class="comment">// 印出 req 網址</span></span><br><span class="line">  <span class="keyword">if</span> (req.<span class="property">url</span> === <span class="string">&#x27;/hello&#x27;</span>) &#123;</span><br><span class="line">    res.<span class="title function_">write</span>(<span class="string">&#x27;&lt;h1&gt;hello!&lt;/h1&gt;&#x27;</span>)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (req.<span class="property">url</span> === <span class="string">&#x27;/bye&#x27;</span>) &#123;</span><br><span class="line">    res.<span class="title function_">writeHead</span>(<span class="number">301</span>, &#123;              <span class="comment">// 301: 重新導向</span></span><br><span class="line">      <span class="string">&#x27;Location&#x27;</span>: <span class="string">&#x27;https://www.google.com.tw/&#x27;</span></span><br><span class="line">    &#125;)</span><br><span class="line">    res.<span class="title function_">write</span>(<span class="string">&#x27;bye!&#x27;</span>)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    res.<span class="title function_">write</span>(<span class="string">&#x27;Invalid url&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  res.<span class="title function_">end</span>()   <span class="comment">// 結束這個 response</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server.<span class="title function_">listen</span>(<span class="number">5001</span>)</span><br></pre></td></tr></table></figure>
 
@@ -343,20 +365,20 @@
 </blockquote>
 <h4 id="Step1-初始化-npm，過程都按確定，最後會在資料夾中建立一個-package-json-檔"><a href="#Step1-初始化-npm，過程都按確定，最後會在資料夾中建立一個-package-json-檔" class="headerlink" title="Step1. 初始化 npm，過程都按確定，最後會在資料夾中建立一個 package.json 檔"></a>Step1. 初始化 npm，過程都按確定，最後會在資料夾中建立一個 package.json 檔</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm init</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/Ya0XugX.png"></p>
+<p><img data-src="https://i.imgur.com/Ya0XugX.png"></p>
 <h4 id="Step2-安裝-Express"><a href="#Step2-安裝-Express" class="headerlink" title="Step2. 安裝 Express"></a>Step2. 安裝 Express</h4><p>在最新的 npm 版本，可以省略 <code>--save</code>，安裝完成還是會自動存到 package.json：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install express --save</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/qOagjRg.png"></p>
+<p><img data-src="https://i.imgur.com/qOagjRg.png"></p>
 <h4 id="Step3-實作範例：Hello-world"><a href="#Step3-實作範例：Hello-world" class="headerlink" title="Step3. 實作範例：Hello world"></a>Step3. 實作範例：Hello world</h4><p>接著可以跟著<span class="exturl" data-url="aHR0cHM6Ly9leHByZXNzanMuY29tL2VuL3N0YXJ0ZXIvaGVsbG8td29ybGQuaHRtbA==" title="https://expressjs.com/en/starter/hello-world.html">官方文件<i class="fa fa-external-link"></i></span>來實作一個簡單範例，開啟 index.js 檔並輸入下列程式碼：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入 library</span></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="comment">// express 引入的是一個 function</span></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line"><span class="comment">// 建立一個不易產生衝突的 port 用來測試</span></span><br><span class="line"><span class="keyword">const</span> port = <span class="number">5001</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如何處理不同的 request，參數分別為 url 和要執行的 function</span></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&#x27;hello world!&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/bye&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&#x27;bye!&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 運行這個 port，參數分別為 port 和要執行的 function</span></span><br><span class="line">app.<span class="title function_">listen</span>(port, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Example app listening at http://localhost:<span class="subst">$&#123;port&#125;</span>`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>在 CLI 介面執行 index.js，出現下方文字代表有成功運行程式：</p>
-<p><img src="https://i.imgur.com/VG4okLU.png"></p>
+<p><img data-src="https://i.imgur.com/VG4okLU.png"></p>
 <p>這時在瀏覽器輸入 <code>http://localhost:5001/</code>，就會看到回傳內容：</p>
-<p><img src="https://i.imgur.com/NYQmfRF.png"></p>
+<p><img data-src="https://i.imgur.com/NYQmfRF.png"></p>
 <p>如果發現修改後，網頁還是會導回先前設定的網址，可透過開發者工具來清除快取（cache），重整頁面就能看到結果：</p>
-<p><img src="https://i.imgur.com/6T6umyx.png"></p>
+<p><img data-src="https://i.imgur.com/6T6umyx.png"></p>
 <p>和最一開始的範例做比較的話，其實可以發現到，寫法和使用 Node.js 實作 Server 非常類似。</p>
 <p>但是藉由 Express 提供的<span class="exturl" data-url="aHR0cHM6Ly9leHByZXNzanMuY29tL3poLXR3L2d1aWRlL3JvdXRpbmcuaHRtbA==" title="https://expressjs.com/zh-tw/guide/routing.html">路由（Routing）<i class="fa fa-external-link"></i></span>系統，會將許多語法包裝好，在執行上也會方便許多。除了 <code>app.get()</code>，還有像是 <code>app.post()</code> 和 <code>app.delete()</code> 等針對不同 method 來進行操作，這部分我們後面會再詳細介紹。</p>
 <h3 id="Express-vs-Apache-PHP"><a href="#Express-vs-Apache-PHP" class="headerlink" title="Express vs Apache + PHP"></a>Express vs Apache + PHP</h3><p>在看完上面的範例後，我們可以試著比較 Express 和以前所學的 <span class="exturl" data-url="aHR0cHM6Ly9oYWNrbWQuaW8vQEhlaWRpLUxpdS9ub3RlLWJlMTAxLXBocC1hbmQtbXlzcWw=" title="https://hackmd.io/@Heidi-Liu/note-be101-php-and-mysql">Apache + PHP<i class="fa fa-external-link"></i></span>，兩者的運作模式有何差別：</p>
@@ -364,12 +386,12 @@
 <li>瀏覽器會發 request 給 Apache Server，再交給 PHP 處理，處理完成後再傳 response 回去</li>
 <li><span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3poLXR3LyVFNiU5NiU4NyVFNCVCQiVCNiVFNyVCMyVCQiVFNyVCQiU5Rg==" title="https://zh.wikipedia.org/zh-tw/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F">檔案系統<i class="fa fa-external-link"></i></span>：預設路徑長什麼樣子，在該資料夾底下就會有對應的 php 檔</li>
 </ul>
-<p><img src="https://i.imgur.com/EYfvLe0.png"></p>
+<p><img data-src="https://i.imgur.com/EYfvLe0.png"></p>
 <h4 id="Express"><a href="#Express" class="headerlink" title="Express"></a>Express</h4><ul>
 <li>瀏覽器發 request 給 Express Server，經過處理後會根據 url 回傳 response</li>
 <li>和前者的最大差別，就是沒有 PHP 處理器，Express 本身就是一個 Server，透過路由系統決定什麼路徑回傳什麼資料，而不會侷限在檔案系統</li>
 </ul>
-<p><img src="https://i.imgur.com/zXWH67g.png"></p>
+<p><img data-src="https://i.imgur.com/zXWH67g.png"></p>
 <h2 id="MVC-基本架構"><a href="#MVC-基本架構" class="headerlink" title="MVC 基本架構"></a>MVC 基本架構</h2><p>在課程當中，我們會使用後端框架 Express 和 ORM 工具 Sequelize 來打造 MVC 架構的網站，以下先來談談什麼是 MVC 架構。</p>
 <p>MVC（Model–view–controller）：是一種應用程式架構，透過將程式碼拆成分成模型（Model）、視圖（View）和控制器（Controller）三個部分，並透過路由系統，建立整個應用程式的設計模式。</p>
 <p>在 MVC 架構中，request 流程大致如下：</p>
@@ -379,7 +401,7 @@
 <li>Controller 再把拿到的資料給 View，由 View 提供的 template</li>
 <li>最後 Controller 再結合 data 和 template，回傳 response</li>
 </ol>
-<p><img src="https://i.imgur.com/aYBYHlx.png"></p>
+<p><img data-src="https://i.imgur.com/aYBYHlx.png"></p>
 <p>簡單來說：</p>
 <ul>
 <li>Model 負責處理資料部分（data），例如在 MySQL 資料庫裡建立 tables，以及所有讀取、寫入資料等</li>
@@ -392,7 +414,7 @@
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install ejs</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/DixdfOM.png"></p>
+<p><img data-src="https://i.imgur.com/DixdfOM.png"></p>
 <ul>
 <li>EJS 語法是透過 <code>&lt;%  %&gt;</code> 符號，和 PHP 語法其實很類似，語法又可分為三種：</li>
 </ul>
@@ -406,7 +428,7 @@
 <ol start="3">
 <li><p>預設目錄會是 <code>/views</code>，因此需要新建一個資料夾 views，並在資料夾中建立一個 hello.ejs 檔</p>
 </li>
-<li><p>記得在 VS Code 等編譯器中安裝 ejs 插件，才能夠解析 ejs 檔：<br><img src="https://i.imgur.com/PVJjWAG.png"></p>
+<li><p>記得在 VS Code 等編譯器中安裝 ejs 插件，才能夠解析 ejs 檔：<br><img data-src="https://i.imgur.com/PVJjWAG.png"></p>
 </li>
 <li><p>在 hello.ejs 檔中輸入簡單的程式碼進行測試，例如：<code>&lt;h1&gt;hello&lt;/h1&gt;</code></p>
 </li>
@@ -418,11 +440,11 @@
 <ol start="7">
 <li>輸入 node index.js 指令運行，在瀏覽器可以看到結果：</li>
 </ol>
-<p><img src="https://i.imgur.com/G32u0NI.png"></p>
+<p><img data-src="https://i.imgur.com/G32u0NI.png"></p>
 <ol start="8">
 <li>如果想要修改 views 中的 template，也就是 ejs 檔的內容，只要重整瀏覽器畫面即可，不需再重新運行 Node.js：</li>
 </ol>
-<p><img src="https://i.imgur.com/dKhAwTu.png"></p>
+<p><img data-src="https://i.imgur.com/dKhAwTu.png"></p>
 <h3 id="實作簡易的-todo-list-API"><a href="#實作簡易的-todo-list-API" class="headerlink" title="實作簡易的 todo list API"></a>實作簡易的 todo list API</h3><ol>
 <li>首先在 index.js 建立 todos，並設定 app.get() 傳入資料：</li>
 </ol>
@@ -436,7 +458,7 @@
 <ol start="3">
 <li>在瀏覽器運行，這樣能根據之前設立的 data 輸出 todos：</li>
 </ol>
-<p><img src="https://i.imgur.com/zGLAWIT.png"></p>
+<p><img data-src="https://i.imgur.com/zGLAWIT.png"></p>
 <ol start="4">
 <li>接著回到 index.js 檔，用同樣的方式，根據不同 id 來拿取對應的 todo：</li>
 </ol>
@@ -450,7 +472,7 @@
 <ol start="6">
 <li>透過網址列上的 id，能夠讀取相對應的 todo：</li>
 </ol>
-<p><img src="https://i.imgur.com/crYUBSj.png"></p>
+<p><img data-src="https://i.imgur.com/crYUBSj.png"></p>
 <p>這樣就透過 Express 結合 view template engine 完成了簡單的範例，也可以再增加 header 或 footer 等來豐富內容。</p>
 <h3 id="重構專案：實作-Model-amp-Controller"><a href="#重構專案：實作-Model-amp-Controller" class="headerlink" title="重構專案：實作 Model &amp; Controller"></a>重構專案：實作 Model &amp; Controller</h3><p>接下來要試著重構程式碼，也就是實作 MVC 架構中的 Model 和 Controller 部分。</p>
 <h4 id="Model：用來管理-todos-的資料"><a href="#Model：用來管理-todos-的資料" class="headerlink" title="Model：用來管理 todos 的資料"></a>Model：用來管理 todos 的資料</h4><ol>
@@ -493,21 +515,21 @@
 <blockquote>
 <p>2026 年註：本文範例使用 callback 寫法，現代專案多會改用 <code>mysql2/promise</code> 搭配 async/await，觀念相同、寫法更簡潔。</p>
 </blockquote>
-<p><img src="https://i.imgur.com/tR8kezb.png"></p>
+<p><img data-src="https://i.imgur.com/tR8kezb.png"></p>
 <p>引入 MySQL 模組後，接著就可以進行資料庫的連線和其他操作了。</p>
 <h3 id="Step2-新增-app-資料庫-amp-todos-資料表"><a href="#Step2-新增-app-資料庫-amp-todos-資料表" class="headerlink" title="Step2. 新增 app 資料庫 &amp;  todos 資料表"></a>Step2. 新增 app 資料庫 &amp;  todos 資料表</h3><p>之前在<span class="exturl" data-url="aHR0cHM6Ly9oYWNrbWQuaW8vQEhlaWRpLUxpdS9ub3RlLWJlMTAxLXBocC1hbmQtbXlzcWw=" title="https://hackmd.io/@Heidi-Liu/note-be101-php-and-mysql">第九週學到如何使用 MySQL 資料庫<i class="fa fa-external-link"></i></span>，這一次我們同樣可以透過 phpmyadmin 這個 GUI 介面來進行資料庫 CRUD，步驟如下：</p>
 <ol>
 <li>開啟 XAMPP 連線 MySQL，其實這樣就已經啟動資料庫了，但如果要使用 phpmyadmin 介面操作，就必須同時運行 Apache Server 才能使用：</li>
 </ol>
-<p><img src="https://i.imgur.com/kCpCApB.png"></p>
+<p><img data-src="https://i.imgur.com/kCpCApB.png"></p>
 <ol start="2">
 <li>接著建立一個 app database，並在裡面新增一個 todos table</li>
 </ol>
-<p><img src="https://i.imgur.com/Flh0kkx.png"></p>
+<p><img data-src="https://i.imgur.com/Flh0kkx.png"></p>
 <ol start="3">
 <li>在 todos table 新增幾筆資料</li>
 </ol>
-<p><img src="https://i.imgur.com/Bd9TEJB.png"></p>
+<p><img data-src="https://i.imgur.com/Bd9TEJB.png"></p>
 <h3 id="Step3-串接-MySQL-資料庫"><a href="#Step3-串接-MySQL-資料庫" class="headerlink" title="Step3. 串接 MySQL 資料庫"></a>Step3. 串接 MySQL 資料庫</h3><p>確認本地端已經安裝資料庫並正常啟動，接著就可以新增一個 db.js 檔來進行連線，程式碼可<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL215c3FsanMvbXlzcWwjaW50cm9kdWN0aW9u" title="https://github.com/mysqljs/mysql#introduction">參考範例<i class="fa fa-external-link"></i></span>：</p>
 <blockquote>
 <p>要等待回傳一定是使用 callback，好處就是從同步變成非同步。</p>
@@ -515,17 +537,17 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入 mysql2 模組</span></span><br><span class="line"><span class="keyword">var</span> mysql = <span class="built_in">require</span>(<span class="string">&#x27;mysql2&#x27;</span>);</span><br><span class="line"><span class="comment">// 建立連線</span></span><br><span class="line"><span class="keyword">var</span> connection = mysql.<span class="title function_">createConnection</span>(&#123;</span><br><span class="line">  <span class="attr">host</span>: <span class="string">&#x27;localhost&#x27;</span>,</span><br><span class="line">  <span class="attr">user</span>: <span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">  <span class="attr">password</span>: <span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">  <span class="attr">database</span>: <span class="string">&#x27;app&#x27;</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">connection.<span class="title function_">connect</span>();</span><br><span class="line"><span class="comment">// 使用 callback 來接收訊息: 連線成功就印出 todos 所有欄位</span></span><br><span class="line">connection.<span class="title function_">query</span>(<span class="string">&#x27;SELECT * from todos&#x27;</span>, <span class="keyword">function</span> (<span class="params">error, results, fields</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(results);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">connection.<span class="title function_">end</span>();</span><br></pre></td></tr></table></figure>
 
 <p>接著在 CLI 介面執行 <code>node db.js</code>，如果有輸出資料就代表連線成功！</p>
-<p><img src="https://i.imgur.com/UKf0NJ7.png"></p>
+<p><img data-src="https://i.imgur.com/UKf0NJ7.png"></p>
 <p>其中 RowDataPacket 是一種自訂的資料格式，如果把 <code>console.log(results);</code> 改成：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(results[<span class="number">0</span>].<span class="property">content</span>);</span><br></pre></td></tr></table></figure>
 
 <p>就會達到拿到第一個 todo 的內容：</p>
-<p><img src="https://i.imgur.com/M9sO5ZS.png"></p>
+<p><img data-src="https://i.imgur.com/M9sO5ZS.png"></p>
 <h3 id="補充：權限不足問題"><a href="#補充：權限不足問題" class="headerlink" title="補充：權限不足問題"></a>補充：權限不足問題</h3><p>其實自己當初在嘗試連線資料庫時，有出現權限錯誤的訊息：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Error: ER_ACCESS_DENIED_ERROR: Access denied for user &#x27;root&#x27;@&#x27;localhost&#x27; (using passwo</span><br><span class="line">rd: YES)</span><br></pre></td></tr></table></figure>
 
 <p>後來是在使用者帳號頁面發現，root 這組帳號當初設定不用密碼就可以登入了，真是烏龍一場XD</p>
-<p><img src="https://i.imgur.com/KGhvnqv.png"></p>
+<p><img data-src="https://i.imgur.com/KGhvnqv.png"></p>
 <h3 id="Step4-重構程式碼"><a href="#Step4-重構程式碼" class="headerlink" title="Step4. 重構程式碼"></a>Step4. 重構程式碼</h3><ol>
 <li>將 db.js 簡化，獨立成串聯資料庫時需要的資料，方便其他部分要連線時引入：</li>
 </ol>
@@ -566,16 +588,16 @@
 <blockquote>
 <p>這裡 port 之所以變成 5002，是因為前面在嘗試修改連線時，不知在哪個環節佔用了 5001，因此先改成另一個沒有使用的 port</p>
 </blockquote>
-<p><img src="https://i.imgur.com/aSpv3e4.png"></p>
+<p><img data-src="https://i.imgur.com/aSpv3e4.png"></p>
 <p>接著是 Todo，會發現輸出結果是 Object。這是因為 <code>&lt;%= %&gt;</code> 語法會直接印出字串，當我們想要把一個 Object 轉成字串時，就會發生下列情形：</p>
-<p><img src="https://i.imgur.com/WMopGth.png"></p>
+<p><img data-src="https://i.imgur.com/WMopGth.png"></p>
 <p>只要將 Todo 部分修改成輸出 <code>todo.content</code>：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;<span class="title class_">Todo</span>&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>&lt;%= todo.content %&gt;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
 <p>結果就會是相對應的 todo：</p>
-<p><img src="https://i.imgur.com/02Wnbnb.png"></p>
+<p><img data-src="https://i.imgur.com/02Wnbnb.png"></p>
 <p>如果對資料庫操作 CRUD，重整頁面也會動態更新：</p>
-<p><img src="https://i.imgur.com/NZ0Hzj3.png"></p>
+<p><img data-src="https://i.imgur.com/NZ0Hzj3.png"></p>
 <p>學到目前為止，透過上面這些範例，我們其實已經能寫出一些簡單的網頁程式了，並且有 MVC 架構，能夠簡化程式碼且便於維護。</p>
 <hr>
 <h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>其實官網上的教學都已經蠻清楚了，但還是想跟著課程影片一步一步操作，一方面透過實作，發現可能會遇到哪些問題，一方面也能加深印象，讓自己更快去熟悉 Express 這套新工具。</p>
@@ -611,7 +633,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -780,7 +803,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -842,12 +866,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 [FE302] React 基礎 - hooks 版本 這門課程的學習筆記。如有錯誤歡迎指正！  123456學習目標： P1 我知道 React 的目的以及原理 P1 我知道我們為什麼需要 React P1 我知道使用 React 跟之前使用 jQuery 的區別 P1 我理解 state 跟 props 的不同">
@@ -55,6 +53,28 @@
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 21] 前端框架 - 先別急著學 React",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-11-23T16:46:00.000Z",
+  "dateModified": "2026-07-09T06:06:05.725Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/react/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
 
   <title>[week 21] 前端框架 - 先別急著學 React | Liusan's Blog</title>
   
@@ -91,7 +111,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -317,7 +337,7 @@
 </blockquote>
 <p>簡單來說，component（元件、組件）其實就像 JavaScript 的 function，可接收任意的 props（參數， property 的簡寫）並且回傳描述畫面的 React element。</p>
 <p>以我們剛才實作的 todolist 來說，就可以根據功能分成不同的 component：</p>
-<p><img src="https://i.imgur.com/XYSTyfM.png"></p>
+<p><img data-src="https://i.imgur.com/XYSTyfM.png"></p>
 <h3 id="Component-amp-Props"><a href="#Component-amp-Props" class="headerlink" title="Component &amp; Props"></a>Component &amp; Props</h3><p>再來我們可試著用 component 的概念改寫程式碼，例如切割出 Todo 和 Button component。</p>
 <ol>
 <li><p>必須用英文大寫開頭命名來辨別是 component：
@@ -344,9 +364,9 @@
 <p>但 component 其實是一種抽象的概念，還有另外一種較為標準的寫法 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvV2ViX0NvbXBvbmVudHM=" title="https://developer.mozilla.org/en-US/docs/Web/Web_Components">Web Components<i class="fa fa-external-link"></i></span>，類似建立新的 HTML 標籤來使用，只是目前瀏覽器支援度還不高，這部分我們並不進行討論。</p>
 <h2 id="資料-vs-畫面（UI）"><a href="#資料-vs-畫面（UI）" class="headerlink" title="資料 vs 畫面（UI）"></a>資料 vs 畫面（UI）</h2><p>根據前面的範例，是把資料放到畫面上來呈現，也就是在新增、修改 todo 時，同時去更動資料和畫面。因此我們可從 UI 去抽取資料，但我們無法直接把 HTML 程式碼存到資料庫，而是要去除標籤，轉換成 JSON 等最原始的資料形式。</p>
 <p>此外，透過這種方式其實有個壞處，假如有部分資料沒有更動到，就可能導致資料與畫面不一致。</p>
-<p><img src="https://i.imgur.com/TKkUPnR.png"></p>
+<p><img data-src="https://i.imgur.com/TKkUPnR.png"></p>
 <p>至於要如何解決這個問題，我們可以改成直接修改資料，然後畫面從資料產生，即可保持資料與畫面的一致性。</p>
-<p><img src="https://i.imgur.com/k1STU0n.png"></p>
+<p><img data-src="https://i.imgur.com/k1STU0n.png"></p>
 <p>這其實就是 React 第二個重要概念 State，畫面永遠由 state 產生。用數學式可表示成 <code>UI = f(state)</code>，代表 state 不變的話，透過 state 產生的 UI 也不會改變。</p>
 <h2 id="畫面永遠都由-state-產生"><a href="#畫面永遠都由-state-產生" class="headerlink" title="畫面永遠都由 state 產生"></a>畫面永遠都由 state 產生</h2><p>根據 <span class="exturl" data-url="aHR0cHM6Ly96aC1oYW50LnJlYWN0anMub3JnL2RvY3MvcmVhY3QtY29tcG9uZW50Lmh0bWwjc3RhdGU=" title="https://zh-hant.reactjs.org/docs/react-component.html#state">React<i class="fa fa-external-link"></i></span> 官網定義：</p>
 <blockquote>
@@ -413,7 +433,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -582,7 +603,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -644,12 +666,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

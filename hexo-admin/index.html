@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="在上篇【學習筆記】如何使用 Hexo + GitHub Pages 架設個人網誌中，我們學會如何打造簡單的個人網誌後，再來要介紹如何透過 hexo-admin 這個套件，以更直觀的方式在後台管理網誌文章。">
@@ -61,6 +59,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "【學習筆記】hexo-admin：Hexo 後台管理工具",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-12-02T06:08:00.000Z",
+  "dateModified": "2026-07-09T06:06:05.658Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/hexo-admin/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>【學習筆記】hexo-admin：Hexo 後台管理工具 | Liusan's Blog</title>
   
 
@@ -96,7 +116,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -281,7 +301,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="https://i.imgur.com/T1CHqyf.png"></p>
+        <p><img data-src="https://i.imgur.com/T1CHqyf.png"></p>
 <p>在上篇<a href="https://heidiliu2020.github.io/2020/11/07/202011-hexo-github/">【學習筆記】如何使用 Hexo + GitHub Pages 架設個人網誌</a>中，我們學會如何打造簡單的個人網誌後，再來要介紹如何透過 hexo-admin 這個套件，以更直觀的方式在後台管理網誌文章。</p>
 <span id="more"></span>
 
@@ -303,36 +323,36 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server -d</span><br><span class="line">// 或簡化成</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
 
 <p>看到下方提示就代表運行成功：</p>
-<p><img src="https://i.imgur.com/zXT8P5C.png"></p>
+<p><img data-src="https://i.imgur.com/zXT8P5C.png"></p>
 <ol start="2">
 <li>在瀏覽器輸入 <span class="exturl" data-url="aHR0cDovL2xvY2FsaG9zdDo0MDAwLw==" title="http://localhost:4000/">http://localhost:4000<i class="fa fa-external-link"></i></span> 可以預覽發布前的網誌</li>
 <li>進入 <span class="exturl" data-url="aHR0cDovL2xvY2FsaG9zdDo0MDAwL2FkbWlu" title="http://localhost:4000/admin">http://localhost:4000/admin<i class="fa fa-external-link"></i></span> 可進入後台管理，在 Posts 可看到文章列表：</li>
 </ol>
-<p><img src="https://i.imgur.com/ZGKnhui.png"></p>
+<p><img data-src="https://i.imgur.com/ZGKnhui.png"></p>
 <p>在 Pages 可編輯其他頁面：</p>
-<p><img src="https://i.imgur.com/UWJr7PU.png"></p>
+<p><img data-src="https://i.imgur.com/UWJr7PU.png"></p>
 <h2 id="新增文章-Publish"><a href="#新增文章-Publish" class="headerlink" title="新增文章 Publish"></a>新增文章 Publish</h2><ol>
 <li>點選左上角的 New Post，可輸入該文章的網址名稱，接著打勾或按 Enter：</li>
 </ol>
-<p><img src="https://i.imgur.com/fMCYDdW.png"></p>
+<p><img data-src="https://i.imgur.com/fMCYDdW.png"></p>
 <ol start="2">
 <li>就會進入編輯頁面，可在標題列編輯文章標題，標題下方則是文章網址，左邊區塊可編輯 Markdown 文章內容，右方區塊則是預覽文章</li>
 </ol>
-<p><img src="https://i.imgur.com/190UBSx.png"></p>
+<p><img data-src="https://i.imgur.com/190UBSx.png"></p>
 <ol start="3">
 <li>編輯完成後，可點選 Publish 左側的設定，修改發布文章時間、標籤、分類，確認都沒問題後，即可點選 Publish 發布文章</li>
 </ol>
-<p><img src="https://i.imgur.com/BBUAMBO.png"></p>
+<p><img data-src="https://i.imgur.com/BBUAMBO.png"></p>
 <ol start="4">
 <li>回到 <span class="exturl" data-url="aHR0cDovL2xvY2FsaG9zdDo0MDAwLw==" title="http://localhost:4000/">http://localhost:4000<i class="fa fa-external-link"></i></span> 即可看到剛才新增的文章</li>
 </ol>
-<p><img src="https://i.imgur.com/Jezhv4m.png"></p>
+<p><img data-src="https://i.imgur.com/Jezhv4m.png"></p>
 <h3 id="補充：Read-more-功能"><a href="#補充：Read-more-功能" class="headerlink" title="補充：Read more 功能"></a>補充：Read more 功能</h3><p>在上方編輯模式中，可以看到 <code>&lt;!--more--&gt;</code> 這行程式碼，在這行以下的內容就會自動被隱藏，會多一個閱讀全文（Read more）的連結，必須點擊文章才會看到全文。</p>
 <h2 id="部署到-GitHub"><a href="#部署到-GitHub" class="headerlink" title="部署到 GitHub"></a>部署到 GitHub</h2><p>確認文章都沒問題之後，就可以準備部署到 GitHub 上，步驟如下：</p>
 <ol>
 <li>在終端機按 Ctrl+C，可停止本地端伺服器</li>
 </ol>
-<p><img src="https://i.imgur.com/BXhBwiC.png"></p>
+<p><img data-src="https://i.imgur.com/BXhBwiC.png"></p>
 <ol start="2">
 <li>輸入下方三個指令進行部署</li>
 </ol>
@@ -358,14 +378,15 @@
   <div class="popular-posts-header">相關文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/hexo-github/" rel="bookmark">【學習筆記】如何使用 Hexo + GitHub Pages 架設個人網誌</a></div>
+      <div class="popular-posts-title"><a href="/hexo-theme/" rel="bookmark">【學習筆記】如何更換 Hexo 主題 & 自訂樣式</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/hexo-theme/" rel="bookmark">【學習筆記】如何更換 Hexo 主題 & 自訂樣式</a></div>
+      <div class="popular-posts-title"><a href="/hexo-github/" rel="bookmark">【學習筆記】如何使用 Hexo + GitHub Pages 架設個人網誌</a></div>
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -533,7 +554,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -595,12 +617,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

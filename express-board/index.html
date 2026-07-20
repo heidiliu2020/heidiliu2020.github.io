@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 [BE201] 後端中階：Express 與 Sequelize 這門課程的學習筆記。如有錯誤歡迎指正！  在之前的課程中，我們學到如何使用 Express 這套框架，以及在 Express 扮演重要角色的 Middleware：">
@@ -74,6 +72,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 17] 後端中階 - Express 實戰：簡易會員註冊系統 & 留言板",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-10-29T16:38:00.000Z",
+  "dateModified": "2026-07-09T06:06:05.649Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/express-board/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[week 17] 後端中階 - Express 實戰：簡易會員註冊系統 & 留言板 | Liusan's Blog</title>
   
 
@@ -109,7 +129,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -319,9 +339,9 @@
 </ol>
 <p>接下來我們也同樣會依照這個流程來進行實作。</p>
 <h3 id="Step1-規劃資料庫"><a href="#Step1-規劃資料庫" class="headerlink" title="Step1. 規劃資料庫"></a>Step1. 規劃資料庫</h3><p>首先在資料庫新增一個 users Tabel：</p>
-<p><img src="https://i.imgur.com/22wyXlm.png"></p>
+<p><img data-src="https://i.imgur.com/22wyXlm.png"></p>
 <p>可以把 username 設定為 UNIQUE（唯一），只要 username 有重複就會自動跳出錯誤訊息：</p>
-<p><img src="https://i.imgur.com/75SSRX2.png"></p>
+<p><img data-src="https://i.imgur.com/75SSRX2.png"></p>
 <h3 id="Step2-實作-Model-部分"><a href="#Step2-實作-Model-部分" class="headerlink" title="Step2. 實作 Model 部分"></a>Step2. 實作 Model 部分</h3><p>接著要來建立 userModel：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> db = <span class="built_in">require</span>(<span class="string">&#x27;../db&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> userModel = &#123;</span><br><span class="line">  <span class="comment">// 新增 user 功能</span></span><br><span class="line">  <span class="attr">add</span>: <span class="function">(<span class="params">user, cb</span>) =&gt;</span> &#123;</span><br><span class="line">    db.<span class="title function_">query</span>(</span><br><span class="line">      <span class="string">&#x27;INSERT INTO users(username, password, nickname) VALUES(?, ?, ?)&#x27;</span>,</span><br><span class="line">      [user.<span class="property">username</span>, user.<span class="property">password</span>, user.<span class="property">nickname</span>],</span><br><span class="line">      <span class="function">(<span class="params">err, results</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (err) <span class="keyword">return</span> <span class="title function_">cb</span>(err);</span><br><span class="line">        <span class="title function_">cb</span>(<span class="literal">null</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    );</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 登入 -&gt; 讀取 user 功能</span></span><br><span class="line">  <span class="attr">get</span>: <span class="function">(<span class="params">username, cb</span>) =&gt;</span> &#123;</span><br><span class="line">    db.<span class="title function_">query</span>(</span><br><span class="line">      <span class="string">&#x27;SELECT * FROM users WHERE username = ?&#x27;</span>, [username], <span class="function">(<span class="params">err, results</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (err) <span class="keyword">return</span> <span class="title function_">cb</span>(err);</span><br><span class="line">      <span class="title function_">cb</span>(<span class="literal">null</span>, results[<span class="number">0</span>]);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = userModel;</span><br></pre></td></tr></table></figure>
 
@@ -351,14 +371,14 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;簡易會員系統&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/register&quot;</span>&gt;</span>註冊<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/login&quot;</span>&gt;</span>登入<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/logout&quot;</span>&gt;</span>登出<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
 <p>到這裡可先運行程式看看有沒有問題：</p>
-<p><img src="https://i.imgur.com/Z1iMl9S.png"></p>
+<p><img data-src="https://i.imgur.com/Z1iMl9S.png"></p>
 <ol start="3">
 <li>加入前面範例中的驗證功能：</li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;簡易會員系統&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line">&lt;% <span class="keyword">if</span>(isLogin) &#123; %&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/logout&quot;</span>&gt;</span>登出<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line">&lt;% &#125; <span class="keyword">else</span> &#123; %&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/register&quot;</span>&gt;</span>註冊<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/login&quot;</span>&gt;</span>登入<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
 
 <p>這樣在未登入狀態下，就只會看到註冊和登入，這樣就完成了首頁 index 的部分：</p>
-<p><img src="https://i.imgur.com/n7ew34I.png"></p>
+<p><img data-src="https://i.imgur.com/n7ew34I.png"></p>
 <h3 id="Step5-實作註冊功能"><a href="#Step5-實作註冊功能" class="headerlink" title="Step5. 實作註冊功能"></a>Step5. 實作註冊功能</h3><ol>
 <li>先建立 register 路由：</li>
 </ol>
@@ -375,7 +395,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;註冊頁面&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line">&lt;h2&gt;&lt;%= errorMessage %&gt;&lt;/h2&gt;</span><br><span class="line"></span><br><span class="line">&lt;form method=&quot;POST&quot; action=&quot;/register&quot;&gt;</span><br><span class="line">  &lt;div&gt;username: &lt;input type=&quot;text&quot; name=&quot;username&quot; /&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div&gt;nickname: &lt;input type=&quot;text&quot; name=&quot;nickname&quot; /&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div&gt;password: &lt;input type=&quot;password&quot; name=&quot;password&quot; /&gt;&lt;/div&gt;</span><br><span class="line">  &lt;input type=&quot;submit&quot; /&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
 
 <p>記得每做到一個段落就執行程式看有沒有出錯，這樣我們就完成簡單的註冊頁面。這時按提交還不會有反應：</p>
-<p><img src="https://i.imgur.com/AiRq3HA.png"></p>
+<p><img data-src="https://i.imgur.com/AiRq3HA.png"></p>
 <ol start="4">
 <li>再來就是實作 handleRegister 的 Controller 部分：</li>
 </ol>
@@ -412,9 +432,9 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 驗證註冊</span></span><br><span class="line"><span class="attr">handleRegister</span>: <span class="function">(<span class="params">req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 從 resquest body 拿取 user 資料</span></span><br><span class="line">  <span class="keyword">const</span> &#123;username, password, nickname&#125; = req.<span class="property">body</span>;</span><br><span class="line">  <span class="keyword">if</span> (!username || !password || !nickname) &#123;</span><br><span class="line">    <span class="comment">// 這裡用 return 就可避免 if-else 寫法增加層數</span></span><br><span class="line">    req.<span class="title function_">flash</span>(<span class="string">&#x27;errorMessage&#x27;</span>, <span class="string">&#x27;缺少必要欄位&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">next</span>();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 利用 bcrypt 套件對密碼進行雜湊處理</span></span><br><span class="line">  bcrypt.<span class="title function_">hash</span>(password, saltRounds, <span class="keyword">function</span> (<span class="params">err, hash</span>) &#123;</span><br><span class="line">    <span class="comment">// 若有 err 就直接顯示錯誤訊息</span></span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      req.<span class="title function_">flash</span>(<span class="string">&#x27;errorMessage&#x27;</span>, err.<span class="title function_">toString</span>());</span><br><span class="line">      <span class="keyword">return</span> <span class="title function_">next</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 資料都沒問題的話，就可透過 userModel 寫入資料</span></span><br><span class="line">    userModel.<span class="title function_">add</span>(&#123;</span><br><span class="line">      username,</span><br><span class="line">      nickname,</span><br><span class="line">      <span class="attr">password</span>: hash</span><br><span class="line">    &#125;, <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 若有 err 就直接顯示錯誤訊息</span></span><br><span class="line">      <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        req.<span class="title function_">flash</span>(<span class="string">&#x27;errorMessage&#x27;</span>, <span class="string">&#x27;已存在相同用戶名&#x27;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_">next</span>();</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 註冊成功就保持登入狀態，並導回首頁</span></span><br><span class="line">      req.<span class="property">session</span>.<span class="property">username</span> = username;</span><br><span class="line">      res.<span class="title function_">redirect</span>(<span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;,</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>執行程式並註冊一個帳號，確認資料是否有成功寫進資料庫，密碼也有先經過 hash 才儲存：</p>
-<p><img src="https://i.imgur.com/SVAu3GZ.png"></p>
+<p><img data-src="https://i.imgur.com/SVAu3GZ.png"></p>
 <p>這樣就差不多完成了註冊功能：</p>
-<p><img src="https://i.imgur.com/zJZMhbF.png"></p>
+<p><img data-src="https://i.imgur.com/zJZMhbF.png"></p>
 <h3 id="Step7-實作登入功能"><a href="#Step7-實作登入功能" class="headerlink" title="Step7. 實作登入功能"></a>Step7. 實作登入功能</h3><ol>
 <li>再來要修改登入頁面 login.ejs，畫面和註冊頁面很類似：</li>
 </ol>
@@ -431,17 +451,17 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自己寫的中間介，用來導回上一頁</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">redirectBack</span>(<span class="params">req, res, next</span>) &#123;</span><br><span class="line">  res.<span class="title function_">redirect</span>(<span class="string">&#x27;back&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/register&#x27;</span>, userController.<span class="property">register</span>)</span><br><span class="line">app.<span class="title function_">post</span>(<span class="string">&#x27;/register&#x27;</span>, userController.<span class="property">handleRegister</span>, redirectBack)</span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/login&#x27;</span>, userController.<span class="property">login</span>)</span><br><span class="line">app.<span class="title function_">post</span>(<span class="string">&#x27;/login&#x27;</span>, userController.<span class="property">handleLogin</span>, redirectBack)</span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/logout&#x27;</span>, userController.<span class="property">logout</span>)</span><br></pre></td></tr></table></figure>
 
 <p>能夠根據未填欄位、或是資料輸入錯誤，顯示相對應的錯誤訊息：</p>
-<p><img src="https://i.imgur.com/rS4BspM.png"></p>
+<p><img data-src="https://i.imgur.com/rS4BspM.png"></p>
 <p>執行程式確認註冊和登入功能都沒問題的話，這樣就完成了簡易的會員註冊系統！藉由 MVC 架構，就能夠很清楚的分工，簡化程式邏輯。</p>
 <hr>
 <h2 id="實戰練習：有新增功能的簡易留言板"><a href="#實戰練習：有新增功能的簡易留言板" class="headerlink" title="實戰練習：有新增功能的簡易留言板"></a>實戰練習：有新增功能的簡易留言板</h2><p>再來要結合會員系統，實作一個有新增功能的簡易留言版。那麼就趕緊開始吧！</p>
 <h3 id="Step1-規劃資料庫-1"><a href="#Step1-規劃資料庫-1" class="headerlink" title="Step1. 規劃資料庫"></a>Step1. 規劃資料庫</h3><p>在 app database 新增一個 comments table，以 username 欄位和 users table 進行關聯</p>
-<p><img src="https://i.imgur.com/WcPt20O.png"></p>
+<p><img data-src="https://i.imgur.com/WcPt20O.png"></p>
 <h3 id="Step2-新增留言區塊"><a href="#Step2-新增留言區塊" class="headerlink" title="Step2. 新增留言區塊"></a>Step2. 新增留言區塊</h3><p>在首頁 index.ejs 介面新增留言表單，如果是登入狀態，就能看到留言區塊：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;簡易會員系統&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 以是否有 username 來判斷是否登入 --&gt;</span><br><span class="line">&lt;% if(username) &#123; %&gt;</span><br><span class="line">  &lt;div&gt;Hello, &lt;%= username + &#x27;!&#x27; %&gt;&lt;/div&gt;</span><br><span class="line">  &lt;a href=&quot;/logout&quot;&gt;登出&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">  &lt;form method=&quot;POST&quot; action=&quot;/comments&quot;&gt;</span><br><span class="line">    &lt;textarea name=&quot;content&quot; id=&quot;&quot; cols=&quot;30&quot; rows=&quot;10&quot;&gt;&lt;/textarea&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot; /&gt;</span><br><span class="line">  &lt;/form&gt;</span><br><span class="line"></span><br><span class="line">&lt;% &#125; else &#123; %&gt;</span><br><span class="line">  &lt;a href=&quot;/register&quot;&gt;註冊&lt;/a&gt;</span><br><span class="line">  &lt;a href=&quot;/login&quot;&gt;登入&lt;/a&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
 
 <p>畫面看起來會是這個樣子：</p>
-<p><img src="https://i.imgur.com/KbxPCEY.png"></p>
+<p><img data-src="https://i.imgur.com/KbxPCEY.png"></p>
 <h3 id="Step3-新增留言功能"><a href="#Step3-新增留言功能" class="headerlink" title="Step3. 新增留言功能"></a>Step3. 新增留言功能</h3><ol>
 <li>新增路由：</li>
 </ol>
@@ -478,7 +498,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;% comments.<span class="title function_">forEach</span>(<span class="keyword">function</span>(<span class="params">comment</span>) &#123; %&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>&lt;%= comment.nickname %&gt; &lt;%= comment.created_at %&gt;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&lt;%= comment.content %&gt;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;% &#125;) %&gt;</span><br></pre></td></tr></table></figure>
 
 <p>這樣其實就完成簡易的留言版了！但可以注意到，透過 EJS 語法輸出的時間，和我們預期的 <code>&#39;MMM-DD-YYYY&#39;</code> 格式不太相同：</p>
-<p><img src="https://i.imgur.com/7BWBdzc.png"></p>
+<p><img data-src="https://i.imgur.com/7BWBdzc.png"></p>
 <h3 id="補充：透過-moment-js-修改時間格式"><a href="#補充：透過-moment-js-修改時間格式" class="headerlink" title="補充：透過 moment.js 修改時間格式"></a>補充：透過 moment.js 修改時間格式</h3><p>透過 <span class="exturl" data-url="aHR0cHM6Ly9tb21lbnRqcy5jb20v" title="https://momentjs.com/">moment.js<i class="fa fa-external-link"></i></span> 這個套件，我們就能夠制定要輸出的時間日期格式，也能設定不同時區的時間。</p>
 <ol>
 <li>安裝 moment.js 套件：</li>
@@ -496,7 +516,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;% comments.<span class="title function_">forEach</span>(<span class="keyword">function</span>(<span class="params">comment</span>) &#123; %&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>&lt;%= comment.nickname %&gt;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&lt;%= moment(comment.created_at).format(shortDateFormat) %&gt;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&lt;%= comment.content %&gt;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;% &#125;) %&gt;</span><br></pre></td></tr></table></figure>
 
 <p>這樣就成功把時間修改成 “YYYY-MM-DD h:mm:ss” 格式了！</p>
-<p><img src="https://i.imgur.com/yiiWQeZ.png"></p>
+<p><img data-src="https://i.imgur.com/yiiWQeZ.png"></p>
 <p>找了幾種引用 moment 的寫法，最後覺得這篇：<span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvMTI3OTQ4NjAvaG93LXRvLXVzZS1ub2RlLW1vZHVsZXMtbGlrZS1tb21lbnRqcy1pbi1lanMtdmlld3M=" title="https://stackoverflow.com/questions/12794860/how-to-use-node-modules-like-momentjs-in-ejs-views">How to use node modules (like MomentJS) in EJS views?<i class="fa fa-external-link"></i></span> 內容蠻符合需要的，也就是要如何透過 node 提供的套件來改變 EJS views，稍微嘗試過後，也成功將時間格式調整成想要的樣子！</p>
 <hr>
 <h2 id="實戰：優化留言板"><a href="#實戰：優化留言板" class="headerlink" title="實戰：優化留言板"></a>實戰：優化留言板</h2><p>在上述範例中，我們在完成了一個有新增功能簡易留言版，接下來我們要試著把系統變得更完整一點。</p>
@@ -544,7 +564,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">delete</span>: <span class="function">(<span class="params">username, id, cb</span>) =&gt;</span> &#123;</span><br><span class="line">  db.<span class="title function_">query</span>(</span><br><span class="line">    <span class="string">`</span></span><br><span class="line"><span class="string">      DELETE FROM comments WHERE id=? AND username=?</span></span><br><span class="line"><span class="string">    `</span>, [id, username], </span><br><span class="line">    <span class="function">(<span class="params">err, results</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (err) <span class="keyword">return</span> <span class="title function_">cb</span>(err);</span><br><span class="line">      <span class="title function_">cb</span>(<span class="literal">null</span>);</span><br><span class="line">  &#125;);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>記得做好權限管裡，只有該則留言的’作者才能進行刪除：</p>
-<p><img src="https://i.imgur.com/L9lV2x9.png"></p>
+<p><img data-src="https://i.imgur.com/L9lV2x9.png"></p>
 <h3 id="Step4-實作編輯功能"><a href="#Step4-實作編輯功能" class="headerlink" title="Step4. 實作編輯功能"></a>Step4. 實作編輯功能</h3><ol>
 <li>同樣先從 View 部分開始，在 index.ejs 新增編輯按紐：</li>
 </ol>
@@ -573,11 +593,11 @@
 <ul>
 <li>有修改權限</li>
 </ul>
-<p><img src="https://i.imgur.com/GyCcRFg.png"></p>
+<p><img data-src="https://i.imgur.com/GyCcRFg.png"></p>
 <ul>
 <li>沒有修改權限</li>
 </ul>
-<p><img src="https://i.imgur.com/J1iF7Ri.png"></p>
+<p><img data-src="https://i.imgur.com/J1iF7Ri.png"></p>
 <ol start="6">
 <li>最後剩下 handelUpdate 處理表單提交部分，首先是控制路由部分，透過比對 session 和 params.id 確認是否為本人，並傳入要修改的留言內容：</li>
 </ol>
@@ -607,7 +627,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Required meta tags --&gt;</span><br><span class="line">&lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, shrink-to-fit=no&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Bootstrap CSS --&gt;</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css&quot;</span><br><span class="line">integrity=&quot;sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2&quot; crossorigin=&quot;anonymous&quot;&gt;</span><br></pre></td></tr></table></figure>
 
 <p>成功引入之後，就會發現畫面套用了 Bootstrap 提供的樣式：</p>
-<p><img src="https://i.imgur.com/EUjQqMo.png"></p>
+<p><img data-src="https://i.imgur.com/EUjQqMo.png"></p>
 <ol start="3">
 <li>再來是 navbar，同樣在 index.ejs 中加上 include() 語法：</li>
 </ol>
@@ -619,9 +639,9 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;nav class=&quot;navbar navbar-dark bg-dark&quot;&gt;</span><br><span class="line">  &lt;a class=&quot;navbar-brand&quot; href=&quot;/&quot; &gt;這是一個留言版&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;% if(username) &#123; %&gt;</span><br><span class="line">      &lt;div class=&quot;&quot;&gt;</span><br><span class="line">        &lt;span class=&quot;text-light&quot;&gt;Hello, &lt;%= username + &#x27;!&#x27; %&gt;&lt;/span&gt;</span><br><span class="line">        &lt;a class=&quot;btn btn-outline-light my-2 my-sm-0&quot; href=&quot;/logout&quot;&gt;登出&lt;/a&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;% &#125; else &#123; %&gt;</span><br><span class="line">      &lt;a class=&quot;btn btn-outline-light my-2 my-sm-0&quot; href=&quot;/login&quot;&gt;登入&lt;/a&gt;</span><br><span class="line">      &lt;a class=&quot;btn btn-outline-warning my-2 my-sm-0&quot; href=&quot;/register&quot;&gt;註冊&lt;/a&gt;</span><br><span class="line">    &lt;% &#125; %&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/nav&gt;</span><br></pre></td></tr></table></figure>
 
 <p>效果會長這樣：</p>
-<p><img src="https://i.imgur.com/sepdlt7.png"></p>
+<p><img data-src="https://i.imgur.com/sepdlt7.png"></p>
 <p>此外，像 head.ejs、navbar 這些通用模版，可放在 views/template 資料夾統一管理：</p>
-<p><img src="https://i.imgur.com/2YdWdMx.png"></p>
+<p><img data-src="https://i.imgur.com/2YdWdMx.png"></p>
 <ol start="5">
 <li>接著來修改註冊和登入頁面，同樣可在 Bootstrap 找合適的 <span class="exturl" data-url="aHR0cHM6Ly9nZXRib290c3RyYXAuY29tL2RvY3MvNC41L2NvbXBvbmVudHMvZm9ybXMv" title="https://getbootstrap.com/docs/4.5/components/forms/">forms<i class="fa fa-external-link"></i></span> 版型：</li>
 </ol>
@@ -636,20 +656,20 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;%- include(&#x27;../template/head&#x27;) %&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">  &lt;%- include(&#x27;../template/navbar&#x27;) %&gt;</span><br><span class="line"></span><br><span class="line">  &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">    &lt;!-- 若沒有錯誤會回傳一個空陣列 [] --&gt;</span><br><span class="line">    &lt;% if (errorMessage.length &gt; 0) &#123; %&gt;</span><br><span class="line">    &lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;</span><br><span class="line">      &lt;%= errorMessage %&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;% &#125; %&gt;</span><br><span class="line">    &lt;form method=&quot;POST&quot; action=&quot;/login&quot;&gt;</span><br><span class="line">      &lt;div class=&quot;form-group row&quot;&gt;</span><br><span class="line">        &lt;label class=&quot;col-sm-2 col-form-label&quot;&gt;Username: &lt;/label&gt;</span><br><span class="line">        &lt;div class=&quot;col-sm-10&quot;&gt;</span><br><span class="line">          &lt;input class=&quot;form-control&quot; name=&quot;username&quot;&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;div class=&quot;form-group row&quot;&gt;</span><br><span class="line">        &lt;label class=&quot;col-sm-2 col-form-label&quot;&gt;Password: &lt;/label&gt;</span><br><span class="line">        &lt;div class=&quot;col-sm-10&quot;&gt;</span><br><span class="line">          &lt;input class=&quot;form-control&quot; name=&quot;password&quot; type=&quot;password&quot;&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;button type=&quot;submit&quot; class=&quot;btn btn-dark mb-2&quot;&gt;Submit&lt;/button&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
 <p>兩者寫法其實差不多，只有欄位和路徑需要修改，畫面效果如下：</p>
-<p><img src="https://i.imgur.com/ySLeqVp.png"></p>
+<p><img data-src="https://i.imgur.com/ySLeqVp.png"></p>
 <ol start="6">
 <li>再來是首頁 index.ejs，同樣幫 forms 還有留言卡套用樣式：</li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;%- include(&#x27;template/head&#x27;) %&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">  &lt;%- include(&#x27;template/navbar&#x27;) %&gt;</span><br><span class="line"></span><br><span class="line">  &lt;div class=&quot;container mx-auto mt-3&quot; style=&quot;width: 100%;&quot;&gt;</span><br><span class="line">    &lt;% if (errorMessage.length &gt; 0) &#123; %&gt;</span><br><span class="line">    &lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;</span><br><span class="line">      &lt;%= errorMessage %&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;% &#125; %&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;% if(username) &#123; %&gt;</span><br><span class="line">    &lt;form method=&quot;POST&quot; action=&quot;/comments&quot;&gt;</span><br><span class="line">      &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;text-dark&quot;&gt;留言內容&lt;/div&gt;</span><br><span class="line">        &lt;textarea name=&quot;content&quot; class=&quot;form-control&quot;&gt;&lt;/textarea&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;button type=&quot;submit&quot; class=&quot;btn btn-dark&quot;&gt;提交&lt;/button&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">    &lt;% &#125; else &#123; %&gt;</span><br><span class="line">      &lt;div class=&quot;alert alert-warning&quot; role=&quot;alert&quot;&gt;留言請先登入&lt;/div&gt;</span><br><span class="line">    &lt;% &#125; %&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;div class=&quot;card-container d-flex flex-wrap&quot;&gt;</span><br><span class="line">      &lt;% comments.forEach(function(comment) &#123; %&gt;</span><br><span class="line">        &lt;div class=&quot;card m-2&quot; style=&quot;width: 18rem; height: 16rem;&quot;&gt;</span><br><span class="line">          &lt;div class=&quot;card-header&quot;&gt;</span><br><span class="line">            &lt;h5 class=&quot;card-title&quot;&gt;&lt;%= comment.nickname %&gt;&lt;/h5&gt;</span><br><span class="line">            &lt;h6 class=&quot;card-subtitle text-muted&quot;&gt;&lt;%= moment(comment.created_at).format(shortDateFormat) %&gt;&lt;/h6&gt;</span><br><span class="line">            &lt;% if (username === comment.username) &#123;%&gt;</span><br><span class="line">            &lt;a href=&quot;/update_comments/&lt;%= comment.id %&gt;&quot; class=&quot;card-link&quot;&gt;編輯&lt;/a&gt;</span><br><span class="line">            &lt;a href=&quot;/delete_comments/&lt;%= comment.id %&gt;&quot; class=&quot;card-link&quot;&gt;刪除&lt;/a&gt;</span><br><span class="line">            &lt;% &#125; %&gt;</span><br><span class="line">          &lt;/div&gt;</span><br><span class="line">          &lt;div class=&quot;card-body&quot; style=&quot;overflow:scroll; overflow-x:hidden;&quot;&gt;</span><br><span class="line">            &lt;p class=&quot;card-text&quot; &gt;&lt;%= comment.content %&gt;&lt;/p&gt;</span><br><span class="line">          &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &lt;% &#125;) %&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
 <p>效果如下：</p>
-<p><img src="https://i.imgur.com/AVp2KF7.png"></p>
+<p><img data-src="https://i.imgur.com/AVp2KF7.png"></p>
 <ol start="6">
 <li>最後是編輯留言頁面 update.ejs，也和其他頁面版型差不多：</li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;%- include(&#x27;template/head&#x27;) %&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">  &lt;%- include(&#x27;template/navbar&#x27;) %&gt;</span><br><span class="line"></span><br><span class="line">  &lt;div class=&quot;container mx-auto mt-4&quot; style=&quot;width: 100%;&quot;&gt;</span><br><span class="line">    &lt;!-- 若沒有錯誤會回傳一個空陣列 [] --&gt;</span><br><span class="line">    &lt;% if (errorMessage.length &gt; 0) &#123; %&gt;</span><br><span class="line">    &lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;</span><br><span class="line">      &lt;%= errorMessage %&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;% &#125; %&gt;</span><br><span class="line"></span><br><span class="line">    &lt;% if (username === comment.username) &#123; %&gt;</span><br><span class="line">      &lt;form method=&quot;POST&quot; action=&quot;/update_comments/&lt;%= comment.id %&gt;&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">          &lt;div class=&quot;text-dark&quot;&gt;編輯留言&lt;/div&gt;</span><br><span class="line">          &lt;textarea name=&quot;content&quot; class=&quot;form-control&quot;&gt;&lt;/textarea&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;button type=&quot;submit&quot; class=&quot;btn btn-dark&quot;&gt;提交&lt;/button&gt;</span><br><span class="line">      &lt;/form&gt;</span><br><span class="line">    &lt;% &#125; else &#123; %&gt;</span><br><span class="line">      &lt;div&gt;ノンノンだよ！你沒有修改權限！&lt;/div&gt;</span><br><span class="line">    &lt;% &#125; %&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/1JoojMH.png"></p>
+<p><img data-src="https://i.imgur.com/1JoojMH.png"></p>
 <p>透過這個範例，我們學到該如何使用 include() 語法來引入模板，如此就能簡化程式碼，將重複使用的區塊給模組化；此外，也透過 BootStrap 提供的現成樣式，讓我們能快速修改頁面，達到想要的畫面效果。</p>
 <h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>實際跟著範例操作之後，會發現透過 MVC 模式撰寫程式，思考邏輯會很類似。使用 Express 框架實作網頁時，會依照下方流程進行：</p>
 <ol>
@@ -675,10 +695,10 @@
   <div class="popular-posts-header">相關文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/express-middleware/" rel="bookmark">[week 17] 後端中階 - Express 中不可或缺的拼圖：淺談 Middleware</a></div>
+      <div class="popular-posts-title"><a href="/express/" rel="bookmark">[week 17] 後端中階 - 使用 Node.js + Express 框架建立一個靜態網頁</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/express/" rel="bookmark">[week 17] 後端中階 - 使用 Node.js + Express 框架建立一個靜態網頁</a></div>
+      <div class="popular-posts-title"><a href="/express-middleware/" rel="bookmark">[week 17] 後端中階 - Express 中不可或缺的拼圖：淺談 Middleware</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/browser-and-ajax/" rel="bookmark">[week 8] 傳送資料的方式 & 瀏覽器的限制</a></div>
@@ -691,7 +711,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -860,7 +881,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -922,12 +944,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

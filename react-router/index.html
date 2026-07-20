@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 [FE302] React 基礎 - hooks 版本 這門課程的學習筆記。如有錯誤歡迎指正！   參考文章：淺談新手在學習 SPA 時的常見問題：以 Router 為例">
@@ -55,6 +53,28 @@
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 22] React：用 SPA 架構實作一個部落格（一）- Router",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-12-15T17:05:00.000Z",
+  "dateModified": "2026-07-09T06:06:05.722Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/react-router/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
 
   <title>[week 22] React：用 SPA 架構實作一個部落格（一）- Router | Liusan's Blog</title>
   
@@ -91,7 +111,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -344,7 +364,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">export</span> &#123; <span class="keyword">default</span> &#125; <span class="keyword">from</span> <span class="string">&quot;./HomePage&quot;</span>;</span><br></pre></td></tr></table></figure>
 
 <p>執行結果如下，可透過不同路由 render 相對應的頁面，其中 Header 是共同區塊不會變動：</p>
-<p><img src="https://i.imgur.com/ff3aVd1.png"></p>
+<p><img data-src="https://i.imgur.com/ff3aVd1.png"></p>
 <p>參考資料：</p>
 <ul>
 <li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmh1bGkudHcvMjAxOS8wOS8xOC9zcGEtY29tbW9uLXByb2JsZW0tYWJvdXQtcm91dGVyLw==" title="https://blog.huli.tw/2019/09/18/spa-common-problem-about-router/">淺談新手在學習 SPA 時的常見問題：以 Router 為例<i class="fa fa-external-link"></i></span></li>
@@ -406,7 +426,7 @@
 </ul>
 <h2 id="實作：文章列表頁面"><a href="#實作：文章列表頁面" class="headerlink" title="實作：文章列表頁面"></a>實作：文章列表頁面</h2><p>測試用的 API 同樣參考：Lidemy 學生專用 API Server，部落格要串接的是 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0xpZGVteS9saWRlbXktc3R1ZGVudC1qc29uLWFwaS1zZXJ2ZXIjcG9zdHM=" title="https://github.com/Lidemy/lidemy-student-json-api-server#posts">Posts API<i class="fa fa-external-link"></i></span>，資料結構如下：</p>
 <p>URL：<span class="exturl" data-url="aHR0cHM6Ly9zdHVkZW50LWpzb24tYXBpLmxpZGVteS5tZS9wb3N0cz91c2VySWQ9MQ==" title="https://student-json-api.lidemy.me/posts?userId=1">https://student-json-api.lidemy.me/posts?userId=1<i class="fa fa-external-link"></i></span></p>
-<p><img src="https://i.imgur.com/B6N7n53.png"></p>
+<p><img data-src="https://i.imgur.com/B6N7n53.png"></p>
 <h3 id="1-串連-API：拿取所有-posts"><a href="#1-串連-API：拿取所有-posts" class="headerlink" title="1. 串連 API：拿取所有 posts"></a>1. 串連 API：拿取所有 posts</h3><p>通常會在 src 路徑底下，新增一個 WebAPI.js 專門用來管理串連 API 相關程式碼。</p>
 <p>如下方程式碼，使用 fetch 串接 API 再進行資料處理：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="variable constant_">BASE_URL</span> = <span class="string">&quot;https://student-json-api.lidemy.me&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">getPosts</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">fetch</span>(<span class="string">`<span class="subst">$&#123;BASE_URL&#125;</span>/posts?_sort=createdAt&amp;_order=desc`</span>).<span class="title function_">then</span>(<span class="function">(<span class="params">res</span>) =&gt;</span></span><br><span class="line">    res.<span class="title function_">json</span>()</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -430,7 +450,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Link</span> &#125; <span class="keyword">from</span> <span class="string">&quot;react-router-dom&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">PostTitle</span> = <span class="title function_">styled</span>(<span class="title class_">Link</span>)<span class="string">`</span></span><br><span class="line"><span class="string">  font-size: 24px;</span></span><br><span class="line"><span class="string">  color: #333;</span></span><br><span class="line"><span class="string">  text-decoration: none;</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">  <span class="comment">// 用 to=&#123;&#125; 設定點擊導向的路由</span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">PostTitle</span> <span class="attr">to</span>=<span class="string">&#123;</span>`/<span class="attr">posts</span>/$&#123;<span class="attr">post.id</span>&#125;`&#125;&gt;</span>&#123;post.title&#125;<span class="tag">&lt;/<span class="name">PostTitle</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
 <p>結果如下：</p>
-<p><img src="https://i.imgur.com/dny0n1U.png"></p>
+<p><img data-src="https://i.imgur.com/dny0n1U.png"></p>
 <h2 id="實作：單一文章頁面"><a href="#實作：單一文章頁面" class="headerlink" title="實作：單一文章頁面"></a>實作：單一文章頁面</h2><h3 id="1-串聯-API：根據不同-id-拿取-post"><a href="#1-串聯-API：根據不同-id-拿取-post" class="headerlink" title="1. 串聯 API：根據不同 id 拿取 post"></a>1. 串聯 API：根據不同 id 拿取 post</h3><p>接著是單一文章頁面，當我們在 Router 使用動態參數來讀取個別資料時，會需要取得 URL 上的 id 值。</p>
 <p>在 WebAPI.js 中，根據路由上不同 id 來拿取相對應的 post：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">getPost</span> = (<span class="params">id</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">fetch</span>(<span class="string">`<span class="subst">$&#123;BASE_URL&#125;</span>/posts?id=<span class="subst">$&#123;id&#125;</span>`</span>).<span class="title function_">then</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> res.<span class="title function_">json</span>());</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -463,7 +483,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>(post.<span class="property">createdAt</span>).<span class="title function_">toLocaleString</span>()</span><br><span class="line"><span class="comment">// &quot;2020/12/12 上午10:48:39&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>(post.<span class="property">createdAt</span>).<span class="title function_">toLocaleDateString</span>()</span><br><span class="line"><span class="comment">// &quot;2020/12/12&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>結果如下：</p>
-<p><img src="https://i.imgur.com/AromKKu.png"></p>
+<p><img data-src="https://i.imgur.com/AromKKu.png"></p>
 <hr>
 <h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>到這邊我們已經完成專案基本架構，設定路由，以及顯示全部文章、顯示單篇文章的功能，下一篇要繼續學習如何在 React 實作登入機制。</p>
 <ul>
@@ -488,14 +508,15 @@
       <div class="popular-posts-title"><a href="/nextjs-app-router/" rel="bookmark">【學習筆記】Next.js 路由系統：App Router vs Page Router</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/nextjs-error-fix/" rel="bookmark">【學習筆記】Next.js 錯誤修復紀錄： 「Window is not defined」、「use client & missing generateStaticParams() error」</a></div>
+      <div class="popular-posts-title"><a href="/nextjs-i18next/" rel="bookmark">【學習筆記】Next.js 實現多國語系：react-i18next & next-i18next</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/nextjs-i18next/" rel="bookmark">【學習筆記】Next.js 實現多國語系：react-i18next & next-i18next</a></div>
+      <div class="popular-posts-title"><a href="/nextjs-error-fix/" rel="bookmark">【學習筆記】Next.js 錯誤修復紀錄： 「Window is not defined」、「use client & missing generateStaticParams() error」</a></div>
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -663,7 +684,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -725,12 +747,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

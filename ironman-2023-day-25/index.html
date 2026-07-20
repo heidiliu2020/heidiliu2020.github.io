@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="原文連結：要件定義～システム設計ができる人材になれる記事 - Qiita  本篇介紹的主題是「需求定義到系統設計」，從為什麼需要需求定義，到如何進行這段流程，再接著說明基本設計的三個步驟，透過一步步解說，到最後完成系統設計圖。 文章架構如下：  需求定義的必要性 需求定義的目的   確定需求定義的過程 在需求定義中決定的事項 基本設計（畫面設計・功能設計・資料設計）的作法 畫面設計（UI 設計）">
@@ -70,6 +68,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[2023 15th鐵人賽] Day25 - 成為具備需求定義～系統設計能力人才的文章！ ",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2023-10-10T02:39:01.000Z",
+  "dateModified": "2026-07-09T06:06:05.682Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/ironman-2023-day-25/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[2023 15th鐵人賽] Day25 - 成為具備需求定義～系統設計能力人才的文章！  | Liusan's Blog</title>
   
 
@@ -105,7 +125,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -328,7 +348,7 @@
 <p><strong>「即使學習也做不出產品」<br>「到底開發是怎麼進行？」<br>「需求定義是什麼？」</strong></p>
 <p>為了解決這些困擾，首先讓我們瞭解<strong>開發過程的整體概念</strong>。<br>請參考下圖的「軟體開發過程」，</p>
 <p>我們平常在學習程式設計的階段，將對應到 <strong>「實作」</strong>的部分。<br>換句話說，在展現程式設計能力之前，還<strong>存在四道壁壘</strong>需要克服。</p>
-<p><img src="https://hackmd.io/_uploads/B1KZLebW6.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/B1KZLebW6.png"></p>
 <blockquote>
 <p>軟體開發過程，由左至右分別是：</p>
 <ul>
@@ -384,7 +404,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://hackmd.io/_uploads/B1P9M5W-a.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/B1P9M5W-a.png"></p>
 <p>這三個階段的過程，需要透過「審查」和「建議」來溝通，按照順序整理如下：</p>
 <ul>
 <li><strong>①要望（期望）：需要解決的問題（委託者的任務）</strong><ul>
@@ -417,7 +437,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://hackmd.io/_uploads/BkFXJs-WT.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/BkFXJs-WT.png"></p>
 <h2 id="在需求定義中決定的事項"><a href="#在需求定義中決定的事項" class="headerlink" title="在需求定義中決定的事項"></a>在需求定義中決定的事項</h2><p>在瞭解流程之後，接下來將粗略介紹需求定義中決定的事項。</p>
 <p>這裡使用 3W（Why・What・How）來整理排列，將有助於清楚理解：</p>
 <ul>
@@ -487,7 +507,7 @@
 <li>顯示資訊（文字、圖像等）和佈局</li>
 <li>將上述內容統整到畫面轉換圖（Screen transition diagram）</li>
 </ul>
-<p><img src="https://hackmd.io/_uploads/r1tr6iWbT.png">)</p>
+<p><img data-src="https://hackmd.io/_uploads/r1tr6iWbT.png">)</p>
 <p>當整理到這一步時，即可想像出系統的具體成品，這就是為什麼要先進行畫面設計的原因。</p>
 <h2 id="功能設計"><a href="#功能設計" class="headerlink" title="功能設計"></a>功能設計</h2><p>完成畫面設計（UI 設計）後，接著將設計系統要實現的功能。</p>
 <p>功能設計是確定「背後<strong>執行的流程和所需資料</strong>」的階段。</p>
@@ -498,17 +518,17 @@
 <li>將處理後的資料傳送目的地（畫面顯示、儲存到 DB 等）</li>
 </ul>
 <p>接下來，試著粗略設計畫面轉換圖中出現的各頁面功能。</p>
-<p><img src="https://hackmd.io/_uploads/B1IT1n-bp.png"></p>
-<p><img src="https://hackmd.io/_uploads/SJq1g2-Z6.png"></p>
-<p><img src="https://hackmd.io/_uploads/Sy0xg3bWT.png"></p>
-<p><img src="https://hackmd.io/_uploads/Sk8Ze2-Za.png"></p>
-<p><img src="https://hackmd.io/_uploads/B1vMg3Wb6.png"></p>
-<p><img src="https://hackmd.io/_uploads/HyyXenbW6.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/B1IT1n-bp.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/SJq1g2-Z6.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/Sy0xg3bWT.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/Sk8Ze2-Za.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/B1vMg3Wb6.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/HyyXenbW6.png"></p>
 <p>透過這個方式，無論是誰都<strong>能夠藉此想像應該寫什麼樣的程式</strong>。構成系統的各個部分也變得清晰，能更容易<strong>在團隊內部進行分工</strong>。</p>
 <p>作為功能設計的最後一步，便是將畫面設計和功能設計連接起來。藉此可視化<strong>使用者操作與背後執行的處理</strong>，在畫面之間的關係。</p>
-<p><img src="https://hackmd.io/_uploads/ByuzNNG-p.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/ByuzNNG-p.png"></p>
 <p>全部統整後如下圖所示。<br>※ 這部分資料量較大，因此可放大感興趣的部分查閱。</p>
-<p><img src="https://hackmd.io/_uploads/S1AEehWbT.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/S1AEehWbT.png"></p>
 <h2 id="資料設計"><a href="#資料設計" class="headerlink" title="資料設計"></a>資料設計</h2><p>最後是資料設計。</p>
 <p>準備工作到這一步，終於要開始進行資料設計。</p>
 <p>如上所述，需要決定的事項有三個：</p>
@@ -583,14 +603,14 @@
 </li>
 </ul>
 <p>下一步，使用箭頭表示<strong>參考來源與參考目標</strong>，整理「表格之間的參考關係」。<br>同時，也明確標明是「<strong>根據使用者操作產生的資料</strong>」，將有助於理解資料流動，而不易有所遺漏。<br>※ 有時也會透過網路從外部引入資料，如：天氣預報 API 等。</p>
-<p><img src="https://hackmd.io/_uploads/SyR95mG-6.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/SyR95mG-6.png"></p>
 <p>最後，完成的 ER 圖即為資料庫設計圖。</p>
 <p>※ 有關繪製 ER 圖的詳細內容，可參考這篇文章：<span class="exturl" data-url="aHR0cHM6Ly9pdC1rb2FsYS5jb20vZW50aXR5LXJlbGF0aW9uc2hpcC1kaWFncmFtLTE4OTc=" title="https://it-koala.com/entity-relationship-diagram-1897">若手プログラマー必読！５分で理解できるER図の書き方５ステップ<i class="fa fa-external-link"></i></span></p>
-<p><img src="https://hackmd.io/_uploads/HkJd4VfWa.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/HkJd4VfWa.png"></p>
 <h3 id="資料的流向（Data-Flow）"><a href="#資料的流向（Data-Flow）" class="headerlink" title="資料的流向（Data Flow）"></a>資料的流向（Data Flow）</h3><p>最後，將 <strong>「資料庫與畫面轉移圖之間的關係」</strong>整理完成後，即可看到系統整體面貌<strong>「畫面設計×功能設計×資料設計」</strong>。</p>
 <p>每個程式都將基於這份設計圖來撰寫。</p>
 <p>透過反覆練習這段過程，將能夠清楚呈現整體面貌。</p>
-<p><img src="https://hackmd.io/_uploads/Hkvh2XMba.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/Hkvh2XMba.png"></p>
 <h2 id="進一步推進基本設計"><a href="#進一步推進基本設計" class="headerlink" title="進一步推進基本設計"></a>進一步推進基本設計</h2><p>若能夠理解以上內容，即可進行基本設計，並且已足夠開發自己的產品。遇到不理解的部分，可以在查詢資料的同時，繼續進行編程。</p>
 <p>開發完成後，如何設定伺服器為公開，Qiita 上已經有發表許多相關文章，這篇文章可供參考：**<span class="exturl" data-url="aHR0cHM6Ly9xaWl0YS5jb20vdGFjaGliYW5heXUyNC9pdGVtcy9iOGQ3M2NkZmQ0Y2JkNDJjNWIxZA==" title="https://qiita.com/tachibanayu24/items/b8d73cdfd4cbd42c5b1d">【20分でデプロイ】AWS EC2にDjango+PostgreSQL+Nginx環境を構築してササッと公開<i class="fa fa-external-link"></i></span>**</p>
 <p>另外，在實際的開發現場，若是不進行<strong>詳細設計</strong>，將無法向程式設計師提出明確的要求。</p>
@@ -630,17 +650,18 @@
       <div class="popular-posts-title"><a href="/ironman-2023-day-20/" rel="bookmark">[2023 15th鐵人賽] Day20 - 馬上就能使用的免費 Web API 總覽【2023年最新版】</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/ironman-2023-day-10/" rel="bookmark">[2023 15th鐵人賽] Day10 - 透過圖文理解 S.O.L.I.D 原則</a></div>
-    </li>
-    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/ironman-2023-day-12/" rel="bookmark">[2023 15th鐵人賽] Day12 - 外國「為什麼日本無法像硬體時代一樣在軟體方面表現出色？」</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/ironman-2023-day-21/" rel="bookmark">[2023 15th鐵人賽] Day21 - 日本數位廳的網站太扯了www</a></div>
+      <div class="popular-posts-title"><a href="/ironman-2023-day-10/" rel="bookmark">[2023 15th鐵人賽] Day10 - 透過圖文理解 S.O.L.I.D 原則</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/ironman-2023-day-22/" rel="bookmark">[2023 15th鐵人賽] Day22 - 程式設計最難的部分我認為是「估算成本」</a></div>
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -811,7 +832,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -873,12 +895,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="這次專案開發是針對 iOS 系統，需要解決畫面縮放的問題，有些關鍵字來回搜尋好多遍，卻還是容易搞混，於是乎乾脆記錄下來，日後如果遇到這類型問題，也會直接更新在這篇。">
@@ -54,6 +52,28 @@
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "【學習筆記】 關於 iOS Safari 的那些坑：禁止選取 & 縮放設定",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2023-02-09T02:56:00.000Z",
+  "dateModified": "2026-07-09T06:06:05.726Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/safari-pinch-and-double-tap/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
 
   <title>【學習筆記】 關於 iOS Safari 的那些坑：禁止選取 & 縮放設定 | Liusan's Blog</title>
   
@@ -90,7 +110,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -271,7 +291,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="https://i.imgur.com/BjhUbsU.png"></p>
+        <p><img data-src="https://i.imgur.com/BjhUbsU.png"></p>
 <p>這次專案開發是針對 iOS 系統，需要解決畫面縮放的問題，有些關鍵字來回搜尋好多遍，卻還是容易搞混，於是乎乾脆記錄下來，日後如果遇到這類型問題，也會直接更新在這篇。</p>
 <span id="more"></span>
 
@@ -332,7 +352,7 @@
 <li>touchEvent 支援多點觸控</li>
 <li>gesturestart 兩指以上觸碰時觸發，僅 iOS 支援</li>
 </ul>
-<p><img src="https://i.imgur.com/IJ6LKrt.png"></p>
+<p><img data-src="https://i.imgur.com/IJ6LKrt.png"></p>
 <h3 id="user-select-none：禁止區塊反白選取"><a href="#user-select-none：禁止區塊反白選取" class="headerlink" title="user-select: none：禁止區塊反白選取"></a><code>user-select: none</code>：<strong>禁止區塊反白選取</strong></h3><p>即雙點擊不會選取到文字區塊：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  <span class="attribute">user-select</span>: none;</span><br><span class="line">  -webkit-<span class="attribute">user-select</span>: none; <span class="comment">/* Chrome Safari */</span>        </span><br><span class="line">  -moz-<span class="attribute">user-select</span>: none;    <span class="comment">/* Firefox */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -366,11 +386,12 @@
       <div class="popular-posts-title"><a href="/css-list-style/" rel="bookmark">【學習筆記】CSS 自訂標號圖示、段落縮排效果</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/css-optimization/" rel="bookmark">[week 13] 前端進階 - 如何優化執行 CSS 效能</a></div>
+      <div class="popular-posts-title"><a href="/css/" rel="bookmark">[week 6] CSS - 認識基礎標籤 & 屬性</a></div>
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -539,7 +560,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -601,12 +623,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

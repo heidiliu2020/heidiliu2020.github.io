@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="原文連結：悪名高きスワイプ広告を解析する - Qiita  本文摘要在被使用者厭惡的廣告當中，有一種叫做「滑動廣告」。 容易誤觸是原因之一，但經過調查發現，這個廣告似乎是故意將使用者轉移到廣告頁面，而非單純的誤觸。">
@@ -55,6 +53,28 @@
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[2023 15th鐵人賽] Day5 - 解析惡名昭彰的滑動廣告",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2023-09-20T00:35:20.000Z",
+  "dateModified": "2026-04-23T06:14:18.235Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/ironman-2023-day-5/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
 
   <title>[2023 15th鐵人賽] Day5 - 解析惡名昭彰的滑動廣告 | Liusan's Blog</title>
   
@@ -91,7 +111,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -282,7 +302,7 @@
 <p>容易誤觸是原因之一，但經過調查發現，這個廣告似乎是故意將使用者轉移到廣告頁面，而非單純的誤觸。</p>
 <span id="more"></span>
 
-<p><img src="https://i.imgur.com/wSOiSRO.png"></p>
+<p><img data-src="https://i.imgur.com/wSOiSRO.png"></p>
 <p><em>滑動廣告是一種藉由左右滑動顯示圖片的廣告類型。</em></p>
 <h2 id="什麼是滑動廣告"><a href="#什麼是滑動廣告" class="headerlink" title="什麼是滑動廣告"></a>什麼是滑動廣告</h2><p>滑動廣告是在廣告聯盟網站上常見的廣告形式。</p>
 <p>使用者可以用手指在螢幕上左右滑動，藉此切換廣告圖片。</p>
@@ -291,7 +311,7 @@
 <p>當然，從使用者的角度來看，可能會以為是自己誤觸了廣告，或是滑動的手指太早移開螢幕，才會導致跳轉到廣告頁面。</p>
 <p>然而，根據本次調查結果，滑動廣告似乎是一種設計，即便使用者並未實際誤觸到，也會模擬誤觸的行為。</p>
 <p>以下動畫展示當時的行為：</p>
-<p><img src="https://imgur.com/opkAgHk.gif"></p>
+<p><img data-src="https://imgur.com/opkAgHk.gif"></p>
 <p><em>只有思慕昔（スムージー）的廣告，在上下滑動時會跳轉到廣告頁面。</em></p>
 <p>這明顯和<em>漫畫廣告的行為不同。</em></p>
 <p><em>此外，我們還注意到，左右滑動時也不會造成畫面跳轉。</em></p>
@@ -376,17 +396,18 @@
       <div class="popular-posts-title"><a href="/google-adsense/" rel="bookmark">Google 廣告｜如何使用 Google AdSense 設定廣告</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/ironman-2023-day-10/" rel="bookmark">[2023 15th鐵人賽] Day10 - 透過圖文理解 S.O.L.I.D 原則</a></div>
+      <div class="popular-posts-title"><a href="/ironman-2023-day-1/" rel="bookmark">[2023 15th鐵人賽] Day1 - 前言與系列大綱</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/ironman-2023-day-1/" rel="bookmark">[2023 15th鐵人賽] Day1 - 前言與系列大綱</a></div>
+      <div class="popular-posts-title"><a href="/ironman-2023-day-12/" rel="bookmark">[2023 15th鐵人賽] Day12 - 外國「為什麼日本無法像硬體時代一樣在軟體方面表現出色？」</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/ironman-2023-day-11/" rel="bookmark">[2023 15th鐵人賽] Day11 - 調查工程師的 alias 設定排行</a></div>
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -556,7 +577,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -618,12 +640,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

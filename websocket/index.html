@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="參考資料：https:&#x2F;&#x2F;leesonhsu.blogspot.com&#x2F;2018&#x2F;07&#x2F;socketwebsocketsocketio.html  What is WebSocket?WebSocket 是 HTML5 提供的一種網路傳輸協定，是瀏覽器（Client）與伺服器（Server）交換資料的方式之一。">
@@ -60,6 +58,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "淺談 WebSocket 協定：實作一個簡單的即時聊天室吧！",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2022-12-23T08:23:00.000Z",
+  "dateModified": "2026-04-23T06:14:18.276Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/websocket/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>淺談 WebSocket 協定：實作一個簡單的即時聊天室吧！ | Liusan's Blog</title>
   
 
@@ -95,7 +115,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -280,7 +300,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="https://i.imgur.com/xLBMhye.png"></p>
+        <p><img data-src="https://i.imgur.com/xLBMhye.png"></p>
 <blockquote>
 <p>參考資料：<span class="exturl" data-url="aHR0cHM6Ly9sZWVzb25oc3UuYmxvZ3Nwb3QuY29tLzIwMTgvMDcvc29ja2V0d2Vic29ja2V0c29ja2V0aW8uaHRtbA==" title="https://leesonhsu.blogspot.com/2018/07/socketwebsocketsocketio.html">https://leesonhsu.blogspot.com/2018/07/socketwebsocketsocketio.html<i class="fa fa-external-link"></i></span></p>
 </blockquote>
@@ -293,7 +313,7 @@
 <li>透過 <span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvSFRUUCVFNiU4QyU4MSVFNCVCOSU4NSVFOCVCRiU5RSVFNiU4RSVBNQ==" title="https://zh.wikipedia.org/wiki/HTTP%E6%8C%81%E4%B9%85%E8%BF%9E%E6%8E%A5">HTTP 1.1 持久連接（keep-alive）<i class="fa fa-external-link"></i></span>，有效解決 HTTP <span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3poLXR3LyVFOCVCQyVBQSVFOCVBOSVBMg==" title="https://zh.wikipedia.org/zh-tw/%E8%BC%AA%E8%A9%A2">輪詢（Polling）<i class="fa fa-external-link"></i></span>產生的效能問題，節省伺服器資源</li>
 <li>實際範例：訊息推播、即時聊天室、共同編輯等功能</li>
 </ul>
-<p><img src="https://i.imgur.com/S3Mhxau.png"></p>
+<p><img data-src="https://i.imgur.com/S3Mhxau.png"></p>
 <h2 id="How-to-use-WebSocket"><a href="#How-to-use-WebSocket" class="headerlink" title="How to use WebSocket?"></a>How to use WebSocket?</h2><p>WebSocket 的建立是由瀏覽器透過 JavaScript 指令，發起一個 HTTP Request 來實現。請求網址會長這樣：</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">ws</span>:<span class="comment">//example.com/wsapi</span></span><br></pre></td></tr></table></figure>
 
@@ -332,7 +352,7 @@
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ node server.<span class="property">js</span></span><br></pre></td></tr></table></figure>
 
 <p>出現以下 log 代表 Server 正在監聽 8080 port：</p>
-<p><img src="https://i.imgur.com/mwIvN1w.png"></p>
+<p><img data-src="https://i.imgur.com/mwIvN1w.png"></p>
 <h3 id="Client-端：與-WebSocket-Server-連線"><a href="#Client-端：與-WebSocket-Server-連線" class="headerlink" title="Client 端：與 WebSocket Server 連線"></a>Client 端：與 WebSocket Server 連線</h3><p>處理完 Server 後，接下來要從 Client 端連結 WebSocket 服務。這裡需另起一個專案，包含 index.html 和 index.js 兩個檔案。</p>
 <ul>
 <li>UI 畫面：新增一個 index.html 檔案</li>
@@ -340,7 +360,7 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- Connect or Disconnect WebSocket Server --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;connect&quot;</span>&gt;</span>Connect<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;disconnect&quot;</span>&gt;</span>Disconnect<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- Send Message to Server --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">            Message: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;sendMsg&quot;</span> &gt;</span><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;sendBtn&quot;</span>&gt;</span>Send<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- Import index.js after UI rendered --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&#x27;./index.js&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>渲染後如下圖所示：</p>
-<p><img src="https://i.imgur.com/0zhHOVC.png"></p>
+<p><img data-src="https://i.imgur.com/0zhHOVC.png"></p>
 <ul>
 <li>邏輯處理：新增一個 index.js 檔案</li>
 </ul>
@@ -352,7 +372,7 @@
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 安裝套件</span></span><br><span class="line">$ npm install http-server</span><br><span class="line"><span class="comment">// 運行 http-server</span></span><br><span class="line">$ http-server [path] [options]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 預設為 8080 port，這裡指定 3000 port 為例</span></span><br><span class="line">$ http-server -p <span class="number">3000</span></span><br></pre></td></tr></table></figure>
 
 <p>實際運行如下方所示 ：</p>
-<p><img src="https://i.imgur.com/SYUbMM9.gif"></p>
+<p><img data-src="https://i.imgur.com/SYUbMM9.gif"></p>
 <p>建立好 WebSocket 連結之後，就可以進行雙向溝通了！</p>
 <h3 id="Server-端：處理接發送-message"><a href="#Server-端：處理接發送-message" class="headerlink" title="Server 端：處理接發送 message"></a>Server 端：處理接發送 message</h3><p>Server 端分別能使用 <code>send</code> 發送訊息，以及透過監聽 <code>message</code> 事件接收來自 Client 的訊息：</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Connection opened</span></span><br><span class="line">wss.<span class="title function_">on</span>(<span class="string">&#x27;connection&#x27;</span>, <span class="function"><span class="params">ws</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;[Client connected]&#x27;</span>)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Listen for messages from client</span></span><br><span class="line">	ws.<span class="title function_">on</span>(<span class="string">&#x27;message&#x27;</span>, <span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">	    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;[Message from client]: &#x27;</span>, data)</span><br><span class="line">	    <span class="comment">// Send message to client</span></span><br><span class="line">	    ws.<span class="title function_">send</span>(<span class="string">&#x27;[Get message from server]&#x27;</span>)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
@@ -381,7 +401,7 @@
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ws</span><br><span class="line"></span><br><span class="line"><span class="comment">// 監聽 click 事件</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#connect&#x27;</span>)?.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">connect</span>()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#disconnect&#x27;</span>)?.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">disconnect</span>()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#sendBtn&#x27;</span>)?.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> msg = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#sendMsg&#x27;</span>)</span><br><span class="line">    <span class="title function_">sendMessage</span>(msg?.<span class="property">value</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">connect</span>(<span class="params"></span>) &#123; </span><br><span class="line">    <span class="comment">// Create WebSocket connection</span></span><br><span class="line">    ws = <span class="keyword">new</span> <span class="title class_">WebSocket</span>(<span class="string">&#x27;ws://localhost:8080&#x27;</span>) </span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ws = new WebSocket(&#x27;ws://192.168.17.35:58095&#x27;) </span></span><br><span class="line">    <span class="comment">// 在開啟連線時執行</span></span><br><span class="line">    ws.<span class="property">onopen</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;[open connection]&#x27;</span>)</span><br><span class="line">        <span class="comment">// Listen for messages from Server</span></span><br><span class="line">        ws.<span class="property">onmessage</span> = <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`[Message from server]:\n %c<span class="subst">$&#123;event.data&#125;</span>`</span> , <span class="string">&#x27;color: blue&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sendMessage</span>(<span class="params">msg</span>) &#123;</span><br><span class="line">    <span class="comment">// Send messages to Server</span></span><br><span class="line">    ws.<span class="title function_">send</span>(msg)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">disconnect</span>(<span class="params"></span>) &#123;</span><br><span class="line">    ws.<span class="title function_">close</span>()</span><br><span class="line">    <span class="comment">// 在關閉連線時執行</span></span><br><span class="line">    ws.<span class="property">onclose</span> = <span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;[close connection]&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>實際運行如下圖，完成具備廣播功能的即時聊天室！</p>
-<p><img src="https://i.imgur.com/AdQEjiF.gif"></p>
+<p><img data-src="https://i.imgur.com/AdQEjiF.gif"></p>
 <h2 id="WebSocket-API"><a href="#WebSocket-API" class="headerlink" title="WebSocket API"></a>WebSocket API</h2><p>在實際練習後，這裡整理一些常用的 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtVFcvZG9jcy9XZWIvQVBJL1dlYlNvY2tldA==" title="https://developer.mozilla.org/zh-TW/docs/Web/API/WebSocket">WebSocket API<i class="fa fa-external-link"></i></span>：</p>
 <ul>
 <li><code>new WebSocket()</code>：和 Server 建立 WebSocket 連線</li>
@@ -399,7 +419,7 @@
 <li>close()：關閉連線</li>
 </ul>
 <h2 id="比較：Socket-WebSocket-Socket-IO"><a href="#比較：Socket-WebSocket-Socket-IO" class="headerlink" title="比較：Socket / WebSocket  / Socket.IO"></a>比較：Socket / WebSocket  / Socket.IO</h2><p><span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3poLXR3LyVFNyVCNiVCMiVFOCVCNyVBRiVFNiU4RiU5MiVFNSVCQSVBNw==" title="https://zh.wikipedia.org/zh-tw/%E7%B6%B2%E8%B7%AF%E6%8F%92%E5%BA%A7">Socket<i class="fa fa-external-link"></i></span>、Websocket、<span class="exturl" data-url="aHR0cDovL3NvY2tldC5pby8=" title="http://socket.io/">Socket.io<i class="fa fa-external-link"></i></span> 這三者都和網路即時通訊有關，名稱也有 87 像，但實際上是不同的東西，以下做簡單的整理介紹：</p>
-<p><img src="https://i.imgur.com/aI5zQVj.png"></p>
+<p><img data-src="https://i.imgur.com/aI5zQVj.png"></p>
 <blockquote>
 <p>參考資料：<span class="exturl" data-url="aHR0cHM6Ly9sZWVzb25oc3UuYmxvZ3Nwb3QuY29tLzIwMTgvMDcvc29ja2V0d2Vic29ja2V0c29ja2V0aW8uaHRtbA==" title="https://leesonhsu.blogspot.com/2018/07/socketwebsocketsocketio.html">https://leesonhsu.blogspot.com/2018/07/socketwebsocketsocketio.html<i class="fa fa-external-link"></i></span></p>
 </blockquote>
@@ -449,14 +469,15 @@
       <div class="popular-posts-title"><a href="/css-list-style/" rel="bookmark">【學習筆記】CSS 自訂標號圖示、段落縮排效果</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/css-optimization/" rel="bookmark">[week 13] 前端進階 - 如何優化執行 CSS 效能</a></div>
+      <div class="popular-posts-title"><a href="/css/" rel="bookmark">[week 6] CSS - 認識基礎標籤 & 屬性</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/css/" rel="bookmark">[week 6] CSS - 認識基礎標籤 & 屬性</a></div>
+      <div class="popular-posts-title"><a href="/css-optimization/" rel="bookmark">[week 13] 前端進階 - 如何優化執行 CSS 效能</a></div>
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -625,7 +646,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -687,12 +709,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

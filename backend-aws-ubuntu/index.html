@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="在練習這週的網站部署時，主要參考下列幾篇筆記：  [ 紀錄 ] 部屬 AWS EC2 雲端主機 + LAMP Server + phpMyAdmin AWS EC2 佈署網站：卡關記錄 &amp; 心得 部署 AWS EC2 遠端主機 + Ubuntu LAMP 環境 + phpmyadmin">
@@ -90,6 +88,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 14] 網站部署 - 設定 AWS EC2 遠端主機 +  Ubuntu LAMP 環境 + phpMyAdmin",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-10-02T16:12:00.000Z",
+  "dateModified": "2026-07-09T06:06:05.601Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/backend-aws-ubuntu/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[week 14] 網站部署 - 設定 AWS EC2 遠端主機 +  Ubuntu LAMP 環境 + phpMyAdmin | Liusan's Blog</title>
   
 
@@ -125,7 +145,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -345,46 +365,46 @@
 </li>
 </ol>
 <hr>
-<h2 id="設定-AWS-EC2-主機"><a href="#設定-AWS-EC2-主機" class="headerlink" title="設定 AWS EC2 主機"></a>設定 AWS EC2 主機</h2><p><img src="https://i.imgur.com/BY8vzW5.png"></p>
+<h2 id="設定-AWS-EC2-主機"><a href="#設定-AWS-EC2-主機" class="headerlink" title="設定 AWS EC2 主機"></a>設定 AWS EC2 主機</h2><p><img data-src="https://i.imgur.com/BY8vzW5.png"></p>
 <ol>
 <li>註冊 AWS 會員</li>
 <li>進入 AWS 管理控制台，右上方的選單可以選擇架設主機的地區（離所在地越近主機速度越快，但相對之下價格也會比較貴）</li>
 </ol>
-<p><img src="https://i.imgur.com/dKkK0oF.png"></p>
+<p><img data-src="https://i.imgur.com/dKkK0oF.png"></p>
 <ol start="3">
 <li>啟動虛擬機器 - 使用 EC2</li>
 </ol>
-<p><img src="https://i.imgur.com/PPo4YVf.png"></p>
+<p><img data-src="https://i.imgur.com/PPo4YVf.png"></p>
 <ol start="4">
 <li>選擇主機 Image 方案：找到「Ubuntu Server 18.04 LTS (HVM), SSD Volume Type」並點選 Select</li>
 </ol>
 <blockquote>
 <p>Ubuntu 是基於 Debian 的 Linux 發行版，是個免費開源的作業系統。Ubuntu Server 版是為執行伺服端的應用程式而設計的伺服器版本。</p>
 </blockquote>
-<p><img src="https://i.imgur.com/wFjYN6H.png"></p>
+<p><img data-src="https://i.imgur.com/wFjYN6H.png"></p>
 <ol start="5">
 <li>選擇主機等級：選有綠色標籤的免費方案，按右下角的 Next，一直到 Step6</li>
 </ol>
-<p><img src="https://i.imgur.com/p7ylYvJ.png"></p>
+<p><img data-src="https://i.imgur.com/p7ylYvJ.png"></p>
 <ol start="6">
 <li>設定防火牆：也就是允許哪些 IP 連線。點選「Add Rule」新增欄位，共需新增兩個，分別是「HTTP 跟 HTTPS」，後面的資料會自動帶入（例如 port 80 和 port 443）</li>
 </ol>
-<p><img src="https://i.imgur.com/2rEWA1g.png"></p>
+<p><img data-src="https://i.imgur.com/2rEWA1g.png"></p>
 <ol start="7">
 <li>接著點選「Review and Launch」，進入下一步</li>
 <li>確認設定都沒問題後，點選 Launch</li>
 <li>再來是選擇私鑰，第一格選擇「Create a new key pair」，第二格輸入私鑰名稱，填好後點選右下角儲存私鑰檔案</li>
 </ol>
-<p><img src="https://i.imgur.com/P7bVck5.png"></p>
+<p><img data-src="https://i.imgur.com/P7bVck5.png"></p>
 <ol start="10">
 <li>下載後點選「Launch Instances」啟動設置</li>
 <li>確認 Server 有在運行，並記下 IPv4 Public IP（公有 IPv4 地址）</li>
 </ol>
-<p><img src="https://i.imgur.com/3vlSClN.png"></p>
+<p><img data-src="https://i.imgur.com/3vlSClN.png"></p>
 <ol start="12">
 <li>接著點選上方的「連線」，會進入以下頁面</li>
 </ol>
-<p><img src="https://i.imgur.com/nPl6WqE.png"></p>
+<p><img data-src="https://i.imgur.com/nPl6WqE.png"></p>
 <ol start="13">
 <li>依照說明，在 CLI 輸入下列指令來連線</li>
 </ol>
@@ -396,7 +416,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt update &amp;&amp; sudo apt upgrade &amp;&amp; sudo apt dist-upgrade</span><br></pre></td></tr></table></figure>
 
 <h3 id="top：查看主機即時資訊"><a href="#top：查看主機即時資訊" class="headerlink" title="top：查看主機即時資訊"></a><code>top</code>：查看主機即時資訊</h3><p>會進去下方介面，可查看有哪些 process 在運行、或占用多少 Memory等等。點選 Q 鍵可離開。</p>
-<p><img src="https://i.imgur.com/zgZtaUB.png"></p>
+<p><img data-src="https://i.imgur.com/zgZtaUB.png"></p>
 <h3 id="exit：結束連線狀態"><a href="#exit：結束連線狀態" class="headerlink" title="exit：結束連線狀態"></a><code>exit</code>：結束連線狀態</h3><p>輸入 <code>exit</code> 後就會直接登出，回到本地端。</p>
 <p>這個指令雖然很基本，自己一開始卻沒有想到，反而還會重開 bash 或等它自動斷線XD<br>此外，bash 可以同時開啟多個視窗，所以是可以分別對本機和遠端主機下指令的。</p>
 <hr>
@@ -421,15 +441,15 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo tasksel install lamp-server</span><br></pre></td></tr></table></figure>
 
 <p>會進入紫色的下載畫面：</p>
-<p><img src="https://i.imgur.com/S5t6yOa.png"></p>
+<p><img data-src="https://i.imgur.com/S5t6yOa.png"></p>
 <ol start="3">
 <li>接著確認伺服器是否有成功運行，在瀏覽器輸入剛剛記下伺服器的 IPv4 IP 位置，若看到下方預設網頁就代表安裝成功！</li>
 </ol>
-<p><img src="https://i.imgur.com/ednoBoi.png"></p>
+<p><img data-src="https://i.imgur.com/ednoBoi.png"></p>
 <ul>
 <li>也可利用 <code>telnet &lt;IP 位置&gt; &lt;port&gt;</code> 指令，檢視這個埠是否可使用，出現 Connected 就代表成功：</li>
 </ul>
-<p><img src="https://i.imgur.com/GRUQNVb.png"></p>
+<p><img data-src="https://i.imgur.com/GRUQNVb.png"></p>
 <hr>
 <h2 id="設定-phpmyadmin"><a href="#設定-phpmyadmin" class="headerlink" title="設定 phpmyadmin"></a>設定 phpmyadmin</h2><p>phpMyAdmin 是以 PHP 為基礎的資料庫管理工具，讓使用者能夠以 Web 介面管理 MySQL 資料庫。</p>
 <h3 id="phpmyadmin-設定步驟"><a href="#phpmyadmin-設定步驟" class="headerlink" title="phpmyadmin 設定步驟"></a>phpmyadmin 設定步驟</h3><ol>
@@ -443,25 +463,25 @@
 <ol start="2">
 <li>進入紫色畫面，選擇連接的網頁伺服器。用空白鍵選 apache2，再按 Enter 確定</li>
 </ol>
-<p><img src="https://i.imgur.com/arKzEgG.png"></p>
+<p><img data-src="https://i.imgur.com/arKzEgG.png"></p>
 <ol start="3">
 <li>是否設定 dbconfig-common？選 <code>&lt;Yes&gt;</code></li>
 </ol>
 <blockquote>
 <p>此處將會建立一個帳號來管理 phpMyAdmin 運行時用到的資料表，使用者名稱預設為 phpmyadmin，接著要設定這個使用者密碼。</p>
 </blockquote>
-<p><img src="https://i.imgur.com/bXr9daY.png"></p>
+<p><img data-src="https://i.imgur.com/bXr9daY.png"></p>
 <ol start="4">
 <li>設定使用者密碼，輸入完成後按向下鍵選 <code>&lt;OK&gt;</code></li>
 </ol>
-<p><img src="https://i.imgur.com/LwCsRoT.png"></p>
+<p><img data-src="https://i.imgur.com/LwCsRoT.png"></p>
 <ol start="5">
 <li>再確認一次密碼，輸入完選 <code>&lt;OK&gt;</code>，即完成設置</li>
 </ol>
 <h3 id="修改-MySQL-登入設定"><a href="#修改-MySQL-登入設定" class="headerlink" title="修改 MySQL 登入設定"></a>修改 MySQL 登入設定</h3><p>設置完 phpMyAdmin 之後，接著要設定 MySQL 的 root 使用者，建立超級使用者（Superuser）以便在 phpMyAdmin 中進行管理。</p>
 <p>也就是說，使用者必須登入後，才能夠實際對資料庫進行增刪改查等動作，並且也可透過 phpMyAdmin 圖形化介面直接操作資料庫。</p>
 <p>由於 MySQL 預設使用 auth_socket 的驗證 plugin，使用者可以透過 sudo 直接登入 root 帳號。但這樣就無法透過 phpMyAdmin 登入圖形化介面，因為 phpMyAdmin 預設需要密碼登入。</p>
-<p><img src="https://i.imgur.com/b7jTMwy.png"></p>
+<p><img data-src="https://i.imgur.com/b7jTMwy.png"></p>
 <p>我們可按照下列步驟來設定 root 密碼：</p>
 <ol>
 <li>修改 MySQL 登入設定，改成使用密碼登入</li>
@@ -486,7 +506,7 @@
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> exit</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/TDNKk10.png"></p>
+<p><img data-src="https://i.imgur.com/TDNKk10.png"></p>
 <ol start="3">
 <li>設定 MySQL 的 root password</li>
 </ol>
@@ -499,11 +519,11 @@
 <blockquote>
 <p>選 1 以上要中英文大小寫 + 符號混用 + 一定長度，複雜性較高。</p>
 </blockquote>
-<p><img src="https://i.imgur.com/8dkOixk.png"></p>
+<p><img data-src="https://i.imgur.com/8dkOixk.png"></p>
 <ol start="6">
 <li>設置密碼，需注意這裡輸入密碼不會顯示，確定設置這個密碼嗎？輸入 <code>y</code></li>
 </ol>
-<p><img src="https://i.imgur.com/7DXZilL.png"></p>
+<p><img data-src="https://i.imgur.com/7DXZilL.png"></p>
 <ol start="7">
 <li>以下詢問皆輸入 <code>y</code></li>
 </ol>
@@ -516,7 +536,7 @@
 <ol start="8">
 <li>最後出現 All Done! 代表設置完成</li>
 </ol>
-<p><img src="https://i.imgur.com/QpHqCtN.png"></p>
+<p><img data-src="https://i.imgur.com/QpHqCtN.png"></p>
 <ol start="9">
 <li>接著在瀏覽器輸入 <code>&lt;IPv4 地址&gt;/phpmyadmin</code>，會看到 phpmyadmin 的登入畫面，輸入帳密確認是否能夠登入</li>
 </ol>
@@ -527,7 +547,7 @@
 <h3 id="修正-MySQL-錯誤"><a href="#修正-MySQL-錯誤" class="headerlink" title="修正 MySQL 錯誤"></a>修正 MySQL 錯誤</h3><p>順利以 root 帳密登入 phpmyadmin 後，會發現有個問題，當我們想查看任一個資料庫的資料表，或是想要執行匯入匯出功能時，會跳出下列錯誤訊息：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Warning <span class="keyword">in</span> .<span class="operator">/</span>libraries<span class="operator">/</span>plugin_interface.lib.php#<span class="number">551</span></span><br><span class="line"> <span class="built_in">count</span>(): <span class="keyword">Parameter</span> must be an <span class="keyword">array</span> <span class="keyword">or</span> an object that implements Countable</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/wqqSslF.png"></p>
+<p><img data-src="https://i.imgur.com/wqqSslF.png"></p>
 <p>原因是在 php 7.2 版本後，<code>count()</code> 在沒有添加參數的情形下，會噴出 Warning 警告訊息。這部分需要我們手動解決。其中有兩個部分需利用 vim 編輯器修改：</p>
 <blockquote>
 <p>vim 指令：編輯完成後，按 esc 再輸入 <code>:wq</code> 即可儲存後退出 vim 編輯器。</p>
@@ -567,40 +587,40 @@
 <li><p>點選上方的「登入資訊」，在修改登入的主機名稱，改成任意主機，符號會變成 <code>&amp;</code></p>
 </li>
 </ol>
-<p><img src="https://i.imgur.com/Kd6FQxB.png"></p>
+<p><img data-src="https://i.imgur.com/Kd6FQxB.png"></p>
 <ol start="3">
 <li>回到帳號介面，會發現多了一組 root 帳號如下，這樣就完成設定了！可使用 phpmyadmin 以外的軟體來連到遠端組機</li>
 </ol>
-<p><img src="https://i.imgur.com/EzcFjgw.png"></p>
+<p><img data-src="https://i.imgur.com/EzcFjgw.png"></p>
 <hr>
-<h2 id="設定域名"><a href="#設定域名" class="headerlink" title="設定域名"></a>設定域名</h2><p><img src="https://i.imgur.com/hBbMxyF.png"></p>
+<h2 id="設定域名"><a href="#設定域名" class="headerlink" title="設定域名"></a>設定域名</h2><p><img data-src="https://i.imgur.com/hBbMxyF.png"></p>
 <ol>
 <li>先在 <span class="exturl" data-url="aHR0cHM6Ly93d3cuZ2FuZGkubmV0L3poLUhhbnQ=" title="https://www.gandi.net/zh-Hant">gandi.net<i class="fa fa-external-link"></i></span> 註冊帳號</li>
 <li>到電子信箱收驗證信</li>
 <li>進入域名頁面，輸入想要的網域名稱後，再按購買</li>
 </ol>
-<p><img src="https://i.imgur.com/jBsFzWE.png"></p>
+<p><img data-src="https://i.imgur.com/jBsFzWE.png"></p>
 <ol start="4">
 <li>會跳轉到註冊網域名稱的頁面，下面會有搜尋結果能夠選擇加入購物車</li>
 </ol>
-<p><img src="https://i.imgur.com/5rjovGd.png"></p>
+<p><img data-src="https://i.imgur.com/5rjovGd.png"></p>
 <ol start="5">
 <li>填寫購買資訊，同意相關合約</li>
 </ol>
-<p><img src="https://i.imgur.com/YDjIGND.png"></p>
+<p><img data-src="https://i.imgur.com/YDjIGND.png"></p>
 <ol start="6">
 <li>再結帳前可在步驟 2 最下方填入優惠代碼</li>
 <li>購買完成！要記得收取確認信</li>
 </ol>
-<p><img src="https://i.imgur.com/YJtThnL.png"></p>
+<p><img data-src="https://i.imgur.com/YJtThnL.png"></p>
 <ol start="8">
 <li>到域名頁面，點選剛剛註冊好的域名</li>
 </ol>
-<p><img src="https://i.imgur.com/T0SX6D6.png"></p>
+<p><img data-src="https://i.imgur.com/T0SX6D6.png"></p>
 <ol start="9">
 <li>點選區域檔記錄，將 A 的值修改成 AWS 主機的 IPv4 地址</li>
 </ol>
-<p><img src="https://i.imgur.com/NgRKfZN.png"></p>
+<p><img data-src="https://i.imgur.com/NgRKfZN.png"></p>
 <ol start="10">
 <li>在瀏覽器輸入 <code>&lt;你的域名&gt;</code>，如果有出現和先前一樣的 Apache2 Ubuntu 預設頁面，就代表部署成功！</li>
 </ol>
@@ -614,16 +634,16 @@
 <li>輸入 <code>cd ..</code> 兩次，回到根目錄底下</li>
 <li>輸入 <code>ls</code> 找到 var 資料夾</li>
 </ol>
-<p><img src="https://i.imgur.com/mErapfq.png"></p>
+<p><img data-src="https://i.imgur.com/mErapfq.png"></p>
 <ol start="4">
 <li>輸入 <code>cd var/www/html</code>，會進到預設的 apache 首頁所在目錄，也就是我們剛才連到的域名頁面</li>
 <li>這時若想在該目錄新增檔案，會發現權限不夠</li>
 </ol>
-<p><img src="https://i.imgur.com/XQh7p9v.png"></p>
+<p><img data-src="https://i.imgur.com/XQh7p9v.png"></p>
 <ol start="6">
 <li>這時可以輸入 <code>cd ..</code> 回到 <code>/var/www</code> 目錄，再輸入 <code>ls -al</code> 可知目前只有 root 帳號有編輯權限：</li>
 </ol>
-<p><img src="https://i.imgur.com/MJ6kZw7.png"></p>
+<p><img data-src="https://i.imgur.com/MJ6kZw7.png"></p>
 <ol start="7">
 <li>因此我們要透過 <code>chown</code> 指令來修改 ubuntu 帳號的檔案權限：</li>
 </ol>
@@ -638,7 +658,7 @@
 <ol start="8">
 <li>修改完成後即可在 <code>var/www/html</code> 目錄新增檔案！這時再以 <code>la -al</code> 檢視，會發現變成 ubuntu 擁有權限：</li>
 </ol>
-<p><img src="https://i.imgur.com/uG4D3Ee.png"></p>
+<p><img data-src="https://i.imgur.com/uG4D3Ee.png"></p>
 <h3 id="利用-git-clone-上傳專案"><a href="#利用-git-clone-上傳專案" class="headerlink" title="利用 git clone 上傳專案"></a>利用 git clone 上傳專案</h3><p>以上傳 GitHub repository 為例：</p>
 <ol>
 <li>在 CLI 輸入 <code>git clone &lt;GitHub 專案網址&gt;</code></li>
@@ -654,12 +674,12 @@
 <li>主機輸入 AWS 的 IP 位置</li>
 <li>登入型式選擇「金鑰檔案」，也就是設定主機時的那個 <code>.pem</code> 檔案</li>
 </ul>
-<p><img src="https://i.imgur.com/CSlkeAp.png"></p>
+<p><img data-src="https://i.imgur.com/CSlkeAp.png"></p>
 <ol start="2">
 <li>設定完成後點選連線，會進入 <code>/home/ubuntu</code> 目錄</li>
 <li>回到根目錄，進到 <code>var/www/html</code>，會看到 apache 的預設首頁 index.html 檔</li>
 </ol>
-<p><img src="https://i.imgur.com/MqTnOwv.png"></p>
+<p><img data-src="https://i.imgur.com/MqTnOwv.png"></p>
 <ol start="4">
 <li>接著就可以放上寫好的程式</li>
 <li>在瀏覽器輸入 <code>&lt;網域名稱/路徑&gt;</code>，確認是否有部署成功</li>
@@ -734,7 +754,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -903,7 +924,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -965,12 +987,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 [FE302] React 基礎 - hooks 版本 這門課程的學習筆記。如有錯誤歡迎指正！  123456學習目標： P1 我知道 React 的目的以及原理 P1 我知道我們為什麼需要 React P1 我知道使用 React 跟之前使用 jQuery 的區別 P1 我理解 state 跟 props 的不同">
@@ -60,6 +58,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 21] 初探 React：Component、JSX 語法、props 與 state 的不同",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-12-01T16:53:00.000Z",
+  "dateModified": "2026-04-23T06:14:18.255Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/react-jsx-props/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[week 21] 初探 React：Component、JSX 語法、props 與 state 的不同 | Liusan's Blog</title>
   
 
@@ -95,7 +115,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -337,9 +357,9 @@
 <hr>
 <h2 id="初探-React"><a href="#初探-React" class="headerlink" title="初探 React"></a>初探 React</h2><p>在開始前可先透過 <span class="exturl" data-url="aHR0cHM6Ly9jb2Rlc2FuZGJveC5pby8=" title="https://codesandbox.io/">CodeSandbox<i class="fa fa-external-link"></i></span> 進行練習，這是一個支援前端框架開發線上編輯器（IDE），類似複雜版的 Codepen。</p>
 <p>點選 Create Sandbox，並選擇 React 來快速建立開發環境：</p>
-<p><img src="https://i.imgur.com/j6UFABA.png"></p>
+<p><img data-src="https://i.imgur.com/j6UFABA.png"></p>
 <p>建立完成的初始畫面如下，藉由像這樣快速建立環境，也能用來幫助線上 debug：</p>
-<p><img src="https://i.imgur.com/d5LQgbX.png"></p>
+<p><img data-src="https://i.imgur.com/d5LQgbX.png"></p>
 <h3 id="JSX：用來建立-React-元素"><a href="#JSX：用來建立-React-元素" class="headerlink" title="JSX：用來建立 React 元素"></a>JSX：用來建立 React 元素</h3><blockquote>
 <p>簡單來說，JSX（JavaScript extension syntax）就是 HTML/XML + JavaScript。</p>
 </blockquote>
@@ -352,7 +372,7 @@
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Hello</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// 在 Hello() 中 return 什麼，就會在畫面 render 出什麼</span></span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>hello world!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> rootElement = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;root&quot;</span>);</span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">Hello</span> /&gt;</span></span>, rootElement</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/CapcKxx.png"></p>
+<p><img data-src="https://i.imgur.com/CapcKxx.png"></p>
 <p>Hello() 這個 component 可以接收參數 props，寫在大括號中會被解讀 React 為 JavaScript 程式碼執行，例如 <code>&#123;JS code&#125;</code>：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Hello</span>(<span class="params">props</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, &#123;props.name&#125;!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> rootElement = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;root&quot;</span>);</span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">Hello</span> <span class="attr">name</span>=<span class="string">&quot;Heidi&quot;</span>/&gt;</span></span>, rootElement</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
@@ -376,13 +396,13 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;todo.<span class="property">isDone</span> &amp;&amp; <span class="string">&#x27;已完成&#x27;</span>&#125;</span><br><span class="line">&#123;!todo.<span class="property">isDone</span> &amp;&amp; <span class="string">&#x27;未完成&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="JSX-特性：自動-escape"><a href="#JSX-特性：自動-escape" class="headerlink" title="JSX 特性：自動 escape"></a>JSX 特性：自動 escape</h3><p>此外，根據<span class="exturl" data-url="aHR0cHM6Ly9yZWFjdGpzLm9yZy9kb2NzL2ludHJvZHVjaW5nLWpzeC5odG1sI2pzeC1wcmV2ZW50cy1pbmplY3Rpb24tYXR0YWNrcw==" title="https://reactjs.org/docs/introducing-jsx.html#jsx-prevents-injection-attacks">官方文件<i class="fa fa-external-link"></i></span>，JSX 語法能夠預防 Injection Attacks，提供 escape 功能。</p>
-<p><img src="https://i.imgur.com/eRabFE4.png"></p>
+<p><img data-src="https://i.imgur.com/eRabFE4.png"></p>
 <p>如果真的想要 render 出 innerHTML，則需透過 <span class="exturl" data-url="aHR0cHM6Ly9yZWFjdGpzLm9yZy9kb2NzL2RvbS1lbGVtZW50cy5odG1sI2Rhbmdlcm91c2x5c2V0aW5uZXJodG1s" title="https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml">dangerouslysetinnerhtml<i class="fa fa-external-link"></i></span> 這個冗長的標籤，一般而言不會使用這個方法。</p>
 <p>但需要注意，如果在 a 連結標間中，有使用者輸入的區塊，例如：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&#123;todo.<span class="property">content</span>&#125;&gt;click me!&lt;/a&gt;</span><br></pre></td></tr></table></figure>
 
 <p>這時若被惡意輸入 <code>javascript:alert()</code> 程式碼，點擊 a 連結就會執行該 JS 程式碼。這其實因為 React 沒有跳脫冒號，造成的 click based XSS：</p>
-<p><img src="https://i.imgur.com/bnbqnMb.png"></p>
+<p><img data-src="https://i.imgur.com/bnbqnMb.png"></p>
 <p>防範方式有兩種：</p>
 <ul>
 <li>不要在 a 標籤內放入使用者輸入</li>
@@ -428,7 +448,7 @@
 <p>以 Todoitem 為例，這裡的 children 指的就是 <code>Watch a movie</code>：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Todoitem</span>(<span class="params">&#123;n, children&#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Todo &#123;n&#125;: &#123;children&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> rootElement = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;root&quot;</span>);</span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">Todoitem</span> <span class="attr">n</span>=<span class="string">&#123;1&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  Watch a movie</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">Todoitem</span>&gt;</span></span>, rootElement</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/gX8yUJ5.png"></p>
+<p><img data-src="https://i.imgur.com/gX8yUJ5.png"></p>
 <p>參考資料：</p>
 <ul>
 <li><span class="exturl" data-url="aHR0cHM6Ly93d3cuZm9vaXNoLmNvbS9yZWFjdGpzL3N0YXRlLmh0bWw=" title="https://www.fooish.com/reactjs/state.html">React State - React 教學Tutorial - Fooish 程式技術<i class="fa fa-external-link"></i></span></li>
@@ -454,7 +474,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npx create-react-app my-app</span><br><span class="line">$ cd my-app</span><br><span class="line">$ npm start</span><br></pre></td></tr></table></figure>
 
 <p>成功運行後，就會在 localhost 開一個 server：</p>
-<p><img src="https://i.imgur.com/K7dEnLz.png"></p>
+<p><img data-src="https://i.imgur.com/K7dEnLz.png"></p>
 <p>在開始專案之前，首先要閱讀 <code>README.md</code> 的說明，還有查看 <code>package.json</code> 確認安裝了哪些套件等訊息。</p>
 <p>再來是 src\index.js 檔案，和我們在 CodeSandbox 看到的內容非常類似：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">ReactDOM</span> <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./index.css&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&#x27;./App&#x27;</span>;</span><br><span class="line"><span class="comment">// 與資料收集、效能有關</span></span><br><span class="line"><span class="keyword">import</span> reportWebVitals <span class="keyword">from</span> <span class="string">&#x27;./reportWebVitals&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">React.StrictMode</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">App</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">React.StrictMode</span>&gt;</span></span>,</span><br><span class="line">  <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;root&#x27;</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="title function_">reportWebVitals</span>();</span><br></pre></td></tr></table></figure>
@@ -467,7 +487,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;App&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      Hello World!</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">App</span>;</span><br></pre></td></tr></table></figure>
 
 <p>重整頁面即可看到結果：</p>
-<p><img src="https://i.imgur.com/HPUh5ly.png"></p>
+<p><img data-src="https://i.imgur.com/HPUh5ly.png"></p>
 <h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>到這裡我們瞭解 React 重要的概念 Component，以及如何使用 JSX 語法來建立 React 元素。</p>
 <p>此外，除了可以利用線上編輯器 CodeSandbox，也可以在本地端安裝官方提供的 create-react-app 套件，來快速建置 React 開發環境。</p>
 
@@ -489,14 +509,15 @@
       <div class="popular-posts-title"><a href="/nextjs-app-router/" rel="bookmark">【學習筆記】Next.js 路由系統：App Router vs Page Router</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/nextjs-error-fix/" rel="bookmark">【學習筆記】Next.js 錯誤修復紀錄： 「Window is not defined」、「use client & missing generateStaticParams() error」</a></div>
+      <div class="popular-posts-title"><a href="/nextjs-i18next/" rel="bookmark">【學習筆記】Next.js 實現多國語系：react-i18next & next-i18next</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/nextjs-i18next/" rel="bookmark">【學習筆記】Next.js 實現多國語系：react-i18next & next-i18next</a></div>
+      <div class="popular-posts-title"><a href="/nextjs-error-fix/" rel="bookmark">【學習筆記】Next.js 錯誤修復紀錄： 「Window is not defined」、「use client & missing generateStaticParams() error」</a></div>
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -664,7 +685,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -726,12 +748,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

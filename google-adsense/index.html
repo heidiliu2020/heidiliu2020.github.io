@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="前言在上一篇文章  Google 廣告｜比較 Google Ads、AdSense、AdMob 和 Ad Manager 的區別 中，介紹幾種與 Google 廣告相關的服務。 接下來，將會介紹如何使用 Google AdSense，從申請帳號資格到實際設定廣告投放。 如何使用 Google AdSense以下是官方 AdSense 頻道的影片介紹：">
@@ -63,6 +61,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Google 廣告｜如何使用 Google AdSense 設定廣告",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2023-10-21T03:39:01.000Z",
+  "dateModified": "2026-07-09T06:06:05.656Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/google-adsense/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>Google 廣告｜如何使用 Google AdSense 設定廣告 | Liusan's Blog</title>
   
 
@@ -98,7 +118,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -295,7 +315,7 @@
 <h3 id="申請流程"><a href="#申請流程" class="headerlink" title="申請流程"></a>申請流程</h3><ul>
 <li>Step1. 進入 <span class="exturl" data-url="aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS50dy9hZHNlbnNlL3N0YXJ0Lw==" title="https://www.google.com.tw/adsense/start/">Google AdSense<i class="fa fa-external-link"></i></span> 官網，點擊開始使用</li>
 </ul>
-<p><img src="https://hackmd.io/_uploads/S15Wc6Jfa.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/S15Wc6Jfa.png"></p>
 <ul>
 <li>Step2. 填寫網站、收款國家等資訊<ul>
 <li><span class="exturl" data-url="aHR0cHM6Ly9zdXBwb3J0Lmdvb2dsZS5jb20vYWRzZW5zZS9hbnN3ZXIvMTIxNzA0MjE/aGw9emgtSGFudCZzamlkPTEzNTA5Njk4NjQ0NzU0ODc5MzkzLUFQ" title="https://support.google.com/adsense/answer/12170421?hl=zh-Hant&sjid=13509698644754879393-AP">AdSense 的網站管理異動 2023/2/20<i class="fa fa-external-link"></i></span>：需注意輸入的網站網址，限制「必須是不含路徑、參數、片段或通訊埠號碼的標準網域」，因此不支援路徑（path）或子網域（subdomain），詳細可<span class="exturl" data-url="aHR0cHM6Ly9zdXBwb3J0Lmdvb2dsZS5jb20vYWRzZW5zZS9hbnN3ZXIvMjc4NDQzOD9obD16aC1IYW50JnNqaWQ9MTM1MDk2OTg2NDQ3NTQ4NzkzOTMtQVAjemlwcHk9JTJDJUU3JTg0JUExJUU2JTk1JTg4JUU3JUI2JUIyJUU1JTlEJTgwJUU3JUE0JUJBJUU0JUJFJThCJTJDJUU2JTlDJTg5JUU2JTk1JTg4JUU3JUI2JUIyJUU1JTlEJTgwJUU3JUE0JUJBJUU0JUJFJThC" title="https://support.google.com/adsense/answer/2784438?hl=zh-Hant&sjid=13509698644754879393-AP#zippy=%2C%E7%84%A1%E6%95%88%E7%B6%B2%E5%9D%80%E7%A4%BA%E4%BE%8B%2C%E6%9C%89%E6%95%88%E7%B6%B2%E5%9D%80%E7%A4%BA%E4%BE%8B">參考官方文件<i class="fa fa-external-link"></i></span><ul>
@@ -306,11 +326,11 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://hackmd.io/_uploads/rJ_X5akG6.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/rJ_X5akG6.png"></p>
 <ul>
 <li>Step3. 點選最左側的「填寫付款資訊」</li>
 </ul>
-<p><img src="https://hackmd.io/_uploads/H1tLH6eza.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/H1tLH6eza.png"></p>
 <ul>
 <li>Step4. 接著點選最右側的「將網站連結到 Adsense」會出現以下頁面，可選擇驗證方法並更新至自己的網站上，方法共有三種：<ul>
 <li>(1) 在網頁的 HTML <code>&lt;head&gt;&lt;/head&gt;</code> 區塊內嵌 AdSense 程式碼片段</li>
@@ -319,23 +339,23 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://hackmd.io/_uploads/B1cwHagMp.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/B1cwHagMp.png"></p>
 <ul>
 <li>Step5. 完成後打勾並點選驗證，約需經過 2 至 4 週的時間審查</li>
 </ul>
 <h2 id="廣告類型與設定"><a href="#廣告類型與設定" class="headerlink" title="廣告類型與設定"></a>廣告類型與設定</h2><p>在啟用 AdSense 帳戶後，即可在網站上設定廣告，廣告類型可分為「<span class="exturl" data-url="aHR0cHM6Ly9zdXBwb3J0Lmdvb2dsZS5jb20vYWRzZW5zZS9hbnN3ZXIvNzAzNzYyND9obD16aC1IYW50JnJlZl90b3BpYz0xMjUwMTAyJnNqaWQ9MjYyNzk1MjA4NTc4NTczMTQ1OC1BUCNhdXRvX2Fkcw==" title="https://support.google.com/adsense/answer/7037624?hl=zh-Hant&ref_topic=1250102&sjid=2627952085785731458-AP#auto_ads">自動廣告<i class="fa fa-external-link"></i></span>」和「<span class="exturl" data-url="aHR0cHM6Ly9zdXBwb3J0Lmdvb2dsZS5jb20vYWRzZW5zZS9hbnN3ZXIvNzAzNzYyND9obD16aC1IYW50JnJlZl90b3BpYz0xMjUwMTAyJnNqaWQ9MjYyNzk1MjA4NTc4NTczMTQ1OC1BUCNhZF91bml0cw==" title="https://support.google.com/adsense/answer/7037624?hl=zh-Hant&ref_topic=1250102&sjid=2627952085785731458-AP#ad_units">廣告單元<i class="fa fa-external-link"></i></span>」兩種方式。</p>
 <h3 id="自動廣告-Auto-ads"><a href="#自動廣告-Auto-ads" class="headerlink" title="自動廣告 Auto ads"></a>自動廣告 Auto ads</h3><p>在網站導入自動廣告（Auto ads）時，只需將程式碼放到想要顯示廣告的頁面中，系統就會自動掃描網站，並根據版面配置與內容，找出位置自動刊登廣告。</p>
-<p><img src="https://hackmd.io/_uploads/rkmKS6eMa.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/rkmKS6eMa.png"></p>
 <p>點擊上圖頁面中的「取得程式碼」，並將程式碼放到網頁的 <strong><code>&lt;head&gt;&lt;/head&gt;</code></strong> 標籤中即可。</p>
-<p><img src="https://hackmd.io/_uploads/Skd5STgMT.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/Skd5STgMT.png"></p>
 <p>程式碼示意如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		// ...</span><br><span class="line">		&lt;script async src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXX&quot;</span><br><span class="line">	     crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		// ...	</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
 <p>點選右下角的「鉛筆符號」進入自動廣告的設定頁面，在這裡可以預覽選擇的廣告格式，以及希望排除的區域或頁面等：</p>
-<p><img src="https://hackmd.io/_uploads/rkagLTxG6.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/rkagLTxG6.png"></p>
 <h3 id="廣告單元-Ads-units"><a href="#廣告單元-Ads-units" class="headerlink" title="廣告單元 Ads units"></a>廣告單元 Ads units</h3><p>另一種<span class="exturl" data-url="aHR0cHM6Ly9zdXBwb3J0Lmdvb2dsZS5jb20vYWRzZW5zZS9hbnN3ZXIvOTE4MzU0OT9obD16aC1IYW50JnNqaWQ9OTU0NTM5Mjk1NTMwMjU1MjU5MS1BUCZ2aXNpdF9pZD02MzgzMDU5NzYzNDEzMzczMDAtMzM5NDg5NzkxMCZyZWZfdG9waWM9OTE4MzI0MiZyZD0x" title="https://support.google.com/adsense/answer/9183549?hl=zh-Hant&sjid=9545392955302552591-AP&visit_id=638305976341337300-3394897910&ref_topic=9183242&rd=1">廣告單元<i class="fa fa-external-link"></i></span>（Ad units），是指透過 AdSense 廣告程式碼，根據設定的類別與樣式，顯示一至多個 Google 廣告。</p>
 <p>可在 AdSense 帳戶的「按廣告單元」頁面建立、自訂及管理廣告單元；不同於自動廣告，根據廣告單元的程式碼，能夠控制廣告的顯示位置，而原生廣告單元則在自訂方面更提供更大的彈性。</p>
-<p><img src="https://hackmd.io/_uploads/BJRWLpezT.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/BJRWLpezT.png"></p>
 <p>廣告單元類型分成以下幾種，可根據不同需求選用：</p>
 <ul>
 <li><span class="exturl" data-url="aHR0cHM6Ly9zdXBwb3J0Lmdvb2dsZS5jb20vYWRzZW5zZS90b3BpYy85MTgzMzYw" title="https://support.google.com/adsense/topic/9183360">多媒體廣告<i class="fa fa-external-link"></i></span><ul>
@@ -363,9 +383,9 @@
 </li>
 </ul>
 <p>點選想要建立的廣告單元會進入設定頁面，需輸入名稱以及選擇廣告大小：</p>
-<p><img src="https://hackmd.io/_uploads/H1lQUaxGp.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/H1lQUaxGp.png"></p>
 <p>建立完成廣告單元後，將廣告單元程式碼放到網頁的 <strong><code>&lt;body&gt;&lt;/body&gt;</code></strong> 標籤中，希望顯示廣告的區塊即可：</p>
-<p><img src="https://hackmd.io/_uploads/HyTXLTlMT.png"></p>
+<p><img data-src="https://hackmd.io/_uploads/HyTXLTlMT.png"></p>
 <p>根據<span class="exturl" data-url="aHR0cHM6Ly9zdXBwb3J0Lmdvb2dsZS5jb20vYWRzZW5zZS9hbnN3ZXIvOTE5MDAyOD9obD16aC1IYW50" title="https://support.google.com/adsense/answer/9190028?hl=zh-Hant">在 HTML 中安插廣告程式碼的位置（廣告單元）<i class="fa fa-external-link"></i></span>，可透過程式碼來調整廣告單元顯示的位置與樣式：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;!-- Ad units container --&gt;</span><br><span class="line">	&lt;div align=&quot;center&quot;&gt;</span><br><span class="line"></span><br><span class="line">		&lt;script async src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXX&quot;</span><br><span class="line">		     crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;</span><br><span class="line">		&lt;!-- Responsive_ads --&gt;</span><br><span class="line">		&lt;ins class=&quot;adsbygoogle&quot;</span><br><span class="line">		     style=&quot;display:block&quot;</span><br><span class="line">		     data-ad-client=&quot;ca-pub-4274798044223706&quot;</span><br><span class="line">		     data-ad-slot=&quot;3472959732&quot;</span><br><span class="line">		     data-ad-format=&quot;auto&quot;</span><br><span class="line">		     data-full-width-responsive=&quot;true&quot;&gt;&lt;/ins&gt;</span><br><span class="line">		&lt;script&gt;</span><br><span class="line">		     (adsbygoogle = window.adsbygoogle || []).push(&#123;&#125;);</span><br><span class="line">		&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">  </span><br><span class="line">  // ...</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
 
@@ -407,14 +427,15 @@
       <div class="popular-posts-title"><a href="/google-advertising-service/" rel="bookmark">Google 廣告｜比較 Google Ads、AdSense、AdMob 和 Ad Manager 的區別</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/ironman-2023-day-10/" rel="bookmark">[2023 15th鐵人賽] Day10 - 透過圖文理解 S.O.L.I.D 原則</a></div>
+      <div class="popular-posts-title"><a href="/ironman-2023-day-1/" rel="bookmark">[2023 15th鐵人賽] Day1 - 前言與系列大綱</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/ironman-2023-day-1/" rel="bookmark">[2023 15th鐵人賽] Day1 - 前言與系列大綱</a></div>
+      <div class="popular-posts-title"><a href="/ironman-2023-day-12/" rel="bookmark">[2023 15th鐵人賽] Day12 - 外國「為什麼日本無法像硬體時代一樣在軟體方面表現出色？」</a></div>
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -583,7 +604,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -645,12 +667,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

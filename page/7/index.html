@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="試圖留下什麼的部落格，記錄學習與生活體驗。">
@@ -48,6 +46,11 @@
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
+
+
+<meta property="og:image" content="https://heidiliu2020.github.io/images/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 
   <title>Liusan's Blog - 海底修羅場｜日々進化中</title>
   
@@ -84,7 +87,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -376,13 +379,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <blockquote>
-<p>2026.07 更新：補充 Dart Sass 與 <code>@import</code> 正式棄用的說明——現在請一律使用 <code>@use</code> 引入模組，編譯器則使用 npm 的 <code>sass</code> 套件（舊的 <code>node-sass</code> 已棄用）。本文的變數、巢狀、混入、繼承等語法均不受影響。</p>
-</blockquote>
-<p>其實過去在 Lidemy 課程中，也有提過 CSS 預處理器的觀念：<a target="_blank" rel="noopener" href="https://hackmd.io/@Heidi-Liu/note-fe201-sass-and-babel">[week 13] 前端工具之二 - CSS 預處理器、Babel</a>，因為工作上需要使用，發現自己對語法還是不太熟悉，於是整理了這篇筆記。瞭解這套工具的由來，基本語法的使用，以及如何幫助我們解決前端開發可能遇到的問題。</p>
+          <p>Sass/SCSS 入門教學：認識 CSS 預處理器解決了哪些問題，整理變數、巢狀結構、混入（mixin）、繼承（extend）等核心語法與編譯方式，並說明 Dart Sass 時代 @use 取代 @import 的寫法，讓 CSS 更好維護。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/sass-css-preprocessor/#more" rel="contents">
+              <a class="btn" href="/sass-css-preprocessor/">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -795,13 +795,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="為什麼-Commit-Message-很重要？"><a href="#為什麼-Commit-Message-很重要？" class="headerlink" title="為什麼 Commit Message 很重要？"></a>為什麼 Commit Message 很重要？</h2><p>Git 在每次 Commit 時，需要寫下 Git Commit Message（提交說明），用來記錄提交版本更動的摘要。</p>
-<blockquote>
-<p>任何專案都至少由兩個以上的開發者共同合作開發。</p>
-</blockquote>
+          <p>如何寫出好的 Git Commit Message？本篇整理 Commit Message 的規範與準則：Header、Body、Footer 結構與 type、scope、subject 格式，說明 What、Why、How 三要素，並附上團隊實務範例與常見 type 分類，讓版本紀錄更易讀、易維護。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/git-commit-message/#more" rel="contents">
+              <a class="btn" href="/git-commit-message/">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -1338,7 +1335,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -1400,12 +1398,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

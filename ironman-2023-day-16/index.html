@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="原文連結：Node.jsとはなにか？なぜみんな使っているのか？ - Qiita   這篇文章的目的，主要是為了解答以下疑問： 「我們在學習 JavaScript 時，總是以已經瞭解 Node.js 為前提。但 Node.js 不是 Web Server 嗎？為什麼必須安裝？又為什麼大家都在使用呢？」">
@@ -61,6 +59,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[2023 15th鐵人賽] Day16 - Node.js 是什麼？為什麼大家都在使用？",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2023-10-01T01:02:01.000Z",
+  "dateModified": "2026-04-23T06:14:18.226Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/ironman-2023-day-16/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[2023 15th鐵人賽] Day16 - Node.js 是什麼？為什麼大家都在使用？ | Liusan's Blog</title>
   
 
@@ -96,7 +116,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -291,23 +311,23 @@
 
 <h2 id="基礎：JavaScript-的特點"><a href="#基礎：JavaScript-的特點" class="headerlink" title="基礎：JavaScript 的特點"></a>基礎：JavaScript 的特點</h2><p>首先，必須瞭解 JavaScript 與其他程式語言的差別。</p>
 <p><strong>JavaScript</strong> 是一種在 Chrome 或 Firefox 等「<strong>瀏覽器上</strong>」運行的程式語言；而一般的程式語言，例如 <strong>Python</strong> 和 <strong>Ruby</strong>，通常是在「<strong>電腦上</strong>」運行。<code>[註1]</code></p>
-<p><img src="https://imgur.com/6eP6NKJ.png"></p>
+<p><img data-src="https://imgur.com/6eP6NKJ.png"></p>
 <p>執行環境的區別，在於<strong>是否能夠訪問 OS（作業系統）的功能</strong>。</p>
 <p>「作業系統的功能」指的是檔案讀寫、以及網路通信等功能。在電腦上運行的應用程式（包括 Python 和 Ruby 等語言）就可以處理這些功能。<code>[註2]</code></p>
-<p><img src="https://i.imgur.com/M1CR0Eg.png"></p>
+<p><img data-src="https://i.imgur.com/M1CR0Eg.png"></p>
 <p>然而，如果在瀏覽器上運行的程式（JavaScript），擁有作業系統的功能權限，這將存在安全風險。<code>[註3]</code> 舉例來說，只要進到某個網站，就可能被人未經允許讀寫電腦上的檔案，或刪除部分檔案內容，這會是很嚴重的問題。 <code>[註4]</code></p>
 <p>也因為如此，在瀏覽器上運行的 JavaScript，被設計成沒有權限使用作業系統的功能。</p>
 <p>但如果完全沒有權限，還是會有些不便，因此瀏覽器會限制性允許 JavaScript 請求作業系統的功能權限。<code>[註5]</code> 近年來，瀏覽器也允許 JavaScript 對相機和麥克風的權限，這讓在瀏覽器上進行網路會議變得更加方便。</p>
-<p><img src="https://i.imgur.com/6M0deBc.png"></p>
+<p><img data-src="https://i.imgur.com/6M0deBc.png"></p>
 <blockquote>
 <p>關於前端與瀏覽器之間的關係，推薦閱讀 Huli 撰寫的資安系列文章：<span class="exturl" data-url="aHR0cHM6Ly9pdGhlbHAuaXRob21lLmNvbS50dy9hcnRpY2xlcy8xMDMxNDEyNQ==" title="https://ithelp.ithome.com.tw/articles/10314125">[Day2] 瀏覽器的安全模型<i class="fa fa-external-link"></i></span></p>
 </blockquote>
 <h2 id="Node-js-是什麼？"><a href="#Node-js-是什麼？" class="headerlink" title="Node.js 是什麼？"></a>Node.js 是什麼？</h2><p>「<strong>Node.js</strong>」是能夠讓 JavaScript 在電腦上運行的工具，就像 Python 或 Ruby 一樣，而不只受限於瀏覽器環境。</p>
-<p><img src="https://i.imgur.com/bwSylYh.png"></p>
+<p><img data-src="https://i.imgur.com/bwSylYh.png"></p>
 <p>儘管受到許多誤解，但 Node.js 既不是 Web Server，也不是像 Rails 或 Django 的 Web 框架，而是 <strong>JavaScript 的執行環境</strong>。</p>
 <p>在 Windows 安裝 Python 時，會得到「python.exe」；同樣地，在安裝 Node.js 時，也會得到「node.exe」。<br>就像「python.exe」是用於執行 Python 程式碼的應用程式，「node.exe」是用於執行 JavaScript 程式碼的應用程式 = JavaScript 的執行環境。</p>
 <p>在 Node.js 中，可編寫 JavaScript 程式來請求作業系統的功能權限。<code>[註6]</code> 意即能夠處理在瀏覽器上無法執行的操作，像是自由讀寫檔案，以及網路通信等作業系統功能。</p>
-<p><img src="https://i.imgur.com/hu0sgZY.png"></p>
+<p><img data-src="https://i.imgur.com/hu0sgZY.png"></p>
 <p>因此，Node.js 能夠像使用 Python 或 Ruby 一樣建立 Web 應用程式，但 Node.js 也可用於各種其他用途。</p>
 <h3 id="Node-js-是伺服器端的-JavaScript-執行環境嗎？"><a href="#Node-js-是伺服器端的-JavaScript-執行環境嗎？" class="headerlink" title="Node.js 是伺服器端的 JavaScript 執行環境嗎？"></a>Node.js 是伺服器端的 JavaScript 執行環境嗎？</h3><p>在與 Node.js 相關的文章中，經常會看到 Node.js 被描述為「伺服器端的 JavaScript 執行環境」。這是 Node.js 的設計目標，是為了<strong>構築能夠處理大量同時連線的網路應用程式</strong>，而被設計出的 JavaScript 環境。<code>[註7]</code></p>
 <p>因為具備「可使用 JavaScript 建立 Web 應用程式（Web Server）」的特點，因此經常被描述「Node.js 是伺服器端的 JavaScript 執行環境」。</p>
@@ -325,7 +345,7 @@
 <li>想要建立 <strong>Web 應用程式</strong></li>
 <li>想要建立 <strong>Mobile/Desktop 應用程式</strong></li>
 </ol>
-<h3 id="目標-1-想要使用新的-JavaScript-或-TypeScript-規範來編寫客戶端程式"><a href="#目標-1-想要使用新的-JavaScript-或-TypeScript-規範來編寫客戶端程式" class="headerlink" title="目標 1.  想要使用新的 JavaScript 或 TypeScript 規範來編寫客戶端程式"></a>目標 1.  想要使用新的 JavaScript 或 TypeScript 規範來編寫客戶端程式</h3><p><img src="https://i.imgur.com/fEvrqwL.png"></p>
+<h3 id="目標-1-想要使用新的-JavaScript-或-TypeScript-規範來編寫客戶端程式"><a href="#目標-1-想要使用新的-JavaScript-或-TypeScript-規範來編寫客戶端程式" class="headerlink" title="目標 1.  想要使用新的 JavaScript 或 TypeScript 規範來編寫客戶端程式"></a>目標 1.  想要使用新的 JavaScript 或 TypeScript 規範來編寫客戶端程式</h3><p><img data-src="https://i.imgur.com/fEvrqwL.png"></p>
 <p>JavaScript 的新規範（ES2015以後），有關詳細內容與發展的介紹已經隨處可見，因此這裡只會簡短說明。對於 TypeScript，這裡將不會進行探討。</p>
 <p>JavaScript每年都會更新規範，不斷加入新功能。特別是在 <strong>ES2015</strong> 版本中，加入許多以往沒有的實用功能。</p>
 <p>然而，即使JavaScript更新了規範，也可能發生現有的瀏覽器無法跟上這些規範的問題。為了解決這個問題，出現一種將「以新規範編寫的 JavaScript 檔案」自動轉換（編譯）為「舊規範（ES5）的 JavaScript 檔案」的方法。</p>
@@ -363,7 +383,7 @@
 <p><strong>Electron</strong> 是個使用 <strong>JavaScript + HTML + CSS</strong> 開發 Desktop 應用程式的框架。</p>
 <p><strong>Electron</strong></p>
 <p><span class="exturl" data-url="aHR0cHM6Ly93d3cuZWxlY3Ryb25qcy5vcmcv" title="https://www.electronjs.org/">https://www.electronjs.org/<i class="fa fa-external-link"></i></span></p>
-<p><img src="https://i.imgur.com/r9NnL0p.png"></p>
+<p><img data-src="https://i.imgur.com/r9NnL0p.png"></p>
 <p>JavaScript 最初是為網頁設計的語言，常用於處理使用者介面（UI），擁有許多經過洗鍊且成熟的 Library 和 Framework。利用這些資源，可以像 Web 網站一樣，快速建立使用者界面，這是一大優勢。</p>
 <p>由 Electron ****建立的應用程式，具備作業系統的功能權限，與瀏覽器中的 JavaScript 相比，能夠更廣泛的應用。此外，Electron 具備跨平台開發（Cross-Platform）的特性，能夠以相同的程式碼，在 Windows、Mac 和 Linux 建立應用程式。</p>
 <p>許多像是 Visual Studio Code、Slack、Discord、Twitch、Skype 等的 Desktop 應用程式，均是使用 <strong>Electron</strong> 開發。</p>
@@ -387,10 +407,10 @@
   <div class="popular-posts-header">相關文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/ironman-2023-day-10/" rel="bookmark">[2023 15th鐵人賽] Day10 - 透過圖文理解 S.O.L.I.D 原則</a></div>
+      <div class="popular-posts-title"><a href="/ironman-2023-day-1/" rel="bookmark">[2023 15th鐵人賽] Day1 - 前言與系列大綱</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/ironman-2023-day-1/" rel="bookmark">[2023 15th鐵人賽] Day1 - 前言與系列大綱</a></div>
+      <div class="popular-posts-title"><a href="/ironman-2023-day-12/" rel="bookmark">[2023 15th鐵人賽] Day12 - 外國「為什麼日本無法像硬體時代一樣在軟體方面表現出色？」</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/ironman-2023-day-11/" rel="bookmark">[2023 15th鐵人賽] Day11 - 調查工程師的 alias 設定排行</a></div>
@@ -399,11 +419,12 @@
       <div class="popular-posts-title"><a href="/ironman-2023-day-13/" rel="bookmark">[2023 15th鐵人賽] Day13 - 工程師邁向下一階段的學習方法</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/ironman-2023-day-12/" rel="bookmark">[2023 15th鐵人賽] Day12 - 外國「為什麼日本無法像硬體時代一樣在軟體方面表現出色？」</a></div>
+      <div class="popular-posts-title"><a href="/ironman-2023-day-14/" rel="bookmark">[2023 15th鐵人賽] Day14 - 希望看到的工程師履歷撰寫方式</a></div>
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -573,7 +594,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -635,12 +657,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

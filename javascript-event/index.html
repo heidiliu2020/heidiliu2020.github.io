@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 [FE102] 前端必備：JavaScript 這門課程的學習筆記。如有錯誤歡迎指正。  123456學習目標： P1 你知道 JavaScript 跑在網頁上跟跑在 Node.js 上差在哪裡 P1 你知道 DOM 是什麼 P1 你知道如何用 JavaScript 操控 DOM 物件 P1 你知道如何幫一個按鈕加上 event listener">
@@ -63,6 +61,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 7] DOM 介面、瀏覽器事件處理",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-08-04T06:03:00.000Z",
+  "dateModified": "2026-07-09T06:06:05.704Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/javascript-event/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[week 7] DOM 介面、瀏覽器事件處理 | Liusan's Blog</title>
   
 
@@ -98,7 +118,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -313,7 +333,7 @@
 <h3 id="DOM-是什麼？"><a href="#DOM-是什麼？" class="headerlink" title="DOM 是什麼？"></a>DOM 是什麼？</h3><p>DOM，全名是 Document Object Model（文件物件模型）。</p>
 <p>是由「瀏覽器」提供用來和「程式語言」溝通的橋樑。最常被用在網頁與 JavaScript 的溝通。</p>
 <p>DOM 類似於把 HTML 的文件（Document）轉成物件（Object）。JavaScript 即可透過 DOM 提供的 API 來存取並操作 HTML。</p>
-<p><img src="https://i.imgur.com/yR0I3JG.png" alt="DOM"></p>
+<p><img data-src="https://i.imgur.com/yR0I3JG.png" alt="DOM"></p>
 <h3 id="如何選取-DOM-元素"><a href="#如何選取-DOM-元素" class="headerlink" title="如何選取 DOM 元素"></a>如何選取 DOM 元素</h3><p>document 是瀏覽器提供的特殊物件，內部放著許多 function。而我們可以透過「物件」的方式去呼叫想要的元素：</p>
 <ul>
 <li>根據 Tag 名稱選取：<code>document.getElementsByTagName()</code></li>
@@ -325,18 +345,18 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    This is tagName.</span><br><span class="line">    &lt;div class=&quot;box&quot;&gt;This is className.&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;name&quot;&gt;This is idName.&lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    const elements = document.getElementsByTagName(&#x27;div&#x27;)</span><br><span class="line">    console.log(elements)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
 
 <p>在瀏覽器運行結果，會得到類陣列如下：</p>
-<p><img src="https://i.imgur.com/8i7ohCd.png" alt="Tag"></p>
+<p><img data-src="https://i.imgur.com/8i7ohCd.png" alt="Tag"></p>
 <p>若改選取 <code>elements[1]</code>，即可選取類陣列中的元素：</p>
-<p><img src="https://i.imgur.com/4LdiX9r.png" alt="類陣列"></p>
+<p><img data-src="https://i.imgur.com/4LdiX9r.png" alt="類陣列"></p>
 <p>若根據 Class 和 ID 名稱選取，也是類似用法：</p>
 <ul>
 <li><code>document.getElementsByClassName(&#39;box&#39;)</code>：括弧內不需加 <code>.</code> 即可表示 class</li>
 </ul>
-<p><img src="https://i.imgur.com/O5eCQ6y.png" alt="Class"></p>
+<p><img data-src="https://i.imgur.com/O5eCQ6y.png" alt="Class"></p>
 <ul>
 <li><code>document.getElementById(&#39;name&#39;)</code>：注意 ID 只會有一個</li>
 </ul>
-<p><img src="https://i.imgur.com/fia65T6.png" alt="Id"></p>
+<p><img data-src="https://i.imgur.com/fia65T6.png" alt="Id"></p>
 <p>相較於前面三種選取方式，又以 querySelector 更方便且直覺。就像寫 CSS 選擇器來選取元素：</p>
 <ul>
 <li>選取標籤：<code>const element = document.querySelector(&#39;div&#39;)</code></li>
@@ -347,12 +367,12 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">  &lt;a href=&quot;#&quot;&gt;1st&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;a href=&quot;#&quot;&gt;2rd&lt;/a&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    const element = document.querySelector(&#x27;a&#x27;)</span><br><span class="line">    console.log(element)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
 
 <p>結果只會選取第一個 <code>&lt;a&gt;</code>：</p>
-<p><img src="https://i.imgur.com/ZE1Ue7g.png" alt="querySelector"></p>
+<p><img data-src="https://i.imgur.com/ZE1Ue7g.png" alt="querySelector"></p>
 <p>若想選取到所有匹配到的元素，可使用 <code>querySelectorAll()</code>：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const element = document.querySelectorAll(&#x27;a&#x27;)</span><br></pre></td></tr></table></figure>
 
 <p>同樣能夠得到類陣列：</p>
-<p><img src="https://i.imgur.com/ih6mj9T.png" alt="querySelectorAll"></p>
+<p><img data-src="https://i.imgur.com/ih6mj9T.png" alt="querySelectorAll"></p>
 <h3 id="改變元素的-CSS：-style"><a href="#改變元素的-CSS：-style" class="headerlink" title="改變元素的 CSS：.style"></a>改變元素的 CSS：<code>.style</code></h3><ul>
 <li>直接寫上行內樣式</li>
 </ul>
@@ -462,7 +482,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.box&#x27;</span>)</span><br><span class="line"></span><br><span class="line">element.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(e)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>點擊元素後會出現下列資訊：</p>
-<p><img src="https://i.imgur.com/JJEo1ZR.png" alt="event"></p>
+<p><img data-src="https://i.imgur.com/JJEo1ZR.png" alt="event"></p>
 <p>我們可以用「物件」的方式來取得需要的元素，以常用的事件資訊為例。</p>
 <h3 id="常用的事件資訊"><a href="#常用的事件資訊" class="headerlink" title="常用的事件資訊"></a>常用的事件資訊</h3><h4 id="click-事件：點擊-DOM-元素時觸發"><a href="#click-事件：點擊-DOM-元素時觸發" class="headerlink" title="click 事件：點擊 DOM 元素時觸發"></a>click 事件：點擊 DOM 元素時觸發</h4><ul>
 <li>e.target：點擊到的元素</li>
@@ -475,12 +495,12 @@
 <h4 id="submit-事件：提交表單前觸發，通常用來驗證表單內容"><a href="#submit-事件：提交表單前觸發，通常用來驗證表單內容" class="headerlink" title="submit 事件：提交表單前觸發，通常用來驗證表單內容"></a>submit 事件：提交表單前觸發，通常用來驗證表單內容</h4><p>首先建立一個簡易表單：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;form class=&quot;login-form&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;account&quot;&gt;</span><br><span class="line">    Account: &lt;input name=&quot;account&quot; type=&quot;text&quot;&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;password&quot;&gt;</span><br><span class="line">    Password: &lt;input name=&quot;password&quot; type=&quot;password&quot;&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;password2&quot;&gt;</span><br><span class="line">    Password again: &lt;input name=&quot;password2&quot; type=&quot;password&quot;&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;submit&quot;&gt;</span><br><span class="line">    &lt;input name=&quot;submit&quot; type=&quot;submit&quot; value=&quot;Submit&quot;&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/wWjVaIv.png" alt="form"></p>
+<p><img data-src="https://i.imgur.com/wWjVaIv.png" alt="form"></p>
 <p>點選表單中的 submit 按鈕後，會以預設方法 <code>GET</code> 送出資料，也就是把參數帶入原網址送出。而 submit 事件是在表單送出前觸發，通常用來驗證表單內容。</p>
 <p>以點選 submit 後彈出視窗為例：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.login-form&#x27;</span>)</span><br><span class="line">  element.<span class="title function_">addEventListener</span>(<span class="string">&#x27;submit&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&quot;成功&quot;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/grkuUrS.png"></p>
+<p><img data-src="https://i.imgur.com/grkuUrS.png"></p>
 <h3 id="阻止預設行為-e-preventDefault"><a href="#阻止預設行為-e-preventDefault" class="headerlink" title="阻止預設行為 e.preventDefault()"></a>阻止預設行為 <code>e.preventDefault()</code></h3><p>用來阻止瀏覽器上特定元素的預設行為。以下為常見使用方式：</p>
 <ul>
 <li><code>&lt;form&gt;</code> 的 submit 事件：阻止送出表單</li>
@@ -490,7 +510,7 @@
 <p>以上述例子來說，當 Password 跟 Password again 輸入的值不同時，就可使用 <code>e.preventDefault()</code> 來阻止表單送出：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.login-form&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  element.<span class="title function_">addEventListener</span>(<span class="string">&#x27;submit&#x27;</span>, <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> pw1 = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;input[name=&quot;password1&quot;]&#x27;</span>);</span><br><span class="line">    <span class="keyword">const</span> pw2 = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;input[name=&quot;password2&quot;]&#x27;</span>);</span><br><span class="line">    <span class="comment">// 若密碼不同，就不送出表單</span></span><br><span class="line">    <span class="keyword">if</span> (pw1.<span class="property">value</span> !== pw2.<span class="property">value</span>) &#123;</span><br><span class="line">      <span class="title function_">alert</span>(<span class="string">&#x27;密碼不同！&#x27;</span>)</span><br><span class="line">      e.<span class="title function_">preventDefault</span>();</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/vjBsv0i.png"></p>
+<p><img data-src="https://i.imgur.com/vjBsv0i.png"></p>
 <p>參考資料：</p>
 <ol>
 <li><span class="exturl" data-url="aHR0cHM6Ly95YWtpbWhzdS5jb20vcHJvamVjdC9wcm9qZWN0X3c3X0RPTS5odG1s" title="https://yakimhsu.com/project/project_w7_DOM.html">[第七週] DOM - 操作 DOM 介面、事件監聽 - Yakim<i class="fa fa-external-link"></i></span></li>
@@ -522,7 +542,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -690,7 +711,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -752,12 +774,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

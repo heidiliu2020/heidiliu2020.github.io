@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 [FE302] React 基礎 - hooks 版本 這門課程的學習筆記。如有錯誤歡迎指正！">
@@ -65,6 +63,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 22] React：用 SPA 架構實作一個部落格（三）- 淺談測試",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-12-16T17:08:00.000Z",
+  "dateModified": "2026-04-23T06:14:18.258Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/react-test/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[week 22] React：用 SPA 架構實作一個部落格（三）- 淺談測試 | Liusan's Blog</title>
   
 
@@ -100,7 +120,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -306,12 +326,12 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://i.imgur.com/ybx5NbQ.png"></p>
+<p><img data-src="https://i.imgur.com/ybx5NbQ.png"></p>
 <p>（參考資料：<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLm1pbmlhc3AuY29tL3Bvc3QvMjAxOS8wMi8xOC9Vbml0LXRlc3RpbmctSW50ZWdyYXRpb24tdGVzdGluZy1lMmUtdGVzdGluZw==" title="https://blog.miniasp.com/post/2019/02/18/Unit-testing-Integration-testing-e2e-testing">一次搞懂單元測試、整合測試、端對端測試之間的差異<i class="fa fa-external-link"></i></span>）</p>
 <h2 id="React-Testing-Library：測試-React-Component"><a href="#React-Testing-Library：測試-React-Component" class="headerlink" title="React Testing Library：測試 React Component"></a>React Testing Library：測試 React Component</h2><p>如果要測試 React Component，可使用 <span class="exturl" data-url="aHR0cHM6Ly90ZXN0aW5nLWxpYnJhcnkuY29tL2RvY3MvcmVhY3QtdGVzdGluZy1saWJyYXJ5L2ludHJvLw==" title="https://testing-library.com/docs/react-testing-library/intro/">React Testing Library<i class="fa fa-external-link"></i></span> 套件，這在安裝 React 時就有內建。</p>
 <p>其原理是把 React 的 Component 給 render 出來，並非真的 render 在瀏覽器上，而是透過 JS DOM 模擬成 JS 來執行，即可針對 render 出來的畫面進行各種測試。</p>
 <p>在我們建立專案時，就有個 App.test.js 檔案可用來寫測試內容：</p>
-<p><img src="https://i.imgur.com/4dcIFV1.png"></p>
+<p><img data-src="https://i.imgur.com/4dcIFV1.png"></p>
 <p>每個測試會用一個 function 包住：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; render, screen &#125; <span class="keyword">from</span> <span class="string">&#x27;@testing-library/react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&#x27;./App&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title function_">test</span>(<span class="string">&#x27;renders learn react link&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// render component</span></span><br><span class="line">  <span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>);</span><br><span class="line">  <span class="comment">// 確認是否有出現指定文字</span></span><br><span class="line">  <span class="keyword">const</span> linkElement = screen.<span class="title function_">getByText</span>(<span class="regexp">/learn react/i</span>);</span><br><span class="line">  <span class="comment">// 確認是否有在 document 裡面</span></span><br><span class="line">  <span class="title function_">expect</span>(linkElement).<span class="title function_">toBeInTheDocument</span>();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
@@ -319,9 +339,9 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm run test</span><br></pre></td></tr></table></figure>
 
 <p>測試預設會找 App.test.js 在上次 commit 時有更動的部分，例如輸入 a 可跑所有測試結果：</p>
-<p><img src="https://i.imgur.com/Hao9KG7.png"></p>
+<p><img data-src="https://i.imgur.com/Hao9KG7.png"></p>
 <p>由於 App.test.js 是 watch 模式，只要檔案有變動就會自動跑測試，結果會長這樣：</p>
-<p><img src="https://i.imgur.com/EA3y0KO.png"></p>
+<p><img data-src="https://i.imgur.com/EA3y0KO.png"></p>
 <h3 id="實際應用"><a href="#實際應用" class="headerlink" title="實際應用"></a>實際應用</h3><p>但實際在測試時並不會真的去 call API，因為 mock API 代表要做什麼事，而我們在意的點其實是：</p>
 <ul>
 <li>會不會發 request 去 back-end</li>
@@ -329,7 +349,7 @@
 </ul>
 <p>也就是說，測試其實不需要知道 back-end 回覆的內容，而是透過 mock API Point，就可以在打 API 之前回傳一個結構，藉此來測試顯示的資料。</p>
 <p>例如以下範例，藉由 mock API 來模擬每次 fetch 會回傳的資料，再使用 await waitfor() 非同步處理進行測試：</p>
-<p><img src="https://i.imgur.com/OX9LJ4X.png"></p>
+<p><img data-src="https://i.imgur.com/OX9LJ4X.png"></p>
 <p>這種測試方法其實就類似於 Unit testing 或 Integration testing，再來要介紹的是用於 End-to-end testing 的程式。</p>
 <h2 id="Cypress：JS-E2E-testing"><a href="#Cypress：JS-E2E-testing" class="headerlink" title="Cypress：JS E2E testing"></a>Cypress：JS E2E testing</h2><p>End-to-end testing 的特點在於會真的跑一個 Browser 起來，並將手動測試轉變成程式碼執行，因此會更接近使用者實際在使用網站的感受。</p>
 <p>我們要介紹的是 <span class="exturl" data-url="aHR0cHM6Ly93d3cuY3lwcmVzcy5pby8=" title="https://www.cypress.io/">cypress<i class="fa fa-external-link"></i></span> 這套 E2E testing 程式，在測試時也有提供錄影功能，能夠記錄錯誤截圖等等。</p>
@@ -338,11 +358,11 @@
 <h3 id="如何執行"><a href="#如何執行" class="headerlink" title="如何執行"></a>如何執行</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npx cypress open</span><br></pre></td></tr></table></figure>
 
 <p>或是在 package.json 的 scripts 新增 cypress open 指令，即可使用 <code>npm run cypress:open</code> 指令執行：</p>
-<p><img src="https://i.imgur.com/GNMrji1.png"></p>
+<p><img data-src="https://i.imgur.com/GNMrji1.png"></p>
 <p>第一次執行 cypress open 時，會自動在 my-app 資料夾建立 cypress 相關程式，像是 integration 裡的內建測試等等。</p>
-<p><img src="https://i.imgur.com/GPisKnv.png"></p>
+<p><img data-src="https://i.imgur.com/GPisKnv.png"></p>
 <p>執行後會自動開啟 GUI 介面：</p>
-<p><img src="https://i.imgur.com/deKsjBl.png"></p>
+<p><img data-src="https://i.imgur.com/deKsjBl.png"></p>
 <p>預設的測試檔名為 <code>spec.js</code>，例如我們可在 integration 建立一個 home.spec.js，並在 my-app 底下的 cypress.json 新增 baseUrl：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;baseUrl&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http://localhost:3000/react-board-test&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
@@ -350,9 +370,9 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">describe</span>(<span class="string">&quot;The Home Page&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="title function_">it</span>(<span class="string">&quot;successfully loads&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 改成連線到首頁</span></span><br><span class="line">    cy.<span class="title function_">visit</span>(<span class="string">&quot;/&quot;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>點選 cypress 介面中的 home.spec.js 執行：</p>
-<p><img src="https://i.imgur.com/20LvIQ2.png"></p>
+<p><img data-src="https://i.imgur.com/20LvIQ2.png"></p>
 <p>此時會自動開啟 Chrome 瀏覽器跑測試，結果如下：</p>
-<p><img src="https://i.imgur.com/L5NO3Ag.png"></p>
+<p><img data-src="https://i.imgur.com/L5NO3Ag.png"></p>
 <h3 id="透過-route-來-mock-API"><a href="#透過-route-來-mock-API" class="headerlink" title="透過 route 來 mock API"></a>透過 route 來 mock API</h3><p>但是和先前的例子一樣，我們通常不會真的去 call API，而是會 mock API，在 cypress 可透過 route 來模擬 API，可參考<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmN5cHJlc3MuaW8vYXBpL2NvbW1hbmRzL3JvdXRlLmh0bWwjU3ludGF4" title="https://docs.cypress.io/api/commands/route.html#Syntax">官方文件<i class="fa fa-external-link"></i></span>。</p>
 <p>首先要修改 cypress.json 設定檔，加上 <code>experimentalFetchPolyfill</code> 參數：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;baseUrl&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http://localhost:3000/react-board-test&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;experimentalFetchPolyfill&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
@@ -361,9 +381,9 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">describe</span>(<span class="string">&quot;The Home Page&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="title function_">it</span>(<span class="string">&quot;successfully loads&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    cy.<span class="title function_">server</span>();</span><br><span class="line">    <span class="comment">// mock API</span></span><br><span class="line">    cy.<span class="title function_">route</span>(</span><br><span class="line">      <span class="string">&quot;https://student-json-api.lidemy.me/posts?_sort=createdAt&amp;_order=desc&quot;</span>,</span><br><span class="line">      [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">id</span>: <span class="number">1</span>,</span><br><span class="line">          <span class="attr">title</span>: <span class="string">&quot;Hello World!&quot;</span>,</span><br><span class="line">          <span class="attr">createdAt</span>: <span class="number">20202020</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      ]</span><br><span class="line">    );</span><br><span class="line">    <span class="comment">// 導向首頁</span></span><br><span class="line">    cy.<span class="title function_">visit</span>(<span class="string">&quot;/&quot;</span>);</span><br><span class="line">    <span class="comment">// 測試: 確認頁面是否包含該字串</span></span><br><span class="line">    cy.<span class="title function_">contains</span>(<span class="string">&quot;Hello World!&quot;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>測試結果如下：</p>
-<p><img src="https://i.imgur.com/TdVmUf5.png"></p>
+<p><img data-src="https://i.imgur.com/TdVmUf5.png"></p>
 <p>查看 Request URL 會發現網址有被 cypress 換成 mock API，藉此來 mock 回傳結果：</p>
-<p><img src="https://i.imgur.com/xYYEpka.png"></p>
+<p><img data-src="https://i.imgur.com/xYYEpka.png"></p>
 <ul>
 <li>參考文章：<span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL2hhbm5haC1saW4vY3lwcmVzcy1lMmUtdGVzdGluZy0lRTUlODglOUQlRTYlOEUlQTItYTEwZWNhM2MwY2Y3" title="https://medium.com/hannah-lin/cypress-e2e-testing-%E5%88%9D%E6%8E%A2-a10eca3c0cf7">[Cypress 1] E2E Testing 初探<i class="fa fa-external-link"></i></span></li>
 </ul>
@@ -399,14 +419,15 @@
       <div class="popular-posts-title"><a href="/nextjs-app-router/" rel="bookmark">【學習筆記】Next.js 路由系統：App Router vs Page Router</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/nextjs-error-fix/" rel="bookmark">【學習筆記】Next.js 錯誤修復紀錄： 「Window is not defined」、「use client & missing generateStaticParams() error」</a></div>
+      <div class="popular-posts-title"><a href="/nextjs-i18next/" rel="bookmark">【學習筆記】Next.js 實現多國語系：react-i18next & next-i18next</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/nextjs-i18next/" rel="bookmark">【學習筆記】Next.js 實現多國語系：react-i18next & next-i18next</a></div>
+      <div class="popular-posts-title"><a href="/nextjs-error-fix/" rel="bookmark">【學習筆記】Next.js 錯誤修復紀錄： 「Window is not defined」、「use client & missing generateStaticParams() error」</a></div>
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -575,7 +596,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -637,12 +659,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

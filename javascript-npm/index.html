@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 [JS102] 升級你的 JavaScript 技能：ES6 + npm + Jest 這門課程的學習筆記。如有錯誤歡迎指正！  1234學習目標： 理解常用內建函式如何使用 熟悉程式語法並知道如何解決基礎問題">
@@ -61,6 +59,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 3] JavaScript：認識 Module & NPM 套件庫",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-07-25T05:32:00.000Z",
+  "dateModified": "2026-07-09T06:06:05.706Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/javascript-npm/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[week 3] JavaScript：認識 Module & NPM 套件庫 | Liusan's Blog</title>
   
 
@@ -96,7 +116,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -287,11 +307,11 @@
 <hr>
 <h2 id="何謂-Modules-模組（模塊）？"><a href="#何謂-Modules-模組（模塊）？" class="headerlink" title="何謂 Modules 模組（模塊）？"></a>何謂 Modules 模組（模塊）？</h2><p>在開發過程中，若將各種功能放在一起，程式間可能會互相影響甚至產生 bug，日後也不易進行維護。</p>
 <p>因此，我們可以將不同功能視為一個模組（Module），例如：金流、登入、權限、會員等等，再用主程式將所有模組串接起來，透過模組化統一進行管理。</p>
-<p><img src="https://i.imgur.com/di0LXxg.png"></p>
+<p><img data-src="https://i.imgur.com/di0LXxg.png"></p>
 <h2 id="Modeule-相關操作"><a href="#Modeule-相關操作" class="headerlink" title="Ｍodeule 相關操作"></a>Ｍodeule 相關操作</h2><h3 id="require-：引入模組"><a href="#require-：引入模組" class="headerlink" title="require()：引入模組"></a><code>require()</code>：引入模組</h3><p>以引入 <span class="exturl" data-url="aHR0cHM6Ly9ub2RlanMub3JnL2FwaS9vcy5odG1sI29zX29zX3BsYXRmb3Jt" title="https://nodejs.org/api/os.html#os_os_platform">Node.js 提供的 os<i class="fa fa-external-link"></i></span> 這個模組為例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> os = <span class="built_in">require</span>(<span class="string">&#x27;os&#x27;</span>)      <span class="comment">// 引入 &#x27;os&#x27; 這個模組，變數 os 可隨意命名</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(os.<span class="title function_">platform</span>())</span><br><span class="line"><span class="comment">// 印出 win32，代表當前作業系統</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/ubLcpXY.png"></p>
+<p><img data-src="https://i.imgur.com/ubLcpXY.png"></p>
 <h3 id="module-export：輸出模組"><a href="#module-export：輸出模組" class="headerlink" title="module.export：輸出模組"></a><code>module.export</code>：輸出模組</h3><ul>
 <li>語法：<code>module.exports = 任何資料型別（例如：數字、陣列、物件等）</code></li>
 </ul>
@@ -326,20 +346,20 @@
 <p>也可使用由 Facebook 團隊開發的 <span class="exturl" data-url="aHR0cHM6Ly95YXJucGtnLmNvbS8=" title="https://yarnpkg.com/">Yarn<i class="fa fa-external-link"></i></span>，同樣能從 npm 安裝套件，優點是速度較快。<br>參考資料：<span class="exturl" data-url="aHR0cHM6Ly9pdGhlbHAuaXRob21lLmNvbS50dy9hcnRpY2xlcy8xMDE5MTc0NQ==" title="https://ithelp.ithome.com.tw/articles/10191745">[Day-5] 用Yarn取代npm加速開發<i class="fa fa-external-link"></i></span></p>
 </blockquote>
 <h3 id="基本指令"><a href="#基本指令" class="headerlink" title="基本指令"></a>基本指令</h3><h4 id="npm-v：查看-npm-版本。"><a href="#npm-v：查看-npm-版本。" class="headerlink" title="npm -v：查看 npm 版本。"></a><code>npm -v</code>：查看 npm 版本。</h4><p>通常在安裝 node.js 時就會一起安裝。</p>
-<p><img src="https://i.imgur.com/zZMyERG.png" alt="npm -v"></p>
+<p><img data-src="https://i.imgur.com/zZMyERG.png" alt="npm -v"></p>
 <h4 id="npm-init：協助建立-Node-js-專案的描述檔。"><a href="#npm-init：協助建立-Node-js-專案的描述檔。" class="headerlink" title="npm init：協助建立 Node.js 專案的描述檔。"></a><code>npm init</code>：協助建立 Node.js 專案的描述檔。</h4><p>也就是產生 package.json 這個檔案。</p>
-<h4 id="npm-install-left-pad：以-npm-安裝-left-pad-這個套件為例。"><a href="#npm-install-left-pad：以-npm-安裝-left-pad-這個套件為例。" class="headerlink" title="npm install left-pad：以 npm 安裝 left-pad 這個套件為例。"></a><code>npm install left-pad</code>：以 npm 安裝 left-pad 這個套件為例。</h4><p><img src="https://i.imgur.com/4zvy68Z.png" alt="npm install"></p>
+<h4 id="npm-install-left-pad：以-npm-安裝-left-pad-這個套件為例。"><a href="#npm-install-left-pad：以-npm-安裝-left-pad-這個套件為例。" class="headerlink" title="npm install left-pad：以 npm 安裝 left-pad 這個套件為例。"></a><code>npm install left-pad</code>：以 npm 安裝 left-pad 這個套件為例。</h4><p><img data-src="https://i.imgur.com/4zvy68Z.png" alt="npm install"></p>
 <p>安裝同時會產生：</p>
 <ol>
 <li>package-lock.json 檔案：記錄安裝套件的版本和依賴（dependencies）</li>
 <li>node_modules 資料夾：裡面放安裝的套件</li>
 </ol>
-<p><img src="https://i.imgur.com/hOnLOZL.png"></p>
+<p><img data-src="https://i.imgur.com/hOnLOZL.png"></p>
 <p>package-lock.json 檔案內容如下，可從 <code>dependencies</code> 得知專案使用的套件：</p>
-<p><img src="https://i.imgur.com/YopHSs7.png" alt="描述檔"></p>
+<p><img data-src="https://i.imgur.com/YopHSs7.png" alt="描述檔"></p>
 <h3 id="版本控制會忽略-node-modules-資料夾"><a href="#版本控制會忽略-node-modules-資料夾" class="headerlink" title="版本控制會忽略 node_modules 資料夾"></a>版本控制會忽略 node_modules 資料夾</h3><p>當安裝許多套件時，檔案會很大。若要將專案上傳到 GitHub 遠端，通常會忽略 node_modules 這個資料夾，也就是不需進行版本控制。</p>
 <p>因為已經有 package.json 這個檔案，負責記錄該專案所安裝的套件。若從遠端下載專案時，只要再輸入 <code>npm install</code> 指令，就可安裝該專案所需套件。</p>
-<p><img src="https://i.imgur.com/nsRpDni.png"></p>
+<p><img data-src="https://i.imgur.com/nsRpDni.png"></p>
 <hr>
 <h2 id="設定-npm-scripts"><a href="#設定-npm-scripts" class="headerlink" title="設定 npm scripts"></a>設定 npm scripts</h2><p><code>package.json</code> 檔案中，我們可在 <code>scripts</code> 區塊加入各種指令。</p>
 <h3 id="quot-key-quot-quot-要執行的內容＂"><a href="#quot-key-quot-quot-要執行的內容＂" class="headerlink" title="&quot;key&quot;: &quot;要執行的內容＂"></a><code>&quot;key&quot;: &quot;要執行的內容＂</code></h3><p>以如何運行 <code>index.js</code> 這個專案為例：</p>
@@ -347,9 +367,9 @@
 <blockquote>
 <p>注意是使用雙引號。</p>
 </blockquote>
-<p><img src="https://i.imgur.com/fvF1YuH.png" alt="scripts"></p>
+<p><img data-src="https://i.imgur.com/fvF1YuH.png" alt="scripts"></p>
 <h3 id="npm-run-39-key-39"><a href="#npm-run-39-key-39" class="headerlink" title="npm run &#39;key&#39;"></a><code>npm run &#39;key&#39;</code></h3><p>在終端機輸入 <code>npm run start</code> 即可透過 key 來運行該指令：</p>
-<p><img src="https://i.imgur.com/K3XhyO3.png" alt="npm run start"></p>
+<p><img data-src="https://i.imgur.com/K3XhyO3.png" alt="npm run start"></p>
 
     </div>
 
@@ -376,7 +396,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -544,7 +565,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -606,12 +628,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

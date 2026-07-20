@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 [JS201] 進階 JavaScript：那些你一直搞不懂的地方 這門課程的學習筆記。如有錯誤歡迎指正！  1234學習目標： P1 你知道大部分情況下 this 的值是什麼 P2 你知道物件導向的基本概念（類別、實體、繼承、封裝）">
@@ -57,6 +55,28 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 16] JavaScript 進階 - What is this？",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-10-22T16:28:00.000Z",
+  "dateModified": "2026-07-09T06:06:05.707Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/javascript-this/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
+
   <title>[week 16] JavaScript 進階 - What is this？ | Liusan's Blog</title>
   
 
@@ -92,7 +112,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -285,10 +305,10 @@
 <h3 id="Global-context-下的-this"><a href="#Global-context-下的-this" class="headerlink" title="Global context 下的 this"></a>Global context 下的 this</h3><p>如果在全域環境下呼叫 this，根據不同執行環境（瀏覽器或 node.js），預設值可能會是 global 或 window：</p>
 <h4 id="在-node-js-運行"><a href="#在-node-js-運行" class="headerlink" title="在 node.js 運行"></a>在 node.js 運行</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);            <span class="comment">// Object [global] &#123; ...&#125;</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span> === <span class="variable language_">global</span>)  <span class="comment">// true</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">test</span>();</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/9yFrDnZ.png"></p>
+<p><img data-src="https://i.imgur.com/9yFrDnZ.png"></p>
 <h4 id="在瀏覽器運行"><a href="#在瀏覽器運行" class="headerlink" title="在瀏覽器運行"></a>在瀏覽器運行</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);            <span class="comment">// Window &#123; ...&#125;</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span> === <span class="variable language_">window</span>)  <span class="comment">// true</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">test</span>();</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/wVCdilg.png"></p>
+<p><img data-src="https://i.imgur.com/wVCdilg.png"></p>
 <h3 id="use-strict-嚴格模式"><a href="#use-strict-嚴格模式" class="headerlink" title="use strict 嚴格模式"></a>use strict 嚴格模式</h3><p>在不需要的地方呼叫 this，卻還是會有預設值 global 或 window。這時候，只要設定 <code>&#39;use strict&#39;</code>（嚴格模式）就能避免，this 的預設值會是 undefined：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">test</span>();  <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
 <h3 id="DOM-元素中的-this"><a href="#DOM-元素中的-this" class="headerlink" title="DOM 元素中的 this"></a>DOM 元素中的 this</h3><p>此外，對 DOM 元素進行事件監聽時，this 就代表當下操作的元素，其實非常直覺。例如監聽按鈕的點擊事件，那 this 就會是那個按鈕：</p>
@@ -341,7 +361,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">  <span class="title function_">run</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;run this&#x27;</span>, <span class="variable language_">this</span>);</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">    &#125;, <span class="number">100</span>) </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> t = <span class="keyword">new</span> <span class="title class_">Test</span>();</span><br><span class="line">t.<span class="title function_">run</span>();</span><br></pre></td></tr></table></figure>
 
 <p>在瀏覽器上的運行結果，會發現第二個 this 等於全域的 Window：</p>
-<p><img src="https://i.imgur.com/27kKU6Q.png"></p>
+<p><img data-src="https://i.imgur.com/27kKU6Q.png"></p>
 <p>也就是說，在 100 毫秒後才呼叫，其實作用就等同於在全域呼叫這個 function：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -349,7 +369,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">  <span class="title function_">run</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;run this&#x27;</span>, <span class="variable language_">this</span>);</span><br><span class="line">    <span class="built_in">setTimeout</span>( <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">    &#125;, <span class="number">100</span>) </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> t= <span class="keyword">new</span> <span class="title class_">Test</span>();</span><br><span class="line">t.<span class="title function_">run</span>();</span><br></pre></td></tr></table></figure>
 
 <p>在瀏覽器上的運行結果，此時兩個 this 會變相同：</p>
-<p><img src="https://i.imgur.com/thp7RZD.png"></p>
+<p><img data-src="https://i.imgur.com/thp7RZD.png"></p>
 <p>這就是箭頭函式的特性，和箭頭函式中的 this 怎麼呼叫沒關係。而是類似 Scope（作用域）的機制，看程式碼定義在哪裡，就會利用定義的 block 來呈現這個 this 的值。</p>
 <hr>
 <h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>瞭解到物件導向的相關概念後，接著要理解 this 是什麼就沒那麼困難了。或許是因為在實際學 JacaScript 以前，就預設 this 是很難是高手在用的東西，透過慢慢理解物件導向與 this 的關聯，以及如何判斷 this 的值，似乎也感覺到自己的進化，對於未知的恐懼總是需要克服的。</p>
@@ -415,7 +435,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -584,7 +605,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -646,12 +668,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>

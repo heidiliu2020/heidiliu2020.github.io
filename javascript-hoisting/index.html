@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+<link rel="stylesheet" href="/lib/fontawesome5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"heidiliu2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本篇為 [JS201] 進階 JavaScript：那些你一直搞不懂的地方 這門課程的學習筆記。如有錯誤歡迎指正！  1234567學習目標：  你知道 Hoisting（提升）是什麼  你知道 Hoisting 的原理為何  你知道 Hoisting 只會提升宣告而非賦值  你知道 function 宣告、function 的參數以及一般變數宣告同時出現時的提升優先順序  你知道 let 跟">
@@ -53,6 +51,28 @@
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4274798044223706"
     crossorigin="anonymous"></script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[week 16] JavaScript 進階 - 初探 Hoisting & Execution Context",
+  "image": "https://heidiliu2020.github.io/images/og-default.png",
+  "author": {
+    "@type": "Person",
+    "name": "Heidi Liu",
+    "url": "https://heidiliu2020.github.io/about/"
+  },
+  "datePublished": "2020-10-17T16:24:00.000Z",
+  "dateModified": "2026-07-09T06:06:05.705Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://heidiliu2020.github.io/javascript-hoisting/"
+  },
+  "inLanguage": "zh-TW"
+}
+</script>
 
   <title>[week 16] JavaScript 進階 - 初探 Hoisting & Execution Context | Liusan's Blog</title>
   
@@ -89,7 +109,7 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <div class="container">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -426,7 +446,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://i.imgur.com/BeuXQfQ.png"><br>（參考來源：<span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tLyVFOSVBRCU5NCVFOSVBQyVCQyVFOCU5NyU4RiVFNSU5QyVBOCVFNyVBOCU4QiVFNSVCQyU4RiVFNyVCNCVCMCVFNyVBRiU4MCVFOCVBMyVBMS8lRTYlQjclQkElRTglQUIlODctamF2YXNjcmlwdC0lRTUlOUYlQjclRTglQTElOEMlRTclOTIlQjAlRTUlQTIlODMtMjk3NmIzZWFmMjQ4JUVGJUJDJTg5" title="https://medium.com/%E9%AD%94%E9%AC%BC%E8%97%8F%E5%9C%A8%E7%A8%8B%E5%BC%8F%E7%B4%B0%E7%AF%80%E8%A3%A1/%E6%B7%BA%E8%AB%87-javascript-%E5%9F%B7%E8%A1%8C%E7%92%B0%E5%A2%83-2976b3eaf248%EF%BC%89">https://medium.com/%E9%AD%94%E9%AC%BC%E8%97%8F%E5%9C%A8%E7%A8%8B%E5%BC%8F%E7%B4%B0%E7%AF%80%E8%A3%A1/%E6%B7%BA%E8%AB%87-javascript-%E5%9F%B7%E8%A1%8C%E7%92%B0%E5%A2%83-2976b3eaf248）<i class="fa fa-external-link"></i></span></p>
+<p><img data-src="https://i.imgur.com/BeuXQfQ.png"><br>（參考來源：<span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tLyVFOSVBRCU5NCVFOSVBQyVCQyVFOCU5NyU4RiVFNSU5QyVBOCVFNyVBOCU4QiVFNSVCQyU4RiVFNyVCNCVCMCVFNyVBRiU4MCVFOCVBMyVBMS8lRTYlQjclQkElRTglQUIlODctamF2YXNjcmlwdC0lRTUlOUYlQjclRTglQTElOEMlRTclOTIlQjAlRTUlQTIlODMtMjk3NmIzZWFmMjQ4JUVGJUJDJTg5" title="https://medium.com/%E9%AD%94%E9%AC%BC%E8%97%8F%E5%9C%A8%E7%A8%8B%E5%BC%8F%E7%B4%B0%E7%AF%80%E8%A3%A1/%E6%B7%BA%E8%AB%87-javascript-%E5%9F%B7%E8%A1%8C%E7%92%B0%E5%A2%83-2976b3eaf248%EF%BC%89">https://medium.com/%E9%AD%94%E9%AC%BC%E8%97%8F%E5%9C%A8%E7%A8%8B%E5%BC%8F%E7%B4%B0%E7%AF%80%E8%A3%A1/%E6%B7%BA%E8%AB%87-javascript-%E5%9F%B7%E8%A1%8C%E7%92%B0%E5%A2%83-2976b3eaf248）<i class="fa fa-external-link"></i></span></p>
 <h3 id="呼叫-amp-執行堆疊（Call-Stack）"><a href="#呼叫-amp-執行堆疊（Call-Stack）" class="headerlink" title="呼叫 &amp; 執行堆疊（Call Stack）"></a>呼叫 &amp; 執行堆疊（Call Stack）</h3><p>因為 JavaScript 是<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU3JUJBJUJGJUU3JUE4JThC" title="https://zh.wikipedia.org/wiki/%E7%BA%BF%E7%A8%8B">單執行緒<i class="fa fa-external-link"></i></span>的程式語言，用白話文解釋就是「JavaScript 一次只能做一件事情」，因此 JS 中等待執行的任務會被放入 Call Stack。</p>
 <p>JavaScript 在調用一個執行環境時，其實會經過兩個階段：</p>
 <ol>
@@ -439,7 +459,7 @@
 </ol>
 <p>接著 JavaScript 會優先處理執行堆疊中最上面的執行環境。一旦執行完該 function 後，該執行環境就會從最上面被移除（pop off），同時儲存在該 function 中的資訊也會被銷毀，然後再回到之前的執行環境，直到回到 Global EC 為止。</p>
 <p>可參考下方的執行環境流程示意圖：</p>
-<p><img src="https://i.imgur.com/gEIWBNG.png"><br>（參考來源：<span class="exturl" data-url="aHR0cHM6Ly9kZXYudG8vYWhtZWR0YWhpci93aGF0LWlzLXRoZS1leGVjdXRpb24tY29udGV4dC1leGVjdXRpb24tc3RhY2stc2NvcGUtY2hhaW4taW4tanMtMjZuYyVFRiVCQyU4OQ==" title="https://dev.to/ahmedtahir/what-is-the-execution-context-execution-stack-scope-chain-in-js-26nc%EF%BC%89">https://dev.to/ahmedtahir/what-is-the-execution-context-execution-stack-scope-chain-in-js-26nc）<i class="fa fa-external-link"></i></span></p>
+<p><img data-src="https://i.imgur.com/gEIWBNG.png"><br>（參考來源：<span class="exturl" data-url="aHR0cHM6Ly9kZXYudG8vYWhtZWR0YWhpci93aGF0LWlzLXRoZS1leGVjdXRpb24tY29udGV4dC1leGVjdXRpb24tc3RhY2stc2NvcGUtY2hhaW4taW4tanMtMjZuYyVFRiVCQyU4OQ==" title="https://dev.to/ahmedtahir/what-is-the-execution-context-execution-stack-scope-chain-in-js-26nc%EF%BC%89">https://dev.to/ahmedtahir/what-is-the-execution-context-execution-stack-scope-chain-in-js-26nc）<i class="fa fa-external-link"></i></span></p>
 <p>最後整理關於執行環境的幾個重點：</p>
 <ul>
 <li>JavavaScript 是單執行緒的語言</li>
@@ -593,7 +613,8 @@
     </li>
   </ul>
 
-<div class="ad-post-footer" style="margin: 2rem 0;">
+
+<div class="ad-post-footer" style="margin: 2rem 0; min-height: 280px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -761,7 +782,8 @@
   </div>
 
 
-<div class="ad-sidebar" style="margin-top: 20px;">
+
+<div class="ad-sidebar" style="margin-top: 20px; min-height: 250px;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4274798044223706"
@@ -823,12 +845,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/lib/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>
