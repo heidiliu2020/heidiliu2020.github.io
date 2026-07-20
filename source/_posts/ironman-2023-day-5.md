@@ -23,7 +23,7 @@ date: 2023-09-20 08:35:20
 
 <!--more-->
 
-![](https://i.imgur.com/wSOiSRO.png)
+![](/images/posts/ironman-2023-day-5/wSOiSRO.png)
 
 *滑動廣告是一種藉由左右滑動顯示圖片的廣告類型。*
 

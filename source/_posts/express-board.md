@@ -38,11 +38,11 @@ date: 2020-10-30 00:38:00
 
 首先在資料庫新增一個 users Tabel：
 
-![](https://i.imgur.com/22wyXlm.png)
+![](/images/posts/express-board/22wyXlm.png)
 
 可以把 username 設定為 UNIQUE（唯一），只要 username 有重複就會自動跳出錯誤訊息：
 
-![](https://i.imgur.com/75SSRX2.png)
+![](/images/posts/express-board/75SSRX2.png)
 
 ### Step2. 實作 Model 部分
 
@@ -161,7 +161,7 @@ app.get('/', (req, res) => {
 
 到這裡可先運行程式看看有沒有問題：
 
-![](https://i.imgur.com/Z1iMl9S.png)
+![](/images/posts/express-board/Z1iMl9S.png)
 
 3. 加入前面範例中的驗證功能：
 
@@ -178,7 +178,7 @@ app.get('/', (req, res) => {
 
 這樣在未登入狀態下，就只會看到註冊和登入，這樣就完成了首頁 index 的部分：
 
-![](https://i.imgur.com/n7ew34I.png)
+![](/images/posts/express-board/n7ew34I.png)
 
 ### Step5. 實作註冊功能
 
@@ -221,7 +221,7 @@ app.post('/register', userController.handleRegister)
 
 記得每做到一個段落就執行程式看有沒有出錯，這樣我們就完成簡單的註冊頁面。這時按提交還不會有反應：
 
-![](https://i.imgur.com/AiRq3HA.png)
+![](/images/posts/express-board/AiRq3HA.png)
 
 4. 再來就是實作 handleRegister 的 Controller 部分：
 
@@ -354,11 +354,11 @@ bcrypt.hash(myPlaintextPassword, saltRounds, function(err, hash) {
 
 執行程式並註冊一個帳號，確認資料是否有成功寫進資料庫，密碼也有先經過 hash 才儲存：
 
-![](https://i.imgur.com/SVAu3GZ.png)
+![](/images/posts/express-board/SVAu3GZ.png)
 
 這樣就差不多完成了註冊功能：
 
-![](https://i.imgur.com/zJZMhbF.png)
+![](/images/posts/express-board/zJZMhbF.png)
 
 ### Step7. 實作登入功能
 
@@ -440,7 +440,7 @@ app.get('/logout', userController.logout)
 
 能夠根據未填欄位、或是資料輸入錯誤，顯示相對應的錯誤訊息：
 
-![](https://i.imgur.com/rS4BspM.png)
+![](/images/posts/express-board/rS4BspM.png)
 
 執行程式確認註冊和登入功能都沒問題的話，這樣就完成了簡易的會員註冊系統！藉由 MVC 架構，就能夠很清楚的分工，簡化程式邏輯。
 
@@ -454,7 +454,7 @@ app.get('/logout', userController.logout)
 
 在 app database 新增一個 comments table，以 username 欄位和 users table 進行關聯
 
-![](https://i.imgur.com/WcPt20O.png)
+![](/images/posts/express-board/WcPt20O.png)
 
 ### Step2. 新增留言區塊
 
@@ -481,7 +481,7 @@ app.get('/logout', userController.logout)
 
 畫面看起來會是這個樣子：
 
-![](https://i.imgur.com/KbxPCEY.png)
+![](/images/posts/express-board/KbxPCEY.png)
 
 ### Step3. 新增留言功能
 
@@ -597,7 +597,7 @@ app.get('/', commentController.index)
 
 這樣其實就完成簡易的留言版了！但可以注意到，透過 EJS 語法輸出的時間，和我們預期的 `'MMM-DD-YYYY'` 格式不太相同：
 
-![](https://i.imgur.com/7BWBdzc.png)
+![](/images/posts/express-board/7BWBdzc.png)
 
 ### 補充：透過 moment.js 修改時間格式
 
@@ -635,7 +635,7 @@ app.locals.shortDateFormat = shortDateFormat;
 
 這樣就成功把時間修改成 "YYYY-MM-DD h:mm:ss" 格式了！
 
-![](https://i.imgur.com/yiiWQeZ.png)
+![](/images/posts/express-board/yiiWQeZ.png)
 
 找了幾種引用 moment 的寫法，最後覺得這篇：[How to use node modules (like MomentJS) in EJS views?](https://stackoverflow.com/questions/12794860/how-to-use-node-modules-like-momentjs-in-ejs-views) 內容蠻符合需要的，也就是要如何透過 node 提供的套件來改變 EJS views，稍微嘗試過後，也成功將時間格式調整成想要的樣子！
 
@@ -736,7 +736,7 @@ app.get('/delete_comments/:id', commentController.delete)
 
 記得做好權限管裡，只有該則留言的’作者才能進行刪除：
 
-![](https://i.imgur.com/L9lV2x9.png)
+![](/images/posts/express-board/L9lV2x9.png)
 
 ### Step4. 實作編輯功能
 
@@ -815,11 +815,11 @@ app.post('/update_comments/:id', commentController.handleupdate)
 
 - 有修改權限
 
-![](https://i.imgur.com/GyCcRFg.png)
+![](/images/posts/express-board/GyCcRFg.png)
 
 - 沒有修改權限
 
-![](https://i.imgur.com/J1iF7Ri.png)
+![](/images/posts/express-board/J1iF7Ri.png)
 
 6. 最後剩下 handelUpdate 處理表單提交部分，首先是控制路由部分，透過比對 session 和 params.id 確認是否為本人，並傳入要修改的留言內容：
 
@@ -931,7 +931,7 @@ integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xX
 
 成功引入之後，就會發現畫面套用了 Bootstrap 提供的樣式：
 
-![](https://i.imgur.com/EUjQqMo.png)
+![](/images/posts/express-board/EUjQqMo.png)
 
 3. 再來是 navbar，同樣在 index.ejs 中加上 include() 語法：
 
@@ -961,11 +961,11 @@ integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xX
 
 效果會長這樣：
 
-![](https://i.imgur.com/sepdlt7.png)
+![](/images/posts/express-board/sepdlt7.png)
 
 此外，像 head.ejs、navbar 這些通用模版，可放在 views/template 資料夾統一管理：
 
-![](https://i.imgur.com/2YdWdMx.png)
+![](/images/posts/express-board/2YdWdMx.png)
 
 5. 接著來修改註冊和登入頁面，同樣可在 Bootstrap 找合適的 [forms](https://getbootstrap.com/docs/4.5/components/forms/) 版型：
 
@@ -1049,7 +1049,7 @@ integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xX
 
 兩者寫法其實差不多，只有欄位和路徑需要修改，畫面效果如下：
 
-![](https://i.imgur.com/ySLeqVp.png)
+![](/images/posts/express-board/ySLeqVp.png)
 
 6. 再來是首頁 index.ejs，同樣幫 forms 還有留言卡套用樣式：
 
@@ -1104,7 +1104,7 @@ integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xX
 
 效果如下：
 
-![](https://i.imgur.com/AVp2KF7.png)
+![](/images/posts/express-board/AVp2KF7.png)
 
 6. 最後是編輯留言頁面 update.ejs，也和其他頁面版型差不多：
 
@@ -1141,7 +1141,7 @@ integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xX
 </html>
 ```
 
-![](https://i.imgur.com/1JoojMH.png)
+![](/images/posts/express-board/1JoojMH.png)
 
 透過這個範例，我們學到該如何使用 include() 語法來引入模板，如此就能簡化程式碼，將重複使用的區塊給模組化；此外，也透過 BootStrap 提供的現成樣式，讓我們能快速修改頁面，達到想要的畫面效果。
 

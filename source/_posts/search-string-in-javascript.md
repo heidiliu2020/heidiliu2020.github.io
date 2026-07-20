@@ -9,7 +9,7 @@ categories:
 date: 2023-02-21 16:33:00
 ---
 
-![](https://i.imgur.com/nZfxv6r.jpg)
+![](/images/posts/search-string-in-javascript/nZfxv6r.jpg)
 > Photo by <a href="https://unsplash.com/@rocinante_11?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Mick Haupt</a> on <a href="https://unsplash.com/photos/eQ2Z9ay9Wws?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   
 在處理資料時，查找字串是一種常見的操作，JavaScript 提供不同的方法來搜索字串。其中，最常用的方法包括：search、indexOf、includes 和 match，能夠辨別字串裡是否有想要查找的文字：
@@ -173,7 +173,7 @@ console.log(isPresent2); // false
 
 此外，也體驗了最近正夯的 [ChatGPT](https://openai.com/blog/chatgpt/)，給一段關鍵字寫出來的文章，差不多就完成了八七分架構，只需要再多補充一些觀念，一篇筆記就熱騰騰的誕生了ಠ_ಠ
 
-![](https://i.imgur.com/Fd2VwfC.png)
+![](/images/posts/search-string-in-javascript/Fd2VwfC.png)
 
 雖然這項功能方便又快速，結果卻不一定 100% 正確，有時也會出現一些瞎掰的，甚至與事實相差甚遠的回答；因此該如何善用這項工具，辨別結果並實際應用在工作上的開發、測試、寫文件等等，想必是使用者需要學習的課題吧。
 

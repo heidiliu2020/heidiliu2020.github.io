@@ -20,7 +20,7 @@ date: 2021-03-21 22:04:00
 
 下圖出自於 [Angular 官網](https://angular.tw/guide/architecture-components)：
 
-![](https://i.imgur.com/avqYqaV.png)
+![](/images/posts/angular-binding/avqYqaV.png)
 
 資料綁定（Data Binding）是 Angular 用來協調 Component（TypeScript）與 Template（HTML）互相傳遞資料的機制，依照方向性的不同，可分為四種綁定方式：
 
@@ -99,7 +99,7 @@ export class TodoListComponent implements OnInit {
 
 結果如下：
 
-![](https://i.imgur.com/AoZhrIi.png)
+![](/images/posts/angular-binding/AoZhrIi.png)
 
 根據使用的 property 又分以下幾種，常用於根據綁定 value 布林值決定顯示或移除：
 

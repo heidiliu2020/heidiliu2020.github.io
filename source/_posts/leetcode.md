@@ -294,7 +294,7 @@ console.log(max);
 
 3. 用 Chrome 開啟檔案，以開發者工具進行檢視，在 Sources 欄位點選 Step（F9），即可一步一步執行程式碼，進行除錯
 
-![](https://i.imgur.com/lLFpAEk.png)
+![](/images/posts/leetcode/lLFpAEk.png)
 
 ## Log 大法
 
@@ -322,7 +322,7 @@ console.log(max);
 
 檢視 console 欄位結果如下，可以檢視程式碼運作是否和所想的相同，是否有進入迴圈等等。
 
-![](https://i.imgur.com/5jJvOFQ.png)
+![](/images/posts/leetcode/5jJvOFQ.png)
 
 ### 補充：為什麼用 console.log 印出來的值和想像中不一樣？
 

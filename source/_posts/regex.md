@@ -69,7 +69,7 @@ let reStr = new RegExp('abc')       // 查詢第一次匹配項目
 
 在正規表達式中，某些特殊字元或符號屬於保留字：
 
-![](https://i.imgur.com/CIlAXQ8.png)
+![](/images/posts/regex/CIlAXQ8.png)
 
 以下為使用範例：
 
@@ -122,7 +122,7 @@ const regex = /an{2,}/    // 2 次以上 an 均符合
 
 可參考下圖，在 [Regexr](https://regexr.com/) 網站的測試結果：
 
-![](https://i.imgur.com/VKVMHff.png)
+![](/images/posts/regex/VKVMHff.png)
 
 <br>
 

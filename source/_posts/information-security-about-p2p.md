@@ -7,7 +7,7 @@ categories:
   - Security
 date: 2022-11-29 17:25:00
 ---
-![](https://i.imgur.com/dOrGjQy.png)
+![](/images/posts/information-security-about-p2p/dOrGjQy.png)
 
 ### 從 P2P 網路說起
 
@@ -15,13 +15,13 @@ date: 2022-11-29 17:25:00
 
 我們所熟悉的傳統網站架構，是把所有資源都放在同一台伺服器（Server），當使用者（Client）有需要時再向伺服器發出請求。一旦單一伺服器停擺，就有可能造成整個服務中斷的問題。
 
-![](https://i.imgur.com/OycTetl.png)
+![](/images/posts/information-security-about-p2p/OycTetl.png)
 
 - 圖片來源： [https://commons.wikimedia.org/w/index.php?curid=2551745](https://commons.wikimedia.org/w/index.php?curid=2551745)
 
 而 **Peer to Peer（P2P）網路**，則是網路區塊的所有人均負責儲存全部或部分的資料。除了向其他IP 位址發出請求外，本身也負責處理收到的請求，同時扮演 Client 和 Server 的角色，透過「去中心化」，避免資料被中心化機構所掌控或修改，進而確保資訊安全。
 
-![](https://i.imgur.com/cRfMTpC.png)
+![](/images/posts/information-security-about-p2p/cRfMTpC.png)
 
 - 圖片來源：[https://commons.wikimedia.org/w/index.php?curid=2551723](https://commons.wikimedia.org/w/index.php?curid=2551723)
 

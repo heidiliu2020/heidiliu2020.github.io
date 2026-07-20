@@ -59,7 +59,7 @@ DOM，全名是 Document Object Model（文件物件模型）。
 
 DOM 類似於把 HTML 的文件（Document）轉成物件（Object）。JavaScript 即可透過 DOM 提供的 API 來存取並操作 HTML。
 
-![DOM](https://i.imgur.com/yR0I3JG.png)
+![DOM](/images/posts/javascript-event/yR0I3JG.png)
 
 ### 如何選取 DOM 元素
 
@@ -89,21 +89,21 @@ document 是瀏覽器提供的特殊物件，內部放著許多 function。而�
 
 在瀏覽器運行結果，會得到類陣列如下：
 
-![Tag](https://i.imgur.com/8i7ohCd.png)
+![Tag](/images/posts/javascript-event/8i7ohCd.png)
 
 若改選取 `elements[1]`，即可選取類陣列中的元素：
 
-![類陣列](https://i.imgur.com/4LdiX9r.png)
+![類陣列](/images/posts/javascript-event/4LdiX9r.png)
 
 若根據 Class 和 ID 名稱選取，也是類似用法：
 
 - `document.getElementsByClassName('box')`：括弧內不需加 `.` 即可表示 class
 
-![Class](https://i.imgur.com/O5eCQ6y.png)
+![Class](/images/posts/javascript-event/O5eCQ6y.png)
 
 - `document.getElementById('name')`：注意 ID 只會有一個
 
-![Id](https://i.imgur.com/fia65T6.png)
+![Id](/images/posts/javascript-event/fia65T6.png)
 
 相較於前面三種選取方式，又以 querySelector 更方便且直覺。就像寫 CSS 選擇器來選取元素：
 
@@ -131,7 +131,7 @@ document 是瀏覽器提供的特殊物件，內部放著許多 function。而�
 
 結果只會選取第一個 `<a>`：
 
-![querySelector](https://i.imgur.com/ZE1Ue7g.png)
+![querySelector](/images/posts/javascript-event/ZE1Ue7g.png)
 
 若想選取到所有匹配到的元素，可使用 `querySelectorAll()`：
 
@@ -141,7 +141,7 @@ document 是瀏覽器提供的特殊物件，內部放著許多 function。而�
 
 同樣能夠得到類陣列：
 
-![querySelectorAll](https://i.imgur.com/ih6mj9T.png)
+![querySelectorAll](/images/posts/javascript-event/ih6mj9T.png)
 
 ### 改變元素的 CSS：`.style`
 
@@ -338,7 +338,7 @@ element.addEventListener('click', function(e) {
 
 點擊元素後會出現下列資訊：
 
-![event](https://i.imgur.com/JJEo1ZR.png)
+![event](/images/posts/javascript-event/JJEo1ZR.png)
 
 我們可以用「物件」的方式來取得需要的元素，以常用的事件資訊為例。
 
@@ -375,7 +375,7 @@ element.addEventListener('click', function(e) {
   </form>
 ```
 
-![form](https://i.imgur.com/wWjVaIv.png)
+![form](/images/posts/javascript-event/wWjVaIv.png)
 
 點選表單中的 submit 按鈕後，會以預設方法 `GET` 送出資料，也就是把參數帶入原網址送出。而 submit 事件是在表單送出前觸發，通常用來驗證表單內容。
 
@@ -387,7 +387,7 @@ element.addEventListener('click', function(e) {
 })
 ```
 
-![](https://i.imgur.com/grkuUrS.png)
+![](/images/posts/javascript-event/grkuUrS.png)
 
 ### 阻止預設行為 `e.preventDefault()`
 
@@ -415,7 +415,7 @@ element.addEventListener('click', function(e) {
 </script>
 ```
 
-![](https://i.imgur.com/vjBsv0i.png)
+![](/images/posts/javascript-event/vjBsv0i.png)
 
 參考資料：
 1. [[第七週] DOM - 操作 DOM 介面、事件監聽 - Yakim](https://yakimhsu.com/project/project_w7_DOM.html)

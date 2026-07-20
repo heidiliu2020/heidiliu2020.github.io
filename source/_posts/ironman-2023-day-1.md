@@ -20,7 +20,7 @@ date: 2023-09-16 16:40:00
 
 ## 什麼是 [Qiita](https://qiita.com/)？
 
-![](https://hackmd.io/_uploads/HkS6XJm1T.png)
+![](/images/posts/ironman-2023-day-1/HkS6XJm1T.png)
 
 [Qiita](https://qiita.com/) 是個日本軟體開發社群，可以想成是專屬日本人的記錄與分享技術的平台。以下簡單介紹網站提供的功能，依導覽列由左到右分別如下：
 

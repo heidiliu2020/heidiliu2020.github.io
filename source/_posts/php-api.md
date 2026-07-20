@@ -85,7 +85,7 @@ API 就是純資料的交換。資料以 JSON 形式儲存。
 
 在瀏覽器接收到的 response 就是 JSON 格式的物件，可使用開發者工具查看內容：
 
-![](https://i.imgur.com/RJIaktu.png)
+![](/images/posts/php-api/RJIaktu.png)
 
 ### 實作 API：列出所有文章
 
@@ -197,7 +197,7 @@ API 就是純資料的交換。資料以 JSON 形式儲存。
 ?>
 ```
 
-![](https://i.imgur.com/n9O600m.png)
+![](/images/posts/php-api/n9O600m.png)
 
 ### 前端串接 API
 
@@ -361,7 +361,7 @@ API 就是純資料的交換。資料以 JSON 形式儲存。
 
 利用 postman 以 `POST` 方式發出 request 測試，確認是否能新增留言到資料庫：
 
-![postmanTest](https://i.imgur.com/f4m5fNp.png)
+![postmanTest](/images/posts/php-api/f4m5fNp.png)
 
 #### Step3. 顯示留言功能 `api_comments.php`
 
@@ -424,7 +424,7 @@ API 就是純資料的交換。資料以 JSON 形式儲存。
 
 利用 postman 以 `GET` 方式發出 request 測試，確認是否能讀取留言：
 
-![](https://i.imgur.com/2rjKvzl.png)
+![](/images/posts/php-api/2rjKvzl.png)
 
 這樣就完成後端 API 的新增留言和顯示留言功能。
 
@@ -641,7 +641,7 @@ Reason: CORS header 'Access-Control-Allow-Origin' missing
 TypeError: Cannot read property 'replace' of undefined
 ```
 
-![](https://i.imgur.com/t5Me7wL.png)
+![](/images/posts/php-api/t5Me7wL.png)
 
 - 原因：要進行跳脫的值為 null
 - 解決辦法：先判斷該值是否為空再進行 replace 操作

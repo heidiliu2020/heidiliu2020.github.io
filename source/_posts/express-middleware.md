@@ -28,7 +28,7 @@ date: 2020-10-29 00:37:00
 
 也就是說，Express 會根據定義不同路由來執行接收到的 request，過程中會透過一連串的 middleware 處理，執行到最後產生 response。
 
-![](https://i.imgur.com/uvrlRi6.png)
+![](/images/posts/express-middleware/uvrlRi6.png)
 
 接下來我們會針對 Middleware 的部分做介紹。
 
@@ -72,11 +72,11 @@ app.listen(port, () => {
 
 重整瀏覽器頁面時，會發現畫面什麼東西都沒有：
 
-![](https://i.imgur.com/N6etIbh.png)
+![](/images/posts/express-middleware/N6etIbh.png)
 
 但是在 CLI 介面會印出執行結果，每重整一次畫面就會執行 log 一次：
 
-![](https://i.imgur.com/J3r3CtM.png)
+![](/images/posts/express-middleware/J3r3CtM.png)
 
 之所以沒有得到 response，是因為沒有加入第三個參數，也就是呼叫 next 把控制權轉移到下一個 middleware。可以把程式碼修改如下：
 
@@ -89,7 +89,7 @@ app.use((req, res, next) => {
 
 重整頁面後，就能看到經渲染過的畫面，同時 CLI 介面上也會印出接收 request 的時間：
 
-![](https://i.imgur.com/9vEZvbU.png)
+![](/images/posts/express-middleware/9vEZvbU.png)
 
 這其實就是一個簡單的 middleware 應用。那這個機制實際上在 Express 有哪些用處呢？比如說，在 Express 程式中，並沒有內建解析透過 post method 的 request body、管理 session 機制等功能，就必須透過 middleware 來實現。
 
@@ -139,7 +139,7 @@ module.exports = todoController
 
 回到瀏覽器，會發現必須網址列加上 `?admin=1` 參數才能讀取畫面：
 
-![](https://i.imgur.com/rJV2764.png)
+![](/images/posts/express-middleware/rJV2764.png)
 
 這樣就完成簡單的權限驗證機制，但這其實不是一個好做法，一旦 function 變多就會不易管理。這種情況就是 middleware 登場的時候了！
 
@@ -161,7 +161,7 @@ app.use((req, res, next) => {
 
 執行結果如下：
 
-![](https://i.imgur.com/WkQUoAq.png)
+![](/images/posts/express-middleware/WkQUoAq.png)
 
 這其實就是 middleware 的作用，相較於方法一，我們能透過 middleware 來簡化程式碼。
 
@@ -187,11 +187,11 @@ app.get('/todos', checkPermission, todoController.getAll)
 
 在 `/todos` 這個路由，必須加上 `?admin=1`  才能顯示畫面：
 
-![](https://i.imgur.com/38VqxUf.png)
+![](/images/posts/express-middleware/38VqxUf.png)
 
 但是 `/todos/:id` 這個路由不會受到影響，因為沒有加上 checkPermission() 這個 middleware：
 
-![](https://i.imgur.com/wqOkqgg.png)
+![](/images/posts/express-middleware/wqOkqgg.png)
 
 在上一篇筆記的 todolist 範例中，之所以沒有寫到 next 來轉移控制權，是因為處理完就回傳 response 資料，既然不會用到 next 這個參數，就可省略宣告。
 
@@ -207,7 +207,7 @@ body-parser 是一個用來解析解析 HTTP Request 的中間介。前面有提
 $ npm install body-parser
 ```
 
-![](https://i.imgur.com/4q8sKI0.png)
+![](/images/posts/express-middleware/4q8sKI0.png)
 
 ### body-parser 語法
 
@@ -313,11 +313,11 @@ module.exports = todoController
 
 執行後可在瀏覽器確認是否有畫面：
 
-![](https://i.imgur.com/scuiz9Q.png)
+![](/images/posts/express-middleware/scuiz9Q.png)
 
 這時如果點選提交，會跳轉到錯誤頁面，這是因為還沒有處理路由：
 
-![](https://i.imgur.com/9xs6k0Y.png)
+![](/images/posts/express-middleware/9xs6k0Y.png)
 
 4. 回到 index.js 新增一個處理 newTodo 的路由：
 
@@ -343,7 +343,7 @@ newTodo: (req, res) => {
 
 在瀏覽器提交表單，確認有拿到資料：
 
-![](https://i.imgur.com/EQIScXT.png)
+![](/images/posts/express-middleware/EQIScXT.png)
 
 之所以能夠拿到表單提交的資料，是透過 body-parser 這個中間介解析 resquest body，才能拿取 content，否則程式會因為無法解析而出現錯誤。
 
@@ -377,7 +377,7 @@ add: (content, cb) => {
 
 回到瀏覽器確認是否能夠新增 todo：
 
-![](https://i.imgur.com/Y9fPgmN.png)
+![](/images/posts/express-middleware/Y9fPgmN.png)
 
 這樣就完成一個簡單的 Back-end 專案了！並且有 MVC 架構，也就是 View 顯示畫面，Model 處理資料，Controller 藉由不同路由接收 requset，會執行相對應的 method；還有透過 body-parser 這個 middleware 處理 POST 表單提交的資料。
 
@@ -391,7 +391,7 @@ add: (content, cb) => {
 $ npm install express-session
 ```
 
-![](https://i.imgur.com/jWw5ZYd.png)
+![](/images/posts/express-middleware/jWw5ZYd.png)
 
 ### 實作簡易登入功能
 
@@ -480,7 +480,7 @@ app.get('/logout', (req, res) => {
 
 執行結果：
 
-![](https://i.imgur.com/3RZUKgn.png)
+![](/images/posts/express-middleware/3RZUKgn.png)
 
 這樣就透過 express-session 中間介提供的功能，完成簡單的登入登出功能。
 
@@ -548,7 +548,7 @@ app.post('/login', (req, res) => {
 
 執行結果如下，當提交錯誤時會顯示 errorMessage，重整頁面後就會消失，這就是 flash 的功用：
 
-![](https://i.imgur.com/OepYfsy.png)
+![](/images/posts/express-middleware/OepYfsy.png)
 
 但這種寫法其實還是不夠簡潔，如果要判斷輸出錯誤都還是要向 isLogin 那樣加上 errorMessage。
 

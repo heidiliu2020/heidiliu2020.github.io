@@ -22,7 +22,7 @@ date: 2020-09-26 14:20:00
 
 ## jQuery：JS 函式庫
 
-![](https://i.imgur.com/KKhdOms.png)
+![](/images/posts/jquery-bootstrap/KKhdOms.png)
 
 [jQuery](https://jquery.com/) 是一個 JavaScript 函式庫（Javascipt Framework），是幫助加速網頁程式開發的工具。可解決跨瀏覽器的問題，能夠快速又方面操作 DOM，縮短開發時間與簡化程式碼。
 

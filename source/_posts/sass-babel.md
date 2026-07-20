@@ -33,7 +33,7 @@ date: 2020-09-27 14:20:00
 
 因此 CSS 預處理器就誕生了，讓我們能夠以寫程式的方式處理樣式，方便進行維護。
 
-![](https://i.imgur.com/p8sM9vr.png)
+![](/images/posts/sass-babel/p8sM9vr.png)
 
 ### 什麼是 SASS？
 

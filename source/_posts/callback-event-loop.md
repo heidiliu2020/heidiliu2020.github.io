@@ -31,7 +31,7 @@ JS 程式碼可以選擇跑在瀏覽器上，透過瀏覽器這個執行環境�
 
 可參考下方示意圖：
 
-![](https://i.imgur.com/nP7n8as.png)
+![](/images/posts/callback-event-loop/nP7n8as.png)
 
 也就是說，執行環境不同，能夠使用的就不同，執行方式也會不同。
 
@@ -238,7 +238,7 @@ JavaScript 在調用一個執行環境時，其實會經過兩個階段：
 
 可參考下方示意圖：
 
-![](https://i.imgur.com/SiRxsOL.png)
+![](/images/posts/callback-event-loop/SiRxsOL.png)
 （參考來源：https://dev.to/ahmedtahir/what-is-the-execution-context-execution-stack-scope-chain-in-js-26nc）
 
 但 call stack 能夠存取的內容是有限的，一旦超出 stack 負荷就有可能出現錯誤 stack overflow。例如遞迴呼叫一個 function 十萬次，因為 stack 沒辦法存這麼多東西，就會拋出錯誤。
@@ -253,7 +253,7 @@ setTimeout(fn, 2000) 只是在告訴瀏覽器說：「2 秒以後幫我呼叫 fn
 
 可參考這張 Event Loop 示意圖：
 
-![](https://i.imgur.com/F4oAQmS.png)
+![](/images/posts/callback-event-loop/F4oAQmS.png)
 
 （圖片來源：[Understanding Event Loop, Call Stack, Event & Job Queue in Javascript](https://medium.com/@Rahulx1/understanding-event-loop-call-stack-event-job-queue-in-javascript-63dcd2c71ecd)）
 

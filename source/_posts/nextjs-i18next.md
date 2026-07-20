@@ -11,7 +11,7 @@ categories:
 date: 2024-04-23 16:44:00
 ---
 
-![i18n](https://hackmd.io/_uploads/ry0hNlrZA.png)
+![i18n](/images/posts/nextjs-i18next/ry0hNlrZA.png)
 
 ## 前言
 
@@ -72,7 +72,7 @@ module.exports = {
 
 可參考上述兩種套件的 npm 下載數：
 
-![next-i18n](https://hackmd.io/_uploads/HyMMe1Sb0.png)
+![next-i18n](/images/posts/nextjs-i18next/HyMMe1Sb0.png)
 
 
 ## 使用範例

@@ -11,7 +11,7 @@ date: 2020-12-28 12:56:00
 ---
 以下介紹如何套用 Hexo 主題，以及自訂樣式：
 
-![](https://i.imgur.com/6LNDOBF.png)
+![](/images/posts/hexo-theme/6LNDOBF.png)
 <!--more-->
 
 ## 更換主題
@@ -89,7 +89,7 @@ custom_file_path:
 
 需注意這裡的 source 路徑並不是 next 主題資料夾，而是在 Hexo 專案根目錄的 source/_data，如果沒有 _data 資料夾需自行建立，並在裡面新增 styles.styl 檔案：
 
-![](https://i.imgur.com/eueuD6k.png)
+![](/images/posts/hexo-theme/eueuD6k.png)
 
 ### 撰寫自訂樣式
 
@@ -107,11 +107,11 @@ body {
 
 記得把圖片放到對應位置 `/source/images/bg.jpg` 才能讀取到：
 
-![](https://i.imgur.com/9F4gZn4.png)
+![](/images/posts/hexo-theme/9F4gZn4.png)
 
 結果如下：
 
-![](https://i.imgur.com/6n4wOCV.png)
+![](/images/posts/hexo-theme/6n4wOCV.png)
 
 ## 取消歸檔的「嗯..! 目前共有 x 篇文章。 繼續努力。」
 
@@ -148,7 +148,7 @@ body {
 
 結果如下：
 
-![](https://i.imgur.com/DRbxd52.png)
+![](/images/posts/hexo-theme/DRbxd52.png)
 
 ---
 
@@ -195,7 +195,7 @@ search:
 
 結果如下：
 
-![](https://i.imgur.com/uPH9x7S.png)
+![](/images/posts/hexo-theme/uPH9x7S.png)
 
 ## 結語
 

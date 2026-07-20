@@ -60,7 +60,7 @@ console.log(repeat('abc', 0) === '');
 
 1. 用 npm 下載 Jest：輸入指令 `npm install -save-dev jest`
 
-![](https://i.imgur.com/P2V2LzG.png)
+![](/images/posts/javascript-jest/P2V2LzG.png)
 
 2. 利用模組將「測試」與「要測試的 Function」分開。
 
@@ -101,21 +101,21 @@ test('a 重複 5 次應該要等於', function() {
 
 3. 更新 package.json 檔案的 `"scripts"`：加入 `"test": "jest"`
 
-!["test": "jest"](https://i.imgur.com/85bIvDU.png)
+!["test": "jest"](/images/posts/javascript-jest/85bIvDU.png)
 
 4. 如此即可運行 `npm run test` 進行測試，看到 PASS 可知測試有成功：
 
-![test](https://i.imgur.com/KGT6Vht.png)
+![test](/images/posts/javascript-jest/KGT6Vht.png)
 
 之所以要用 npm 來跑 jest，而不是直接在終端機輸入 jest 指令，是因為 jest 只安裝在該專案底下，要使用時才會拿出來用。
 
 若只想測特定檔案，可以修改 `"scripts"`：`"test": "jest index.test.js"`，後面加上檔名。
 
-![](https://i.imgur.com/4byHuvz.png)
+![](/images/posts/javascript-jest/4byHuvz.png)
 
 或是用 `npx jest index.jest.js`，同樣能夠執行測試：
 
-![](https://i.imgur.com/VGCuYis.png)
+![](/images/posts/javascript-jest/VGCuYis.png)
 
 也可以多跑幾個測式：
 
@@ -135,7 +135,7 @@ test(' "" 重複 10 次應該要等於 ""', function () {
 });
 ```
 
-![測試結果](https://i.imgur.com/Ief4HX8.png)
+![測試結果](/images/posts/javascript-jest/Ief4HX8.png)
 
 也可以把測試項目放在 `describe()` 函式裡，這種寫法會更有結構一點：
 
@@ -177,11 +177,11 @@ describe('測試 repeat', function() {
 
 方法：把 `package.json` 裡的 `"script"` 中的內容改為 `"test": "jest --colors"`，FAIL 和 PASS 標籤就會是紅綠標籤。
 
-![color](https://i.imgur.com/LaX4cI3.png)
+![color](/images/posts/javascript-jest/LaX4cI3.png)
 
 奇怪的是，在 git commit 時都沒有問題，在執行 Jest 時卻出現亂碼。不太確定是不是因為更改 locale 才解決的，總之介面很神奇的變成中文了，可喜可賀。
 
-![UTF-8](https://i.imgur.com/4OCokvV.png)
+![UTF-8](/images/posts/javascript-jest/4OCokvV.png)
 
 參考資料：
 
@@ -229,7 +229,7 @@ describe('測試 reverse', function() {
 
 因為還沒撰寫目標程式，結果就會是 Failed。此步驟目的是確保測試程式可執行，沒有語法錯誤。
 
-![運行測試](https://i.imgur.com/A38CQ2C.png)
+![運行測試](/images/posts/javascript-jest/A38CQ2C.png)
 
 ### 步驟三、實作「最低限度」的產品程式
 
@@ -253,7 +253,7 @@ module.exports = reverse
 
 在這個階段，即完成一個可運作且正確的程式版本，包含產品程式和測試程式。
 
-![Passed](https://i.imgur.com/dJHNZ1j.png)
+![Passed](/images/posts/javascript-jest/dJHNZ1j.png)
 
 ### 步驟五：重構程式
 

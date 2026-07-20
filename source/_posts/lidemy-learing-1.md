@@ -8,7 +8,7 @@ categories:
   - Lidemy
 date: 2020-11-06 00:15:00
 ---
-![](https://i.imgur.com/YLhLtnT.png)
+![](/images/posts/lidemy-learing-1/YLhLtnT.png)
 （Photo by [Matt Duncan](https://unsplash.com/@foxxmd) on [Unsplash](https://unsplash.com/)）
 <!--more-->
 

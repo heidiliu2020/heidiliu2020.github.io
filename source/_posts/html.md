@@ -108,7 +108,7 @@ head 中的文檔並不會呈現在瀏覽器上，通常會包含一些資訊，
 <p>H<sub>2</sub>O</p>
 ```
 
-![sup sub](https://i.imgur.com/SzbbSNA.png)
+![sup sub](/images/posts/html/SzbbSNA.png)
 
 
 ### 空白壓縮
@@ -131,7 +131,7 @@ head 中的文檔並不會呈現在瀏覽器上，通常會包含一些資訊，
 我是段落二
 ```
 
-![](https://i.imgur.com/EFy5QbP.png)
+![](/images/posts/html/EFy5QbP.png)
 
 ### 清單列表
 
@@ -201,7 +201,7 @@ head 中的文檔並不會呈現在瀏覽器上，通常會包含一些資訊，
 </figure>
 ```
 
-![figure](https://i.imgur.com/zRRRzrC.png)
+![figure](/images/posts/html/zRRRzrC.png)
 
 ### `<table>`：表格
 
@@ -215,7 +215,7 @@ head 中的文檔並不會呈現在瀏覽器上，通常會包含一些資訊，
 - 製作長表格時，可分割成 `<thead>`、`<tbody>`、`<tfoot>`
 - 舉個例子：
 
-![table](https://i.imgur.com/2mddzqX.png)
+![table](/images/posts/html/2mddzqX.png)
 
 ```htmlmixed=
 <!-- 上述表格程式碼如下 -->
@@ -269,7 +269,7 @@ from、input、textarea
 1. 可使網頁結構和區塊位置更精確
 2. 幫助優化 SEO（搜尋引擎最佳化）
 
-![](https://i.imgur.com/o04CF37.png)
+![](/images/posts/html/o04CF37.png)
 > 圖片來源：[快速了解HTML語意化標籤| by Kira Yang | Medium](https://medium.com/@changru.studio/%E5%BF%AB%E9%80%9F%E4%BA%86%E8%A7%A3html%E8%AA%9E%E6%84%8F%E5%8C%96%E6%A8%99%E7%B1%A4-33dd8247d779)
 
 - `<header>` 頁首：常包含 Logo 圖案、導航列、搜尋欄位

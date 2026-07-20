@@ -45,45 +45,45 @@ date: 2020-10-03 00:12:00
 
 ## 設定 AWS EC2 主機
 
-![](https://i.imgur.com/BY8vzW5.png)
+![](/images/posts/backend-aws-ubuntu/BY8vzW5.png)
 
 1. 註冊 AWS 會員
 2. 進入 AWS 管理控制台，右上方的選單可以選擇架設主機的地區（離所在地越近主機速度越快，但相對之下價格也會比較貴）
 
-![](https://i.imgur.com/dKkK0oF.png)
+![](/images/posts/backend-aws-ubuntu/dKkK0oF.png)
 
 3. 啟動虛擬機器 - 使用 EC2
 
-![](https://i.imgur.com/PPo4YVf.png)
+![](/images/posts/backend-aws-ubuntu/PPo4YVf.png)
 
 4. 選擇主機 Image 方案：找到「Ubuntu Server 18.04 LTS (HVM), SSD Volume Type」並點選 Select
 
 > Ubuntu 是基於 Debian 的 Linux 發行版，是個免費開源的作業系統。Ubuntu Server 版是為執行伺服端的應用程式而設計的伺服器版本。
 
-![](https://i.imgur.com/wFjYN6H.png)
+![](/images/posts/backend-aws-ubuntu/wFjYN6H.png)
 
 5. 選擇主機等級：選有綠色標籤的免費方案，按右下角的 Next，一直到 Step6
 
-![](https://i.imgur.com/p7ylYvJ.png)
+![](/images/posts/backend-aws-ubuntu/p7ylYvJ.png)
 
 6. 設定防火牆：也就是允許哪些 IP 連線。點選「Add Rule」新增欄位，共需新增兩個，分別是「HTTP 跟 HTTPS」，後面的資料會自動帶入（例如 port 80 和 port 443）
 
-![](https://i.imgur.com/2rEWA1g.png)
+![](/images/posts/backend-aws-ubuntu/2rEWA1g.png)
 
 7. 接著點選「Review and Launch」，進入下一步
 8. 確認設定都沒問題後，點選 Launch
 9. 再來是選擇私鑰，第一格選擇「Create a new key pair」，第二格輸入私鑰名稱，填好後點選右下角儲存私鑰檔案
 
-![](https://i.imgur.com/P7bVck5.png)
+![](/images/posts/backend-aws-ubuntu/P7bVck5.png)
 
 10. 下載後點選「Launch Instances」啟動設置
 11. 確認 Server 有在運行，並記下 IPv4 Public IP（公有 IPv4 地址）
 
-![](https://i.imgur.com/3vlSClN.png)
+![](/images/posts/backend-aws-ubuntu/3vlSClN.png)
 
 12. 接著點選上方的「連線」，會進入以下頁面
 
-![](https://i.imgur.com/nPl6WqE.png)
+![](/images/posts/backend-aws-ubuntu/nPl6WqE.png)
 
 13. 依照說明，在 CLI 輸入下列指令來連線
 
@@ -111,7 +111,7 @@ $ sudo apt update && sudo apt upgrade && sudo apt dist-upgrade
 
 會進去下方介面，可查看有哪些 process 在運行、或占用多少 Memory等等。點選 Q 鍵可離開。
 
-![](https://i.imgur.com/zgZtaUB.png)
+![](/images/posts/backend-aws-ubuntu/zgZtaUB.png)
 
 ### `exit`：結束連線狀態
 
@@ -151,15 +151,15 @@ $ sudo tasksel install lamp-server
 
 會進入紫色的下載畫面：
 
-![](https://i.imgur.com/S5t6yOa.png)
+![](/images/posts/backend-aws-ubuntu/S5t6yOa.png)
 
 3. 接著確認伺服器是否有成功運行，在瀏覽器輸入剛剛記下伺服器的 IPv4 IP 位置，若看到下方預設網頁就代表安裝成功！
 
-![](https://i.imgur.com/ednoBoi.png)
+![](/images/posts/backend-aws-ubuntu/ednoBoi.png)
 
 - 也可利用 `telnet <IP 位置> <port>` 指令，檢視這個埠是否可使用，出現 Connected 就代表成功：
 
-![](https://i.imgur.com/GRUQNVb.png)
+![](/images/posts/backend-aws-ubuntu/GRUQNVb.png)
 
 ---
 
@@ -179,17 +179,17 @@ $ sudo apt install phpmyadmin
 
 2. 進入紫色畫面，選擇連接的網頁伺服器。用空白鍵選 apache2，再按 Enter 確定
 
-![](https://i.imgur.com/arKzEgG.png)
+![](/images/posts/backend-aws-ubuntu/arKzEgG.png)
 
 3. 是否設定 dbconfig-common？選 `<Yes>`
 
 > 此處將會建立一個帳號來管理 phpMyAdmin 運行時用到的資料表，使用者名稱預設為 phpmyadmin，接著要設定這個使用者密碼。
 
-![](https://i.imgur.com/bXr9daY.png)
+![](/images/posts/backend-aws-ubuntu/bXr9daY.png)
 
 4. 設定使用者密碼，輸入完成後按向下鍵選 `<OK>`
 
-![](https://i.imgur.com/LwCsRoT.png)
+![](/images/posts/backend-aws-ubuntu/LwCsRoT.png)
 
 5. 再確認一次密碼，輸入完選 `<OK>`，即完成設置
 
@@ -201,7 +201,7 @@ $ sudo apt install phpmyadmin
 
 由於 MySQL 預設使用 auth_socket 的驗證 plugin，使用者可以透過 sudo 直接登入 root 帳號。但這樣就無法透過 phpMyAdmin 登入圖形化介面，因為 phpMyAdmin 預設需要密碼登入。
 
-![](https://i.imgur.com/b7jTMwy.png)
+![](/images/posts/backend-aws-ubuntu/b7jTMwy.png)
 
 我們可按照下列步驟來設定 root 密碼：
 
@@ -231,7 +231,7 @@ mysql> FLUSH PRIVILEGES;
 mysql> exit
 ```
 
-![](https://i.imgur.com/TDNKk10.png)
+![](/images/posts/backend-aws-ubuntu/TDNKk10.png)
 
 3. 設定 MySQL 的 root password
 
@@ -244,11 +244,11 @@ $ sudo mysql_secure_installation
 
 > 選 1 以上要中英文大小寫 + 符號混用 + 一定長度，複雜性較高。
 
-![](https://i.imgur.com/8dkOixk.png)
+![](/images/posts/backend-aws-ubuntu/8dkOixk.png)
 
 6. 設置密碼，需注意這裡輸入密碼不會顯示，確定設置這個密碼嗎？輸入 `y`
 
-![](https://i.imgur.com/7DXZilL.png)
+![](/images/posts/backend-aws-ubuntu/7DXZilL.png)
 
 7. 以下詢問皆輸入 `y`
 
@@ -259,7 +259,7 @@ $ sudo mysql_secure_installation
 
 8. 最後出現 All Done! 代表設置完成
 
-![](https://i.imgur.com/QpHqCtN.png)
+![](/images/posts/backend-aws-ubuntu/QpHqCtN.png)
 
 9. 接著在瀏覽器輸入 `<IPv4 地址>/phpmyadmin`，會看到 phpmyadmin 的登入畫面，輸入帳密確認是否能夠登入
 - 帳號：root
@@ -274,7 +274,7 @@ Warning in ./libraries/plugin_interface.lib.php#551
  count(): Parameter must be an array or an object that implements Countable
 ```
 
-![](https://i.imgur.com/wqqSslF.png)
+![](/images/posts/backend-aws-ubuntu/wqqSslF.png)
 
 原因是在 php 7.2 版本後，`count()` 在沒有添加參數的情形下，會噴出 Warning 警告訊息。這部分需要我們手動解決。其中有兩個部分需利用 vim 編輯器修改：
 
@@ -326,44 +326,44 @@ $ sudo vim /usr/share/phpmyadmin/libraries/sql.lib.php
 
 2. 點選上方的「登入資訊」，在修改登入的主機名稱，改成任意主機，符號會變成 `&`
 
-![](https://i.imgur.com/Kd6FQxB.png)
+![](/images/posts/backend-aws-ubuntu/Kd6FQxB.png)
 
 3. 回到帳號介面，會發現多了一組 root 帳號如下，這樣就完成設定了！可使用 phpmyadmin 以外的軟體來連到遠端組機
 
-![](https://i.imgur.com/EzcFjgw.png)
+![](/images/posts/backend-aws-ubuntu/EzcFjgw.png)
 
 ---
 
 ## 設定域名
 
-![](https://i.imgur.com/hBbMxyF.png)
+![](/images/posts/backend-aws-ubuntu/hBbMxyF.png)
 
 1. 先在 [gandi.net](https://www.gandi.net/zh-Hant) 註冊帳號
 2. 到電子信箱收驗證信
 3. 進入域名頁面，輸入想要的網域名稱後，再按購買
 
-![](https://i.imgur.com/jBsFzWE.png)
+![](/images/posts/backend-aws-ubuntu/jBsFzWE.png)
 
 4. 會跳轉到註冊網域名稱的頁面，下面會有搜尋結果能夠選擇加入購物車
 
-![](https://i.imgur.com/5rjovGd.png)
+![](/images/posts/backend-aws-ubuntu/5rjovGd.png)
 
 5. 填寫購買資訊，同意相關合約
 
-![](https://i.imgur.com/YDjIGND.png)
+![](/images/posts/backend-aws-ubuntu/YDjIGND.png)
 
 6. 再結帳前可在步驟 2 最下方填入優惠代碼
 7. 購買完成！要記得收取確認信
 
-![](https://i.imgur.com/YJtThnL.png)
+![](/images/posts/backend-aws-ubuntu/YJtThnL.png)
 
 8. 到域名頁面，點選剛剛註冊好的域名
 
-![](https://i.imgur.com/T0SX6D6.png)
+![](/images/posts/backend-aws-ubuntu/T0SX6D6.png)
 
 9. 點選區域檔記錄，將 A 的值修改成 AWS 主機的 IPv4 地址
 
-![](https://i.imgur.com/NgRKfZN.png)
+![](/images/posts/backend-aws-ubuntu/NgRKfZN.png)
 
 10. 在瀏覽器輸入 `<你的域名>`，如果有出現和先前一樣的 Apache2 Ubuntu 預設頁面，就代表部署成功！
 
@@ -382,16 +382,16 @@ $ ssh -i "<私鑰檔案路徑>" ubuntu@ec2-< IPv4 位置>.us-east-2.compute.amaz
 2. 輸入 `cd ..` 兩次，回到根目錄底下
 3. 輸入 `ls` 找到 var 資料夾
 
-![](https://i.imgur.com/mErapfq.png)
+![](/images/posts/backend-aws-ubuntu/mErapfq.png)
 
 4. 輸入 `cd var/www/html`，會進到預設的 apache 首頁所在目錄，也就是我們剛才連到的域名頁面
 5. 這時若想在該目錄新增檔案，會發現權限不夠
 
-![](https://i.imgur.com/XQh7p9v.png)
+![](/images/posts/backend-aws-ubuntu/XQh7p9v.png)
 
 6. 這時可以輸入 `cd ..` 回到 `/var/www` 目錄，再輸入 `ls -al` 可知目前只有 root 帳號有編輯權限：
 
-![](https://i.imgur.com/MJ6kZw7.png)
+![](/images/posts/backend-aws-ubuntu/MJ6kZw7.png)
 
 7. 因此我們要透過 `chown` 指令來修改 ubuntu 帳號的檔案權限：
 
@@ -404,7 +404,7 @@ $ sudo chown ubuntu /var/www/html
 
 8. 修改完成後即可在 `var/www/html` 目錄新增檔案！這時再以 `la -al` 檢視，會發現變成 ubuntu 擁有權限：
 
-![](https://i.imgur.com/uG4D3Ee.png)
+![](/images/posts/backend-aws-ubuntu/uG4D3Ee.png)
 
 ### 利用 git clone 上傳專案
 
@@ -424,12 +424,12 @@ $ sudo chown ubuntu /var/www/html
 - 主機輸入 AWS 的 IP 位置
 - 登入型式選擇「金鑰檔案」，也就是設定主機時的那個 `.pem` 檔案
 
-![](https://i.imgur.com/CSlkeAp.png)
+![](/images/posts/backend-aws-ubuntu/CSlkeAp.png)
 
 2. 設定完成後點選連線，會進入 `/home/ubuntu` 目錄
 3. 回到根目錄，進到 `var/www/html`，會看到 apache 的預設首頁 index.html 檔
 
-![](https://i.imgur.com/MqTnOwv.png)
+![](/images/posts/backend-aws-ubuntu/MqTnOwv.png)
 
 4. 接著就可以放上寫好的程式
 5. 在瀏覽器輸入 `<網域名稱/路徑>`，確認是否有部署成功

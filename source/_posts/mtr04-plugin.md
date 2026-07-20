@@ -364,7 +364,7 @@ export function init(options) {
 
 利用 webpack 將檔案打包成一個 module，即可在 index.html 引入 library。在瀏覽器上開啟頁面，會發現多出全域變數 commentPlugin：
 
-![](https://i.imgur.com/3Vf60Fy.png)
+![](/images/posts/mtr04-plugin/3Vf60Fy.png)
 
 ---
 

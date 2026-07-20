@@ -8,7 +8,7 @@ categories:
 date: 2023-09-15 14:40:00
 ---
 
-![](https://hackmd.io/_uploads/rkobid-yT.png)
+![](/images/posts/google-advertising-service/rkobid-yT.png)
 
 > Ref: https://www.thinkwithgoogle.com/collections/products/
 
@@ -31,7 +31,7 @@ date: 2023-09-15 14:40:00
 
 可參考下方關於廣告主、發布商、用戶的關係圖：
 
-![](https://hackmd.io/_uploads/B1J0dvZJa.png)
+![](/images/posts/google-advertising-service/B1J0dvZJa.png)
 
 > Ref: https://www.gdpr-impact.com/overview-of-the-online-advertising-industry
 
@@ -66,7 +66,7 @@ date: 2023-09-15 14:40:00
 > Reach new customers online with Google Ads.（透過 Google Ads 拓展事業）
 > 
 
-![](https://hackmd.io/_uploads/HyRLsOZ1p.png)
+![](/images/posts/google-advertising-service/HyRLsOZ1p.png)
 
 原名 Google AdWords，發布於 2000 年 10 月 23 日，是 [Google](https://zh.wikipedia.org/wiki/Google%E5%85%AC%E5%8F%B8) 主要的廣告服務產品。AdWords 包括文本廣告、橫幅廣告和多元媒體廣告提供[每點擊成本](https://zh.wikipedia.org/wiki/%E6%AF%8F%E7%82%B9%E5%87%BB%E6%88%90%E6%9C%AC)（CPC）、[千人點擊成本](https://zh.wikipedia.org/wiki/%E5%8D%83%E4%BA%BA%E7%82%B9%E5%87%BB%E6%88%90%E6%9C%AC)（CPM）和指定站點廣告發布服務。
 
@@ -77,7 +77,7 @@ Google Ads 計畫適合**廣告客戶**使用。如果想在網站或應用程�
 > Creating content takes time, making it profitable shouldn't.（製作內容耗時費力，靠內容盈利就應該輕鬆便利）
 > 
 
-![](https://hackmd.io/_uploads/HJ_wjuW16.png)
+![](/images/posts/google-advertising-service/HJ_wjuW16.png)
 
 
 Google AdSense 是廣告聯播網，適合**發布商**使用。如果擁有或管理網站，網誌或論壇，並希望能透過這些網站營利，透過 Google AdSense 計畫，即可在自己的數位資源上顯示廣告，並根據使用者瀏覽廣告或與廣告互動的次數來賺取收益。
@@ -94,7 +94,7 @@ AdSense 適合具有以下需求的發布商：
 > Earn more revenue with your apps.（透過應用程式賺取更多收益）
 > 
 
-![](https://hackmd.io/_uploads/rkzOsd-kT.png)
+![](/images/posts/google-advertising-service/rkzOsd-kT.png)
 
 AdMob 是行動廣告聯播網，也是一個營利平台。如果 APP 開發人員想要透過廣告營利、取得可行深入分析資料，並且拓展應用程式事業，透過 AdMob 聯播網，能將廣告放送到全球，透過行動應用程式營利。此外，開發人員也可以將 AdMob 當做營利平台，假設與多個廣告聯播網合作，此平台能協助提高所有第三方聯播網夥伴的廣告收益。
 
@@ -111,7 +111,7 @@ AdMob 適合具有以下需求的發布商：
 > A complete platform to grow ad revenue and protect your brand wherever people are watching, playing or engaging.（無論用戶在哪裡觀看影片、暢玩遊戲或進行互動，這款全方位的平台都可以協助您的廣告收入不斷增長，同時妥善保護您的品牌）
 > 
 
-![](https://hackmd.io/_uploads/SksOj_-Jp.png)
+![](/images/posts/google-advertising-service/SksOj_-Jp.png)
 
 Google Ad Manager 是一種廣告管理平台，適合具有大量直接銷售廣告的大型發布商使用。Ad Manager 提供精細的廣告控管系統，並支援多種廣告交易平台和聯播網，包括 AdSense、Ad Exchange、第三方聯播網和第三方廣告交易平台，範圍涵蓋網頁與行動應用程式。
 

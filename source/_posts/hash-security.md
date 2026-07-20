@@ -44,7 +44,7 @@ date: 2020-09-16 14:13:00
 
 兩者最大差別在於：「加密可逆，雜湊不可逆」。
 
-![](https://i.imgur.com/ymLoNYw.png)
+![](/images/posts/hash-security/ymLoNYw.png)
 
 ### 加密（Encrypt）
 - 一對一，可逆
@@ -156,7 +156,7 @@ VALUES('aaa', ''), ('admin', 'Hacking!')#
 ```
 3. 執行後會新增兩筆留言，nickname 分別是 aaa 和 admin
 
-![](https://i.imgur.com/zLfxN7g.png)
+![](/images/posts/hash-security/zLfxN7g.png)
 
 ### 防範方法：Prepare Statement 預處理
 
@@ -212,7 +212,7 @@ VALUES('aaa', ''), ('admin', 'Hacking!')#
 XSS 常見的攻擊種類大致上可分為兩種：
 - Reflected XSS（反射型）
 
-![](https://i.imgur.com/zNQGEPN.png)
+![](/images/posts/hash-security/zNQGEPN.png)
 
 以網頁輸入欄位為例。若在輸入欄位內刻意植入 Javascript 語法，例如下列程式碼，即可竊取使用者的 cookie 資料：
 
@@ -222,7 +222,7 @@ XSS 常見的攻擊種類大致上可分為兩種：
 
 - Stored XSS（儲存型）
 
-![](https://i.imgur.com/A5qvwBe.png)
+![](/images/posts/hash-security/A5qvwBe.png)
 
 以留言板為例。攻擊者將惡意程式碼透過「新增留言」寫入資料庫，當使用者瀏覽到該頁面時，就會觸發程式碼，達到攻擊目的。
 

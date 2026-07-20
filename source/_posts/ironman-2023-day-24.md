@@ -48,7 +48,7 @@ GPT-4 的高準確度，真的很棒啊！
 
 > ※ 確切來說是 20 美元，以 1 美元兌換 150 日圓的匯率計算，會是 3000 日圓。
 
-![](https://hackmd.io/_uploads/BJocvZxb6.png)
+![](/images/posts/ironman-2023-day-24/BJocvZxb6.png)
 
 ## 一起免費使用 GPT-4 吧
 
@@ -75,7 +75,7 @@ Bing 搜尋有個名為「Chat」的功能，其功能與 ChatGPT 完全相同�
 
 當然，這是可以免費使用的。
 
-![](https://hackmd.io/_uploads/HJjAoGeZT.png)
+![](/images/posts/ironman-2023-day-24/HJjAoGeZT.png)
 
 在過去兩週中，我透過 Bing Chat 來編寫程式和進行研究。我的感想是，Bing Chat 能做到與  ChatGPT 的 GPT-4（每個月 3,000日圓的方案）相同的事情。
 
@@ -94,12 +94,12 @@ Bing 搜尋有個名為「Chat」的功能，其功能與 ChatGPT 完全相同�
 2023 年 9 月 4 日 追記
 Bing Chat 現在也可以在 Google Chrome 中使用了。謝謝 Microsoft！
 
-![](https://hackmd.io/_uploads/HJ-RXQgZp.png)
+![](/images/posts/ironman-2023-day-24/HJ-RXQgZp.png)
 
 2023 年 9 月 28 日 追記
 雖然在 Google Chrome 也可以使用 Bing Chat，但似乎只能保留 5 次對話紀錄。而在 Microsoft Edge 可保留 30 次對話紀錄，看來 Edge 以外的瀏覽器還是存在著限制⋯⋯（此外，這是以 Microsoft 帳號登入使用 Bing 為前提。）
 
-![](https://hackmd.io/_uploads/BJ-QEveZT.png)
+![](/images/posts/ironman-2023-day-24/BJ-QEveZT.png)
 
 
 上下分別代表使用 Microsoft Edge 和 Google Chrome 瀏覽器的對話紀錄次數。
@@ -112,7 +112,7 @@ Bing Chat 現在也可以在 Google Chrome 中使用了。謝謝 Microsoft！
 
 因此，我決定完全交給 Bing Chat。
 
-![](https://hackmd.io/_uploads/BJiXZrlZa.png)
+![](/images/posts/ironman-2023-day-24/BJiXZrlZa.png)
 
 將 Bing Chat 編寫的 Debug 配置複製貼上，並嘗試進行 Debug。 
 
@@ -120,7 +120,7 @@ Bing Chat 現在也可以在 Google Chrome 中使用了。謝謝 Microsoft！
 
 這樣的高準確度，不愧是 GPT-4。 （如果是用 GPT-3.5，可能會出現部分錯誤，導致無法運行。）
 
-![](https://hackmd.io/_uploads/r1wIZSeWp.png)
+![](/images/posts/ironman-2023-day-24/r1wIZSeWp.png)
 
 ### 完成轉換（移植）腳本語言！
 
@@ -130,11 +130,11 @@ Bing Chat 現在也可以在 Google Chrome 中使用了。謝謝 Microsoft！
 
 在這種情況下，透過 Bing Chat，語言轉換（移植）即可瞬間完成。
 
-![](https://hackmd.io/_uploads/SJAlE8xbp.png)
+![](/images/posts/ironman-2023-day-24/SJAlE8xbp.png)
 
 只需複製貼上 Bing Chat 生成的腳本，建立 PowerShell 腳本（.ps1 文件），即可正常運行。
 
-![](https://hackmd.io/_uploads/BJMzVLlW6.png)
+![](/images/posts/ironman-2023-day-24/BJMzVLlW6.png)
 
 ### 試著改善了程式！
 
@@ -144,7 +144,7 @@ Bing Chat 現在也可以在 Google Chrome 中使用了。謝謝 Microsoft！
 
 但也不可能每次都請專家來檢查⋯⋯這種時候，就使用 GPT-4 來幫忙檢查重構吧！
 
-![](https://i.imgur.com/GnDAoz5.png)
+![](/images/posts/ironman-2023-day-24/GnDAoz5.png)
 
 #### 之二：在自己編寫的程式導入 [OR Mapper（對象關係對映）](https://zh.wikipedia.org/zh-tw/%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84)
 
@@ -155,7 +155,7 @@ Bing Chat 現在也可以在 Google Chrome 中使用了。謝謝 Microsoft！
 
 但有了 GPT-4 就是一瞬間的事情，更友善的是，還可以得知推薦使的工具以及安裝方式（如以下回答，是介紹 Go 的使用方式）。
 
-![](https://i.imgur.com/yXdIYEN.png)
+![](/images/posts/ironman-2023-day-24/yXdIYEN.png)
 
 #### 之三：由於替換不同的 Library，需要修改程式
 
@@ -167,7 +167,7 @@ Bing Chat 現在也可以在 Google Chrome 中使用了。謝謝 Microsoft！
 
 像這種程式修改的情況，有了 GPT-4 將能夠立即完成，準確性也非常出色，只需複製貼上程式碼，程式即可如預期運行。
 
-![](https://i.imgur.com/tW2Pckm.png)
+![](/images/posts/ironman-2023-day-24/tW2Pckm.png)
 
 #### 之四：將冗長的程式碼進行拆分
 
@@ -177,7 +177,7 @@ Bing Chat 現在也可以在 Google Chrome 中使用了。謝謝 Microsoft！
 你是否有過這樣的想法呢？
 在這種時候，使用 GPT-4 來協助進行分割吧。
 
-![](https://i.imgur.com/nIjqJce.png)
+![](/images/posts/ironman-2023-day-24/nIjqJce.png)
 
 ## 最後
 

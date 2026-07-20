@@ -32,16 +32,16 @@ date: 2020-09-30 18:20:00
 - Critical CSS：分批載入，先載入重要的部分
   - 例如：把 navbar、banner 樣式放到 index.html，在讀取 css 之前即可先被載入
 
-![](https://i.imgur.com/sywJHI7.png)
+![](/images/posts/css-optimization/sywJHI7.png)
 
 - CSS Sprites：將每個小檔案打包後，只需發出一個 Request  ，載入完成後再拆開引用
   - 例如：將小圖片打包成大圖片，再取用需要的區塊
 
-![](https://i.imgur.com/XV6V5ak.png)
+![](/images/posts/css-optimization/XV6V5ak.png)
 
 - Cache*：將資料暫存在瀏覽器，只有第一次登入網站需下載，之後就能快速讀取暫存檔
 
-![](https://i.imgur.com/8n3U6Qj.png)
+![](/images/posts/css-optimization/8n3U6Qj.png)
 
 ### 執行方式
 

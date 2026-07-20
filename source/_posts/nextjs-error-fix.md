@@ -92,7 +92,7 @@ useEffect(() => {
 
 事情發生在開發 Next.js APP，實作 dynamic routing 時（如：`server/[evo]/page.tsx`），會顯示以下錯誤：
 
-![error](https://hackmd.io/_uploads/HJ8MieYbA.png)
+![error](/images/posts/nextjs-error-fix/HJ8MieYbA.png)
 
 上述錯誤訊息中的`"output: export"`，是 Next.js 提供支援 [Static Exports（靜態導出）](https://nextjs.org/docs/app/building-your-application/deploying/static-exports)，透過在設定檔 `next.config.js` 加上參數：
 
@@ -112,7 +112,7 @@ export default nextConfig
 
 [官方文件（Deploying: Static Exports | Next.js）](https://nextjs.org/docs/app/building-your-application/deploying/static-exports#unsupported-features) 也提到 App Routing 若想要 Dynamic Routes 必須搭配「只能在 SSR 運行的 `generateStaticParams()`」：
 
-![unsupported](https://hackmd.io/_uploads/S1xrigt-A.png)
+![unsupported](/images/posts/nextjs-error-fix/S1xrigt-A.png)
 
 ### 如何解決？
 

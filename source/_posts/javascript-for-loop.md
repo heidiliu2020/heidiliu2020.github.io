@@ -51,7 +51,7 @@ for (let i = 2; i < 10; i++) {
 
 當 `i = 2` 與 `i = 3` 時的輸出結果如下：
 
-![](https://i.imgur.com/dPeST08.png)
+![](/images/posts/javascript-for-loop/dPeST08.png)
 
 
 ## [arr.forEach](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)：遍歷「陣列」的值

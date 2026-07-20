@@ -37,7 +37,7 @@ date: 2023-10-14 11:03:01
 
 ---
 
-![](https://i.imgur.com/gDb4iD0.png)
+![](/images/posts/ironman-2023-day-29/gDb4iD0.png)
 
 - 將 AWS 的學習路線統整後，以「路線圖風格」呈現。
 - 黃色的圓圈代表重要的項目。
@@ -70,7 +70,7 @@ date: 2023-10-14 11:03:01
 
 基於上述幾項特點，可預期 AWS 的優勢將遠高於就地部署軟體，並且在成本、彈性和可訪問性等方面能夠得到提升。
 
-![](https://hackmd.io/_uploads/Skq9SoSba.png)
+![](/images/posts/ironman-2023-day-29/Skq9SoSba.png)
 
 <iframe width="708" height="315" src="https://www.youtube.com/embed/nNWdBqdbn9w" title="AWSグローバルインフラストラクチャ【4:50】" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -85,49 +85,49 @@ date: 2023-10-14 11:03:01
 對於 [Route 53](https://aws.amazon.com/tw/route53/)，只要能瞭解必備知識 DNS，與名稱解析相關的概念，就不會太困難。
 由於 [CloudFront](https://aws.amazon.com/tw/cloudfront/) 設定項目較多，如果在初期階段過於深入研究，可能會因此感到挫折。
 
-![](https://hackmd.io/_uploads/SyyLLsSZ6.png)
+![](/images/posts/ironman-2023-day-29/SyyLLsSZ6.png)
 
 ## 第 4 週：[運算服務（Compute Services）](https://docs.aws.amazon.com/zh_tw/whitepapers/latest/aws-overview/compute-services.html)
 
 瞭解如何購買 [EC2](https://aws.amazon.com/tw/ec2/)，對於考試和實務都非常重要，這部分也須充分理解。
 如果只是建立伺服器，可透過圖形使用介面（GUI）在一分鐘內搞定，而進一步架構和維護，瞭解 Linux 的基本知識和命令更為重要。
 
-![](https://hackmd.io/_uploads/HyqIIiBZp.png)
+![](/images/posts/ironman-2023-day-29/HyqIIiBZp.png)
 
 [Auto Scaling](https://aws.amazon.com/tw/autoscaling/) 則需要瞭解各種擴展策略（Scaling Policies）的差異。
 
-![](https://hackmd.io/_uploads/HJ_KUiBZa.png)
+![](/images/posts/ironman-2023-day-29/HJ_KUiBZa.png)
 
 [Elastic Beanstalk](https://aws.amazon.com/tw/elasticbeanstalk/)
 只需掌握服務概述，並試著實際運行即可（以下是 [Web 伺服器環境](https://docs.aws.amazon.com/zh_tw/elasticbeanstalk/latest/dg/concepts-webserver.html)，還有[工作者環境](https://docs.aws.amazon.com/zh_tw/elasticbeanstalk/latest/dg/concepts-worker.html)也需掌握）。
 
-![](https://hackmd.io/_uploads/BJ6_LoSb6.png)
+![](/images/posts/ironman-2023-day-29/BJ6_LoSb6.png)
 
 ## 第 5 週：[安全、身份和合規性（Security, Identity, and Compliance）](https://aws.amazon.com/tw/architecture/security-identity-compliance/)
 
 AWS 除了以一般的密碼方式，還使用[基於角色型的存取控制（RBAC）](https://docs.aws.amazon.com/zh_tw/redshift/latest/dg/t_Roles.html)功能進行權限管理。透過瞭解[角色的概念](https://docs.aws.amazon.com/zh_tw/IAM/latest/UserGuide/id.html)以及如何[建立 IAM 政策](https://docs.aws.amazon.com/zh_tw/IAM/latest/UserGuide/access_policies_create.html)，將能夠從容地處理權限錯誤等問題。
 
-![](https://hackmd.io/_uploads/rkB9IoB-p.png)
+![](/images/posts/ironman-2023-day-29/rkB9IoB-p.png)
 
 [Cognito](https://docs.aws.amazon.com/zh_tw/cognito/latest/developerguide/what-is-amazon-cognito.html) 是一項受管服務，用於控制對 Web 和行動應用程式的存取，提供使用者註冊和登入的身份驗證功能。
 
-![](https://hackmd.io/_uploads/HyE3LoBbT.png)
+![](/images/posts/ironman-2023-day-29/HyE3LoBbT.png)
 
 ## 第 6 週：[資料庫（Database）](https://aws.amazon.com/tw/products/databases/)
 
 瞭解如何區別 [Relational Database Service（RDS）](https://aws.amazon.com/tw/rds/) 的 [Multi AZ 部署](https://aws.amazon.com/tw/rds/features/multi-az/) 和[讀取複本（Read Replica）](https://aws.amazon.com/tw/rds/features/read-replicas/)非常重要。
 
-![](https://hackmd.io/_uploads/SyNTUiB-T.png)
+![](/images/posts/ironman-2023-day-29/SyNTUiB-T.png)
 
 此外，也需瞭解 [NoSQL 的 DynamoDB](https://aws.amazon.com/tw/dynamodb/) 和記憶體資料庫的 [ElastiCache](https://aws.amazon.com/tw/elasticache/) 等，以及與傳統的[關連式資料庫管理系統（RDBMS）](https://zh.wikipedia.org/zh-tw/%E9%97%9C%E8%81%AF%E5%BC%8F%E8%B3%87%E6%96%99%E5%BA%AB%E7%AE%A1%E7%90%86%E7%B3%BB%E7%B5%B1)的不同之處。
 
-![](https://hackmd.io/_uploads/SydgRdvbp.png)
+![](/images/posts/ironman-2023-day-29/SydgRdvbp.png)
 
 ## 第 7 週：[儲存（Storage）](https://aws.amazon.com/tw/products/storage/)
 
 需要理解 [Amazon Simple Storage Service（Amazon S3）儲存類別](https://aws.amazon.com/tw/s3/storage-classes/)，以及把握三種 [Glacier](https://aws.amazon.com/tw/s3/storage-classes/glacier/) 的特性。
 
-![](https://hackmd.io/_uploads/r1IQDiHba.png)
+![](/images/posts/ironman-2023-day-29/r1IQDiHba.png)
 
 ## 第 8 週：[管理和管控治理（Management and Governance）](https://aws.amazon.com/tw/products/management-and-governance/)
 
@@ -135,13 +135,13 @@ AWS 除了以一般的密碼方式，還使用[基於角色型的存取控制（
 
 儘管初學者可以透過 [Teraterm](https://zh.wikipedia.org/zh-tw/Tera_Term) 的 SSH 連接來理解如何運作，但目前這種連接方式已經有點過時。
 
-![](https://hackmd.io/_uploads/S1CMwoSWa.png)
+![](/images/posts/ironman-2023-day-29/S1CMwoSWa.png)
 
 ## 第 9 週：[容器](https://aws.amazon.com/tw/containers/)、[無伺服器運算](https://aws.amazon.com/tw/serverless/)、[應用程式整合](https://aws.amazon.com/tw/products/application-integration/)（Containers and Serverless Computing, Application Integration）
 
 理解 [Elastic Container Service（ESC）](https://aws.amazon.com/tw/ecs/)的結構至關重要。特別是理解[任務定義（Task Definition）](https://docs.aws.amazon.com/zh_tw/AmazonECS/latest/developerguide/task_definitions.html)的必備知識 [Dockerfile](https://docs.docker.com/engine/reference/builder/)。
 
-![](https://hackmd.io/_uploads/BJ2bwsrWa.png)
+![](/images/posts/ironman-2023-day-29/BJ2bwsrWa.png)
 
 ## 第 10 週：分析、遷移、其他（Analytics, Migrations）
 
@@ -149,11 +149,11 @@ AWS 除了以一般的密碼方式，還使用[基於角色型的存取控制（
 
 [Kinesis Data Streams](https://aws.amazon.com/tw/kinesis/data-streams/) 是即時的：
 
-![](https://hackmd.io/_uploads/HywNvsSWT.png)
+![](/images/posts/ironman-2023-day-29/HywNvsSWT.png)
 
 [Kinesis Data Firehose](https://aws.amazon.com/tw/kinesis/data-firehose/) 是幾乎即時的：
 
-![](https://hackmd.io/_uploads/HJDrDoSZT.png)
+![](/images/posts/ironman-2023-day-29/HJDrDoSZT.png)
 
 ## 第 11〜12 週：SAA 認證模擬測驗
 

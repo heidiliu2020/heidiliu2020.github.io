@@ -8,7 +8,7 @@ categories:
   - Front-End
 date: 2023-02-09 10:56:00
 ---
-![](https://i.imgur.com/BjhUbsU.png)
+![](/images/posts/safari-pinch-and-double-tap/BjhUbsU.png)
 
 這次專案開發是針對 iOS 系統，需要解決畫面縮放的問題，有些關鍵字來回搜尋好多遍，卻還是容易搞混，於是乎乾脆記錄下來，日後如果遇到這類型問題，也會直接更新在這篇。
 
@@ -129,7 +129,7 @@ document.addEventListener('gesturestart', function(event) {
 - touchEvent 支援多點觸控
 - gesturestart 兩指以上觸碰時觸發，僅 iOS 支援
 
-![](https://i.imgur.com/IJ6LKrt.png)
+![](/images/posts/safari-pinch-and-double-tap/IJ6LKrt.png)
 
 ### `user-select: none`：**禁止區塊反白選取**
 

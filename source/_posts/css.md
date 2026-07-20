@@ -236,7 +236,7 @@ a:hover {
 
 盒模型又稱為區塊模型，意思是所有 HTML 元素均可被視為一個盒子。我們能透過 CSS 控制內距、外距、邊框屬性，來調整盒子的外觀及位置。
 
-![box model](https://i.imgur.com/HzfLkAY.png)
+![box model](/images/posts/css/HzfLkAY.png)
 
 盒模型的組成由外而內分別為：
 
@@ -260,12 +260,12 @@ a:hover {
 
 - `box-sizing: content-box`：為預設屬性。「內容」就等於長寬度。
 
-![content-box](https://i.imgur.com/euaGSlb.png)
+![content-box](/images/posts/css/euaGSlb.png)
 加上 border 和 padding 會導致元素實際大小比設定值還大。
 
 - `box-sizing: border-box`：「邊框到邊框之間的範圍」等於長寬度。
 
-![border-box](https://i.imgur.com/BdytGoL.png)
+![border-box](/images/posts/css/BdytGoL.png)
 此時長寬設定會套用到 border、padding、content。
 
 而 margin 在兩種盒模型都是額外加上去的，並不會影響盒子長寬。
@@ -303,15 +303,15 @@ display 是 CSS 中用於控制排版的屬性。每個 HTML 元素都有一個�
 
 #### `display: block`
 
-![block](https://i.imgur.com/jx5DjYZ.png)
+![block](/images/posts/css/jx5DjYZ.png)
 
 #### `display: inline`
 
-![inline](https://i.imgur.com/SBjWPnH.png)
+![inline](/images/posts/css/SBjWPnH.png)
 
 #### `display: inline-block`
 
-![inline-block](https://i.imgur.com/I4pokc3.png)
+![inline-block](/images/posts/css/I4pokc3.png)
 
 ### 以文字排版為例：
 

@@ -132,7 +132,7 @@ npm init -y
 npm install webpack webpack-cli --save-dev
 ```
 
-![](https://i.imgur.com/MP3ufbd.png)
+![](/images/posts/gulp-webpack/MP3ufbd.png)
 
 ### 相關語法
 
@@ -196,13 +196,13 @@ console.log(utils.first('abc'))
 
 在 CLI 執行 `npm src/index.js` 後印出 `a`，代表成功引入檔案。
 
-![](https://i.imgur.com/QmPof6p.png)
+![](/images/posts/gulp-webpack/QmPof6p.png)
 
 接著以 `npx webpack` 執行打包，完成會自動把檔案 main.js 放在資料夾 dist。
 
 若執行檔案 `npm dist/main.js` 仍會得到相同結果：
 
-![](https://i.imgur.com/aE3nKoD.png)
+![](/images/posts/gulp-webpack/aE3nKoD.png)
 
 接著在 index.html 引入：
 

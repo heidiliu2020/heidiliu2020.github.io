@@ -17,7 +17,7 @@ date: 2020-12-14 00:57:00
 
 在 VSCode 可以針對錯誤進行快速修復，也可以選擇加入註解，忽略 eslint 的錯誤訊息：
 
-![](https://i.imgur.com/NPyX5Mj.png)
+![](/images/posts/react-proptypes/NPyX5Mj.png)
 
 除此之外，React 有另一個能夠提升程式碼品質的功能，也就是透過 PropTypes 來驗證 Props 型態。
 

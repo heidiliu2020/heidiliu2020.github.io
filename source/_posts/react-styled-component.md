@@ -45,7 +45,7 @@ function Title({ size }) {
 
 顯示結果：
 
-![](https://i.imgur.com/QGFGRwV.png)
+![](/images/posts/react-styled-component/QGFGRwV.png)
 
 ### 二、使用 webpack 打包
 
@@ -75,7 +75,7 @@ function App() {
 
 顯示結果：
 
-![](https://i.imgur.com/nBoFnXg.png)
+![](/images/posts/react-styled-component/nBoFnXg.png)
 
 ### 三、使用 styled-components 套件
 
@@ -120,7 +120,7 @@ function App() {
 
 可以想成 Description 就是有 style.p 的 component，而 React 會動態隨機產生 className，並加入設定好的 class：
 
-![](https://i.imgur.com/634Pzhw.png)
+![](/images/posts/react-styled-component/634Pzhw.png)
 
 ### 以切出簡單的 TodoItem 為例
 
@@ -172,7 +172,7 @@ function App() {
 
 結果如下：
 
-![](https://i.imgur.com/NTDXvq3.png)
+![](/images/posts/react-styled-component/NTDXvq3.png)
 
 通常會把模板 TodoItem 獨立寫成 component，改寫後如下：
 
@@ -214,7 +214,7 @@ const TodoContent = styled.div`
 
 結果如下：
 
-![](https://i.imgur.com/P06HZye.png)
+![](/images/posts/react-styled-component/P06HZye.png)
 
 ## styled component 實戰
 
@@ -275,7 +275,7 @@ function App() {
 }
 ```
 
-![](https://i.imgur.com/teWo6kl.png)
+![](/images/posts/react-styled-component/teWo6kl.png)
 
 ### 範例二：透過 MEDIA QUERY 實作 RWD
 
@@ -315,7 +315,7 @@ const Button = styled.button`
 
 RWD 結果如下：
 
-![](https://i.imgur.com/OVfi3XR.gif)
+![](/images/posts/react-styled-component/OVfi3XR.gif)
 
 ### 範例三：使用 Sass 向量變數
 

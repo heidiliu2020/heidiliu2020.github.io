@@ -35,7 +35,7 @@ function App() {
 
 就會在每次畫面 render 結束後執行 useEffect 傳入的 function：
 
-![](https://i.imgur.com/QJJIuOp.png)
+![](/images/posts/react-useeffect/QJJIuOp.png)
 
 但通常我們不會想要在每次 render 後都執行 function，像是設定在某些 state 改變時才會執行。
 
@@ -56,7 +56,7 @@ function writeTodosToLocalStorage(todos) {
 
 如果在新增 todo 的同時進行 `console.log(todos)`，會發現畫面 render 了，todos 卻還沒有更新：
 
-![](https://i.imgur.com/ATpucjM.png)
+![](/images/posts/react-useeffect/ATpucjM.png)
 
 因此不能直接在 function 中寫入 todos，而是要直接寫入更新過的狀態，其他功能也以此類推，在每次改變 todo 時都要執行 writeTodosToLocalStorage()：
 
@@ -98,7 +98,7 @@ useEffect(() => {
 
 這樣就成功在每次 render 後，都把最新的 todos 狀態同步到 localStorage：
 
-![](https://i.imgur.com/UKSkzM7.png)
+![](/images/posts/react-useeffect/UKSkzM7.png)
 
 但這樣做其實有個缺點，透過執行的 console.log()，可發現連在輸入 input 時也會執行 render，應該只需要在 todos 有改變時才進行 render。
 
@@ -144,7 +144,7 @@ useEffect(() => {
 
 但是在重整頁面瞬間，會發現畫面閃了一下，這是因為第一次 render 畫面顯示的是 useState 初始設定，第二次 render 才是放入 todoDate：
 
-![](https://i.imgur.com/asdZh1d.gif)
+![](/images/posts/react-useeffect/asdZh1d.gif)
 
 那麼該如何解決 useEffect 這個問題呢？接下來會繼續介紹其他功能來改善。
 
@@ -178,13 +178,13 @@ import { useState, useRef, useEffect, useLayoutEffect } from "react";
 
 如此畫面就不會再閃一次初始的資料了：
 
-![](https://i.imgur.com/HNXymGK.gif)
+![](/images/posts/react-useeffect/HNXymGK.gif)
 
 至於為什麼會產生這個情況，可從 React 的 Hook Flow 談起。
 
 ### Hook Flow 流程圖
 
-![](https://i.imgur.com/usOw4li.png)
+![](/images/posts/react-useeffect/usOw4li.png)
 （圖片來源：https://github.com/donavon/hook-flow/blob/master/README.md）
 
 Hook 執行流程可分為三個部分：

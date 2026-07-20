@@ -9,7 +9,7 @@ categories:
   - Docusaurus
 date: 2022-12-19 10:13:00
 ---
-![](https://i.imgur.com/7UpoFaC.jpg)
+![](/images/posts/docusaurus-react-blog/7UpoFaC.jpg)
 
 ## 前言
 
@@ -34,7 +34,7 @@ date: 2022-12-19 10:13:00
 
 ## 什麼是 Docusaurus？
 
-![](https://i.imgur.com/BNVL8zg.png)
+![](/images/posts/docusaurus-react-blog/BNVL8zg.png)
 
 > Document（文件）+ saurus（恐龍）= Docusaurus
 > 一直覺得這名字很難記，透過拆字希望能幫助記憶:3
@@ -43,7 +43,7 @@ date: 2022-12-19 10:13:00
 
 ### 為什麼選擇 Docusaurus？
 
-![](https://i.imgur.com/UuV6bh4.png)
+![](/images/posts/docusaurus-react-blog/UuV6bh4.png)
 
 開頭有提到 Docusaurus 幾項特點，再參照官網說明後整理如下：
 
@@ -81,7 +81,7 @@ $ npm run start
 
 4. 即可在 `http://localhost:3000/` 看到專案預設頁面如下，自動建立了首頁和 Tutorial、Blog 兩個文檔頁面： 
 
-![](https://i.imgur.com/4Ypjr15.png)
+![](/images/posts/docusaurus-react-blog/4Ypjr15.png)
 
 5. 在部署前，需將網站資料打包到 `/build` 資料夾中，即可在 GitHub 等平台部署靜態網頁
 
@@ -144,7 +144,7 @@ my-website         // 根目錄
 
 接著開啟剛才建置完成的專案目錄，docs 資料夾內的文檔對應頁面如下：
 
-![](https://i.imgur.com/Rkpmx9z.png)
+![](/images/posts/docusaurus-react-blog/Rkpmx9z.png)
 
 ### Docusaurus 網站相關配置
 
@@ -324,7 +324,7 @@ module.exports = {
 
 ### 建立模板頁面
 
-![](https://i.imgur.com/7vcwgeU.png)
+![](/images/posts/docusaurus-react-blog/7vcwgeU.png)
 
 ```
 ---

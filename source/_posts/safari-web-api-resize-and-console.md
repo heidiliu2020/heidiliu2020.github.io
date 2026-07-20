@@ -35,7 +35,7 @@ Photo by [Pandhuya Niking](https://unsplash.com/@dispandu?utm_source=unsplash&ut
 
 儘管仍可查看元件樣式，但主控台呈現一片空白：
 
-![](https://hackmd.io/_uploads/BynS2TbSn.png)
+![](/images/posts/safari-web-api-resize-and-console/BynS2TbSn.png)
 
 > 白天不懂夜的黑，Console 不懂我的悲QQ
 
@@ -84,7 +84,7 @@ window.addEventListener("resize", (e) => {
 
 以下是不同裝置上的瀏覽器對 Fullscreen API 支援度：
 
-![](https://hackmd.io/_uploads/rk2Y3pZSh.png)
+![](/images/posts/safari-web-api-resize-and-console/rk2Y3pZSh.png)
 
 可以看到 Safari 雖然在行動裝置僅支援到 iOS 12，在 PC 上還是能支援到 16.4。但需注意的是，不像其他瀏覽器，Fullscreen API 只能套用在 video 元素上，若用在其他像是 div 元素時一概沒有反應，這點真的很不友善。
 
@@ -92,7 +92,7 @@ window.addEventListener("resize", (e) => {
 
 ### What is PWA?
 
-![](https://hackmd.io/_uploads/ByFz66WBh.png)
+![](/images/posts/safari-web-api-resize-and-console/ByFz66WBh.png)
 Ref: https://www.evertop.pl/en/progressive-web-app-pwa/
 
 以下是 MDN 關於 [PWA](https://developer.mozilla.org/zh-TW/docs/Web/Progressive_web_apps) 的介紹：
@@ -117,7 +117,7 @@ Ref: https://www.evertop.pl/en/progressive-web-app-pwa/
 
 - Reference：[Vibration API - MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API)
 
-![](https://hackmd.io/_uploads/S11Rn6WB2.png)
+![](/images/posts/safari-web-api-resize-and-console/S11Rn6WB2.png)
 
 Safari 沒有懸念不支援 Vibration API，但令人感到意外的是 Firefox 也僅支援較低版本。
 

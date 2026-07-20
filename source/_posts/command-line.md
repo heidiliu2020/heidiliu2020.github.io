@@ -92,7 +92,7 @@ date: 2020-06-18 13:17:00
   可以寫 `cd ../media`：先回到上一層，再進入 media 資料夾
   也可寫 `cd ~/downloads/test/media`：直接用絕對路徑進入
 
-![cd 語法練習](https://i.imgur.com/emeMG2h.png)
+![cd 語法練習](/images/posts/command-line/emeMG2h.png)
 
 > 小技巧：直接把圖形介面的資料夾拖到 CLI 裡，就會自動輸入那個資料夾的絕對路徑。可節省打字時間。
 

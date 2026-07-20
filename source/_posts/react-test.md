@@ -27,7 +27,7 @@ date: 2020-12-17 01:08:00
   -  從使用者角度出發，對真實系統進行測試
   -  主要為「人工測試」
 
-![](https://i.imgur.com/ybx5NbQ.png)
+![](/images/posts/react-test/ybx5NbQ.png)
 
 （參考資料：[一次搞懂單元測試、整合測試、端對端測試之間的差異](https://blog.miniasp.com/post/2019/02/18/Unit-testing-Integration-testing-e2e-testing)）
 
@@ -39,7 +39,7 @@ date: 2020-12-17 01:08:00
 
 在我們建立專案時，就有個 App.test.js 檔案可用來寫測試內容：
 
-![](https://i.imgur.com/4dcIFV1.png)
+![](/images/posts/react-test/4dcIFV1.png)
 
 每個測試會用一個 function 包住：
 
@@ -65,11 +65,11 @@ $ npm run test
 
 測試預設會找 App.test.js 在上次 commit 時有更動的部分，例如輸入 a 可跑所有測試結果：
 
-![](https://i.imgur.com/Hao9KG7.png)
+![](/images/posts/react-test/Hao9KG7.png)
 
 由於 App.test.js 是 watch 模式，只要檔案有變動就會自動跑測試，結果會長這樣：
 
-![](https://i.imgur.com/EA3y0KO.png)
+![](/images/posts/react-test/EA3y0KO.png)
 
 ### 實際應用
 
@@ -82,7 +82,7 @@ $ npm run test
 
 例如以下範例，藉由 mock API 來模擬每次 fetch 會回傳的資料，再使用 await waitfor() 非同步處理進行測試：
 
-![](https://i.imgur.com/OX9LJ4X.png)
+![](/images/posts/react-test/OX9LJ4X.png)
 
 這種測試方法其實就類似於 Unit testing 或 Integration testing，再來要介紹的是用於 End-to-end testing 的程式。
 
@@ -106,15 +106,15 @@ $ npx cypress open
 
 或是在 package.json 的 scripts 新增 cypress open 指令，即可使用 `npm run cypress:open` 指令執行：
 
-![](https://i.imgur.com/GNMrji1.png)
+![](/images/posts/react-test/GNMrji1.png)
 
 第一次執行 cypress open 時，會自動在 my-app 資料夾建立 cypress 相關程式，像是 integration 裡的內建測試等等。
 
-![](https://i.imgur.com/GPisKnv.png)
+![](/images/posts/react-test/GPisKnv.png)
 
 執行後會自動開啟 GUI 介面：
 
-![](https://i.imgur.com/deKsjBl.png)
+![](/images/posts/react-test/deKsjBl.png)
 
 預設的測試檔名為 `spec.js`，例如我們可在 integration 建立一個 home.spec.js，並在 my-app 底下的 cypress.json 新增 baseUrl：
 
@@ -138,11 +138,11 @@ describe("The Home Page", () => {
 
 點選 cypress 介面中的 home.spec.js 執行：
 
-![](https://i.imgur.com/20LvIQ2.png)
+![](/images/posts/react-test/20LvIQ2.png)
 
 此時會自動開啟 Chrome 瀏覽器跑測試，結果如下：
 
-![](https://i.imgur.com/L5NO3Ag.png)
+![](/images/posts/react-test/L5NO3Ag.png)
 
 ### 透過 route 來 mock API
 
@@ -184,11 +184,11 @@ describe("The Home Page", () => {
 
 測試結果如下：
 
-![](https://i.imgur.com/TdVmUf5.png)
+![](/images/posts/react-test/TdVmUf5.png)
 
 查看 Request URL 會發現網址有被 cypress 換成 mock API，藉此來 mock 回傳結果：
 
-![](https://i.imgur.com/xYYEpka.png)
+![](/images/posts/react-test/xYYEpka.png)
 
 - 參考文章：[[Cypress 1] E2E Testing 初探](https://medium.com/hannah-lin/cypress-e2e-testing-%E5%88%9D%E6%8E%A2-a10eca3c0cf7)
 

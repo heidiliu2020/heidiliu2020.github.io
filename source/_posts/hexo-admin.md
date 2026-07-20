@@ -8,7 +8,7 @@ categories:
   - Hexo
 date: 2020-12-02 14:08:00
 ---
-![](https://i.imgur.com/T1CHqyf.png)
+![](/images/posts/hexo-admin/T1CHqyf.png)
 
 在上篇[【學習筆記】如何使用 Hexo + GitHub Pages 架設個人網誌](https://heidiliu2020.github.io/2020/11/07/202011-hexo-github/)中，我們學會如何打造簡單的個人網誌後，再來要介紹如何透過 hexo-admin 這個套件，以更直觀的方式在後台管理網誌文章。
 
@@ -45,34 +45,34 @@ $ hexo s
 
 看到下方提示就代表運行成功：
 
-![](https://i.imgur.com/zXT8P5C.png)
+![](/images/posts/hexo-admin/zXT8P5C.png)
 
 2. 在瀏覽器輸入 http://localhost:4000 可以預覽發布前的網誌
 3. 進入 http://localhost:4000/admin 可進入後台管理，在 Posts 可看到文章列表：
 
-![](https://i.imgur.com/ZGKnhui.png)
+![](/images/posts/hexo-admin/ZGKnhui.png)
 
 在 Pages 可編輯其他頁面：
 
-![](https://i.imgur.com/UWJr7PU.png)
+![](/images/posts/hexo-admin/UWJr7PU.png)
 
 ## 新增文章 Publish
 
 1. 點選左上角的 New Post，可輸入該文章的網址名稱，接著打勾或按 Enter：
 
-![](https://i.imgur.com/fMCYDdW.png)
+![](/images/posts/hexo-admin/fMCYDdW.png)
 
 2. 就會進入編輯頁面，可在標題列編輯文章標題，標題下方則是文章網址，左邊區塊可編輯 Markdown 文章內容，右方區塊則是預覽文章
 
-![](https://i.imgur.com/190UBSx.png)
+![](/images/posts/hexo-admin/190UBSx.png)
 
 3. 編輯完成後，可點選 Publish 左側的設定，修改發布文章時間、標籤、分類，確認都沒問題後，即可點選 Publish 發布文章
 
-![](https://i.imgur.com/BBUAMBO.png)
+![](/images/posts/hexo-admin/BBUAMBO.png)
 
 4. 回到 http://localhost:4000 即可看到剛才新增的文章
 
-![](https://i.imgur.com/Jezhv4m.png)
+![](/images/posts/hexo-admin/Jezhv4m.png)
 
 ### 補充：Read more 功能
 
@@ -84,7 +84,7 @@ $ hexo s
 
 1. 在終端機按 Ctrl+C，可停止本地端伺服器
 
-![](https://i.imgur.com/BXhBwiC.png)
+![](/images/posts/hexo-admin/BXhBwiC.png)
 
 2. 輸入下方三個指令進行部署
 

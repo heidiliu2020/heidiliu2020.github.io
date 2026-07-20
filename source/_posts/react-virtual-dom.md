@@ -15,11 +15,11 @@ date: 2020-12-10 00:56:00
 
 在 React 課程最一開始，也就是[實作 Todo List](https://hackmd.io/@Heidi-Liu/note-fe302-review) 作為範例有提到，新增 todo 時「透過更改資料，畫面再根據資料進行渲染」，可確保兩者永遠一致：
 
-![](https://i.imgur.com/k1STU0n.png)
+![](/images/posts/react-virtual-dom/k1STU0n.png)
 
 那時採取的是簡單暴力的作法，也就是當 State 改變，我們就清空畫面並重新渲染 DOM 元素：
 
-![](https://i.imgur.com/vf17UN9.png)
+![](/images/posts/react-virtual-dom/vf17UN9.png)
 
 但這其實會有效能問題，假如我們今天總共有 100 個 DOM，即使只修改其中一個，卻還是必須清空並重新 Render 這 100 個 DOM。
 
@@ -32,7 +32,7 @@ date: 2020-12-10 00:56:00
 - 透過 State 的改變，render 出 Virtual DOM
 - 透過比對 Virtual DOM 的不同，再更新真的 DOM 到畫面
 
-![](https://i.imgur.com/ApLV4M6.png)
+![](/images/posts/react-virtual-dom/ApLV4M6.png)
 
 ### 什麼是 Virtual DOM？
 
@@ -40,7 +40,7 @@ Virtual DOM 實際上就是用 JavaScript 物件來描述 DOM 結構。
 
 當 DOM 的節點需要更動時，不會直接修改 DOM，而是透過 DOM diff 演算法比較 Virtual DOM 修改前與修改後的樹狀結構，再批次更新真實的 DOM 節點。
 
-![](https://i.imgur.com/ADMTzi4.png)
+![](/images/posts/react-virtual-dom/ADMTzi4.png)
 （圖片來源：https://tutorialslink.com/Articles/What-is-Virtual-DOM/1580）
 
 比如下方這段 DOM 結構：
@@ -151,15 +151,15 @@ useMemo 的用法則是無關於父元件，主要用在當元件重新渲染時
 
 當我們開啟開發者工具，查看修改 todo 狀態 button 的監聽事件，會是以下畫面：
 
-![](https://i.imgur.com/YKxqY4S.png)
+![](/images/posts/react-virtual-dom/YKxqY4S.png)
 
 但如果把 button 的 click 監聽事件給 remove，還是能夠更改狀態：
 
-![](https://i.imgur.com/7jftRiR.png)
+![](/images/posts/react-virtual-dom/7jftRiR.png)
 
 這是因為，React 是由上層的節點 root 進行事件監聽，也就是以 `<div id="root"></div>` 作為事件代理：
 
-![](https://i.imgur.com/7I8Yekk.png)
+![](/images/posts/react-virtual-dom/7I8Yekk.png)
 
 React 透過這樣的事件機制能夠提升效能，也確保動態新增的元素能夠捕捉到事件機制。
 
@@ -188,15 +188,15 @@ React 透過這樣的事件機制能夠提升效能，也確保動態新增的�
 
 前端在 MVC 模式中，隨著應用規模增加，Model 與 View 之間的複雜關係使得開發難度增加。
 
-![](https://i.imgur.com/09TAbTq.png)
+![](/images/posts/react-virtual-dom/09TAbTq.png)
 
 而為了改善 MVC 模式，之後就出現了 MVP 模式，將 MVC 中的 Controller 改為 Presenter，使 Model 和 View 兩者之間相互獨立，但這同樣有個缺點，就是 Presenter 需要承擔的功能過多，難以後續維護。
 
-![](https://i.imgur.com/UOlvxGZ.png)
+![](/images/posts/react-virtual-dom/UOlvxGZ.png)
 
 MVVM 結構是以 MVP 作為基礎進行改良，將原來的 Presenter 進化為 View Of Model（VM：視圖模型），負責 View 與 Model 的雙向綁定，將 View與 Model 之間的手動維護更新改為自動更新，這麼做的好處是大幅提高可維護性。但也需注意 ViewModel 構建與維護成本相對較高，複雜的視圖也帶來性能成本，因此不適用較簡單的頁面。
 
-![](https://i.imgur.com/XaC6n6i.png)
+![](/images/posts/react-virtual-dom/XaC6n6i.png)
 
 直到 React 出現，解決思路就是「當 Model 發生改變時直接重新渲染 View」，引入 Virtual DOM 的概念。透過 JavaScript 物件來描述 DOM 結構，產生當下 Model 對應的 Virtual DOM 結構，再和上次的 Virtual DOM 結構透過 Diff 演算法比較，再將兩者差異建立在真實 DOM 上。
 

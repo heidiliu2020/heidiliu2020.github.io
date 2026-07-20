@@ -46,14 +46,14 @@ JavaScript 是一種物件導向（Object-oriented programming）的腳本語言
 
 出現版本號就代表安裝成功。
 
-![](https://i.imgur.com/IXXGrb0.png)
+![](/images/posts/javascript/IXXGrb0.png)
 
 
 ### `node`：直接在 CML 開啟 Node 環境
 
 可在終端機輸入指令。按 Crtl+C 或輸入就`.exit` 即可退出。
 
-![](https://i.imgur.com/L3DJaob.png)
+![](/images/posts/javascript/L3DJaob.png)
 
 ---
 
@@ -63,12 +63,12 @@ JavaScript 是一種物件導向（Object-oriented programming）的腳本語言
 
 1. 寫在 HTML 文件中的 `<script >` 標籤內
 
-![HTML JS](https://i.imgur.com/r1gMPnm.png)
+![HTML JS](/images/posts/javascript/r1gMPnm.png)
 
 2. 用瀏覽器開啟該檔案，點選右鍵選單的檢查，進入開發者工具介面
 3. 可在 Console 主控台檢視或直接撰寫。通常用來測試代碼的可行性、或直接 debug 抓錯
 
-![Google JS](https://i.imgur.com/1U5LzRD.png)
+![Google JS](/images/posts/javascript/1U5LzRD.png)
 
 ### 在 Command Line 執行
 
@@ -76,11 +76,11 @@ JavaScript 是一種物件導向（Object-oriented programming）的腳本語言
 
 > 也可使用 VSCode、Sublime 等程式碼編輯器來撰寫程式碼
 
-![vim 介面](https://i.imgur.com/4392JMK.png)
+![vim 介面](/images/posts/javascript/4392JMK.png)
 
 2. `node index.js`：在 CML 執行檔案 index.js
 
-![node 執行](https://i.imgur.com/zkJPsbj.png)
+![node 執行](/images/posts/javascript/zkJPsbj.png)
 
 ---
 
@@ -109,19 +109,19 @@ JavaScript 是一種物件導向（Object-oriented programming）的腳本語言
 
 只要其中一個是 true 就會返回 true，除非全部為 false。意即只要其中一個條件滿足就成立。
 
-![or](https://i.imgur.com/v0j07Ua.png)
+![or](/images/posts/javascript/v0j07Ua.png)
 
 #### `&&`：and 
 
 全部為 true 才會是 true，否則均返回 false。意即全部條件都必須成立。
 
-![and](https://i.imgur.com/dbhRafe.png)
+![and](/images/posts/javascript/dbhRafe.png)
 
 #### `!`：not
 
 做反向。
 
-![!](https://i.imgur.com/2scURgc.png)
+![!](/images/posts/javascript/2scURgc.png)
 
 ### `||` 與 `&&` 的短路性質
 
@@ -159,11 +159,11 @@ console.log(false && 3)　　//　output false
 
 #### <<：將位元往左移一位，可作為乘以 2。
 
-![<< 左移](https://i.imgur.com/7f9YfSO.png)
+![<< 左移](/images/posts/javascript/7f9YfSO.png)
 
 #### >>：將位元往右移一位，可作為除以 2。若無法整除則會直接捨去。
 
-![>> 右移](https://i.imgur.com/RP4O8zV.png)
+![>> 右移](/images/posts/javascript/RP4O8zV.png)
 
 - 由於電腦使用的是二進位系統，位元運算的速度通常會快於乘法和除法運算。
 
@@ -249,7 +249,7 @@ console.log('typeof true', typeof true)
 //輸出 typeof true boolean
 ```
 
-![](https://i.imgur.com/rT6DR1N.png)
+![](/images/posts/javascript/rT6DR1N.png)
 
 在 [MDN 網站](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/typeof) 列出 typeof 的可能回傳值：
 
@@ -418,7 +418,7 @@ console.log(heidi.address)　　　　// 用點（.）取出物件屬性
 var key = 'name'
 console.log(heidi[key])　　　　　　// 這裡 heidi[key] 等於 heidi.name
 ```
-![](https://i.imgur.com/XKReoRy.png)
+![](/images/posts/javascript/XKReoRy.png)
 
 ---
 
@@ -435,7 +435,7 @@ console.log({a: 1} === {a: 1})
 
 結果卻是：
 
-![](https://i.imgur.com/x9CYSuk.png)
+![](/images/posts/javascript/x9CYSuk.png)
 
 變數是一個箱子，在放入數字的情況下：
 
@@ -455,7 +455,7 @@ console.log(obj === {a:1})    // 印出 false，兩者不相等
 
 可以想像成「記憶體位置」：儘管兩個箱子儲存的數值相同，但因記憶體位置不同，指向的元素不同，所以不會相等。
 
-![](https://i.imgur.com/ZAY1PrG.png)
+![](/images/posts/javascript/ZAY1PrG.png)
 
 如果換成下列情形：
 
@@ -482,7 +482,7 @@ console.log(obj === obj2)        // 印出 true，兩者相等
 
 會發現 obj 的值也一起被更改了。這是因為 obj 和 obj2 指向同一個記憶體位置，指向同一個物件。
 
-![](https://i.imgur.com/cgfJMmd.png)
+![](/images/posts/javascript/cgfJMmd.png)
 
 但如果 `obj2 = {b:1}`：obj2 等於一個新的物件，會指向一個新的記憶體位置：
 
@@ -500,7 +500,7 @@ console.log(obj === obj2)        // 印出 false，兩者不相等
 
 這是因為「往裡面放東西」與「改放全新的東西」是兩件完全不同的事情。後者會指向一個新的記憶體，可參考下圖理解：
 
-![](https://i.imgur.com/JkzALWA.png)
+![](/images/posts/javascript/JkzALWA.png)
 
 ---
 
@@ -780,7 +780,7 @@ console.log('i=', i)　　// 印出 i = 6
 
 執行結果如下圖：
 
-![break](https://i.imgur.com/V9mi4KK.png)
+![break](/images/posts/javascript/V9mi4KK.png)
 
 
 #### `continue`（繼續）：繼續下一次迴圈語句，會忽略在 continue 之後的語句，直接跳到下一次的迴圈開頭
@@ -804,7 +804,7 @@ console.log('i=', i)　　// 印出 i = 11
 ```
 執行結果如下圖：
 
-![continue](https://i.imgur.com/FoASLD1.png)
+![continue](/images/posts/javascript/FoASLD1.png)
 
 --- 
 
@@ -976,7 +976,7 @@ console.log (
 
 也可直接把整組函式丟到 console.log() 括號內，就不需再額外命名。好處是可直接修改函式定義，如以下範例：
 
-![function 傳入 log](https://i.imgur.com/IatovLR.png)
+![function 傳入 log](/images/posts/javascript/IatovLR.png)
 
 ---
 
@@ -997,7 +997,7 @@ add(2, 5)                   // 引數是 2 和　5
 
 結果如下圖，印出 `{ '0': 2, '1': 5 }`。
 
-![](https://i.imgur.com/9BaESkL.png)
+![](/images/posts/javascript/9BaESkL.png)
 
 #### Argument 物件
 
@@ -1391,7 +1391,7 @@ for (var i=0; i<str.length; i++){
 }
 ```
 
-![](https://i.imgur.com/16SoONi.png)
+![](/images/posts/javascript/16SoONi.png)
 
 ### Array 類型的內建函式
 

@@ -12,7 +12,7 @@ description: Next.js 路由系統筆記：從建立專案開始，比較 App Rou
 date: 2024-01-26 15:25:01
 ---
 
-![Parallel Routes](https://hackmd.io/_uploads/SkK9xkWqp.png)
+![Parallel Routes](/images/posts/nextjs-app-router/SkK9xkWqp.png)
 > Ref: [Next.js - Parallel Routes](https://nextjs.org/docs/app/building-your-application/routing/parallel-routes#streaming)
 
 ## 前言
@@ -108,7 +108,7 @@ What import alias would you like configured? @/*
 
 接著輸入 `cd my-app` 指令移動到專案根目錄，再以 `npm run dev` 指令運行開發伺服器，進入 `http://localhost:3000/` 即可看到初始頁面如下，也就是 `app/page.tsx` 的內容：
 
-![image](https://hackmd.io/_uploads/ryQN1aXtT.png)
+![image](/images/posts/nextjs-app-router/ryQN1aXtT.png)
 
 ## Router System 路由系統
 
@@ -174,7 +174,7 @@ What import alias would you like configured? @/*
 
 可參考官方部落格的這篇文章[《Layouts RFC》](https://nextjs.org/blog/layouts-rfc)，包含以下檔案對應頁面路由的示意圖：
 
-![image](https://hackmd.io/_uploads/B1-kgTiKp.png)
+![image](/images/posts/nextjs-app-router/B1-kgTiKp.png)
 
 ### App Router：基於目錄的路由系統
 
@@ -215,7 +215,7 @@ What import alias would you like configured? @/*
 
 可參考[官方文件](https://nextjs.org/docs/app/building-your-application/routing)，以下是目錄對應頁面路由的示意圖：
 
-![image](https://hackmd.io/_uploads/SyBL03sK6.png)
+![image](/images/posts/nextjs-app-router/SyBL03sK6.png)
 
 ## File Convention 檔案規則
 
@@ -235,7 +235,7 @@ What import alias would you like configured? @/*
 
 以下是官方文件提供的路由範例架構，可以看到父層和子層均有 layout、error 以及 loading 元件，用來處理各自的邏輯：
 
-![router image](https://hackmd.io/_uploads/BJGCACec6.png)
+![router image](/images/posts/nextjs-app-router/BJGCACec6.png)
 
 ## 結語
 

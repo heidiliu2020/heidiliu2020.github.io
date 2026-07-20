@@ -81,7 +81,7 @@ date: 2020-08-07 13:54:00
 - 點擊 inner 會觸發 inner ➡️ outer
 - 點擊 button 會觸發 button ➡️ inner ➡️ outer
 
-![](https://i.imgur.com/6YDCa36.png)
+![](/images/posts/javascript-dom/6YDCa36.png)
 
 由此可知當點擊內部節點，同時也會點擊到外層節點。
 
@@ -101,7 +101,7 @@ date: 2020-08-07 13:54:00
 
 任何事件在傳遞時，都會按照這個順序下去傳遞。這也是為什麼，當觸發底層節點的事件同時，上層所有的節點也會被觸發。
 
-![](https://i.imgur.com/zj2brCF.png)
+![](/images/posts/javascript-dom/zj2brCF.png)
 
 > 可參考：[W3C -  event flow 的示意圖](https://www.w3.org/TR/DOM-Level-3-Events/#event-flow)
 

@@ -40,7 +40,7 @@ function test() {
 test();
 ```
 
-![](https://i.imgur.com/9yFrDnZ.png)
+![](/images/posts/javascript-this/9yFrDnZ.png)
 
 #### 在瀏覽器運行
 
@@ -52,7 +52,7 @@ function test() {
 test();
 ```
 
-![](https://i.imgur.com/wVCdilg.png)
+![](/images/posts/javascript-this/wVCdilg.png)
 
 ### use strict 嚴格模式
 
@@ -321,7 +321,7 @@ t.run();
 
 在瀏覽器上的運行結果，會發現第二個 this 等於全域的 Window：
 
-![](https://i.imgur.com/27kKU6Q.png)
+![](/images/posts/javascript-this/27kKU6Q.png)
 
 也就是說，在 100 毫秒後才呼叫，其實作用就等同於在全域呼叫這個 function：
 
@@ -348,7 +348,7 @@ t.run();
 
 在瀏覽器上的運行結果，此時兩個 this 會變相同：
 
-![](https://i.imgur.com/thp7RZD.png)
+![](/images/posts/javascript-this/thp7RZD.png)
 
 這就是箭頭函式的特性，和箭頭函式中的 this 怎麼呼叫沒關係。而是類似 Scope（作用域）的機制，看程式碼定義在哪裡，就會利用定義的 block 來呈現這個 this 的值。
 

@@ -17,7 +17,7 @@ date: 2020-11-02 00:41:00
 
 <!--more-->
 
-![](https://i.imgur.com/PPlaGG2.png)
+![](/images/posts/pd101-lidemy/PPlaGG2.png)
 
 課程內容也會以之前 Huli 和助教共同實作的 Lidemy 學習系統作為範例。
 
@@ -27,7 +27,7 @@ date: 2020-11-02 00:41:00
 
 工程師會根據 PM 提出的產品需求來進行開發，而一個產品需求產生的流程如下：
 
-![](https://i.imgur.com/EHWat4x.png)
+![](/images/posts/pd101-lidemy/EHWat4x.png)
 
 - stakeholder 利益相關者，也就是客戶
 - Product Requirement Document 產品需求文件
@@ -98,11 +98,11 @@ User Story（使用者故事）是一段簡單的功能敘述，藉由客戶或�
 
 以開發 Lidemy 作業系統為例子，這是初步的產品需求：
 
-![](https://i.imgur.com/5Ho0Vcl.png)
+![](/images/posts/pd101-lidemy/5Ho0Vcl.png)
 
 若以 User Story 方式撰寫，就能夠使產品需求更加明確化，也能瞭解不同使用者身份的需求以及開發順序：
 
-![](https://i.imgur.com/Fewp6BB.png)
+![](/images/posts/pd101-lidemy/Fewp6BB.png)
 
 ### 繪製 Flowchart & Wireframe
 
@@ -110,11 +110,11 @@ User Story（使用者故事）是一段簡單的功能敘述，藉由客戶或�
 
 - User Flow
 
-![](https://i.imgur.com/YH4yf2T.png)
+![](/images/posts/pd101-lidemy/YH4yf2T.png)
 
 - Wireframe
 
-![](https://i.imgur.com/xuiuBsv.png)
+![](/images/posts/pd101-lidemy/xuiuBsv.png)
 
 繪製 Flowchart 時，也找了一些參考資料，瞭解該如何繪製：
 
@@ -128,7 +128,7 @@ User Story（使用者故事）是一段簡單的功能敘述，藉由客戶或�
 
 [DEMO 連結](https://whimsical.com/user-flow-3tEi3hG3GKRsEhkS2NWyUr)
 
-![](https://i.imgur.com/aZ4xEt5.png)
+![](/images/posts/pd101-lidemy/aZ4xEt5.png)
 
 ---
 
@@ -143,7 +143,7 @@ User Story（使用者故事）是一段簡單的功能敘述，藉由客戶或�
 
 通常會利用現成的平台，像是 [Jira](https://www.atlassian.com/software/jira?&aceid=&adposition=&adgroup=95003645449&campaign=9124878702&creative=415542752365&device=c&keyword=jira&matchtype=e&network=g&placement=&ds_kids=p51242189318&ds_e=GOOGLE&ds_eid=700000001558501&ds_e1=GOOGLE&gclid=Cj0KCQiAqdP9BRDVARIsAGSZ8AmzbfXvaxlwsl-90CIIUAkOsgLAcBIQqvuBIBX6R1pusz1JtPF-YN0aAmAzEALw_wcB&gclsrc=aw.ds) 或 [Trello](https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwjcs9ex14vtAhUJ2JYKHUcCDpAYABAAGgJ0bA&ohost=www.google.com&cid=CAESQeD2WFtLVx7m4sxyAETq0QhFpv4aoGVXXC4BVir7uZg3w-13OYYSOAe1JqEjAJlVp3D8sJb-CC2_cVhsWy4YuOVX&sig=AOD64_0u5335M7RN9R-81x8vFUm_0Adr3A&q&adurl&ved=2ahUKEwjgjtGx14vtAhUHwosBHfAjCF0Q0Qx6BAgMEAE) 來管理任務，通常一個 User Story 就會切割成一張票：
 
-![](https://i.imgur.com/l4GdKJq.png)
+![](/images/posts/pd101-lidemy/l4GdKJq.png)
 
 透過這些平台，能夠用來切割工作區塊，也能讓整個團隊快速瀏覽整體工作進度。
 
@@ -164,7 +164,7 @@ User Story（使用者故事）是一段簡單的功能敘述，藉由客戶或�
 
 ### Waterfall 瀑布流
 
-![](https://i.imgur.com/XRtzTAx.png)
+![](/images/posts/pd101-lidemy/XRtzTAx.png)
 
 - 從上往下，不能往回，一次性
 - 呈現完整性較高
@@ -178,7 +178,7 @@ User Story（使用者故事）是一段簡單的功能敘述，藉由客戶或�
 
 ### Agile 敏捷
 
-![](https://i.imgur.com/Rp9dRyX.png)
+![](/images/posts/pd101-lidemy/Rp9dRyX.png)
 
 - 及早並持續地交付，精簡化
 - 彈性較高，能夠改變需求
@@ -195,21 +195,21 @@ User Story（使用者故事）是一段簡單的功能敘述，藉由客戶或�
 
 這裡以 Trello 和 Jira 平台為例：
 
-![](https://i.imgur.com/dvYXPf0.png)
+![](/images/posts/pd101-lidemy/dvYXPf0.png)
 
 - Trello
 
-![](https://i.imgur.com/5dSZWIc.png)
+![](/images/posts/pd101-lidemy/5dSZWIc.png)
 
 - Jira 平台的 Kanban Board
 
-![](https://i.imgur.com/6oPUTVR.png)
+![](/images/posts/pd101-lidemy/6oPUTVR.png)
 
-![](https://i.imgur.com/a9XYtOX.png)
+![](/images/posts/pd101-lidemy/a9XYtOX.png)
 
 ### 實作 Agile 概念：Scrum
 
-![](https://i.imgur.com/Xs7PQ5q.png)
+![](/images/posts/pd101-lidemy/Xs7PQ5q.png)
 
 透過 Scrum 的開發流程：
 
@@ -220,7 +220,7 @@ User Story（使用者故事）是一段簡單的功能敘述，藉由客戶或�
 - Daily Scrum：例行溝通進度
 - Review、Retrospective：檢視進度與檢討
 
-![](https://i.imgur.com/qMvYoim.png)
+![](/images/posts/pd101-lidemy/qMvYoim.png)
 
 在實際開發扮演的角色：
 

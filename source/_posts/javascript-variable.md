@@ -77,7 +77,7 @@ console.log('typeof true', typeof true)
 
 接著我們再看看其他範例結果：
 
-![](https://i.imgur.com/rT6DR1N.png)
+![](/images/posts/javascript-variable/rT6DR1N.png)
 
 由結果可知，array  和 null 也屬於 object 型態，但前面不是說 null 的屬於原始型態嗎？這其實是 JavaScript 的歷史 bug，詳細內容可查閱下方參考資料：
 
@@ -195,7 +195,7 @@ console.log(obj === {a:1})
 
 如下方示意圖：
 
-![](https://i.imgur.com/ZAY1PrG.png)
+![](/images/posts/javascript-variable/ZAY1PrG.png)
 
 ### 關於 `=` 等號賦值
 
@@ -226,7 +226,7 @@ console.log(obj === obj2)      // 印出 true，兩者相等
 
 之所以 obj 的值也一起被更改，是因為 obj 和 obj2 指向了相同記憶體位置（0x01），也就是指向同一個物件：
 
-![](https://i.imgur.com/cgfJMmd.png)
+![](/images/posts/javascript-variable/cgfJMmd.png)
 
 但如果以 `obj2 = {b:1}` 將 obj2 賦值一個新的物件，此時就會指向一個新的記憶體位置。以下方程式碼為例：
 
@@ -245,7 +245,7 @@ console.log(obj === obj2)        // 印出 false，兩者不相等
 
 會發現 obj2 和 obj 不相等，這是因為「往裡面放東西」與「改放全新的東西」是兩件完全不同的事情。後者會指向一個新的記憶體，可參考下圖理解：
 
-![](https://i.imgur.com/JkzALWA.png)
+![](/images/posts/javascript-variable/JkzALWA.png)
 
 若以陣列為例，會得到相同的結果，以下列程式碼為例：
 

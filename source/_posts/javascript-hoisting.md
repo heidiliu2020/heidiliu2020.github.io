@@ -405,7 +405,7 @@ loop(10);
   - 裡面儲存該 function 的相關資料，例如變數和函式定義
   - 每當呼叫一個 function 時，都會建立一個新的 local EC，並且被放到執行堆疊（Call Stack）最上面
 
-![](https://i.imgur.com/BeuXQfQ.png)
+![](/images/posts/javascript-hoisting/BeuXQfQ.png)
 （參考來源：https://medium.com/%E9%AD%94%E9%AC%BC%E8%97%8F%E5%9C%A8%E7%A8%8B%E5%BC%8F%E7%B4%B0%E7%AF%80%E8%A3%A1/%E6%B7%BA%E8%AB%87-javascript-%E5%9F%B7%E8%A1%8C%E7%92%B0%E5%A2%83-2976b3eaf248）
 
 ### 呼叫 & 執行堆疊（Call Stack）
@@ -426,7 +426,7 @@ JavaScript 在調用一個執行環境時，其實會經過兩個階段：
 
 可參考下方的執行環境流程示意圖：
 
-![](https://i.imgur.com/gEIWBNG.png)
+![](/images/posts/javascript-hoisting/gEIWBNG.png)
 （參考來源：https://dev.to/ahmedtahir/what-is-the-execution-context-execution-stack-scope-chain-in-js-26nc）
 
 最後整理關於執行環境的幾個重點：

@@ -23,7 +23,7 @@ date: 2020-06-14 00:30:00
 
 我們其實曾接觸過版本控制，例如備份檔案，或是以不同檔名保存編輯過的檔案：
 
-![個人的版本控制](https://i.imgur.com/2nnCsCD.png)
+![個人的版本控制](/images/posts/git/2nnCsCD.png)
 ## 但這種管理方式會碰到哪些問題？
 
 1. 檔案一多、時間久了之後不易管理
@@ -54,7 +54,7 @@ date: 2020-06-14 00:30:00
 
 在當前位置新增 `.git` 隱藏資料夾，也就是建立 Git Repository（檔案庫）。目的是初始化這個目錄，讓 Git 對這個目錄做版本控管。
 
-![init 初始化](https://i.imgur.com/BVuxZag.png)
+![init 初始化](/images/posts/git/BVuxZag.png)
 
 ### `git status`：檢查當前版本狀態
 
@@ -69,14 +69,14 @@ date: 2020-06-14 00:30:00
 - `git add <file>`：加入版控
 - 若檔案數量太多，可使用 `git add .` 把檔案全部加入版本控制。
 
-![git add 指令](https://i.imgur.com/vX2e43W.png)
+![git add 指令](/images/posts/git/vX2e43W.png)
  
 ### `git commit`：新建版本
 
 1. 輸入指令後會進入 vim 介面，就可以編輯提交版本訊息（commit message）
 2. 若不想進入 vim，也可輸入 `git commit -m "message"` 直接建立新版本
 
-![git commit 指令](https://i.imgur.com/NlBaU85.png)
+![git commit 指令](/images/posts/git/NlBaU85.png)
 
 ### 小技巧：`git commit -am　"message"` 
 
@@ -91,11 +91,11 @@ date: 2020-06-14 00:30:00
 
 從新到舊列出，內容分別是版本號碼、提交者、提交時間。
 
-![git log 指令](https://i.imgur.com/gZ9G2c1.png)
+![git log 指令](/images/posts/git/gZ9G2c1.png)
 
 - `git log --oneline`：輸出更簡短的 log，只用版本號前七碼代值
 
-![git log --oneline 指令](https://i.imgur.com/V0HyJbP.png)
+![git log --oneline 指令](/images/posts/git/V0HyJbP.png)
 
 ### `git checkout`：切換到某個版本
 
@@ -103,7 +103,7 @@ date: 2020-06-14 00:30:00
 - `git checkout <版本號碼>` ：切換到指定版本
 - `git checkout master` ：切換到最新版本
 
-![git checkout 指令](https://i.imgur.com/hqROiIw.png)
+![git checkout 指令](/images/posts/git/hqROiIw.png)
 
 ### `.gitignore`：忽略不要版本控制的檔案
 
@@ -114,15 +114,15 @@ date: 2020-06-14 00:30:00
 1. 輸入 `touch .gitignore` 建立檔案
 2. 輸入 `vim .gitignore` 進入 `vim` 介面
  
-![進入vim介面](https://i.imgur.com/dwIzY2m.png)
+![進入vim介面](/images/posts/git/dwIzY2m.png)
 
 3. 以不加入版控的 test 為例，輸入完 test 後儲存離開
 
-![建立忽略清單](https://i.imgur.com/WtYtJkL.png)
+![建立忽略清單](/images/posts/git/WtYtJkL.png)
 
 4. 以 `git status` 查看，可知 test 這個檔案已被 git 忽略
 
-![完成忽略清單](https://i.imgur.com/XUsgqPr.png)
+![完成忽略清單](/images/posts/git/XUsgqPr.png)
 
 5. 如此即可使用 `git add .` 把所有檔案加入版本控制，包括新舊檔案；
 再用 `git commit -m "message"` 建立新版本
@@ -150,7 +150,7 @@ date: 2020-06-14 00:30:00
 ### 補充 1：檔案在 Git 底下的四種狀態
 
 - File status lifecycle（圖片來自 [link](https://kueiblog.herokuapp.com/post/git%E5%AD%B8%E7%BF%92%E4%B9%8B%E4%BA%8C%20-%20commit%E8%AC%9B%E8%A7%A3%E3%80%81reset%E5%BE%A9%E5%8E%9F%E7%89%88%E6%9C%AC%E3%80%81%E5%BB%BA%E7%AB%8B%E5%88%86%E6%94%AF/)）
-![File status lifecycle](https://i.imgur.com/jz9qufH.png)
+![File status lifecycle](/images/posts/git/jz9qufH.png)
 
 1. untracked（未追蹤的）：代表檔案尚未被加入版控
 2. staged（暫存區）：等待被 commit 的檔案，才能執行 `git commit` 指令送入版本庫

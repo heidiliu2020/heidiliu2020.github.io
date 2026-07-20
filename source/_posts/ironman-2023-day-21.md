@@ -35,7 +35,7 @@ date: 2023-10-06 08:52:01
 各位是否已經看過數位廳的網站了？這是近期成為討論話題的[數位廳（デジタル庁）](https://www.digital.go.jp/)：
 
 
-![](https://hackmd.io/_uploads/Bybv2B9ea.png)
+![](/images/posts/ironman-2023-day-21/Bybv2B9ea.png)
 
 這是截至 2023 年 6 月的數位廳網站。這不會太扯了嗎？當我第一眼看到時，忍不住心想「哇靠w」。接下來，我想談談這個網站究竟是哪裡令人感到驚訝。
 
@@ -44,7 +44,7 @@ date: 2023-10-06 08:52:01
 當我第一次看到網站時，感到非常驚訝。 「太簡單易讀了吧！」這是政府網站吧？提到政府機構的網站時，多數人可能會有這樣的印象，排滿難以閱讀的小字，但數位廳的網站竟如此貫徹簡潔性且易於閱讀。使用的字體是容易閱讀的 Noto Sans JP。黑色也不再是 `#000`，而是一種好看的顏色。這也太讚了吧。
 接下來，當我看到這個佈局時，我認為因為有留白，所以能夠更容易閱讀。使用 Chrome Dev Tool 來查看佈局時，發現到：
 
-![](https://hackmd.io/_uploads/SJGs6Sqe6.png)
+![](/images/posts/ironman-2023-day-21/SJGs6Sqe6.png)
 
 竟然採用 **12-Column [Grid Design](https://developer.mozilla.org/zh-TW/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout)（ 12 列[格線設計](https://developer.mozilla.org/zh-TW/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout)）**！ ！ ！而且是 CSS Grid！這是我第一次看到像這樣漂亮使用 12 列格線設計的網站。 
 
@@ -57,7 +57,7 @@ date: 2023-10-06 08:52:01
 
 [デザインシステム｜デジタル庁](https://www.digital.go.jp/policies/servicedesign/designsystem/)
 
-![](https://hackmd.io/_uploads/r1SlRScgp.png)
+![](/images/posts/ironman-2023-day-21/r1SlRScgp.png)
 
 我認為設計被大量地用語言表達是很容易理解的。
 
@@ -83,27 +83,27 @@ date: 2023-10-06 08:52:01
 
 ## 採用現代前端開發技術
 
-![](https://hackmd.io/_uploads/r1jTavhep.png)
+![](/images/posts/ironman-2023-day-21/r1jTavhep.png)
 
 透過可以大略檢查 Web 網站使用何種技術的工具 [wappalyzer](https://chrome.google.com/webstore/detail/wappalyzer-technology-pro/gppongmhjkpfnbhagpmjfkannfbllamg) 查看時，忍不住懷疑這真的是政府機關的網站嗎，使用的竟然是現代技術。
 
 值得關注的技術棧採用 Next.js、S3、CloudFront。在眾多使用 jQuery 或 WordPress 製作的網站當中，使用 Next.js 技術開發的政府網站實在令人驚訝。
 
-<img src="https://hackmd.io/_uploads/BJpqAw2gT.png" width="400">
+<img src="/images/posts/ironman-2023-day-21/BJpqAw2gT.png" width="400">
 
-<img src="https://hackmd.io/_uploads/rkz2Av2e6.png" width="400">
+<img src="/images/posts/ironman-2023-day-21/rkz2Av2e6.png" width="400">
 
 > [推文連結](https://twitter.com/chibicode/status/1629307668568633344)
 
 或許是使用 Next.js 的 [SSG（Static Site Generation）](https://nextjs.org/docs/pages/building-your-application/rendering/static-site-generation) 功能，將靜態網站部署到 S3，並透過 CDN [CloudFront](https://aws.amazon.com/tw/cloudfront/) 服務以快速交付網站，因此**網頁顯示速度非常快**。這真的不簡單，我認為甚至比[阿部寬的個人官方網站](https://news.gamme.com.tw/1693973)還要快，因為頁面轉換非常流暢，能夠在點擊之前就顯示完成。
 
-![](https://hackmd.io/_uploads/ryzA0B9eT.png)
+![](/images/posts/ironman-2023-day-21/ryzA0B9eT.png)
 
 [PageSpeed Insights](https://pagespeed.web.dev/)（測試網站速度的工具）的結果也相當不錯。能夠有具備紮實前端相關知識的人在數位廳任職真是太好了。
 
 ## 最後
 
-<img src="https://hackmd.io/_uploads/S191LR2e6.png" width="400">
+<img src="/images/posts/ironman-2023-day-21/S191LR2e6.png" width="400">
 
 > [推文連結](https://twitter.com/333mimina/status/1667276026064392195)
 

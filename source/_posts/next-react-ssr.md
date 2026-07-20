@@ -11,7 +11,7 @@ categories:
 description: Next.js 入門筆記：說明 React 函式庫與 Next.js 框架的差異，比較 CSR、SSR、SSG 等渲染方式與預渲染（Pre-rendering）的優缺點，理解為什麼需要伺服器端渲染來改善 SEO 與首屏載入速度，建立學習 Next.js 的基礎。
 date: 2024-01-16 11:50:01
 ---
-![image](https://hackmd.io/_uploads/SkvRg5cd6.png)
+![image](/images/posts/next-react-ssr/SkvRg5cd6.png)
 
 ## 前言
 
@@ -57,7 +57,7 @@ React 可透過「搭建後端 Server + 處理 Hydration + Webpack 打包配置�
 
 ### Next.js 特別在哪？
 
-![image](https://hackmd.io/_uploads/r1anuqcu6.png)
+![image](/images/posts/next-react-ssr/r1anuqcu6.png)
 
 由 [Vercel](https://github.com/vercel/next.js) 團隊創建的 Next.js，解決了上述幾點網頁開發遇到的問題，以下是官網提及有關 Next.js v14（發布於 2023 年 12 月）的幾項特點：
 
@@ -74,7 +74,7 @@ React 可透過「搭建後端 Server + 處理 Hydration + Webpack 打包配置�
 
 ## 比較：CSR vs SSR vs SSG vs ISR
 
-![image](https://hackmd.io/_uploads/Sk0QYQzYa.png)
+![image](/images/posts/next-react-ssr/Sk0QYQzYa.png)
 > Ref: [Next.js: The Ultimate Cheat Sheet To Page Rendering](https://dev.to/guydumais/next-js-the-ultimate-cheat-sheet-to-page-rendering-55eb)
 
 最後針對 Next.js 支援的網頁渲染方式，以及如何在 Next.js 搭配使用，列點整理如下：
@@ -98,7 +98,7 @@ React 可透過「搭建後端 Server + 處理 Hydration + Webpack 打包配置�
 
 也可參考 web.dev 這篇文章[《Rendering on the Web》](https://web.dev/articles/rendering-on-the-web?hl=zh-tw) 提供的表格整理：
 
-![image](https://hackmd.io/_uploads/SyQLDXGKp.png)
+![image](/images/posts/next-react-ssr/SyQLDXGKp.png)
 
 ## 結語
 

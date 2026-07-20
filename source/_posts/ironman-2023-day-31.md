@@ -69,7 +69,7 @@ date: 2023-10-17 01:12:01
     - 因為功能眾多，一開始可能需要點時間熟悉使用方法
     - 雖然支援 Markdown 語法，但匯出檔案有時符號會出現在奇怪位置
     
-![](https://hackmd.io/_uploads/ry9tq1sb6.png)
+![](/images/posts/ironman-2023-day-31/ry9tq1sb6.png)
     
 - HackMD
     - 支援 Markdown 語法
@@ -78,7 +78,7 @@ date: 2023-10-17 01:12:01
     - 能夠與 GitHub 同步筆記，進行文章備份
     - 文章管理較弱，僅能夠以「標籤」進行文章分類
 
-![](https://hackmd.io/_uploads/HJpcc1jW6.png)
+![](/images/posts/ironman-2023-day-31/HJpcc1jW6.png)
     
 
 ## 輔助翻譯工具
@@ -118,7 +118,7 @@ date: 2023-10-17 01:12:01
 
 使用畫面如下所示，選取區塊旁的兩個 icon 分別是 DeepL 和 Mate：
 
-![](https://hackmd.io/_uploads/Bk83qki-6.png)
+![](/images/posts/ironman-2023-day-31/Bk83qki-6.png)
 
 然而，以上這些翻譯工具，即使輸入提示文字「請翻譯成繁體中文」或下一些「限制語句」，偶爾還是會冒出對岸用語或簡體中文。
 
@@ -173,7 +173,7 @@ date: 2023-10-17 01:12:01
 
 雖然在編輯器頁面中，就有顯示「不支援部分 HTML 內容」的標語，並舉出可使用的 Markdown 常用語法，但還是感覺使用上稍微不方便就是：
 
-![](https://hackmd.io/_uploads/BkYGjko-6.png)
+![](/images/posts/ironman-2023-day-31/BkYGjko-6.png)
 
 ## 結語
 

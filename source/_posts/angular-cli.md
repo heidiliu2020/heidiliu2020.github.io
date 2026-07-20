@@ -12,7 +12,7 @@ date: 2021-03-10 22:00:00
 > The modern web developer's platform（一套框架，多種平臺）
 <!--more-->
 
-![](https://i.imgur.com/I9XUKCr.png)
+![](/images/posts/angular-cli/I9XUKCr.png)
 
 Angular 是由 Google 開發，基於 TypeScript 編寫的 JavaScript 前端框架，常和同為三大框架的 React 和 Vue 比較。
 
@@ -31,7 +31,7 @@ Angular 是由 Google 開發，基於 TypeScript 編寫的 JavaScript 前端框�
 
 以下是官網提供的 Angular 架構圖：
 
-![](https://i.imgur.com/TevuOoo.png)
+![](/images/posts/angular-cli/TevuOoo.png)
 
 Angular App 主要由這八個元素構成：
 
@@ -88,7 +88,7 @@ $ node -v
 $ npm install -g @angular/cli
 ```
 
-![](https://i.imgur.com/vT0Tdas.png)
+![](/images/posts/angular-cli/vT0Tdas.png)
 
 如果是在 mac 系統，指令必須加上 `sudo`，切換成管理員帳戶才有權限安裝：
 
@@ -98,7 +98,7 @@ $ sudo npm install -g @angular/cli
 
 可輸入 `ng version` 或是 `ng v` 指令查看版本資訊，確認是否安裝成功，畫面如下：
 
-![](https://i.imgur.com/uKEUiSA.png)
+![](/images/posts/angular-cli/uKEUiSA.png)
 
 ### 第二步：建立 Angular 初始專案
 
@@ -108,11 +108,11 @@ $ sudo npm install -g @angular/cli
 $ ng new my-app
 ```
 
-![](https://i.imgur.com/IKVBKmI.png)
+![](/images/posts/angular-cli/IKVBKmI.png)
 
 安裝需要一段時間，完成後會出現 `Packages installed successfully. Successfully initialized git.` 這段文字：
 
-![](https://i.imgur.com/kQvlGXB.png)
+![](/images/posts/angular-cli/kQvlGXB.png)
 
 除了透過 NPM 安裝必要套件，還會利用 Git 進行版本控制，並完成第一次提交（commit）。
 
@@ -125,20 +125,20 @@ $ cd my-app
 $ ng serve --open
 ```
 
-![](https://i.imgur.com/Fm81XkW.png)
+![](/images/posts/angular-cli/Fm81XkW.png)
 
 - ng serve 指令會啟動開發伺服器，並監視檔案變化，一旦有改變就會重新建構應用
 - `--open` 或簡寫 `-o` 可自動開啟瀏覽器
 
 預設畫面如下：
 
-![](https://i.imgur.com/FspJDDM.png)
+![](/images/posts/angular-cli/FspJDDM.png)
 
 ### VSCode 擴充套件：Angular Extension Pack
 
 若使用 VSCode（Visual Studio Code）編輯器，可安裝一個叫做 Angular Extension Pack 的擴充套件，整合了 Angular 相關擴充套件方便使用：
 
-![](https://i.imgur.com/tda1vFZ.png)
+![](/images/posts/angular-cli/tda1vFZ.png)
 
 ## 預設專案架構
 
@@ -146,7 +146,7 @@ $ ng serve --open
 
 建立好 Angular 專案之後，預設架構如下：
 
-![](https://i.imgur.com/YAtLAJT.png)
+![](/images/posts/angular-cli/YAtLAJT.png)
 
 - 根目錄 my-app：一個新的 workspace
 - 子目錄 src/：主要開發原始碼
@@ -179,7 +179,7 @@ $ ng g c <name>
 
 舉例來說，如果要建立一個叫做 todo-list 的 Component，指令是 `ng g c todo-list`，接著 Angular 就會建立四個檔案，以及更新 app.module.ts：
 
-![](https://i.imgur.com/HDeeSVB.png)
+![](/images/posts/angular-cli/HDeeSVB.png)
 
 * todo-list.component.html：模板 Template
 * todo-list.component.spec.ts：執行 ng test 命令會透過 Karma 進行測試

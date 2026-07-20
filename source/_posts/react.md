@@ -64,7 +64,7 @@ date: 2020-11-24 00:46:00
 
 以我們剛才實作的 todolist 來說，就可以根據功能分成不同的 component：
 
-![](https://i.imgur.com/XYSTyfM.png)
+![](/images/posts/react/XYSTyfM.png)
 
 ### Component & Props
 
@@ -159,11 +159,11 @@ function Button(props) {
 
 此外，透過這種方式其實有個壞處，假如有部分資料沒有更動到，就可能導致資料與畫面不一致。
 
-![](https://i.imgur.com/TKkUPnR.png)
+![](/images/posts/react/TKkUPnR.png)
 
 至於要如何解決這個問題，我們可以改成直接修改資料，然後畫面從資料產生，即可保持資料與畫面的一致性。
 
-![](https://i.imgur.com/k1STU0n.png)
+![](/images/posts/react/k1STU0n.png)
 
 這其實就是 React 第二個重要概念 State，畫面永遠由 state 產生。用數學式可表示成 `UI = f(state)`，代表 state 不變的話，透過 state 產生的 UI 也不會改變。
 

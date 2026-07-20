@@ -7,7 +7,7 @@ categories:
   - Front-End
 date: 2023-08-25 17:01:00
 ---
-![](https://hackmd.io/_uploads/BJXLBiH6n.jpg)
+![](/images/posts/ios-app-webview/BJXLBiH6n.jpg)
 
 > Photo by <a href="https://unsplash.com/@danielkorpai?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Daniel Korpai</a> on <a href="https://unsplash.com/photos/Y3LGWCsrgmg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   
@@ -92,7 +92,7 @@ struct SafariView: UIViewControllerRepresentable {
 
 首先進入[官網下載頁面](https://developer.apple.com/download/applications/)，登入後選擇要下載 XCode 版本。
 
-![](https://hackmd.io/_uploads/BJ0BxoST3.png)
+![](/images/posts/ios-app-webview/BJ0BxoST3.png)
 
 不同版本的 XCode，在使用上須考慮開發環境、APP 套件與 iOS 版本相容性，若需要安裝特定版本的 XCode，可參考這篇文章：[如何手動快速下載不同版本的Xcode - Poy Chang](https://blog.poychang.net/manually-download-multiple-versions-of-xcode/)。
 
@@ -100,11 +100,11 @@ struct SafariView: UIViewControllerRepresentable {
 
 運行 XCode 後，點擊「Create a new Xcode project」建立新專案。
 
-![](https://hackmd.io/_uploads/B1ST1sB63.png)
+![](/images/posts/ios-app-webview/B1ST1sB63.png)
 
 接著點選 APP 建立專案範本，內建範本有預設程式碼，能夠協助快速開發：
 
-![](https://hackmd.io/_uploads/HkRefsBan.png)
+![](/images/posts/ios-app-webview/HkRefsBan.png)
 
 ### Step3. 利用 UIViewRepresentable 協定調用 WKWebView
 
@@ -153,7 +153,7 @@ struct WebView: UIViewRepresentable {
 
 最後是運行 APP 驗證結果，點選上方的開始鍵執行 Building，點開右側的選單可選擇要運行的裝置版本，或是透過傳輸線連接在實體機上進行測試。
 
-![](https://hackmd.io/_uploads/BkG1Usrpn.png)
+![](/images/posts/ios-app-webview/BkG1Usrpn.png)
 
 ## 小結
 

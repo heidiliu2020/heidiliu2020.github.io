@@ -115,7 +115,7 @@ function App() {
 }
 ```
 
-![](https://i.imgur.com/f6EsvhC.png)
+![](/images/posts/react-usestate/f6EsvhC.png)
 
 ### controlled vs uncontrolled
 
@@ -176,7 +176,7 @@ function App() {
 }
 ```
 
-![](https://i.imgur.com/EAY1tzO.png)
+![](/images/posts/react-usestate/EAY1tzO.png)
 
 ### useRef：用來抓取 DOM 節點的 hook
 
@@ -429,7 +429,7 @@ export default function TodoItem({ todo, handleDeleteTodo, handleToggleIsDone })
 
 可以發現經過 render 之後，在 DOM 元素只會出現 `id="abc"` 這個屬性，而不會有 `$isDone`，這是因為 Transient props 不會被往下傳：
 
-![](https://i.imgur.com/K4ROwak.png)
+![](/images/posts/react-usestate/K4ROwak.png)
 
 ## Todo List 總結
 

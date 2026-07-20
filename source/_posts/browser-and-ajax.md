@@ -29,14 +29,14 @@ date: 2020-09-09 11:24:00
 - 是直接發出 request 到 Server，再直接收到 Server 的 request
 - 中間不會受到任何限制
 
-![](https://i.imgur.com/pOzNqr8.png)
+![](/images/posts/browser-and-ajax/pOzNqr8.png)
 
 ### 瀏覽器上
 
 - 透過瀏覽器發出 request 到 Server，再透過瀏覽器接收 Server 的 response
 - 中間可能會受瀏覽器處理影響，必須按照瀏覽器的規則獲取資料
 
-![](https://i.imgur.com/FCaXrNH.png)
+![](/images/posts/browser-and-ajax/FCaXrNH.png)
 
 ## 傳送資料的方式 - 表單 form
 
@@ -122,7 +122,7 @@ request.addEventListener('load', function () {
 
 當我們發出 request 給 Google 網頁時，會出現下列訊息，顯示無法取得 response：
 
-![](https://i.imgur.com/YJCjsgp.png)
+![](/images/posts/browser-and-ajax/YJCjsgp.png)
 
 這是因為瀏覽器為了安全性而設置的同源政策。一旦脫離瀏覽器，就不會有這些限制。
 

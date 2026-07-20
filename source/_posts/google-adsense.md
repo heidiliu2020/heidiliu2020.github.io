@@ -35,7 +35,7 @@ date: 2023-10-21 11:39:01
 
 - Step1. 進入 [Google AdSense](https://www.google.com.tw/adsense/start/) 官網，點擊開始使用
 
-![](https://hackmd.io/_uploads/S15Wc6Jfa.png)
+![](/images/posts/google-adsense/S15Wc6Jfa.png)
 
 
 - Step2. 填寫網站、收款國家等資訊
@@ -43,19 +43,19 @@ date: 2023-10-21 11:39:01
         - 有效範例：`example.com`、`example.blogspot.com`
         - 無效範例：`example.com/page.html`、`example.com/directory`、`subdomain.example.com`
 
-![](https://hackmd.io/_uploads/rJ_X5akG6.png)
+![](/images/posts/google-adsense/rJ_X5akG6.png)
 
 
 - Step3. 點選最左側的「填寫付款資訊」
 
-![](https://hackmd.io/_uploads/H1tLH6eza.png)
+![](/images/posts/google-adsense/H1tLH6eza.png)
 
 - Step4. 接著點選最右側的「將網站連結到 Adsense」會出現以下頁面，可選擇驗證方法並更新至自己的網站上，方法共有三種：
     - (1) 在網頁的 HTML `<head></head>` 區塊內嵌 AdSense 程式碼片段
     - (2) 新增 Ads.txt 檔案並貼上相關程式碼片段
     - (3) 在網頁的 HTML `<head></head>` 區塊之間插入 `<meta>` 中繼標記
 
-![](https://hackmd.io/_uploads/B1cwHagMp.png)
+![](/images/posts/google-adsense/B1cwHagMp.png)
 
 - Step5. 完成後打勾並點選驗證，約需經過 2 至 4 週的時間審查
 
@@ -67,11 +67,11 @@ date: 2023-10-21 11:39:01
 
 在網站導入自動廣告（Auto ads）時，只需將程式碼放到想要顯示廣告的頁面中，系統就會自動掃描網站，並根據版面配置與內容，找出位置自動刊登廣告。
 
-![](https://hackmd.io/_uploads/rkmKS6eMa.png)
+![](/images/posts/google-adsense/rkmKS6eMa.png)
 
 點擊上圖頁面中的「取得程式碼」，並將程式碼放到網頁的 **`<head></head>`** 標籤中即可。
 
-![](https://hackmd.io/_uploads/Skd5STgMT.png)
+![](/images/posts/google-adsense/Skd5STgMT.png)
 
 程式碼示意如下：
 
@@ -91,7 +91,7 @@ date: 2023-10-21 11:39:01
 
 點選右下角的「鉛筆符號」進入自動廣告的設定頁面，在這裡可以預覽選擇的廣告格式，以及希望排除的區域或頁面等：
 
-![](https://hackmd.io/_uploads/rkagLTxG6.png)
+![](/images/posts/google-adsense/rkagLTxG6.png)
 
 ### 廣告單元 Ads units
 
@@ -99,7 +99,7 @@ date: 2023-10-21 11:39:01
 
 可在 AdSense 帳戶的「按廣告單元」頁面建立、自訂及管理廣告單元；不同於自動廣告，根據廣告單元的程式碼，能夠控制廣告的顯示位置，而原生廣告單元則在自訂方面更提供更大的彈性。
 
-![](https://hackmd.io/_uploads/BJRWLpezT.png)
+![](/images/posts/google-adsense/BJRWLpezT.png)
 
 廣告單元類型分成以下幾種，可根據不同需求選用：
 
@@ -119,11 +119,11 @@ date: 2023-10-21 11:39:01
 
 點選想要建立的廣告單元會進入設定頁面，需輸入名稱以及選擇廣告大小：
 
-![](https://hackmd.io/_uploads/H1lQUaxGp.png)
+![](/images/posts/google-adsense/H1lQUaxGp.png)
 
 建立完成廣告單元後，將廣告單元程式碼放到網頁的 **`<body></body>`** 標籤中，希望顯示廣告的區塊即可：
 
-![](https://hackmd.io/_uploads/HyTXLTlMT.png)
+![](/images/posts/google-adsense/HyTXLTlMT.png)
 
 根據[在 HTML 中安插廣告程式碼的位置（廣告單元）](https://support.google.com/adsense/answer/9190028?hl=zh-Hant)，可透過程式碼來調整廣告單元顯示的位置與樣式：
 

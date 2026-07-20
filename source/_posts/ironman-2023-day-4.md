@@ -52,7 +52,7 @@ date: 2023-09-19 14:35:00
 
 可參考下方流程圖進行命名：
 
-![](https://hackmd.io/_uploads/Hyy5k-81a.png)
+![](/images/posts/ironman-2023-day-4/Hyy5k-81a.png)
 
 上圖流程意思大致如下：
 

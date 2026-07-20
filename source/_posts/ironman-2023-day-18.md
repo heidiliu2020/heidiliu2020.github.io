@@ -47,11 +47,11 @@ Chrome 擁有許多能夠協助開發的 [Chrome 擴充功能](https://chrome.go
 
 雖然 ICON 是 IT 大學，看起來蠻有趣的：
 
-![](https://hackmd.io/_uploads/ryO-NDdea.png)
+![](/images/posts/ironman-2023-day-18/ryO-NDdea.png)
 
 但透過這個擴充功能，能夠一鍵將背景和線條著色，即可清楚看到佈局方式，方便進行 margin 邊距等樣式調整。
 
-![](https://i.imgur.com/PLhPIu0.png)
+![](/images/posts/ironman-2023-day-18/PLhPIu0.png)
 
 此外，作者[しまぶーさん](https://www.youtube.com/watch?v=CXrW5rqP-WY) 的 YouTube 影片，對前端學習非常有幫助，我自己也經常作為參考。
 
@@ -62,14 +62,14 @@ Chrome 擁有許多能夠協助開發的 [Chrome 擴充功能](https://chrome.go
 使用這個擴充功能，可以一鍵檢視開發界面在不同大小下的呈現狀態。
 在進行響應式設計時，經常在最後檢查時使用。
 
-![](https://i.imgur.com/ETuO6LN.png)
+![](/images/posts/ironman-2023-day-18/ETuO6LN.png)
 
 ## [Take Webpage Screenshots Entirely - FireShot](https://chrome.google.com/webstore/detail/take-webpage-screenshots/mcbpblocgmgfnpjjppndjkmgjaogfceg)
 
 [FireShot](https://chrome.google.com/webstore/detail/take-webpage-screenshots/mcbpblocgmgfnpjjppndjkmgjaogfceg) 是能夠輕鬆截取網頁截圖的擴充功能，對自己來說也是使用率最高的。
 因為可以輕鬆截取整個頁面，經常會在請別人 Review 開發內容時使用。
 
-![](https://hackmd.io/_uploads/SkmKVPugp.png)
+![](/images/posts/ironman-2023-day-18/SkmKVPugp.png)
 
 ## [WhatFont](https://chrome.google.com/webstore/detail/whatfont/jabopobgcpjmedljpbcaablpmlmfcogm?hl=ja)
 
@@ -78,7 +78,7 @@ Chrome 擁有許多能夠協助開發的 [Chrome 擴充功能](https://chrome.go
 啟用此擴充功能後，只需將游標移動到想要知道的網頁字體上，即可顯示字體風格。
 在開發過程中，字體風格經常會因為數字和文字而改變，透過使用這項功能，能夠確保自己不會忘記字體有所更改。
 
-![](https://i.imgur.com/5mgXpiX.png)
+![](/images/posts/ironman-2023-day-18/5mgXpiX.png)
 
 ## [Talend API Tester - Free Edition](https://chrome.google.com/webstore/detail/talend-api-tester-free-ed/aejoelaoggembcahagimdiliamlcdmfm)
 
@@ -87,7 +87,7 @@ Chrome 擁有許多能夠協助開發的 [Chrome 擴充功能](https://chrome.go
 在開發過程中，如果需要快速瞭解 API 的 Response 時，將會使用這個工具。
 整體 UI 非常直觀，即使對於初學者也能很容易上手。
 
-![](https://i.imgur.com/yX8JayM.png)
+![](/images/posts/ironman-2023-day-18/yX8JayM.png)
 
 > 【補充】Talend API Tester 和常見的 [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=zh-TW) 比較：兩者均是用於測試 RESTful API 的工具，但根據用途、授權方式、測試報告、可擴展性等方面可能有所差異。
 詳細可參考這篇文章：[talend api tester vs postman](https://juejin.cn/s/talend%20api%20tester%20vs%20postman)
@@ -100,7 +100,7 @@ Chrome 擁有許多能夠協助開發的 [Chrome 擴充功能](https://chrome.go
 在開始用這個擴充功能之前，經常需要開啟 Chrome 的開發者工具，來選擇需要檢查的 CSS。如果透過 CSSViewer，只需將游標移動到想檢查的 CSS 位置，即可顯示對應的 CSS。
 在需要快速檢查 CSS 時，這功能非常方便。
 
-![](https://i.imgur.com/gHF9ixd.png)
+![](/images/posts/ironman-2023-day-18/gHF9ixd.png)
 
 ## 結語
 

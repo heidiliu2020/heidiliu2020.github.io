@@ -194,7 +194,7 @@ $conn->commit();
 
 最後完成的短網址系統設計示意圖如下：
 
-![](https://i.imgur.com/ODL6mPz.png)
+![](/images/posts/backend-system-design/ODL6mPz.png)
 
 參考資料：
 - [系統設計101—大型系統的演進（上）](https://medium.com/%E5%BE%8C%E7%AB%AF%E6%96%B0%E6%89%8B%E6%9D%91/backend-architecture-101-5c425e760a13)

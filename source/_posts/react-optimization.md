@@ -349,4 +349,4 @@ export default function Loading() {
 
 效果如下：
 
-![](https://i.imgur.com/MNaWqI0.gif)
+![](/images/posts/react-optimization/MNaWqI0.gif)

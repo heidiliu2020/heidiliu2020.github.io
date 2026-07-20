@@ -23,7 +23,7 @@ date: 2020-09-09 14:10:00
 
 ### Step1. 規劃產品路由與功能
 
-![](https://i.imgur.com/HKuwCYA.png)
+![](/images/posts/php-board/HKuwCYA.png)
 
 #### 頁面
 
@@ -47,7 +47,7 @@ date: 2020-09-09 14:10:00
 - content
 - creat_at
 
-![](https://i.imgur.com/4WWjEaA.png)
+![](/images/posts/php-board/4WWjEaA.png)
 
 #### 建立 users 資料庫
 
@@ -57,7 +57,7 @@ date: 2020-09-09 14:10:00
 - password
 - creat_at
 
-![](https://i.imgur.com/w8cOsfs.png)
+![](/images/posts/php-board/w8cOsfs.png)
 
 ---
 
@@ -119,7 +119,7 @@ require_once("utils.php");     // 導入常用函式
 ```
 
 若以 `print_r($row);` 印出上述程式碼，可知 `$row` 為陣列：
-![](https://i.imgur.com/EnxNFAl.png)
+![](/images/posts/php-board/EnxNFAl.png)
 
 #### 檢查是否存在
 
@@ -255,7 +255,7 @@ $sql = sprintf(
 
 瀏覽器會在每次發送請求時，自動在 request header 帶上 Cookie 資料；伺服器即可藉由檢視 Cookie 內容，得知瀏覽器使用者的狀態。
 
-![](https://i.imgur.com/WsBvdz5.png)
+![](/images/posts/php-board/WsBvdz5.png)
 
 但這麼做有個缺點，儲存在 client 端的 Cookie 是能夠被竄改的，因此不適合放機密或重要的資訊。這時有兩種解法：
 
@@ -269,7 +269,7 @@ $sql = sprintf(
 
 因此，Session 其實就是一種讓 Request 變成 stateful 的機制。
 
-![](https://i.imgur.com/Nbk8TCj.png)
+![](/images/posts/php-board/Nbk8TCj.png)
 
 ### 如何使用 Session 
 

@@ -54,7 +54,7 @@ date: 2022-12-16 14:24:00
 
 簡單來說，測試依規模大致可分成三個層次，構成自動化測試金字塔，如下圖所示：
 
-![](https://i.imgur.com/L9sS6uH.png)
+![](/images/posts/learn-about-testing/L9sS6uH.png)
 
 > [Automation Panda](https://automationpanda.com/2018/08/01/the-testing-pyramid/)
 
@@ -71,7 +71,7 @@ date: 2022-12-16 14:24:00
     - 應用於單元測試
     - 舉例：使用訂單系統，依使用者的情境模擬操作
 
-![](https://i.imgur.com/ymjyD7I.png)
+![](/images/posts/learn-about-testing/ymjyD7I.png)
 
 ### 單元測試 Unit Testing
 
@@ -91,7 +91,7 @@ date: 2022-12-16 14:24:00
     - 專注系統的行為，較貼近使用者的角度進行測試
     - 使用 `describe()` 和 `it()` 需求為導向的設計語意化
         
-![](https://i.imgur.com/8NgSbPj.png)  
+![](/images/posts/learn-about-testing/8NgSbPj.png)  
 
 ### 整合測試 Integration Testing
 
@@ -101,7 +101,7 @@ date: 2022-12-16 14:24:00
 
 為什麼需要整合測試？單元測試都通過不就代表都 OK 了？下圖提供非常好的例子：
 
-![](https://i.imgur.com/H30Yzer.gif)
+![](/images/posts/learn-about-testing/H30Yzer.gif)
 
 > 門鎖 OK、開關門 OK、鎖門？？
 
@@ -115,7 +115,7 @@ date: 2022-12-16 14:24:00
 
 如下所示，為 Cypress 使用範例，能夠看到使用者實際操作頁面的過程：
 
-![](https://i.imgur.com/GzISa0E.gif)
+![](/images/posts/learn-about-testing/GzISa0E.gif)
 
 > [Visual Testing | Cypress Documentation](https://docs.cypress.io/guides/tooling/visual-testing)
 

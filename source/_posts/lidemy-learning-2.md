@@ -8,7 +8,7 @@ categories:
   - Lidemy
 date: 2020-11-21 00:17:00
 ---
-![](https://i.imgur.com/oEOkZDK.jpg)
+![](/images/posts/lidemy-learning-2/oEOkZDK.jpg)
 （<span>Photo by <a href="https://unsplash.com/@jluebke?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Justin Luebke</a> on <a href="https://unsplash.com/s/photos/road?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>）
 <!--more-->
 > "Do not, for one repulse, give up the purpose that you resolved to effect." — William Shakespeare.
@@ -172,7 +172,7 @@ date: 2020-11-21 00:17:00
 
 人的內心也是一樣的，其實我並不是一個內心堅強的人，也會擔心自己跟不上進度。所以在真正開始學習程式以前，就先接受「我就爛」的事實，我就是因為什麼都不會，才要從現在開始學啊！
 
-![](https://i.imgur.com/HiU7ndw.png)
+![](/images/posts/lidemy-learning-2/HiU7ndw.png)
 
 回想起在六月程師導師計畫開始之前，自己有先看過 Huli 的基礎課程：[[CS101] 初心者的計概與 coding 火球術](https://lidemy.com/p/cs101-coding) 和 [[ALG101] 先別急著寫 leetcode ](https://lidemy.com/p/alg101-leetcode)，對計概這門課的第一印象其實是在 Hahow 平台的時候，沒想到會在這裡再次相遇。
 

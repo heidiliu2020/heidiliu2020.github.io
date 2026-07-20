@@ -30,13 +30,13 @@ date: 2020-06-16 17:01:00
 1. 在同一個 commit 上進行修改，容易產生衝突
 2. `穩定版 + bug fix` 還參雜未完成的新功能，也可能產生更多問題
 
-![一條線開發](https://i.imgur.com/MuDKdgK.png)
+![一條線開發](/images/posts/git-github/MuDKdgK.png)
 
 #### 若能分成「穩定版本」和「新功能開發」，兩條分支就不會互相干擾：
 1. `穩定版 + 修好 bug` → 得到新的穩定版
 2. 待新功能開發完成，即可合併得到有新功能的版本，成為最新的穩定版
 
-![兩條線開發](https://i.imgur.com/1S1hWYu.png)
+![兩條線開發](/images/posts/git-github/1S1hWYu.png)
 
 
 ---
@@ -45,13 +45,13 @@ date: 2020-06-16 17:01:00
 
 使用 Git 進行版本控制時，系統最初會自動建立第一個 branch ，也就是 `master`。
 
-![預設分支為 master](https://i.imgur.com/eDZEU1a.png)
+![預設分支為 master](/images/posts/git-github/eDZEU1a.png)
 
 ### `git branch -v`：查看目前在哪個分支
 
 下列訊息分別表示：分支名稱、版本號、版本訊息。
 
-![git branch -v 指令](https://i.imgur.com/qbjckPW.png)
+![git branch -v 指令](/images/posts/git-github/qbjckPW.png)
 
 - `git branch` ：如果後面沒接任何參數，只會顯示目前有哪些分支。
 
@@ -59,11 +59,11 @@ date: 2020-06-16 17:01:00
 
 > 提醒：開發新功能之前，養成開新分支的好習慣！
 
-![git branch](https://i.imgur.com/r51pPLL.png)
+![git branch](/images/posts/git-github/r51pPLL.png)
 
 ### `git branch -d <branchName>`：刪除分支
 
-![git branch -d 指令](https://i.imgur.com/OHjboYW.png)
+![git branch -d 指令](/images/posts/git-github/OHjboYW.png)
 
 ### `git checkout <branchName>`：切換分支
 
@@ -73,7 +73,7 @@ date: 2020-06-16 17:01:00
 2. `git checkout <branchName>`：切換分支
 3. `git branch checkout -b <branchName>`：「新增」並「切換」到該分支
 
-![git checkout 指令](https://i.imgur.com/oxKtRfm.png)
+![git checkout 指令](/images/posts/git-github/oxKtRfm.png)
 
 ## 如何合併分支？
 
@@ -85,11 +85,11 @@ date: 2020-06-16 17:01:00
 2. 輸入 `git merge new-feature`，完成基本的分支合併
 用 `git log` 查看版本紀錄，可知「合併」的過程會自動建立一個新版本
 
-![git merge 指令](https://i.imgur.com/Mj5ABC7.png)
+![git merge 指令](/images/posts/git-github/Mj5ABC7.png)
 
 3. 成功合併後，即可刪除分支 `new-feature`
 
-![合併後刪除分支](https://i.imgur.com/YZsSWZT.png)
+![合併後刪除分支](/images/posts/git-github/YZsSWZT.png)
 
 
 ## 那在合併時發生 conflict（衝突）怎麼辦？
@@ -103,17 +103,17 @@ date: 2020-06-16 17:01:00
 1. 此時若把分支 `new-feature` 合併到 `master` 上
 2. 顯示發生衝突，輸入 `git status` 可見提示說明：該檔案的兩個版本均有修改
 
-![conflict](https://i.imgur.com/G9ijEnc.png)
+![conflict](/images/posts/git-github/G9ijEnc.png)
 
 3. 進入該檔案會顯示衝突位置如下，需手動調整檔案內容
 
-![conflict 手動調整](https://i.imgur.com/dGMmn2L.png)
+![conflict 手動調整](/images/posts/git-github/dGMmn2L.png)
 
-![調整完成](https://i.imgur.com/nCAxx1Q.png)
+![調整完成](/images/posts/git-github/nCAxx1Q.png)
 
 4. 修改完後重新 commit，成功解決衝突
 
-![conflict 解決](https://i.imgur.com/c3QKwyH.png)
+![conflict 解決](/images/posts/git-github/c3QKwyH.png)
 
 ---
 
@@ -133,7 +133,7 @@ GitHub 是目前全球最大的 Git Server，有許多開放原始碼的專案�
 
 ### 建立新專案
 
-![建立新專案](https://i.imgur.com/pl31b7Q.png)
+![建立新專案](/images/posts/git-github/pl31b7Q.png)
 
 ## 將本地端資料推上遠端 GitHub（Local→Remote）
 
@@ -141,7 +141,7 @@ GitHub 是目前全球最大的 Git Server，有許多開放原始碼的專案�
 1. 開始全新專案，再同步到 GitHub
 2. 已存在專案，將本地端的現存專案同步到 GitHub
 
-![上傳本地專案到 GitHub](https://i.imgur.com/Yc8mymH.png)
+![上傳本地專案到 GitHub](/images/posts/git-github/Yc8mymH.png)
 
 #### `git remote`：主要是跟遠端有關的操作
 
@@ -168,11 +168,11 @@ GitHub 是目前全球最大的 Git Server，有許多開放原始碼的專案�
 
 1. 在 GitHub 點選 `Clone or download`，可直接下載檔案
 
-![GitHub 點選 Clone](https://i.imgur.com/0yJIEim.png)
+![GitHub 點選 Clone](/images/posts/git-github/0yJIEim.png)
 
 2. 或是複製網址，到 Terminal 輸入 `git clone <網址>`：可將內容下載到本地端
 
-![git clone](https://i.imgur.com/uiF2oX7.png)
+![git clone](/images/posts/git-github/uiF2oX7.png)
 
 > 但要注意使用 Clone 的 Repository 沒有權限修改，也就無法再 push 回遠端。
 
@@ -180,21 +180,21 @@ GitHub 是目前全球最大的 Git Server，有許多開放原始碼的專案�
 
 1. 到想要複製的 Repository 頁面，點選 `Fork`
 
-![點選 fork](https://i.imgur.com/Ms7FVgQ.png)
+![點選 fork](/images/posts/git-github/Ms7FVgQ.png)
 
 2. 即可複製一份 Repository 到自己的帳號底下
 
-![fork 專案](https://i.imgur.com/QKdoaYU.png)
+![fork 專案](/images/posts/git-github/QKdoaYU.png)
 
 3. 把專案 clone 到本地端，開新的 branch 進行修改
 4. Push 回自己的專案
 5. 若為多人協作，可在自己的頁面提出 PR（pull request）給原作
 
-![](https://i.imgur.com/leobPuk.png)
+![](/images/posts/git-github/leobPuk.png)
 
 6. 若原作同意修改內容，就會在他的頁面按下「Merge pull request」合併 commit
 
-![](https://i.imgur.com/ov638xA.png)
+![](/images/posts/git-github/ov638xA.png)
 
 ---
 
@@ -202,17 +202,17 @@ GitHub 是目前全球最大的 Git Server，有許多開放原始碼的專案�
 
 1. `git remote -v`：查看目前的遠端節點。只有最一開始設的 origin 這個節點。
 
-![git remote -v 指令](https://i.imgur.com/Dw3UoD7.png)
+![git remote -v 指令](/images/posts/git-github/Dw3UoD7.png)
 
 2. `git remote add <節點名稱> <網址>`：新增一個遠端節點。
 
 - `git remote add upstream https://github.com/Lidemy/mentor-program-4th.git`：為本地端檔案庫增加一個叫做 `upstream` 的遠端檔案庫。
 
-![git remote add](https://i.imgur.com/YIsFYMS.png)
+![git remote add](/images/posts/git-github/YIsFYMS.png)
 
 3. `git pull upstream master`：把遠端 Repo 同步回本地端電腦。若發生衝突，則手動修改解決。
 
-![git pull](https://i.imgur.com/XFW7jEo.png)
+![git pull](/images/posts/git-github/XFW7jEo.png)
 
 4. 修改完成後，使用 `git commit -am "同步課綱 repo"` 重新 commit。
 5. `git push origin master`：同步回自己在 GitHub 的 遠端 Repo。
@@ -236,11 +236,11 @@ GitHub 是目前全球最大的 Git Server，有許多開放原始碼的專案�
 
 1. `git commit --amend`：進入 vim 編輯器，即可修改 commit message。但這個方法只能修改最後一次的 commit message
 
-![git commit --amend](https://i.imgur.com/AD7xKzA.png)
+![git commit --amend](/images/posts/git-github/AD7xKzA.png)
 
 - vim 編輯器介面如下，編輯完成後回到普通模式，輸入 `:wq` 存檔退出
 
-![Vim 編輯器](https://i.imgur.com/Qc6ICVi.png)
+![Vim 編輯器](/images/posts/git-github/Qc6ICVi.png)
 
 2. `git rebase`：可以修改更之前的 commit message，可參考[詳細操作流程](https://gitbook.tw/chapters/rewrite-history/change-commit-message.html)
 
@@ -258,17 +258,17 @@ GitHub 是目前全球最大的 Git Server，有許多開放原始碼的專案�
 1. `git checkout -- <file>`：把檔案回復到上一次 commit 的狀態
 2. `git checkout -- .`：把專案內的所有檔案都回復
 
-![git checkout --](https://i.imgur.com/6gSEitU.png)
+![git checkout --](/images/posts/git-github/6gSEitU.png)
 
 - 也可使用 `git restore <file>`，和 `git checkout -- <file>` 作用相同。
 
-![git restore](https://i.imgur.com/WcRW8cK.png)
+![git restore](/images/posts/git-github/WcRW8cK.png)
 
 ### 改 branch 的名稱
 
 `git branch -m feature`：將分支名稱改成 feature。
 
-![git branch -m 指令](https://i.imgur.com/keijtFp.png)
+![git branch -m 指令](/images/posts/git-github/keijtFp.png)
 
 ---
 
@@ -278,7 +278,7 @@ GitHub 建議管理專案的流程：[官網說明](https://guides.github.com/in
 
 當參與多人開發時：（圖片出自 [arccwiki](https://arccwiki.uwyo.edu/index.php/Git_Workflow)）
 
-![GitHub Flow step ](https://i.imgur.com/p0VjqBQ.png)
+![GitHub Flow step ](/images/posts/git-github/p0VjqBQ.png)
 
 1. 先 Fork 專案到自己的 repository，開新的 branch 進行開發
 2. 修改內容後 commit 新增版本，再 push 回自己的 repository
@@ -314,7 +314,7 @@ GitHub 建議管理專案的流程：[官網說明](https://guides.github.com/in
 ## 補充：本地端與遠端 - 相關指令
 - 以下示意圖出自[此處](https://www.utsc.utoronto.ca/~atafliovich/cscc01/lectures/02-config-management-21-.pdf)
 
-![git terminology](https://i.imgur.com/avOoPLF.png)
+![git terminology](/images/posts/git-github/avOoPLF.png)
 
 
 參考資料：

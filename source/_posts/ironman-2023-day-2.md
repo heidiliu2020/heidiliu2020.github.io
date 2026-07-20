@@ -57,9 +57,9 @@ date: 2023-09-17 14:54:00
 
 對於日常業務繁忙而未能重新審視自己，或對於「我現在的狀況就可以了嗎？」感到疑惑的人，請藉此機會反思看看。
 
-![](https://hackmd.io/_uploads/B1rlC8Qk6.png)
+![](/images/posts/ironman-2023-day-2/B1rlC8Qk6.png)
 
-![](https://hackmd.io/_uploads/HJ2xALXy6.png)
+![](/images/posts/ironman-2023-day-2/HJ2xALXy6.png)
 
 ### 擁有人生「願景 / 目標（Vision）」
 
@@ -75,7 +75,7 @@ date: 2023-09-17 14:54:00
 
 實現「自我管理」的出發點，是將「現在」活在當下的我最大程度投射到「目標」中，請一定要考慮這點。
 
-![](https://hackmd.io/_uploads/HknZRU716.png)
+![](/images/posts/ironman-2023-day-2/HknZRU716.png)
 
 #### 學習組織的「自我超越」
 
@@ -86,13 +86,13 @@ date: 2023-09-17 14:54:00
 
 #### 七個習慣「Mission・Statement（使命宣言）」
 
-![](https://hackmd.io/_uploads/SkJRAU71a.png)
+![](/images/posts/ironman-2023-day-2/SkJRAU71a.png)
 
 如「七個習慣」所言，透過使命宣言，我們能夠適應生活中的變化，不帶偏見地面對現實。即使身處多變的世界中，也能堅實自己的核心去挑戰各種事物。
 
 無論別人如何評價，只要能告訴自己「我擁有這個目標，並為了實現它採取行動」，如此就能減少各種環境因素的干擾。
 
-![](https://hackmd.io/_uploads/ryKCCIQkp.png)
+![](/images/posts/ironman-2023-day-2/ryKCCIQkp.png)
 
 當思考這個問題時，得到的即是「成功的定義」，這也是「七個習慣」所提及的。
 
@@ -108,7 +108,7 @@ date: 2023-09-17 14:54:00
 
 ### Getting Things Done
 
-![](https://hackmd.io/_uploads/rkrgJD7kp.png)
+![](/images/posts/ironman-2023-day-2/rkrgJD7kp.png)
 
 
 > [GTD（Getting Things Done）](https://gtd-japan.jp/)是一種有助於提高個人和組織生產力的方法。 
@@ -133,7 +133,7 @@ GTD 主要由五個步驟組成，非常適合進行任務管理。除了任務�
 
 ### Calendar
 
-![](https://hackmd.io/_uploads/HkyX1vQya.png)
+![](/images/posts/ironman-2023-day-2/HkyX1vQya.png)
 
 這是從書籍《工程管理者的工作（エンジニアリングマネージャー）》中引用的一個章節。
 
@@ -145,7 +145,7 @@ GTD 主要由五個步驟組成，非常適合進行任務管理。除了任務�
 
 ### 任務拆解入門
 
-![](https://hackmd.io/_uploads/ry8EkDXJT.png)
+![](/images/posts/ironman-2023-day-2/ry8EkDXJT.png)
 
 將任務拆分成「可執行的」大小，可以更容易採取行動，避免將任務「加入待辦清單卻未執行」的情況。 在眾多拆解任務的方法當中，最容易理解的是 Teibi さん 在 Zenn 的著作[《任務拆解入門（タスクばらし入門）》](https://zenn.dev/tbpgr/books/8562293d519b8b)。
 
@@ -157,7 +157,7 @@ GTD 主要由五個步驟組成，非常適合進行任務管理。除了任務�
 
 ### 艾森豪矩陣 Eisenhower Matrix
 
-![](https://hackmd.io/_uploads/HJUrJv7kp.png)
+![](/images/posts/ironman-2023-day-2/HJUrJv7kp.png)
 
 這是由美國第 34 任總統　**德懷特·D·艾森豪**提倡的概念。
 
@@ -175,7 +175,7 @@ GTD 主要由五個步驟組成，非常適合進行任務管理。除了任務�
 通過增加第二象限的任務，人們可以更有效地達到自我實現和目標實現。
 為什麼增加第二象限的任務能有助於人們達到自我實現和目標實現呢？如果增加其他象限的任務會有什麼後果？
 
-![](https://hackmd.io/_uploads/r1z8yDmkT.png)
+![](/images/posts/ironman-2023-day-2/r1z8yDmkT.png)
 
 #### 重要且緊急（第一象限）增加時⋯⋯
 
@@ -243,9 +243,9 @@ GTD 主要由五個步驟組成，非常適合進行任務管理。除了任務�
 
 但需要注意的是，「加入過多同類型的任務，可能會導致進入第四象限」。例如，「放鬆身心」是非常重要的，但如果這類型任務過多，可能會趨近於「消磨時間」或「僅僅追求快樂的娛樂」。必須避免加入過多這類型的任務，並在適當的象限中保持適當的程度。
 
-![](https://hackmd.io/_uploads/H1twyDm1p.png)
+![](/images/posts/ironman-2023-day-2/H1twyDm1p.png)
 
-![](https://hackmd.io/_uploads/r1yu1wXJT.png)
+![](/images/posts/ironman-2023-day-2/r1yu1wXJT.png)
 
 #### 參考艾森豪矩陣的同時進行「更新」
 
@@ -294,14 +294,14 @@ GTD 主要由五個步驟組成，非常適合進行任務管理。除了任務�
 - 保持使命和願景 → Miro
 - 管理日程 → Google 日曆
 
-![](https://hackmd.io/_uploads/Bk89JDmyp.png)
+![](/images/posts/ironman-2023-day-2/Bk89JDmyp.png)
 
 ### 使用 TickTick 製作待辦清單
 
 如概念篇所述，我們將基於 GTD 原則來建立清單。
 由於當中包含一些不能公開的內容，因此進行了模糊處理，可將其視為工作的專案名稱。
 
-![](https://hackmd.io/_uploads/BJgskwQkT.png)
+![](/images/posts/ironman-2023-day-2/BJgskwQkT.png)
 
 清單的結構如下所示：
 
@@ -324,7 +324,7 @@ GTD 主要由五個步驟組成，非常適合進行任務管理。除了任務�
 
 顯示的任務內容已經過模糊處理，付費使用可自定義艾森豪矩陣。
 
-![](https://hackmd.io/_uploads/Bky3yDX1p.png)
+![](/images/posts/ironman-2023-day-2/Bky3yDX1p.png)
 
 通過將這個艾森豪矩陣限定為「接下來要做的事項清單」和「專案子項目」，能夠更清楚看到「我需要優先處理的事項」。
 要在 TickTick 上有效使用艾森豪矩陣，必須善用「優先度」的概念。
@@ -337,13 +337,13 @@ GTD 主要由五個步驟組成，非常適合進行任務管理。除了任務�
 在前面提到的 Atomic Scrum，認為檢查「習慣」非常重要。TickTick 預設帶有習慣追踪器，能將小事到大事都納入習慣中。
 最近自己沒達成的習慣有點多，所以不太好意思公開，但通過像圖片的形式，能夠立即顯示「何時執行」和「已經執行了多少天」，讓習慣一目瞭然。
 
-![](https://hackmd.io/_uploads/HJvp1vmya.png)
+![](/images/posts/ironman-2023-day-2/HJvp1vmya.png)
 
 ### TickTick 的行事曆
 
 透過付費功能，TickTick 可以從Google日曆等日曆工具進行同步。儘管稱作同步，實際上是從 Google 日曆單向同步到 TickTick，因此不必擔心會誤改到計劃，非常易於使用。
 
-![](https://hackmd.io/_uploads/ByzRkP716.png)
+![](/images/posts/ironman-2023-day-2/ByzRkP716.png)
 
 透過右側的圖標可查看任務列表，即可透過日曆視圖，在特定時段進行粗略的任務規劃。
 若按照分鐘為單位安排日程，則屬於第三代時間管理模式，雖然這種方式較少使用，有時還是會在「這項任務要做到什麼時候」，這類有截止期限的情況下使用。

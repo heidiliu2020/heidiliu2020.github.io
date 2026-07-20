@@ -24,7 +24,7 @@ date: 2021-10-08 23:59:00
 
 以下方程式碼為例，這是用來實作無限滾動的程式碼：
 
-![](https://i.imgur.com/wXgT9xs.png)
+![](/images/posts/rxjs-note/wXgT9xs.png)
 
 這段程式碼的邏輯大致如下：
 
@@ -61,7 +61,7 @@ Promise 應該是為了解決 Callback 產生的問題，卻無法改善上述�
 
 以下分別是使用原生 JavaScript 和 RxJS 所撰寫的程式碼：
 
-![](https://i.imgur.com/QXTxO4G.png)
+![](/images/posts/rxjs-note/QXTxO4G.png)
 
 可以很明顯看出，後者 RxJS 的寫法，即使不知道這些方法的實際用途，卻也能從語意大概猜出每個 function 的功能，大大提高程式碼可讀性。
 
@@ -170,7 +170,7 @@ var sub = Observable
 
 ### 舉個例子：生產線
 
-![](https://i.imgur.com/5BLZJz0.png)
+![](/images/posts/rxjs-note/5BLZJz0.png)
 
 + observable 的元素：生產線上的產品
 + operator：生產線上的機具，用來包裝或篩選產品
@@ -373,23 +373,23 @@ Observable.fromEvent(scrollView, 'scroll')  // scroll 事件
 
   1. 抽取出有意義的、可能被多次使用的 Observable，並 assign 給一個變數：`$scroll`
 
-![](https://i.imgur.com/02pG8l2.png)
+![](/images/posts/rxjs-note/02pG8l2.png)
 
 2. 抽取出共用的 Operator，並命名為一個 function：`scrollOverNinePercent()`
 
-![](https://i.imgur.com/nVzS445.png)
+![](/images/posts/rxjs-note/nVzS445.png)
 
 3. 為了避免出現多個小括號，可使用 `let` operator，即可取得 function 的回傳值
 
-![](https://i.imgur.com/oYZpodN.png)
+![](/images/posts/rxjs-note/oYZpodN.png)
 
 4. 將共用 function 放到獨立的檔案
 
-![](https://i.imgur.com/9YHOHSi.png)
+![](/images/posts/rxjs-note/9YHOHSi.png)
 
 5. 抽離 Observable creator，也就是抽出「有建立新的 Observable」的程式碼：`getPostObservable()`
 
-![](https://i.imgur.com/TFVZKyO.png)
+![](/images/posts/rxjs-note/TFVZKyO.png)
 
 修改後的程式碼如下，透過簡化邏輯，提高了程式碼可讀性：
 
@@ -442,17 +442,17 @@ source$.pipe(myOperator)
 
 還記得我們剛才寫的 `scrollOverNinePercent()` 嗎？實際上，這個 Function 並不易用來重組，因為 scroll 觸發時機點不一定會在 90%。
 
-![](https://i.imgur.com/9Co9BLb.png)
+![](/images/posts/rxjs-note/9Co9BLb.png)
 
 這時可透過 [Higher Order Function](https://zh.wikipedia.org/wiki/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0) 解決，也就是用一個 Function 回傳另一個新的 Function，作法如下：
 
 1. 在第一個 Function 傳入 `criticalP`（代表臨界點），取代原本 0.9 的位置 
 
-![](https://i.imgur.com/nC7dCI6.png)
+![](/images/posts/rxjs-note/nC7dCI6.png)
 
 2. 接著可使用 Pipeable Operators，也就是改用 `pipe` 來組合多個 operator，傳入的 Observable 會回傳新的 Observable，再繼續往下傳遞
 
-![](https://i.imgur.com/dec0xAI.png)
+![](/images/posts/rxjs-note/dec0xAI.png)
 
 修改後的程式碼如下，讓 scrollOver() 的使用更加彈性，同時也透過 pipe 來簡化程式碼邏輯：
 
@@ -586,7 +586,7 @@ mouseClick$
 
 把剛才的兩個範例拿來比對：
 
-![](https://i.imgur.com/yhKwbV5.png)
+![](/images/posts/rxjs-note/yhKwbV5.png)
 
 可以發現到，程式碼竟然有 87% 像！因為兩段邏輯其實極為類似，都是在「做某件事情後，再做另一個非同步行為」，而這個非同步行為，會在某個時間點、發生某件事情時而被取消。
 
@@ -623,11 +623,11 @@ mouseClick$
 
 以下是之前舉的彈珠圖範例：
 
-![](https://i.imgur.com/s3kEdzR.png)
+![](/images/posts/rxjs-note/s3kEdzR.png)
 
 撰寫測試如下，透過預知最後結果的彈珠圖，我們可用來進行單元測：
 
-![](https://i.imgur.com/asnKEUk.png)
+![](/images/posts/rxjs-note/asnKEUk.png)
 
 + 更多 Unit Test 教學，可參考這篇：[如何「畫圖」寫測試 - RxJS Marble Test](https://blog.jerry-hong.com/speaking/rxjs-marble-testing/)
 

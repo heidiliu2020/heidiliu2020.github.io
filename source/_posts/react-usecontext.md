@@ -25,7 +25,7 @@ date: 2020-12-17 01:07:00
 
 與本篇要實作的 SPA 不同，過去我們通常是利用 Cookie 來驗證使用者登入狀態，流程大致如下：
 
-![](https://i.imgur.com/giVnm0P.png)
+![](/images/posts/react-usecontext/giVnm0P.png)
 
 1. 使用者在登入時會打一個 API 給 Server，Server 確認沒問題之後，會回傳包含 Set-Cookie 的 HTTP Response Header
 2. 當使用者需要進行身分驗證時，會打一個 GET/me 的 API 給 Server，瀏覽器會自動帶入 Cookie，假如 Session ID 是正確的，Server 就會回傳 data，反之則回傳錯誤
@@ -34,7 +34,7 @@ date: 2020-12-17 01:07:00
 
 但是到了 SPA 之後，我們就比較少用 Cookie 來進行驗證，而是把 Session ID 存在瀏覽器的 LocalStorage 裡，每次發 Resquest 時會自動帶入資料，流程如下：
 
-![](https://i.imgur.com/8xvtM4x.png)
+![](/images/posts/react-usecontext/8xvtM4x.png)
 
 1. 使用者在登入後，Server 會回傳一個 JSON Web Token（一種固定格式的資料），並且儲存在瀏覽器的 LocalStorage 裡
 2. 當需要進行身分驗證時，就會自動在 header 帶上這個 JWT 給 Serever，確認沒問題後回傳 data
@@ -62,11 +62,11 @@ Body
 
 結果如下：
 
-![](https://i.imgur.com/QB2O67D.png)
+![](/images/posts/react-usecontext/QB2O67D.png)
 
 把這段 JWT token 拿到 [jwt 官網](https://jwt.io/) 進行解析，可以轉換成 JSON 格式，因此不建議儲存一些敏感資訊（例如密碼、地址等）在 token：
 
-![](https://i.imgur.com/IVpVipo.png)
+![](/images/posts/react-usecontext/IVpVipo.png)
 
 ### 透過 token 取得使用者資訊
 
@@ -82,7 +82,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIwMSIsInVzZXJJZCI6MSw
 
 結果如下：
 
-![](https://i.imgur.com/QyTsG90.png)
+![](/images/posts/react-usecontext/QyTsG90.png)
 
 學會如何透過打 API 拿到 token 進行身分驗證後，再來我們要實際應用在部落格的登入機制，那麼開始吧！
 
@@ -170,7 +170,7 @@ export default function LoginPage() {
 
 結果如下，按下 button 成功拿取 input.value：
 
-![](https://i.imgur.com/pJDBs0Z.png)
+![](/images/posts/react-usecontext/pJDBs0Z.png)
 
 ### 3. 建立 utils.js 管理常用功能
 
@@ -240,7 +240,7 @@ export default function LoginPage() {
 
 確認是否有成功透過 localStorage 存取 token：
 
-![](https://i.imgur.com/mDMvUs9.png)
+![](/images/posts/react-usecontext/mDMvUs9.png)
 
 ### useHistory：跳轉頁面
 
@@ -412,7 +412,7 @@ export default function Header() {
 
 結果如下：
 
-![](https://i.imgur.com/NLbXTNr.png)
+![](/images/posts/react-usecontext/NLbXTNr.png)
 
 但這麼寫還有個問題，就是重新整理之後，又會變成未登入狀態，其實 localStorage 還是有 token 存在。
 
@@ -503,7 +503,7 @@ const Root = styled.div`
 
 在登入狀態時，重整畫面會出現畫面閃爍的問題，如下圖所示：
 
-![](https://i.imgur.com/bzRXGRP.gif)
+![](/images/posts/react-usecontext/bzRXGRP.gif)
 
 之所以會有這個現象，是因為畫面進行了兩次 render：
 

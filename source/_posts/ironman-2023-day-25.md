@@ -67,7 +67,7 @@ date: 2023-10-10 10:39:01
 我們平常在學習程式設計的階段，將對應到 **「實作」**的部分。
 換句話說，在展現程式設計能力之前，還**存在四道壁壘**需要克服。
 
-![](https://hackmd.io/_uploads/B1KZLebW6.png)
+![](/images/posts/ironman-2023-day-25/B1KZLebW6.png)
 
 > 軟體開發過程，由左至右分別是：
 > + 企劃 > 業務設計 > 需求定義 > 設計 > 實作（程式設計） > 測試 > 發布 > 維護
@@ -133,7 +133,7 @@ date: 2023-10-10 10:39:01
 + 要件：特定的條件、規格或要求
     + 「來實現這個功能吧」
 
-![](https://hackmd.io/_uploads/B1P9M5W-a.png)
+![](/images/posts/ironman-2023-day-25/B1P9M5W-a.png)
 
 這三個階段的過程，需要透過「審查」和「建議」來溝通，按照順序整理如下：
 
@@ -157,7 +157,7 @@ date: 2023-10-10 10:39:01
     - 在系統中實現的功能清單
     - 交付期限、收費金額的參考資訊也可能包含在其中
 
-![](https://hackmd.io/_uploads/BkFXJs-WT.png)
+![](/images/posts/ironman-2023-day-25/BkFXJs-WT.png)
 
 ## 在需求定義中決定的事項
 
@@ -220,7 +220,7 @@ date: 2023-10-10 10:39:01
 - 顯示資訊（文字、圖像等）和佈局
 - 將上述內容統整到畫面轉換圖（Screen transition diagram）
 
-![](https://hackmd.io/_uploads/r1tr6iWbT.png))
+![](/images/posts/ironman-2023-day-25/r1tr6iWbT.png))
 
 當整理到這一步時，即可想像出系統的具體成品，這就是為什麼要先進行畫面設計的原因。
 
@@ -238,28 +238,28 @@ date: 2023-10-10 10:39:01
 
 接下來，試著粗略設計畫面轉換圖中出現的各頁面功能。
 
-![](https://hackmd.io/_uploads/B1IT1n-bp.png)
+![](/images/posts/ironman-2023-day-25/B1IT1n-bp.png)
 
-![](https://hackmd.io/_uploads/SJq1g2-Z6.png)
+![](/images/posts/ironman-2023-day-25/SJq1g2-Z6.png)
 
-![](https://hackmd.io/_uploads/Sy0xg3bWT.png)
+![](/images/posts/ironman-2023-day-25/Sy0xg3bWT.png)
 
-![](https://hackmd.io/_uploads/Sk8Ze2-Za.png)
+![](/images/posts/ironman-2023-day-25/Sk8Ze2-Za.png)
 
-![](https://hackmd.io/_uploads/B1vMg3Wb6.png)
+![](/images/posts/ironman-2023-day-25/B1vMg3Wb6.png)
 
-![](https://hackmd.io/_uploads/HyyXenbW6.png)
+![](/images/posts/ironman-2023-day-25/HyyXenbW6.png)
 
 透過這個方式，無論是誰都**能夠藉此想像應該寫什麼樣的程式**。構成系統的各個部分也變得清晰，能更容易**在團隊內部進行分工**。
 
 作為功能設計的最後一步，便是將畫面設計和功能設計連接起來。藉此可視化**使用者操作與背後執行的處理**，在畫面之間的關係。
 
-![](https://hackmd.io/_uploads/ByuzNNG-p.png)
+![](/images/posts/ironman-2023-day-25/ByuzNNG-p.png)
 
 全部統整後如下圖所示。
 ※ 這部分資料量較大，因此可放大感興趣的部分查閱。
 
-![](https://hackmd.io/_uploads/S1AEehWbT.png)
+![](/images/posts/ironman-2023-day-25/S1AEehWbT.png)
 
 ## 資料設計
 
@@ -339,13 +339,13 @@ date: 2023-10-10 10:39:01
 同時，也明確標明是「**根據使用者操作產生的資料**」，將有助於理解資料流動，而不易有所遺漏。
 ※ 有時也會透過網路從外部引入資料，如：天氣預報 API 等。
 
-![](https://hackmd.io/_uploads/SyR95mG-6.png)
+![](/images/posts/ironman-2023-day-25/SyR95mG-6.png)
 
 最後，完成的 ER 圖即為資料庫設計圖。
 
 ※ 有關繪製 ER 圖的詳細內容，可參考這篇文章：[若手プログラマー必読！５分で理解できるER図の書き方５ステップ](https://it-koala.com/entity-relationship-diagram-1897)
 
-![](https://hackmd.io/_uploads/HkJd4VfWa.png)
+![](/images/posts/ironman-2023-day-25/HkJd4VfWa.png)
 
 ### 資料的流向（Data Flow）
 
@@ -355,7 +355,7 @@ date: 2023-10-10 10:39:01
 
 透過反覆練習這段過程，將能夠清楚呈現整體面貌。
 
-![](https://hackmd.io/_uploads/Hkvh2XMba.png)
+![](/images/posts/ironman-2023-day-25/Hkvh2XMba.png)
 
 ## 進一步推進基本設計
 

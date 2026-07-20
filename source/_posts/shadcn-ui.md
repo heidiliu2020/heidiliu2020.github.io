@@ -11,7 +11,7 @@ categories:
 date: 2024-08-02 11:13:00
 ---
 
-![cover](https://hackmd.io/_uploads/B1RYAaBtA.png)
+![cover](/images/posts/shadcn-ui/B1RYAaBtA.png)
 > GitHub - https://github.com/shadcn-ui/ui
 
 ## What is Shadcn UI?
@@ -55,7 +55,7 @@ Shadcn UI 在前端生態圈崛起的原因，可從過去我們所熟悉的 UI 
 npx create-next-app@latest my-app --typescript --tailwind --eslint
 ```
 
-![next.js](https://hackmd.io/_uploads/rk3c9__tA.png)
+![next.js](/images/posts/shadcn-ui/rk3c9__tA.png)
 
 2. 執行 CLI `shadcn-ui` 初始專案
 
@@ -72,7 +72,7 @@ Which color would you like to use as base color? › Slate
 Do you want to use CSS variables for colors? › no / yes
 ```
 
-![init config](https://hackmd.io/_uploads/HJ1SsudtC.png)
+![init config](/images/posts/shadcn-ui/HJ1SsudtC.png)
 
 建立好的 Next.js 專案架構可參考如下，其中引入的 Shadcn 元件會放在 `compoent/ui` 資料夾底下：
 
@@ -171,7 +171,7 @@ npx shadcn-ui@latest add button
 
 安裝好的元件路徑會在 components 底下：`@components/ui/button`
 
-![button](https://hackmd.io/_uploads/S1LnfY_F0.png)
+![button](/images/posts/shadcn-ui/S1LnfY_F0.png)
 
 2. 即可引入專案使用
 
@@ -190,7 +190,7 @@ export default function Home() {
 }
 ```
 
-![demo-1](https://hackmd.io/_uploads/H1cGNtdtC.png)
+![demo-1](/images/posts/shadcn-ui/H1cGNtdtC.png)
 
 3. 除了預設樣式，也可直接編輯元件程式碼，例如在 `components/ui/button.tsx` 檔案中新增自訂義樣式 `newButton`，即可在頁面使用
 
@@ -214,7 +214,7 @@ export default function Home() {
 
 結果如下：
 
-![button](https://hackmd.io/_uploads/ryOrYj_tR.png)
+![button](/images/posts/shadcn-ui/ryOrYj_tR.png)
 
 ### 暗色主題 Dark Mode
 
@@ -310,7 +310,7 @@ export default function Home() {
 
 效果如下：
 
-![demo-dark](https://hackmd.io/_uploads/Hy4Jv6uK0.gif)
+![demo-dark](/images/posts/shadcn-ui/Hy4Jv6uK0.gif)
 
 ## 小結
 

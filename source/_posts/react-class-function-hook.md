@@ -131,7 +131,7 @@ export default class TodoItemC  extends React.Component {
 
 這是因為 this 的值會根據怎麼呼叫 function 決定，在嚴格模式中直接呼叫 onClick 的話 this 的值就會是 undefined：
 
-![](https://i.imgur.com/ZQOcT1O.png)
+![](/images/posts/react-class-function-hook/ZQOcT1O.png)
 
 有兩種解決方式：
 - 透過 cunstructor 初始化 props 並綁定 this 指向
@@ -226,12 +226,12 @@ export default class TodoItemC extends React.Component {
 
 關於 class component 的生命週期架構可參考附圖：
 
-![](https://i.imgur.com/CV4MKmC.png)
+![](/images/posts/react-class-function-hook/CV4MKmC.png)
 （圖片來源：[React LifeCycle Methods Diagram](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)）
 
 可和之前提過的 React Hook 流程圖進行對照，改成用 useEffect 執行：
 
-![](https://i.imgur.com/iY123nV.png)
+![](/images/posts/react-class-function-hook/iY123nV.png)
 （圖片來源：https://github.com/donavon/hook-flow）
 
 ### 實作一個 Counter component
@@ -365,21 +365,21 @@ export default class Counter extends React.Component {
 
 第一次渲染畫面，只有第一次會有 constructor 和 mount：
 
-![](https://i.imgur.com/iG3pxlB.png)
+![](/images/posts/react-class-function-hook/iG3pxlB.png)
 
 點擊第一次，第二次渲染畫面，count 不等於 1，test unmount：
 
-![](https://i.imgur.com/RLdOBft.png)
+![](/images/posts/react-class-function-hook/RLdOBft.png)
 
 點擊第二次，第三次渲染畫面：
 
-![](https://i.imgur.com/r6zc3yw.png)
+![](/images/posts/react-class-function-hook/r6zc3yw.png)
 
 ### 其他少見的 method
 
 輸入 component 會發現有些 method 被畫刪除線，代表目前版本不建議使用：
 
-![](https://i.imgur.com/xWDgAL8.png)
+![](/images/posts/react-class-function-hook/xWDgAL8.png)
 
 - componentDidCatch：進行錯誤處理
 - shouldComponentUpdate：決定要不要 update，也可透過傳入的參數決定要不要 update，詳細可參考[官方文件](https://zh-hant.reactjs.org/docs/react-component.html)
@@ -404,7 +404,7 @@ export default class Counter extends React.Component {
 
 結果如下，當 counter: 5 之後，再點擊也不會有反應：
 
-![](https://i.imgur.com/XrScAIB.png)
+![](/images/posts/react-class-function-hook/XrScAIB.png)
 
 這通常會和之前在 React 效能優化提到的 memo 搭配使用，根據比對 props 是否相同或自訂條件。
 

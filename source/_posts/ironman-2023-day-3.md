@@ -69,7 +69,7 @@ date: 2023-09-18 10:32:00
 
 那就是**搜尋「javascript double question mark」**。
 
-![](https://hackmd.io/_uploads/HkjRjoVJ6.png)
+![](/images/posts/ironman-2023-day-3/HkjRjoVJ6.png)
 
 這篇文章將以切身經驗，介紹如何培養能夠有效搜尋所需資訊的谷歌能力。
 
@@ -89,7 +89,7 @@ date: 2023-09-18 10:32:00
 
 雖然有些許差異，但以下是「javascript double question mark」在非日語網站（主要是英語網站）的搜索結果。
 
-![](https://hackmd.io/_uploads/BJ4xhoN16.png)
+![](/images/posts/ironman-2023-day-3/BJ4xhoN16.png)
 
 與一般搜尋的不同之處，在於 Query Parameter（查詢參數）多了 **「&lr=-lang_ja」** 字串。
 
@@ -110,11 +110,11 @@ date: 2023-09-18 10:32:00
 
 一旦調整完成，即可像這樣進行搜尋：
 
-![](https://i.imgur.com/xnmaTvh.gif)
+![](/images/posts/ironman-2023-day-3/xnmaTvh.gif)
 
 ### 新增搜尋引擎設定
 
-![](https://i.imgur.com/pz5jTxw.gif)
+![](/images/posts/ironman-2023-day-3/pz5jTxw.gif)
 
 在 Chrome 瀏覽器的網址列中輸入 `chrome://settings/searchEngines`，並按下 Enter 鍵，即可進入搜尋引擎管理畫面。
 
@@ -195,7 +195,7 @@ javascript: (function () {
 
 試著輸入 `ruby ampersand colon`，看看搜尋結果如何吧！
 
-![](https://hackmd.io/_uploads/r1PlAsVyp.png)
+![](/images/posts/ironman-2023-day-3/r1PlAsVyp.png)
 
 ## 使用 Google 搜尋已定義的符號和詞彙以提高搜尋準確性！
 

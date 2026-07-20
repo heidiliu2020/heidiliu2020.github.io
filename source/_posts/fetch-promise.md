@@ -80,7 +80,7 @@ fetch("http://www.example.org/example.txt")
 
 使用開發者工具查看 Network，確實有收到 Response：
 
-![](https://i.imgur.com/eOZlngN.png)
+![](/images/posts/fetch-promise/eOZlngN.png)
 
 或是直接將結果印出來，可知 fetch 其實會回傳一個 Promise：
 
@@ -91,7 +91,7 @@ fetch("http://www.example.org/example.txt")
 </script>
 ```
 
-![](https://i.imgur.com/QtvlDpl.png)
+![](/images/posts/fetch-promise/QtvlDpl.png)
 
 ---
 
@@ -113,7 +113,7 @@ Promist 是一個獨特的物件，簡單來說就是一個容器，裡面儲存
 </script>
 ```
 
-![](https://i.imgur.com/d88g2Ox.png)
+![](/images/posts/fetch-promise/d88g2Ox.png)
 
 可把上述程式碼簡化如下：
 
@@ -143,7 +143,7 @@ fetch(api200)
 
 確認可在瀏覽器上印出 text 內容：
 
-![](https://i.imgur.com/rqFF0In.png)
+![](/images/posts/fetch-promise/rqFF0In.png)
 
 #### `.json()`
 
@@ -162,7 +162,7 @@ fetch(api200)
 
 確認得到 JSON 格式的結果：
 
-![](https://i.imgur.com/3ZOk7YA.png)
+![](/images/posts/fetch-promise/3ZOk7YA.png)
 
 ### 簡化再簡化
 
@@ -255,7 +255,7 @@ fetch(api200)
 
 再把原先的請求 URL 稍作修改，確認可接收錯誤訊息：
 
-![](https://i.imgur.com/qN3HBCE.png)
+![](/images/posts/fetch-promise/qN3HBCE.png)
 
 簡言之，我們可使用 `then()` 來接收回傳的結果，`catch()` 來接收回傳的錯誤。
 

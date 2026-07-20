@@ -8,7 +8,7 @@ categories:
   - Lidemy
 date: 2021-04-05 12:23:00
 ---
-![](https://i.imgur.com/qY9Crpq.jpg)
+![](/images/posts/about-lidemy/qY9Crpq.jpg)
 <span>Photo by <a href="https://unsplash.com/@xangriffin?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Xan Griffin</a> on <a href="https://unsplash.com/s/photos/win?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
 
 > 「平凡的我啊，哪有時間低頭回望？」——《排球少年 264 話》
@@ -88,7 +88,7 @@ date: 2021-04-05 12:23:00
   - 除了進度報告，學習系統也是繳交作業的平台，在這裡能參考同學們的心得和作業，因為總會有跑在前頭的強者同學，無形中也成為一股推進力。如果當週作業想不出解法，也能藉由範例來學習。有時把問題寫下來，會有熱心的同學來為自己解惑XD
   - \許願希望未來的學習系統/：課程進度能支援跳關、能夠以滾輪方式顯示過往動態、能夠有書籤功能來收藏喜歡的心得。
 
-![](https://i.imgur.com/I92IOSl.png)
+![](/images/posts/about-lidemy/I92IOSl.png)
 
 
 ---

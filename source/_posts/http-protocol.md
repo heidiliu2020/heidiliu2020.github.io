@@ -44,7 +44,7 @@ HTTP 是一套網路傳輸協定，為[全球資訊網的資料通訊的基礎](
 
 而透過協議溝通的兩端，通常可分為客戶端（Client）和伺服器端（Server）。
 
-![](https://i.imgur.com/EYmEfr8.png)
+![](/images/posts/http-protocol/EYmEfr8.png)
 
 ### 我們如何看到網頁的畫面？
 
@@ -59,7 +59,7 @@ HTTP 是一套網路傳輸協定，為[全球資訊網的資料通訊的基礎](
 2. Server 經過處理後，回傳一個「response」
 3. 再由瀏覽器進行解析（html、css、js 等），將程式碼渲染成我們所熟悉的網頁介面
 
-![瀏覽器](https://i.imgur.com/4pi9zu5.png)
+![瀏覽器](/images/posts/http-protocol/4pi9zu5.png)
 
 ## DNS 域名系統
 
@@ -85,13 +85,13 @@ HTTP 是一套網路傳輸協定，為[全球資訊網的資料通訊的基礎](
 
 就是透過 DNS 把 Request URL（github.com） 轉換成實際 IP 位置（13.250.177.223）。
 
-![DNS](https://i.imgur.com/LsnJjwB.png)
+![DNS](/images/posts/http-protocol/LsnJjwB.png)
 
 ### `nslookup` 指令
 
 在終端機輸入 `nslookup '網址'`：可查詢 DNS 伺服器。有可能出現多個結果，代表對應到多個 server。
 
-![nslookup](https://i.imgur.com/wTIOWZF.png)
+![nslookup](/images/posts/http-protocol/wTIOWZF.png)
 
 ## 瀏覽器只是一個程式
 
@@ -126,7 +126,7 @@ request('https://github.com/Lidemy/mentor-program-4th-heidiliu2020', function (e
 
 4. 執行 `node index.js` 可拿到 response
 
-![執行 request](https://i.imgur.com/795sNFV.png)
+![執行 request](/images/posts/http-protocol/795sNFV.png)
 
 5. 或是利用 `node index.js > github.html` 導入程式碼，一樣能打開網頁
 
@@ -196,7 +196,7 @@ request('https://github.com/Lidemy/mentor-program-4th-heidiliu2020', function (e
 - 安全性：較 POST 不安全，因為傳遞的引數會在 URL 上顯示
 - 例如：讀取連結或圖片
 
-![GET](https://i.imgur.com/C2MUvS4.png)
+![GET](/images/posts/http-protocol/C2MUvS4.png)
 
 #### `POST`：將要處理的資料提交給指定的資源，類似於更新操作。
 
@@ -204,11 +204,11 @@ request('https://github.com/Lidemy/mentor-program-4th-heidiliu2020', function (e
 - 安全性：較 GET 安全，適合用於隱密性較高的資料
 - 例如：會員登入系統（如下圖所示）
 
-![POST](https://i.imgur.com/K7UVu6f.png)
+![POST](/images/posts/http-protocol/K7UVu6f.png)
 
 在最下方夾帶 request 資訊：
 
-![request body](https://i.imgur.com/7dixXCe.png)
+![request body](/images/posts/http-protocol/7dixXCe.png)
 
 ### HTTP Status Code 狀態碼
 
@@ -266,7 +266,7 @@ server.listen(5000); // 監聽 5000 這個 port
 
 3. 在瀏覽器輸入網址 `localhost:5000` 會跑出下列畫面：
 
-![localhost:5000](https://i.imgur.com/PUPfab0.png)
+![localhost:5000](/images/posts/http-protocol/PUPfab0.png)
 
 4. 若修改程式碼如下，即可根據「不同網址」給出「不同回應」：
 
@@ -298,11 +298,11 @@ server.listen(5000); // 監聽 5000 這個 port
 
 - 輸入網址 `localhost:5000`：回應 welcome
 
-![welcome](https://i.imgur.com/p1PKLHk.png)
+![welcome](/images/posts/http-protocol/p1PKLHk.png)
 
 - 輸入網址 `localhost:5000/hello`：回應 hello
 
-![hello](https://i.imgur.com/Ay4ut32.png)
+![hello](/images/posts/http-protocol/Ay4ut32.png)
 
 5. 再增加 `redirect` 部分和 `res.writeHead(404)`，就完成一個較完整的 Server 端：
 
@@ -340,11 +340,11 @@ server.listen(5000); // 監聽 5000 這個 port
 
 - 若輸入不存在的網址，就會出現狀態 `404 Not Found`：
 
-![404](https://i.imgur.com/Dy8kyCR.png)
+![404](/images/posts/http-protocol/Dy8kyCR.png)
 
 - 若輸入 `localhost:5000/redirect`，會在 Response Headers 會出現 `'lidemy': 'good'`：
 
-!['lidemy': 'good'](https://i.imgur.com/KufqrXq.png)
+!['lidemy': 'good'](/images/posts/http-protocol/KufqrXq.png)
 
 6. 在之前的狀態碼有提到，若要轉址必須改成 `302 Found`：
 
@@ -360,7 +360,7 @@ if (req.url === "/redirect") {
 
 7. 輸入網址 `'localhost:5000/redirect`，瀏覽器就會轉址到新位置：
 
-![302](https://i.imgur.com/WX6bq3s.png)
+![302](/images/posts/http-protocol/WX6bq3s.png)
 
 - 若將程式碼改成 `'Location': 'https://google.com'`：輸入網址 `localhost:5000/redirect` 就會直接連到 `google.com`
 
@@ -380,13 +380,13 @@ if (req.url === "/redirect") {
 
 由於協定非常嚴謹，較偏向理論。
 
-![OSI](https://i.imgur.com/wLsG4hH.png)
+![OSI](/images/posts/http-protocol/wLsG4hH.png)
 
 ### TCP/IP 四層模型
 
 TCP/IP 是由 OSI 七層協定簡化而來，為目前網路通訊的基礎架構。以下為兩者之間的比較圖與常見的通訊協定：
 
-![OSI TCP/IP](https://i.imgur.com/GFDpM8z.png)
+![OSI TCP/IP](/images/posts/http-protocol/GFDpM8z.png)
 
 參考資料：[2.4 TCP/IP 的傳輸層相關封包與資料 - 鳥哥的 Linux 私房菜](http://linux.vbird.org/linux_server/0110network_basic.php#whatisnetwork_tcpip)
 
@@ -419,7 +419,7 @@ IP 的全名是 Internet Protocol，中文是「網際網路協定」。
 
 > 通常以 `192.168` 或 `10.0` 開頭的，都是虛擬 IP。
 
-![虛擬 IP](https://i.imgur.com/TFcsKyY.png)
+![虛擬 IP](/images/posts/http-protocol/TFcsKyY.png)
 
 參考資料：[浮動 IP 與 固定 IP 有何不同?? 各有何優缺點??](https://ithelp.ithome.com.tw/questions/10000796)
 
@@ -454,7 +454,7 @@ IP 的全名是 Internet Protocol，中文是「網際網路協定」。
 - 是一種可靠的資料傳輸，因此大部分的網路協定都是建立在 TCP 上面
 - 透過「三次握手」確認建立一個連接：
 
-![](https://i.imgur.com/PHSLrDe.png)
+![](/images/posts/http-protocol/PHSLrDe.png)
 
 ```
 若以「傳紙條概念」比喻三次握手：
@@ -483,7 +483,7 @@ IP 的全名是 Internet Protocol，中文是「網際網路協定」。
 - 網路層（IP）：傳輸地址
 - 實體層（網路電纜）：實體傳輸
 
-![傳紙條概念](https://i.imgur.com/oJPxLiH.png)
+![傳紙條概念](/images/posts/http-protocol/oJPxLiH.png)
 
 ---
 
@@ -546,7 +546,7 @@ request("http://www.google.com", function (error, response, body) {
 
 在終端機輸入 `node index.js`，即可獲得 Regres API 所提供的資訊：
 
-![運行](https://i.imgur.com/DWirKxl.png)
+![運行](/images/posts/http-protocol/DWirKxl.png)
 
 這樣其實就完成了簡單的 API 串接！透過丟一個 request 到網站，我們能夠獲取想要的資訊。
 
@@ -570,7 +570,7 @@ request.del() / request.delete(): Defaults to method: "DELETE".
 
 方法一：直接將網址改成 `https://reqres.in/api/users/2`
 
-![id 2](https://i.imgur.com/JiCCL5b.png)
+![id 2](/images/posts/http-protocol/JiCCL5b.png)
 
 方法二：使用 node.js 內建 library `process`
 
@@ -581,7 +581,7 @@ const process = require("process");
 console.log(process.argv);
 ```
 
-![array](https://i.imgur.com/HrpOUWq.png)
+![array](/images/posts/http-protocol/HrpOUWq.png)
 
 會發現 `process.argv` 其實是一個陣列，利用 `process.argv[2]` 就可以拿到我們需要的參數：
 
@@ -599,7 +599,7 @@ request(
 
 輸入 `node index.js 2`，就可獲得 `id: 2` 的使用者資料：
 
-![node index.js 2](https://i.imgur.com/dRHS9rO.png)
+![node index.js 2](/images/posts/http-protocol/dRHS9rO.png)
 
 ### 情境二：新增使用者資料
 
@@ -629,7 +629,7 @@ request.post(
 
 > 註：這裡的操作只是測試用，並不會真的新增資料到網站。
 
-![新增使用者資料](https://i.imgur.com/SOHZu0h.png)
+![新增使用者資料](/images/posts/http-protocol/SOHZu0h.png)
 
 ### 情境三：刪除使用者資料
 
@@ -652,7 +652,7 @@ request.delete(
 
 回傳 `204`，代表成功刪除使用者資料：
 
-![delete](https://i.imgur.com/JHOyAUo.png)
+![delete](/images/posts/http-protocol/JHOyAUo.png)
 
 ### 情境四：修改使用者資料
 
@@ -677,7 +677,7 @@ request.patch(
 
 成功修改使用者資料：
 
-![patch](https://i.imgur.com/HXbVmTk.png)
+![patch](/images/posts/http-protocol/HXbVmTk.png)
 
 ### 綜合應用
 
@@ -781,7 +781,7 @@ request(`https://reqres.in/api/users/2`, function (error, response, body) {
 });
 ```
 
-![json](https://i.imgur.com/rxiOXN2.png)
+![json](/images/posts/http-protocol/rxiOXN2.png)
 
 如此就可以「物件」方式來取出想要的資料：
 
@@ -815,7 +815,7 @@ curl [options] [URL...]
 - 輸入 `crul 'http://www.google.com'`：即可下載該網頁程式碼
 - 或輸入 `crul '網址' > google.html`：可將回傳值導向其他檔案
 
-![](https://i.imgur.com/RbyGVvV.png)
+![](/images/posts/http-protocol/RbyGVvV.png)
 
 參考資料：
 

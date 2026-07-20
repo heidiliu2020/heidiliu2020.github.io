@@ -26,7 +26,7 @@ date: 2020-07-25 13:32:00
 
 因此，我們可以將不同功能視為一個模組（Module），例如：金流、登入、權限、會員等等，再用主程式將所有模組串接起來，透過模組化統一進行管理。
 
-![](https://i.imgur.com/di0LXxg.png)
+![](/images/posts/javascript-npm/di0LXxg.png)
 
 ## Ｍodeule 相關操作
 
@@ -40,7 +40,7 @@ console.log(os.platform())
 // 印出 win32，代表當前作業系統
 ```
 
-![](https://i.imgur.com/ubLcpXY.png)
+![](/images/posts/javascript-npm/ubLcpXY.png)
 
 ### `module.export`：輸出模組
 
@@ -144,7 +144,7 @@ console.log(myModule.double(3))
 
 通常在安裝 node.js 時就會一起安裝。
 
-![npm -v](https://i.imgur.com/zZMyERG.png)
+![npm -v](/images/posts/javascript-npm/zZMyERG.png)
 
 #### `npm init`：協助建立 Node.js 專案的描述檔。
 
@@ -152,18 +152,18 @@ console.log(myModule.double(3))
 
 #### `npm install left-pad`：以 npm 安裝 left-pad 這個套件為例。
 
-![npm install](https://i.imgur.com/4zvy68Z.png)
+![npm install](/images/posts/javascript-npm/4zvy68Z.png)
 
 安裝同時會產生：
 
 1. package-lock.json 檔案：記錄安裝套件的版本和依賴（dependencies）
 2. node_modules 資料夾：裡面放安裝的套件
 
-![](https://i.imgur.com/hOnLOZL.png)
+![](/images/posts/javascript-npm/hOnLOZL.png)
 
 package-lock.json 檔案內容如下，可從 `dependencies` 得知專案使用的套件：
 
-![描述檔](https://i.imgur.com/YopHSs7.png)
+![描述檔](/images/posts/javascript-npm/YopHSs7.png)
 
 ### 版本控制會忽略 node_modules 資料夾
 
@@ -171,7 +171,7 @@ package-lock.json 檔案內容如下，可從 `dependencies` 得知專案使用�
 
 因為已經有 package.json 這個檔案，負責記錄該專案所安裝的套件。若從遠端下載專案時，只要再輸入 `npm install` 指令，就可安裝該專案所需套件。
 
-![](https://i.imgur.com/nsRpDni.png)
+![](/images/posts/javascript-npm/nsRpDni.png)
 
 ---
 
@@ -187,10 +187,10 @@ package-lock.json 檔案內容如下，可從 `dependencies` 得知專案使用�
 
 > 注意是使用雙引號。
 
-![scripts](https://i.imgur.com/fvF1YuH.png)
+![scripts](/images/posts/javascript-npm/fvF1YuH.png)
 
 ### `npm run 'key'`
 
 在終端機輸入 `npm run start` 即可透過 key 來運行該指令：
 
-![npm run start](https://i.imgur.com/K3XhyO3.png)
+![npm run start](/images/posts/javascript-npm/K3XhyO3.png)

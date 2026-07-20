@@ -217,7 +217,7 @@ console.log(obj);
 
 可以看到 obj 物件的原型物件，具有的 `__proto__`、`constructor` 等特性，這些都是由原型物件分享給 obj 物件使用的特性：
 
-![](https://i.imgur.com/jwWgnE9.png)
+![](/images/posts/javascript-oop-prototype/jwWgnE9.png)
 
 接著來說明 `prototype` 和 `__proto__` 之間的差異：
 
@@ -329,7 +329,7 @@ test();
 
 會發現 this 其實是非常大的值，裡面包含許多東西：
 
-![](https://i.imgur.com/kqTUu5D.png)
+![](/images/posts/javascript-oop-prototype/kqTUu5D.png)
 
 ### `.call()`：另一種呼叫 function 的方式
 

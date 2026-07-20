@@ -36,11 +36,11 @@ ESLint（ECMAScript + lint）是用來檢查 JavaScript 程式碼的工具。可
 
 - 若程式碼均符合規則，即可順利 commit：
 
-![](https://i.imgur.com/c9Nv0Gh.png)
+![](/images/posts/eslint/c9Nv0Gh.png)
 
 - 若有不符合規則的程式碼，則會出現下列訊息，告知幾行幾欄出現 error 需進行修正，通過才可進行 commit：
 
-![](https://i.imgur.com/FLkbnqX.png)
+![](/images/posts/eslint/FLkbnqX.png)
 
 
 ---

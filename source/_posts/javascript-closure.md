@@ -283,13 +283,13 @@ one();
 
 從 Global Context 呼叫 one()，one() 再呼叫 two()，接著再呼叫 three()，最後在 function three 執行 console.log()。下圖在建立階段的堆疊示意圖：
 
-![](https://i.imgur.com/RtkT8LP.png)
+![](/images/posts/javascript-closure/RtkT8LP.png)
 
 當 JavaScript 要執行 `console.log(a + b + c)` 這行程式，會不斷往 Scope Chain 去尋找。
 
 就像前面所說的，一開始會先在自己的 VO 找，找不到在換下一個，一直到 global 為止，如果找不到就會拋出錯誤。過程如下圖：
 
-![](https://i.imgur.com/9ROutJb.png)
+![](/images/posts/javascript-closure/9ROutJb.png)
 
 （圖片來源：https://andyyou.github.io/2015/04/20/understand-closures-and-scope-chain/ ）
 

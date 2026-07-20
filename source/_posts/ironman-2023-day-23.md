@@ -67,11 +67,11 @@ https://chat.openai.com/
 [範例] 請告訴我什麼是 TPP
 ```
 
-![](https://hackmd.io/_uploads/rJFsKf1Z6.png)
+![](/images/posts/ironman-2023-day-23/rJFsKf1Z6.png)
 
 以下是中文版本：
 
-![](https://hackmd.io/_uploads/r1SRKzyWa.png)
+![](/images/posts/ironman-2023-day-23/r1SRKzyWa.png)
 
 ### 創作 Wikipedia 風格的文章
 
@@ -83,12 +83,12 @@ https://chat.openai.com/
 [範例] 請用 Wikipedia 風格來解釋 gpt-3
 ```
 
-![](https://hackmd.io/_uploads/Hk8N5fJWa.png)
+![](/images/posts/ironman-2023-day-23/Hk8N5fJWa.png)
 
 
 以下是中文版本：
 
-![](https://hackmd.io/_uploads/B1EI5f1ba.png)
+![](/images/posts/ironman-2023-day-23/B1EI5f1ba.png)
 
 ### 建立任務列表
 
@@ -100,11 +100,11 @@ https://chat.openai.com/
 [範例] 請舉出「APEX 變強的方法」
 ```
 
-![](https://hackmd.io/_uploads/HJFvczy-a.png)
+![](/images/posts/ironman-2023-day-23/HJFvczy-a.png)
 
 以下是中文版本，發現如果用「任務化」步驟會太詳細，因此換個方式問：
 
-![](https://hackmd.io/_uploads/r1Dd5zkZ6.png)
+![](/images/posts/ironman-2023-day-23/r1Dd5zkZ6.png)
 
 ### 建立時間表
 
@@ -116,11 +116,11 @@ zz 介於 xx 和 yy 之間，請以 30 分鐘為單位，顯示該時段的時�
 [範例] 我想在 20:00-24:00 這段時間製作報告，請以 30 分鐘為單位安排時間表
 ```
 
-![](https://hackmd.io/_uploads/S1f5qM1-a.png)
+![](/images/posts/ironman-2023-day-23/S1f5qM1-a.png)
 
 以下是中文版本：
 
-![](https://hackmd.io/_uploads/ryeR9zyb6.png)
+![](/images/posts/ironman-2023-day-23/ryeR9zyb6.png)
 
 ### 歸納
 
@@ -148,11 +148,11 @@ zz 介於 xx 和 yy 之間，請以 30 分鐘為單位，顯示該時段的時�
 	- 預算：每個月 2 萬日幣～
 ```
 
-![](https://hackmd.io/_uploads/r1kgjGJ-T.png)
+![](/images/posts/ironman-2023-day-23/r1kgjGJ-T.png)
 
 以下是中文版本，這裡意外發現如果沒有加上「幾句話」，會一直鬼打牆用列點的方式回答，因此還是要確實指定希望的格式：
 
-![](https://hackmd.io/_uploads/rk9xoM1-T.png)
+![](/images/posts/ironman-2023-day-23/rk9xoM1-T.png)
 
 ### 將列點用文章呈現
 
@@ -181,11 +181,11 @@ zz 介於 xx 和 yy 之間，請以 30 分鐘為單位，顯示該時段的時�
 ChatGPT
 ```
 
-![](https://hackmd.io/_uploads/HkkfjG1-6.png)
+![](/images/posts/ironman-2023-day-23/HkkfjG1-6.png)
 
 以下是中文版本：
 
-![](https://hackmd.io/_uploads/B1CfjMk-a.png)
+![](/images/posts/ironman-2023-day-23/B1CfjMk-a.png)
 
 ### 將文章列點呈現
 
@@ -198,11 +198,11 @@ ChatGPT
 明天早上吃完早餐後要去學校午休時必須到花圃澆水，接著放學後要去社團跟老師道歉
 ```
 
-![](https://hackmd.io/_uploads/BJRNiMJWT.png)
+![](/images/posts/ironman-2023-day-23/BJRNiMJWT.png)
 
 以下是中文版本：
 
-![](https://hackmd.io/_uploads/BJoBiG1Za.png)
+![](/images/posts/ironman-2023-day-23/BJoBiG1Za.png)
 
 ## 程式碼
 
@@ -216,11 +216,11 @@ xxするyyの関数を出力して
 [範例] 請寫出如何判斷閏年的 JavaScript 函數
 ```
 
-![](https://hackmd.io/_uploads/S1SwoMyWp.png)
+![](/images/posts/ironman-2023-day-23/S1SwoMyWp.png)
 
 以下是中文版本：
 
-![](https://hackmd.io/_uploads/rJz_sGJZT.png)
+![](/images/posts/ironman-2023-day-23/rJz_sGJZT.png)
 
 ### 生成程式碼的文件
 
@@ -240,11 +240,11 @@ function isLeapYear(year) {
 }
 ```
 
-![](https://hackmd.io/_uploads/HkQYoz1Wp.png)
+![](/images/posts/ironman-2023-day-23/HkQYoz1Wp.png)
 
 以下是中文版本：
 
-![](https://hackmd.io/_uploads/rke9oz1ba.png)
+![](/images/posts/ironman-2023-day-23/rke9oz1ba.png)
 
 ### 重構
 
@@ -280,13 +280,13 @@ public class Example {
 }
 ```
 
-![](https://hackmd.io/_uploads/SJX6oMkbT.png)
+![](/images/posts/ironman-2023-day-23/SJX6oMkbT.png)
 
-![](https://hackmd.io/_uploads/SktpozyWa.png)
+![](/images/posts/ironman-2023-day-23/SktpozyWa.png)
 
 以下是中文版本：
 
-![](https://hackmd.io/_uploads/BJ01nz1Z6.png)
+![](/images/posts/ironman-2023-day-23/BJ01nz1Z6.png)
 
 ### 單元測試
 
@@ -296,9 +296,9 @@ public class Example {
 請根據以下內容，寫出單元測試
 ```
 
-![](https://hackmd.io/_uploads/rk8RoMJ-a.png)
+![](/images/posts/ironman-2023-day-23/rk8RoMJ-a.png)
 
-![](https://hackmd.io/_uploads/ryWy2zyWT.png)
+![](/images/posts/ironman-2023-day-23/ryWy2zyWT.png)
 
 ※ 第二項測試的 expected 有誤，因為 900*0.98 = 882 才正確，需注意由 AI 產出的測試程式碼也必須經過測試。
 
@@ -312,11 +312,11 @@ public class Example {
 [範例] 請列出建立 EC 網站必需的 table 列表
 ```
 
-![](https://hackmd.io/_uploads/S1kZ3M1WT.png)
+![](/images/posts/ironman-2023-day-23/S1kZ3M1WT.png)
 
 以下是中文版本：
 
-![](https://hackmd.io/_uploads/rkq-3My-6.png)
+![](/images/posts/ironman-2023-day-23/rkq-3My-6.png)
 
 ## 故事
 
@@ -330,13 +330,13 @@ public class Example {
 [範例] 請用「的語氣」對 xx 內容進行說明
 ```
 
-![](https://hackmd.io/_uploads/B1b7hfJWp.png)
+![](/images/posts/ironman-2023-day-23/B1b7hfJWp.png)
 
 也可以加上「用 ◯◯ 語調」、「用 ◯◯ 風格」等指令來表示。
 
 以下是中文版本：
 
-![](https://hackmd.io/_uploads/Bko42zkba.png)
+![](/images/posts/ironman-2023-day-23/Bko42zkba.png)
 
 ### 模仿角色的語氣來回答
 
@@ -350,7 +350,7 @@ xxっぽく、敬語を使わず可愛く、yyについて説明してくださ�
 請不用敬語，以可愛並且類似 xx 的方式說明 yy
 ```
 
-![](https://hackmd.io/_uploads/rynXnfJbT.png)
+![](/images/posts/ironman-2023-day-23/rynXnfJbT.png)
 
 以下是中文版本：
 
@@ -368,7 +368,7 @@ xxっぽく、敬語を使わず可愛く、yyについて説明してくださ�
 請用像魯夫的語氣，不使用敬語且充滿朝氣又像個笨蛋，針對薩爾達傳說進行說明。
 ```
 
-![](https://hackmd.io/_uploads/HJWK3Mk-6.png)
+![](/images/posts/ironman-2023-day-23/HJWK3Mk-6.png)
 
 ## Bonus
 

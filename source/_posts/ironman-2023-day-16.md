@@ -33,7 +33,7 @@ date: 2023-10-01 09:02:01
 
 「作業系統的功能」指的是檔案讀寫、以及網路通信等功能。在電腦上運行的應用程式（包括 Python 和 Ruby 等語言）就可以處理這些功能。`[註2]`
 
-![](https://i.imgur.com/M1CR0Eg.png)
+![](/images/posts/ironman-2023-day-16/M1CR0Eg.png)
 
 然而，如果在瀏覽器上運行的程式（JavaScript），擁有作業系統的功能權限，這將存在安全風險。`[註3]` 舉例來說，只要進到某個網站，就可能被人未經允許讀寫電腦上的檔案，或刪除部分檔案內容，這會是很嚴重的問題。 `[註4]`
 
@@ -41,7 +41,7 @@ date: 2023-10-01 09:02:01
 
 但如果完全沒有權限，還是會有些不便，因此瀏覽器會限制性允許 JavaScript 請求作業系統的功能權限。`[註5]` 近年來，瀏覽器也允許 JavaScript 對相機和麥克風的權限，這讓在瀏覽器上進行網路會議變得更加方便。
 
-![](https://i.imgur.com/6M0deBc.png)
+![](/images/posts/ironman-2023-day-16/6M0deBc.png)
 
 > 關於前端與瀏覽器之間的關係，推薦閱讀 Huli 撰寫的資安系列文章：[[Day2] 瀏覽器的安全模型](https://ithelp.ithome.com.tw/articles/10314125)
 
@@ -49,7 +49,7 @@ date: 2023-10-01 09:02:01
 
 「**Node.js**」是能夠讓 JavaScript 在電腦上運行的工具，就像 Python 或 Ruby 一樣，而不只受限於瀏覽器環境。
 
-![](https://i.imgur.com/bwSylYh.png)
+![](/images/posts/ironman-2023-day-16/bwSylYh.png)
 
 儘管受到許多誤解，但 Node.js 既不是 Web Server，也不是像 Rails 或 Django 的 Web 框架，而是 **JavaScript 的執行環境**。
 
@@ -58,7 +58,7 @@ date: 2023-10-01 09:02:01
 
 在 Node.js 中，可編寫 JavaScript 程式來請求作業系統的功能權限。`[註6]` 意即能夠處理在瀏覽器上無法執行的操作，像是自由讀寫檔案，以及網路通信等作業系統功能。
 
-![](https://i.imgur.com/hu0sgZY.png)
+![](/images/posts/ironman-2023-day-16/hu0sgZY.png)
 
 因此，Node.js 能夠像使用 Python 或 Ruby 一樣建立 Web 應用程式，但 Node.js 也可用於各種其他用途。
 
@@ -96,7 +96,7 @@ Node.js 解放 JavaScript 的束縛，使其能夠做到許多事情。
 
 ### 目標 1.  想要使用新的 JavaScript 或 TypeScript 規範來編寫客戶端程式
 
-![](https://i.imgur.com/fEvrqwL.png)
+![](/images/posts/ironman-2023-day-16/fEvrqwL.png)
 
 JavaScript 的新規範（ES2015以後），有關詳細內容與發展的介紹已經隨處可見，因此這裡只會簡短說明。對於 TypeScript，這裡將不會進行探討。
 
@@ -134,7 +134,7 @@ Node.js 可用於開發 **Mobile 或 Desktop 應用程式**。Mobile 應用程�
 
 https://www.electronjs.org/
 
-![](https://i.imgur.com/r9NnL0p.png)
+![](/images/posts/ironman-2023-day-16/r9NnL0p.png)
 
 JavaScript 最初是為網頁設計的語言，常用於處理使用者介面（UI），擁有許多經過洗鍊且成熟的 Library 和 Framework。利用這些資源，可以像 Web 網站一樣，快速建立使用者界面，這是一大優勢。
 

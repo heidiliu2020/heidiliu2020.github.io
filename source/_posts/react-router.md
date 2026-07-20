@@ -178,7 +178,7 @@ export { default } from "./HomePage";
 
 執行結果如下，可透過不同路由 render 相對應的頁面，其中 Header 是共同區塊不會變動：
 
-![](https://i.imgur.com/ff3aVd1.png)
+![](/images/posts/react-router/ff3aVd1.png)
 
 
 參考資料：
@@ -438,7 +438,7 @@ export default function Header() {
 
 URL：https://student-json-api.lidemy.me/posts?userId=1
 
-![](https://i.imgur.com/B6N7n53.png)
+![](/images/posts/react-router/B6N7n53.png)
 
 ### 1. 串連 API：拿取所有 posts
 
@@ -557,7 +557,7 @@ const PostTitle = styled(Link)`
 
 結果如下：
 
-![](https://i.imgur.com/dny0n1U.png)
+![](/images/posts/react-router/dny0n1U.png)
 
 ## 實作：單一文章頁面
 
@@ -744,7 +744,7 @@ new Date(post.createdAt).toLocaleDateString()
 
 結果如下：
 
-![](https://i.imgur.com/AromKKu.png)
+![](/images/posts/react-router/AromKKu.png)
 
 ---
 

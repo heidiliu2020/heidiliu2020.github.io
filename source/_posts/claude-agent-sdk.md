@@ -10,7 +10,7 @@ categories:
 date: 2026-04-02 17:27:00
 ---
 
-![claude](https://hackmd.io/_uploads/HJ6TA0x2bg.png)
+![claude](/images/posts/claude-agent-sdk/HJ6TA0x2bg.png)
 
 最近在研究 AI Agent 技術，調查 Claude Agent SDK 是否能支援 **Human-in-the-loop（人機協作）** 以及 **不同工作階段的 Agent workflow**。
 

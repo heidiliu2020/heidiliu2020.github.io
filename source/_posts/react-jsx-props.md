@@ -90,11 +90,11 @@ date: 2020-12-02 00:53:00
 
 點選 Create Sandbox，並選擇 React 來快速建立開發環境：
 
-![](https://i.imgur.com/j6UFABA.png)
+![](/images/posts/react-jsx-props/j6UFABA.png)
 
 建立完成的初始畫面如下，藉由像這樣快速建立環境，也能用來幫助線上 debug：
 
-![](https://i.imgur.com/d5LQgbX.png)
+![](/images/posts/react-jsx-props/d5LQgbX.png)
 
 ### JSX：用來建立 React 元素
 
@@ -123,7 +123,7 @@ ReactDOM.render(<Hello />, rootElement
 );
 ```
 
-![](https://i.imgur.com/CapcKxx.png)
+![](/images/posts/react-jsx-props/CapcKxx.png)
 
 
 Hello() 這個 component 可以接收參數 props，寫在大括號中會被解讀 React 為 JavaScript 程式碼執行，例如 `{JS code}`：
@@ -174,7 +174,7 @@ JSX 語法和 template engine 不同，在使用上沒有那麼自由，必須�
 
 此外，根據[官方文件](https://reactjs.org/docs/introducing-jsx.html#jsx-prevents-injection-attacks)，JSX 語法能夠預防 Injection Attacks，提供 escape 功能。
 
-![](https://i.imgur.com/eRabFE4.png)
+![](/images/posts/react-jsx-props/eRabFE4.png)
 
 如果真的想要 render 出 innerHTML，則需透過 [dangerouslysetinnerhtml](https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml) 這個冗長的標籤，一般而言不會使用這個方法。
 
@@ -186,7 +186,7 @@ JSX 語法和 template engine 不同，在使用上沒有那麼自由，必須�
 
 這時若被惡意輸入 `javascript:alert()` 程式碼，點擊 a 連結就會執行該 JS 程式碼。這其實因為 React 沒有跳脫冒號，造成的 click based XSS：
 
-![](https://i.imgur.com/bnbqnMb.png)
+![](/images/posts/react-jsx-props/bnbqnMb.png)
 
 防範方式有兩種：
 - 不要在 a 標籤內放入使用者輸入
@@ -288,7 +288,7 @@ ReactDOM.render(
 );
 ```
 
-![](https://i.imgur.com/gX8yUJ5.png)
+![](/images/posts/react-jsx-props/gX8yUJ5.png)
 
 參考資料：
 - [React State - React 教學Tutorial - Fooish 程式技術](https://www.fooish.com/reactjs/state.html)
@@ -322,7 +322,7 @@ $ npm start
 
 成功運行後，就會在 localhost 開一個 server：
 
-![](https://i.imgur.com/K7dEnLz.png)
+![](/images/posts/react-jsx-props/K7dEnLz.png)
 
 在開始專案之前，首先要閱讀 `README.md` 的說明，還有查看 `package.json` 確認安裝了哪些套件等訊息。
 
@@ -365,7 +365,7 @@ export default App;
 
 重整頁面即可看到結果：
 
-![](https://i.imgur.com/HPUh5ly.png)
+![](/images/posts/react-jsx-props/HPUh5ly.png)
 
 ## 結論
 
