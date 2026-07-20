@@ -1,0 +1,83 @@
+# NexT 8 site-level overrides（升級自 NexT 7.8 客製設定，themes/next8 保持原廠不改）
+
+custom_file_path:
+  head: source/_data/head.njk
+  sidebar: source/_data/sidebar.njk
+  postBodyEnd: source/_data/post-body-end.njk
+  footer: source/_data/footer.njk
+  style: source/_data/styles.styl
+
+favicon:
+  small: /images/favicon_avatar.ico
+  medium: /images/favicon_avatar.ico
+  apple_touch_icon: /images/favicon_avatar.ico
+  safari_pinned_tab: /images/favicon_avatar.ico
+
+scheme: Gemini
+
+menu:
+  tech: /categories/技術學習/ || fa fa-code
+  japan: /categories/日本生活/ || fa fa-map
+  chitchat: /categories/日常雜談/ || fa fa-coffee
+  about: /about/ || fa fa-user
+
+sidebar:
+  position: right
+
+avatar:
+  url: https://avatars3.githubusercontent.com/u/65410665?s=460&u=887bd602944dcf78b90f3a880b03aec4e086728a&v=4
+  rounded: true
+
+social:
+  GitHub: https://github.com/heidiliu2020 || fab fa-github
+  Medium: https://heidi-coding.medium.com/ || fab fa-medium
+  HackMD: https://hackmd.io/@Heidi-Liu || fas fa-sticky-note
+  YouTube: https://www.youtube.com/@liusan_outdoor || fab fa-youtube
+  RSS: /atom.xml || fas fa-rss
+
+footer:
+  since: 2020
+  powered: false
+
+back2top:
+  enable: true
+  sidebar: false
+  scrollpercent: true
+
+index_with_subtitle: true
+exturl: true
+google_site_verification: O47wQYoCDwLfMMk1GaSnsatJnUSKGtEF2db0lJvZI7A
+
+lazyload: true
+
+motion:
+  enable: false
+
+pace:
+  enable: false
+
+local_search:
+  enable: true
+
+related_posts:
+  enable: true
+
+# giscus 由 hexo-next-giscus 外掛提供（NexT 8 核心無內建）
+giscus:
+  enable: true
+  repo: heidiliu2020/heidiliu2020.github.io
+  repo_id: MDEwOlJlcG9zaXRvcnkzMDk3NTA1OTQ=
+  category: Announcements
+  category_id: DIC_kwDOEnZrQs4C7fK2
+  mapping: pathname
+  reactions_enabled: 0
+  emit_metadata: 0
+  theme: preferred_color_scheme
+  lang: zh-TW
+  input_position: bottom
+  loading: lazy
+
+# 全部資源本地化（@next-theme/plugins），不依賴第三方 CDN
+vendors:
+  internal: local
+  plugins: local

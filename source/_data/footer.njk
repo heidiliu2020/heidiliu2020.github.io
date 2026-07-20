@@ -1,0 +1,16 @@
+{# 語言切換器（zh-TW / en / ja）：主語言導向首頁，其他導向 /<lang>/about/ #}
+{%- if config.language.length > 1 %}
+<div class="language-links">
+  {%- for language in config.language %}
+    {%- if loop.first %}
+      {%- set target = url_for('/') %}
+    {%- else %}
+      {%- set target = url_for('/' + language + '/about/') %}
+    {%- endif %}
+    <a href="{{ target }}" class="language-link{% if language == page.lang %} is-active{% endif %}"
+       lang="{{ language }}" hreflang="{{ language }}">
+      {%- if language == 'zh-TW' %}中{%- elif language == 'en' %}EN{%- elif language == 'ja' %}JA{%- else %}{{ language }}{%- endif %}
+    </a>
+  {%- endfor %}
+</div>
+{%- endif %}

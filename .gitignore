@@ -10,6 +10,7 @@
 *.yml
 # 主設定檔要版控（不含憑證，部署 PAT 存在鑰匙圈）
 !_config.yml
+!_config.next8.yml
 
 db.json
 .deploy*/
