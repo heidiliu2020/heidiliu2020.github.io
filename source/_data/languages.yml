@@ -1,0 +1,15 @@
+zh-TW:
+  menu:
+    tech: 技術學習
+    japan: 日本生活
+    chitchat: 日常雜談
+en:
+  menu:
+    tech: Tech Learning
+    japan: Life in Japan
+    chitchat: Musings
+ja:
+  menu:
+    tech: 技術メモ
+    japan: 日本生活
+    chitchat: 雑記

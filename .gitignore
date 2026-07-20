@@ -7,10 +7,8 @@
 .deploy_git
 
 # Config
-*.yml
-# 主設定檔要版控（不含憑證，部署 PAT 存在鑰匙圈）
-!_config.yml
-!_config.next8.yml
+# 舊規則 *.yml 會連 themes/、source/_data 的必要 yml 一起忽略，改成只忽略特定檔案
+/_admin-config.yml
 
 db.json
 .deploy*/
