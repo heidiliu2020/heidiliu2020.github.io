@@ -1,11 +1,12 @@
 ---
-title: 'FE 基本情報技術者試驗：準備方式與完整學習筆記'
+title: 'FE 基本情報技術者試驗：準備方式 & 學習筆記'
 author: Heidi Liu
 tags:
   - 技術學習
   - Security
   - Database
   - Internet
+  - 日本生活
 categories:
   - 技術學習
   - 職涯
