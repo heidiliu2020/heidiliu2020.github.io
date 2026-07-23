@@ -3,14 +3,13 @@ title: 'FE 基本情報技術者試驗：準備方式 & 學習筆記'
 author: Heidi Liu
 tags:
   - 技術學習
+  - 日本生活
+  - 檢定
   - Security
   - Database
   - Internet
-  - 日本生活
-  - 檢定
 categories:
   - 技術學習
-  - 職涯
 date: 2026-07-23 14:30:00
 description: 日本 IPA 基本情報技術者試驗（FE）的完整準備指南與學習筆記，涵蓋科目 A 的基礎理論、硬體、資料庫、網路、資訊安全，以及科目 B 的演算法與程式語言。附上推薦資源、YouTube 教學與 8 週讀書計畫，適合準備 FE 考試的初學者參考。
 ---
