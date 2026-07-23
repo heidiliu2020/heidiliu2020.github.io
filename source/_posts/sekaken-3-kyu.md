@@ -3,6 +3,8 @@ title: '邁向考古獵人之路｜世界遺產檢定 3 級合格筆記'
 author: Heidi Liu
 tags:
   - 世界遺產檢定
+  - 日本生活
+  - 檢定
 categories:
   - 日本生活
 date: 2026-07-09 14:55:00

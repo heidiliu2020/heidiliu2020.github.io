@@ -7,6 +7,7 @@ tags:
   - Database
   - Internet
   - 日本生活
+  - 檢定
 categories:
   - 技術學習
   - 職涯
